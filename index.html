@@ -556,51 +556,64 @@
 </footer>
 
 <script>
+  // ==========================================================
+  // EduNet — index.html JavaScript
+  // API Base URL (same origin since Express serves this file)
+  // ==========================================================
+  var API = '';  // Empty string = same origin (http://localhost:5000)
+
+  // ==========================================================
+  // SESSION HELPERS
+  // The token is stored in localStorage as 'edunet_token'.
+  // The user object (id, username, role, branch, email) is
+  // stored separately as 'edunet_user'.
+  // ==========================================================
+  function getToken()   { return localStorage.getItem('edunet_token'); }
+  function getUser()    { var u = localStorage.getItem('edunet_user'); return u ? JSON.parse(u) : null; }
+  function isLoggedIn() { return !!getToken(); }
+
+  function saveSession(token, user) {
+    localStorage.setItem('edunet_token', token);
+    localStorage.setItem('edunet_user', JSON.stringify(user));
+  }
+  function clearSession() {
+    localStorage.removeItem('edunet_token');
+    localStorage.removeItem('edunet_user');
+  }
+
+  // ==========================================================
+  // TOOLS GRID — fetches from API (Step 6 wires this up fully)
+  // For now we use a local fallback array so the landing page
+  // still shows tools before Step 6 is built.
+  // ==========================================================
   var defaultTools = [
-    { id: 't1', name: 'CodeSynth AI', desc: 'Generates optimal DSA solutions, explains time/space complexity, and outputs clean syntax templates.', category: 'Coding', status: 'approved' },
-    { id: 't2', name: 'PaperGrasp Summarizer', desc: 'Extract core equations, methodologies, and findings from academic papers or textbook PDFs in seconds.', category: 'Research', status: 'pending' },
-    { id: 't3', name: 'ResumeReviewer ATS', desc: 'Analyze resume templates, score readability, and optimize keywords based on technical target descriptions.', category: 'Writing', status: 'approved' },
-    { id: 't4', name: 'QueryResolve Exam Bot', desc: 'Instant math proofs, circuit analysis calculations, and computer architecture breakdown answers.', category: 'Research', status: 'approved' },
-    { id: 't5', name: 'AlgorithmVisualizer', desc: 'Generates visual, interactive step-by-step traces of pathfinders, tree balances, and sorting arrays.', category: 'Coding', status: 'approved' },
-    { id: 't6', name: 'SOP Refiner', desc: 'Polish statements of purpose, scholarship applications, and recommendation letters for premium tone.', category: 'Writing', status: 'approved' },
-    { id: 't7', name: 'GitDraft Explainer', desc: 'Generates clear, comprehensive git commit logs and pull request descriptions from raw local diff files.', category: 'Coding', status: 'approved' },
-    { id: 't8', name: 'DeepCite Scholar', desc: 'Finds and formats relevant peer-reviewed papers into standard APA/IEEE citations based on user theses.', category: 'Research', status: 'pending' },
-    { id: 't9', name: 'CoverFlow Generator', desc: 'Crafts tailored cover letters matching job descriptions, maintaining a highly professional tone.', category: 'Writing', status: 'approved' },
-    { id: 't10', name: 'MockVerify QA', desc: 'Analyzes unit tests, scans for edge cases, and writes automated testing scripts for API endpoints.', category: 'Coding', status: 'approved' },
-    { id: 't11', name: 'MathSolver Matrix', desc: 'Step-by-step calculus integration, differential equations, and eigenvalues vector solver.', category: 'Research', status: 'approved' },
-    { id: 't12', name: 'EssayPolisher AI', desc: 'Scans academic write-ups for clarity, structural flow, vocabulary variety, and tone adjustments.', category: 'Writing', status: 'approved' },
-    { id: 't13', name: 'AgentCraft Studio', desc: 'Design and execute multi-agent autonomous loops, connect custom tools, and monitor execution graph details.', category: 'Coding', status: 'approved' },
-    { id: 't14', name: 'SemanticSearch RAG', desc: 'Query loaded PDF document corpuses using custom semantic vector embeddings and similarity scores.', category: 'Research', status: 'approved' },
-    { id: 't15', name: 'PromptRefiner AI', desc: 'Optimize raw prompts using structural templates, chain-of-thought rules, and adversarial input checks.', category: 'Writing', status: 'approved' },
-    { id: 't16', name: 'VectorLens Inspector', desc: 'Inspect high-dimensional vector embeddings, compute cosine similarities, and verify database index builds.', category: 'Coding', status: 'approved' },
-    { id: 't17', name: 'WebSocket Tracer', desc: 'Traces live WebSocket messages, inspects frames, audits payload schemas, and measures response latency.', category: 'Coding', status: 'approved' },
-    { id: 't18', name: 'SynthData Engine', desc: 'Generates clean, mock relational database rows and JSON payloads matching specific target configurations.', category: 'Research', status: 'approved' }
+    { id: 't1',  name: 'CodeSynth AI',          desc: 'Generates optimal DSA solutions, explains time/space complexity, and outputs clean syntax templates.',        category: 'Coding',   status: 'approved' },
+    { id: 't2',  name: 'PaperGrasp Summarizer', desc: 'Extract core equations, methodologies, and findings from academic papers or textbook PDFs in seconds.',      category: 'Research', status: 'pending'  },
+    { id: 't3',  name: 'ResumeReviewer ATS',    desc: 'Analyze resume templates, score readability, and optimize keywords based on technical target descriptions.',  category: 'Writing',  status: 'approved' },
+    { id: 't4',  name: 'QueryResolve Exam Bot', desc: 'Instant math proofs, circuit analysis calculations, and computer architecture breakdown answers.',            category: 'Research', status: 'approved' },
+    { id: 't5',  name: 'AlgorithmVisualizer',   desc: 'Generates visual, interactive step-by-step traces of pathfinders, tree balances, and sorting arrays.',       category: 'Coding',   status: 'approved' },
+    { id: 't6',  name: 'SOP Refiner',           desc: 'Polish statements of purpose, scholarship applications, and recommendation letters for premium tone.',        category: 'Writing',  status: 'approved' },
+    { id: 't7',  name: 'GitDraft Explainer',    desc: 'Generates clear, comprehensive git commit logs and pull request descriptions from raw local diff files.',     category: 'Coding',   status: 'approved' },
+    { id: 't8',  name: 'DeepCite Scholar',      desc: 'Finds and formats relevant peer-reviewed papers into standard APA/IEEE citations based on user theses.',     category: 'Research', status: 'pending'  },
+    { id: 't9',  name: 'CoverFlow Generator',   desc: 'Crafts tailored cover letters matching job descriptions, maintaining a highly professional tone.',            category: 'Writing',  status: 'approved' },
+    { id: 't10', name: 'MockVerify QA',         desc: 'Analyzes unit tests, scans for edge cases, and writes automated testing scripts for API endpoints.',         category: 'Coding',   status: 'approved' },
+    { id: 't11', name: 'MathSolver Matrix',     desc: 'Step-by-step calculus integration, differential equations, and eigenvalues vector solver.',                  category: 'Research', status: 'approved' },
+    { id: 't12', name: 'EssayPolisher AI',      desc: 'Scans academic write-ups for clarity, structural flow, vocabulary variety, and tone adjustments.',           category: 'Writing',  status: 'approved' },
+    { id: 't13', name: 'AgentCraft Studio',     desc: 'Design and execute multi-agent autonomous loops, connect custom tools, and monitor execution graph details.', category: 'Coding',   status: 'approved' },
+    { id: 't14', name: 'SemanticSearch RAG',    desc: 'Query loaded PDF document corpuses using custom semantic vector embeddings and similarity scores.',           category: 'Research', status: 'approved' },
+    { id: 't15', name: 'PromptRefiner AI',      desc: 'Optimize raw prompts using structural templates, chain-of-thought rules, and adversarial input checks.',     category: 'Writing',  status: 'approved' },
+    { id: 't16', name: 'VectorLens Inspector',  desc: 'Inspect high-dimensional vector embeddings, compute cosine similarities, and verify database index builds.', category: 'Coding',   status: 'approved' },
+    { id: 't17', name: 'WebSocket Tracer',      desc: 'Traces live WebSocket messages, inspects frames, audits payload schemas, and measures response latency.',    category: 'Coding',   status: 'approved' },
+    { id: 't18', name: 'SynthData Engine',      desc: 'Generates clean, mock relational database rows and JSON payloads matching specific target configurations.',  category: 'Research', status: 'approved' }
   ];
-  var currentTools = JSON.parse(localStorage.getItem('edunet_tools'));
-  if (!currentTools || currentTools.length < 18) {
-    localStorage.setItem('edunet_tools', JSON.stringify(defaultTools));
-  }
-  var defaultUsers = [
-    { username: 'admin', email: 'admin@edunet.com', branch: 'Admin', role: 'admin', password: 'admin' },
-    { username: 'john_doe', email: 'john@example.com', branch: 'SDE', role: 'user', password: 'password123' }
-  ];
-  if (!localStorage.getItem('edunet_users')) {
-    localStorage.setItem('edunet_users', JSON.stringify(defaultUsers));
-  }
-  var defaultLogs = [
-    { timestamp: new Date().toLocaleTimeString(), actor: 'System', action: 'EduNet Database Initialized successfully.' }
-  ];
-  if (!localStorage.getItem('edunet_logs')) {
-    localStorage.setItem('edunet_logs', JSON.stringify(defaultLogs));
-  }
-  function renderToolsGrid() {
+
+  function renderToolsGrid(tools) {
     var toolsGrid = document.getElementById('toolsGrid');
     if (!toolsGrid) return;
-    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
     var activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
     var query = document.getElementById('toolSearchInput') ? document.getElementById('toolSearchInput').value.toLowerCase().trim() : '';
     toolsGrid.innerHTML = '';
-    var filtered = tools.filter(function(tool) {
+    var filtered = (tools || defaultTools).filter(function(tool) {
       if (tool.status !== 'approved') return false;
       var categoryMatches = (activeCategory === 'all' || tool.category.toLowerCase() === activeCategory);
       var searchMatches = (!query || tool.name.toLowerCase().includes(query) || tool.desc.toLowerCase().includes(query));
@@ -615,78 +628,72 @@
       card.className = 'tool-card';
       var iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>';
       if (tool.category === 'Research') iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>';
-      if (tool.category === 'Writing') iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
-      var actionBtnHtml = `<a href="#" class="tool-action-btn">Launch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>`;
+      if (tool.category === 'Writing')  iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
+      var actionBtnHtml = '<a href="#" class="tool-action-btn">Launch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>';
       if (tool.name === 'CodeSynth AI') {
-        actionBtnHtml = `<a href="#coding-lab" class="tool-action-btn">Try editor <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>`;
+        actionBtnHtml = '<a href="#coding-lab" class="tool-action-btn">Try editor <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>';
       }
-      card.innerHTML = `
-        <div>
-          <div class="tool-icon">
-            ${iconSvg}
-          </div>
-          <h3>${tool.name}</h3>
-          <p>${tool.desc}</p>
-        </div>
-        <div class="tool-meta">
-          <span class="tool-badge">${tool.category}</span>
-          ${actionBtnHtml}
-        </div>
-      `;
+      card.innerHTML = '<div><div class="tool-icon">' + iconSvg + '</div><h3>' + tool.name + '</h3><p>' + tool.desc + '</p></div><div class="tool-meta"><span class="tool-badge">' + tool.category + '</span>' + actionBtnHtml + '</div>';
       toolsGrid.appendChild(card);
     });
   }
-  var searchBar = document.getElementById('navSearchBar');
+
+  // Load tools from API (will work once Step 6 is done, fallback until then)
+  var cachedTools = defaultTools;
+  fetch(API + '/api/tools')
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(data) {
+      if (data && data.success && data.tools) {
+        cachedTools = data.tools;
+        renderToolsGrid(cachedTools);
+      } else {
+        renderToolsGrid(defaultTools);
+      }
+    })
+    .catch(function() { renderToolsGrid(defaultTools); });
+
+  // ==========================================================
+  // SEARCH MODAL
+  // ==========================================================
+  var searchBar    = document.getElementById('navSearchBar');
   var navSearchIcon = document.getElementById('navSearchIcon');
-  var searchModal = document.getElementById('searchModal');
-  var modalInput = document.getElementById('modalSearchInput');
+  var searchModal  = document.getElementById('searchModal');
+  var modalInput   = document.getElementById('modalSearchInput');
   var searchResults = document.getElementById('searchResults');
-  function openSearch() {
-    searchModal.classList.add('open');
-    setTimeout(function() { modalInput.focus(); }, 100);
-  }
-  function closeSearch() {
-    searchModal.classList.remove('open');
-    modalInput.value = '';
-    searchResults.innerHTML = '';
-  }
-  if (searchBar) searchBar.addEventListener('click', openSearch);
-  if (navSearchIcon) navSearchIcon.addEventListener('click', openSearch);
-  if (searchModal) {
-    searchModal.addEventListener('click', function(e) {
-      if (e.target === searchModal) closeSearch();
-    });
-  }
+
+  function openSearch()  { searchModal.classList.add('open'); setTimeout(function() { modalInput.focus(); }, 100); }
+  function closeSearch() { searchModal.classList.remove('open'); modalInput.value = ''; searchResults.innerHTML = ''; }
+
+  if (searchBar)      searchBar.addEventListener('click', openSearch);
+  if (navSearchIcon)  navSearchIcon.addEventListener('click', openSearch);
+  if (searchModal)    searchModal.addEventListener('click', function(e) { if (e.target === searchModal) closeSearch(); });
   window.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeSearch();
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      openSearch();
-    }
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
   });
+
   var searchData = [
-    { title: 'Data Structures & Algorithms', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
-    { title: 'System Design & WebSockets', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
-    { title: 'GenAI & LLM Integration', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
-    { title: 'Cloud & Deployments', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
-    { title: 'CodeSynth AI', desc: 'Optimal DSA solution generator', category: 'AI Tools', link: '#ai-tools' },
-    { title: 'AgentCraft Studio', desc: 'Multi-agent workflow orchestrator', category: 'AI Tools', link: '#ai-tools' },
-    { title: 'SemanticSearch RAG', desc: 'PDF semantic RAG search assistant', category: 'AI Tools', link: '#ai-tools' },
-    { title: 'VectorLens Inspector', desc: 'Vector database and similarity tool', category: 'AI Tools', link: '#ai-tools' },
-    { title: 'WebSocket Tracer', desc: 'Real-time WebSocket debugging inspector', category: 'AI Tools', link: '#ai-tools' },
-    { title: 'SynthData Engine', desc: 'Relational mock database data generator', category: 'AI Tools', link: '#ai-tools' },
-    { title: 'Coding Sandbox', desc: 'Interactive coding lab playground', category: 'Coding Lab', link: '#coding-lab' },
-    { title: 'Pro Network Pricing', desc: 'Plans and subscription discounts', category: 'Pricing', link: '#pricing' }
+    { title: 'Data Structures & Algorithms', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps',   link: '#roadmaps'   },
+    { title: 'System Design & WebSockets',   desc: 'Software Engineer Roadmap Track', category: 'Roadmaps',   link: '#roadmaps'   },
+    { title: 'GenAI & LLM Integration',      desc: 'Software Engineer Roadmap Track', category: 'Roadmaps',   link: '#roadmaps'   },
+    { title: 'Cloud & Deployments',          desc: 'Software Engineer Roadmap Track', category: 'Roadmaps',   link: '#roadmaps'   },
+    { title: 'CodeSynth AI',                 desc: 'Optimal DSA solution generator',  category: 'AI Tools',   link: '#ai-tools'   },
+    { title: 'AgentCraft Studio',            desc: 'Multi-agent workflow orchestrator',category: 'AI Tools',   link: '#ai-tools'   },
+    { title: 'SemanticSearch RAG',           desc: 'PDF semantic RAG search assistant',category: 'AI Tools',   link: '#ai-tools'   },
+    { title: 'VectorLens Inspector',         desc: 'Vector database similarity tool', category: 'AI Tools',   link: '#ai-tools'   },
+    { title: 'WebSocket Tracer',             desc: 'Real-time WebSocket inspector',   category: 'AI Tools',   link: '#ai-tools'   },
+    { title: 'SynthData Engine',             desc: 'Relational mock data generator',  category: 'AI Tools',   link: '#ai-tools'   },
+    { title: 'Coding Sandbox',               desc: 'Interactive coding lab playground',category: 'Coding Lab', link: '#coding-lab' },
+    { title: 'Pro Network Pricing',          desc: 'Plans and subscription tiers',    category: 'Pricing',    link: '#pricing'    }
   ];
+
   if (modalInput && searchResults) {
     modalInput.addEventListener('input', function() {
       var query = modalInput.value.toLowerCase().trim();
       searchResults.innerHTML = '';
       if (!query) return;
       var filtered = searchData.filter(function(item) {
-        return item.title.toLowerCase().includes(query) || 
-               item.desc.toLowerCase().includes(query) ||
-               item.category.toLowerCase().includes(query);
+        return item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query) || item.category.toLowerCase().includes(query);
       });
       if (filtered.length === 0) {
         var noResults = document.createElement('div');
@@ -699,36 +706,34 @@
         var itemEl = document.createElement('div');
         itemEl.className = 'search-result-item';
         var iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>';
-        if (item.category === 'Roadmaps') iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h5a2 2 0 012 2v7M6 9v9"/></svg>';
-        if (item.category === 'AI Tools') iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>';
+        if (item.category === 'Roadmaps')   iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h5a2 2 0 012 2v7M6 9v9"/></svg>';
+        if (item.category === 'AI Tools')   iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>';
         if (item.category === 'Coding Lab') iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>';
-        itemEl.innerHTML = `
-          <div class="item-icon">${iconHtml}</div>
-          <div class="item-info">
-            <div class="item-title">${item.title}</div>
-            <div class="item-desc">${item.desc}</div>
-          </div>
-          <div class="item-category">${item.category}</div>
-        `;
-        itemEl.addEventListener('click', function() {
-          closeSearch();
-          window.location.hash = item.link;
-        });
+        itemEl.innerHTML = '<div class="item-icon">' + iconHtml + '</div><div class="item-info"><div class="item-title">' + item.title + '</div><div class="item-desc">' + item.desc + '</div></div><div class="item-category">' + item.category + '</div>';
+        itemEl.addEventListener('click', function() { closeSearch(); window.location.hash = item.link; });
         searchResults.appendChild(itemEl);
       });
     });
   }
-  var navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', function(){
-    if (window.scrollY > 24){ navbar.classList.add('scrolled'); }
-    else { navbar.classList.remove('scrolled'); }
-  });
+
+  // ==========================================================
+  // NAVBAR
+  // ==========================================================
+  var navbar    = document.getElementById('navbar');
   var navToggle = document.getElementById('navToggle');
   var navMobile = document.getElementById('navMobile');
-  navToggle.addEventListener('click', function(){ navMobile.classList.toggle('open'); });
-  navMobile.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ navMobile.classList.remove('open'); });
+
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('scrolled', window.scrollY > 24);
   });
+  navToggle.addEventListener('click', function() { navMobile.classList.toggle('open'); });
+  navMobile.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { navMobile.classList.remove('open'); });
+  });
+
+  // ==========================================================
+  // LIVE COUNTER ANIMATION
+  // ==========================================================
   var liveCounter = document.getElementById('liveCounter');
   if (liveCounter) {
     var count = 12480;
@@ -739,35 +744,42 @@
       liveCounter.textContent = count.toLocaleString();
     }, 3000);
   }
-  var filterBtns = document.querySelectorAll('.filter-btn');
+
+  // ==========================================================
+  // FILTER BUTTONS & TOOL SEARCH
+  // ==========================================================
+  var filterBtns      = document.querySelectorAll('.filter-btn');
   var toolSearchInput = document.getElementById('toolSearchInput');
+
   filterBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
       filterBtns.forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      renderToolsGrid();
+      renderToolsGrid(cachedTools);
     });
   });
   if (toolSearchInput) {
-    toolSearchInput.addEventListener('input', renderToolsGrid);
+    toolSearchInput.addEventListener('input', function() { renderToolsGrid(cachedTools); });
   }
-  var roadmapTabBtns = document.querySelectorAll('.roadmap-tab-btn');
+
+  // ==========================================================
+  // ROADMAP TABS & PROGRESS BAR
+  // ==========================================================
+  var roadmapTabBtns   = document.querySelectorAll('.roadmap-tab-btn');
   var roadmapTimelines = document.querySelectorAll('.roadmap-timeline');
+
   roadmapTabBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
       roadmapTabBtns.forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
       var track = btn.getAttribute('data-track');
-      roadmapTimelines.forEach(function(timeline) {
-        if (timeline.id === 'roadmap-' + track) {
-          timeline.classList.add('active');
-        } else {
-          timeline.classList.remove('active');
-        }
+      roadmapTimelines.forEach(function(tl) {
+        tl.classList.toggle('active', tl.id === 'roadmap-' + track);
       });
       updateRoadmapProgress(track);
     });
   });
+
   function updateRoadmapProgress(track) {
     var activeTimeline = document.getElementById('roadmap-' + track);
     if (!activeTimeline) return;
@@ -779,22 +791,14 @@
         checkedCount++;
         node.classList.add('is-checked');
         var status = node.querySelector('.node-status');
-        if (status) {
-          status.textContent = 'Completed';
-          status.className = 'node-status done';
-        }
+        if (status) { status.textContent = 'Completed'; status.className = 'node-status done'; }
       } else {
         node.classList.remove('is-checked');
         var status = node.querySelector('.node-status');
         if (status) {
           var index = Array.from(checkboxes).indexOf(cb);
-          if (index === 2) {
-            status.textContent = 'In Progress';
-            status.className = 'node-status active';
-          } else {
-            status.textContent = 'Next Up';
-            status.className = 'node-status todo';
-          }
+          if (index === 2) { status.textContent = 'In Progress'; status.className = 'node-status active'; }
+          else { status.textContent = 'Next Up'; status.className = 'node-status todo'; }
         }
       }
     });
@@ -804,18 +808,20 @@
     if (roadmapPercent) roadmapPercent.textContent = percent + '%';
     if (roadmapProgressFill) roadmapProgressFill.style.width = percent + '%';
   }
+
   document.querySelectorAll('.node-checkbox').forEach(function(cb) {
     cb.addEventListener('change', function() {
       var activeTab = document.querySelector('.roadmap-tab-btn.active');
-      if (activeTab) {
-        updateRoadmapProgress(activeTab.getAttribute('data-track'));
-      }
+      if (activeTab) updateRoadmapProgress(activeTab.getAttribute('data-track'));
     });
   });
-  if (roadmapTabBtns.length > 0) {
-    updateRoadmapProgress('sde');
-  }
-  var runCodeBtn = document.getElementById('runCodeBtn');
+
+  if (roadmapTabBtns.length > 0) updateRoadmapProgress('sde');
+
+  // ==========================================================
+  // CODING LAB
+  // ==========================================================
+  var runCodeBtn  = document.getElementById('runCodeBtn');
   var consoleBody = document.getElementById('consoleBody');
   if (runCodeBtn && consoleBody) {
     var isCompiling = false;
@@ -825,17 +831,17 @@
       runCodeBtn.disabled = true;
       consoleBody.innerHTML = '';
       var lines = [
-        { text: '$ node test_solution.js', type: 'input', delay: 100 },
-        { text: 'Compiling code... runtime environment V8 v11.4.1', type: 'working', delay: 400 },
-        { text: 'Executing test suite: reverseList(head)...', type: 'working', delay: 700 },
-        { text: '✔ Test Case 1: Empty list -> Passed (0.08ms)', type: 'success', delay: 1200 },
+        { text: '$ node test_solution.js',                           type: 'input',   delay: 100  },
+        { text: 'Compiling code... runtime environment V8 v11.4.1',  type: 'working', delay: 400  },
+        { text: 'Executing test suite: reverseList(head)...',        type: 'working', delay: 700  },
+        { text: '✔ Test Case 1: Empty list -> Passed (0.08ms)',      type: 'success', delay: 1200 },
         { text: '✔ Test Case 2: Single node [5] -> Passed (0.1ms)', type: 'success', delay: 1700 },
-        { text: '✔ Test Case 3: List [1,2,3,4,5] -> Passed (0.28ms)', type: 'success', delay: 2200 },
-        { text: '----------------------------------------', type: 'input', delay: 2400 },
-        { text: '🎉 SUCCESS: 3/3 test cases passed!', type: 'success', delay: 2700 },
-        { text: 'Code complexity stats:', type: 'accent', delay: 2900 },
-        { text: '  - Time Complexity: O(N) linear time', type: 'accent', delay: 3150 },
-        { text: '  - Space Complexity: O(1) constant space pointers', type: 'accent', delay: 3400 }
+        { text: '✔ Test Case 3: List [1,2,3,4,5] -> Passed (0.28ms)',type: 'success', delay: 2200 },
+        { text: '----------------------------------------',           type: 'input',   delay: 2400 },
+        { text: '🎉 SUCCESS: 3/3 test cases passed!',                type: 'success', delay: 2700 },
+        { text: 'Code complexity stats:',                            type: 'accent',  delay: 2900 },
+        { text: '  - Time Complexity: O(N) linear time',            type: 'accent',  delay: 3150 },
+        { text: '  - Space Complexity: O(1) constant space',        type: 'accent',  delay: 3400 }
       ];
       lines.forEach(function(line) {
         setTimeout(function() {
@@ -844,236 +850,124 @@
           el.textContent = line.text;
           consoleBody.appendChild(el);
           consoleBody.scrollTop = consoleBody.scrollHeight;
-          if (line.text.includes('constant space pointers')) {
-            isCompiling = false;
-            runCodeBtn.disabled = false;
-          }
+          if (line.text.includes('constant space')) { isCompiling = false; runCodeBtn.disabled = false; }
         }, line.delay);
       });
     });
   }
+
+  // ==========================================================
+  // PRICING TOGGLE
+  // ==========================================================
   var pricingToggle = document.getElementById('pricingToggle');
-  var proPrice = document.getElementById('proPrice');
-  var labelMonthly = document.getElementById('label-monthly');
-  var labelYearly = document.getElementById('label-yearly');
+  var proPrice      = document.getElementById('proPrice');
+  var labelMonthly  = document.getElementById('label-monthly');
+  var labelYearly   = document.getElementById('label-yearly');
   if (pricingToggle && proPrice) {
     pricingToggle.addEventListener('click', function() {
       pricingToggle.classList.toggle('yearly');
       if (pricingToggle.classList.contains('yearly')) {
         proPrice.innerHTML = '$12<span class="period">/month (billed yearly at $144)</span>';
-        labelYearly.classList.add('active');
-        labelMonthly.classList.remove('active');
+        labelYearly.classList.add('active'); labelMonthly.classList.remove('active');
       } else {
         proPrice.innerHTML = '$15<span class="period">/month</span>';
-        labelMonthly.classList.add('active');
-        labelYearly.classList.remove('active');
+        labelMonthly.classList.add('active'); labelYearly.classList.remove('active');
       }
     });
   }
+
+  // ==========================================================
+  // NEWSLETTER
+  // ==========================================================
   var newsletterForm = document.getElementById('newsletterForm');
   var newsletterEmail = document.getElementById('newsletterEmail');
-  var newsletterBtn = document.getElementById('newsletterBtn');
+  var newsletterBtn   = document.getElementById('newsletterBtn');
   if (newsletterForm && newsletterEmail && newsletterBtn) {
     newsletterForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      var email = newsletterEmail.value.trim();
-      if (!email) return;
-      newsletterBtn.disabled = true;
-      newsletterBtn.textContent = 'Joining...';
+      if (!newsletterEmail.value.trim()) return;
+      newsletterBtn.disabled = true; newsletterBtn.textContent = 'Joining...';
       setTimeout(function() {
         newsletterForm.innerHTML = '<div style="color:#10b981; font-family:var(--font-mono); font-size:13px; padding:6px 10px; display:flex; align-items:center; gap:8px;">✔ Subscribed successfully!</div>';
       }, 1200);
     });
   }
-  var authModal = document.getElementById('authModal');
-  var navAuthBtn = document.getElementById('navAuthBtn');
+
+  // ==========================================================
+  // AUTH MODAL — opens, tab switching, close
+  // ==========================================================
+  var authModal    = document.getElementById('authModal');
+  var authClose    = document.getElementById('authClose');
+  var navAuthBtn   = document.getElementById('navAuthBtn');
   var mobileAuthBtn = document.getElementById('mobileAuthBtn');
-  var heroStartBtn = document.getElementById('heroStartBtn');
-  var authClose = document.getElementById('authClose');
-  function openAuthModal() {
-    authModal.classList.add('open');
-  }
+  var heroStartBtn  = document.getElementById('heroStartBtn');
+
+  function openAuthModal()  { authModal.classList.add('open'); }
   function closeAuthModal() {
     authModal.classList.remove('open');
-    if (document.getElementById('regError')) document.getElementById('regError').textContent = '';
-    if (document.getElementById('logError')) document.getElementById('logError').textContent = '';
+    document.getElementById('regError').textContent = '';
+    document.getElementById('logError').textContent = '';
   }
-  if (navAuthBtn) navAuthBtn.addEventListener('click', openAuthModal);
-  if (mobileAuthBtn) mobileAuthBtn.addEventListener('click', openAuthModal);
-  if (authClose) authClose.addEventListener('click', closeAuthModal);
-  if (authModal) {
-    authModal.addEventListener('click', function(e) {
-      if (e.target === authModal) closeAuthModal();
-    });
-  }
-  if (heroStartBtn) {
-    heroStartBtn.addEventListener('click', function() {
-      var session = JSON.parse(localStorage.getItem('edunet_session'));
-      if (session) {
-        if (session.role === 'admin') {
-          window.location.href = 'admin.html';
-        } else {
-          window.location.href = 'user.html';
-        }
-      } else {
-        openAuthModal();
-        document.getElementById('tabRegisterBtn').click();
-      }
-    });
-  }
+
+  if (authClose)   authClose.addEventListener('click', closeAuthModal);
+  if (authModal)   authModal.addEventListener('click', function(e) { if (e.target === authModal) closeAuthModal(); });
+
+  // Tab switching
   var authTabBtns = document.querySelectorAll('.auth-tab-btn');
-  var authForms = document.querySelectorAll('.auth-form');
+  var authForms   = document.querySelectorAll('.auth-form');
   authTabBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
       authTabBtns.forEach(function(b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      var targetFormId = '';
-      if (btn.id === 'tabRegisterBtn') targetFormId = 'registerForm';
-      else if (btn.id === 'tabLoginBtn') targetFormId = 'loginForm';
-      authForms.forEach(function(form) {
-        if (form.id === targetFormId) {
-          form.classList.add('active');
-        } else {
-          form.classList.remove('active');
-        }
-      });
+      var targetFormId = btn.id === 'tabRegisterBtn' ? 'registerForm' : 'loginForm';
+      authForms.forEach(function(form) { form.classList.toggle('active', form.id === targetFormId); });
     });
   });
-  var registerForm = document.getElementById('registerForm');
-  if (registerForm) {
-    registerForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var email = document.getElementById('regEmail').value.trim();
-      var username = document.getElementById('regUsername').value.trim();
-      var branch = document.getElementById('regBranch').value;
-      var password = document.getElementById('regPassword').value;
-      var errEl = document.getElementById('regError');
-      errEl.textContent = '';
-      if (!username || username.length < 3) {
-        errEl.textContent = 'Username must be at least 3 characters.';
-        return;
-      }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errEl.textContent = 'Please enter a valid email address.';
-        return;
-      }
-      if (!password || password.trim().length < 4) {
-        errEl.textContent = 'Password must be at least 4 characters long (excluding spaces).';
-        return;
-      }
-      var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
-      var nameExists = users.some(function(u) { return u.username.toLowerCase() === username.toLowerCase(); });
-      var emailExists = users.some(function(u) { return u.email.toLowerCase() === email.toLowerCase(); });
-      if (nameExists) {
-        errEl.textContent = 'Username is already taken.';
-        return;
-      }
-      if (emailExists) {
-        errEl.textContent = 'Email is already registered.';
-        return;
-      }
-      users.push({
-        email: email,
-        username: username,
-        branch: branch,
-        password: password,
-        role: 'user'
-      });
-      localStorage.setItem('edunet_users', JSON.stringify(users));
-      alert('Registration successful! Please log in.');
-      document.getElementById('tabLoginBtn').click();
-      registerForm.reset();
-    });
-  }
-  var loginForm = document.getElementById('loginForm');
-  if (loginForm) {
-    loginForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var username = document.getElementById('logUsername').value.trim();
-      var password = document.getElementById('logPassword').value;
-      var errEl = document.getElementById('logError');
-      errEl.textContent = '';
-      if (!username) {
-        errEl.textContent = 'Username or email is required.';
-        return;
-      }
-      if (!password) {
-        errEl.textContent = 'Password is required.';
-        return;
-      }
-      var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
-      var match = users.find(function(u) {
-        return (u.username.toLowerCase() === username.toLowerCase() || u.email.toLowerCase() === username.toLowerCase()) && u.password === password;
-      });
-      if (!match) {
-        errEl.textContent = 'Invalid username/email or password.';
-        return;
-      }
-      localStorage.setItem('edunet_session', JSON.stringify(match));
-      addAuditLog(match.username, 'Logged into the platform.');
-      closeAuthModal();
-      checkSessionState();
-      if (match.role === 'admin') {
-        window.location.href = 'admin.html';
-      } else {
-        window.location.href = 'user.html';
-      }
-      loginForm.reset();
-    });
-  }
-  function handleLogout() {
-    var session = JSON.parse(localStorage.getItem('edunet_session'));
-    var username = session ? session.username : 'Unknown';
-    localStorage.removeItem('edunet_session');
-    addAuditLog(username, 'Logged out from platform.');
-    checkSessionState();
-  }
+
+  // ==========================================================
+  // SESSION STATE — updates navbar buttons based on login status
+  // ==========================================================
   function checkSessionState() {
-    var session = JSON.parse(localStorage.getItem('edunet_session'));
-    var navRight = document.getElementById('navRight');
-    var navAuthBtn = document.getElementById('navAuthBtn');
+    var user      = getUser();
+    var navRight  = document.getElementById('navRight');
+    var navAuthBtn    = document.getElementById('navAuthBtn');
     var mobileAuthBtn = document.getElementById('mobileAuthBtn');
-    var existingLogout = document.getElementById('navLogoutBtn');
-    if (existingLogout) existingLogout.remove();
-    var existingMobileLogout = document.getElementById('mobileLogoutBtn');
-    if (existingMobileLogout) existingMobileLogout.remove();
-    if (session) {
-      var dest = session.role === 'admin' ? 'admin.html' : 'user.html';
-      var label = session.role === 'admin' ? 'Admin Panel' : 'Go to Workspace';
+
+    // Clean up old logout buttons
+    var old1 = document.getElementById('navLogoutBtn');
+    var old2 = document.getElementById('mobileLogoutBtn');
+    if (old1) old1.remove();
+    if (old2) old2.remove();
+
+    if (user) {
+      // User is logged in — change button to dashboard link
+      var dest  = user.role === 'admin' ? '/admin.html' : '/user.html';
+      var label = user.role === 'admin' ? 'Admin Panel' : 'Go to Workspace';
+
       if (navAuthBtn) {
         var newAuthBtn = navAuthBtn.cloneNode(true);
         newAuthBtn.textContent = label;
-        newAuthBtn.addEventListener('click', function() {
-          window.location.href = dest;
-        });
+        newAuthBtn.addEventListener('click', function() { window.location.href = dest; });
         navAuthBtn.parentNode.replaceChild(newAuthBtn, navAuthBtn);
       }
       if (mobileAuthBtn) {
-        var newMobileAuthBtn = mobileAuthBtn.cloneNode(true);
-        newMobileAuthBtn.textContent = label;
-        newMobileAuthBtn.addEventListener('click', function() {
-          window.location.href = dest;
-        });
-        mobileAuthBtn.parentNode.replaceChild(newMobileAuthBtn, mobileAuthBtn);
+        var newMobileBtn = mobileAuthBtn.cloneNode(true);
+        newMobileBtn.textContent = label;
+        newMobileBtn.addEventListener('click', function() { window.location.href = dest; });
+        mobileAuthBtn.parentNode.replaceChild(newMobileBtn, mobileAuthBtn);
       }
+
+      // Add logout button to navbar
       var logoutBtn = document.createElement('button');
       logoutBtn.id = 'navLogoutBtn';
       logoutBtn.className = 'btn btn-ghost btn-sm';
       logoutBtn.textContent = 'Logout';
       logoutBtn.addEventListener('click', handleLogout);
-      var navToggle = document.getElementById('navToggle');
-      navRight.insertBefore(logoutBtn, navToggle);
-      var navMobile = document.getElementById('navMobile');
-      var mobileLogoutBtn = document.createElement('button');
-      mobileLogoutBtn.id = 'mobileLogoutBtn';
-      mobileLogoutBtn.className = 'btn btn-secondary';
-      mobileLogoutBtn.style.marginTop = '1rem';
-      mobileLogoutBtn.style.width = '100%';
-      mobileLogoutBtn.style.justifyContent = 'center';
-      mobileLogoutBtn.textContent = 'Logout';
-      mobileLogoutBtn.addEventListener('click', handleLogout);
-      navMobile.appendChild(mobileLogoutBtn);
+      var navToggleEl = document.getElementById('navToggle');
+      navRight.insertBefore(logoutBtn, navToggleEl);
+
     } else {
+      // Not logged in — show "Get started" button
       if (navAuthBtn) {
         var newAuthBtn = navAuthBtn.cloneNode(true);
         newAuthBtn.textContent = 'Get started';
@@ -1081,24 +975,174 @@
         navAuthBtn.parentNode.replaceChild(newAuthBtn, navAuthBtn);
       }
       if (mobileAuthBtn) {
-        var newMobileAuthBtn = mobileAuthBtn.cloneNode(true);
-        newMobileAuthBtn.textContent = 'Get started';
-        newMobileAuthBtn.addEventListener('click', openAuthModal);
-        mobileAuthBtn.parentNode.replaceChild(newMobileAuthBtn, mobileAuthBtn);
+        var newMobileBtn = mobileAuthBtn.cloneNode(true);
+        newMobileBtn.textContent = 'Get started';
+        newMobileBtn.addEventListener('click', openAuthModal);
+        mobileAuthBtn.parentNode.replaceChild(newMobileBtn, mobileAuthBtn);
       }
     }
   }
-  function addAuditLog(actor, action) {
-    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
-    logs.push({
-      timestamp: new Date().toLocaleTimeString(),
-      actor: actor,
-      action: action
+
+  // ==========================================================
+  // REGISTRATION — POST /api/auth/register
+  // ==========================================================
+  var registerForm = document.getElementById('registerForm');
+  if (registerForm) {
+    registerForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var errEl    = document.getElementById('regError');
+      var submitBtn = registerForm.querySelector('button[type="submit"]');
+      errEl.textContent = '';
+
+      var email    = document.getElementById('regEmail').value.trim();
+      var username = document.getElementById('regUsername').value.trim();
+      var branch   = document.getElementById('regBranch').value;
+      var password = document.getElementById('regPassword').value;
+
+      // Client-side pre-validation (mirrors server-side rules)
+      if (!username || username.length < 3) { errEl.textContent = 'Username must be at least 3 characters.'; return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'Please enter a valid email address.'; return; }
+      if (!password || password.length < 6) { errEl.textContent = 'Password must be at least 6 characters.'; return; }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Registering...';
+
+      try {
+        var res  = await fetch(API + '/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password, branch })
+        });
+        var data = await res.json();
+
+        if (!data.success) {
+          errEl.textContent = data.message || 'Registration failed.';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Register Account';
+          return;
+        }
+
+        // Save session and redirect
+        saveSession(data.token, data.user);
+        closeAuthModal();
+        registerForm.reset();
+        window.location.href = data.user.role === 'admin' ? '/admin.html' : '/user.html';
+
+      } catch (err) {
+        errEl.textContent = 'Network error. Is the server running?';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register Account';
+      }
     });
-    localStorage.setItem('edunet_logs', JSON.stringify(logs));
   }
+
+  // ==========================================================
+  // LOGIN — POST /api/auth/login
+  // ==========================================================
+  var loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var errEl     = document.getElementById('logError');
+      var submitBtn = loginForm.querySelector('button[type="submit"]');
+      errEl.textContent = '';
+
+      var username = document.getElementById('logUsername').value.trim();
+      var password = document.getElementById('logPassword').value;
+
+      if (!username) { errEl.textContent = 'Username or email is required.'; return; }
+      if (!password) { errEl.textContent = 'Password is required.'; return; }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Logging in...';
+
+      try {
+        var res  = await fetch(API + '/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        var data = await res.json();
+
+        if (!data.success) {
+          errEl.textContent = data.message || 'Login failed.';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Access Network';
+          return;
+        }
+
+        saveSession(data.token, data.user);
+        closeAuthModal();
+        loginForm.reset();
+        window.location.href = data.user.role === 'admin' ? '/admin.html' : '/user.html';
+
+      } catch (err) {
+        errEl.textContent = 'Network error. Is the server running?';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Access Network';
+      }
+    });
+  }
+
+  // ==========================================================
+  // LOGOUT — POST /api/auth/logout
+  // ==========================================================
+  async function handleLogout() {
+    var token = getToken();
+    if (token) {
+      try {
+        await fetch(API + '/api/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+      } catch (err) {
+        // Even if server is unreachable, clear local session
+      }
+    }
+    clearSession();
+    checkSessionState();
+    window.location.href = '/index.html';
+  }
+
+  // ==========================================================
+  // NAV AUTH BUTTON — opens modal or redirects to dashboard
+  // ==========================================================
+  if (navAuthBtn) {
+    navAuthBtn.addEventListener('click', function() {
+      var user = getUser();
+      if (user) {
+        window.location.href = user.role === 'admin' ? '/admin.html' : '/user.html';
+      } else {
+        openAuthModal();
+      }
+    });
+  }
+  if (mobileAuthBtn) {
+    mobileAuthBtn.addEventListener('click', function() {
+      var user = getUser();
+      if (user) {
+        window.location.href = user.role === 'admin' ? '/admin.html' : '/user.html';
+      } else {
+        openAuthModal();
+      }
+    });
+  }
+  if (heroStartBtn) {
+    heroStartBtn.addEventListener('click', function() {
+      var user = getUser();
+      if (user) {
+        window.location.href = user.role === 'admin' ? '/admin.html' : '/user.html';
+      } else {
+        openAuthModal();
+        document.getElementById('tabRegisterBtn').click();
+      }
+    });
+  }
+
+  // ==========================================================
+  // INIT — run on page load
+  // ==========================================================
   checkSessionState();
-  renderToolsGrid();
 </script>
 </body>
 </html>
