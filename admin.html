@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNet Control Panel — Administrator Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="admin-dashboard">
+  
+  <div class="admin-sidebar">
+    <div class="admin-logo-wrapper">
+      <div class="admin-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <div class="admin-logo">EduNet Admin</div>
+    </div>
+    <button class="admin-nav-item active" data-target="admin-overview">Overview</button>
+    <button class="admin-nav-item" data-target="admin-users">Users Database</button>
+    <button class="admin-nav-item" data-target="admin-approvals">Approvals Queue</button>
+    <button class="admin-nav-item" data-target="admin-audit">Audit Logs</button>
+    <button class="btn btn-secondary admin-logout-btn" id="adminLogoutBtn">Logout Portal</button>
+  </div>
+
+  <div class="admin-main">
+
+    <div class="admin-panel active" id="admin-overview">
+      <h2>Dashboard Overview</h2>
+      <p class="panel-desc">Diagnostics telemetry and database records summary.</p>
+      <div class="admin-stats-grid">
+        <div class="admin-stat-card">
+          <div class="cap">Total Registered Students</div>
+          <h3 id="statTotalUsers">0</h3>
+        </div>
+        <div class="admin-stat-card">
+          <div class="cap">Pending Resources</div>
+          <h3 id="statPendingApprovals">0</h3>
+        </div>
+        <div class="admin-stat-card">
+          <div class="cap">Total Approved Tools</div>
+          <h3 id="statTotalTools">0</h3>
+        </div>
+      </div>
+      
+      <div style="margin-top:2rem;">
+        <h3 style="margin-bottom:1rem; font-family:var(--font-display); font-size:18px;">Quick Administration Guide</h3>
+        <div style="background:var(--abyss); padding:1.5rem; border:1px solid var(--border); border-radius:var(--radius-md); font-size:14px; color:var(--mist); line-height:1.7;">
+          <p style="margin-bottom:0.8rem;">Welcome to the moderator portal. From here, you have direct, local control over active resource states:</p>
+          <ul style="padding-left:1.5rem; display:flex; flex-direction:column; gap:6px;">
+            <li><strong>Users Database:</strong> Review the details of all registered users on this client.</li>
+            <li><strong>Approvals Queue:</strong> Approve, reject, or revoke submissions. Approved materials immediately render within the student workspace catalog.</li>
+            <li><strong>Audit Logs:</strong> View system event trails detailing moderation choices, logins, and logouts.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="admin-users">
+      <h2>Users Database</h2>
+      <p class="panel-desc">All user credentials parsed from local storage records.</p>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email Address</th>
+              <th>Branch / Track</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="adminUsersTableBody">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="admin-approvals">
+      <h2>Approvals Queue</h2>
+      <p class="panel-desc">Moderate AI study tools. Approving updates card visibility on student workspace catalog.</p>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Tool Name</th>
+              <th>Category</th>
+              <th>Current Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminApprovalsTableBody">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="admin-audit">
+      <h2>Audit Logs</h2>
+      <p class="panel-desc">Event loop monitoring all active administrator sessions and moderation triggers.</p>
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Actor</th>
+              <th>Action Description</th>
+            </tr>
+          </thead>
+          <tbody id="adminAuditTableBody">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var session = JSON.parse(localStorage.getItem('edunet_session'));
+  if (!session || session.role !== 'admin') {
+    window.location.href = 'index.html';
+  }
+  var adminNavItems = document.querySelectorAll('.admin-nav-item');
+  var adminPanels = document.querySelectorAll('.admin-panel');
+  adminNavItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      adminNavItems.forEach(function(i) { i.classList.remove('active'); });
+      item.classList.add('active');
+      var targetPanelId = item.getAttribute('data-target');
+      adminPanels.forEach(function(panel) {
+        if (panel.id === targetPanelId) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    });
+  });
+  document.getElementById('adminLogoutBtn').addEventListener('click', function() {
+    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
+    logs.push({
+      timestamp: new Date().toLocaleTimeString(),
+      actor: 'admin',
+      action: 'Admin logged out from portal.'
+    });
+    localStorage.setItem('edunet_logs', JSON.stringify(logs));
+    localStorage.removeItem('edunet_session');
+    window.location.href = 'index.html';
+  });
+  function renderOverviewStats() {
+    var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
+    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
+    var pending = tools.filter(function(t) { return t.status === 'pending'; }).length;
+    var approved = tools.filter(function(t) { return t.status === 'approved'; }).length;
+    document.getElementById('statTotalUsers').textContent = users.length;
+    document.getElementById('statPendingApprovals').textContent = pending;
+    document.getElementById('statTotalTools').textContent = approved;
+  }
+  function renderUsersTable() {
+    var usersTable = document.getElementById('adminUsersTableBody');
+    if (!usersTable) return;
+    var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
+    usersTable.innerHTML = '';
+    users.forEach(function(user) {
+      var row = document.createElement('tr');
+      row.innerHTML = `
+        <td><strong>${user.username}</strong></td>
+        <td>${user.email}</td>
+        <td>${user.branch}</td>
+        <td><span class="status-badge active">${user.role}</span></td>
+      `;
+      usersTable.appendChild(row);
+    });
+  }
+  function renderApprovalsTable() {
+    var approvalsTable = document.getElementById('adminApprovalsTableBody');
+    if (!approvalsTable) return;
+    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
+    approvalsTable.innerHTML = '';
+    tools.forEach(function(tool) {
+      var row = document.createElement('tr');
+      var statusClass = tool.status === 'approved' ? 'active' : (tool.status === 'pending' ? 'pending' : 'rejected');
+      var actionsHtml = '';
+      if (tool.status === 'pending') {
+        actionsHtml = `
+          <button class="btn btn-primary btn-sm" onclick="approveTool('${tool.id}')">Approve</button>
+          <button class="btn btn-secondary btn-sm" onclick="rejectTool('${tool.id}')">Reject</button>
+        `;
+      } else {
+        actionsHtml = `
+          <button class="btn btn-secondary btn-sm" onclick="rejectTool('${tool.id}')">Revoke</button>
+        `;
+      }
+      row.innerHTML = `
+        <td><strong>${tool.name}</strong></td>
+        <td>${tool.category}</td>
+        <td><span class="status-badge ${statusClass}">${tool.status}</span></td>
+        <td>${actionsHtml}</td>
+      `;
+      approvalsTable.appendChild(row);
+    });
+  }
+  function renderAuditLogsTable() {
+    var auditTable = document.getElementById('adminAuditTableBody');
+    if (!auditTable) return;
+    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
+    auditTable.innerHTML = '';
+    logs.slice().reverse().forEach(function(log) {
+      var row = document.createElement('tr');
+      row.innerHTML = `
+        <td><span style="color:var(--mist-dim); font-family:var(--font-mono);">${log.timestamp}</span></td>
+        <td><strong>${log.actor}</strong></td>
+        <td>${log.action}</td>
+      `;
+      auditTable.appendChild(row);
+    });
+  }
+  function approveTool(toolId) {
+    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
+    var match = tools.find(function(t) { return t.id === toolId; });
+    if (match) {
+      match.status = 'approved';
+      localStorage.setItem('edunet_tools', JSON.stringify(tools));
+      addAuditLog('admin', 'Approved AI tool directory item: ' + match.name);
+      renderOverviewStats();
+      renderApprovalsTable();
+      renderAuditLogsTable();
+    }
+  }
+  function rejectTool(toolId) {
+    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
+    var match = tools.find(function(t) { return t.id === toolId; });
+    if (match) {
+      match.status = 'rejected';
+      localStorage.setItem('edunet_tools', JSON.stringify(tools));
+      addAuditLog('admin', 'Rejected/Revoked AI tool directory item: ' + match.name);
+      renderOverviewStats();
+      renderApprovalsTable();
+      renderAuditLogsTable();
+    }
+  }
+  function addAuditLog(actor, action) {
+    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
+    logs.push({
+      timestamp: new Date().toLocaleTimeString(),
+      actor: actor,
+      action: action
+    });
+    localStorage.setItem('edunet_logs', JSON.stringify(logs));
+  }
+  window.approveTool = approveTool;
+  window.rejectTool = rejectTool;
+  renderOverviewStats();
+  renderUsersTable();
+  renderApprovalsTable();
+  renderAuditLogsTable();
+</script>
+</body>
+</html>

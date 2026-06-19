@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNet — Learning, networked</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-content">
+    <div class="search-input-wrapper">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="modalSearchInput" placeholder="Search roadmaps, AI tools, coding topics..." autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<div class="auth-modal" id="authModal">
+  <div class="auth-modal-content">
+    <button class="auth-modal-close" id="authClose" aria-label="Close modal">&times;</button>
+    <div class="auth-tabs">
+      <button class="auth-tab-btn active" id="tabRegisterBtn">Register</button>
+      <button class="auth-tab-btn" id="tabLoginBtn">Login</button>
+    </div>
+
+    <form class="auth-form active" id="registerForm">
+      <h3>Create Student Account</h3>
+      <p class="form-desc">Join EduNet learning network to track your targets.</p>
+      <div class="form-group">
+        <label for="regEmail">Email Address</label>
+        <input type="email" id="regEmail" placeholder="you@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="regUsername">Username</label>
+        <input type="text" id="regUsername" placeholder="e.g. janesmith" required>
+      </div>
+      <div class="form-group">
+        <label for="regBranch">Branch / Track</label>
+        <select id="regBranch" required>
+          <option value="SDE">Software Engineer (B.Tech)</option>
+          <option value="Data Science">Data Scientist</option>
+          <option value="Cybersecurity">Cybersecurity Analyst</option>
+          <option value="Self Learner">Self Learner</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" placeholder="••••••••" required>
+      </div>
+      <div id="regError" class="form-error"></div>
+      <button type="submit" class="btn btn-primary btn-full">Register Account</button>
+    </form>
+
+    <form class="auth-form" id="loginForm">
+      <h3>Log In to Network</h3>
+      <p class="form-desc">Resume your learning progress logs.</p>
+      <div class="form-group">
+        <label for="logUsername">Username or Email</label>
+        <input type="text" id="logUsername" placeholder="your username" required>
+      </div>
+      <div class="form-group">
+        <label for="logPassword">Password</label>
+        <input type="password" id="logPassword" placeholder="••••••••" required>
+      </div>
+      <div id="logError" class="form-error"></div>
+      <button type="submit" class="btn btn-primary btn-full">Access Network</button>
+    </form>
+  </div>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="nav-logo">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+    EduNet
+  </div>
+  <nav class="nav-links">
+    <a href="#ai-tools">AI Tools</a>
+    <a href="#roadmaps">Roadmaps</a>
+    <a href="#coding-lab">Coding Lab</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <div class="nav-right" id="navRight">
+    <div class="nav-search-bar" id="navSearchBar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span>Search resources...</span>
+      <kbd>⌘K</kbd>
+    </div>
+    <div class="nav-search" id="navSearchIcon" aria-label="Search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <button class="btn btn-secondary btn-sm" id="navAuthBtn">Get started</button>
+    <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="nav-mobile-panel" id="navMobile">
+  <a href="#ai-tools">AI Tools</a>
+  <a href="#roadmaps">Roadmaps</a>
+  <a href="#coding-lab">Coding Lab</a>
+  <a href="#pricing">Pricing</a>
+  <button class="btn btn-primary" id="mobileAuthBtn" style="margin-top:1rem; width:100%; justify-content:center;">Get started</button>
+</div>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">AI-powered learning network</div>
+        <h1>Learn sharper.<br>Build a career<br>that <span class="grad">connects</span>.</h1>
+        <p class="sub">Notes, papers, roadmaps and AI tools for B.Tech students, exam aspirants and self-learners — wired into one adaptive network.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" id="heroStartBtn">Start learning free</button>
+          <a href="#roadmaps" class="btn btn-secondary btn-lg">Explore roadmaps</a>
+        </div>
+        <div class="live-badge"><span class="live-dot"></span><span id="liveCounter">12,480</span> learners active on the network right now</div>
+      </div>
+
+      <div class="roadmap-preview-card" id="roadmapPreviewCard">
+        <div class="tc-head">
+          <span>SDE ROADMAP PROGRESS</span>
+          <span class="pct">60%</span>
+        </div>
+        <div class="roadmap-row">
+          <div class="rr-dot done">✓</div>
+          <div class="rr-label">DSA fundamentals</div>
+          <div class="rr-tag">DONE</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="rr-dot done">✓</div>
+          <div class="rr-label">Core CS subjects</div>
+          <div class="rr-tag">DONE</div>
+        </div>
+        <div class="roadmap-row">
+          <div class="rr-dot active">●</div>
+          <div class="rr-label">System design basics</div>
+          <div class="rr-tag">NOW</div>
+        </div>
+        <div class="roadmap-row dim">
+          <div class="rr-dot todo"></div>
+          <div class="rr-label">Mock interviews</div>
+          <div class="rr-tag">NEXT</div>
+        </div>
+        <div class="roadmap-row dim">
+          <div class="rr-dot todo"></div>
+          <div class="rr-label">Resume + applications</div>
+          <div class="rr-tag">NEXT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-tools">
+    <div class="sec-head">
+      <div class="eyebrow">Interactive Directory</div>
+      <h2>AI Study Tools</h2>
+      <p>Custom tools engineered for student workflows. Summarize papers, debug complex graph algorithms, or format resume bullets in real time.</p>
+    </div>
+    
+    <div class="tools-controls">
+      <div class="filter-row">
+        <button class="filter-btn active" data-category="all">All Tools</button>
+        <button class="filter-btn" data-category="coding">Coding</button>
+        <button class="filter-btn" data-category="research">Research</button>
+        <button class="filter-btn" data-category="writing">Writing</button>
+      </div>
+      <div class="tool-search-wrapper">
+        <input type="text" id="toolSearchInput" placeholder="Search tools...">
+      </div>
+    </div>
+
+    <div class="tools-grid-list" id="toolsGrid">
+      
+    </div>
+  </section>
+
+  <section id="roadmaps">
+    <div class="sec-head">
+      <div class="eyebrow">Learning Paths</div>
+      <h2>Interactive Roadmaps</h2>
+      <p>Keep track of your study targets. Select your path, check off completed milestones, and track your overall progress rating dynamically.</p>
+    </div>
+
+    <div class="roadmap-tabs">
+      <button class="roadmap-tab-btn active" data-track="sde">Software Engineer (SDE)</button>
+      <button class="roadmap-tab-btn" data-track="ds">Data Scientist</button>
+      <button class="roadmap-tab-btn" data-track="cyber">Cybersecurity Analyst</button>
+    </div>
+
+    <div class="roadmap-progress-wrapper">
+      <div class="progress-info">
+        <span>Path Progress Status</span>
+        <span class="progress-percent" id="roadmapPercent">50%</span>
+      </div>
+      <div class="progress-track-bar">
+        <div class="progress-fill-bar" id="roadmapProgressFill"></div>
+      </div>
+    </div>
+
+    <div class="roadmap-timeline active" id="roadmap-sde">
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" checked class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Data Structures & Algorithms</h4>
+            <span class="node-status done">Completed</span>
+          </div>
+          <p>Master arrays, linked lists, hash tables, trees, graphs, and dynamic programming optimization.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" checked class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>System Design & WebSockets</h4>
+            <span class="node-status done">Completed</span>
+          </div>
+          <p>Study load balancers, database scaling, caching architectures, and real-time message streams.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>GenAI & LLM Integration</h4>
+            <span class="node-status active">In Progress</span>
+          </div>
+          <p>Learn how to connect Large Language Models via API endpoints, structure prompts, and build AI agents.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Cloud & Deployments</h4>
+            <span class="node-status todo">Next Up</span>
+          </div>
+          <p>Deploy modern containerized microservices to cloud platforms with Docker and CI/CD pipelines.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roadmap-timeline" id="roadmap-ds">
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" checked class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Mathematics, Statistics & SQL</h4>
+            <span class="node-status done">Completed</span>
+          </div>
+          <p>Foundation in linear algebra, probability, normal distributions, and relational data queries.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" checked class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Machine Learning & MLOps</h4>
+            <span class="node-status done">Completed</span>
+          </div>
+          <p>Train decision trees, regressions, and deploy validation models with active lifecycle tracking.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Vector Databases & RAG</h4>
+            <span class="node-status active">In Progress</span>
+          </div>
+          <p>Query datasets using semantic embeddings, chunk documents, and configure vector indexing pipelines.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Large Language Models (LLMs)</h4>
+            <span class="node-status todo">Next Up</span>
+          </div>
+          <p>Build and fine-tune neural model architectures, inspect weights, and optimize text generation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="roadmap-timeline" id="roadmap-cyber">
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" checked class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Networking Protocols & Linux</h4>
+            <span class="node-status done">Completed</span>
+          </div>
+          <p>Understand OSI headers, routing ports, firewalls, DNS systems, and terminal shell scripts.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" checked class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Offensive Security & AI Risks</h4>
+            <span class="node-status done">Completed</span>
+          </div>
+          <p>Analyze OWASP Top 10 breaches, penetration vulnerabilities, and prompt injection attacks on models.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Cryptography & Architectures</h4>
+            <span class="node-status active">In Progress</span>
+          </div>
+          <p>Secure systems with AES/RSA ciphers, configure SSH keys, and design public-key distribution trees.</p>
+        </div>
+      </div>
+      <div class="roadmap-node">
+        <label class="node-checkbox-container">
+          <input type="checkbox" class="node-checkbox">
+          <span class="node-checkmark">✓</span>
+        </label>
+        <div class="node-content">
+          <div class="node-header">
+            <h4>Threat Intelligence & AI Defense</h4>
+            <span class="node-status todo">Next Up</span>
+          </div>
+          <p>Monitor anomalies using machine learning alerts and configure automated SIEM incident triaging.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coding-lab">
+    <div class="sec-head">
+      <div class="eyebrow">Sandbox Environment</div>
+      <h2>Daily Coding Lab</h2>
+      <p>Run mock DSA solutions directly in our visual compiler. Test variables, track edge cases, and trace time/space complexity outputs instantly.</p>
+    </div>
+
+    <div class="editor-grid">
+      
+      <div class="editor-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <span class="window-dot"></span>
+            <span class="window-dot" style="margin-left:4px;"></span>
+            <span class="window-dot" style="margin-left:4px;"></span>
+          </div>
+          <span class="window-title">reverse_list.js</span>
+          <span class="window-lang">JavaScript</span>
+        </div>
+        <div class="editor-body">
+          <code><span class="comment">// Daily Challenge: Reverse a Linked List</span>
+<span class="keyword">function</span> <span class="function">reverseList</span>(<span class="variable">head</span>) {
+  <span class="keyword">let</span> <span class="variable">prev</span> = <span class="keyword">null</span>;
+  <span class="keyword">let</span> <span class="variable">curr</span> = <span class="variable">head</span>;
+  
+  <span class="keyword">while</span> (<span class="variable">curr</span> !== <span class="keyword">null</span>) {
+    <span class="keyword">let</span> <span class="variable">nextTemp</span> = <span class="variable">curr</span>.next;
+    <span class="variable">curr</span>.next = <span class="variable">prev</span>;
+    <span class="variable">prev</span> = <span class="variable">curr</span>;
+    <span class="variable">curr</span> = <span class="variable">nextTemp</span>;
+  }
+  
+  <span class="keyword">return</span> <span class="variable">prev</span>;
+}</code>
+        </div>
+        <div class="editor-footer">
+          <span class="editor-info">Ln 12, Col 5</span>
+          <button class="btn btn-primary btn-sm" id="runCodeBtn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            Run Tests
+          </button>
+        </div>
+      </div>
+
+      <div class="console-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <span class="window-dot"></span>
+            <span class="window-dot" style="margin-left:4px;"></span>
+            <span class="window-dot" style="margin-left:4px;"></span>
+          </div>
+          <span class="window-title">compiler_output</span>
+          <span class="window-lang">Terminal</span>
+        </div>
+        <div class="console-body" id="consoleBody">
+          <div class="console-line input">Click "Run Tests" in the editor to run validation scripts on the DSA sandbox compiler.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="sec-head" style="text-align: center; margin-left: auto; margin-right: auto;">
+      <div class="eyebrow" style="justify-content: center;">Premium Plans</div>
+      <h2>Choose your access tier</h2>
+      <p>Sign up for basic tools or upgrade to Pro Network for unlimited computational checks and live developer interview preparation.</p>
+    </div>
+
+    <div class="pricing-toggle-container">
+      <span class="pricing-toggle-label active" id="label-monthly">Monthly</span>
+      <button class="pricing-toggle-btn" id="pricingToggle" aria-label="Toggle pricing plan"><span class="toggle-switch"></span></button>
+      <span class="pricing-toggle-label" id="label-yearly">Yearly</span>
+      <span class="discount-badge">Save 20%</span>
+    </div>
+
+    <div class="pricing-grid">
+      
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3>Free Network</h3>
+          <p class="desc">Essential learning resources for students just getting started.</p>
+          <div class="price">$0</div>
+        </div>
+        <ul class="pricing-features">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Basic timeline roadmaps
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            5 daily AI queries limit
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Public discussion boards
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Static lecture transcripts
+          </li>
+        </ul>
+        <a href="#" class="btn btn-secondary btn-full">Start free</a>
+      </div>
+
+      <div class="pricing-card premium">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="pricing-header">
+          <h3>Pro Network</h3>
+          <p class="desc">Unlock the full learning platform with live checks & assessments.</p>
+          <div class="price" id="proPrice">$15<span class="period">/month</span></div>
+        </div>
+        <ul class="pricing-features">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Unlimited AI tool queries
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            All roadmap tracks unlocked
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            ATS-checked Resume updates
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            1-on-1 simulated mock reviews
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Priority compiler allocations
+          </li>
+        </ul>
+        <a href="#" class="btn btn-primary btn-full">Join Pro Network</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="premium">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col footer-brand">
+        <div class="nav-logo"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/></svg></span>EduNet</div>
+        <p>The learning network for B.Tech students, exam aspirants and self-learners.</p>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" id="newsletterEmail" placeholder="you@email.com" required>
+          <button type="submit" id="newsletterBtn">Join</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="#roadmaps">Subject notes</a>
+        <a href="#roadmaps">Previous papers</a>
+        <a href="#coding-lab">Video lectures</a>
+      </div>
+      <div class="footer-col">
+        <h4>Career</h4>
+        <a href="#roadmaps">Placement prep</a>
+        <a href="#ai-tools">Resume builder</a>
+        <a href="#roadmaps">Interview prep</a>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="#">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <div class="social-row">
+          <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.8"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 11v5M8 8v.5M12 16v-3a2 2 0 014 0v3" stroke="currentColor" stroke-width="1.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.8"/><polygon points="11,9.5 11,14.5 15,12" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 EduNet. All systems learning.</p>
+      <p>Privacy · Terms</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var defaultTools = [
+    { id: 't1', name: 'CodeSynth AI', desc: 'Generates optimal DSA solutions, explains time/space complexity, and outputs clean syntax templates.', category: 'Coding', status: 'approved' },
+    { id: 't2', name: 'PaperGrasp Summarizer', desc: 'Extract core equations, methodologies, and findings from academic papers or textbook PDFs in seconds.', category: 'Research', status: 'pending' },
+    { id: 't3', name: 'ResumeReviewer ATS', desc: 'Analyze resume templates, score readability, and optimize keywords based on technical target descriptions.', category: 'Writing', status: 'approved' },
+    { id: 't4', name: 'QueryResolve Exam Bot', desc: 'Instant math proofs, circuit analysis calculations, and computer architecture breakdown answers.', category: 'Research', status: 'approved' },
+    { id: 't5', name: 'AlgorithmVisualizer', desc: 'Generates visual, interactive step-by-step traces of pathfinders, tree balances, and sorting arrays.', category: 'Coding', status: 'approved' },
+    { id: 't6', name: 'SOP Refiner', desc: 'Polish statements of purpose, scholarship applications, and recommendation letters for premium tone.', category: 'Writing', status: 'approved' },
+    { id: 't7', name: 'GitDraft Explainer', desc: 'Generates clear, comprehensive git commit logs and pull request descriptions from raw local diff files.', category: 'Coding', status: 'approved' },
+    { id: 't8', name: 'DeepCite Scholar', desc: 'Finds and formats relevant peer-reviewed papers into standard APA/IEEE citations based on user theses.', category: 'Research', status: 'pending' },
+    { id: 't9', name: 'CoverFlow Generator', desc: 'Crafts tailored cover letters matching job descriptions, maintaining a highly professional tone.', category: 'Writing', status: 'approved' },
+    { id: 't10', name: 'MockVerify QA', desc: 'Analyzes unit tests, scans for edge cases, and writes automated testing scripts for API endpoints.', category: 'Coding', status: 'approved' },
+    { id: 't11', name: 'MathSolver Matrix', desc: 'Step-by-step calculus integration, differential equations, and eigenvalues vector solver.', category: 'Research', status: 'approved' },
+    { id: 't12', name: 'EssayPolisher AI', desc: 'Scans academic write-ups for clarity, structural flow, vocabulary variety, and tone adjustments.', category: 'Writing', status: 'approved' },
+    { id: 't13', name: 'AgentCraft Studio', desc: 'Design and execute multi-agent autonomous loops, connect custom tools, and monitor execution graph details.', category: 'Coding', status: 'approved' },
+    { id: 't14', name: 'SemanticSearch RAG', desc: 'Query loaded PDF document corpuses using custom semantic vector embeddings and similarity scores.', category: 'Research', status: 'approved' },
+    { id: 't15', name: 'PromptRefiner AI', desc: 'Optimize raw prompts using structural templates, chain-of-thought rules, and adversarial input checks.', category: 'Writing', status: 'approved' },
+    { id: 't16', name: 'VectorLens Inspector', desc: 'Inspect high-dimensional vector embeddings, compute cosine similarities, and verify database index builds.', category: 'Coding', status: 'approved' },
+    { id: 't17', name: 'WebSocket Tracer', desc: 'Traces live WebSocket messages, inspects frames, audits payload schemas, and measures response latency.', category: 'Coding', status: 'approved' },
+    { id: 't18', name: 'SynthData Engine', desc: 'Generates clean, mock relational database rows and JSON payloads matching specific target configurations.', category: 'Research', status: 'approved' }
+  ];
+  var currentTools = JSON.parse(localStorage.getItem('edunet_tools'));
+  if (!currentTools || currentTools.length < 18) {
+    localStorage.setItem('edunet_tools', JSON.stringify(defaultTools));
+  }
+  var defaultUsers = [
+    { username: 'admin', email: 'admin@edunet.com', branch: 'Admin', role: 'admin', password: 'admin' },
+    { username: 'john_doe', email: 'john@example.com', branch: 'SDE', role: 'user', password: 'password123' }
+  ];
+  if (!localStorage.getItem('edunet_users')) {
+    localStorage.setItem('edunet_users', JSON.stringify(defaultUsers));
+  }
+  var defaultLogs = [
+    { timestamp: new Date().toLocaleTimeString(), actor: 'System', action: 'EduNet Database Initialized successfully.' }
+  ];
+  if (!localStorage.getItem('edunet_logs')) {
+    localStorage.setItem('edunet_logs', JSON.stringify(defaultLogs));
+  }
+  function renderToolsGrid() {
+    var toolsGrid = document.getElementById('toolsGrid');
+    if (!toolsGrid) return;
+    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
+    var activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+    var query = document.getElementById('toolSearchInput') ? document.getElementById('toolSearchInput').value.toLowerCase().trim() : '';
+    toolsGrid.innerHTML = '';
+    var filtered = tools.filter(function(tool) {
+      if (tool.status !== 'approved') return false;
+      var categoryMatches = (activeCategory === 'all' || tool.category.toLowerCase() === activeCategory);
+      var searchMatches = (!query || tool.name.toLowerCase().includes(query) || tool.desc.toLowerCase().includes(query));
+      return categoryMatches && searchMatches;
+    });
+    if (filtered.length === 0) {
+      toolsGrid.innerHTML = '<div style="grid-column: span 3; text-align:center; color:var(--mist); padding: 2rem;">No approved tools found matching your filters.</div>';
+      return;
+    }
+    filtered.forEach(function(tool) {
+      var card = document.createElement('div');
+      card.className = 'tool-card';
+      var iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>';
+      if (tool.category === 'Research') iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>';
+      if (tool.category === 'Writing') iconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
+      var actionBtnHtml = `<a href="#" class="tool-action-btn">Launch <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>`;
+      if (tool.name === 'CodeSynth AI') {
+        actionBtnHtml = `<a href="#coding-lab" class="tool-action-btn">Try editor <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>`;
+      }
+      card.innerHTML = `
+        <div>
+          <div class="tool-icon">
+            ${iconSvg}
+          </div>
+          <h3>${tool.name}</h3>
+          <p>${tool.desc}</p>
+        </div>
+        <div class="tool-meta">
+          <span class="tool-badge">${tool.category}</span>
+          ${actionBtnHtml}
+        </div>
+      `;
+      toolsGrid.appendChild(card);
+    });
+  }
+  var searchBar = document.getElementById('navSearchBar');
+  var navSearchIcon = document.getElementById('navSearchIcon');
+  var searchModal = document.getElementById('searchModal');
+  var modalInput = document.getElementById('modalSearchInput');
+  var searchResults = document.getElementById('searchResults');
+  function openSearch() {
+    searchModal.classList.add('open');
+    setTimeout(function() { modalInput.focus(); }, 100);
+  }
+  function closeSearch() {
+    searchModal.classList.remove('open');
+    modalInput.value = '';
+    searchResults.innerHTML = '';
+  }
+  if (searchBar) searchBar.addEventListener('click', openSearch);
+  if (navSearchIcon) navSearchIcon.addEventListener('click', openSearch);
+  if (searchModal) {
+    searchModal.addEventListener('click', function(e) {
+      if (e.target === searchModal) closeSearch();
+    });
+  }
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSearch();
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+  var searchData = [
+    { title: 'Data Structures & Algorithms', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
+    { title: 'System Design & WebSockets', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
+    { title: 'GenAI & LLM Integration', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
+    { title: 'Cloud & Deployments', desc: 'Software Engineer Roadmap Track', category: 'Roadmaps', link: '#roadmaps' },
+    { title: 'CodeSynth AI', desc: 'Optimal DSA solution generator', category: 'AI Tools', link: '#ai-tools' },
+    { title: 'AgentCraft Studio', desc: 'Multi-agent workflow orchestrator', category: 'AI Tools', link: '#ai-tools' },
+    { title: 'SemanticSearch RAG', desc: 'PDF semantic RAG search assistant', category: 'AI Tools', link: '#ai-tools' },
+    { title: 'VectorLens Inspector', desc: 'Vector database and similarity tool', category: 'AI Tools', link: '#ai-tools' },
+    { title: 'WebSocket Tracer', desc: 'Real-time WebSocket debugging inspector', category: 'AI Tools', link: '#ai-tools' },
+    { title: 'SynthData Engine', desc: 'Relational mock database data generator', category: 'AI Tools', link: '#ai-tools' },
+    { title: 'Coding Sandbox', desc: 'Interactive coding lab playground', category: 'Coding Lab', link: '#coding-lab' },
+    { title: 'Pro Network Pricing', desc: 'Plans and subscription discounts', category: 'Pricing', link: '#pricing' }
+  ];
+  if (modalInput && searchResults) {
+    modalInput.addEventListener('input', function() {
+      var query = modalInput.value.toLowerCase().trim();
+      searchResults.innerHTML = '';
+      if (!query) return;
+      var filtered = searchData.filter(function(item) {
+        return item.title.toLowerCase().includes(query) || 
+               item.desc.toLowerCase().includes(query) ||
+               item.category.toLowerCase().includes(query);
+      });
+      if (filtered.length === 0) {
+        var noResults = document.createElement('div');
+        noResults.className = 'search-no-results';
+        noResults.textContent = 'No matching items found. Try searching for "DSA", "AI", or "Pricing".';
+        searchResults.appendChild(noResults);
+        return;
+      }
+      filtered.forEach(function(item) {
+        var itemEl = document.createElement('div');
+        itemEl.className = 'search-result-item';
+        var iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>';
+        if (item.category === 'Roadmaps') iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h5a2 2 0 012 2v7M6 9v9"/></svg>';
+        if (item.category === 'AI Tools') iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>';
+        if (item.category === 'Coding Lab') iconHtml = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>';
+        itemEl.innerHTML = `
+          <div class="item-icon">${iconHtml}</div>
+          <div class="item-info">
+            <div class="item-title">${item.title}</div>
+            <div class="item-desc">${item.desc}</div>
+          </div>
+          <div class="item-category">${item.category}</div>
+        `;
+        itemEl.addEventListener('click', function() {
+          closeSearch();
+          window.location.hash = item.link;
+        });
+        searchResults.appendChild(itemEl);
+      });
+    });
+  }
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 24){ navbar.classList.add('scrolled'); }
+    else { navbar.classList.remove('scrolled'); }
+  });
+  var navToggle = document.getElementById('navToggle');
+  var navMobile = document.getElementById('navMobile');
+  navToggle.addEventListener('click', function(){ navMobile.classList.toggle('open'); });
+  navMobile.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navMobile.classList.remove('open'); });
+  });
+  var liveCounter = document.getElementById('liveCounter');
+  if (liveCounter) {
+    var count = 12480;
+    setInterval(function() {
+      count += Math.floor(Math.random() * 5) - 2;
+      if (count < 12400) count = 12400;
+      if (count > 12600) count = 12600;
+      liveCounter.textContent = count.toLocaleString();
+    }, 3000);
+  }
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var toolSearchInput = document.getElementById('toolSearchInput');
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderToolsGrid();
+    });
+  });
+  if (toolSearchInput) {
+    toolSearchInput.addEventListener('input', renderToolsGrid);
+  }
+  var roadmapTabBtns = document.querySelectorAll('.roadmap-tab-btn');
+  var roadmapTimelines = document.querySelectorAll('.roadmap-timeline');
+  roadmapTabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      roadmapTabBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var track = btn.getAttribute('data-track');
+      roadmapTimelines.forEach(function(timeline) {
+        if (timeline.id === 'roadmap-' + track) {
+          timeline.classList.add('active');
+        } else {
+          timeline.classList.remove('active');
+        }
+      });
+      updateRoadmapProgress(track);
+    });
+  });
+  function updateRoadmapProgress(track) {
+    var activeTimeline = document.getElementById('roadmap-' + track);
+    if (!activeTimeline) return;
+    var checkboxes = activeTimeline.querySelectorAll('.node-checkbox');
+    var checkedCount = 0;
+    checkboxes.forEach(function(cb) {
+      var node = cb.closest('.roadmap-node');
+      if (cb.checked) {
+        checkedCount++;
+        node.classList.add('is-checked');
+        var status = node.querySelector('.node-status');
+        if (status) {
+          status.textContent = 'Completed';
+          status.className = 'node-status done';
+        }
+      } else {
+        node.classList.remove('is-checked');
+        var status = node.querySelector('.node-status');
+        if (status) {
+          var index = Array.from(checkboxes).indexOf(cb);
+          if (index === 2) {
+            status.textContent = 'In Progress';
+            status.className = 'node-status active';
+          } else {
+            status.textContent = 'Next Up';
+            status.className = 'node-status todo';
+          }
+        }
+      }
+    });
+    var percent = checkboxes.length ? Math.round((checkedCount / checkboxes.length) * 100) : 0;
+    var roadmapPercent = document.getElementById('roadmapPercent');
+    var roadmapProgressFill = document.getElementById('roadmapProgressFill');
+    if (roadmapPercent) roadmapPercent.textContent = percent + '%';
+    if (roadmapProgressFill) roadmapProgressFill.style.width = percent + '%';
+  }
+  document.querySelectorAll('.node-checkbox').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      var activeTab = document.querySelector('.roadmap-tab-btn.active');
+      if (activeTab) {
+        updateRoadmapProgress(activeTab.getAttribute('data-track'));
+      }
+    });
+  });
+  if (roadmapTabBtns.length > 0) {
+    updateRoadmapProgress('sde');
+  }
+  var runCodeBtn = document.getElementById('runCodeBtn');
+  var consoleBody = document.getElementById('consoleBody');
+  if (runCodeBtn && consoleBody) {
+    var isCompiling = false;
+    runCodeBtn.addEventListener('click', function() {
+      if (isCompiling) return;
+      isCompiling = true;
+      runCodeBtn.disabled = true;
+      consoleBody.innerHTML = '';
+      var lines = [
+        { text: '$ node test_solution.js', type: 'input', delay: 100 },
+        { text: 'Compiling code... runtime environment V8 v11.4.1', type: 'working', delay: 400 },
+        { text: 'Executing test suite: reverseList(head)...', type: 'working', delay: 700 },
+        { text: '✔ Test Case 1: Empty list -> Passed (0.08ms)', type: 'success', delay: 1200 },
+        { text: '✔ Test Case 2: Single node [5] -> Passed (0.1ms)', type: 'success', delay: 1700 },
+        { text: '✔ Test Case 3: List [1,2,3,4,5] -> Passed (0.28ms)', type: 'success', delay: 2200 },
+        { text: '----------------------------------------', type: 'input', delay: 2400 },
+        { text: '🎉 SUCCESS: 3/3 test cases passed!', type: 'success', delay: 2700 },
+        { text: 'Code complexity stats:', type: 'accent', delay: 2900 },
+        { text: '  - Time Complexity: O(N) linear time', type: 'accent', delay: 3150 },
+        { text: '  - Space Complexity: O(1) constant space pointers', type: 'accent', delay: 3400 }
+      ];
+      lines.forEach(function(line) {
+        setTimeout(function() {
+          var el = document.createElement('div');
+          el.className = 'console-line ' + line.type;
+          el.textContent = line.text;
+          consoleBody.appendChild(el);
+          consoleBody.scrollTop = consoleBody.scrollHeight;
+          if (line.text.includes('constant space pointers')) {
+            isCompiling = false;
+            runCodeBtn.disabled = false;
+          }
+        }, line.delay);
+      });
+    });
+  }
+  var pricingToggle = document.getElementById('pricingToggle');
+  var proPrice = document.getElementById('proPrice');
+  var labelMonthly = document.getElementById('label-monthly');
+  var labelYearly = document.getElementById('label-yearly');
+  if (pricingToggle && proPrice) {
+    pricingToggle.addEventListener('click', function() {
+      pricingToggle.classList.toggle('yearly');
+      if (pricingToggle.classList.contains('yearly')) {
+        proPrice.innerHTML = '$12<span class="period">/month (billed yearly at $144)</span>';
+        labelYearly.classList.add('active');
+        labelMonthly.classList.remove('active');
+      } else {
+        proPrice.innerHTML = '$15<span class="period">/month</span>';
+        labelMonthly.classList.add('active');
+        labelYearly.classList.remove('active');
+      }
+    });
+  }
+  var newsletterForm = document.getElementById('newsletterForm');
+  var newsletterEmail = document.getElementById('newsletterEmail');
+  var newsletterBtn = document.getElementById('newsletterBtn');
+  if (newsletterForm && newsletterEmail && newsletterBtn) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = newsletterEmail.value.trim();
+      if (!email) return;
+      newsletterBtn.disabled = true;
+      newsletterBtn.textContent = 'Joining...';
+      setTimeout(function() {
+        newsletterForm.innerHTML = '<div style="color:#10b981; font-family:var(--font-mono); font-size:13px; padding:6px 10px; display:flex; align-items:center; gap:8px;">✔ Subscribed successfully!</div>';
+      }, 1200);
+    });
+  }
+  var authModal = document.getElementById('authModal');
+  var navAuthBtn = document.getElementById('navAuthBtn');
+  var mobileAuthBtn = document.getElementById('mobileAuthBtn');
+  var heroStartBtn = document.getElementById('heroStartBtn');
+  var authClose = document.getElementById('authClose');
+  function openAuthModal() {
+    authModal.classList.add('open');
+  }
+  function closeAuthModal() {
+    authModal.classList.remove('open');
+    if (document.getElementById('regError')) document.getElementById('regError').textContent = '';
+    if (document.getElementById('logError')) document.getElementById('logError').textContent = '';
+  }
+  if (navAuthBtn) navAuthBtn.addEventListener('click', openAuthModal);
+  if (mobileAuthBtn) mobileAuthBtn.addEventListener('click', openAuthModal);
+  if (authClose) authClose.addEventListener('click', closeAuthModal);
+  if (authModal) {
+    authModal.addEventListener('click', function(e) {
+      if (e.target === authModal) closeAuthModal();
+    });
+  }
+  if (heroStartBtn) {
+    heroStartBtn.addEventListener('click', function() {
+      var session = JSON.parse(localStorage.getItem('edunet_session'));
+      if (session) {
+        if (session.role === 'admin') {
+          window.location.href = 'admin.html';
+        } else {
+          window.location.href = 'user.html';
+        }
+      } else {
+        openAuthModal();
+        document.getElementById('tabRegisterBtn').click();
+      }
+    });
+  }
+  var authTabBtns = document.querySelectorAll('.auth-tab-btn');
+  var authForms = document.querySelectorAll('.auth-form');
+  authTabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      authTabBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var targetFormId = '';
+      if (btn.id === 'tabRegisterBtn') targetFormId = 'registerForm';
+      else if (btn.id === 'tabLoginBtn') targetFormId = 'loginForm';
+      authForms.forEach(function(form) {
+        if (form.id === targetFormId) {
+          form.classList.add('active');
+        } else {
+          form.classList.remove('active');
+        }
+      });
+    });
+  });
+  var registerForm = document.getElementById('registerForm');
+  if (registerForm) {
+    registerForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('regEmail').value.trim();
+      var username = document.getElementById('regUsername').value.trim();
+      var branch = document.getElementById('regBranch').value;
+      var password = document.getElementById('regPassword').value;
+      var errEl = document.getElementById('regError');
+      errEl.textContent = '';
+      if (!username || username.length < 3) {
+        errEl.textContent = 'Username must be at least 3 characters.';
+        return;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errEl.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      if (!password || password.trim().length < 4) {
+        errEl.textContent = 'Password must be at least 4 characters long (excluding spaces).';
+        return;
+      }
+      var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
+      var nameExists = users.some(function(u) { return u.username.toLowerCase() === username.toLowerCase(); });
+      var emailExists = users.some(function(u) { return u.email.toLowerCase() === email.toLowerCase(); });
+      if (nameExists) {
+        errEl.textContent = 'Username is already taken.';
+        return;
+      }
+      if (emailExists) {
+        errEl.textContent = 'Email is already registered.';
+        return;
+      }
+      users.push({
+        email: email,
+        username: username,
+        branch: branch,
+        password: password,
+        role: 'user'
+      });
+      localStorage.setItem('edunet_users', JSON.stringify(users));
+      alert('Registration successful! Please log in.');
+      document.getElementById('tabLoginBtn').click();
+      registerForm.reset();
+    });
+  }
+  var loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var username = document.getElementById('logUsername').value.trim();
+      var password = document.getElementById('logPassword').value;
+      var errEl = document.getElementById('logError');
+      errEl.textContent = '';
+      if (!username) {
+        errEl.textContent = 'Username or email is required.';
+        return;
+      }
+      if (!password) {
+        errEl.textContent = 'Password is required.';
+        return;
+      }
+      var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
+      var match = users.find(function(u) {
+        return (u.username.toLowerCase() === username.toLowerCase() || u.email.toLowerCase() === username.toLowerCase()) && u.password === password;
+      });
+      if (!match) {
+        errEl.textContent = 'Invalid username/email or password.';
+        return;
+      }
+      localStorage.setItem('edunet_session', JSON.stringify(match));
+      addAuditLog(match.username, 'Logged into the platform.');
+      closeAuthModal();
+      checkSessionState();
+      if (match.role === 'admin') {
+        window.location.href = 'admin.html';
+      } else {
+        window.location.href = 'user.html';
+      }
+      loginForm.reset();
+    });
+  }
+  function handleLogout() {
+    var session = JSON.parse(localStorage.getItem('edunet_session'));
+    var username = session ? session.username : 'Unknown';
+    localStorage.removeItem('edunet_session');
+    addAuditLog(username, 'Logged out from platform.');
+    checkSessionState();
+  }
+  function checkSessionState() {
+    var session = JSON.parse(localStorage.getItem('edunet_session'));
+    var navRight = document.getElementById('navRight');
+    var navAuthBtn = document.getElementById('navAuthBtn');
+    var mobileAuthBtn = document.getElementById('mobileAuthBtn');
+    var existingLogout = document.getElementById('navLogoutBtn');
+    if (existingLogout) existingLogout.remove();
+    var existingMobileLogout = document.getElementById('mobileLogoutBtn');
+    if (existingMobileLogout) existingMobileLogout.remove();
+    if (session) {
+      var dest = session.role === 'admin' ? 'admin.html' : 'user.html';
+      var label = session.role === 'admin' ? 'Admin Panel' : 'Go to Workspace';
+      if (navAuthBtn) {
+        var newAuthBtn = navAuthBtn.cloneNode(true);
+        newAuthBtn.textContent = label;
+        newAuthBtn.addEventListener('click', function() {
+          window.location.href = dest;
+        });
+        navAuthBtn.parentNode.replaceChild(newAuthBtn, navAuthBtn);
+      }
+      if (mobileAuthBtn) {
+        var newMobileAuthBtn = mobileAuthBtn.cloneNode(true);
+        newMobileAuthBtn.textContent = label;
+        newMobileAuthBtn.addEventListener('click', function() {
+          window.location.href = dest;
+        });
+        mobileAuthBtn.parentNode.replaceChild(newMobileAuthBtn, mobileAuthBtn);
+      }
+      var logoutBtn = document.createElement('button');
+      logoutBtn.id = 'navLogoutBtn';
+      logoutBtn.className = 'btn btn-ghost btn-sm';
+      logoutBtn.textContent = 'Logout';
+      logoutBtn.addEventListener('click', handleLogout);
+      var navToggle = document.getElementById('navToggle');
+      navRight.insertBefore(logoutBtn, navToggle);
+      var navMobile = document.getElementById('navMobile');
+      var mobileLogoutBtn = document.createElement('button');
+      mobileLogoutBtn.id = 'mobileLogoutBtn';
+      mobileLogoutBtn.className = 'btn btn-secondary';
+      mobileLogoutBtn.style.marginTop = '1rem';
+      mobileLogoutBtn.style.width = '100%';
+      mobileLogoutBtn.style.justifyContent = 'center';
+      mobileLogoutBtn.textContent = 'Logout';
+      mobileLogoutBtn.addEventListener('click', handleLogout);
+      navMobile.appendChild(mobileLogoutBtn);
+    } else {
+      if (navAuthBtn) {
+        var newAuthBtn = navAuthBtn.cloneNode(true);
+        newAuthBtn.textContent = 'Get started';
+        newAuthBtn.addEventListener('click', openAuthModal);
+        navAuthBtn.parentNode.replaceChild(newAuthBtn, navAuthBtn);
+      }
+      if (mobileAuthBtn) {
+        var newMobileAuthBtn = mobileAuthBtn.cloneNode(true);
+        newMobileAuthBtn.textContent = 'Get started';
+        newMobileAuthBtn.addEventListener('click', openAuthModal);
+        mobileAuthBtn.parentNode.replaceChild(newMobileAuthBtn, mobileAuthBtn);
+      }
+    }
+  }
+  function addAuditLog(actor, action) {
+    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
+    logs.push({
+      timestamp: new Date().toLocaleTimeString(),
+      actor: actor,
+      action: action
+    });
+    localStorage.setItem('edunet_logs', JSON.stringify(logs));
+  }
+  checkSessionState();
+  renderToolsGrid();
+</script>
+</body>
+</html>
