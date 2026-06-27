@@ -1,0 +1,153 @@
+// ============================================================
+// controllers/userController.js — User curriculum API Handlers
+// ============================================================
+const roadmapModel = require('../models/roadmapModel');
+
+// GET /api/user/roadmaps
+const getRoadmaps = async (req, res) => {
+  try {
+    const roadmaps = await roadmapModel.getAllRoadmaps();
+    res.json({ success: true, roadmaps });
+  } catch (err) {
+    console.error('Fetch roadmaps error:', err);
+    res.status(500).json({ success: false, message: 'Server error while fetching roadmaps.' });
+  }
+};
+
+// GET /api/user/roadmaps/:id
+// Returns roadmap details + all course, module, lesson sub-structures
+const getRoadmapDetail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const roadmap = await roadmapModel.getRoadmapById(id);
+    if (!roadmap) {
+      return res.status(404).json({ success: false, message: 'Roadmap not found.' });
+    }
+
+    // Load nested courses
+    const courses = await roadmapModel.getCoursesByRoadmapId(id);
+    const fullCourses = [];
+
+    for (const course of courses) {
+      const modules = await roadmapModel.getModulesByCourseId(course.id);
+      const fullModules = [];
+
+      for (const mod of modules) {
+        const lessons = await roadmapModel.getLessonsByModuleId(mod.id);
+        fullModules.push({
+          ...mod,
+          lessons
+        });
+      }
+
+      fullCourses.push({
+        ...course,
+        modules: fullModules
+      });
+    }
+
+    res.json({
+      success: true,
+      roadmap,
+      courses: fullCourses
+    });
+  } catch (err) {
+    console.error('Fetch roadmap detail error:', err);
+    res.status(500).json({ success: false, message: 'Server error while fetching track details.' });
+  }
+};
+
+// GET /api/user/progress/:track
+const getTrackProgress = async (req, res) => {
+  try {
+    const { track } = req.params;
+    const username = req.user.username; // populated by verifyToken
+    const progress = await roadmapModel.getProgress(username, track);
+    res.json({ success: true, progress });
+  } catch (err) {
+    console.error('Fetch progress error:', err);
+    res.status(500).json({ success: false, message: 'Server error while fetching progress.' });
+  }
+};
+
+// POST /api/user/progress/:track
+const updateTrackProgress = async (req, res) => {
+  try {
+    const { track } = req.params;
+    const { nodeId, completed } = req.body;
+    const username = req.user.username;
+
+    if (!nodeId) {
+      return res.status(400).json({ success: false, message: 'nodeId parameter required.' });
+    }
+
+    const success = await roadmapModel.saveProgress(username, track, nodeId, completed);
+    res.json({ success, message: 'Progress saved successfully.' });
+  } catch (err) {
+    console.error('Update progress error:', err);
+    res.status(500).json({ success: false, message: 'Server error saving progress.' });
+  }
+};
+
+const db = require('../config/db');
+
+// GET /api/user/profile or /api/profile
+const getProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const [rows] = await db.query(
+      'SELECT id, username, email, branch, role, status, xp, level, bio, linkedin, github, skills, streak, avatar_initials, created_at FROM users WHERE id = ? LIMIT 1',
+      [userId]
+    );
+    const user = rows[0];
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found.' });
+    }
+    res.json({ success: true, user });
+  } catch (err) {
+    console.error('Fetch profile error:', err);
+    res.status(500).json({ success: false, message: 'Server error while fetching profile.' });
+  }
+};
+
+// PUT /api/user/profile or /api/profile
+const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { bio, linkedin, github, skills, avatar_initials } = req.body;
+    
+    await db.query(
+      `UPDATE users 
+       SET bio = ?, linkedin = ?, github = ?, skills = ?, avatar_initials = ?
+       WHERE id = ?`,
+      [bio || null, linkedin || null, github || null, skills || null, avatar_initials || null, userId]
+    );
+    
+    res.json({ success: true, message: 'Profile updated successfully.' });
+  } catch (err) {
+    console.error('Update profile error:', err);
+    res.status(500).json({ success: false, message: 'Server error while updating profile.' });
+  }
+};
+
+const getLeaderboard = async (req, res) => {
+  try {
+    const [rows] = await db.query(
+      'SELECT username, branch, xp, role FROM users ORDER BY xp DESC LIMIT 50'
+    );
+    res.json({ success: true, users: rows });
+  } catch (err) {
+    console.error('Fetch leaderboard error:', err);
+    res.status(500).json({ success: false, message: 'Server error while fetching leaderboard.' });
+  }
+};
+
+module.exports = {
+  getRoadmaps,
+  getRoadmapDetail,
+  getTrackProgress,
+  updateTrackProgress,
+  getProfile,
+  updateProfile,
+  getLeaderboard
+};

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNet — Resume Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-box">
+    <div class="search-input-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search everything..." autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results-list" id="searchResultsList"></div>
+  </div>
+</div>
+<div class="dash-layout">
+<aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-sidebar-logo">
+      <div class="nav-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+      EduNet
+    </div>
+    <nav class="dash-nav">
+      <div class="dash-nav-section">Main</div>
+      <a href="user.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</a>
+<a href="roadmaps.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h5a2 2 0 012 2v7M6 9v9"/></svg>Roadmaps</a>
+<a href="ai-tools.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>AI Tools</a>
+<a href="coding-lab.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>Coding Lab</a>
+<a href="quiz.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Quizzes</a>
+      <div class="dash-nav-section">Career</div>
+      <a href="resume.html" class="dash-nav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Resume Builder</a>
+<a href="interview.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Interview Prep</a>
+<a href="certificates.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Certificates</a>
+      <div class="dash-nav-section">Account</div>
+      <a href="leaderboard.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Leaderboard</a>
+<a href="bookmarks.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Bookmarks</a>
+<a href="notifications.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications</a>
+<a href="profile.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+<a href="settings.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</a>
+    </nav>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-chip">
+        <div class="dash-avatar" id="sidebarAvatar">ST</div>
+        <div class="dash-user-info">
+          <div class="dash-user-name" id="sidebarName">Student</div>
+          <div class="dash-user-role" id="sidebarRole">user</div>
+        </div>
+      </div>
+      <button class="btn btn-secondary btn-sm btn-full" id="logoutBtn" style="justify-content:center;">Logout</button>
+    </div>
+  </aside>
+<div class="dash-main">
+<div class="dash-topbar">
+      <div class="dash-topbar-left">
+        <button class="burger-btn" id="burgerBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <div class="dash-topbar-search" id="topbarSearch">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          Search everything... <kbd>&#8984;K</kbd>
+        </div>
+      </div>
+      <div class="dash-topbar-right">
+        <a href="notifications.html" class="notif-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notif-badge"></span></a>
+        <a href="profile.html" class="dash-avatar" id="topbarAvatar" style="text-decoration:none;">ST</a>
+      </div>
+    </div>
+<div class="dash-content" style="max-width:100%;">
+      <div style="margin-bottom:1.75rem;">
+        <div class="eyebrow">Career Tools</div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.35rem;">Resume Builder</h2>
+        <p style="color:var(--mist);font-size:14px;">Build an ATS-optimized resume with templates, live preview and export options.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" id="resumeBuilderGrid">
+        <!-- Editor -->
+        <div>
+          <h3 style="font-size:15px;margin-bottom:1rem;">Edit Resume</h3>
+          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+            <!-- ATS Score and Template Selection -->
+            <div style="display:flex;justify-content:space-between;align-items:center;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:1rem;margin-bottom:.5rem;flex-wrap:wrap;gap:1rem;">
+              <div>
+                <div style="font-size:10px;font-family:var(--font-mono);color:var(--mist-dim);text-transform:uppercase;">ATS Compatibility Score</div>
+                <div style="font-size:1.6rem;font-weight:700;color:var(--emerald);display:flex;align-items:center;gap:6px;" id="atsScoreText">40%</div>
+              </div>
+              <div>
+                <label style="font-size:11px;color:var(--mist);display:block;margin-bottom:4px;">Template Style</label>
+                <select id="resumeTemplate" class="form-control" style="width:auto;padding:4px 8px;font-size:12px;background:var(--abyss);">
+                  <option value="ats">Standard ATS Single-Column</option>
+                  <option value="modern">Modern Professional Blue</option>
+                  <option value="minimalist">Minimalist Elegant</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group"><label>Full Name</label><input class="form-control" id="rName" placeholder="John Smith"></div>
+            <div class="form-group"><label>Email</label><input class="form-control" id="rEmail" placeholder="john@email.com" type="email"></div>
+            <div class="form-group"><label>Phone</label><input class="form-control" id="rPhone" placeholder="+91 98765 43210"></div>
+            <div class="form-group"><label>LinkedIn</label><input class="form-control" id="rLinkedin" placeholder="linkedin.com/in/yourname"></div>
+            <div class="form-group"><label>GitHub</label><input class="form-control" id="rGithub" placeholder="github.com/yourusername"></div>
+            <div class="form-group"><label>Summary / Objective</label><textarea class="form-control" id="rSummary" rows="3" placeholder="Brief professional summary..."></textarea></div>
+            <div class="form-group"><label>Skills (comma-separated)</label><input class="form-control" id="rSkills" placeholder="Python, React, SQL, Docker..."></div>
+            <div class="form-group"><label>Experience</label><textarea class="form-control" id="rExp" rows="4" placeholder="Company | Role | Duration
+• Achievement 1
+• Achievement 2"></textarea></div>
+            <div class="form-group"><label>Education</label><textarea class="form-control" id="rEdu" rows="3" placeholder="Institution | Degree | Year | CGPA"></textarea></div>
+            <div class="form-group"><label>Projects</label><textarea class="form-control" id="rProjects" rows="4" placeholder="Project Name | Tech Stack
+• Description"></textarea></div>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" id="previewResumeBtn">👁 Preview</button>
+              <button class="btn btn-secondary btn-sm" id="exportPdfBtn">📄 Export PDF</button>
+              <button class="btn btn-secondary btn-sm" id="exportMdBtn">⬇ Export Markdown</button>
+              <button class="btn btn-secondary btn-sm" id="saveResumeBtn">💾 Save Draft</button>
+            </div>
+            <!-- AI Content Coach Tips -->
+            <div style="background:rgba(99,102,241,0.06);border:1px dashed var(--border-accent);border-radius:var(--r-sm);padding:1rem;margin-top:.5rem;">
+              <div style="font-size:11px;font-family:var(--font-mono);color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px;">
+                <span>🤖</span> AI Resume Recommendations
+              </div>
+              <ul style="margin-top:.4rem;padding-left:1.1rem;font-size:12px;color:var(--mist);display:flex;flex-direction:column;gap:4px;" id="aiResumeSuggestions">
+                <li>Write down at least 5 key technical skills to bump up your score.</li>
+                <li>Make sure to use action verbs in achievements (e.g. Optimized, Automated, Built).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Preview -->
+        <div>
+          <h3 style="font-size:15px;margin-bottom:1rem;">Live Preview</h3>
+          <div id="resumePreview" style="background:#fff;color:#1a1a1a;border-radius:var(--r-md);padding:2rem;font-family:Arial,sans-serif;font-size:13px;line-height:1.6;min-height:600px;box-shadow:var(--shadow-lg);overflow:auto;max-height:80vh;">
+            <div style="text-align:center;color:#888;margin-top:8rem;">Fill the form to see live preview</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+<script src="js/api.js"></script>
+<script src="js/page-shell.js"></script>
+<script src="js/resume.js"></script>
+</body>
+</html>

@@ -32,11 +32,12 @@ async function testConnection() {
   try {
     const conn = await pool.getConnection();
     console.log('✅  MySQL pool connected successfully.');
-    conn.release(); // Always release back to the pool
+    conn.release();
   } catch (err) {
     console.error('❌  MySQL connection failed:', err.message);
-    // Exit the process — no point running the server with no DB
-    process.exit(1);
+    console.error('    Server will start but database queries will fail.');
+    console.error('    Fix: Check DB_USER, DB_PASSWORD, DB_HOST in backend/.env');
+    // Do NOT exit — let the server start so we can serve helpful error messages
   }
 }
 

@@ -32,7 +32,7 @@ const findByEmail = async (email) => {
 const findById = async (id) => {
   const [rows] = await db.query(
     // Never return password_hash to the application layer
-    'SELECT id, username, email, branch, role, created_at FROM users WHERE id = ? LIMIT 1',
+    'SELECT id, username, email, branch, role, status, created_at FROM users WHERE id = ? LIMIT 1',
     [id]
   );
   return rows[0] || null;
@@ -42,8 +42,8 @@ const findById = async (id) => {
 // password_hash should already be bcrypt-hashed by the controller
 const createUser = async ({ username, email, password_hash, branch }) => {
   const [result] = await db.query(
-    `INSERT INTO users (username, email, password_hash, branch, role)
-     VALUES (?, ?, ?, ?, 'user')`,
+    `INSERT INTO users (username, email, password_hash, branch, role, status)
+     VALUES (?, ?, ?, ?, 'user', 'pending')`,
     [username, email, password_hash, branch]
   );
   // Return the newly inserted user's ID
@@ -53,7 +53,7 @@ const createUser = async ({ username, email, password_hash, branch }) => {
 // ── Get all users (admin panel — without password_hash) ──────
 const getAllUsers = async () => {
   const [rows] = await db.query(
-    'SELECT id, username, email, branch, role, created_at FROM users ORDER BY created_at DESC'
+    'SELECT id, username, email, branch, role, status, created_at FROM users ORDER BY created_at DESC'
   );
   return rows;
 };
@@ -66,11 +66,50 @@ const countUsers = async () => {
   return rows[0].total;
 };
 
+// ── Update user status (approve, reject, suspend, etc.) ──────
+const updateStatus = async (id, status) => {
+  const [result] = await db.query(
+    'UPDATE users SET status = ? WHERE id = ?',
+    [status, id]
+  );
+  return result.affectedRows > 0;
+};
+
+// ── Update user role (promote to admin/moderator, demote) ──────
+const updateRole = async (id, role) => {
+  const [result] = await db.query(
+    'UPDATE users SET role = ? WHERE id = ?',
+    [role, id]
+  );
+  return result.affectedRows > 0;
+};
+
+// ── Delete a user ────────────────────────────────────────────
+const deleteUser = async (id) => {
+  const [result] = await db.query(
+    'DELETE FROM users WHERE id = ?',
+    [id]
+  );
+  return result.affectedRows > 0;
+};
+
+// ── Count pending users (admin stats) ────────────────────────
+const countPendingUsers = async () => {
+  const [rows] = await db.query(
+    "SELECT COUNT(*) AS total FROM users WHERE status = 'pending'"
+  );
+  return rows[0].total;
+};
+
 module.exports = {
   findByUsername,
   findByEmail,
   findById,
   createUser,
   getAllUsers,
-  countUsers
+  countUsers,
+  updateStatus,
+  updateRole,
+  deleteUser,
+  countPendingUsers
 };

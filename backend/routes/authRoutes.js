@@ -43,7 +43,7 @@ const registerRules = [
     .trim()
     .notEmpty()
     .withMessage('Please select a branch/track.')
-    .isIn(['SDE', 'Data Science', 'Cybersecurity', 'Self Learner'])
+    .isLength({ min: 2, max: 100 })
     .withMessage('Invalid branch selected.')
 ];
 

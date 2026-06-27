@@ -80,28 +80,20 @@ const register = async (req, res) => {
       branch
     });
 
-    // ── 6. Sign a JWT for immediate login after registration
-    const token = signToken({
-      id: newUserId,
-      username,
-      role: 'user',
-      branch
-    });
-
-    // ── 7. Write audit log ────────────────────────────────
+    // ── 6. Write audit log ────────────────────────────────
     await auditModel.addLog(username, `New user registered. Branch: ${branch}`);
 
-    // ── 8. Respond with token + user info ─────────────────
+    // ── 7. Respond with user info (without token) ─────────
     res.status(201).json({
       success: true,
-      message: 'Registration successful.',
-      token,
+      message: 'Registration successful. Your account is pending administrator approval before you can log in.',
       user: {
         id:       newUserId,
         username,
         email,
         branch,
-        role: 'user'
+        role: 'user',
+        status: 'pending'
       }
     });
 
@@ -152,6 +144,22 @@ const login = async (req, res) => {
       });
     }
 
+    // ── 4.5. Check if user status is approved ─────────────
+    if (user.status !== 'approved') {
+      let statusMsg = 'Your account is waiting for admin approval.';
+      if (user.status === 'pending') {
+        statusMsg = 'Your account is waiting for admin approval.';
+      } else if (user.status === 'rejected') {
+        statusMsg = 'Your registration was rejected.';
+      } else if (user.status === 'suspended') {
+        statusMsg = 'Your account is suspended.';
+      }
+      return res.status(403).json({
+        success: false,
+        message: statusMsg
+      });
+    }
+
     // ── 5. Sign JWT ───────────────────────────────────────
     const token = signToken(user);
 
@@ -168,7 +176,8 @@ const login = async (req, res) => {
         username: user.username,
         email:    user.email,
         branch:   user.branch,
-        role:     user.role
+        role:     user.role,
+        status:   user.status
       }
     });
 

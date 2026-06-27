@@ -29,7 +29,15 @@ const PORT = process.env.PORT || 5000;
 
 // CORS — Allow requests from the frontend origin
 app.use(cors({
-  origin:      process.env.FRONTEND_ORIGIN || 'http://localhost:5000',
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    // Allow localhost/127.0.0.1 on any port, or custom FRONTEND_ORIGIN
+    const isLocalhost = origin.indexOf('://localhost') !== -1 || origin.indexOf('://127.0.0.1') !== -1;
+    if (isLocalhost || origin === process.env.FRONTEND_ORIGIN) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true                         // Allow cookies / auth headers
 }));
 
@@ -71,31 +79,39 @@ app.get('/api/health', async (req, res) => {
     await db.query('SELECT 1');
     res.json({
       success: true,
-      message: 'EduNet API is running.',
-      database: 'connected',
-      timestamp: new Date().toISOString()
+      database: 'connected'
     });
   } catch (err) {
     res.status(503).json({
       success: false,
-      message: 'Database not reachable.',
-      error: err.message
+      database: 'disconnected'
     });
   }
 });
 
 // ── Route mounts (uncommented as each step is built) ───────────
 const authRoutes = require('./routes/authRoutes');
-// const userRoutes     = require('./routes/userRoutes');     // Step 4
-// const progressRoutes = require('./routes/progressRoutes'); // Step 5
-// const toolsRoutes    = require('./routes/toolsRoutes');    // Step 6
-// const adminRoutes    = require('./routes/adminRoutes');    // Step 7
+const userRoutes     = require('./routes/userRoutes');     // Step 4
+const progressRoutes = require('./routes/progressRoutes'); // Step 5
+const toolsRoutes    = require('./routes/toolsRoutes');    // Step 6
+const adminRoutes    = require('./routes/adminRoutes');    // Step 7
+const codeRoutes     = require('./routes/codeRoutes');
+const videoRoutes    = require('./routes/videoRoutes');
+const roadmapRoutes  = require('./routes/roadmapRoutes');
+const quizRoutes     = require('./routes/quizRoutes');
+const profileRoutes  = require('./routes/profileRoutes');
 
 app.use('/api/auth', authRoutes);
-// app.use('/api/user',     userRoutes);
-// app.use('/api/progress', progressRoutes);
-// app.use('/api/tools',    toolsRoutes);
-// app.use('/api/admin',    adminRoutes);
+app.use('/api/user',     userRoutes);
+app.use('/api/progress', progressRoutes);
+app.use('/api/tools',    toolsRoutes);
+app.use('/api/admin',    adminRoutes);
+app.use('/api/codelabs', codeRoutes);
+app.use('/api/code',     codeRoutes);
+app.use('/api/videos',   videoRoutes);
+app.use('/api/roadmaps', roadmapRoutes);
+app.use('/api/quizzes',  quizRoutes);
+app.use('/api/profile',  profileRoutes);
 
 // ============================================================
 // CATCH-ALL: Serve index.html for any unknown GET route

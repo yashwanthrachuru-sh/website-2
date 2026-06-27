@@ -3,261 +3,374 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduNet Control Panel — Administrator Portal</title>
+<title>EduNet — Admin Panel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-<div class="admin-dashboard">
-  
-  <div class="admin-sidebar">
-    <div class="admin-logo-wrapper">
-      <div class="admin-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/></svg></div>
-      <div class="admin-logo">EduNet Admin</div>
-    </div>
-    <button class="admin-nav-item active" data-target="admin-overview">Overview</button>
-    <button class="admin-nav-item" data-target="admin-users">Users Database</button>
-    <button class="admin-nav-item" data-target="admin-approvals">Approvals Queue</button>
-    <button class="admin-nav-item" data-target="admin-audit">Audit Logs</button>
-    <button class="btn btn-secondary admin-logout-btn" id="adminLogoutBtn">Logout Portal</button>
-  </div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <div class="admin-main">
-
-    <div class="admin-panel active" id="admin-overview">
-      <h2>Dashboard Overview</h2>
-      <p class="panel-desc">Diagnostics telemetry and database records summary.</p>
-      <div class="admin-stats-grid">
-        <div class="admin-stat-card">
-          <div class="cap">Total Registered Students</div>
-          <h3 id="statTotalUsers">0</h3>
-        </div>
-        <div class="admin-stat-card">
-          <div class="cap">Pending Resources</div>
-          <h3 id="statPendingApprovals">0</h3>
-        </div>
-        <div class="admin-stat-card">
-          <div class="cap">Total Approved Tools</div>
-          <h3 id="statTotalTools">0</h3>
-        </div>
-      </div>
-      
-      <div style="margin-top:2rem;">
-        <h3 style="margin-bottom:1rem; font-family:var(--font-display); font-size:18px;">Quick Administration Guide</h3>
-        <div style="background:var(--abyss); padding:1.5rem; border:1px solid var(--border); border-radius:var(--radius-md); font-size:14px; color:var(--mist); line-height:1.7;">
-          <p style="margin-bottom:0.8rem;">Welcome to the moderator portal. From here, you have direct, local control over active resource states:</p>
-          <ul style="padding-left:1.5rem; display:flex; flex-direction:column; gap:6px;">
-            <li><strong>Users Database:</strong> Review the details of all registered users on this client.</li>
-            <li><strong>Approvals Queue:</strong> Approve, reject, or revoke submissions. Approved materials immediately render within the student workspace catalog.</li>
-            <li><strong>Audit Logs:</strong> View system event trails detailing moderation choices, logins, and logouts.</li>
-          </ul>
-        </div>
-      </div>
+<!-- Search Modal -->
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-box">
+    <div class="search-input-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search admin panel..." autocomplete="off">
+      <kbd>ESC</kbd>
     </div>
-
-    <div class="admin-panel" id="admin-users">
-      <h2>Users Database</h2>
-      <p class="panel-desc">All user credentials parsed from local storage records.</p>
-      <div class="table-wrapper">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Email Address</th>
-              <th>Branch / Track</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody id="adminUsersTableBody">
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="admin-panel" id="admin-approvals">
-      <h2>Approvals Queue</h2>
-      <p class="panel-desc">Moderate AI study tools. Approving updates card visibility on student workspace catalog.</p>
-      <div class="table-wrapper">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Tool Name</th>
-              <th>Category</th>
-              <th>Current Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="adminApprovalsTableBody">
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="admin-panel" id="admin-audit">
-      <h2>Audit Logs</h2>
-      <p class="panel-desc">Event loop monitoring all active administrator sessions and moderation triggers.</p>
-      <div class="table-wrapper">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Timestamp</th>
-              <th>Actor</th>
-              <th>Action Description</th>
-            </tr>
-          </thead>
-          <tbody id="adminAuditTableBody">
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <div class="search-results-list" id="searchResultsList"></div>
   </div>
 </div>
 
-<script>
-  var session = JSON.parse(localStorage.getItem('edunet_session'));
-  if (!session || session.role !== 'admin') {
-    window.location.href = 'index.html';
-  }
-  var adminNavItems = document.querySelectorAll('.admin-nav-item');
-  var adminPanels = document.querySelectorAll('.admin-panel');
-  adminNavItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-      adminNavItems.forEach(function(i) { i.classList.remove('active'); });
-      item.classList.add('active');
-      var targetPanelId = item.getAttribute('data-target');
-      adminPanels.forEach(function(panel) {
-        if (panel.id === targetPanelId) {
-          panel.classList.add('active');
-        } else {
-          panel.classList.remove('active');
-        }
-      });
-    });
-  });
-  document.getElementById('adminLogoutBtn').addEventListener('click', function() {
-    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
-    logs.push({
-      timestamp: new Date().toLocaleTimeString(),
-      actor: 'admin',
-      action: 'Admin logged out from portal.'
-    });
-    localStorage.setItem('edunet_logs', JSON.stringify(logs));
-    localStorage.removeItem('edunet_session');
-    window.location.href = 'index.html';
-  });
-  function renderOverviewStats() {
-    var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
-    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
-    var pending = tools.filter(function(t) { return t.status === 'pending'; }).length;
-    var approved = tools.filter(function(t) { return t.status === 'approved'; }).length;
-    document.getElementById('statTotalUsers').textContent = users.length;
-    document.getElementById('statPendingApprovals').textContent = pending;
-    document.getElementById('statTotalTools').textContent = approved;
-  }
-  function renderUsersTable() {
-    var usersTable = document.getElementById('adminUsersTableBody');
-    if (!usersTable) return;
-    var users = JSON.parse(localStorage.getItem('edunet_users')) || [];
-    usersTable.innerHTML = '';
-    users.forEach(function(user) {
-      var row = document.createElement('tr');
-      row.innerHTML = `
-        <td><strong>${user.username}</strong></td>
-        <td>${user.email}</td>
-        <td>${user.branch}</td>
-        <td><span class="status-badge active">${user.role}</span></td>
-      `;
-      usersTable.appendChild(row);
-    });
-  }
-  function renderApprovalsTable() {
-    var approvalsTable = document.getElementById('adminApprovalsTableBody');
-    if (!approvalsTable) return;
-    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
-    approvalsTable.innerHTML = '';
-    tools.forEach(function(tool) {
-      var row = document.createElement('tr');
-      var statusClass = tool.status === 'approved' ? 'active' : (tool.status === 'pending' ? 'pending' : 'rejected');
-      var actionsHtml = '';
-      if (tool.status === 'pending') {
-        actionsHtml = `
-          <button class="btn btn-primary btn-sm" onclick="approveTool('${tool.id}')">Approve</button>
-          <button class="btn btn-secondary btn-sm" onclick="rejectTool('${tool.id}')">Reject</button>
-        `;
-      } else {
-        actionsHtml = `
-          <button class="btn btn-secondary btn-sm" onclick="rejectTool('${tool.id}')">Revoke</button>
-        `;
-      }
-      row.innerHTML = `
-        <td><strong>${tool.name}</strong></td>
-        <td>${tool.category}</td>
-        <td><span class="status-badge ${statusClass}">${tool.status}</span></td>
-        <td>${actionsHtml}</td>
-      `;
-      approvalsTable.appendChild(row);
-    });
-  }
-  function renderAuditLogsTable() {
-    var auditTable = document.getElementById('adminAuditTableBody');
-    if (!auditTable) return;
-    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
-    auditTable.innerHTML = '';
-    logs.slice().reverse().forEach(function(log) {
-      var row = document.createElement('tr');
-      row.innerHTML = `
-        <td><span style="color:var(--mist-dim); font-family:var(--font-mono);">${log.timestamp}</span></td>
-        <td><strong>${log.actor}</strong></td>
-        <td>${log.action}</td>
-      `;
-      auditTable.appendChild(row);
-    });
-  }
-  function approveTool(toolId) {
-    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
-    var match = tools.find(function(t) { return t.id === toolId; });
-    if (match) {
-      match.status = 'approved';
-      localStorage.setItem('edunet_tools', JSON.stringify(tools));
-      addAuditLog('admin', 'Approved AI tool directory item: ' + match.name);
-      renderOverviewStats();
-      renderApprovalsTable();
-      renderAuditLogsTable();
-    }
-  }
-  function rejectTool(toolId) {
-    var tools = JSON.parse(localStorage.getItem('edunet_tools')) || [];
-    var match = tools.find(function(t) { return t.id === toolId; });
-    if (match) {
-      match.status = 'rejected';
-      localStorage.setItem('edunet_tools', JSON.stringify(tools));
-      addAuditLog('admin', 'Rejected/Revoked AI tool directory item: ' + match.name);
-      renderOverviewStats();
-      renderApprovalsTable();
-      renderAuditLogsTable();
-    }
-  }
-  function addAuditLog(actor, action) {
-    var logs = JSON.parse(localStorage.getItem('edunet_logs')) || [];
-    logs.push({
-      timestamp: new Date().toLocaleTimeString(),
-      actor: actor,
-      action: action
-    });
-    localStorage.setItem('edunet_logs', JSON.stringify(logs));
-  }
-  window.approveTool = approveTool;
-  window.rejectTool = rejectTool;
-  renderOverviewStats();
-  renderUsersTable();
-  renderApprovalsTable();
-  renderAuditLogsTable();
-</script>
+<!-- Universal Modal -->
+<div class="search-modal" id="adminModal" style="align-items:center;padding-top:0;">
+  <div class="search-modal-box" style="max-width:600px;" id="adminModalBox">
+    <div id="adminModalContent"></div>
+  </div>
+</div>
+
+<div class="dash-layout">
+
+  <!-- Admin Sidebar -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-sidebar-logo">
+      <div class="nav-mark" style="background:linear-gradient(135deg,var(--rose),var(--purple));"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+      EduNet <span style="font-size:10px;color:var(--rose);font-weight:700;letter-spacing:.05em;margin-left:4px;">ADMIN</span>
+    </div>
+    <nav class="dash-nav">
+      <div class="dash-nav-section">Overview</div>
+      <a href="#" class="dash-nav-item active" data-section="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="dash-nav-item" data-section="analytics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Analytics
+      </a>
+
+      <div class="dash-nav-section">Manage</div>
+      <a href="#" class="dash-nav-item" data-section="users">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Users
+      </a>
+      <a href="#" class="dash-nav-item" data-section="videos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        YouTube Videos
+        <span class="badge badge-accent" style="margin-left:auto;font-size:9px;padding:2px 6px;">NEW</span>
+      </a>
+      <a href="#" class="dash-nav-item" data-section="tools">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        AI Tools
+      </a>
+      <a href="#" class="dash-nav-item" data-section="roadmaps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h5a2 2 0 012 2v7M6 9v9"/></svg>
+        Roadmaps
+      </a>
+      <a href="#" class="dash-nav-item" data-section="announcements">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+        Announcements
+      </a>
+      <a href="#" class="dash-nav-item" data-section="certificates">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Certificates
+      </a>
+      <a href="#" class="dash-nav-item" data-section="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+    <div class="dash-sidebar-footer">
+      <a href="user.html" class="btn btn-secondary btn-sm btn-full" style="justify-content:center;margin-bottom:.5rem;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        View Student Side
+      </a>
+      <div class="dash-user-chip" id="adminChip">
+        <div class="dash-avatar" style="background:linear-gradient(135deg,var(--rose),var(--purple));" id="adminAvatar">AD</div>
+        <div class="dash-user-info">
+          <div class="dash-user-name" id="adminName">Admin</div>
+          <div class="dash-user-role" style="color:var(--rose);">administrator</div>
+        </div>
+      </div>
+      <button class="btn btn-secondary btn-sm btn-full" id="adminLogoutBtn" style="justify-content:center;margin-top:.5rem;">Logout</button>
+    </div>
+  </aside>
+
+  <!-- Admin Main -->
+  <div class="dash-main">
+    <!-- Topbar -->
+    <div class="dash-topbar">
+      <div class="dash-topbar-left">
+        <button class="burger-btn" id="burgerBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <div class="dash-topbar-search" id="topbarSearch">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          Admin search... <kbd>⌘K</kbd>
+        </div>
+      </div>
+      <div class="dash-topbar-right">
+        <div class="badge badge-rose" style="font-size:11px;">Admin Panel</div>
+        <div class="dash-avatar" style="background:linear-gradient(135deg,var(--rose),var(--purple));" id="topbarAdminAvatar">AD</div>
+      </div>
+    </div>
+
+    <!-- Admin Content Container -->
+    <div class="dash-content" id="adminContentArea">
+      <!-- Sections are shown/hidden via JS -->
+
+      <!-- ═══════ DASHBOARD ═══════ -->
+      <div id="section-dashboard">
+        <div style="margin-bottom:2rem;">
+          <div class="eyebrow"><span class="live-dot"></span>Administrator Panel</div>
+          <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.35rem;">Admin Dashboard</h2>
+          <p style="color:var(--mist);font-size:14px;">Platform overview and management controls.</p>
+        </div>
+        <div class="metric-grid" id="adminMetrics">
+          <div class="metric-card">
+            <div class="metric-label">Total Users</div>
+            <div class="metric-value grad" id="mTotalUsers">—</div>
+            <div class="metric-change">Registered</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Pending Approval</div>
+            <div class="metric-value" style="color:var(--amber);" id="mPending">—</div>
+            <div class="metric-change" style="color:var(--amber);">Awaiting</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">YouTube Videos</div>
+            <div class="metric-value" id="mVideos">—</div>
+            <div class="metric-change" style="color:var(--emerald);">Published</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">AI Tools</div>
+            <div class="metric-value" id="mTools">—</div>
+            <div class="metric-change" style="color:var(--accent);">Listed</div>
+          </div>
+        </div>
+        <!-- Quick Actions -->
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-size:15px;margin-bottom:1rem;color:var(--mist);">Quick Actions</h3>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" data-section="users" data-action="approve">✅ Approve Users</button>
+            <button class="btn btn-secondary btn-sm" data-section="videos" data-action="add">🎬 Add YouTube Video</button>
+            <button class="btn btn-secondary btn-sm" data-section="announcements" data-action="new">📣 New Announcement</button>
+            <button class="btn btn-secondary btn-sm" data-section="tools" data-action="add">🛠 Add AI Tool</button>
+          </div>
+        </div>
+        <!-- Recent Users Table -->
+        <div>
+          <h3 style="font-size:15px;margin-bottom:1rem;">Recent Registrations</h3>
+          <div class="table-wrap"><div class="table-scroll">
+            <table>
+              <thead><tr><th>User</th><th>Email</th><th>Branch</th><th>Status</th><th>Joined</th><th>Actions</th></tr></thead>
+              <tbody id="recentUsersTable"></tbody>
+            </table>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ═══════ ANALYTICS ═══════ -->
+      <div id="section-analytics" style="display:none;">
+        <div style="margin-bottom:2rem;">
+          <div class="eyebrow">Platform Insights</div>
+          <h2 style="font-size:1.75rem;margin-bottom:.35rem;">Analytics</h2>
+          <p style="color:var(--mist);font-size:14px;">Platform activity overview and trends.</p>
+        </div>
+        <div class="metric-grid" style="margin-bottom:2rem;">
+          <div class="metric-card"><div class="metric-label">Platform XP Awarded</div><div class="metric-value grad">847K</div></div>
+          <div class="metric-card"><div class="metric-label">Roadmaps Started</div><div class="metric-value">12.4K</div></div>
+          <div class="metric-card"><div class="metric-label">Quizzes Taken</div><div class="metric-value">38.9K</div></div>
+          <div class="metric-card"><div class="metric-label">Code Runs Today</div><div class="metric-value" id="codeRunsCount">0</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="dash-two-col">
+          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.5rem;">
+            <h3 style="font-size:14px;margin-bottom:1rem;">Top Tracks</h3>
+            <div id="topTracksChart" style="display:flex;flex-direction:column;gap:.7rem;"></div>
+          </div>
+          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.5rem;">
+            <h3 style="font-size:14px;margin-bottom:1rem;">Most Used AI Tools</h3>
+            <div id="topToolsChart" style="display:flex;flex-direction:column;gap:.7rem;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════ USERS ═══════ -->
+      <div id="section-users" style="display:none;">
+        <div style="margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <div class="eyebrow">User Management</div>
+            <h2 style="font-size:1.75rem;margin-bottom:.35rem;">Users</h2>
+          </div>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;">
+            <div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input type="text" id="userSearchBar" placeholder="Search users..."></div>
+            <select class="form-control" id="userStatusFilter" style="width:auto;padding:7px 14px;">
+              <option value="all">All Status</option>
+              <option value="approved">Approved</option>
+              <option value="pending">Pending</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap"><div class="table-scroll">
+          <table>
+            <thead><tr><th>User</th><th>Email</th><th>Branch</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th></tr></thead>
+            <tbody id="allUsersTable"></tbody>
+          </table>
+        </div></div>
+        <div id="usersLoading" style="text-align:center;padding:2rem;color:var(--mist);font-size:13px;">Loading users...</div>
+      </div>
+
+      <!-- ═══════ YOUTUBE VIDEOS ═══════ -->
+      <div id="section-videos" style="display:none;">
+        <div style="margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <div class="eyebrow">YouTube Management</div>
+            <h2 style="font-size:1.75rem;margin-bottom:.35rem;">YouTube Videos</h2>
+            <p style="color:var(--mist);font-size:14px;">Add YouTube URLs — videos auto-appear across the platform.</p>
+          </div>
+          <button class="btn btn-primary" id="addVideoBtn">+ Add YouTube Video</button>
+        </div>
+
+        <!-- Add Video Form (shown inline) -->
+        <div id="addVideoForm" style="display:none;background:var(--abyss);border:1px solid var(--border-accent);border-radius:var(--r-md);padding:1.75rem;margin-bottom:1.75rem;">
+          <h3 style="font-size:15px;margin-bottom:1.25rem;">Add New Video</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="form-two-col">
+            <div class="form-group"><label>YouTube URL *</label><input class="form-control" id="vUrl" placeholder="https://youtube.com/watch?v=..." required></div>
+            <div class="form-group"><label>Title *</label><input class="form-control" id="vTitle" placeholder="Video title" required></div>
+            <div class="form-group"><label>Category *</label>
+              <select class="form-control" id="vCategory">
+                <option>DSA</option><option>Web Dev</option><option>AI/ML</option><option>System Design</option>
+                <option>Python</option><option>Java</option><option>C++</option><option>Cloud</option>
+                <option>DevOps</option><option>Interview</option><option>General</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Instructor</label><input class="form-control" id="vInstructor" placeholder="Channel / Instructor name"></div>
+            <div class="form-group"><label>Duration</label><input class="form-control" id="vDuration" placeholder="e.g. 45 min"></div>
+            <div class="form-group" style="display:flex;align-items:flex-end;gap:.75rem;">
+              <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer;font-size:13.5px;font-weight:500;">
+                <input type="checkbox" id="vPinned" style="accent-color:var(--accent);width:16px;height:16px;">
+                Pin this video
+              </label>
+            </div>
+          </div>
+          <div class="form-group"><label>Description</label><textarea class="form-control" id="vDesc" rows="2" placeholder="Short description of the video..."></textarea></div>
+          <div class="form-group"><label>Tags (comma-separated)</label><input class="form-control" id="vTags" placeholder="DSA, Arrays, LeetCode..."></div>
+          <div id="vPreviewBox" style="display:none;margin-bottom:1rem;"></div>
+          <div id="videoFormMsg" class="form-error"></div>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem;">
+            <button class="btn btn-secondary btn-sm" id="previewVideoBtn">👁 Preview URL</button>
+            <button class="btn btn-primary" id="saveVideoBtn">Save Video</button>
+            <button class="btn btn-secondary" id="cancelVideoBtn">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Videos Grid -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;" id="adminVideosGrid"></div>
+        <div id="videosLoadingAdmin" style="text-align:center;padding:2.5rem;color:var(--mist);font-size:13px;">Loading videos...</div>
+      </div>
+
+      <!-- ═══════ AI TOOLS MODERATION ═══════ -->
+      <div id="section-tools" style="display:none;">
+        <div style="margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <div class="eyebrow">Tool Moderation</div>
+            <h2 style="font-size:1.75rem;margin-bottom:.35rem;">AI Tools</h2>
+          </div>
+          <button class="btn btn-primary" id="addToolBtn">+ Add Tool</button>
+        </div>
+        <div class="table-wrap"><div class="table-scroll">
+          <table>
+            <thead><tr><th>Name</th><th>Category</th><th>Status</th><th>Official Link</th><th>Actions</th></tr></thead>
+            <tbody id="adminToolsTable"></tbody>
+          </table>
+        </div></div>
+        <div id="toolsLoadingAdmin" style="text-align:center;padding:2rem;color:var(--mist);">Loading tools...</div>
+      </div>
+
+      <!-- ═══════ ROADMAPS ═══════ -->
+      <div id="section-roadmaps" style="display:none;">
+        <div style="margin-bottom:1.75rem;">
+          <div class="eyebrow">Roadmap Management</div>
+          <h2 style="font-size:1.75rem;margin-bottom:.35rem;">Roadmaps</h2>
+          <p style="color:var(--mist);font-size:14px;">View and manage the 24 career roadmaps available to students.</p>
+        </div>
+        <div class="cards-grid" id="adminRoadmapsGrid"></div>
+      </div>
+
+      <!-- ═══════ ANNOUNCEMENTS ═══════ -->
+      <div id="section-announcements" style="display:none;">
+        <div style="margin-bottom:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <div class="eyebrow">Broadcast</div>
+            <h2 style="font-size:1.75rem;margin-bottom:.35rem;">Announcements</h2>
+          </div>
+          <button class="btn btn-primary" id="newAnnouncementBtn">+ New Announcement</button>
+        </div>
+        <div id="announcementForm" style="display:none;background:var(--abyss);border:1px solid var(--border-accent);border-radius:var(--r-md);padding:1.75rem;margin-bottom:1.5rem;">
+          <h3 style="font-size:15px;margin-bottom:1.25rem;">New Announcement</h3>
+          <div class="form-group"><label>Title</label><input class="form-control" id="aTitle" placeholder="Announcement title"></div>
+          <div class="form-group"><label>Message</label><textarea class="form-control" id="aBody" rows="3" placeholder="Write your announcement..."></textarea></div>
+          <div class="form-group">
+            <label>Type</label>
+            <select class="form-control" id="aType">
+              <option value="info">ℹ️ Info</option>
+              <option value="success">✅ Success</option>
+              <option value="warning">⚠️ Warning</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:.75rem;">
+            <button class="btn btn-primary" id="saveAnnouncementBtn">Publish</button>
+            <button class="btn btn-secondary" id="cancelAnnouncementBtn">Cancel</button>
+          </div>
+        </div>
+        <div id="announcementsList" style="display:flex;flex-direction:column;gap:.75rem;"></div>
+      </div>
+
+      <!-- ═══════ CERTIFICATES ═══════ -->
+      <div id="section-certificates" style="display:none;">
+        <div style="margin-bottom:1.75rem;">
+          <div class="eyebrow">Certification</div>
+          <h2 style="font-size:1.75rem;margin-bottom:.35rem;">Certificates</h2>
+          <p style="color:var(--mist);font-size:14px;">Manage certificate issuance and verify completion records.</p>
+        </div>
+        <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:2rem;text-align:center;">
+          <div style="font-size:3rem;margin-bottom:1rem;">🏆</div>
+          <h3 style="margin-bottom:.5rem;">Certificate System Active</h3>
+          <p style="color:var(--mist);font-size:13.5px;max-width:500px;margin:0 auto;">Certificates are automatically issued to students when they complete roadmaps and quizzes. Verification IDs are generated per-user.</p>
+        </div>
+      </div>
+
+      <!-- ═══════ SETTINGS ═══════ -->
+      <div id="section-settings" style="display:none;">
+        <div style="margin-bottom:1.75rem;">
+          <div class="eyebrow">Configuration</div>
+          <h2 style="font-size:1.75rem;margin-bottom:.35rem;">Admin Settings</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;max-width:600px;">
+          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.5rem;">
+            <h3 style="font-size:15px;margin-bottom:1.25rem;">Platform Settings</h3>
+            <div class="form-group"><label>Platform Name</label><input class="form-control" value="EduNet"></div>
+            <div class="form-group"><label>Support Email</label><input class="form-control" value="support@edunet.app" type="email"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+              <div><div style="font-size:13.5px;font-weight:600;">Maintenance Mode</div><div style="font-size:12px;color:var(--mist);">Disable student access</div></div>
+              <input type="checkbox" style="accent-color:var(--rose);width:18px;height:18px;">
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div><div style="font-size:13.5px;font-weight:600;">New Registrations</div><div style="font-size:12px;color:var(--mist);">Allow new users to register</div></div>
+              <input type="checkbox" checked style="accent-color:var(--accent);width:18px;height:18px;">
+            </div>
+            <button class="btn btn-primary btn-sm" style="margin-top:1rem;" id="savePlatformSettings">Save Settings</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /adminContentArea -->
+  </div><!-- /dash-main -->
+</div><!-- /dash-layout -->
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>
