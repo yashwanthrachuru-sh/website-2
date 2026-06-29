@@ -44,15 +44,54 @@ async function loadProfile() {
       pBio: u.bio || '', 
       pLinkedin: u.linkedin || '', 
       pGithub: u.github || '', 
-      pSkills: u.skills || ''
+      pInterests: u.interests || '',
+      pGoals: u.learning_goals || '',
     };
     Object.entries(fields).forEach(([id, val]) => { 
       const el = document.getElementById(id); 
       if (el) el.value = val; 
     });
 
+    // Populate dropdowns and checkboxes
+    const setSelect = (id, val) => {
+      const el = document.getElementById(id);
+      if (el && val) el.value = val;
+    };
+    setSelect('pTargetXP', u.weekly_target_xp);
+    setSelect('pPrefLanguage', u.preferred_language);
+    setSelect('pPrefDifficulty', u.preferred_difficulty);
+
+    const remEl = document.getElementById('pReminder');
+    if (remEl) remEl.checked = !!u.daily_reminder;
+
+    // Load Badges/Achievements
+    loadBadges();
+
   } catch (err) {
     showToast('Failed to load profile details: ' + err.message, 'error');
+  }
+}
+
+async function loadBadges() {
+  const grid = document.getElementById('profileBadgesGrid');
+  if (!grid) return;
+  try {
+    const data = await apiFetch('/api/achievements');
+    if (data.success && data.achievements) {
+      const earned = data.achievements.filter(a => a.earned);
+      if (earned.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1;font-size:11.5px;color:var(--mist-dim);padding:1rem 0;">No badges earned yet. Complete challenges to earn badges!</div>';
+        return;
+      }
+      grid.innerHTML = earned.map(a => `
+        <div style="background:var(--abyss-2); border:1px solid hsl(262,40%,25%); border-radius:var(--r-sm); padding:.4rem; display:flex; flex-direction:column; align-items:center;" title="${a.title}: ${a.description}">
+          <div style="font-size:1.4rem; margin-bottom:.15rem;">${a.icon}</div>
+          <div style="font-size:9.5px; font-weight:600; color:var(--frost); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:60px;">${a.title.split(' ').slice(1).join(' ') || a.title}</div>
+        </div>
+      `).join('');
+    }
+  } catch (e) {
+    grid.innerHTML = '<div style="grid-column:1/-1;font-size:11.5px;color:var(--mist-dim);padding:1rem 0;">Achievements temporary offline.</div>';
   }
 }
 
@@ -61,7 +100,12 @@ document.getElementById('saveProfileBtn')?.addEventListener('click', async () =>
     bio: document.getElementById('pBio')?.value || '',
     linkedin: document.getElementById('pLinkedin')?.value || '',
     github: document.getElementById('pGithub')?.value || '',
-    skills: document.getElementById('pSkills')?.value || '',
+    interests: document.getElementById('pInterests')?.value || '',
+    learning_goals: document.getElementById('pGoals')?.value || '',
+    weekly_target_xp: parseInt(document.getElementById('pTargetXP')?.value || '500'),
+    preferred_language: document.getElementById('pPrefLanguage')?.value || 'javascript',
+    preferred_difficulty: document.getElementById('pPrefDifficulty')?.value || 'medium',
+    daily_reminder: document.getElementById('pReminder')?.checked ? 1 : 0,
     avatar_initials: (document.getElementById('pDispName')?.value || '').slice(0, 2) || null
   };
 

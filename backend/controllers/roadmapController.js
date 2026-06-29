@@ -402,25 +402,58 @@ exports.getRoadmapProgress = async (req, res) => {
 };
 
 // ── GET /api/roadmaps/search ──────────────────────────────────
+// Global Database Search (Roadmaps, Modules, Lessons, Users, Certificates)
 exports.searchRoadmaps = async (req, res) => {
   try {
-    const q = `%${req.query.q || ''}%`;
+    const term = req.query.q || '';
+    if (!term.trim()) {
+      return res.json({ success: true, results: [] });
+    }
+    const q = `%${term}%`;
+
+    // 1. Roadmaps
     const [rmResults] = await db.query(`
-      SELECT 'roadmap' AS type, r.id AS id, r.title, r.description AS rdesc, r.icon, r.difficulty
+      SELECT 'roadmap' AS type, r.id AS id, r.title, r.description AS rdesc, r.icon, 'roadmaps.html' AS link
       FROM roadmaps r
       WHERE r.title LIKE ? OR r.description LIKE ? OR r.tags LIKE ?
-      LIMIT 10
+      LIMIT 6
     `, [q, q, q]);
 
+    // 2. Modules
     const [modResults] = await db.query(`
-      SELECT 'module' AS type, CAST(rm.id AS CHAR) AS id, rm.title, rm.description AS rdesc, rm.icon, r.difficulty
+      SELECT 'module' AS type, CAST(rm.id AS CHAR) AS id, rm.title, rm.description AS rdesc, rm.icon, 'roadmaps.html' AS link
       FROM roadmap_modules rm
-      JOIN roadmaps r ON rm.roadmap_id = r.id
       WHERE rm.title LIKE ? OR rm.description LIKE ?
-      LIMIT 10
+      LIMIT 6
     `, [q, q]);
 
-    const results = [...rmResults, ...modResults].slice(0, 20);
+    // 3. Lessons
+    const [lessonResults] = await db.query(`
+      SELECT 'lesson' AS type, CAST(ml.id AS CHAR) AS id, ml.title, ml.short_desc AS rdesc, '📖' AS icon, 'roadmaps.html' AS link
+      FROM module_lessons ml
+      WHERE ml.title LIKE ? OR ml.short_desc LIKE ?
+      LIMIT 6
+    `, [q, q]);
+
+    // 4. Users (Public search)
+    const [userResults] = await db.query(`
+      SELECT 'user' AS type, CAST(u.id AS CHAR) AS id, u.username AS title, CONCAT(IFNULL(u.branch, 'SDE'), ' Track') AS rdesc, '👤' AS icon, 'profile.html' AS link
+      FROM users u
+      WHERE u.username LIKE ? AND u.is_public = 1
+      LIMIT 4
+    `, [q]);
+
+    // 5. Certificates (Verification hash search)
+    const [certResults] = await db.query(`
+      SELECT 'certificate' AS type, c.certificate_hash AS id, CONCAT('Certificate for ', r.title) AS title, CONCAT('Hash: ', SUBSTRING(c.certificate_hash, 1, 12), '...') AS rdesc, '🏆' AS icon, 'certificates.html' AS link
+      FROM certificates c
+      JOIN roadmaps r ON c.roadmap_id = r.id
+      WHERE c.certificate_hash LIKE ?
+      LIMIT 4
+    `, [q]);
+
+    // Merge & limit
+    const results = [...rmResults, ...modResults, ...lessonResults, ...userResults, ...certResults].slice(0, 25);
     res.json({ success: true, results });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

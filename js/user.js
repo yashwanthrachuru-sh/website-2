@@ -627,26 +627,72 @@ window.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeSearch();
   if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
 });
-searchInput.addEventListener('input', () => {
-  const q = searchInput.value.toLowerCase().trim();
+searchInput.addEventListener('input', async () => {
+  const q = searchInput.value.trim();
   searchList.innerHTML = '';
-  if (!q) return;
-  const hits = SEARCH_INDEX.filter(d => d.title.toLowerCase().includes(q) || d.desc.toLowerCase().includes(q));
-  if (!hits.length) { searchList.innerHTML = '<div class="search-no-results">No results found.</div>'; return; }
-  hits.slice(0, 8).forEach(item => {
-    const el = document.createElement('div');
-    el.className = 'search-result-item';
-    el.innerHTML = `
-      <div class="search-result-icon">${item.icon}</div>
-      <div class="search-result-info">
-        <div class="search-result-title">${item.title}</div>
-        <div class="search-result-desc">${item.desc}</div>
-      </div>
-      <div class="search-result-cat">${item.cat}</div>
-    `;
-    el.addEventListener('click', () => { closeSearch(); window.location.href = item.link; });
-    searchList.appendChild(el);
-  });
+  if (!q) {
+    SEARCH_INDEX.slice(0, 5).forEach(item => {
+      const el = document.createElement('div');
+      el.className = 'search-result-item';
+      el.innerHTML = `<div class="search-result-icon">${item.icon}</div><div class="search-result-info"><div class="search-result-title">${item.title}</div><div class="search-result-desc">${item.desc}</div></div><div class="search-result-cat">${item.cat}</div>`;
+      el.addEventListener('click', () => { closeSearch(); window.location.href = item.link; });
+      searchList.appendChild(el);
+    });
+    return;
+  }
+
+  try {
+    const res = await apiFetch('/api/roadmaps/search?q=' + encodeURIComponent(q));
+    if (res.success && res.results) {
+      const results = res.results;
+      if (!results.length) {
+        searchList.innerHTML = '<div class="search-no-results">No results found in database.</div>';
+        return;
+      }
+      results.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'search-result-item';
+        const typeIcons = { roadmap: '🗺', module: '📦', lesson: '📖', user: '👤', certificate: '🏆' };
+        const icon = item.icon || typeIcons[item.type] || '🔍';
+
+        const regex = new RegExp(`(${q})`, 'gi');
+        const titleHighlighted = item.title.replace(regex, '<mark style="background:hsl(262,80%,30%);color:#fff;border-radius:2px;padding:0 2px;">$1</mark>');
+        const descHighlighted = (item.rdesc || '').replace(regex, '<mark style="background:hsl(262,80%,30%);color:#fff;border-radius:2px;padding:0 2px;">$1</mark>');
+
+        el.innerHTML = `
+          <div class="search-result-icon">${icon}</div>
+          <div class="search-result-info">
+            <div class="search-result-title">${titleHighlighted}</div>
+            <div class="search-result-desc">${descHighlighted}</div>
+          </div>
+          <div class="search-result-cat" style="text-transform:capitalize;">${item.type}</div>
+        `;
+        el.addEventListener('click', () => {
+          closeSearch();
+          if (item.type === 'roadmap') {
+            window.location.href = `roadmaps.html?id=${item.id}`;
+          } else if (item.type === 'module') {
+            window.location.href = `roadmaps.html`;
+          } else if (item.type === 'lesson') {
+            window.location.href = `roadmaps.html`;
+          } else {
+            window.location.href = item.link || 'user.html';
+          }
+        });
+        searchList.appendChild(el);
+      });
+    }
+  } catch (e) {
+    const hits = SEARCH_INDEX.filter(d => d.title.toLowerCase().includes(q.toLowerCase()) || d.desc.toLowerCase().includes(q.toLowerCase()));
+    if (!hits.length) { searchList.innerHTML = '<div class="search-no-results">No results found.</div>'; return; }
+    hits.slice(0, 8).forEach(item => {
+      const el = document.createElement('div');
+      el.className = 'search-result-item';
+      el.innerHTML = `<div class="search-result-icon">${item.icon}</div><div class="search-result-info"><div class="search-result-title">${item.title}</div><div class="search-result-desc">${item.desc}</div></div><div class="search-result-cat">${item.cat}</div>`;
+      el.addEventListener('click', () => { closeSearch(); window.location.href = item.link; });
+      searchList.appendChild(el);
+    });
+  }
 });
 
 // ── Bookmarks & Saved Programs (localStorage) ─────────────────

@@ -96,7 +96,7 @@ const getProfile = async (req, res) => {
   try {
     const userId = req.user.id;
     const [rows] = await db.query(
-      'SELECT id, username, email, branch, role, status, xp, level, bio, linkedin, github, skills, streak, avatar_initials, created_at FROM users WHERE id = ? LIMIT 1',
+      'SELECT id, username, email, branch, role, status, xp, level, bio, linkedin, github, skills, streak, avatar_initials, learning_goals, weekly_target_xp, preferred_language, preferred_difficulty, daily_reminder, interests, created_at FROM users WHERE id = ? LIMIT 1',
       [userId]
     );
     const user = rows[0];
@@ -114,13 +114,20 @@ const getProfile = async (req, res) => {
 const updateProfile = async (req, res) => {
   try {
     const userId = req.user.id;
-    const { bio, linkedin, github, skills, avatar_initials } = req.body;
+    const { bio, linkedin, github, skills, avatar_initials, learning_goals, weekly_target_xp, preferred_language, preferred_difficulty, daily_reminder, interests } = req.body;
     
     await db.query(
       `UPDATE users 
-       SET bio = ?, linkedin = ?, github = ?, skills = ?, avatar_initials = ?
+       SET bio = ?, linkedin = ?, github = ?, skills = ?, avatar_initials = ?,
+           learning_goals = ?, weekly_target_xp = ?, preferred_language = ?,
+           preferred_difficulty = ?, daily_reminder = ?, interests = ?
        WHERE id = ?`,
-      [bio || null, linkedin || null, github || null, skills || null, avatar_initials || null, userId]
+      [
+        bio || null, linkedin || null, github || null, skills || null, avatar_initials || null,
+        learning_goals || null, parseInt(weekly_target_xp) || 500, preferred_language || 'javascript',
+        preferred_difficulty || 'medium', daily_reminder ? 1 : 0, interests || null,
+        userId
+      ]
     );
     
     res.json({ success: true, message: 'Profile updated successfully.' });

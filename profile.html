@@ -78,34 +78,88 @@
       </div>
       <div style="display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;align-items:start;" id="profileGrid">
         <!-- Profile Card -->
-        <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;text-align:center;">
-          <div class="dash-avatar-lg" id="profileAvatar" style="margin:0 auto 1rem;">ST</div>
-          <h3 id="profileName" style="margin-bottom:.25rem;">Student</h3>
-          <p id="profileBranch" style="color:var(--mist);font-size:13px;margin-bottom:.75rem;">SDE Track</p>
-          <div class="badge badge-accent" id="profileRole">user</div>
-          <div style="display:flex;justify-content:center;gap:1.5rem;margin-top:1.5rem;">
-            <div style="text-align:center;">
-              <div style="font-size:1.4rem;font-weight:700;color:var(--accent);" id="pXP">0</div>
-              <div style="font-size:11px;color:var(--mist);">XP</div>
+        <div style="display:flex; flex-direction:column; gap:1.25rem;">
+          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;text-align:center;">
+            <div class="dash-avatar-lg" id="profileAvatar" style="margin:0 auto 1rem;">ST</div>
+            <h3 id="profileName" style="margin-bottom:.25rem;">Student</h3>
+            <p id="profileBranch" style="color:var(--mist);font-size:13px;margin-bottom:.75rem;">SDE Track</p>
+            <div class="badge badge-accent" id="profileRole">user</div>
+            <div style="display:flex;justify-content:center;gap:1.5rem;margin-top:1.5rem;">
+              <div style="text-align:center;">
+                <div style="font-size:1.4rem;font-weight:700;color:var(--accent);" id="pXP">0</div>
+                <div style="font-size:11px;color:var(--mist);">XP</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-size:1.4rem;font-weight:700;" id="pCerts">0</div>
+                <div style="font-size:11px;color:var(--mist);">Certs</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-size:1.4rem;font-weight:700;" id="pLevel">1</div>
+                <div style="font-size:11px;color:var(--mist);">Level</div>
+              </div>
             </div>
-            <div style="text-align:center;">
-              <div style="font-size:1.4rem;font-weight:700;" id="pCerts">0</div>
-              <div style="font-size:11px;color:var(--mist);">Certs</div>
-            </div>
-            <div style="text-align:center;">
-              <div style="font-size:1.4rem;font-weight:700;" id="pLevel">1</div>
-              <div style="font-size:11px;color:var(--mist);">Level</div>
+          </div>
+
+          <!-- Earned Badges Card -->
+          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem;">
+            <h4 style="font-size:13.5px;margin-bottom:1rem;color:var(--frost);">Earned Badges</h4>
+            <div id="profileBadgesGrid" style="display:grid;grid-template-columns:repeat(3, 1fr);gap:.5rem;text-align:center;">
+              <div style="grid-column:1/-1;font-size:11.5px;color:var(--mist-dim);padding:1rem 0;">Loading badges...</div>
             </div>
           </div>
         </div>
+
         <!-- Edit Form -->
         <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;">
           <h3 style="font-size:16px;margin-bottom:1.25rem;">Edit Profile</h3>
-          <div class="form-group"><label>Display Name</label><input class="form-control" id="pDispName" placeholder="Your full name"></div>
-          <div class="form-group"><label>Bio</label><textarea class="form-control" id="pBio" rows="3" placeholder="Tell us about yourself..."></textarea></div>
-          <div class="form-group"><label>LinkedIn</label><input class="form-control" id="pLinkedin" placeholder="linkedin.com/in/username"></div>
-          <div class="form-group"><label>GitHub</label><input class="form-control" id="pGithub" placeholder="github.com/username"></div>
-          <div class="form-group"><label>Skills (comma-separated)</label><input class="form-control" id="pSkills" placeholder="Python, React, SQL..."></div>
+          
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;" class="dash-two-col">
+            <div class="form-group"><label>Display Name</label><input class="form-control" id="pDispName" placeholder="Your name"></div>
+            <div class="form-group"><label>Interests</label><input class="form-control" id="pInterests" placeholder="e.g. AI, Web Security"></div>
+          </div>
+
+          <div class="form-group"><label>Learning Goals / Targets</label><textarea class="form-control" id="pGoals" rows="2" placeholder="e.g. Master React and land a backend developer role."></textarea></div>
+          <div class="form-group"><label>Bio</label><textarea class="form-control" id="pBio" rows="2" placeholder="Tell us about yourself..."></textarea></div>
+          
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;" class="dash-two-col">
+            <div class="form-group">
+              <label>Weekly XP Target</label>
+              <select class="form-control" id="pTargetXP">
+                <option value="100">100 XP (Casual)</option>
+                <option value="500" selected>500 XP (Regular)</option>
+                <option value="1000">1,000 XP (Serious)</option>
+                <option value="2500">2,500 XP (Insane)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Language</label>
+              <select class="form-control" id="pPrefLanguage">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Difficulty</label>
+              <select class="form-control" id="pPrefDifficulty">
+                <option value="easy">Easy (Beginner)</option>
+                <option value="medium" selected>Medium (Intermediate)</option>
+                <option value="hard">Hard (Advanced)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;" class="dash-two-col">
+            <div class="form-group"><label>LinkedIn</label><input class="form-control" id="pLinkedin" placeholder="linkedin.com/in/username"></div>
+            <div class="form-group"><label>GitHub</label><input class="form-control" id="pGithub" placeholder="github.com/username"></div>
+          </div>
+
+          <div class="form-group" style="display:flex;align-items:center;gap:.6rem;margin-bottom:1.5rem;cursor:pointer;user-select:none;">
+            <input type="checkbox" id="pReminder" style="width:16px;height:16px;accent-color:hsl(262,80%,60%);cursor:pointer;">
+            <label for="pReminder" style="margin:0;font-size:12.5px;color:var(--mist);cursor:pointer;">Send daily study reminders and notifications via email</label>
+          </div>
+
           <div id="profileFormMsg" class="form-success"></div>
           <button class="btn btn-primary" id="saveProfileBtn">Save Changes</button>
         </div>

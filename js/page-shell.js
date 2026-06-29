@@ -96,20 +96,78 @@ window.initPageShell = function (activeNavId) {
     if (e.key === 'Escape') { searchModal?.classList.remove('open'); if (searchInput) searchInput.value = ''; if (searchList) searchList.innerHTML = ''; }
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); searchModal?.classList.add('open'); setTimeout(() => searchInput?.focus(), 80); }
   });
-  searchInput?.addEventListener('input', () => {
-    const q = searchInput.value.toLowerCase().trim();
+  // Fast dynamic database search with local fallback for navigation
+  searchInput?.addEventListener('input', async () => {
+    const q = searchInput.value.trim();
     if (!searchList) return;
     searchList.innerHTML = '';
-    if (!q) return;
-    const hits = SEARCH_INDEX.filter(d => d.title.toLowerCase().includes(q) || d.desc.toLowerCase().includes(q) || d.cat.toLowerCase().includes(q));
-    if (!hits.length) { searchList.innerHTML = '<div class="search-no-results">No results found.</div>'; return; }
-    hits.slice(0, 8).forEach(item => {
-      const el = document.createElement('div');
-      el.className = 'search-result-item';
-      el.innerHTML = `<div class="search-result-icon">${item.icon}</div><div class="search-result-info"><div class="search-result-title">${item.title}</div><div class="search-result-desc">${item.desc}</div></div><div class="search-result-cat">${item.cat}</div>`;
-      el.addEventListener('click', () => { searchModal.classList.remove('open'); window.location.href = item.link; });
-      searchList.appendChild(el);
-    });
+    if (!q) {
+      // Show default navigation guides
+      SEARCH_INDEX.slice(0, 5).forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'search-result-item';
+        el.innerHTML = `<div class="search-result-icon">${item.icon}</div><div class="search-result-info"><div class="search-result-title">${item.title}</div><div class="search-result-desc">${item.desc}</div></div><div class="search-result-cat">${item.cat}</div>`;
+        el.addEventListener('click', () => { searchModal.classList.remove('open'); window.location.href = item.link; });
+        searchList.appendChild(el);
+      });
+      return;
+    }
+
+    try {
+      const res = await apiFetch('/api/roadmaps/search?q=' + encodeURIComponent(q));
+      if (res.success && res.results) {
+        const results = res.results;
+        if (!results.length) {
+          searchList.innerHTML = '<div class="search-no-results">No results found in database.</div>';
+          return;
+        }
+        results.forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'search-result-item';
+          const typeIcons = { roadmap: '🗺', module: '📦', lesson: '📖', user: '👤', certificate: '🏆' };
+          const icon = item.icon || typeIcons[item.type] || '🔍';
+          
+          // Highlight match
+          const regex = new RegExp(`(${q})`, 'gi');
+          const titleHighlighted = item.title.replace(regex, '<mark style="background:hsl(262,80%,30%);color:#fff;border-radius:2px;padding:0 2px;">$1</mark>');
+          const descHighlighted = (item.rdesc || '').replace(regex, '<mark style="background:hsl(262,80%,30%);color:#fff;border-radius:2px;padding:0 2px;">$1</mark>');
+
+          el.innerHTML = `
+            <div class="search-result-icon">${icon}</div>
+            <div class="search-result-info">
+              <div class="search-result-title">${titleHighlighted}</div>
+              <div class="search-result-desc">${descHighlighted}</div>
+            </div>
+            <div class="search-result-cat" style="text-transform:capitalize;">${item.type}</div>
+          `;
+          el.addEventListener('click', () => {
+            searchModal.classList.remove('open');
+            // Navigate properly based on item type
+            if (item.type === 'roadmap') {
+              window.location.href = `roadmaps.html?id=${item.id}`;
+            } else if (item.type === 'module') {
+              window.location.href = `roadmaps.html`; // goes to roadmaps list/learn
+            } else if (item.type === 'lesson') {
+              window.location.href = `roadmaps.html`; // goes to roadmaps
+            } else {
+              window.location.href = item.link || 'user.html';
+            }
+          });
+          searchList.appendChild(el);
+        });
+      }
+    } catch (e) {
+      // Local backup fallback on server search error
+      const hits = SEARCH_INDEX.filter(d => d.title.toLowerCase().includes(q.toLowerCase()) || d.desc.toLowerCase().includes(q.toLowerCase()));
+      if (!hits.length) { searchList.innerHTML = '<div class="search-no-results">No results found.</div>'; return; }
+      hits.slice(0, 8).forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'search-result-item';
+        el.innerHTML = `<div class="search-result-icon">${item.icon}</div><div class="search-result-info"><div class="search-result-title">${item.title}</div><div class="search-result-desc">${item.desc}</div></div><div class="search-result-cat">${item.cat}</div>`;
+        el.addEventListener('click', () => { searchModal.classList.remove('open'); window.location.href = item.link; });
+        searchList.appendChild(el);
+      });
+    }
   });
 
   return session;
