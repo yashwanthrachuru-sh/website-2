@@ -2,15 +2,59 @@
 // backend/controllers/aiController.js
 // EduNet — AI Coding Mentor (Smart Context-Aware, No API Key Required)
 // ============================================================
-// This controller provides a fully functional AI mentor that:
-//   1. Understands the student's current roadmap, module, lesson, exercise
-//   2. Generates rich, contextual teaching responses without an API key
-//   3. Can optionally use OpenAI if OPENAI_API_KEY is set in .env
-//   4. Saves chat history to ai_chat_logs table
-// ============================================================
 'use strict';
 
 const db = require('../config/db');
+const https = require('https');
+
+// Helper to call OpenAI API securely using native HTTPS
+function callOpenAI(apiKey, systemPrompt, userMessage) {
+  return new Promise((resolve) => {
+    const data = JSON.stringify({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMessage }
+      ],
+      temperature: 0.7
+    });
+
+    const options = {
+      hostname: 'api.openai.com',
+      port: 443,
+      path: '/v1/chat/completions',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Length': data.length
+      },
+      timeout: 8000 // 8s timeout limit
+    };
+
+    const req = https.request(options, (res) => {
+      let body = '';
+      res.on('data', (chunk) => body += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(body);
+          if (json.choices && json.choices[0] && json.choices[0].message) {
+            resolve(json.choices[0].message.content);
+          } else {
+            resolve(null);
+          }
+        } catch (e) {
+          resolve(null);
+        }
+      });
+    });
+
+    req.on('error', () => resolve(null));
+    req.on('timeout', () => { req.destroy(); resolve(null); });
+    req.write(data);
+    req.end();
+  });
+}
 
 // ── Mode response generators ────────────────────────────────────
 const MODES = {
@@ -78,14 +122,34 @@ const aiMentor = async (req, res) => {
       if (rm) ctx.roadmap = rm;
     }
 
-    // Generate response based on mode
+    // Generate response based on mode (GPT first if key exists, else offline templates)
     let reply = '';
-    if (mode && MODES[mode]) {
-      reply = MODES[mode](ctx, message || '');
-    } else if (message) {
-      reply = generateChatResponse(ctx, message);
-    } else {
-      reply = `👋 Hi ${ctx.username}! I'm your AI Coding Mentor. Ask me anything about **${ctx.lesson?.title || ctx.module?.title || 'your current topic'}** — I can explain concepts, generate examples, debug code, suggest exercises, and prepare you for interviews!`;
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (apiKey && apiKey.startsWith('sk-') && apiKey !== 'sk-placeholder_key_here') {
+      const systemPrompt = `You are a helpful, senior AI Coding Mentor on the EduNet learning platform.
+Student Username: ${ctx.username}
+Current Roadmap: ${ctx.roadmap?.title || 'General'}
+Current Module: ${ctx.module?.title || 'General'}
+Current Lesson: ${ctx.lesson?.title || 'General'}
+Programming Language: ${getLang(ctx)}
+${ctx.user_code ? `Current Student Code:\n\`\`\`\n${ctx.user_code}\n\`\`\`` : ''}
+Mode: ${mode || 'chat'}
+
+Provide a structured, helpful explanation or helper text based on the mode.
+Keep the response formatted in clean markdown, using emojis, bullet points, and code blocks.`;
+
+      const userMsg = message || `Help me with mode: ${mode || 'general help'}`;
+      reply = await callOpenAI(apiKey, systemPrompt, userMsg);
+    }
+
+    if (!reply) {
+      if (mode && MODES[mode]) {
+        reply = MODES[mode](ctx, message || '');
+      } else if (message) {
+        reply = generateChatResponse(ctx, message);
+      } else {
+        reply = `👋 Hi ${ctx.username}! I'm your AI Coding Mentor. Ask me anything about **${ctx.lesson?.title || ctx.module?.title || 'your current topic'}** — I can explain concepts, generate examples, debug code, suggest exercises, and prepare you for interviews!`;
+      }
     }
 
     // Save to chat log

@@ -23,10 +23,20 @@ const PORT = process.env.PORT || 5000;
 // SECURITY MIDDLEWARE
 // ============================================================
 
-// Helmet — sets secure HTTP headers (XSS protection, frame options, etc.)
+// Helmet — sets secure HTTP headers (XSS protection, frame options, etc.) with structured CSP
 app.use(helmet({
-  contentSecurityPolicy: false,   // Disabled to allow inline scripts in HTML files
-  crossOriginEmbedderPolicy: false // Allow YouTube embeds
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc:  ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+      styleSrc:   ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
+      fontSrc:    ["'self'", "fonts.gstatic.com", "fonts.googleapis.com"],
+      imgSrc:     ["'self'", "data:", "blob:", "images.unsplash.com", "img.youtube.com"],
+      frameSrc:   ["'self'", "www.youtube.com", "youtube.com"],
+      connectSrc: ["'self'"]
+    }
+  },
+  crossOriginEmbedderPolicy: false // Required for YouTube iframing to work
 }));
 
 // Global rate limiter — 150 requests per 15 minutes per IP
