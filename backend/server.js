@@ -111,6 +111,7 @@ const certificateRoutes = require('./routes/certificateRoutes');
 const lessonRoutes      = require('./routes/lessonRoutes');
 const analyticsRoutes   = require('./routes/analyticsRoutes');
 const aiRoutes          = require('./routes/aiRoutes');
+const achievementRoutes = require('./routes/achievementRoutes');
 
 // ── Mount Routes ─────────────────────────────────────────────
 app.use('/api/auth',         authRoutes);
@@ -129,6 +130,7 @@ app.use('/api/certificates', certificateRoutes);
 app.use('/api/lessons',      lessonRoutes);
 app.use('/api/analytics',    analyticsRoutes);
 app.use('/api/ai',           aiLimiter, aiRoutes); // AI gets its own stricter limiter
+app.use('/api/achievements', achievementRoutes);
 
 // ============================================================
 // CATCH-ALL ROUTES

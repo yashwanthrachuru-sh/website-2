@@ -4,10 +4,151 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EduNet — Student Dashboard</title>
+<meta name="description" content="Your personal EduNet learning dashboard — track XP, streaks, roadmap progress, achievements, and analytics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
+<!-- Chart.js for analytics charts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js" defer></script>
+<style>
+/* ── Heatmap ────────────────────────────────────────── */
+.heatmap-wrap { overflow-x: auto; padding-bottom: .5rem; }
+.heatmap-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 1fr);
+  gap: 3px;
+  width: max-content;
+  min-width: 100%;
+}
+.heatmap-cell {
+  width: 13px; height: 13px;
+  border-radius: 3px;
+  background: var(--border);
+  cursor: default;
+  transition: transform .15s;
+}
+.heatmap-cell:hover { transform: scale(1.4); }
+.heatmap-cell[data-level="1"] { background: hsl(262,60%,28%); }
+.heatmap-cell[data-level="2"] { background: hsl(262,70%,45%); }
+.heatmap-cell[data-level="3"] { background: hsl(262,80%,60%); }
+.heatmap-cell[data-level="4"] { background: hsl(262,90%,72%); }
+.heatmap-months {
+  display: flex; gap: 0; font-size: 10px;
+  color: var(--mist-dim); margin-bottom: 4px;
+  overflow-x: auto;
+}
+.heatmap-legend { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--mist-dim); margin-top: 6px; }
+.heatmap-legend-cell { width: 13px; height: 13px; border-radius: 3px; }
+.heatmap-tooltip {
+  position: fixed; z-index: 9999; pointer-events: none;
+  background: var(--abyss); border: 1px solid var(--border);
+  border-radius: var(--r-sm); padding: 6px 10px;
+  font-size: 11px; color: var(--frost);
+  display: none;
+  white-space: nowrap;
+}
+/* ── Skeleton loader ─────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 25%, var(--abyss-2) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--r-sm);
+}
+@keyframes shimmer { 0% {background-position:200% 0} 100% {background-position:-200% 0} }
+/* ── Achievement badges ──────────────────────────────── */
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: .85rem;
+}
+.ach-badge {
+  background: var(--abyss);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1rem .75rem;
+  text-align: center;
+  transition: border-color .2s, transform .2s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.ach-badge.earned {
+  border-color: hsl(262,80%,55%);
+  background: linear-gradient(135deg, var(--abyss) 0%, hsl(262,40%,12%) 100%);
+}
+.ach-badge.earned::after {
+  content: '✓';
+  position: absolute; top: 4px; right: 6px;
+  font-size: 10px; color: hsl(262,80%,70%);
+  font-weight: 700;
+}
+.ach-badge:hover { transform: translateY(-2px); }
+.ach-badge .ach-icon { font-size: 1.8rem; margin-bottom: .3rem; }
+.ach-badge .ach-name { font-size: 11px; font-weight: 600; color: var(--frost); margin-bottom: .15rem; }
+.ach-badge .ach-desc { font-size: 10px; color: var(--mist-dim); line-height: 1.3; }
+.ach-badge.locked { opacity: .45; filter: grayscale(1); }
+/* ── Chart containers ────────────────────────────────── */
+.chart-card {
+  background: var(--abyss);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+}
+.chart-title {
+  font-size: 13px; font-weight: 600;
+  color: var(--mist); margin-bottom: 1rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+/* ── Insight cards ───────────────────────────────────── */
+.insight-row {
+  display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .75rem;
+}
+.insight-pill {
+  padding: .3rem .7rem; border-radius: 99px;
+  font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; gap: 5px;
+}
+.insight-pill.weak  { background: hsl(0,60%,15%); color: hsl(0,90%,70%); border: 1px solid hsl(0,60%,30%); }
+.insight-pill.strong { background: hsl(140,50%,12%); color: hsl(140,80%,55%); border: 1px solid hsl(140,50%,25%); }
+/* ── Stats band ──────────────────────────────────────── */
+.stats-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: .75rem; margin-bottom: 1.5rem;
+}
+.stat-chip {
+  background: var(--abyss); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: .85rem;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: .2rem;
+}
+.stat-chip-val { font-size: 1.35rem; font-weight: 700; color: var(--frost); font-family: var(--font-mono); }
+.stat-chip-label { font-size: 10.5px; color: var(--mist-dim); text-transform: uppercase; letter-spacing: .05em; }
+/* ── Revision widget ─────────────────────────────────── */
+.revision-item {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .65rem .9rem; border-radius: var(--r-sm);
+  background: var(--void); border: 1px solid var(--border);
+  font-size: 12.5px; transition: border-color .2s;
+}
+.revision-item:hover { border-color: hsl(262,60%,50%); }
+.revision-badge {
+  width: 28px; height: 28px; border-radius: var(--r-xs);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+}
+/* ── Animate in ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.fade-up { animation: fadeUp .4s ease both; }
+.fade-up-d1 { animation-delay: .07s; }
+.fade-up-d2 { animation-delay: .14s; }
+.fade-up-d3 { animation-delay: .21s; }
+</style>
 </head>
 <body>
 
@@ -24,6 +165,9 @@
     <div class="search-results-list" id="searchResultsList"></div>
   </div>
 </div>
+
+<!-- Heatmap tooltip (global) -->
+<div class="heatmap-tooltip" id="hmTooltip"></div>
 
 <div class="dash-layout">
 
@@ -134,52 +278,131 @@
     <div class="dash-content">
 
       <!-- Welcome Header -->
-      <div style="margin-bottom:2rem;">
+      <div style="margin-bottom:1.75rem;" class="fade-up">
         <div class="eyebrow"><span class="live-dot"></span>Student Workspace</div>
-        <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.4rem;">Welcome back, <span class="grad" id="welcomeName">Student</span>!</h2>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.4rem;">Welcome back, <span class="grad" id="welcomeName">Student</span>! 👋</h2>
         <p style="color:var(--mist);font-size:14px;">Here's your learning overview for today.</p>
       </div>
 
-      <!-- Metric Cards -->
-      <div class="metric-grid" id="metricsRow">
-        <div class="metric-card">
-          <div class="metric-label">XP Points</div>
-          <div class="metric-value grad" id="metricXP">0</div>
-          <div class="metric-change">↑ Keep going!</div>
+      <!-- ── STATS BAND (replaces old metric cards, adds more) ── -->
+      <div class="stats-band fade-up fade-up-d1" id="statsBand">
+        <div class="stat-chip">
+          <div class="stat-chip-val grad" id="metricXP">0</div>
+          <div class="stat-chip-label">XP Points</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">Roadmap Progress</div>
-          <div class="metric-value" id="metricProgress">0%</div>
-          <div class="metric-change" style="color:var(--accent);">Active track</div>
+        <div class="stat-chip">
+          <div class="stat-chip-val" id="metricLevel" style="color:hsl(262,80%,70%);">1</div>
+          <div class="stat-chip-label">Level</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">Certificates</div>
-          <div class="metric-value" id="metricCerts">0</div>
-          <div class="metric-change" style="color:var(--emerald);">Earned</div>
+        <div class="stat-chip">
+          <div class="stat-chip-val" id="metricStreak" style="color:var(--amber);">0 🔥</div>
+          <div class="stat-chip-label">Streak</div>
         </div>
-        <div class="metric-card">
-          <div class="metric-label">Branch</div>
-          <div class="metric-value" style="font-size:1.2rem;" id="metricBranch">SDE</div>
-          <div class="metric-change" style="color:var(--mist);">Current track</div>
+        <div class="stat-chip">
+          <div class="stat-chip-val" id="metricLessons" style="color:var(--emerald);">0</div>
+          <div class="stat-chip-label">Lessons Done</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-val" id="metricModules">0</div>
+          <div class="stat-chip-label">Modules Done</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-val" id="metricCerts" style="color:var(--amber);">0</div>
+          <div class="stat-chip-label">Certificates</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-val" id="metricRank">#—</div>
+          <div class="stat-chip-label">Rank</div>
+        </div>
+        <div class="stat-chip">
+          <div class="stat-chip-val" id="metricBranch" style="font-size:1rem;">SDE</div>
+          <div class="stat-chip-label">Track</div>
+        </div>
+      </div>
+
+      <!-- XP Progress Bar -->
+      <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.25rem;margin-bottom:1.5rem;" class="fade-up fade-up-d2">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:.5rem;">
+          <span style="color:var(--mist);font-weight:600;">Level Progress</span>
+          <span style="color:hsl(262,80%,70%);font-family:var(--font-mono);font-weight:700;" id="xpLevelText">Lv 1</span>
+        </div>
+        <div class="progress-bar" style="height:8px;margin-bottom:.4rem;">
+          <div class="progress-fill" id="xpProgressFill" style="width:0%;transition:width .8s cubic-bezier(.4,0,.2,1);"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mist-dim);">
+          <span id="xpCurrentText">0 XP</span>
+          <span id="xpNextText">500 XP to next level</span>
         </div>
       </div>
 
       <!-- Quick Actions -->
-      <div style="margin-bottom:2rem;">
-        <h3 style="font-size:15px;margin-bottom:1rem;color:var(--mist);">Quick Actions</h3>
+      <div style="margin-bottom:2rem;" class="fade-up fade-up-d2">
+        <h3 style="font-size:14px;margin-bottom:.85rem;color:var(--mist);text-transform:uppercase;letter-spacing:.06em;">Quick Actions</h3>
         <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
           <a href="roadmaps.html" class="btn btn-primary btn-sm">📍 Continue Roadmap</a>
           <a href="coding-lab.html" class="btn btn-secondary btn-sm">💻 Open Coding Lab</a>
           <a href="quiz.html" class="btn btn-secondary btn-sm">🧠 Take a Quiz</a>
           <a href="ai-tools.html" class="btn btn-secondary btn-sm">🛠 Browse AI Tools</a>
-          <a href="resume.html" class="btn btn-secondary btn-sm">📄 Resume Builder</a>
+          <a href="interview.html" class="btn btn-secondary btn-sm">💼 Interview Prep</a>
         </div>
       </div>
 
-      <!-- Main Grid: Videos + Activity -->
-      <div style="display:grid;grid-template-columns:1.4fr 0.6fr;gap:1.5rem;margin-bottom:2rem;" class="dash-two-col">
+      <!-- ── ANALYTICS: Weekly XP Chart + Topic Insights ── -->
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem;margin-bottom:1.75rem;" class="dash-two-col fade-up fade-up-d3">
 
-        <!-- Featured Videos Section -->
+        <!-- Weekly XP Chart -->
+        <div class="chart-card">
+          <div class="chart-title">
+            <span>📈 Weekly XP Trend</span>
+            <span style="font-size:11px;color:var(--mist-dim);" id="weeklyTotalXp">Loading...</span>
+          </div>
+          <div style="height:180px;position:relative;">
+            <canvas id="weeklyChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Topic Insights -->
+        <div class="chart-card">
+          <div class="chart-title">🎯 Topic Performance</div>
+          <div style="font-size:12px;color:var(--mist-dim);margin-bottom:.6rem;">Needs improvement</div>
+          <div id="weakTopicsRow" class="insight-row">
+            <div class="skeleton" style="height:24px;width:80px;border-radius:99px;"></div>
+            <div class="skeleton" style="height:24px;width:70px;border-radius:99px;"></div>
+            <div class="skeleton" style="height:24px;width:90px;border-radius:99px;"></div>
+          </div>
+          <div style="font-size:12px;color:var(--mist-dim);margin:1rem 0 .6rem;">Strong areas</div>
+          <div id="strongTopicsRow" class="insight-row">
+            <div class="skeleton" style="height:24px;width:80px;border-radius:99px;"></div>
+            <div class="skeleton" style="height:24px;width:70px;border-radius:99px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── LEARNING HEATMAP ── -->
+      <div class="chart-card fade-up" style="margin-bottom:1.75rem;">
+        <div class="chart-title">
+          <span>🟩 Learning Activity — Last 52 Weeks</span>
+          <span style="font-size:11px;color:var(--mist-dim);" id="heatmapTotal">Loading...</span>
+        </div>
+        <div class="heatmap-months" id="heatmapMonths"></div>
+        <div class="heatmap-wrap">
+          <div class="heatmap-grid" id="heatmapGrid"></div>
+        </div>
+        <div class="heatmap-legend">
+          <span>Less</span>
+          <div class="heatmap-legend-cell" style="background:var(--border);"></div>
+          <div class="heatmap-legend-cell" data-level="1"></div>
+          <div class="heatmap-legend-cell" data-level="2"></div>
+          <div class="heatmap-legend-cell" data-level="3"></div>
+          <div class="heatmap-legend-cell" data-level="4"></div>
+          <span>More</span>
+        </div>
+      </div>
+
+      <!-- ── MAIN GRID: Videos + Activity + Revision ── -->
+      <div style="display:grid;grid-template-columns:1.4fr 0.6fr;gap:1.5rem;margin-bottom:1.75rem;" class="dash-two-col fade-up">
+
+        <!-- Featured Videos -->
         <div>
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
             <h3 style="font-size:15px;">🎬 Recommended Videos</h3>
@@ -191,7 +414,6 @@
             </div>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;" id="videosGrid">
-            <!-- JS populated -->
             <div style="grid-column:1/-1;padding:2.5rem;text-align:center;color:var(--mist);background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);">
               <div style="font-size:2rem;margin-bottom:.5rem;">🎬</div>
               <p style="font-size:13px;">No videos yet. Admin will add learning resources soon.</p>
@@ -199,49 +421,45 @@
           </div>
         </div>
 
-        <!-- Activity Feed -->
-        <div>
-          <h3 style="font-size:15px;margin-bottom:1rem;">📊 Activity Feed</h3>
-          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;">
-            <div id="activityFeed" style="display:flex;flex-direction:column;"></div>
+        <!-- Activity + Smart Revision -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <!-- Activity Feed -->
+          <div>
+            <h3 style="font-size:15px;margin-bottom:.75rem;">📊 Activity Feed</h3>
+            <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;">
+              <div id="activityFeed" style="display:flex;flex-direction:column;"></div>
+            </div>
           </div>
 
-          <!-- XP Progress -->
-          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;margin-top:1rem;">
-            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:.6rem;">
-              <span style="color:var(--mist);font-weight:600;">Level Progress</span>
-              <span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;" id="xpLevelText">Lv 1</span>
-            </div>
-            <div class="progress-bar" style="height:6px;margin-bottom:.5rem;">
-              <div class="progress-fill" id="xpProgressFill" style="width:0%;"></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mist-dim);">
-              <span id="xpCurrentText">0 XP</span>
-              <span id="xpNextText">500 XP to next level</span>
+          <!-- Smart Revision Widget -->
+          <div>
+            <h3 style="font-size:15px;margin-bottom:.75rem;">🔁 Review Today</h3>
+            <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem;" id="revisionWidget">
+              <div class="skeleton" style="height:44px;margin-bottom:.5rem;"></div>
+              <div class="skeleton" style="height:44px;margin-bottom:.5rem;"></div>
+              <div class="skeleton" style="height:44px;"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Secondary Grid: Bookmarks, Saved Code, Streaks & Daily Challenges -->
-      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:1.5rem;margin-bottom:2rem;" class="dash-two-col">
+      <!-- ── SECONDARY GRID: Bookmarks + Daily Challenge ── -->
+      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:1.5rem;margin-bottom:1.75rem;" class="dash-two-col fade-up">
         <!-- Bookmarks & Code Snippets -->
         <div>
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
             <h3 style="font-size:15px;">🔖 Bookmarks &amp; Saved Programs</h3>
-            <a href="bookmarks.html" style="font-size:13px;color:var(--accent);">All Bookmarks →</a>
+            <a href="bookmarks.html" style="font-size:13px;color:var(--accent);">All →</a>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-            <!-- Bookmarked items -->
             <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;">
               <h4 style="font-size:13.5px;margin-bottom:.5rem;color:var(--frost);">Saved Bookmarks</h4>
               <div id="dashBookmarksList" style="display:flex;flex-direction:column;gap:.5rem;max-height:180px;overflow-y:auto;font-size:12.5px;">
                 <div style="color:var(--mist-dim);">No bookmarked items.</div>
               </div>
             </div>
-            <!-- Saved Code Snippets -->
             <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;">
-              <h4 style="font-size:13.5px;margin-bottom:.5rem;color:var(--frost);">Code Lab Saved Projects</h4>
+              <h4 style="font-size:13.5px;margin-bottom:.5rem;color:var(--frost);">Code Lab Projects</h4>
               <div id="dashSavedProgramsList" style="display:flex;flex-direction:column;gap:.5rem;max-height:180px;overflow-y:auto;font-size:12.5px;">
                 <div style="color:var(--mist-dim);">No saved code files.</div>
               </div>
@@ -249,13 +467,13 @@
           </div>
         </div>
 
-        <!-- Streaks & Daily Challenge -->
+        <!-- Daily Challenge -->
         <div>
           <h3 style="font-size:15px;margin-bottom:1rem;">⚡ Daily Learning Challenge</h3>
           <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.25rem;display:flex;flex-direction:column;gap:.85rem;">
             <div style="display:flex;align-items:center;justify-content:space-between;">
               <span style="font-size:13px;color:var(--mist);font-weight:600;">Learning Streak</span>
-              <span style="color:var(--amber);font-family:var(--font-mono);font-weight:700;display:flex;align-items:center;gap:4px;" id="dashStreakVal">🔥 3 Days</span>
+              <span style="color:var(--amber);font-family:var(--font-mono);font-weight:700;" id="dashStreakVal">🔥 0 Days</span>
             </div>
             <div style="background:var(--void);border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center;">
               <div style="font-size:10px;font-family:var(--font-mono);color:var(--accent);margin-bottom:.2rem;">TODAY'S MISSION</div>
@@ -267,34 +485,28 @@
         </div>
       </div>
 
-      <!-- Recent Achievements -->
-      <div style="margin-bottom:2rem;">
+      <!-- ── ACHIEVEMENTS ── -->
+      <div style="margin-bottom:2rem;" class="fade-up">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-          <h3 style="font-size:15px;">🏆 Recent Achievements</h3>
-          <a href="certificates.html" style="font-size:13px;color:var(--accent);">View all →</a>
-        </div>
-        <div class="achievements-grid">
-          <div class="achievement-card">
-            <div class="achievement-icon">🛡️</div>
-            <h4>Auth Guard</h4>
-            <p>Account verified and approved.</p>
-          </div>
-          <div class="achievement-card locked" id="badgeQuizHero">
-            <div class="achievement-icon">⚡</div>
-            <h4>Quiz Hero</h4>
-            <p>Complete your first quiz to unlock.</p>
-          </div>
-          <div class="achievement-card locked" id="badgeCodeSlayer">
-            <div class="achievement-icon">💻</div>
-            <h4>Compiler Slayer</h4>
-            <p>Run code in the coding lab to unlock.</p>
-          </div>
-          <div class="achievement-card locked" id="badgeRoadmapPioneer">
-            <div class="achievement-icon">🗺️</div>
-            <h4>Roadmap Pioneer</h4>
-            <p>Complete 3 roadmap nodes to unlock.</p>
+          <h3 style="font-size:15px;">🏆 Achievements</h3>
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:12px;color:var(--mist-dim);" id="achEarnedCount">Loading...</span>
+            <a href="certificates.html" style="font-size:13px;color:var(--accent);">Certificates →</a>
           </div>
         </div>
+
+        <!-- Skeleton while loading -->
+        <div id="achSkeleton" class="ach-grid">
+          <div class="skeleton" style="height:120px;border-radius:var(--r-md);"></div>
+          <div class="skeleton" style="height:120px;border-radius:var(--r-md);"></div>
+          <div class="skeleton" style="height:120px;border-radius:var(--r-md);"></div>
+          <div class="skeleton" style="height:120px;border-radius:var(--r-md);"></div>
+          <div class="skeleton" style="height:120px;border-radius:var(--r-md);"></div>
+          <div class="skeleton" style="height:120px;border-radius:var(--r-md);"></div>
+        </div>
+
+        <!-- Real achievements grid (hidden until loaded) -->
+        <div id="achGrid" class="ach-grid" style="display:none;"></div>
       </div>
 
     </div><!-- /dash-content -->
