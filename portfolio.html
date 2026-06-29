@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EduNet Developer Portfolio — Showcasing skills, projects, learning streak, achievements and verified certificates.">
+<title>EduNet — Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
+<link rel="stylesheet" href="/css/portfolio.css">
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Global Search Modal -->
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-box">
+    <div class="search-input-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search everything..." autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results-list" id="searchResultsList"></div>
+  </div>
+</div>
+
+<!-- Project Modal (Add/Edit Project) -->
+<div class="auth-modal" id="projectModal" role="dialog" aria-label="Project Editor">
+  <div class="auth-modal-box" style="max-width: 500px;">
+    <button class="auth-modal-close" id="projectCloseBtn">&times;</button>
+    <h3 id="projectModalTitle">Add Project</h3>
+    <p class="form-desc">Showcase your technical projects on your public portfolio.</p>
+    <form id="projectForm" novalidate>
+      <input type="hidden" id="projId">
+      <div class="form-group">
+        <label for="projTitle">Project Title *</label>
+        <input class="form-control" type="text" id="projTitle" placeholder="e.g. E-Commerce Platform" required>
+      </div>
+      <div class="form-group">
+        <label for="projDesc">Description *</label>
+        <textarea class="form-control" id="projDesc" rows="3" placeholder="Explain what you built..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="projTech">Tech Stack (comma separated)</label>
+        <input class="form-control" type="text" id="projTech" placeholder="e.g. React, Node.js, MongoDB">
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="projGithub">GitHub Link</label>
+          <input class="form-control" type="url" id="projGithub" placeholder="https://github.com/...">
+        </div>
+        <div class="form-group">
+          <label for="projLive">Live Demo Link</label>
+          <input class="form-control" type="url" id="projLive" placeholder="https://...">
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+          <label for="projDiff">Difficulty</label>
+          <select class="form-control" id="projDiff">
+            <option value="Easy">Easy</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="projStatus">Status</label>
+          <select class="form-control" id="projStatus">
+            <option value="Completed" selected>Completed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Beta">Beta</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+        <div class="form-group">
+          <label for="projDate">Completion Date</label>
+          <input class="form-control" type="date" id="projDate">
+        </div>
+        <div class="form-group" style="display:flex; align-items:center; gap: 8px; margin-top: 1.5rem;">
+          <input type="checkbox" id="projFeatured" style="width:16px;height:16px;accent-color:var(--accent);">
+          <label for="projFeatured" style="margin:0;">Pin as Featured</label>
+        </div>
+      </div>
+      <div id="projectFormError" class="form-error"></div>
+      <button type="submit" class="btn btn-primary btn-full" id="projectSaveBtn">Save Project</button>
+    </form>
+  </div>
+</div>
+
+<!-- Portfolio Settings Modal -->
+<div class="auth-modal" id="settingsModal" role="dialog" aria-label="Portfolio Settings">
+  <div class="auth-modal-box" style="max-width: 500px; max-height: 90vh; overflow-y: auto;">
+    <button class="auth-modal-close" id="settingsCloseBtn">&times;</button>
+    <h3>Portfolio Customization</h3>
+    <p class="form-desc">Manage public visibility, details, socials and resume.</p>
+    
+    <form id="portfolioSettingsForm">
+      <div class="portfolio-settings-group">
+        <h4 style="font-size: 13.5px; color: var(--frost); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 4px;">Public Visibility</h4>
+        
+        <div class="portfolio-settings-row">
+          <label for="setPublic">Make Portfolio Public</label>
+          <label class="portfolio-switch">
+            <input type="checkbox" id="setPublic" checked>
+            <span class="portfolio-slider"></span>
+          </label>
+        </div>
+        <div class="portfolio-settings-row">
+          <label for="setShowXp">Show XP & Level</label>
+          <label class="portfolio-switch">
+            <input type="checkbox" id="setShowXp" checked>
+            <span class="portfolio-slider"></span>
+          </label>
+        </div>
+        <div class="portfolio-settings-row">
+          <label for="setShowStreak">Show Learning Streak</label>
+          <label class="portfolio-switch">
+            <input type="checkbox" id="setShowStreak" checked>
+            <span class="portfolio-slider"></span>
+          </label>
+        </div>
+        <div class="portfolio-settings-row">
+          <label for="setShowCerts">Show Certificates</label>
+          <label class="portfolio-switch">
+            <input type="checkbox" id="setShowCerts" checked>
+            <span class="portfolio-slider"></span>
+          </label>
+        </div>
+        <div class="portfolio-settings-row">
+          <label for="setShowProjects">Show Projects</label>
+          <label class="portfolio-switch">
+            <input type="checkbox" id="setShowProjects" checked>
+            <span class="portfolio-slider"></span>
+          </label>
+        </div>
+        <div class="portfolio-settings-row">
+          <label for="setShowAch">Show Achievements</label>
+          <label class="portfolio-switch">
+            <input type="checkbox" id="setShowAch" checked>
+            <span class="portfolio-slider"></span>
+          </label>
+        </div>
+        <div class="portfolio-settings-row">
+          <label for="setShowInterviews">Show Interview Performance</label>
+          <label class="portfolio-switch">
+            <input type="checkbox" id="setShowInterviews" checked>
+            <span class="portfolio-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="portfolio-settings-group">
+        <h4 style="font-size: 13.5px; color: var(--frost); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 4px;">Developer Profile Info</h4>
+        
+        <div class="form-group">
+          <label for="setHeadline">Professional Headline</label>
+          <input class="form-control" type="text" id="setHeadline" placeholder="e.g. Full Stack Developer | Aspiring SDE">
+        </div>
+        <div class="form-group">
+          <label for="setRole">Current Role / Target Title</label>
+          <input class="form-control" type="text" id="setRole" placeholder="e.g. Software Engineer Intern">
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="setYears">Years Learning</label>
+            <input class="form-control" type="text" id="setYears" placeholder="e.g. 2 Years">
+          </div>
+          <div class="form-group">
+            <label for="setLocation">Location (City, Country)</label>
+            <input class="form-control" type="text" id="setLocation" placeholder="e.g. Bengaluru, India">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="setAvailability">Availability Status</label>
+            <input class="form-control" type="text" id="setAvailability" placeholder="e.g. Immediate / Sept 2026">
+          </div>
+          <div class="form-group" style="display:flex; align-items:center; gap: 8px; margin-top: 1.5rem;">
+            <input type="checkbox" id="setOpenWork" style="width:16px;height:16px;accent-color:var(--accent);">
+            <label for="setOpenWork" style="margin:0;">Open To Work Badge</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="setAbout">About Me (Markdown supported)</label>
+          <textarea class="form-control" id="setAbout" rows="4" placeholder="Describe your coding journey, career goals, interests..."></textarea>
+        </div>
+      </div>
+
+      <div class="portfolio-settings-group">
+        <h4 style="font-size: 13.5px; color: var(--frost); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 4px;">Social Handles</h4>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="setGithub">GitHub URL</label>
+            <input class="form-control" type="url" id="setGithub" placeholder="https://github.com/...">
+          </div>
+          <div class="form-group">
+            <label for="setLinkedin">LinkedIn URL</label>
+            <input class="form-control" type="url" id="setLinkedin" placeholder="https://linkedin.com/in/...">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="setTwitter">Twitter URL</label>
+            <input class="form-control" type="url" id="setTwitter" placeholder="https://twitter.com/...">
+          </div>
+          <div class="form-group">
+            <label for="setInstagram">Instagram URL</label>
+            <input class="form-control" type="url" id="setInstagram" placeholder="https://instagram.com/...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="setWebsite">Personal Website URL</label>
+          <input class="form-control" type="url" id="setWebsite" placeholder="https://...">
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="setEmail">Contact Email</label>
+            <input class="form-control" type="email" id="setEmail" placeholder="developer@email.com">
+          </div>
+          <div class="form-group">
+            <label for="setPhone">Contact Phone</label>
+            <input class="form-control" type="text" id="setPhone" placeholder="+91 99999 99999">
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-settings-group">
+        <h4 style="font-size: 13.5px; color: var(--frost); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 4px;">Custom Assets</h4>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="setPic">Profile Picture URL (or relative)</label>
+            <input class="form-control" type="text" id="setPic" placeholder="https://...">
+          </div>
+          <div class="form-group">
+            <label for="setBanner">Profile Banner URL (or relative)</label>
+            <input class="form-control" type="text" id="setBanner" placeholder="https://...">
+          </div>
+        </div>
+      </div>
+
+      <div id="settingsFormError" class="form-error"></div>
+      <button type="submit" class="btn btn-primary btn-full" id="settingsSaveBtn">Save Configurations</button>
+    </form>
+  </div>
+</div>
+
+<!-- Share QR Code Modal -->
+<div class="auth-modal" id="qrModal" role="dialog" aria-label="Portfolio QR Code">
+  <div class="auth-modal-box" style="max-width: 320px;">
+    <button class="auth-modal-close" id="qrCloseBtn">&times;</button>
+    <h3 style="text-align:center;">Share Portfolio</h3>
+    <p class="form-desc" style="text-align:center;margin-bottom:1rem;">Scan QR code to view this developer portfolio.</p>
+    <div class="qr-modal-body">
+      <div class="qr-placeholder" id="qrContainer">
+        <!-- Rendered dynamically -->
+      </div>
+      <button class="btn btn-secondary btn-full" id="copyShareLinkBtn">Copy Portfolio URL</button>
+    </div>
+  </div>
+</div>
+
+<div class="dash-layout" id="dashLayoutContainer">
+  <!-- Sidebar (will be hidden programmatically if accessed in public visitor mode) -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-sidebar-logo">
+      <div class="nav-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      EduNet
+    </div>
+    <nav class="dash-nav">
+      <div class="dash-nav-section">Main</div>
+      <a href="/user.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</a>
+      <a href="/roadmaps.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h5a2 2 0 012 2v7M6 9v9"/></svg>Roadmaps</a>
+      <a href="/ai-tools.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>AI Tools</a>
+      <a href="/coding-lab.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>Coding Lab</a>
+      <a href="/quiz.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Quizzes</a>
+      
+      <div class="dash-nav-section">Career</div>
+      <a href="/resume.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Resume Builder</a>
+      <a href="/interview.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Interview Prep</a>
+      <a href="/certificates.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Certificates</a>
+      
+      <div class="dash-nav-section">Account</div>
+      <a href="/leaderboard.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Leaderboard</a>
+      <a href="/bookmarks.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Bookmarks</a>
+      <a href="/profile/portfolio" class="dash-nav-item active" id="sidebarPortfolioLink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Developer Portfolio</a>
+      <a href="/profile.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+    </nav>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-chip">
+        <div class="dash-avatar" id="sidebarAvatar">ST</div>
+        <div class="dash-user-info">
+          <div class="dash-user-name" id="sidebarName">Student</div>
+          <div class="dash-user-role" id="sidebarRole">user</div>
+        </div>
+      </div>
+      <button class="btn btn-secondary btn-sm btn-full" id="logoutBtn" style="justify-content:center;">Logout</button>
+    </div>
+  </aside>
+
+  <div class="dash-main" id="dashMainContainer">
+    <!-- Topbar (will be hidden programmatically if public visitor mode) -->
+    <div class="dash-topbar" id="dashTopbar">
+      <div class="dash-topbar-left">
+        <button class="burger-btn" id="burgerBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <div class="dash-topbar-search" id="topbarSearch">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          Search everything... <kbd>&#8984;K</kbd>
+        </div>
+      </div>
+      <div class="dash-topbar-right">
+        <a href="/notifications.html" class="notif-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notif-badge"></span></a>
+        <a href="/profile.html" class="dash-avatar" id="topbarAvatar" style="text-decoration:none;">ST</a>
+      </div>
+    </div>
+
+    <!-- Standalone Header for Public Visitors -->
+    <header class="navbar" id="publicNavbar" style="display:none; position: static; margin-bottom: 2rem;">
+      <a href="/" class="nav-logo">
+        <div class="nav-mark">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        EduNet <span style="font-size: 13px; font-weight: 500; opacity: 0.6; padding-left: 6px;">| Dev Portfolio</span>
+      </a>
+      <div class="nav-right">
+        <a href="/index.html" class="btn btn-primary btn-sm">Join EduNet</a>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="dash-content">
+      
+      <!-- Portfolio Container -->
+      <div class="portfolio-container">
+        
+        <!-- Skeleton Loader (shows while loading) -->
+        <div id="portfolioSkeleton" style="display:block;">
+          <div class="skeleton" style="height: 280px; margin-bottom: 1.5rem; border-radius: var(--r-lg);"></div>
+          <div style="display:grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <div>
+              <div class="skeleton" style="height: 35px; width: 60%; margin-bottom: 1rem;"></div>
+              <div class="skeleton" style="height: 20px; width: 40%; margin-bottom: 2rem;"></div>
+              <div class="skeleton" style="height: 200px; margin-bottom: 2rem; border-radius: var(--r-md);"></div>
+              <div class="skeleton" style="height: 250px; margin-bottom: 2rem; border-radius: var(--r-md);"></div>
+            </div>
+            <div>
+              <div class="skeleton" style="height: 120px; margin-bottom: 1.5rem; border-radius: var(--r-md);"></div>
+              <div class="skeleton" style="height: 220px; border-radius: var(--r-md);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real Portfolio Content (hidden initially) -->
+        <div id="portfolioContent" style="display:none;" class="animate-fade-up">
+          
+          <!-- Hero Section: Banner & Avatar -->
+          <div class="portfolio-hero-banner">
+            <img id="profileBannerImg" src="/assets/uploads/banners/default.jpg" alt="Profile Banner" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80'">
+            
+            <!-- Owner banner uploader trigger -->
+            <div class="portfolio-banner-edit owner-only">
+              <button class="btn btn-secondary btn-sm" onclick="document.getElementById('bannerFile').click()">
+                📷 Change Banner
+              </button>
+              <input type="file" id="bannerFile" accept="image/*" style="display:none;">
+            </div>
+
+            <!-- Avatar -->
+            <div class="portfolio-avatar-container">
+              <img id="profileAvatarImg" src="" alt="Avatar" style="display:none;">
+              <span id="profileAvatarText" class="portfolio-avatar-placeholder">ST</span>
+              
+              <!-- Owner avatar uploader trigger -->
+              <div class="portfolio-avatar-edit owner-only" onclick="document.getElementById('avatarFile').click()">
+                Update Pic
+              </div>
+              <input type="file" id="avatarFile" accept="image/*" style="display:none;">
+            </div>
+          </div>
+
+          <!-- Profile Details Header & Action Row -->
+          <div class="portfolio-profile-header">
+            <div>
+              <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                <h2 id="profFullName">Real Name</h2>
+                <div class="portfolio-header-badges" id="profBadgesRow">
+                  <span class="badge badge-accent" id="badgeOpenToWork" style="display:none;">Open to Work</span>
+                  <span class="badge badge-green" id="badgeVerifiedLearner">Verified Learner</span>
+                </div>
+              </div>
+              
+              <div class="headline" id="profHeadline">Headline Description</div>
+              
+              <div class="portfolio-user-details-row">
+                <span id="detailCollege">📍 College</span>
+                <span id="detailCountry">🌍 Country</span>
+                <span id="detailStreak">🔥 0 Days Streak</span>
+                <span id="detailRoadmap">🗺 DSA track</span>
+              </div>
+
+              <div class="portfolio-header-actions">
+                <button class="btn btn-primary" id="btnResumeDownload">📄 Download Resume</button>
+                
+                <!-- Resume Uploader Trigger for Owner -->
+                <div class="owner-only" style="display:inline-flex; gap:0.5rem;">
+                  <button class="btn btn-secondary" onclick="document.getElementById('resumeFile').click()">
+                    ⬆️ Upload PDF
+                  </button>
+                  <button class="btn btn-danger" id="btnResumeDelete" style="display:none;" title="Delete Resume">✕</button>
+                  <input type="file" id="resumeFile" accept="application/pdf" style="display:none;">
+                </div>
+
+                <button class="btn btn-secondary" id="btnContact">✉️ Contact Developer</button>
+                <button class="btn btn-secondary" id="btnSharePortfolio">🔗 Share Profile</button>
+                <button class="btn btn-secondary" onclick="window.print()">🖨 Print / PDF</button>
+                
+                <!-- Customize Button for Owner -->
+                <button class="btn btn-secondary owner-only" id="btnOpenSettings" style="border-color:var(--border-accent);">
+                  ⚙️ Settings
+                </button>
+              </div>
+            </div>
+
+            <!-- Stats Quick Cards -->
+            <div class="portfolio-stats-quick-grid" id="quickStatsPanel">
+              <div class="portfolio-stat-quick-card">
+                <div class="portfolio-stat-quick-val" id="statValXP">0</div>
+                <div class="portfolio-stat-quick-lbl">Total XP</div>
+              </div>
+              <div class="portfolio-stat-quick-card">
+                <div class="portfolio-stat-quick-val" id="statValLevel">1</div>
+                <div class="portfolio-stat-quick-lbl">Level</div>
+              </div>
+              <div class="portfolio-stat-quick-card font-display">
+                <div class="portfolio-stat-quick-val" id="statValCerts">0</div>
+                <div class="portfolio-stat-quick-lbl">Certs</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Layout Grid -->
+          <div class="portfolio-grid-main" style="margin-top:2.5rem;">
+            
+            <!-- Left Column -->
+            <div>
+              
+              <!-- About Me -->
+              <div class="portfolio-card">
+                <div class="portfolio-card-header">
+                  <h3>👤 About Me</h3>
+                </div>
+                <div class="portfolio-about-content" id="profAboutContent">
+                  <!-- Parsed Markdown content -->
+                </div>
+              </div>
+
+              <!-- Tech Stack -->
+              <div class="portfolio-card" id="cardSkills">
+                <div class="portfolio-card-header">
+                  <h3>💻 Dynamic Skills & Proficiency</h3>
+                </div>
+                <div class="portfolio-skills-grid" id="profSkillsGrid">
+                  <!-- Skill chips -->
+                </div>
+              </div>
+
+              <!-- Projects Section -->
+              <div class="portfolio-card" id="cardProjects">
+                <div class="portfolio-card-header">
+                  <h3>🏗️ Project Showcases</h3>
+                  <button class="btn btn-primary btn-sm owner-only" id="btnAddProjectBtn">
+                    ➕ Add Project
+                  </button>
+                </div>
+                
+                <!-- Controls: Search & Category filters -->
+                <div class="portfolio-projects-controls">
+                  <div class="search-bar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                    <input type="text" id="projSearchInput" placeholder="Search projects...">
+                  </div>
+                  <div class="filter-row" id="projFilterRow" style="margin-bottom:0;">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="featured">Featured</button>
+                    <button class="filter-btn" data-filter="graded">Graded</button>
+                    <button class="filter-btn" data-filter="manual">Manual</button>
+                  </div>
+                </div>
+
+                <!-- Projects grid list -->
+                <div class="portfolio-projects-grid" id="profProjectsGrid">
+                  <!-- Cards -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="portfolio-pagination" id="profProjectsPagination">
+                  <!-- Pagination buttons -->
+                </div>
+              </div>
+
+              <!-- Certificates Section -->
+              <div class="portfolio-card" id="cardCertificates">
+                <div class="portfolio-card-header">
+                  <h3>🏆 Verified Credentials</h3>
+                </div>
+                <div class="portfolio-certs-grid" id="profCertsGrid">
+                  <!-- Cert cards -->
+                </div>
+              </div>
+
+              <!-- Coding Charts -->
+              <div class="portfolio-card" id="cardCharts">
+                <div class="portfolio-card-header">
+                  <h3>📊 Learning & Coding Telemetry</h3>
+                </div>
+                
+                <!-- Weekly & Monthly Growth Chart -->
+                <div style="margin-bottom: 2rem;">
+                  <h4 style="font-size: 13.5px; color: var(--frost); margin-bottom: 0.75rem;">Weekly XP & Activity Profile</h4>
+                  <div style="height: 220px; position: relative;">
+                    <canvas id="chartWeeklyTelemetry"></canvas>
+                  </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;" class="dash-two-col">
+                  <div>
+                    <h4 style="font-size: 13.5px; color: var(--frost); margin-bottom: 0.75rem;">Skills Frequency Distribution</h4>
+                    <div style="height: 180px; position: relative;">
+                      <canvas id="chartSkillsRadar"></canvas>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 style="font-size: 13.5px; color: var(--frost); margin-bottom: 0.75rem;">Monthly XP Aggregates</h4>
+                    <div style="height: 180px; position: relative;">
+                      <canvas id="chartMonthlyAggregates"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Heatmap contribution grid -->
+              <div class="portfolio-card" id="cardHeatmap">
+                <div class="portfolio-card-header">
+                  <h3>🔥 Learning Streaks Heatmap</h3>
+                </div>
+                
+                <div style="overflow-x: auto; background: var(--void); border: 1px solid var(--border); padding: 1.25rem; border-radius: var(--r-md);">
+                  <div style="display:flex; flex-direction:column; align-items:center; min-width:670px;">
+                    <!-- Month row -->
+                    <div id="heatmapMonths" style="display:flex; gap:3px; font-size:10px; color:var(--mist-dim); margin-left: 28px; margin-bottom: 4px; width: 620px;"></div>
+                    <!-- Cell Grid container -->
+                    <div style="display:flex; gap:4px;">
+                      <!-- Day labels -->
+                      <div style="display:flex; flex-direction:column; gap:4px; font-size:9px; color:var(--mist-dim); text-align:right; justify-content:space-around; width: 24px; padding-top:2px;">
+                        <span>Mon</span><span>Wed</span><span>Fri</span>
+                      </div>
+                      <!-- 7x52 cells layout wrapper -->
+                      <div id="heatmapGrid" style="display:grid; grid-template-flow: column; grid-auto-flow: column; grid-template-rows: repeat(7, 11px); grid-template-columns: repeat(52, 11px); gap: 3px;">
+                        <!-- JS generated cells -->
+                      </div>
+                    </div>
+                    <!-- Legend -->
+                    <div style="display:flex; justify-content:space-between; align-items:center; width:620px; font-size:10px; color:var(--mist-dim); margin-top:8px; margin-left: 28px;">
+                      <span id="heatmapTotal">365-day tracking summary</span>
+                      <div style="display:flex; align-items:center; gap:3px;">
+                        <span>Less</span>
+                        <div class="heatmap-legend-cell" style="width:11px;height:11px;border-radius:2px;background:var(--border);"></div>
+                        <div class="heatmap-legend-cell" data-level="1" style="width:11px;height:11px;border-radius:2px;"></div>
+                        <div class="heatmap-legend-cell" data-level="2" style="width:11px;height:11px;border-radius:2px;"></div>
+                        <div class="heatmap-legend-cell" data-level="3" style="width:11px;height:11px;border-radius:2px;"></div>
+                        <div class="heatmap-legend-cell" data-level="4" style="width:11px;height:11px;border-radius:2px;"></div>
+                        <span>More</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column -->
+            <div>
+              
+              <!-- Contact Details -->
+              <div class="portfolio-card">
+                <div class="portfolio-card-header">
+                  <h3>📞 Contact Directory</h3>
+                </div>
+                <div style="display:flex; flex-direction:column; gap: 0.75rem; font-size: 13.5px;" id="profContactPanel">
+                  <!-- Filled dynamically -->
+                </div>
+              </div>
+
+              <!-- Interview Performance Card -->
+              <div class="portfolio-card" id="cardInterviews">
+                <div class="portfolio-card-header">
+                  <h3>💬 AI Mock Interview Telemetry</h3>
+                </div>
+                <div style="text-align:center; margin-bottom: 1.5rem;" id="interviewSummaryPanel">
+                  <div style="font-size: 2.2rem; font-weight:800; color:var(--accent);" id="interviewsAvgScore">0</div>
+                  <div style="font-size: 11px; color:var(--mist); text-transform:uppercase;">Average Mock Interview Score</div>
+                </div>
+                
+                <div style="height: 180px; position: relative; margin-bottom: 1.5rem;">
+                  <canvas id="chartInterviewRadar"></canvas>
+                </div>
+
+                <h4 style="font-size: 12.5px; color: var(--frost); margin-bottom: 0.5rem;">AI Evaluations Insights</h4>
+                <div style="display:flex; flex-direction:column; gap: 0.5rem;" id="interviewFeedbackList">
+                  <!-- Recent Feedbacks -->
+                </div>
+              </div>
+
+              <!-- Achievements & Badge Collection -->
+              <div class="portfolio-card" id="cardAchievements">
+                <div class="portfolio-card-header">
+                  <h3>🏆 Badge & Achievements Collection</h3>
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align:center;" id="profAchievementsGrid">
+                  <!-- Badges -->
+                </div>
+              </div>
+
+              <!-- Activity timeline (short summary) -->
+              <div class="portfolio-card" id="cardTimeline">
+                <div class="portfolio-card-header">
+                  <h3>⚡ Recent Operations Feed</h3>
+                </div>
+                <div class="portfolio-timeline-container" id="profTimelineGrid">
+                  <!-- Node steps -->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Heatmap Tooltip -->
+<div id="hmTooltip" style="display:none; position:fixed; background:rgba(0,0,0,0.85); border:1px solid var(--border-accent); border-radius:4px; padding:4px 8px; color:#fff; font-size:10px; pointer-events:none; z-index:9999; font-family:var(--font-mono);"></div>
+
+<script src="/js/api.js"></script>
+<script src="/js/page-shell.js"></script>
+<script src="/js/portfolio.js"></script>
+</body>
+</html>

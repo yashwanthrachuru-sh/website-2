@@ -53,12 +53,26 @@ window.initPageShell = function (activeNavId) {
         nav.appendChild(vidLink);
       }
     }
+    // Inject Portfolio link dynamically if not present
+    if (!nav.querySelector('a[href*="portfolio"]')) {
+      const profileLink = nav.querySelector('a[href="profile.html"]');
+      const portLink = document.createElement('a');
+      portLink.href = '/portfolio.html';
+      portLink.className = 'dash-nav-item';
+      portLink.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Developer Portfolio`;
+      if (profileLink) {
+        profileLink.insertAdjacentElement('beforebegin', portLink);
+      } else {
+        nav.appendChild(portLink);
+      }
+    }
     // 2. Normalize active states based on current filename
     const pathSegments = window.location.pathname.split('/');
     const currentFile = pathSegments[pathSegments.length - 1] || 'user.html';
     nav.querySelectorAll('.dash-nav-item').forEach(item => {
       const href = item.getAttribute('href');
-      if (href === currentFile) {
+      const isPortfolio = href && href.includes('portfolio') && (currentFile.includes('portfolio') || window.location.pathname.includes('/portfolio/'));
+      if (href === currentFile || isPortfolio) {
         item.classList.add('active');
       } else {
         item.classList.remove('active');
@@ -80,6 +94,7 @@ window.initPageShell = function (activeNavId) {
     { title:'Resume Builder', desc:'ATS resume creator', cat:'Career', link:'resume.html', icon:'📄' },
     { title:'Interview Prep', desc:'Technical interview practice', cat:'Career', link:'interview.html', icon:'💬' },
     { title:'Certificates', desc:'Earned certificates', cat:'Career', link:'certificates.html', icon:'🏆' },
+    { title:'Developer Portfolio', desc:'Your dynamic professional profile', cat:'Career', link:'portfolio.html', icon:'🎓' },
     { title:'Leaderboard', desc:'XP rankings', cat:'Account', link:'leaderboard.html', icon:'🥇' },
     { title:'Bookmarks', desc:'Saved items', cat:'Account', link:'bookmarks.html', icon:'🔖' },
     { title:'Notifications', desc:'Alerts & updates', cat:'Account', link:'notifications.html', icon:'🔔' },

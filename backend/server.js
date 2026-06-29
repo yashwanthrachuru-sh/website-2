@@ -16,6 +16,11 @@ const rateLimit   = require('express-rate-limit');
 // ── Database pool ─────────────────────────────────────────────
 const db = require('./config/db');
 
+// Run portfolio database migrations on boot
+require('./config/migrate_portfolio').migrate().catch(err => {
+  console.error('Portfolio migration failed on startup:', err.message);
+});
+
 const app  = express();
 const PORT = process.env.PORT || 5000;
 
@@ -122,6 +127,7 @@ const lessonRoutes      = require('./routes/lessonRoutes');
 const analyticsRoutes   = require('./routes/analyticsRoutes');
 const aiRoutes          = require('./routes/aiRoutes');
 const achievementRoutes = require('./routes/achievementRoutes');
+const portfolioRoutes   = require('./routes/portfolioRoutes');
 
 // ── Mount Routes ─────────────────────────────────────────────
 app.use('/api/auth',         authRoutes);
@@ -141,6 +147,7 @@ app.use('/api/lessons',      lessonRoutes);
 app.use('/api/analytics',    analyticsRoutes);
 app.use('/api/ai',           aiLimiter, aiRoutes); // AI gets its own stricter limiter
 app.use('/api/achievements', achievementRoutes);
+app.use('/api/portfolio',    portfolioRoutes);
 
 // ============================================================
 // CATCH-ALL ROUTES
@@ -149,6 +156,14 @@ app.use('/api/achievements', achievementRoutes);
 // API 404 handler — must come after all /api/* mounts
 app.get('/api/*', (req, res) => {
   res.status(404).json({ success: false, message: 'API endpoint not found.' });
+});
+
+// SPA portfolio routing fallbacks — must come before general catch-all
+app.get('/profile/portfolio', (req, res) => {
+  res.sendFile(path.join(FRONTEND_ROOT, 'portfolio.html'));
+});
+app.get('/portfolio/:username', (req, res) => {
+  res.sendFile(path.join(FRONTEND_ROOT, 'portfolio.html'));
 });
 
 // SPA catch-all — serve index.html for any non-API GET
