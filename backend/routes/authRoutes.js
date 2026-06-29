@@ -18,9 +18,11 @@ const router                               = express.Router();
 const { body }                             = require('express-validator');
 const authController                       = require('../controllers/authController');
 const { verifyToken }                      = require('../middleware/authMiddleware');
+const rateLimiter                          = require('../middleware/rateLimiter');
+
+const authLimiter = rateLimiter(10, 60 * 1000);
 
 // ── Validation rule sets ─────────────────────────────────────
-
 const registerRules = [
   body('username')
     .trim()
@@ -61,8 +63,8 @@ const loginRules = [
 // ── Route definitions ────────────────────────────────────────
 
 // Public routes — no token required
-router.post('/register', registerRules, authController.register);
-router.post('/login',    loginRules,    authController.login);
+router.post('/register', authLimiter, registerRules, authController.register);
+router.post('/login',    authLimiter, loginRules,    authController.login);
 
 // Protected route — token required to record who logged out
 router.post('/logout', verifyToken, authController.logout);

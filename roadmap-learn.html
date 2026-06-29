@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNet — Learn</title>
+<meta name="description" content="Learn with EduNet — Premium roadmap learning with videos, exercises, quizzes, and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<style>
+/* ── Roadmap Learn Page Specific Styles ───────────────────────── */
+.learn-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr 340px;
+  grid-template-rows: 56px 1fr;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--abyss);
+}
+
+/* Topbar */
+.learn-topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+.learn-topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.learn-topbar-logo .nav-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.learn-topbar-breadcrumb {
+  flex: 1;
+  font-size: 13px;
+  color: var(--mist);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  overflow: hidden;
+}
+.learn-topbar-breadcrumb span { color: var(--accent); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.learn-topbar-actions { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
+.learn-progress-bar-mini {
+  height: 6px;
+  width: 120px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.learn-progress-bar-mini-fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width .5s ease; }
+
+/* Left sidebar — module/lesson accordion list */
+.learn-sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.learn-sidebar-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--abyss-2);
+  flex-shrink: 0;
+}
+.learn-sidebar-title { font-size: 13.5px; font-weight: 700; margin-bottom: .25rem; }
+.learn-sidebar-sub { font-size: 11px; color: var(--mist-dim); }
+.learn-sidebar-prog { margin-top: .5rem; }
+
+.learn-module-accordion {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.accordion-item {
+  border-bottom: 1px solid var(--border);
+}
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--abyss-2);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+.accordion-header:hover { background: rgba(255,255,255,0.02); }
+.accordion-header-title { font-size: 12.5px; font-weight: 600; color: var(--text); flex: 1; margin-right: 0.5rem; }
+.accordion-header-icon { font-size: 10px; color: var(--mist-dim); transition: transform 0.2s; }
+.accordion-item.open .accordion-header-icon { transform: rotate(180deg); }
+
+.accordion-body {
+  display: none;
+  background: var(--surface);
+  padding: 0.25rem 0;
+}
+.accordion-item.open .accordion-body {
+  display: block;
+}
+
+.lesson-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 12px;
+  color: var(--mist);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+}
+.lesson-list-item:hover { background: var(--abyss-2); color: var(--text); }
+.lesson-list-item.active { background: rgba(99,102,241,0.08); color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+.lesson-list-item.completed { color: var(--emerald); }
+.lesson-list-item-icon { font-size: 11px; flex-shrink: 0; }
+
+/* Center — content area */
+.learn-content {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.learn-content-inner {
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.learn-module-header {
+  margin-bottom: 2rem;
+}
+.learn-module-eyebrow {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: .5rem;
+}
+.learn-module-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: .5rem;
+}
+.learn-module-desc {
+  font-size: 14px;
+  color: var(--mist);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.learn-xp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: rgba(251,191,36,.1);
+  border: 1px solid rgba(251,191,36,.25);
+  color: #fbbf24;
+  padding: .3rem .75rem;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Tabs */
+.learn-tabs {
+  display: flex;
+  gap: .5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+.learn-tab {
+  padding: .6rem 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mist);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap;
+  background: none;
+  border: none;
+}
+.learn-tab:hover { color: var(--text); }
+.learn-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Toggle level of explanation */
+.level-toggle-bar {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--abyss-2);
+  padding: 0.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+.level-toggle-btn {
+  flex: 1;
+  padding: 0.4rem;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--mist);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.level-toggle-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* AI Learning Assistant */
+.ai-assistant-card {
+  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.05));
+  border: 1px solid rgba(139,92,246,0.25);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.ai-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.ai-tool-btn {
+  padding: 0.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ai-tool-btn:hover {
+  background: rgba(99,102,241,0.08);
+  border-color: var(--accent);
+}
+
+/* Interview prep mock interview section */
+.mock-interview-section {
+  background: linear-gradient(135deg, rgba(52,211,153,0.1), rgba(16,185,129,0.05));
+  border: 1px solid rgba(52,211,153,0.25);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Markdown sections for switcher */
+.notes-level-section {
+  display: none;
+}
+.notes-level-section.active {
+  display: block;
+}
+
+/* Right panel */
+.learn-right-panel {
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.learn-right-section {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.learn-right-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--mist-dim);
+  margin-bottom: .75rem;
+  font-family: var(--font-mono);
+}
+
+/* Modals overlay styling */
+.vid-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.vid-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.vid-modal-box {
+  background: var(--surface);
+  border-radius: var(--r-md);
+  width: min(900px, 95vw);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.vid-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.vid-modal-title { font-size: 14px; font-weight: 600; }
+.vid-iframe-wrap { aspect-ratio: 16/9; background: #000; }
+.vid-iframe-wrap iframe { width: 100%; height: 100%; border: none; }
+</style>
+</head>
+<body>
+
+<!-- Video Modal -->
+<div class="vid-modal" id="vidModal">
+  <div class="vid-modal-box">
+    <div class="vid-modal-top">
+      <span class="vid-modal-title" id="vidModalTitle">Video</span>
+      <button class="btn btn-icon" id="vidModalClose">✕</button>
+    </div>
+    <div class="vid-iframe-wrap">
+      <iframe id="vidIframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- AI Chat Modal -->
+<div class="vid-modal" id="aiModal">
+  <div class="vid-modal-box" style="max-width:650px;">
+    <div class="vid-modal-top">
+      <span class="vid-modal-title">EduNet AI Copilot 🔮</span>
+      <button class="btn btn-icon" id="aiModalClose">✕</button>
+    </div>
+    <div style="padding:1.5rem;height:400px;overflow-y:auto;background:var(--abyss);" id="aiChatHistory">
+      <div style="color:var(--mist);font-size:13.5px;margin-bottom:1rem;">Hello! I am your AI Study Assistant. I can help explain, simplify, optimize code, or generate practice cards. Ask me anything!</div>
+    </div>
+    <div style="display:flex;padding:1rem;background:var(--surface);border-top:1px solid var(--border);gap:0.5rem;">
+      <input type="text" id="aiChatInput" style="flex:1;background:var(--abyss-2);border:1px solid var(--border);border-radius:6px;color:#fff;padding:0.6rem 0.85rem;font-size:13px;" placeholder="Ask AI a question about this topic...">
+      <button class="btn btn-primary" id="aiSendBtn">Ask AI</button>
+    </div>
+  </div>
+</div>
+
+<!-- Certification Exam Modal -->
+<div class="vid-modal" id="examModal">
+  <div class="vid-modal-box" style="max-width:750px;">
+    <div class="vid-modal-top">
+      <span class="vid-modal-title">🏆 Roadmap Certification Exam</span>
+      <button class="btn btn-icon" id="examModalClose">✕</button>
+    </div>
+    <div style="padding:2rem;background:var(--abyss);max-height:550px;overflow-y:auto;">
+      <div id="examIntro" style="margin-bottom:1.5rem;">
+        <h3 style="margin-bottom:0.5rem;">Ready to certify your skills?</h3>
+        <p style="color:var(--mist);font-size:13.5px;line-height:1.6;margin-bottom:1.25rem;">This exam contains 12 comprehensive scenario and logical questions testing your total mastery of the roadmap track. You must score 70% or higher to pass and receive your verified, shareable completion certificate.</p>
+        <button class="btn btn-primary" id="startExamBtn">Start Certification Exam</button>
+      </div>
+      <div id="examQuizContainer" style="display:none;"></div>
+      <div id="examScore" style="display:none;padding:1.5rem;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-md);text-align:center;"></div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;padding:1rem;background:var(--surface);border-top:1px solid var(--border);display:none;" id="examFooter">
+      <button class="btn btn-primary" id="submitExamBtn">Submit Certification Exam</button>
+    </div>
+  </div>
+</div>
+
+<div class="learn-layout">
+
+  <!-- Topbar -->
+  <header class="learn-topbar">
+    <a href="roadmaps.html" class="learn-topbar-logo">
+      <div class="nav-mark">
+        <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+          <path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      EduNet
+    </a>
+    <div class="learn-topbar-breadcrumb">
+      <a href="roadmaps.html" style="color:var(--mist);text-decoration:none;">Roadmaps</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <span id="tbRoadmapName">Loading...</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <span id="tbModuleName" style="color:var(--mist-dim);">Select a lesson</span>
+    </div>
+    <div class="learn-topbar-actions">
+      <div>
+        <div style="font-size:10px;color:var(--mist-dim);text-align:right;margin-bottom:2px;" id="tbProgress">0/0 completed</div>
+        <div class="learn-progress-bar-mini">
+          <div class="learn-progress-bar-mini-fill" id="tbProgressBar" style="width:0%"></div>
+        </div>
+      </div>
+      <a href="user.html" class="dash-avatar" id="topbarAvatar" style="text-decoration:none;width:32px;height:32px;font-size:12px;">ST</a>
+    </div>
+  </header>
+
+  <!-- Left Sidebar — Modules Accordion List -->
+  <aside class="learn-sidebar" id="learnSidebar">
+    <div class="learn-sidebar-header">
+      <div class="learn-sidebar-title" id="sbRoadmapTitle">Loading...</div>
+      <div class="learn-sidebar-sub" id="sbRoadmapSub">12 modules</div>
+      <div class="learn-sidebar-prog">
+        <div class="progress-bar" style="margin-top:.4rem;">
+          <div class="progress-fill" id="sbProgressFill" style="width:0%"></div>
+        </div>
+        <div style="font-size:11px;color:var(--mist-dim);margin-top:.3rem;" id="sbProgressText">0 / 0 complete</div>
+      </div>
+    </div>
+    <div class="learn-module-accordion" id="moduleList">
+      <!-- Accordions dynamically loaded here -->
+    </div>
+  </aside>
+
+  <!-- Center — Learning Content -->
+  <main class="learn-content" id="learnContent">
+    <div class="learn-content-inner" id="contentInner">
+      <!-- Loading state -->
+      <div id="contentLoading" style="padding:3rem 0;text-align:center;color:var(--mist);">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🗺️</div>
+        <div style="font-size:16px;font-weight:600;">Select a lesson to start learning</div>
+        <div style="font-size:13px;margin-top:.5rem;">Choose from the left panel</div>
+      </div>
+      
+      <!-- Content Area (hidden until loaded) -->
+      <div id="moduleContent" style="display:none;">
+        <!-- Completion Banner -->
+        <div class="completion-banner" id="completionBanner">
+          <div style="font-size:2rem;margin-bottom:.5rem;">🎉</div>
+          <h3>Lesson Complete!</h3>
+          <p>You earned <strong id="completionXP">+100 XP</strong> for completing this lesson.</p>
+        </div>
+
+        <div class="learn-module-header">
+          <div class="learn-module-eyebrow" id="moduleRoadmapLabel">Roadmap</div>
+          <h1 class="learn-module-title" id="moduleTitle">Lesson Title</h1>
+          <p class="learn-module-desc" id="moduleDesc">Description</p>
+          <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;">
+            <span class="learn-xp-badge">⭐ <span id="moduleXP">100</span> XP on completion</span>
+            <span class="badge badge-muted" id="moduleLanguageBadge">javascript</span>
+            <span class="badge badge-green" id="moduleStatusBadge">Unlocked</span>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="learn-tabs" id="learnTabs">
+          <button class="learn-tab active" data-tab="learn">📖 Learn</button>
+          <button class="learn-tab" data-tab="exercises">💪 Exercises</button>
+          <button class="learn-tab" data-tab="projects">🛠️ Module Project</button>
+          <button class="learn-tab" data-tab="quiz">🧠 Lesson Quiz</button>
+          <button class="learn-tab" data-tab="notes">📝 Personal Notes</button>
+        </div>
+
+        <!-- Tab: Learn -->
+        <div id="tab-learn" class="tab-panel">
+          <!-- Toggle level switcher -->
+          <div class="level-toggle-bar">
+            <button class="level-toggle-btn active" data-level="detailed">📖 Detailed theory</button>
+            <button class="level-toggle-btn" data-level="beginner">👶 Beginner friendly</button>
+            <button class="level-toggle-btn" data-level="advanced">🚀 Deep-Dive/Advanced</button>
+          </div>
+          
+          <div class="learn-notes-body" id="notesBody"><!-- rendered markdown --></div>
+          <div style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap;">
+            <button class="btn btn-primary" id="openCodingLabBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>
+              Practice in Coding Lab
+            </button>
+            <button class="btn btn-secondary" id="markCompleteBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Mark Lesson Complete
+            </button>
+            <button class="btn btn-secondary" id="bookmarkModBtn">🔖 Bookmark</button>
+          </div>
+        </div>
+
+        <!-- Tab: Exercises -->
+        <div id="tab-exercises" class="tab-panel" style="display:none;">
+          <div id="exercisesContainer"><!-- exercises --></div>
+        </div>
+
+        <!-- Tab: Projects -->
+        <div id="tab-projects" class="tab-panel" style="display:none;">
+          <div id="projectsContainer"><!-- projects --></div>
+        </div>
+
+        <!-- Tab: Quiz -->
+        <div id="tab-quiz" class="tab-panel" style="display:none;">
+          <div id="quizContainer"><!-- quiz --></div>
+          <div id="quizActions" style="display:none;margin-top:1.5rem;">
+            <button class="btn btn-primary" id="submitQuizBtn">Submit Lesson Quiz</button>
+            <div id="quizScore" style="display:none;margin-top:1rem;padding:1rem;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);"></div>
+          </div>
+        </div>
+
+        <!-- Tab: Notes (Student Notes) -->
+        <div id="tab-notes" class="tab-panel" style="display:none;">
+          <div style="margin-bottom:1rem;">
+            <label for="studentNotesArea" style="display:block;font-size:13px;font-weight:600;margin-bottom:.5rem;color:var(--text);">Write your personal notes for this lesson:</label>
+            <textarea id="studentNotesArea" style="width:100%;height:300px;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);padding:1rem;font-family:inherit;font-size:14px;resize:vertical;" placeholder="Write down important key takeaways, syntax summaries, or anything else you'd like to remember..."></textarea>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span id="notesStatus" style="font-size:12px;color:var(--mist-dim);">All notes are auto-saved to database.</span>
+            <button class="btn btn-primary btn-sm" id="saveNotesBtn">Save Notes</button>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="module-nav" id="moduleNav" style="margin-top:2rem;">
+          <button class="btn btn-secondary" id="prevModBtn" style="display:none;">← Previous Lesson</button>
+          <button class="btn btn-primary" id="nextModBtn" style="display:none;">Next Lesson →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Right Panel -->
+  <aside class="learn-right-panel" id="rightPanel">
+    <!-- Progress -->
+    <div class="learn-right-section">
+      <div class="learn-right-section-title">Your Progress</div>
+      <div class="progress-ring-wrap">
+        <svg class="progress-ring" width="60" height="60" viewBox="0 0 60 60">
+          <circle cx="30" cy="30" r="24" fill="none" stroke="var(--border)" stroke-width="5"/>
+          <circle id="progressRingCircle" cx="30" cy="30" r="24" fill="none" stroke="var(--accent)" stroke-width="5"
+            stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="150.8"
+            style="transition:stroke-dashoffset .6s ease;"/>
+        </svg>
+        <div>
+          <div class="progress-ring-text" id="progressRingPct">0%</div>
+          <div class="progress-ring-sub" id="progressRingLabel">0 / 0 done</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.4rem;">
+        <div style="display:flex;justify-content:space-between;font-size:12px;">
+          <span style="color:var(--mist);">Lessons complete</span>
+          <span id="rp_modules" style="font-weight:600;">0 / 0</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;">
+          <span style="color:var(--mist);">XP earned</span>
+          <span id="rp_xp" style="font-weight:600;color:var(--accent);">0 XP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Learning Assistant -->
+    <div class="learn-right-section">
+      <div class="learn-right-section-title">AI Study Assistant</div>
+      <div class="ai-assistant-card">
+        <div style="font-size:11.5px;color:var(--mist);line-height:1.5;">🔮 Leverage our AI helper to explain syntax, generate quizzes, or simplify this lesson.</div>
+        <div class="ai-tools-grid">
+          <button class="ai-tool-btn" data-ai="explain">💡 Explain</button>
+          <button class="ai-tool-btn" data-ai="simplify">👶 Simplify</button>
+          <button class="ai-tool-btn" data-ai="debug">🐛 Debug</button>
+          <button class="ai-tool-btn" data-ai="optimize">⚡ Optimize</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Videos -->
+    <div class="learn-right-section" id="rightVideosSection">
+      <div class="learn-right-section-title">Related Videos</div>
+      <div id="rightVideos"><!-- videos --></div>
+    </div>
+
+    <!-- Resources -->
+    <div class="learn-right-section" id="rightResourcesSection">
+      <div class="learn-right-section-title">Resources & Docs</div>
+      <div id="rightResources"><!-- resources --></div>
+    </div>
+
+    <!-- Interview Prep Section -->
+    <div class="learn-right-section">
+      <div class="learn-right-section-title">Interview Prep</div>
+      <div class="mock-interview-section">
+        <div style="font-size:12px;color:var(--mist);line-height:1.5;margin-bottom:0.75rem;">Practice top companies interview questions mock sessions.</div>
+        <button class="btn btn-secondary btn-sm btn-full" id="mockInterviewBtn" style="justify-content:center;">🎯 Start Mock Interview</button>
+      </div>
+    </div>
+
+    <!-- Roadmap Certificate / Final Exam -->
+    <div class="learn-right-section" id="certExamSection">
+      <div class="learn-right-section-title">Certification</div>
+      <div id="certSection">
+        <div style="font-size:12.5px;color:var(--mist);line-height:1.6;" id="certLabel">Complete all lessons to unlock the certification exam.</div>
+        <div style="text-align:center;font-size:2rem;margin:.75rem 0;">🏆</div>
+        <button class="btn btn-secondary btn-sm btn-full" id="takeExamBtn" style="display:none;justify-content:center;margin-bottom:0.5rem;background:var(--accent);color:#fff;">📝 Take Exam</button>
+        <button class="btn btn-secondary btn-sm btn-full" id="viewCertBtn" style="display:none;justify-content:center;">View Certificate</button>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/api.js"></script>
+<script src="js/page-shell.js"></script>
+<script src="js/roadmap-learn.js"></script>
+</body>
+</html>

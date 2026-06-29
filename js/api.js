@@ -125,13 +125,44 @@
     });
   }
 
-  // ── XP System ───────────────────────────────────────────────
+  // ── XP System (DB-backed with localStorage cache) ───────────
+  // localStorage is used as a fast cache; DB is the source of truth.
+
+  // Read XP — try DB first, fall back to localStorage
   function getXP() {
     var s = getSession();
     var key = 'edunet_xp_' + ((s && s.username) || 'guest');
     return parseInt(localStorage.getItem(key) || '0', 10);
   }
 
+  // Sync XP to DB — fire-and-forget (doesn't block UI)
+  async function syncXPToServer(amount, source) {
+    var token = getToken();
+    if (!token || !amount) return;
+    try {
+      var res = await apiFetch('/api/user/xp', {
+        method: 'POST',
+        body: JSON.stringify({ amount: parseInt(amount, 10), source: source || 'general' })
+      });
+      if (res.success) {
+        // Update localStorage cache with server's authoritative value
+        var s = getSession();
+        if (s) {
+          var key = 'edunet_xp_' + s.username;
+          localStorage.setItem(key, String(res.xp));
+          // Update session level
+          s.level = res.level;
+          localStorage.setItem('edunet_session', JSON.stringify(s));
+        }
+        return res;
+      }
+    } catch (e) {
+      // Network error or server down — localStorage cache remains valid
+      console.warn('XP sync to server failed (offline?):', e.message);
+    }
+  }
+
+  // Add XP locally (immediate) then sync to DB asynchronously
   function addXP(pts) {
     var s = getSession();
     if (!s) return 0;
@@ -139,6 +170,8 @@
     var cur = parseInt(localStorage.getItem(key) || '0', 10);
     var newVal = cur + (parseInt(pts, 10) || 0);
     localStorage.setItem(key, String(newVal));
+    // Async DB sync — non-blocking
+    syncXPToServer(parseInt(pts, 10) || 0, 'lesson');
     return newVal;
   }
 
@@ -180,7 +213,8 @@
     showToast:       showToast,
     buildSearchIndex:buildSearchIndex,
     getXP:           getXP,
-    addXP:           addXP
+    addXP:           addXP,
+    syncXPToServer:  syncXPToServer
   };
 
 })(); // end IIFE

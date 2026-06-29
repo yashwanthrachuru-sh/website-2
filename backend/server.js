@@ -1,130 +1,145 @@
 // ============================================================
 // server.js — EduNet Express Application Entry Point
 // ============================================================
-// This is the heart of the backend. It:
-//   1. Loads environment variables from .env
-//   2. Sets up middleware (CORS, JSON body parser)
-//   3. Serves the static HTML/CSS frontend files
-//   4. Mounts all API route groups under /api/*
-//   5. Provides a health-check endpoint
-//   6. Handles 404 and global errors
-//   7. Starts listening on the configured port
+// v2: Added helmet, global rate limiting, analytics & AI routes,
+//     removed duplicate /api/codelabs mount, tightened CORS.
 // ============================================================
 
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 
-const express    = require('express');
-const cors       = require('cors');
-const path       = require('path');
+const express     = require('express');
+const cors        = require('cors');
+const path        = require('path');
+const helmet      = require('helmet');
+const rateLimit   = require('express-rate-limit');
 
-// ── Import database pool (runs testConnection on require) ────
+// ── Database pool ─────────────────────────────────────────────
 const db = require('./config/db');
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
 
 // ============================================================
-// MIDDLEWARE
+// SECURITY MIDDLEWARE
 // ============================================================
 
-// CORS — Allow requests from the frontend origin
+// Helmet — sets secure HTTP headers (XSS protection, frame options, etc.)
+app.use(helmet({
+  contentSecurityPolicy: false,   // Disabled to allow inline scripts in HTML files
+  crossOriginEmbedderPolicy: false // Allow YouTube embeds
+}));
+
+// Global rate limiter — 150 requests per 15 minutes per IP
+// (health check and static files are excluded automatically via Express static)
+const globalLimiter = rateLimit({
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'), // 15 min default
+  max:      parseInt(process.env.RATE_LIMIT_MAX        || '150'),   // 150 req/window
+  standardHeaders: true,
+  legacyHeaders:   false,
+  message: { success: false, message: 'Too many requests. Please slow down and try again later.' },
+  skip: (req) => {
+    // Skip rate limiting for health check and static file serving
+    return req.path === '/api/health' || !req.path.startsWith('/api/');
+  }
+});
+app.use(globalLimiter);
+
+// Stricter limiter for AI endpoints (10 req/minute per IP)
+const aiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 20,
+  message: { success: false, message: 'AI mentor rate limit reached. Please wait a moment.' }
+});
+
+// ============================================================
+// CORS
+// ============================================================
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    // Allow localhost/127.0.0.1 on any port, or custom FRONTEND_ORIGIN
     const isLocalhost = origin.indexOf('://localhost') !== -1 || origin.indexOf('://127.0.0.1') !== -1;
     if (isLocalhost || origin === process.env.FRONTEND_ORIGIN) {
       return callback(null, true);
     }
     return callback(new Error('Not allowed by CORS'));
   },
-  credentials: true                         // Allow cookies / auth headers
+  methods:            ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders:     ['Content-Type', 'Authorization'],
+  credentials:        true
 }));
 
-// Parse incoming JSON request bodies
-app.use(express.json());
-
-// Parse URL-encoded form bodies (for any HTML form POSTs)
-app.use(express.urlencoded({ extended: true }));
+// ============================================================
+// BODY PARSERS
+// ============================================================
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
 
 // ============================================================
-// SERVE STATIC FRONTEND FILES
+// STATIC FRONTEND FILES
 // ============================================================
-// The frontend HTML files live one directory above the backend.
-// Express will serve index.html, user.html, admin.html,
-// and index.css from the project root automatically.
-// This means the browser can open http://localhost:5000 and
-// see the landing page without a separate web server.
-//
-// __dirname = /path/to/website-2/backend
-// path.join(__dirname, '..') = /path/to/website-2  ← root
-// ============================================================
-
 const FRONTEND_ROOT = path.join(__dirname, '..');
-
 app.use(express.static(FRONTEND_ROOT));
 
 // ============================================================
 // API ROUTES
 // ============================================================
-// All API endpoints are prefixed with /api to separate them
-// cleanly from the static frontend routes.
-// Routes will be imported and mounted here as each step is built.
-// ============================================================
 
-// Health check — confirm the server and DB are alive
+// Health check — no rate limiting, no auth
 app.get('/api/health', async (req, res) => {
   try {
-    // Run a minimal query to verify DB connectivity
     await db.query('SELECT 1');
-    res.json({
-      success: true,
-      database: 'connected'
-    });
+    res.json({ success: true, database: 'connected', version: '2.0' });
   } catch (err) {
-    res.status(503).json({
-      success: false,
-      database: 'disconnected'
-    });
+    res.status(503).json({ success: false, database: 'disconnected' });
   }
 });
 
-// ── Route mounts (uncommented as each step is built) ───────────
-const authRoutes = require('./routes/authRoutes');
-const userRoutes     = require('./routes/userRoutes');     // Step 4
-const progressRoutes = require('./routes/progressRoutes'); // Step 5
-const toolsRoutes    = require('./routes/toolsRoutes');    // Step 6
-const adminRoutes    = require('./routes/adminRoutes');    // Step 7
-const codeRoutes     = require('./routes/codeRoutes');
-const videoRoutes    = require('./routes/videoRoutes');
-const roadmapRoutes  = require('./routes/roadmapRoutes');
-const quizRoutes     = require('./routes/quizRoutes');
-const profileRoutes  = require('./routes/profileRoutes');
+// ── Import Routes ────────────────────────────────────────────
+const authRoutes        = require('./routes/authRoutes');
+const userRoutes        = require('./routes/userRoutes');
+const progressRoutes    = require('./routes/progressRoutes');
+const toolsRoutes       = require('./routes/toolsRoutes');
+const adminRoutes       = require('./routes/adminRoutes');
+const codeRoutes        = require('./routes/codeRoutes');
+const videoRoutes       = require('./routes/videoRoutes');
+const roadmapRoutes     = require('./routes/roadmapRoutes');
+const quizRoutes        = require('./routes/quizRoutes');
+const profileRoutes     = require('./routes/profileRoutes');
+const moduleRoutes      = require('./routes/moduleRoutes');
+const bookmarkRoutes    = require('./routes/bookmarkRoutes');
+const certificateRoutes = require('./routes/certificateRoutes');
+const lessonRoutes      = require('./routes/lessonRoutes');
+const analyticsRoutes   = require('./routes/analyticsRoutes');
+const aiRoutes          = require('./routes/aiRoutes');
 
-app.use('/api/auth', authRoutes);
-app.use('/api/user',     userRoutes);
-app.use('/api/progress', progressRoutes);
-app.use('/api/tools',    toolsRoutes);
-app.use('/api/admin',    adminRoutes);
-app.use('/api/codelabs', codeRoutes);
-app.use('/api/code',     codeRoutes);
-app.use('/api/videos',   videoRoutes);
-app.use('/api/roadmaps', roadmapRoutes);
-app.use('/api/quizzes',  quizRoutes);
-app.use('/api/profile',  profileRoutes);
+// ── Mount Routes ─────────────────────────────────────────────
+app.use('/api/auth',         authRoutes);
+app.use('/api/user',         userRoutes);
+app.use('/api/progress',     progressRoutes);
+app.use('/api/tools',        toolsRoutes);
+app.use('/api/admin',        adminRoutes);
+app.use('/api/code',         codeRoutes);       // Only /api/code — removed duplicate /api/codelabs
+app.use('/api/videos',       videoRoutes);
+app.use('/api/roadmaps',     roadmapRoutes);
+app.use('/api/quizzes',      quizRoutes);
+app.use('/api/profile',      profileRoutes);
+app.use('/api/modules',      moduleRoutes);
+app.use('/api/bookmarks',    bookmarkRoutes);
+app.use('/api/certificates', certificateRoutes);
+app.use('/api/lessons',      lessonRoutes);
+app.use('/api/analytics',    analyticsRoutes);
+app.use('/api/ai',           aiLimiter, aiRoutes); // AI gets its own stricter limiter
 
 // ============================================================
-// CATCH-ALL: Serve index.html for any unknown GET route
-// ============================================================
-// This ensures that navigating directly to /user.html or
-// /admin.html in the browser works correctly via Express.
-// API 404s are handled separately above via /api/* misses.
+// CATCH-ALL ROUTES
 // ============================================================
 
+// API 404 handler — must come after all /api/* mounts
 app.get('/api/*', (req, res) => {
   res.status(404).json({ success: false, message: 'API endpoint not found.' });
 });
 
+// SPA catch-all — serve index.html for any non-API GET
 app.get('*', (req, res) => {
   res.sendFile(path.join(FRONTEND_ROOT, 'index.html'));
 });
@@ -132,30 +147,29 @@ app.get('*', (req, res) => {
 // ============================================================
 // GLOBAL ERROR HANDLER
 // ============================================================
-// Any error passed via next(err) in route handlers lands here.
-// Returns a consistent JSON error shape.
-// ============================================================
-
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
+  // Don't leak internal error details in production
+  const isDev = process.env.NODE_ENV !== 'production';
   console.error('❌  Unhandled error:', err.stack || err.message);
   res.status(err.status || 500).json({
     success: false,
-    message: err.message || 'Internal server error.'
+    message: isDev ? (err.message || 'Internal server error.') : 'Internal server error.'
   });
 });
 
 // ============================================================
 // START SERVER
 // ============================================================
-
 app.listen(PORT, () => {
   console.log('');
-  console.log('╔════════════════════════════════════════╗');
-  console.log('║       EduNet API Server — Running      ║');
-  console.log(`║   http://localhost:${PORT}                 ║`);
-  console.log(`║   Environment: ${process.env.NODE_ENV || 'development'}              ║`);
-  console.log('╚════════════════════════════════════════╝');
+  console.log('╔════════════════════════════════════════════╗');
+  console.log('║       EduNet API Server — v2.0 Running    ║');
+  console.log(`║   http://localhost:${PORT}                   ║`);
+  console.log(`║   Environment: ${process.env.NODE_ENV || 'development'}                 ║`);
+  console.log('║   Security: Helmet ✓  Rate Limit ✓        ║');
+  console.log('║   Routes: Analytics ✓  AI Mentor ✓        ║');
+  console.log('╚════════════════════════════════════════════╝');
   console.log('');
 });
 

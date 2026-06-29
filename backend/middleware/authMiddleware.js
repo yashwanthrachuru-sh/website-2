@@ -69,4 +69,22 @@ const requireAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = { verifyToken, requireAdmin };
+// ── 3. optionalToken ──────────────────────────────────────────
+// Like verifyToken but does NOT reject if no token is present.
+// req.user will be set if a valid token exists, null otherwise.
+const optionalToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    req.user = null;
+    return next();
+  }
+  const token = authHeader.split(' ')[1];
+  try {
+    req.user = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    req.user = null;
+  }
+  next();
+};
+
+module.exports = { verifyToken, requireAdmin, optionalToken };

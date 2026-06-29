@@ -133,12 +133,90 @@ const updateProfile = async (req, res) => {
 const getLeaderboard = async (req, res) => {
   try {
     const [rows] = await db.query(
-      'SELECT username, branch, xp, role FROM users ORDER BY xp DESC LIMIT 50'
+      'SELECT username, branch, xp, level, role FROM users ORDER BY xp DESC LIMIT 100'
     );
     res.json({ success: true, users: rows });
   } catch (err) {
     console.error('Fetch leaderboard error:', err);
     res.status(500).json({ success: false, message: 'Server error while fetching leaderboard.' });
+  }
+};
+
+// GET /api/user/xp — fetch current DB XP
+const getXP = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const [[row]] = await db.query('SELECT xp, level FROM users WHERE id = ?', [userId]);
+    if (!row) return res.status(404).json({ success: false, message: 'User not found.' });
+    res.json({ success: true, xp: row.xp, level: row.level });
+  } catch (err) {
+    console.error('getXP error:', err);
+    res.status(500).json({ success: false, message: 'Server error fetching XP.' });
+  }
+};
+
+// POST /api/user/xp — add XP and recalculate level
+// Body: { amount: number, source: string }
+const syncXP = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { amount, source } = req.body;
+
+    if (typeof amount !== 'number' || amount < 0 || amount > 10000) {
+      return res.status(400).json({ success: false, message: 'Invalid XP amount.' });
+    }
+
+    // Add XP and recalculate level (every 500 XP = 1 level)
+    await db.query(`
+      UPDATE users
+      SET xp    = xp + ?,
+          level = FLOOR((xp + ?) / 500) + 1
+      WHERE id = ?
+    `, [amount, amount, userId]);
+
+    // Fetch updated values
+    const [[updated]] = await db.query('SELECT xp, level FROM users WHERE id = ?', [userId]);
+
+    // Update streak and last_active_date
+    const today = new Date().toISOString().slice(0, 10);
+    await db.query(`
+      UPDATE users
+      SET last_active_date = ?,
+          streak = CASE
+            WHEN last_active_date = DATE_SUB(?, INTERVAL 1 DAY) THEN streak + 1
+            WHEN last_active_date = ? THEN streak
+            ELSE 1
+          END,
+          longest_streak = GREATEST(longest_streak,
+            CASE
+              WHEN last_active_date = DATE_SUB(?, INTERVAL 1 DAY) THEN streak + 1
+              WHEN last_active_date = ? THEN streak
+              ELSE 1
+            END
+          )
+      WHERE id = ?
+    `, [today, today, today, today, today, userId]).catch(() => {
+      // last_active_date may not exist yet — run basic update
+      return db.query('UPDATE users SET streak = LEAST(streak + 1, 999) WHERE id = ?', [userId]);
+    });
+
+    // Log to user_activity
+    await db.query(`
+      INSERT INTO user_activity (user_id, date, xp_earned)
+      VALUES (?, ?, ?)
+      ON DUPLICATE KEY UPDATE xp_earned = xp_earned + VALUES(xp_earned)
+    `, [userId, today, amount]).catch(() => { /* table may not exist yet */ });
+
+    res.json({
+      success: true,
+      xp:     updated.xp,
+      level:  updated.level,
+      added:  amount,
+      source: source || 'general'
+    });
+  } catch (err) {
+    console.error('syncXP error:', err);
+    res.status(500).json({ success: false, message: 'Server error syncing XP.' });
   }
 };
 
@@ -149,5 +227,7 @@ module.exports = {
   updateTrackProgress,
   getProfile,
   updateProfile,
-  getLeaderboard
+  getLeaderboard,
+  getXP,
+  syncXP
 };

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNet — Verify Certificate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<style>
+.verify-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--abyss);
+}
+.verify-card {
+  max-width: 550px;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.verify-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--purple));
+}
+.verify-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.verify-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.verify-sub {
+  font-size: 13.5px;
+  color: var(--mist);
+  margin-bottom: 1.75rem;
+}
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.input-row input {
+  flex: 1;
+  background: var(--abyss-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 13.5px;
+  font-family: var(--font-mono);
+}
+.result-box {
+  display: none;
+  background: var(--abyss-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.5rem;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem 0;
+  font-size: 13px;
+}
+.result-row:last-child {
+  border-bottom: none;
+}
+.result-label {
+  color: var(--mist-dim);
+}
+.result-value {
+  font-weight: 600;
+}
+</style>
+</head>
+<body>
+
+<div class="verify-layout">
+  <div class="verify-card">
+    <div class="verify-icon">🎓</div>
+    <h1 class="verify-title">Certificate Verification</h1>
+    <p class="verify-sub">Enter the official EduNet certificate verification ID below to check credibility and completion logs.</p>
+    
+    <div class="input-row">
+      <input type="text" id="certHashInput" placeholder="e.g. EN-L4K8S9A-B3D5" autocomplete="off">
+      <button class="btn btn-primary" id="verifyBtn">Verify</button>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div id="resultContent"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/api.js"></script>
+<script>
+'use strict';
+const { apiFetch, showToast } = window.EduNetAPI;
+
+// Parse hash from URL if present
+const params = new URLSearchParams(window.location.search);
+const hashParam = params.get('id');
+if (hashParam) {
+  document.getElementById('certHashInput').value = hashParam;
+  performVerification(hashParam);
+}
+
+document.getElementById('verifyBtn').addEventListener('click', () => {
+  const hash = document.getElementById('certHashInput').value.trim();
+  if (!hash) {
+    showToast('Please enter a verification ID.', 'warning');
+    return;
+  }
+  performVerification(hash);
+});
+
+async function performVerification(hash) {
+  const resBox = document.getElementById('resultBox');
+  const resContent = document.getElementById('resultContent');
+  
+  resBox.style.display = 'block';
+  resContent.innerHTML = '<div style="text-align:center;padding:1rem;color:var(--mist);">Verifying ID against database logs...</div>';
+  
+  try {
+    const data = await apiFetch('/api/certificates/verify/' + hash);
+    if (data.success && data.certificate) {
+      const c = data.certificate;
+      resContent.innerHTML = `
+        <div style="display:flex;align-items:center;gap:0.5rem;color:var(--emerald);font-weight:700;margin-bottom:1rem;font-size:14px;">
+          <span>✓</span> VERIFIED CERTIFICATE RECORD
+        </div>
+        <div class="result-row">
+          <span class="result-label">Recipient Name</span>
+          <span class="result-value" style="color:var(--accent);">${c.issued_to}</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Course / Roadmap</span>
+          <span class="result-value">${c.roadmap}</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Issue Date</span>
+          <span class="result-value">${new Date(c.issued_at).toLocaleDateString('en-IN')}</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Verification ID</span>
+          <span class="result-value" style="font-family:var(--font-mono);font-size:11px;">${c.hash}</span>
+        </div>
+      `;
+    } else {
+      resContent.innerHTML = `
+        <div style="color:#ef4444;font-weight:700;margin-bottom:0.5rem;font-size:14px;">
+          ❌ INVALID ID
+        </div>
+        <p style="color:var(--mist);font-size:12.5px;line-height:1.5;margin:0;">No certificate record matching "${hash}" was found in our database records. Please double-check the ID spelling.</p>
+      `;
+    }
+  } catch (err) {
+    resContent.innerHTML = `
+      <div style="color:#ef4444;font-weight:700;margin-bottom:0.5rem;font-size:14px;">
+        ⚠️ VERIFICATION ERROR
+      </div>
+      <p style="color:var(--mist);font-size:12.5px;line-height:1.5;margin:0;">${err.message}</p>
+    `;
+  }
+}
+</script>
+</body>
+</html>

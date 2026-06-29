@@ -3,9 +3,33 @@
 // ============================================================
 'use strict';
 const session = window.initPageShell('certificates.html');
-const { showToast, getXP } = window.EduNetAPI;
+const { apiFetch, showToast, getXP } = window.EduNetAPI;
 
 const CERT_KEY = 'edunet_certs_' + session?.username;
+
+async function init() {
+  try {
+    const data = await apiFetch('/api/certificates');
+    let certs = [];
+    if (data.success && data.certificates && data.certificates.length) {
+      certs = data.certificates.map(c => ({
+        id: c.id,
+        title: c.title || 'Roadmap Certificate',
+        track: c.roadmap_title || c.roadmap_id || 'Learning Path',
+        date: new Date(c.issued_at || c.issue_date).toLocaleDateString('en-IN'),
+        hash: c.certificate_hash,
+        auto: false
+      }));
+    } else {
+      certs = seedCerts();
+    }
+    renderCerts(certs);
+  } catch (err) {
+    console.error('Error loading certificates:', err);
+    const certs = seedCerts();
+    renderCerts(certs);
+  }
+}
 
 // Sample certs seeded if user has enough XP
 function seedCerts() {
@@ -35,11 +59,10 @@ function seedCerts() {
   return base;
 }
 
-function renderCerts() {
-  const certs = seedCerts();
+function renderCerts(certs) {
   const grid = document.getElementById('certsGrid');
   const noMsg = document.getElementById('noYetMsg');
-  if (!certs.length) { noMsg.style.display = 'block'; return; }
+  if (!certs || !certs.length) { noMsg.style.display = 'block'; grid.innerHTML = ''; return; }
   noMsg.style.display = 'none';
   grid.innerHTML = '';
   certs.forEach(cert => {
@@ -94,7 +117,7 @@ function viewCert(cert) {
             <div><div style="font-size:10px;color:var(--mist-dim);margin-bottom:.25rem;">TRACK</div><div style="font-size:13px;font-weight:600;">${cert.track}</div></div>
           </div>
           <div style="font-family:var(--font-mono);font-size:10px;color:var(--mist-dim);background:rgba(255,255,255,0.04);padding:.5rem 1rem;border-radius:var(--r-xs);display:inline-block;">Verification ID: ${cert.hash}</div>
-          <div style="margin-top:.75rem;font-size:11px;color:var(--mist-dim);">Verify at edunet.app/verify/${cert.hash}</div>
+          <div style="margin-top:.75rem;font-size:11px;color:var(--mist-dim);">Verify at ${window.location.origin}/verify.html?id=${cert.hash}</div>
         </div>
         <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.5rem;">
           <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save PDF</button>
@@ -113,4 +136,5 @@ function downloadCert(cert) {
   setTimeout(() => window.print(), 800);
 }
 
-renderCerts();
+// ── Start ───────────────────────────────────────────────────────
+init();
