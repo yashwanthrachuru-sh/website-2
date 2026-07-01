@@ -4,7 +4,7 @@
 'use strict';
 
 const session = window.initPageShell('roadmaps.html');
-const { apiFetch, showToast, getSession } = window.EduNetAPI;
+const { apiFetch, showToast, getSession, debounce } = window.EduNetAPI;
 
 let allRoadmaps = [];
 let activeFilter = 'all';
@@ -158,13 +158,13 @@ document.querySelectorAll('#rmFilterRow .filter-btn').forEach(btn => {
 });
 
 // ── Search ──────────────────────────────────────────────────────
-document.getElementById('rmSearchBar')?.addEventListener('input', function () {
+document.getElementById('rmSearchBar')?.addEventListener('input', debounce(function () {
   searchQuery = this.value.toLowerCase().trim();
   renderRoadmaps();
-});
+}, 200));
 
 // ── Global Search Modal ─────────────────────────────────────────
-document.getElementById('searchInput')?.addEventListener('input', async function () {
+document.getElementById('searchInput')?.addEventListener('input', debounce(async function () {
   const q = this.value.trim();
   const list = document.getElementById('searchResultsList');
   if (!q || q.length < 2) { list.innerHTML = ''; return; }
@@ -206,7 +206,7 @@ document.getElementById('searchInput')?.addEventListener('input', async function
   } catch (err) {
     list.innerHTML = '<div class="search-no-results">Search error. Try again.</div>';
   }
-});
+}, 250));
 
 // ── Static Fallback ─────────────────────────────────────────────
 function getStaticRoadmaps() {

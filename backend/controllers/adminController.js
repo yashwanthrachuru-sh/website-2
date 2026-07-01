@@ -208,6 +208,8 @@ const updateToolStatus = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Failed to update tool status.' });
     }
 
+    try { require('./toolsController').clearToolsCache(); } catch (e) {}
+
     // Write audit log
     await auditModel.addLog(
       req.user.username,
@@ -241,6 +243,8 @@ const createTool = async (req, res) => {
 
     const newId = await toolModel.createTool(req.body);
 
+    try { require('./toolsController').clearToolsCache(); } catch (e) {}
+
     await auditModel.addLog(
       req.user.username,
       `Manually created new AI Tool '${name}' (ID: ${newId}).`
@@ -273,6 +277,8 @@ const updateTool = async (req, res) => {
       return res.status(400).json({ success: false, message: 'No changes made or update failed.' });
     }
 
+    try { require('./toolsController').clearToolsCache(); } catch (e) {}
+
     await auditModel.addLog(
       req.user.username,
       `Modified details for AI Tool '${existing.name}'.`
@@ -303,6 +309,8 @@ const deleteTool = async (req, res) => {
     if (!success) {
       return res.status(400).json({ success: false, message: 'Failed to delete tool.' });
     }
+
+    try { require('./toolsController').clearToolsCache(); } catch (e) {}
 
     await auditModel.addLog(
       req.user.username,

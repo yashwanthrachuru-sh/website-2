@@ -87,19 +87,59 @@
             <option value="sql">SQL (simulated)</option>
           </select>
           <button class="btn btn-primary" id="runBtn">▶ Run Code</button>
+          <button class="btn btn-emerald" id="submitBtn">🚀 Submit Solution</button>
           <button class="btn btn-secondary" id="clearBtn">Clear</button>
           <button class="btn btn-secondary" id="saveBtn">💾 Save</button>
         </div>
       </div>
       <div class="editor-layout" style="display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--abyss); overflow: hidden; min-height: 520px; height: 72vh;">
         <!-- Explorer Sidebar -->
-        <div class="explorer-panel" style="width: 200px; border-right: 1px solid var(--border); background: var(--abyss-2); display: flex; flex-direction: column; flex-shrink: 0; user-select: none;">
-          <div style="padding: .75rem 1rem; border-bottom: 1px solid var(--border); font-size: 11px; font-family: var(--font-mono); color: var(--mist-dim); text-transform: uppercase; letter-spacing: 0.08em; display: flex; justify-content: space-between; align-items: center;">
-            <span>Explorer</span>
-            <span style="cursor:pointer; font-weight:700; font-size: 14px;" id="createNewFileBtn" title="Create New File">+</span>
+        <div class="explorer-panel" style="width: 280px; border-right: 1px solid var(--border); background: var(--abyss-2); display: flex; flex-direction: column; flex-shrink: 0; user-select: none;">
+          <!-- Tabs header -->
+          <div style="display:flex; border-bottom: 1px solid var(--border); background: var(--abyss-2); flex-shrink:0;">
+            <button id="btnTabExplorer" style="flex:1; border:none; padding:.75rem .5rem; font-size:11px; font-family:var(--font-mono); color:var(--frost); background:rgba(255,255,255,0.02); cursor:pointer; font-weight:700;">📁 Files</button>
+            <button id="btnTabChallenges" style="flex:1; border:none; padding:.75rem .5rem; font-size:11px; font-family:var(--font-mono); color:var(--mist-dim); background:transparent; cursor:pointer; font-weight:700;">🏆 Challenges</button>
           </div>
-          <div style="flex: 1; overflow-y: auto; padding: .5rem;" id="explorerFilesList">
-            <!-- Files loaded here dynamically -->
+
+          <!-- Files View Panel -->
+          <div id="explorerFilesView" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+            <div style="padding: .75rem 1rem; border-bottom: 1px solid var(--border); font-size: 11px; font-family: var(--font-mono); color: var(--mist-dim); text-transform: uppercase; letter-spacing: 0.08em; display: flex; justify-content: space-between; align-items: center;">
+              <span>Explorer</span>
+              <span style="cursor:pointer; font-weight:700; font-size: 14px;" id="createNewFileBtn" title="Create New File">+</span>
+            </div>
+            <div style="flex: 1; overflow-y: auto; padding: .5rem;" id="explorerFilesList">
+              <!-- Files loaded here dynamically -->
+            </div>
+          </div>
+
+          <!-- Challenges View Panel -->
+          <div id="explorerChallengesView" style="display:none; flex-direction:column; flex:1; overflow:hidden; padding: 1rem;">
+            <!-- Challenges selection lists or challenge details instructions -->
+            <div id="challengesSelectionList" style="flex:1; overflow-y:auto;">
+              <h4 style="font-size:12px; font-weight:700; color:var(--frost); margin-bottom:0.75rem;">Daily Challenges</h4>
+              <div id="dailyChallengeItem">
+                <!-- Spits today challenge card -->
+              </div>
+              <h4 style="font-size:12px; font-weight:700; color:var(--frost); margin-top:1.5rem; margin-bottom:0.75rem;">Recommended</h4>
+              <div id="recommendedChallengesList">
+                <!-- Recommended items cards -->
+              </div>
+            </div>
+
+            <!-- Challenge details container -->
+            <div id="activeChallengeDetails" style="display:none; flex-direction:column; flex:1; overflow-y:auto; gap:0.75rem;">
+              <button class="btn btn-secondary btn-sm" id="btnBackToChallenges" style="align-self:flex-start; margin-bottom:0.5rem;">← Back</button>
+              <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+                <span class="badge badge-accent" id="activeChallengeDiff">Easy</span>
+                <span style="font-size:11px; font-family:var(--font-mono); color:var(--mist-dim);" id="activeChallengeCat">Arrays</span>
+              </div>
+              <h3 id="activeChallengeTitle" style="font-size:15px; font-weight:700; color:var(--frost);">Challenge Title</h3>
+              <p id="activeChallengeDesc" style="font-size:12px; color:var(--mist); line-height:1.6; border-bottom:1px solid var(--border); padding-bottom:0.75rem;">Instructions...</p>
+              
+              <!-- Hints accordions -->
+              <h4 style="font-size:12px; font-weight:700; margin-top:0.5rem;">Hints</h4>
+              <div id="challengeHintsBox" style="font-size:11px; color:var(--mist-dim); line-height:1.5;"></div>
+            </div>
           </div>
         </div>
 
@@ -143,15 +183,39 @@
         <div style="width: 4px; cursor: col-resize; background: var(--border); transition: background .2s; flex-shrink:0;" id="resizeHandle"></div>
 
         <!-- Console / Output Pane -->
-        <div class="console-window" style="width: 300px; border-left: 1px solid var(--border); border-top: none; border-bottom: none; border-right: none; display: flex; flex-direction: column; flex-shrink: 0; border-radius:0;" id="consolePanel">
-          <div class="window-header" style="height: 40px; flex-shrink:0;">
-            <div style="font-family:var(--font-mono); font-size:11px; color:var(--mist);">Terminal Console</div>
-            <button class="btn btn-ghost btn-sm" id="clearConsoleBtn" style="font-size:11px; padding:3px 8px;">Clear</button>
+        <div class="console-window" style="width: 320px; border-left: 1px solid var(--border); border-top: none; border-bottom: none; border-right: none; display: flex; flex-direction: column; flex-shrink: 0; border-radius:0;" id="consolePanel">
+          <div class="window-header" style="height: 40px; flex-shrink:0; display:flex; padding:0; justify-content:space-between; border-bottom:1px solid var(--border);">
+            <div style="display:flex; height:100%;">
+              <button class="console-tab-btn active" id="btnTabTerminal" style="border:none; padding:0 0.85rem; font-size:11px; font-family:var(--font-mono); color:var(--frost); background:rgba(255,255,255,0.02); cursor:pointer; font-weight:600; border-right:1px solid var(--border);">Terminal</button>
+              <button class="console-tab-btn" id="btnTabAIReview" style="border:none; padding:0 0.85rem; font-size:11px; font-family:var(--font-mono); color:var(--mist-dim); background:transparent; cursor:pointer; font-weight:600; border-right:1px solid var(--border);">AI Review</button>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="clearConsoleBtn" style="font-size:11px; margin-right:8px; padding:3px 8px;">Clear</button>
           </div>
-          <div class="console-body" id="consoleOutput" style="flex:1; overflow-y:auto; padding: 1rem; font-family:var(--font-mono); font-size:12px; background:#030712;">
+          
+          <!-- Terminal View Panel -->
+          <div class="console-body" id="consoleOutput" style="flex:1; overflow-y:auto; padding: 1rem; font-family:var(--font-mono); font-size:12px; background:#030712; display:block;">
             <div class="console-line info">// EduNet Coding Lab — Ready</div>
             <div class="console-line cli">// Select a template, write code and press Run.</div>
           </div>
+
+          <!-- AI Review View Panel -->
+          <div id="aiReviewPanel" style="display:none; padding:1.25rem; flex:1; overflow-y:auto; background:#030712;">
+            <div style="font-size:11px; text-transform:uppercase; color:var(--accent); font-family:var(--font-mono); margin-bottom:0.75rem;">AI Mentor Code Feedback</div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem; margin-bottom:1rem;">
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:4px; padding:0.5rem; text-align:center;">
+                <div style="font-size:16px; font-weight:700; color:var(--accent);" id="aiScoreVal">100</div>
+                <div style="font-size:9px; color:var(--mist-dim);">Review Score</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:4px; padding:0.5rem; text-align:center;">
+                <div style="font-size:12px; font-weight:700; color:var(--frost);" id="aiComplexityVal">O(N)</div>
+                <div style="font-size:9px; color:var(--mist-dim);">Complexity</div>
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--mist); line-height:1.6;" id="aiSuggestionsList">
+              Submit code to retrieve review insights from your AI career mentor.
+            </div>
+          </div>
+
           <div class="editor-footer" style="height: 32px; flex-shrink:0;">
             <span class="editor-info" id="execTime">Ready</span>
             <span class="editor-info" id="execStatus" style="color:var(--emerald);">●</span>

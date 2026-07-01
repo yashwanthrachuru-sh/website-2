@@ -335,6 +335,21 @@
         </div>
       </div>
 
+      <!-- Portfolio Strength Bar -->
+      <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1rem 1.25rem;margin-bottom:1.5rem;" class="fade-up fade-up-d2">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:.5rem;">
+          <span style="color:var(--mist);font-weight:600;">Portfolio Completion Strength</span>
+          <span style="color:var(--accent);font-family:var(--font-mono);font-weight:700;" id="portfolioStrengthText">0%</span>
+        </div>
+        <div class="progress-bar" style="height:8px;margin-bottom:.4rem;">
+          <div class="progress-fill" id="portfolioStrengthFill" style="width:0%;background:linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);transition:width .8s cubic-bezier(.4,0,.2,1);"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mist-dim);">
+          <span>Strengthen your profile to showcase to recruiters</span>
+          <a href="/profile/portfolio" style="color:var(--accent);text-decoration:none;font-weight:600;">Edit Portfolio →</a>
+        </div>
+      </div>
+
       <!-- Quick Actions -->
       <div style="margin-bottom:2rem;" class="fade-up fade-up-d2">
         <h3 style="font-size:14px;margin-bottom:.85rem;color:var(--mist);text-transform:uppercase;letter-spacing:.06em;">Quick Actions</h3>
@@ -516,6 +531,7 @@
 <div class="toast-container" id="toastContainer"></div>
 
 <script src="js/api.js"></script>
+<script src="js/page-shell.js"></script>
 <script src="js/user.js"></script>
 </body>
 </html>

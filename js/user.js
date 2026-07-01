@@ -7,6 +7,20 @@
 
 const { apiFetch, getToken, getSession, clearSession, showToast, getXP, addXP } = window.EduNetAPI;
 
+let dashboardDataPromise = null;
+function fetchDashboardData(force = false) {
+  if (force || !dashboardDataPromise) {
+    dashboardDataPromise = Promise.all([
+      apiFetch('/api/analytics/dashboard').catch(err => ({ success: false, error: err })),
+      apiFetch('/api/analytics/topics').catch(err => ({ success: false, error: err })),
+      apiFetch('/api/analytics/heatmap?days=365').catch(err => ({ success: false, error: err })),
+      apiFetch('/api/achievements').catch(err => ({ success: false, error: err })),
+      apiFetch('/api/videos?limit=6').catch(err => ({ success: false, error: err }))
+    ]);
+  }
+  return dashboardDataPromise;
+}
+
 // ── Auth Guard ─────────────────────────────────────────────────
 const session = getSession();
 const token   = getToken();
@@ -14,8 +28,10 @@ if (!token || !session) { window.location.href = 'index.html'; }
 
 // ── Populate User Info ─────────────────────────────────────────
 function initUserUI() {
+  if (window.initPageShell) {
+    window.initPageShell();
+  }
   const name     = session.username || 'Student';
-  const initials = name.slice(0, 2).toUpperCase();
   const branch   = session.branch || 'SDE';
 
   const set = (id, val, prop) => {
@@ -24,10 +40,6 @@ function initUserUI() {
   };
 
   set('welcomeName',  name,   'text');
-  set('sidebarName',  name,   'text');
-  set('sidebarRole',  session.role || 'user', 'text');
-  set('sidebarAvatar', initials, 'text');
-  set('topbarAvatar',  initials, 'text');
   set('metricBranch',  branch,  'text');
 }
 initUserUI();
@@ -58,7 +70,8 @@ updateXPDisplay();
 // ── Load Dashboard from Analytics API ─────────────────────────
 async function loadDashboard() {
   try {
-    const data = await apiFetch('/api/analytics/dashboard');
+    const dataList = await fetchDashboardData();
+    const data = dataList[0];
     if (!data.success) return;
     const d = data.dashboard;
 
@@ -75,6 +88,18 @@ async function loadDashboard() {
     setEl('metricRank',    d.leaderboard_rank ? '#' + d.leaderboard_rank : '#—');
     setEl('metricBranch',  session.branch || 'SDE');
 
+    // Update Portfolio Strength UI
+    const strengthVal = document.getElementById('portfolioStrengthText');
+    const strengthFill = document.getElementById('portfolioStrengthFill');
+    const strengthPct = d.portfolio_completion || 0;
+    if (strengthVal) strengthVal.textContent = strengthPct + '%';
+    if (strengthFill) setTimeout(() => { strengthFill.style.width = strengthPct + '%'; }, 100);
+
+    // Show daily login reward toast
+    if (data.daily_login_awarded) {
+      showToast('🔥 Daily login reward claimed! +50 XP, streak updated!', 'success', 5000);
+    }
+
     // Cache XP locally too
     if (session.username && d.xp) {
       localStorage.setItem('edunet_xp_' + session.username, String(d.xp));
@@ -88,7 +113,7 @@ async function loadDashboard() {
             showToast(`🏆 Achievement unlocked: ${a.title}! ${a.xp_reward ? '+' + a.xp_reward + ' XP' : ''}`, 'success', 5000);
           });
           // Reload achievements after a short delay
-          setTimeout(loadAchievements, 1200);
+          setTimeout(() => loadAchievements(true), 1200);
         }
       })
       .catch(() => {});
@@ -234,7 +259,8 @@ if (document.readyState === 'complete') {
 // ── Topic Insights ─────────────────────────────────────────────
 async function loadTopicInsights() {
   try {
-    const data = await apiFetch('/api/analytics/topics');
+    const dataList = await fetchDashboardData();
+    const data = dataList[1];
     if (!data.success) return;
 
     const ins = data.insights;
@@ -288,7 +314,8 @@ async function loadHeatmap() {
   // Fetch heatmap data from API
   let activityMap = {};
   try {
-    const data = await apiFetch('/api/analytics/heatmap?days=365');
+    const dataList = await fetchDashboardData();
+    const data = dataList[2];
     if (data.success && data.heatmap) {
       data.heatmap.forEach(row => {
         activityMap[row.day] = {
@@ -398,7 +425,8 @@ async function loadRevisionWidget() {
   if (!widget) return;
 
   try {
-    const data = await apiFetch('/api/analytics/topics');
+    const dataList = await fetchDashboardData();
+    const data = dataList[1];
     const weak = data?.insights?.weakest_topics || [];
 
     // Also get recently viewed modules
@@ -461,14 +489,15 @@ async function loadRevisionWidget() {
 loadRevisionWidget();
 
 // ── Real Achievements Grid ─────────────────────────────────────
-async function loadAchievements() {
+async function loadAchievements(force = false) {
   const skeleton = document.getElementById('achSkeleton');
   const grid     = document.getElementById('achGrid');
   const countEl  = document.getElementById('achEarnedCount');
   if (!grid) return;
 
   try {
-    const data = await apiFetch('/api/achievements');
+    const dataList = await fetchDashboardData(force);
+    const data = dataList[3];
     if (!data.success) return;
 
     const achievements = data.achievements || [];
@@ -511,7 +540,8 @@ async function loadVideos() {
   const grid = document.getElementById('videosGrid');
   if (!grid) return;
   try {
-    const data   = await apiFetch('/api/videos?limit=6');
+    const dataList = await fetchDashboardData();
+    const data = dataList[4];
     const videos = data.videos || [];
     if (!videos.length) return;
 
@@ -583,117 +613,7 @@ function openVideoModal(v) {
 }
 loadVideos();
 
-// ── Sidebar & Burger ───────────────────────────────────────────
-const dashSidebar    = document.getElementById('dashSidebar');
-const sidebarOverlay = document.getElementById('sidebarOverlay');
-const burgerBtn      = document.getElementById('burgerBtn');
-
-const openSidebar  = () => { dashSidebar.classList.add('open'); sidebarOverlay.classList.add('open'); };
-const closeSidebar = () => { dashSidebar.classList.remove('open'); sidebarOverlay.classList.remove('open'); };
-
-if (burgerBtn) burgerBtn.addEventListener('click', openSidebar);
-if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
-
-// ── Search Modal ───────────────────────────────────────────────
-const searchModal  = document.getElementById('searchModal');
-const searchInput  = document.getElementById('searchInput');
-const searchList   = document.getElementById('searchResultsList');
-const topbarSearch = document.getElementById('topbarSearch');
-
-const SEARCH_INDEX = [
-  { title:'DSA Roadmap',       desc:'Data Structures & Algorithms path',  cat:'Roadmaps', link:'roadmaps.html',    icon:'🗺' },
-  { title:'Python Roadmap',    desc:'Python developer path',              cat:'Roadmaps', link:'roadmaps.html',    icon:'🗺' },
-  { title:'Web Development',   desc:'Full stack web dev roadmap',         cat:'Roadmaps', link:'roadmaps.html',    icon:'🗺' },
-  { title:'Machine Learning',  desc:'ML engineer roadmap',                cat:'Roadmaps', link:'roadmaps.html',    icon:'🗺' },
-  { title:'CodeSynth AI',      desc:'DSA solution generator',             cat:'AI Tools', link:'ai-tools.html',   icon:'🛠' },
-  { title:'Coding Lab',        desc:'Browser code editor',                cat:'Tools',    link:'coding-lab.html', icon:'💻' },
-  { title:'Quiz Center',       desc:'MCQ & XP quizzes',                   cat:'Quizzes',  link:'quiz.html',        icon:'🧠' },
-  { title:'Resume Builder',    desc:'ATS resume builder',                 cat:'Career',   link:'resume.html',      icon:'📄' },
-  { title:'Interview Prep',    desc:'Technical interview practice',       cat:'Career',   link:'interview.html',   icon:'💼' },
-  { title:'Certificates',      desc:'View earned certificates',           cat:'Career',   link:'certificates.html',icon:'🏆' },
-  { title:'Leaderboard',       desc:'XP rankings',                        cat:'Account',  link:'leaderboard.html', icon:'🥇' },
-  { title:'Bookmarks',         desc:'Saved tools and roadmaps',           cat:'Account',  link:'bookmarks.html',   icon:'🔖' },
-  { title:'Profile',           desc:'Manage your profile',                cat:'Account',  link:'profile.html',     icon:'👤' },
-  { title:'Settings',          desc:'Account settings',                   cat:'Account',  link:'settings.html',    icon:'⚙️' },
-  { title:'Notifications',     desc:'View notifications',                 cat:'Account',  link:'notifications.html',icon:'🔔'},
-];
-
-function openSearch() { searchModal.classList.add('open'); setTimeout(() => searchInput.focus(), 80); }
-function closeSearch() { searchModal.classList.remove('open'); searchInput.value = ''; searchList.innerHTML = ''; }
-
-if (topbarSearch) topbarSearch.addEventListener('click', openSearch);
-searchModal.addEventListener('click', e => { if (e.target === searchModal) closeSearch(); });
-window.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeSearch();
-  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
-});
-searchInput.addEventListener('input', async () => {
-  const q = searchInput.value.trim();
-  searchList.innerHTML = '';
-  if (!q) {
-    SEARCH_INDEX.slice(0, 5).forEach(item => {
-      const el = document.createElement('div');
-      el.className = 'search-result-item';
-      el.innerHTML = `<div class="search-result-icon">${item.icon}</div><div class="search-result-info"><div class="search-result-title">${item.title}</div><div class="search-result-desc">${item.desc}</div></div><div class="search-result-cat">${item.cat}</div>`;
-      el.addEventListener('click', () => { closeSearch(); window.location.href = item.link; });
-      searchList.appendChild(el);
-    });
-    return;
-  }
-
-  try {
-    const res = await apiFetch('/api/roadmaps/search?q=' + encodeURIComponent(q));
-    if (res.success && res.results) {
-      const results = res.results;
-      if (!results.length) {
-        searchList.innerHTML = '<div class="search-no-results">No results found in database.</div>';
-        return;
-      }
-      results.forEach(item => {
-        const el = document.createElement('div');
-        el.className = 'search-result-item';
-        const typeIcons = { roadmap: '🗺', module: '📦', lesson: '📖', user: '👤', certificate: '🏆' };
-        const icon = item.icon || typeIcons[item.type] || '🔍';
-
-        const regex = new RegExp(`(${q})`, 'gi');
-        const titleHighlighted = item.title.replace(regex, '<mark style="background:hsl(262,80%,30%);color:#fff;border-radius:2px;padding:0 2px;">$1</mark>');
-        const descHighlighted = (item.rdesc || '').replace(regex, '<mark style="background:hsl(262,80%,30%);color:#fff;border-radius:2px;padding:0 2px;">$1</mark>');
-
-        el.innerHTML = `
-          <div class="search-result-icon">${icon}</div>
-          <div class="search-result-info">
-            <div class="search-result-title">${titleHighlighted}</div>
-            <div class="search-result-desc">${descHighlighted}</div>
-          </div>
-          <div class="search-result-cat" style="text-transform:capitalize;">${item.type}</div>
-        `;
-        el.addEventListener('click', () => {
-          closeSearch();
-          if (item.type === 'roadmap') {
-            window.location.href = `roadmaps.html?id=${item.id}`;
-          } else if (item.type === 'module') {
-            window.location.href = `roadmaps.html`;
-          } else if (item.type === 'lesson') {
-            window.location.href = `roadmaps.html`;
-          } else {
-            window.location.href = item.link || 'user.html';
-          }
-        });
-        searchList.appendChild(el);
-      });
-    }
-  } catch (e) {
-    const hits = SEARCH_INDEX.filter(d => d.title.toLowerCase().includes(q.toLowerCase()) || d.desc.toLowerCase().includes(q.toLowerCase()));
-    if (!hits.length) { searchList.innerHTML = '<div class="search-no-results">No results found.</div>'; return; }
-    hits.slice(0, 8).forEach(item => {
-      const el = document.createElement('div');
-      el.className = 'search-result-item';
-      el.innerHTML = `<div class="search-result-icon">${item.icon}</div><div class="search-result-info"><div class="search-result-title">${item.title}</div><div class="search-result-desc">${item.desc}</div></div><div class="search-result-cat">${item.cat}</div>`;
-      el.addEventListener('click', () => { closeSearch(); window.location.href = item.link; });
-      searchList.appendChild(el);
-    });
-  }
-});
+// Sidebar, Burger overlay, and Search are fully handled by shared page-shell.js
 
 // ── Bookmarks & Saved Programs (localStorage) ─────────────────
 function renderDashboardLists() {
@@ -756,12 +676,5 @@ function initDailyChallenge() {
 }
 initDailyChallenge();
 
-// ── Logout ─────────────────────────────────────────────────────
-const logoutBtn = document.getElementById('logoutBtn');
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', () => {
-    clearSession();
-    showToast('Logged out successfully.', 'info');
-    setTimeout(() => window.location.href = 'index.html', 600);
-  });
-}
+// Logout is handled by shared page-shell.js
+

@@ -46,6 +46,25 @@ async function saveBase64File(base64Data, subFolder, prefix, allowedMimes, maxSi
   return `/uploads/${subFolder}/${filename}`;
 }
 
+// Helper to calculate portfolio completion percentage
+function calculateCompletion(settings, socials, resumeUrl, projects) {
+  let score = 0;
+  if (settings) {
+    if (settings.headline) score += 15;
+    if (settings.about_me) score += 15;
+    if (settings.location) score += 10;
+    if (settings.availability) score += 10;
+  }
+  if (socials) {
+    if (socials.linkedin_url) score += 10;
+    if (socials.github_url) score += 10;
+    if (socials.website_url || socials.twitter_url) score += 10;
+  }
+  if (resumeUrl) score += 10;
+  if (projects && projects.length > 0) score += 10;
+  return Math.min(100, score);
+}
+
 // Helper: Get or initialize portfolio elements for a user
 async function ensurePortfolioInitialized(userId) {
   // Check settings
@@ -425,6 +444,8 @@ const getPortfolio = async (req, res) => {
       WHERE ua.user_id = ?
     `, [userId]);
 
+    const completion_percentage = calculateCompletion(settings, socials, resume ? resume.resume_url : null, allProjects);
+
     res.json({
       success: true,
       user,
@@ -434,7 +455,8 @@ const getPortfolio = async (req, res) => {
       projects: allProjects,
       skills,
       certificates: certs,
-      achievements
+      achievements,
+      completion_percentage
     });
   } catch (err) {
     console.error('getPortfolio error:', err);
@@ -806,6 +828,8 @@ const getPublicPortfolio = async (req, res) => {
       created_at: user.created_at
     };
 
+    const completion_percentage = calculateCompletion(settings, socials, resume ? resume.resume_url : null, projects);
+
     res.json({
       success: true,
       user: cleanedUser,
@@ -818,11 +842,203 @@ const getPublicPortfolio = async (req, res) => {
       achievements,
       timeline,
       interview: (settings && settings.show_interview_scores === 0) ? null : interview,
-      heatmap
+      heatmap,
+      completion_percentage
     });
   } catch (err) {
     console.error('getPublicPortfolio error:', err);
     res.status(500).json({ success: false, message: 'Server error retrieving developer profile.' });
+  }
+};
+
+// ============================================================
+// Phase 5 — New handlers (appended, never modifying existing)
+// ============================================================
+
+const analyticsService = require('../services/analyticsService');
+
+// ── POST /api/portfolio/track-view (public) ─────────────────────
+const trackPortfolioView = async (req, res) => {
+  try {
+    const { username } = req.body;
+    if (!username) return res.json({ success: false });
+    const [[user]] = await db.query('SELECT id FROM users WHERE username = ?', [username]).catch(() => [[null]]);
+    if (!user) return res.json({ success: false });
+    await analyticsService.trackView(user.id, req);
+    res.json({ success: true });
+  } catch (err) {
+    res.json({ success: false });
+  }
+};
+
+// ── POST /api/portfolio/track-click (public) ───────────────────
+const trackPortfolioClick = async (req, res) => {
+  try {
+    const { username, click_type, target_id, target_name } = req.body;
+    if (!username || !click_type) return res.json({ success: false });
+    const [[user]] = await db.query('SELECT id FROM users WHERE username = ?', [username]).catch(() => [[null]]);
+    if (!user) return res.json({ success: false });
+    await analyticsService.trackClick(user.id, click_type, target_id, target_name, req);
+    res.json({ success: true });
+  } catch (err) {
+    res.json({ success: false });
+  }
+};
+
+// ── GET /api/portfolio/views ────────────────────────────────────
+const getPortfolioViews = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const days = parseInt(req.query.days || '30');
+    const summary = await analyticsService.getAnalyticsSummary(userId);
+    const daily = await analyticsService.getDailyViews(userId, days);
+    const topProjects = await analyticsService.getTopProjects(userId);
+    const traffic = await analyticsService.getTrafficSources(userId);
+    res.json({ success: true, summary, daily, top_projects: topProjects, traffic_sources: traffic });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── GET /api/portfolio/strength ─────────────────────────────────
+const getPortfolioStrength = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Gather portfolio data for scoring
+    const [[settings]] = await db.query('SELECT * FROM portfolio_settings WHERE user_id = ?', [userId]).catch(() => [[null]]);
+    const [[socials]] = await db.query('SELECT * FROM portfolio_socials WHERE user_id = ?', [userId]).catch(() => [[null]]);
+    const [[resume]] = await db.query('SELECT resume_url FROM portfolio_resume WHERE user_id = ?', [userId]).catch(() => [[null]]);
+    const [projects] = await db.query('SELECT id FROM portfolio_projects WHERE user_id = ?', [userId]).catch(() => [[]]);
+    const [certs] = await db.query('SELECT id FROM certificates WHERE user_id = ?', [userId]).catch(() => [[]]);
+
+    const result = await analyticsService.calculateStrength(userId, {
+      settings,
+      socials,
+      resume_url: resume?.resume_url || null,
+      projects,
+      certificates: certs
+    });
+
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── GET /api/portfolio/theme ────────────────────────────────────
+const getPortfolioTheme = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const [[theme]] = await db.query('SELECT * FROM portfolio_theme WHERE user_id = ?', [userId]).catch(() => [[null]]);
+    res.json({ success: true, theme: theme || {} });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── PUT /api/portfolio/theme ────────────────────────────────────
+const updatePortfolioTheme = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const {
+      accent_color, background_style, card_radius, glass_blur,
+      font_family, font_size, animation_speed, border_style, card_style
+    } = req.body;
+
+    await db.query(`
+      INSERT INTO portfolio_theme (user_id, accent_color, background_style, card_radius, glass_blur,
+        font_family, font_size, animation_speed, border_style, card_style)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON DUPLICATE KEY UPDATE
+        accent_color     = VALUES(accent_color),
+        background_style = VALUES(background_style),
+        card_radius      = VALUES(card_radius),
+        glass_blur       = VALUES(glass_blur),
+        font_family      = VALUES(font_family),
+        font_size        = VALUES(font_size),
+        animation_speed  = VALUES(animation_speed),
+        border_style     = VALUES(border_style),
+        card_style       = VALUES(card_style),
+        updated_at       = NOW()
+    `, [
+      userId, accent_color || '#8b5cf6', background_style || 'dark',
+      card_radius || '12px', glass_blur || '16px', font_family || 'Outfit',
+      font_size || '14px', animation_speed || 'normal', border_style || 'solid',
+      card_style || 'glass'
+    ]);
+
+    res.json({ success: true, message: 'Portfolio theme saved.' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── POST /api/portfolio/share ───────────────────────────────────
+const sharePortfolio = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { share_type = 'copy_link' } = req.body;
+    const [[user]] = await db.query('SELECT username FROM users WHERE id = ?', [userId]);
+    const shareToken = require('crypto').randomBytes(8).toString('hex');
+    await db.query(
+      'INSERT INTO portfolio_shares (portfolio_user_id, share_token, share_type) VALUES (?, ?, ?)',
+      [userId, shareToken, share_type]
+    ).catch(() => {});
+    const origin = process.env.FRONTEND_ORIGIN || 'http://localhost:5000';
+    const shareUrl = `${origin}/portfolio/${user.username}`;
+    res.json({ success: true, share_url: shareUrl, username: user.username });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── GET /api/portfolio/qr ───────────────────────────────────────
+// Returns a simple SVG QR-code placeholder (real QR requires a library)
+const getQRCode = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const [[user]] = await db.query('SELECT username FROM users WHERE id = ?', [userId]);
+    const origin = process.env.FRONTEND_ORIGIN || 'http://localhost:5000';
+    const shareUrl = `${origin}/portfolio/${user.username}`;
+
+    // Return URL for frontend to generate QR with a CDN library
+    res.json({ success: true, url: shareUrl, username: user.username });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── GET /api/portfolio/resume-analytics ─────────────────────────
+const getResumeAnalytics = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const [[totals]] = await db.query(`
+      SELECT COUNT(*) AS total_downloads
+      FROM resume_downloads WHERE user_id = ?
+    `, [userId]).catch(() => [[{ total_downloads: 0 }]]);
+
+    const [scanHistory] = await db.query(`
+      SELECT score, created_at FROM resume_job_scans
+      WHERE user_id = ? ORDER BY created_at DESC LIMIT 10
+    `, [userId]).catch(() => [[]]);
+
+    const [dailyDownloads] = await db.query(`
+      SELECT DATE_FORMAT(created_at, '%Y-%m-%d') AS day, COUNT(*) AS cnt
+      FROM resume_downloads WHERE user_id = ?
+      AND created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+      GROUP BY DATE(created_at) ORDER BY day ASC
+    `, [userId]).catch(() => [[]]);
+
+    res.json({
+      success: true,
+      total_downloads: totals?.total_downloads || 0,
+      scan_history: scanHistory,
+      daily_downloads: dailyDownloads
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -835,5 +1051,15 @@ module.exports = {
   editProject,
   deleteProject,
   getPortfolioAnalytics,
-  getPublicPortfolio
+  getPublicPortfolio,
+  // Phase 5 extensions
+  trackPortfolioView,
+  trackPortfolioClick,
+  getPortfolioViews,
+  getPortfolioStrength,
+  getPortfolioTheme,
+  updatePortfolioTheme,
+  sharePortfolio,
+  getQRCode,
+  getResumeAnalytics
 };

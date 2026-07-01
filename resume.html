@@ -3,47 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduNet — Resume Builder</title>
+<title>EduNet — Resume Builder & ATS Scanner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
+<style>
+/* Responsive layout */
+.resume-layout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 990px) {
+  .resume-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Custom preview template styling rules */
+.preview-container {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: var(--r-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  min-height: 700px;
+  overflow: auto;
+  max-height: 80vh;
+}
+
+/* Templates classes overrides */
+.tmpl-classic { font-family: 'Georgia', serif; font-size: 13px; }
+.tmpl-modern { font-family: 'Outfit', sans-serif; font-size: 13.5px; color: #1e3a8a; }
+.tmpl-minimal { font-family: 'Inter', sans-serif; font-size: 12.5px; }
+.tmpl-developer { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: #fafafa; }
+.tmpl-executive { font-family: 'Times New Roman', Times, serif; font-size: 14px; }
+
+/* Dynamic List elements */
+.dynamic-list-item {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Tabs styles */
+.section-tab-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--mist-dim);
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.section-tab-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: #fff;
+}
+</style>
 </head>
 <body>
+
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 <div class="search-modal" id="searchModal">
   <div class="search-modal-box">
     <div class="search-input-row">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="searchInput" placeholder="Search everything..." autocomplete="off">
+      <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
       <kbd>ESC</kbd>
     </div>
     <div class="search-results-list" id="searchResultsList"></div>
   </div>
 </div>
+
 <div class="dash-layout">
-<aside class="dash-sidebar" id="dashSidebar">
+  <!-- Sidebar -->
+  <aside class="dash-sidebar" id="dashSidebar">
     <div class="dash-sidebar-logo">
       <div class="nav-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div>
       EduNet
     </div>
     <nav class="dash-nav">
-      <div class="dash-nav-section">Main</div>
-      <a href="user.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</a>
-<a href="roadmaps.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h5a2 2 0 012 2v7M6 9v9"/></svg>Roadmaps</a>
-<a href="ai-tools.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>AI Tools</a>
-<a href="coding-lab.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>Coding Lab</a>
-<a href="quiz.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Quizzes</a>
-      <div class="dash-nav-section">Career</div>
-      <a href="resume.html" class="dash-nav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Resume Builder</a>
-<a href="interview.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Interview Prep</a>
-<a href="certificates.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>Certificates</a>
-      <div class="dash-nav-section">Account</div>
-      <a href="leaderboard.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Leaderboard</a>
-<a href="bookmarks.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Bookmarks</a>
-<a href="notifications.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications</a>
-<a href="profile.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
-<a href="settings.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 005 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</a>
+      <!-- Injected dynamically by page shell -->
     </nav>
     <div class="dash-sidebar-footer">
       <div class="dash-user-chip">
@@ -56,13 +106,15 @@
       <button class="btn btn-secondary btn-sm btn-full" id="logoutBtn" style="justify-content:center;">Logout</button>
     </div>
   </aside>
-<div class="dash-main">
-<div class="dash-topbar">
+
+  <div class="dash-main">
+    <!-- Topbar -->
+    <div class="dash-topbar">
       <div class="dash-topbar-left">
         <button class="burger-btn" id="burgerBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
         <div class="dash-topbar-search" id="topbarSearch">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          Search everything... <kbd>&#8984;K</kbd>
+          Search... <kbd>⌘K</kbd>
         </div>
       </div>
       <div class="dash-topbar-right">
@@ -70,75 +122,175 @@
         <a href="profile.html" class="dash-avatar" id="topbarAvatar" style="text-decoration:none;">ST</a>
       </div>
     </div>
-<div class="dash-content" style="max-width:100%;">
-      <div style="margin-bottom:1.75rem;">
-        <div class="eyebrow">Career Tools</div>
-        <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.35rem;">Resume Builder</h2>
-        <p style="color:var(--mist);font-size:14px;">Build an ATS-optimized resume with templates, live preview and export options.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" id="resumeBuilderGrid">
-        <!-- Editor -->
-        <div>
-          <h3 style="font-size:15px;margin-bottom:1rem;">Edit Resume</h3>
-          <div style="background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-md);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;">
-            <!-- ATS Score and Template Selection -->
-            <div style="display:flex;justify-content:space-between;align-items:center;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:1rem;margin-bottom:.5rem;flex-wrap:wrap;gap:1rem;">
-              <div>
-                <div style="font-size:10px;font-family:var(--font-mono);color:var(--mist-dim);text-transform:uppercase;">ATS Compatibility Score</div>
-                <div style="font-size:1.6rem;font-weight:700;color:var(--emerald);display:flex;align-items:center;gap:6px;" id="atsScoreText">40%</div>
-              </div>
-              <div>
-                <label style="font-size:11px;color:var(--mist);display:block;margin-bottom:4px;">Template Style</label>
-                <select id="resumeTemplate" class="form-control" style="width:auto;padding:4px 8px;font-size:12px;background:var(--abyss);">
-                  <option value="ats">Standard ATS Single-Column</option>
-                  <option value="modern">Modern Professional Blue</option>
-                  <option value="minimalist">Minimalist Elegant</option>
-                </select>
-              </div>
-            </div>
 
-            <div class="form-group"><label>Full Name</label><input class="form-control" id="rName" placeholder="John Smith"></div>
-            <div class="form-group"><label>Email</label><input class="form-control" id="rEmail" placeholder="john@email.com" type="email"></div>
-            <div class="form-group"><label>Phone</label><input class="form-control" id="rPhone" placeholder="+91 98765 43210"></div>
-            <div class="form-group"><label>LinkedIn</label><input class="form-control" id="rLinkedin" placeholder="linkedin.com/in/yourname"></div>
-            <div class="form-group"><label>GitHub</label><input class="form-control" id="rGithub" placeholder="github.com/yourusername"></div>
-            <div class="form-group"><label>Summary / Objective</label><textarea class="form-control" id="rSummary" rows="3" placeholder="Brief professional summary..."></textarea></div>
-            <div class="form-group"><label>Skills (comma-separated)</label><input class="form-control" id="rSkills" placeholder="Python, React, SQL, Docker..."></div>
-            <div class="form-group"><label>Experience</label><textarea class="form-control" id="rExp" rows="4" placeholder="Company | Role | Duration
-• Achievement 1
-• Achievement 2"></textarea></div>
-            <div class="form-group"><label>Education</label><textarea class="form-control" id="rEdu" rows="3" placeholder="Institution | Degree | Year | CGPA"></textarea></div>
-            <div class="form-group"><label>Projects</label><textarea class="form-control" id="rProjects" rows="4" placeholder="Project Name | Tech Stack
-• Description"></textarea></div>
-            <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-              <button class="btn btn-primary btn-sm" id="previewResumeBtn">👁 Preview</button>
-              <button class="btn btn-secondary btn-sm" id="exportPdfBtn">📄 Export PDF</button>
-              <button class="btn btn-secondary btn-sm" id="exportMdBtn">⬇ Export Markdown</button>
-              <button class="btn btn-secondary btn-sm" id="saveResumeBtn">💾 Save Draft</button>
-            </div>
-            <!-- AI Content Coach Tips -->
-            <div style="background:rgba(99,102,241,0.06);border:1px dashed var(--border-accent);border-radius:var(--r-sm);padding:1rem;margin-top:.5rem;">
-              <div style="font-size:11px;font-family:var(--font-mono);color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px;">
-                <span>🤖</span> AI Resume Recommendations
-              </div>
-              <ul style="margin-top:.4rem;padding-left:1.1rem;font-size:12px;color:var(--mist);display:flex;flex-direction:column;gap:4px;" id="aiResumeSuggestions">
-                <li>Write down at least 5 key technical skills to bump up your score.</li>
-                <li>Make sure to use action verbs in achievements (e.g. Optimized, Automated, Built).</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Preview -->
-        <div>
-          <h3 style="font-size:15px;margin-bottom:1rem;">Live Preview</h3>
-          <div id="resumePreview" style="background:#fff;color:#1a1a1a;border-radius:var(--r-md);padding:2rem;font-family:Arial,sans-serif;font-size:13px;line-height:1.6;min-height:600px;box-shadow:var(--shadow-lg);overflow:auto;max-height:80vh;">
-            <div style="text-align:center;color:#888;margin-top:8rem;">Fill the form to see live preview</div>
-          </div>
-        </div>
+    <!-- Main Workspace Content -->
+    <div class="dash-content" style="max-width:100%;">
+      
+      <!-- Banner Title -->
+      <div style="margin-bottom:1.5rem;">
+        <div class="eyebrow">Professional Placement Tools</div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:.35rem;">AI Resume Builder & ATS Scanner 📄</h2>
+        <p style="color:var(--mist);font-size:14px;">Formulate recruiter-ready CV formats, live switch templates, and scan files completeness percentages against job descriptions.</p>
       </div>
+
+      <!-- Split Screen Grid -->
+      <div class="resume-layout-grid">
+        
+        <!-- Left: Editor Forms Pane -->
+        <div class="glass-panel" style="padding:1.5rem; display:flex; flex-direction:column; gap:1.25rem;">
+          
+          <!-- Quick Template & Actions header -->
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.01); border:1px solid var(--border); padding:1rem; border-radius:8px; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <label style="font-size:11px; color:var(--mist-dim); display:block; margin-bottom:4px;">TEMPLATE DESIGN</label>
+              <select id="resumeTemplateSelect" class="form-control" style="width:auto; padding:5px 10px; font-size:12px; background:var(--abyss);">
+                <option value="classic">Classic Serif</option>
+                <option value="modern">Modern Professional Blue</option>
+                <option value="minimal">Minimal Elegant</option>
+                <option value="developer">Developer Monospace</option>
+                <option value="executive">Executive Georgia</option>
+              </select>
+            </div>
+            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" id="btnSaveResume">Save Draft</button>
+              <button class="btn btn-secondary btn-sm" id="btnExportPDF" style="border-color:var(--border-accent);">📄 Export PDF / Print</button>
+            </div>
+          </div>
+
+          <!-- Tabbed Sections Switcher -->
+          <div style="display:flex; gap:0.4rem; overflow-x:auto; padding-bottom:0.25rem;" id="sectionsTabsContainer">
+            <button class="section-tab-btn active" onclick="switchSectionTab('personal')">Contact</button>
+            <button class="section-tab-btn" onclick="switchSectionTab('summary')">Summary</button>
+            <button class="section-tab-btn" onclick="switchSectionTab('education')">Education</button>
+            <button class="section-tab-btn" onclick="switchSectionTab('experience')">Experience</button>
+            <button class="section-tab-btn" onclick="switchSectionTab('projects')">Projects</button>
+            <button class="section-tab-btn" onclick="switchSectionTab('skills')">Skills</button>
+          </div>
+
+          <!-- Section: Personal Info -->
+          <div id="section_personal" class="section-panel" style="display:block;">
+            <h4 style="font-size:13px; font-weight:700; margin-bottom:1rem; color:var(--frost);">Contact Details</h4>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+              <div class="form-group"><label>Full Name</label><input type="text" id="pName" class="form-control" placeholder="e.g. John Doe"></div>
+              <div class="form-group"><label>Email</label><input type="email" id="pEmail" class="form-control" placeholder="e.g. john@doe.com"></div>
+              <div class="form-group"><label>Phone</label><input type="text" id="pPhone" class="form-control" placeholder="+91 99999 99999"></div>
+              <div class="form-group"><label>Location</label><input type="text" id="pLocation" class="form-control" placeholder="Bangalore, India"></div>
+              <div class="form-group"><label>GitHub Username</label><input type="text" id="pGithub" class="form-control" placeholder="github.com/john"></div>
+              <div class="form-group"><label>LinkedIn Handle</label><input type="text" id="pLinkedin" class="form-control" placeholder="linkedin.com/in/john"></div>
+            </div>
+          </div>
+
+          <!-- Section: Summary -->
+          <div id="section_summary" class="section-panel" style="display:none;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <h4 style="font-size:13px; font-weight:700; color:var(--frost); margin:0;">Professional Summary</h4>
+              <button class="btn btn-secondary btn-sm" id="btnAiImproveSummary" style="padding:2px 8px; font-size:11px;">🤖 AI Polish</button>
+            </div>
+            <textarea id="pSummary" class="form-control" rows="4" placeholder="Brief professional writeup..."></textarea>
+          </div>
+
+          <!-- Section: Education -->
+          <div id="section_education" class="section-panel" style="display:none;">
+            <h4 style="font-size:13px; font-weight:700; margin-bottom:1rem; color:var(--frost);">Academic History</h4>
+            <div id="educationListContainer" style="margin-bottom:1rem;"></div>
+            
+            <div style="background:rgba(255,255,255,0.01); border:1px dashed var(--border); border-radius:6px; padding:0.75rem; display:flex; flex-direction:column; gap:0.5rem;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+                <input type="text" id="eduColl" class="form-control" placeholder="College/School">
+                <input type="text" id="eduDeg" class="form-control" placeholder="Degree (e.g. B.Tech)">
+                <input type="text" id="eduStream" class="form-control" placeholder="Stream (e.g. CSE)">
+                <input type="text" id="eduCgpa" class="form-control" placeholder="CGPA/Grade">
+                <input type="text" id="eduStart" class="form-control" placeholder="Start Year">
+                <input type="text" id="eduEnd" class="form-control" placeholder="End Year">
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btnAddEdu" style="align-self:flex-end;">+ Add School</button>
+            </div>
+          </div>
+
+          <!-- Section: Experience -->
+          <div id="section_experience" class="section-panel" style="display:none;">
+            <h4 style="font-size:13px; font-weight:700; margin-bottom:1rem; color:var(--frost);">Work Experience</h4>
+            <div id="experienceListContainer" style="margin-bottom:1rem;"></div>
+
+            <div style="background:rgba(255,255,255,0.01); border:1px dashed var(--border); border-radius:6px; padding:0.75rem; display:flex; flex-direction:column; gap:0.5rem;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+                <input type="text" id="expCompany" class="form-control" placeholder="Company Name">
+                <input type="text" id="expRole" class="form-control" placeholder="Role/Designation">
+                <input type="text" id="expStart" class="form-control" placeholder="Start Date">
+                <input type="text" id="expEnd" class="form-control" placeholder="End Date (or Current)">
+              </div>
+              <textarea id="expDesc" class="form-control" rows="2" placeholder="Description of achievements..."></textarea>
+              <button class="btn btn-secondary btn-sm" id="btnAddExp" style="align-self:flex-end;">+ Add Experience</button>
+            </div>
+          </div>
+
+          <!-- Section: Projects -->
+          <div id="section_projects" class="section-panel" style="display:none;">
+            <h4 style="font-size:13px; font-weight:700; margin-bottom:1rem; color:var(--frost);">Projects Log</h4>
+            <div id="projectsListContainer" style="margin-bottom:1rem;"></div>
+
+            <div style="background:rgba(255,255,255,0.01); border:1px dashed var(--border); border-radius:6px; padding:0.75rem; display:flex; flex-direction:column; gap:0.5rem;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+                <input type="text" id="projName" class="form-control" placeholder="Project Name">
+                <input type="text" id="projTech" class="form-control" placeholder="Technologies">
+                <input type="text" id="projGit" class="form-control" placeholder="GitHub URL">
+                <input type="text" id="projLive" class="form-control" placeholder="Live Demo URL">
+              </div>
+              <textarea id="projDesc" class="form-control" rows="2" placeholder="Description..."></textarea>
+              <button class="btn btn-secondary btn-sm" id="btnAddProj" style="align-self:flex-end;">+ Add Project</button>
+            </div>
+          </div>
+
+          <!-- Section: Skills -->
+          <div id="section_skills" class="section-panel" style="display:none;">
+            <h4 style="font-size:13px; font-weight:700; margin-bottom:1rem; color:var(--frost);">Categorized Technical Skills</h4>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+              <div class="form-group"><label>Programming Languages</label><input type="text" id="skLangs" class="form-control" placeholder="e.g. Python, JS"></div>
+              <div class="form-group"><label>Frontend</label><input type="text" id="skFrontend" class="form-control" placeholder="e.g. React, CSS"></div>
+              <div class="form-group"><label>Backend</label><input type="text" id="skBackend" class="form-control" placeholder="e.g. Node, Express"></div>
+              <div class="form-group"><label>Database</label><input type="text" id="skDatabase" class="form-control" placeholder="e.g. MySQL, Redis"></div>
+            </div>
+          </div>
+
+          <!-- ATS SCANNER ACCORDION BLOCK -->
+          <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border); padding:1.25rem; border-radius:8px; margin-top:0.5rem;">
+            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 0.75rem; display:flex; align-items:center; gap:8px;">
+              🔍 ATS Optimization Scanner
+            </h3>
+            <textarea id="jobDescriptionInput" class="form-control" rows="3" placeholder="Paste target recruiter Job Description here..."></textarea>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem;">
+              <div style="font-size:12px; color:var(--mist-dim);">Overall Compatibility: <strong id="scoreDisplayVal" style="color:var(--emerald);">N/A</strong></div>
+              <button class="btn btn-secondary btn-sm" id="btnScanATS" style="border-color:var(--border-accent);">Analyze Blueprint Compatibility</button>
+            </div>
+            
+            <div id="scanResultsOverlay" style="display:none; margin-top:1rem; border-top: 1px dashed var(--border); padding-top:0.85rem; font-size:12px; color:var(--mist);">
+              <div style="font-weight:700; color:var(--frost); margin-bottom:0.25rem;">Scan Insights:</div>
+              <div style="margin-bottom:0.35rem;">🟢 Matched Keywords: <span id="matchedTags" style="color:var(--emerald);"></span></div>
+              <div style="margin-bottom:0.5rem;">🔴 Missing Keywords: <span id="missingTags" style="color:var(--rose);"></span></div>
+              <div style="font-weight:700; color:var(--frost); margin-top:0.5rem;">AI Suggestions:</div>
+              <ul id="atsSuggestionsBox" style="padding-left:1.2rem; display:flex; flex-direction:column; gap:4px; margin-top:0.25rem;"></ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Live Preview Panel -->
+        <div>
+          <h3 style="font-size:15px; margin-bottom:1rem; display:flex; justify-content:space-between; align-items:center;">
+            <span>👁️ Live Preview</span>
+            <span style="font-size:11px; font-family:var(--font-mono); color:var(--mist-dim);">INSTANT SYNC</span>
+          </h3>
+          <div class="preview-container tmpl-classic" id="resumePreview">
+            <!-- Dynamically formatted details loaded here -->
+          </div>
+        </div>
+
+      </div>
+
     </div>
+  </div>
 </div>
-</div>
+
 <div class="toast-container" id="toastContainer"></div>
 <script src="js/api.js"></script>
 <script src="js/page-shell.js"></script>

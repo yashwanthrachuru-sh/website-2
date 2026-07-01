@@ -6,26 +6,53 @@
 
 const db = require('../config/db');
 
+let roadmapsCache = null;
+let modMapCache = null;
+let roadmapCacheTimestamp = 0;
+const ROADMAP_CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+const getCachedRoadmapsData = async () => {
+  const now = Date.now();
+  if (roadmapsCache && modMapCache && (now - roadmapCacheTimestamp < ROADMAP_CACHE_TTL)) {
+    return { roadmaps: roadmapsCache, modMap: modMapCache };
+  }
+
+  const [roadmaps] = await db.query(`
+    SELECT id, title, description, category, difficulty, duration,
+           xp_reward, lesson_count, icon, tags, is_featured,
+           salary_min, salary_max, enrolled
+    FROM roadmaps
+    ORDER BY is_featured DESC, enrolled DESC, title ASC
+  `);
+
+  const [modCounts] = await db.query(`
+    SELECT roadmap_id, COUNT(*) AS module_count
+    FROM roadmap_modules
+    GROUP BY roadmap_id
+  `);
+
+  const modMap = {};
+  modCounts.forEach(r => modMap[r.roadmap_id] = r.module_count);
+
+  roadmapsCache = roadmaps;
+  modMapCache = modMap;
+  roadmapCacheTimestamp = now;
+
+  return { roadmaps, modMap };
+};
+
+const clearRoadmapCache = () => {
+  roadmapsCache = null;
+  modMapCache = null;
+  roadmapCacheTimestamp = 0;
+};
+exports.clearRoadmapCache = clearRoadmapCache;
+
 // ── GET /api/roadmaps ──────────────────────────────────────────
 // List all roadmaps with metadata and progress for authenticated user
 exports.getAllRoadmaps = async (req, res) => {
   try {
-    const [roadmaps] = await db.query(`
-      SELECT id, title, description, category, difficulty, duration,
-             xp_reward, lesson_count, icon, tags, is_featured,
-             salary_min, salary_max, enrolled
-      FROM roadmaps
-      ORDER BY is_featured DESC, enrolled DESC, title ASC
-    `);
-
-    // Get module count per roadmap
-    const [modCounts] = await db.query(`
-      SELECT roadmap_id, COUNT(*) AS module_count
-      FROM roadmap_modules
-      GROUP BY roadmap_id
-    `);
-    const modMap = {};
-    modCounts.forEach(r => modMap[r.roadmap_id] = r.module_count);
+    const { roadmaps, modMap } = await getCachedRoadmapsData();
 
     // Get user progress if logged in
     let progressMap = {};

@@ -1,0 +1,286 @@
+/* ============================================================
+ * css/coach.css — Styles for AI Career Coach Page
+ * ============================================================ */
+
+/* Hero Banner */
+.coach-hero-banner {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(236, 72, 153, 0.06) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: var(--r-lg);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.coach-hero-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: .5rem;
+}
+.coach-hero-sub {
+  font-size: 14px;
+  color: var(--mist);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* Suggestion Buttons */
+.goal-suggestions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.suggestion-tag {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--mist);
+  padding: 0.4rem 0.75rem;
+  border-radius: 99px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.suggestion-tag:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Header Banner Card */
+.coach-goal-header-card {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+}
+
+/* Stats band */
+.coach-stats-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.coach-stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.coach-stat-card:hover {
+  border-color: var(--accent);
+}
+.coach-stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.coach-stat-lbl {
+  font-size: 11px;
+  color: var(--mist-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Two Column Layout */
+.coach-planner-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .coach-planner-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Daily Task Card */
+.task-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.task-item-card:hover {
+  border-color: var(--border-accent);
+  transform: translateX(2px);
+}
+.task-item-card.completed {
+  border-color: rgba(52, 211, 153, 0.15);
+  background: rgba(52, 211, 153, 0.01);
+  opacity: 0.75;
+}
+.task-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+.task-badge-lesson { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+.task-badge-project { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+.task-badge-quiz { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.task-badge-interview { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
+
+.task-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+.task-actions .btn {
+  padding: 0.35rem 0.65rem;
+  font-size: 11px;
+}
+
+/* Recommendations Row */
+.recs-flex {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.rec-card {
+  background: rgba(255,255,255,0.01);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: border-color 0.2s;
+}
+.rec-card:hover {
+  border-color: var(--accent);
+}
+.rec-type {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.rec-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--frost);
+  margin-bottom: 0.2rem;
+}
+.rec-desc {
+  font-size: 11.5px;
+  color: var(--mist-dim);
+  line-height: 1.5;
+}
+
+/* Calendar Grid */
+.calendar-grid-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 11px;
+  color: var(--mist-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.calendar-grid-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.calendar-day-cell {
+  aspect-ratio: 1.2;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.2s;
+}
+.calendar-day-cell:hover {
+  border-color: var(--border-accent);
+  background: rgba(255, 255, 255, 0.03);
+}
+.calendar-day-cell.other-month {
+  opacity: 0.25;
+  pointer-events: none;
+}
+.calendar-day-cell.today {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 4px var(--accent-dim);
+}
+.calendar-day-cell.has-tasks::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.calendar-day-cell.all-done {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.25);
+  color: var(--emerald);
+}
+.calendar-day-cell.all-done::after {
+  background: var(--emerald);
+}
+
+/* Weekly Blueprint Accordion */
+.week-accordion-item {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+.week-header {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.week-header:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.week-body {
+  padding: 1rem 1.25rem;
+  background: rgba(0,0,0,0.15);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.6;
+  display: none;
+}
+.week-accordion-item.open .week-body {
+  display: block;
+}
+.week-task-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+.week-task-line:last-child {
+  border-bottom: none;
+}

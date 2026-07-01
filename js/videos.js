@@ -3,7 +3,7 @@
 // ============================================================
 'use strict';
 const session = window.initPageShell('videos.html');
-const { apiFetch, showToast, addXP, getSession } = window.EduNetAPI;
+const { apiFetch, showToast, addXP, getSession, debounce } = window.EduNetAPI;
 
 const CAT_ICONS = {
   'JavaScript': '🟨', 'Python': '🐍', 'DSA': '🔢', 'React': '⚛️',
@@ -227,7 +227,7 @@ document.querySelectorAll('#videoCatFilter .filter-btn').forEach(btn => {
 });
 
 // Search
-document.getElementById('videoSearchBar')?.addEventListener('input', applyFilters);
+document.getElementById('videoSearchBar')?.addEventListener('input', debounce(applyFilters, 200));
 
 // Load more
 document.getElementById('loadMoreBtn')?.addEventListener('click', () => renderPage(true));

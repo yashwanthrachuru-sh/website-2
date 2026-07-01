@@ -6,7 +6,7 @@
 'use strict';
 
 window.initPageShell = function (activeNavId) {
-  const { getToken, getSession, clearSession, showToast } = window.EduNetAPI;
+  const { getToken, getSession, clearSession, showToast, debounce } = window.EduNetAPI;
   const token = getToken();
   const session = getSession();
   if (!token || !session) { window.location.href = 'index.html'; return null; }
@@ -66,6 +66,19 @@ window.initPageShell = function (activeNavId) {
         nav.appendChild(portLink);
       }
     }
+    // Inject AI Career Coach link dynamically if not present
+    if (!nav.querySelector('a[href="coach.html"]')) {
+      const resumeLink = nav.querySelector('a[href="resume.html"]');
+      const coachLink = document.createElement('a');
+      coachLink.href = 'coach.html';
+      coachLink.className = 'dash-nav-item';
+      coachLink.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>AI Career Coach`;
+      if (resumeLink) {
+        resumeLink.insertAdjacentElement('beforebegin', coachLink);
+      } else {
+        nav.appendChild(coachLink);
+      }
+    }
     // 2. Normalize active states based on current filename
     const pathSegments = window.location.pathname.split('/');
     const currentFile = pathSegments[pathSegments.length - 1] || 'user.html';
@@ -95,6 +108,8 @@ window.initPageShell = function (activeNavId) {
     { title:'Interview Prep', desc:'Technical interview practice', cat:'Career', link:'interview.html', icon:'💬' },
     { title:'Certificates', desc:'Earned certificates', cat:'Career', link:'certificates.html', icon:'🏆' },
     { title:'Developer Portfolio', desc:'Your dynamic professional profile', cat:'Career', link:'portfolio.html', icon:'🎓' },
+    { title:'AI Career Coach', desc:'Your dynamic career mentor', cat:'Career', link:'coach.html', icon:'🤖' },
+    { title:'GitHub Integration', desc:'Connect GitHub profile to portfolio', cat:'Career', link:'portfolio.html', icon:'🐙' },
     { title:'Leaderboard', desc:'XP rankings', cat:'Account', link:'leaderboard.html', icon:'🥇' },
     { title:'Bookmarks', desc:'Saved items', cat:'Account', link:'bookmarks.html', icon:'🔖' },
     { title:'Notifications', desc:'Alerts & updates', cat:'Account', link:'notifications.html', icon:'🔔' },
@@ -112,7 +127,7 @@ window.initPageShell = function (activeNavId) {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); searchModal?.classList.add('open'); setTimeout(() => searchInput?.focus(), 80); }
   });
   // Fast dynamic database search with local fallback for navigation
-  searchInput?.addEventListener('input', async () => {
+  searchInput?.addEventListener('input', debounce(async () => {
     const q = searchInput.value.trim();
     if (!searchList) return;
     searchList.innerHTML = '';
@@ -183,7 +198,7 @@ window.initPageShell = function (activeNavId) {
         searchList.appendChild(el);
       });
     }
-  });
+  }, 250));
 
   return session;
 };

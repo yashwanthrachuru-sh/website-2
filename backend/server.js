@@ -20,6 +20,21 @@ const db = require('./config/db');
 require('./config/migrate_portfolio').migrate().catch(err => {
   console.error('Portfolio migration failed on startup:', err.message);
 });
+require('./config/migrate_phase1').migrate().catch(err => {
+  console.error('Phase 1 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase2').migrate().catch(err => {
+  console.error('Phase 2 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase3').migrate().catch(err => {
+  console.error('Phase 3 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase4').migrate().catch(err => {
+  console.error('Phase 4 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase5').migrate().catch(err => {
+  console.error('Phase 5 migration failed on startup:', err.message);
+});
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
@@ -128,6 +143,10 @@ const analyticsRoutes   = require('./routes/analyticsRoutes');
 const aiRoutes          = require('./routes/aiRoutes');
 const achievementRoutes = require('./routes/achievementRoutes');
 const portfolioRoutes   = require('./routes/portfolioRoutes');
+const coachRoutes       = require('./routes/coachRoutes');
+const challengeRoutes   = require('./routes/challengeRoutes');
+const resumeRoutes      = require('./routes/resumeRoutes');
+const githubRoutes      = require('./routes/githubRoutes');
 
 // ── Mount Routes ─────────────────────────────────────────────
 app.use('/api/auth',         authRoutes);
@@ -148,6 +167,10 @@ app.use('/api/analytics',    analyticsRoutes);
 app.use('/api/ai',           aiLimiter, aiRoutes); // AI gets its own stricter limiter
 app.use('/api/achievements', achievementRoutes);
 app.use('/api/portfolio',    portfolioRoutes);
+app.use('/api/coach',        coachRoutes);
+app.use('/api/challenges',   challengeRoutes);
+app.use('/api/resume',       resumeRoutes);
+app.use('/api/github',       githubRoutes);
 
 // ============================================================
 // CATCH-ALL ROUTES

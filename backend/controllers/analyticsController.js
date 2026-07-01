@@ -35,6 +35,26 @@ async function recordActivity(userId, delta = {}) {
 const getDashboard = async (req, res) => {
   try {
     const uid = req.user.id;
+    const today = new Date().toISOString().slice(0, 10);
+    const loginSource = `daily_login_${today}`;
+    let dailyLoginAwarded = false;
+
+    // Check if daily login is already claimed in xp_ledger
+    const [[loginClaimed]] = await db.query(
+      'SELECT id FROM xp_ledger WHERE user_id = ? AND source = ?',
+      [uid, loginSource]
+    ).catch(() => [[null]]);
+
+    if (!loginClaimed) {
+      // Award daily login XP
+      try {
+        const userModel = require('../models/userModel');
+        const awardResult = await userModel.awardXPAndIncrementStreak(uid, 50, loginSource);
+        dailyLoginAwarded = !awardResult.already_claimed;
+      } catch (err) {
+        console.error('Error awarding daily login XP:', err.message);
+      }
+    }
 
     // User base info
     const [[user]] = await db.query(
@@ -107,8 +127,30 @@ const getDashboard = async (req, res) => {
       `SELECT COUNT(*) + 1 AS rank FROM users WHERE xp > (SELECT xp FROM users WHERE id = ?)`, [uid, uid]
     ).catch(() => [[{ rank: 0 }]]);
 
+    // Fetch portfolio settings, socials, resume, and projects for completion strength
+    const [[portfolioSettings]] = await db.query('SELECT * FROM portfolio_settings WHERE user_id = ?', [uid]).catch(() => [[null]]);
+    const [[portfolioSocials]]  = await db.query('SELECT * FROM portfolio_socials WHERE user_id = ?', [uid]).catch(() => [[null]]);
+    const [[portfolioResume]]   = await db.query('SELECT resume_url FROM portfolio_resume WHERE user_id = ?', [uid]).catch(() => [[null]]);
+    const [portfolioProjects]   = await db.query('SELECT id FROM portfolio_projects WHERE user_id = ?', [uid]).catch(() => [[]]);
+
+    let portfolioCompletion = 0;
+    if (portfolioSettings) {
+      if (portfolioSettings.headline) portfolioCompletion += 15;
+      if (portfolioSettings.about_me) portfolioCompletion += 15;
+      if (portfolioSettings.location) portfolioCompletion += 10;
+      if (portfolioSettings.availability) portfolioCompletion += 10;
+    }
+    if (portfolioSocials) {
+      if (portfolioSocials.linkedin_url) portfolioCompletion += 10;
+      if (portfolioSocials.github_url) portfolioCompletion += 10;
+      if (portfolioSocials.website_url || portfolioSocials.twitter_url) portfolioCompletion += 10;
+    }
+    if (portfolioResume && portfolioResume.resume_url) portfolioCompletion += 10;
+    if (portfolioProjects && portfolioProjects.length > 0) portfolioCompletion += 10;
+
     res.json({
       success: true,
+      daily_login_awarded: dailyLoginAwarded,
       dashboard: {
         xp:                user?.xp || 0,
         level:             user?.level || 1,
@@ -127,6 +169,7 @@ const getDashboard = async (req, res) => {
         projects_done:     parseInt(projectStats?.count || 0),
         leaderboard_rank:  parseInt(rankRow?.rank || 0),
         recent_quizzes:    recentQuizzes,
+        portfolio_completion: Math.min(100, portfolioCompletion),
       }
     });
   } catch (err) {

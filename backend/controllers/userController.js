@@ -1,7 +1,5 @@
-// ============================================================
-// controllers/userController.js — User curriculum API Handlers
-// ============================================================
 const roadmapModel = require('../models/roadmapModel');
+const db = require('../config/db');
 
 // GET /api/user/roadmaps
 const getRoadmaps = async (req, res) => {
@@ -14,8 +12,6 @@ const getRoadmaps = async (req, res) => {
   }
 };
 
-// GET /api/user/roadmaps/:id
-// Returns roadmap details + all course, module, lesson sub-structures
 const getRoadmapDetail = async (req, res) => {
   try {
     const { id } = req.params;
@@ -26,25 +22,64 @@ const getRoadmapDetail = async (req, res) => {
 
     // Load nested courses
     const courses = await roadmapModel.getCoursesByRoadmapId(id);
-    const fullCourses = [];
-
-    for (const course of courses) {
-      const modules = await roadmapModel.getModulesByCourseId(course.id);
-      const fullModules = [];
-
-      for (const mod of modules) {
-        const lessons = await roadmapModel.getLessonsByModuleId(mod.id);
-        fullModules.push({
-          ...mod,
-          lessons
-        });
-      }
-
-      fullCourses.push({
-        ...course,
-        modules: fullModules
+    if (courses.length === 0) {
+      return res.json({
+        success: true,
+        roadmap,
+        courses: []
       });
     }
+
+    const courseIds = courses.map(c => c.id);
+    const [modules] = await db.query(
+      'SELECT * FROM modules WHERE course_id IN (?) ORDER BY order_index ASC',
+      [courseIds]
+    );
+
+    if (modules.length === 0) {
+      const fullCourses = courses.map(course => ({
+        ...course,
+        modules: []
+      }));
+      return res.json({
+        success: true,
+        roadmap,
+        courses: fullCourses
+      });
+    }
+
+    const moduleIds = modules.map(m => m.id);
+    const [lessons] = await db.query(
+      'SELECT * FROM lessons WHERE module_id IN (?) ORDER BY order_index ASC',
+      [moduleIds]
+    );
+
+    // Group lessons by module_id
+    const lessonsByModule = {};
+    for (const lesson of lessons) {
+      if (!lessonsByModule[lesson.module_id]) {
+        lessonsByModule[lesson.module_id] = [];
+      }
+      lessonsByModule[lesson.module_id].push(lesson);
+    }
+
+    // Group modules by course_id
+    const modulesByCourse = {};
+    for (const mod of modules) {
+      if (!modulesByCourse[mod.course_id]) {
+        modulesByCourse[mod.course_id] = [];
+      }
+      modulesByCourse[mod.course_id].push({
+        ...mod,
+        lessons: lessonsByModule[mod.id] || []
+      });
+    }
+
+    // Map modules to courses
+    const fullCourses = courses.map(course => ({
+      ...course,
+      modules: modulesByCourse[course.id] || []
+    }));
 
     res.json({
       success: true,
@@ -88,8 +123,6 @@ const updateTrackProgress = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server error saving progress.' });
   }
 };
-
-const db = require('../config/db');
 
 // GET /api/user/profile or /api/profile
 const getProfile = async (req, res) => {
@@ -162,8 +195,6 @@ const getXP = async (req, res) => {
   }
 };
 
-// POST /api/user/xp — add XP and recalculate level
-// Body: { amount: number, source: string }
 const syncXP = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -173,52 +204,19 @@ const syncXP = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Invalid XP amount.' });
     }
 
-    // Add XP and recalculate level (every 500 XP = 1 level)
-    await db.query(`
-      UPDATE users
-      SET xp    = xp + ?,
-          level = FLOOR((xp + ?) / 500) + 1
-      WHERE id = ?
-    `, [amount, amount, userId]);
-
-    // Fetch updated values
-    const [[updated]] = await db.query('SELECT xp, level FROM users WHERE id = ?', [userId]);
-
-    // Update streak and last_active_date
-    const today = new Date().toISOString().slice(0, 10);
-    await db.query(`
-      UPDATE users
-      SET last_active_date = ?,
-          streak = CASE
-            WHEN last_active_date = DATE_SUB(?, INTERVAL 1 DAY) THEN streak + 1
-            WHEN last_active_date = ? THEN streak
-            ELSE 1
-          END,
-          longest_streak = GREATEST(longest_streak,
-            CASE
-              WHEN last_active_date = DATE_SUB(?, INTERVAL 1 DAY) THEN streak + 1
-              WHEN last_active_date = ? THEN streak
-              ELSE 1
-            END
-          )
-      WHERE id = ?
-    `, [today, today, today, today, today, userId]).catch(() => {
-      // last_active_date may not exist yet — run basic update
-      return db.query('UPDATE users SET streak = LEAST(streak + 1, 999) WHERE id = ?', [userId]);
-    });
-
-    // Log to user_activity
-    await db.query(`
-      INSERT INTO user_activity (user_id, date, xp_earned)
-      VALUES (?, ?, ?)
-      ON DUPLICATE KEY UPDATE xp_earned = xp_earned + VALUES(xp_earned)
-    `, [userId, today, amount]).catch(() => { /* table may not exist yet */ });
+    const userModel = require('../models/userModel');
+    const result = await userModel.awardXPAndIncrementStreak(
+      userId,
+      amount,
+      (source && source !== 'general' && source !== 'lesson') ? source : null
+    );
 
     res.json({
       success: true,
-      xp:     updated.xp,
-      level:  updated.level,
-      added:  amount,
+      xp:     result.xp,
+      level:  result.level,
+      added:  result.added,
+      already_claimed: result.already_claimed,
       source: source || 'general'
     });
   } catch (err) {

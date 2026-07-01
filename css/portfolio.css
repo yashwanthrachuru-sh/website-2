@@ -707,3 +707,435 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ============================================================
+   Phase 5 — GitHub Integration, Analytics, Strength Score,
+   Theme Builder, Recruiter View, Repository Cards
+   ============================================================ */
+
+/* ── Phase 5 Tab Navigation ──────────────────────────────────── */
+.p5-tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  background: rgba(255,255,255,0.01);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 0.5rem;
+  overflow-x: auto;
+}
+
+.p5-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--mist);
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.p5-tab-btn:hover { color: var(--frost); background: rgba(255,255,255,0.04); }
+.p5-tab-btn.active { background: var(--accent); color: #fff; }
+.p5-tab-panel { display: none; }
+.p5-tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+/* ── GitHub Repository Cards ─────────────────────────────────── */
+.gh-repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.gh-repo-card {
+  background: var(--void);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.gh-repo-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.gh-repo-card:hover { border-color: var(--border-accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.gh-repo-card:hover::before { opacity: 1; }
+.gh-repo-card.is-pinned { border-color: hsl(38,90%,55%); }
+.gh-repo-card.is-pinned::before { background: linear-gradient(90deg, hsl(38,90%,55%), hsl(28,90%,55%)); opacity: 1; }
+
+.gh-repo-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--frost);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gh-repo-name a { color: var(--accent); text-decoration: none; }
+.gh-repo-name a:hover { text-decoration: underline; }
+
+.gh-repo-desc {
+  font-size: 12.5px;
+  color: var(--mist);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.gh-repo-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.gh-repo-topic {
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.25);
+  color: var(--accent-2);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+}
+
+.gh-repo-stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 12px;
+  color: var(--mist-dim);
+  flex-wrap: wrap;
+}
+
+.gh-repo-stat { display: flex; align-items: center; gap: 4px; }
+
+.gh-lang-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.gh-repo-actions {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.gh-pin-btn, .gh-hide-btn {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--mist);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.gh-pin-btn:hover { border-color: hsl(38,90%,55%); color: hsl(38,90%,55%); }
+.gh-hide-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+/* ── GitHub Connect Panel ────────────────────────────────────── */
+.gh-connect-panel {
+  background: rgba(255,255,255,0.01);
+  border: 1px dashed var(--border-accent);
+  border-radius: var(--r-lg);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.gh-connect-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.gh-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.gh-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+}
+
+.gh-profile-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+  font-size: 13px;
+  color: var(--mist);
+}
+
+.gh-profile-stat strong { color: var(--frost); }
+
+/* ── Contribution Heatmap Enhanced ──────────────────────────── */
+.heatmap-day-popup {
+  position: fixed;
+  background: var(--abyss);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--r-md);
+  padding: 1rem;
+  min-width: 200px;
+  z-index: 9999;
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  animation: fadeIn 0.15s ease;
+}
+
+.heatmap-popup-title { font-size: 12px; font-weight: 700; color: var(--frost); margin-bottom: 0.5rem; }
+.heatmap-popup-row { font-size: 11px; color: var(--mist); display: flex; justify-content: space-between; padding: 2px 0; }
+.heatmap-popup-row span:last-child { color: var(--accent); font-weight: 600; }
+
+/* ── Contribution Stats Row ──────────────────────────────────── */
+.contrib-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contrib-stat-box {
+  background: var(--void);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1rem;
+  text-align: center;
+}
+
+.contrib-stat-val { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+.contrib-stat-lbl { font-size: 10px; color: var(--mist-dim); text-transform: uppercase; margin-top: 2px; }
+
+/* ── Analytics Charts Panel ──────────────────────────────────── */
+.analytics-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.analytics-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.analytics-stat-card {
+  background: var(--void);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.analytics-stat-card:hover { border-color: var(--border-accent); }
+.analytics-stat-val { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+.analytics-stat-lbl { font-size: 10px; color: var(--mist-dim); text-transform: uppercase; }
+.analytics-stat-icon { font-size: 1.4rem; margin-bottom: 4px; }
+
+.analytics-chart-card {
+  background: var(--void);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1.5rem;
+}
+
+.analytics-chart-title { font-size: 13px; font-weight: 700; color: var(--frost); margin-bottom: 1rem; }
+
+/* ── Portfolio Strength Score ─────────────────────────────────── */
+.strength-score-hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.05));
+  border: 1px solid var(--border-accent);
+  border-radius: var(--r-lg);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.strength-score-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.strength-score-ring svg { transform: rotate(-90deg); }
+.strength-score-circle-bg { fill: none; stroke: var(--border); stroke-width: 10; }
+.strength-score-circle-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.strength-score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.strength-score-text small { font-size: 11px; color: var(--mist-dim); font-weight: 500; }
+
+.strength-stars { font-size: 1.25rem; margin: 0.25rem 0; }
+.strength-label { font-size: 14px; font-weight: 700; color: var(--frost); }
+
+.strength-recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.strength-rec-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--mist);
+  padding: 0.5rem 0.75rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent);
+}
+
+/* ── Theme Builder Panel ──────────────────────────────────────── */
+.theme-builder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.theme-color-swatch {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.theme-swatch-btn {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.theme-swatch-btn.selected { border-color: #fff; transform: scale(1.2); }
+
+.theme-preview-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1rem;
+  font-size: 12px;
+  color: var(--mist);
+}
+
+/* ── Recruiter Quick Actions Bar ─────────────────────────────── */
+.recruiter-action-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(255,255,255,0.01);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  margin-bottom: 1.5rem;
+}
+
+.recruiter-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--void);
+  color: var(--frost);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.recruiter-action-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+.recruiter-action-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.recruiter-action-btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); color: #fff; }
+
+/* ── Resume Analytics ─────────────────────────────────────────── */
+.resume-analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Sync Status Badge ────────────────────────────────────────── */
+.sync-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--mist-dim);
+  font-family: var(--font-mono);
+}
+
+.sync-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--emerald);
+  animation: pulse 2s infinite;
+}
+
+/* ── Responsive Overrides ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .analytics-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .contrib-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .analytics-grid-2 { grid-template-columns: 1fr; }
+  .strength-score-hero { flex-direction: column; text-align: center; }
+  .theme-builder-grid { grid-template-columns: 1fr; }
+  .resume-analytics-grid { grid-template-columns: 1fr; }
+  .gh-repo-grid { grid-template-columns: 1fr; }
+}

@@ -201,6 +201,16 @@
     return base.concat(toolItems, rmItems);
   }
 
+  // ── Debouncing utility ──────────────────────────────────────
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+  }
+
   // ── Expose public API ────────────────────────────────────────
   window.EduNetAPI = {
     API_BASE:        API_BASE,
@@ -214,7 +224,8 @@
     buildSearchIndex:buildSearchIndex,
     getXP:           getXP,
     addXP:           addXP,
-    syncXPToServer:  syncXPToServer
+    syncXPToServer:  syncXPToServer,
+    debounce:        debounce
   };
 
 })(); // end IIFE

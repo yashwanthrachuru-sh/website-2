@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduNet — AI Career Coach</title>
+<meta name="description" content="Your personal AI career mentor inside EduNet. Generate customized roadmaps, track daily study tasks, and prepare for interviews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="css/coach.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-box">
+    <div class="search-input-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results-list" id="searchResultsList"></div>
+  </div>
+</div>
+
+<div class="dash-layout">
+  <!-- Sidebar -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-sidebar-logo">
+      <div class="nav-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h6M14 12h6M12 4v6M12 14v6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+      EduNet
+    </div>
+    <nav class="dash-nav">
+      <!-- Page Shell Injects Sidebar Navigation Links dynamically here -->
+    </nav>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user-chip">
+        <div class="dash-avatar" id="sidebarAvatar">ST</div>
+        <div class="dash-user-info">
+          <div class="dash-user-name" id="sidebarName">Student</div>
+          <div class="dash-user-role" id="sidebarRole">user</div>
+        </div>
+      </div>
+      <button class="btn btn-secondary btn-sm btn-full" id="logoutBtn" style="justify-content:center;">Logout</button>
+    </div>
+  </aside>
+
+  <div class="dash-main">
+    <!-- Topbar -->
+    <div class="dash-topbar">
+      <div class="dash-topbar-left">
+        <button class="burger-btn" id="burgerBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <div class="dash-topbar-search" id="topbarSearch">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          Search... <kbd>⌘K</kbd>
+        </div>
+      </div>
+      <div class="dash-topbar-right">
+        <a href="notifications.html" class="notif-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg><span class="notif-badge"></span></a>
+        <a href="profile.html" class="dash-avatar" id="topbarAvatar" style="text-decoration:none;">ST</a>
+      </div>
+    </div>
+
+    <!-- Dash Content Area -->
+    <div class="dash-content">
+      
+      <!-- Skeleton Loader -->
+      <div id="coachSkeleton" style="display:block;">
+        <div class="glass-panel" style="padding: 2.5rem; margin-bottom: 2rem;">
+          <div class="skeleton" style="height: 32px; width: 40%; margin-bottom: 1rem;"></div>
+          <div class="skeleton" style="height: 16px; width: 60%; margin-bottom: 1.5rem;"></div>
+          <div style="display:flex; gap: 1rem; flex-wrap:wrap;">
+            <div class="skeleton" style="height: 60px; width: 120px; border-radius: 8px;"></div>
+            <div class="skeleton" style="height: 60px; width: 120px; border-radius: 8px;"></div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr; gap: 1.5rem;">
+          <div class="glass-panel" style="height: 300px;"><div class="skeleton" style="height: 100%; border-radius: 8px;"></div></div>
+        </div>
+      </div>
+
+      <!-- ONBOARDING PANEL (Shown if no goal has been generated yet) -->
+      <div id="coachOnboarding" class="animate-fade-up" style="display:none;">
+        <div class="coach-hero-banner">
+          <div class="section-eyebrow">Meet Your AI Mentor</div>
+          <h2 class="coach-hero-title">AI Career Blueprint 🤖</h2>
+          <p class="coach-hero-sub">Define your target career aspiration. Our AI mentor will formulate a personalized 28-day learning roadmap, daily practice checklist, mock interview prep schedules, and recommend courses to prepare you for recruiters.</p>
+        </div>
+
+        <div class="glass-panel" style="padding: 2.5rem; max-width: 700px; margin: 0 auto;">
+          <h3 style="margin-bottom: 1.25rem; font-weight: 700;">What is your professional career goal?</h3>
+          <div style="margin-bottom: 1.5rem;">
+            <label class="form-label" style="font-size:12px;color:var(--mist-dim);">CHOOSE OR TYPE A TARGET ROLE</label>
+            <div style="position:relative; display:flex; gap: 0.5rem; flex-direction:column; margin-top:0.4rem;">
+              <input type="text" id="goalInput" class="form-input" placeholder="e.g. Become Full Stack Developer" style="font-size:15px; padding: 0.85rem 1rem;">
+              <div class="goal-suggestions">
+                <button class="suggestion-tag" onclick="selectSuggestion('Become Full Stack Developer')">Full Stack Dev</button>
+                <button class="suggestion-tag" onclick="selectSuggestion('Become AI Engineer')">AI Engineer</button>
+                <button class="suggestion-tag" onclick="selectSuggestion('Become Data Scientist')">Data Scientist</button>
+                <button class="suggestion-tag" onclick="selectSuggestion('Become DevOps Engineer')">DevOps Engineer</button>
+                <button class="suggestion-tag" onclick="selectSuggestion('Become Cyber Security Engineer')">Cybersecurity</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" id="btnGenerateBlueprint" style="padding: 0.85rem; font-weight: 700;">
+            🚀 Generate Personalized Blueprint
+          </button>
+        </div>
+      </div>
+
+      <!-- MAIN COACH PLANNER VIEW -->
+      <div id="coachMainPlanner" class="animate-fade-up" style="display:none;">
+        
+        <!-- Header Banner Card -->
+        <div class="coach-goal-header-card glass-panel">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <div class="section-eyebrow">AI Career Mentor</div>
+              <h2 id="coachGoalTitle" style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 0.35rem;" class="grad">Become Full Stack Developer</h2>
+              <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--mist);">
+                <span>📅 Estimated Target: <strong id="coachCompletionDate" style="color:var(--frost);">2026-07-27</strong></span>
+                <span class="badge badge-accent" id="coachBlueprintStatus">In Progress</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="btnRegeneratePlan" style="border-color:var(--border-accent);">⚙️ Change Target</button>
+          </div>
+        </div>
+
+        <!-- Dashboard Statistics Band -->
+        <div class="coach-stats-band">
+          <div class="coach-stat-card">
+            <div class="coach-stat-num" id="statWeeklyPct">0%</div>
+            <div class="coach-stat-lbl">Tasks Progress</div>
+          </div>
+          <div class="coach-stat-card">
+            <div class="coach-stat-num" id="statCompletedCount" style="color:var(--emerald);">0</div>
+            <div class="coach-stat-lbl">Completed Tasks</div>
+          </div>
+          <div class="coach-stat-card">
+            <div class="coach-stat-num" id="statStreakDays" style="color:var(--amber);">0 🔥</div>
+            <div class="coach-stat-lbl">Current Streak</div>
+          </div>
+          <div class="coach-stat-card">
+            <div class="coach-stat-num" id="statInterviewReady">0/100</div>
+            <div class="coach-stat-lbl">Interview Score</div>
+          </div>
+          <div class="coach-stat-card">
+            <div class="coach-stat-num" id="statResumeScore" style="color:hsl(262,80%,70%);">0%</div>
+            <div class="coach-stat-lbl">Resume Match</div>
+          </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="coach-planner-grid">
+          
+          <!-- Left Column: Daily checklist, calendars, and recommendations -->
+          <div class="coach-col-left">
+            
+            <!-- Daily Plan Panel -->
+            <div class="glass-panel" style="margin-bottom: 1.5rem;">
+              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 1rem; display:flex; align-items:center; gap:8px;">
+                🎯 Today's Action Items
+              </h3>
+              <div class="daily-tasks-list" id="dailyTasksList">
+                <div class="empty-state">No tasks scheduled for today. Check the calendar below.</div>
+              </div>
+            </div>
+
+            <!-- Recommendations Grid -->
+            <div class="glass-panel" style="margin-bottom: 1.5rem;">
+              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 1rem; display:flex; align-items:center; gap:8px;">
+                💡 Smart Recommendations
+              </h3>
+              <div class="recs-flex" id="recsList">
+                <div class="empty-state">Generate a plan to retrieve learning suggestions.</div>
+              </div>
+            </div>
+
+            <!-- Calendar Container -->
+            <div class="glass-panel" style="margin-bottom: 1.5rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1rem;">
+                <h3 style="font-size: 15px; font-weight: 700; display:flex; align-items:center; gap:8px; margin:0;">
+                  📅 Monthly Study Calendar
+                </h3>
+                <div style="display:flex; gap: 4px; font-size:11px; color:var(--mist-dim);">
+                  <span style="display:flex; align-items:center; gap:2px;"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--emerald);"></span>Done</span>
+                  <span style="display:flex; align-items:center; gap:2px;"><span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--border);"></span>Pending</span>
+                </div>
+              </div>
+              <div class="calendar-grid-header">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+              </div>
+              <div class="calendar-grid-days" id="calendarDaysGrid"></div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Weekly Blueprint Accordion, Charts -->
+          <div class="coach-col-right">
+            
+            <!-- Weekly blueprint list -->
+            <div class="glass-panel" style="margin-bottom: 1.5rem;">
+              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 1rem;">🗺️ 28-Day Weekly Blueprint</h3>
+              <div class="weekly-accordion" id="weeklyBlueprintList">
+                <!-- Spits Weeks accordions dynamically -->
+              </div>
+            </div>
+
+            <!-- Analytics Charts -->
+            <div class="glass-panel">
+              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 1rem;">📊 Learning Telemetry</h3>
+              <div style="height: 220px; position:relative;">
+                <canvas id="coachProgressChart"></canvas>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+<script src="js/api.js"></script>
+<script src="js/page-shell.js"></script>
+<script src="js/coach.js"></script>
+</body>
+</html>

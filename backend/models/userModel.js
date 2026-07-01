@@ -101,6 +101,79 @@ const countPendingUsers = async () => {
   return rows[0].total;
 };
 
+// ── Award XP, update level, increment active streak and log activity ──
+const awardXPAndIncrementStreak = async (userId, amount, sourceKey) => {
+  const today = new Date().toISOString().slice(0, 10);
+
+  // If sourceKey is provided, check the xp_ledger first
+  if (sourceKey) {
+    try {
+      await db.query(
+        'INSERT INTO xp_ledger (user_id, source, amount) VALUES (?, ?, ?)',
+        [userId, sourceKey, amount]
+      );
+    } catch (e) {
+      if (e.code === 'ER_DUP_ENTRY') {
+        // Already claimed, fetch current values to return gracefully
+        const [[current]] = await db.query('SELECT xp, level FROM users WHERE id = ?', [userId]);
+        return {
+          xp: current.xp,
+          level: current.level,
+          added: 0,
+          already_claimed: true
+        };
+      }
+      throw e;
+    }
+  }
+
+  // Add XP and recalculate level (every 500 XP = 1 level)
+  await db.query(`
+    UPDATE users
+    SET xp    = xp + ?,
+        level = FLOOR((xp + ?) / 500) + 1
+    WHERE id = ?
+  `, [amount, amount, userId]);
+
+  // Update streak and last_active_date
+  await db.query(`
+    UPDATE users
+    SET last_active_date = ?,
+        streak = CASE
+          WHEN last_active_date = DATE_SUB(?, INTERVAL 1 DAY) THEN streak + 1
+          WHEN last_active_date = ? THEN streak
+          ELSE 1
+        END,
+        longest_streak = GREATEST(longest_streak,
+          CASE
+            WHEN last_active_date = DATE_SUB(?, INTERVAL 1 DAY) THEN streak + 1
+            WHEN last_active_date = ? THEN streak
+            ELSE 1
+          END
+        )
+    WHERE id = ?
+  `, [today, today, today, today, today, userId]).catch(async () => {
+    // Fallback: run basic update if table doesn't have last_active_date or similar constraint
+    await db.query('UPDATE users SET streak = LEAST(streak + 1, 999) WHERE id = ?', [userId]);
+  });
+
+  // Log to user_activity
+  await db.query(`
+    INSERT INTO user_activity (user_id, date, xp_earned)
+    VALUES (?, ?, ?)
+    ON DUPLICATE KEY UPDATE xp_earned = xp_earned + VALUES(xp_earned)
+  `, [userId, today, amount]).catch(() => { /* table may not exist yet */ });
+
+  // Fetch and return updated values
+  const [[updated]] = await db.query('SELECT xp, level FROM users WHERE id = ?', [userId]);
+  return {
+    xp: updated.xp,
+    level: updated.level,
+    added: amount,
+    already_claimed: false
+  };
+};
+
 module.exports = {
   findByUsername,
   findByEmail,
@@ -111,5 +184,7 @@ module.exports = {
   updateStatus,
   updateRole,
   deleteUser,
-  countPendingUsers
+  countPendingUsers,
+  awardXPAndIncrementStreak
 };
+

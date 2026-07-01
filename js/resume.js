@@ -1,269 +1,537 @@
 // ============================================================
-// js/resume.js — EduNet Resume Builder (API Integrated)
+// js/resume.js — AI Resume Builder Controller
 // ============================================================
 'use strict';
-const session = window.initPageShell('resume.html');
-const { showToast, addXP } = window.EduNetAPI;
 
-const RESUME_KEY = 'edunet_resume_' + session?.username;
+(function () {
+  const { apiFetch, getToken, getSession, showToast } = window.EduNetAPI;
 
-// Load saved data
-function loadSaved() {
-  const saved = JSON.parse(localStorage.getItem(RESUME_KEY) || '{}');
-  Object.entries(saved).forEach(([id, val]) => {
-    const el = document.getElementById(id);
-    if (el) el.value = val;
-  });
-}
+  let activeResumeId = null;
+  let personalInfo = {};
+  let summary = '';
+  let skills = {};
+  let educationList = [];
+  let experienceList = [];
+  let projectsList = [];
 
-// Save all fields
-function saveResume() {
-  const fields = ['rName','rEmail','rPhone','rLinkedin','rGithub','rSummary','rSkills','rExp','rEdu','rProjects','resumeTemplate'];
-  const data = {};
-  fields.forEach(id => { const el = document.getElementById(id); if (el) data[id] = el.value; });
-  localStorage.setItem(RESUME_KEY, JSON.stringify(data));
-  showToast('Resume draft saved!', 'success');
-  addXP(15);
-}
-
-// Live preview & theme styling
-function updatePreview() {
-  const get = id => document.getElementById(id)?.value || '';
-  const name = get('rName') || 'Your Name';
-  const email = get('rEmail') || 'email@example.com';
-  const phone = get('rPhone') || '';
-  const linkedin = get('rLinkedin') || '';
-  const github = get('rGithub') || '';
-  const summary = get('rSummary') || '';
-  const skills = get('rSkills') || '';
-  const exp = get('rExp') || '';
-  const edu = get('rEdu') || '';
-  const projects = get('rProjects') || '';
-  const template = get('resumeTemplate') || 'ats';
-
-  // Format skills
-  let skillsList = '';
-  if (skills) {
-    skillsList = skills.split(',').filter(Boolean).map(s => {
-      if (template === 'minimalist') {
-        return `<span style="font-size:12px;color:#1a1a1a;margin-right:8px;font-family:serif;">${s.trim()}</span>`;
-      } else if (template === 'modern') {
-        return `<span style="display:inline-block;background:#ebf8ff;color:#2b6cb0;border-radius:4px;padding:3px 10px;margin:3px;font-size:11px;font-weight:600;">${s.trim()}</span>`;
-      } else {
-        // Standard ATS
-        return `<span style="display:inline-block;border:1px solid #cbd5e0;border-radius:2px;padding:2px 8px;margin:2px;font-size:11.5px;color:#2d3748;">${s.trim()}</span>`;
-      }
-    }).join('');
+  // Initialize page shell
+  if (window.initPageShell) {
+    window.initPageShell();
   }
 
-  const formatTextBlock = (text) => text.split('\n').map(line => {
-    if (line.startsWith('•') || line.startsWith('-')) {
-      const content = line.slice(1).trim();
-      return `<li style="margin-left:1.25rem;font-size:12px;color:#2d3748;margin-bottom:2px;">${content}</li>`;
+  // Section switcher
+  window.switchSectionTab = function (tabName) {
+    document.querySelectorAll('.section-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.section-tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    const panel = document.getElementById(`section_${tabName}`);
+    if (panel) panel.style.display = 'block';
+    
+    // Find matching button to activate
+    const tabs = document.getElementById('sectionsTabsContainer');
+    if (tabs) {
+      const btn = Array.from(tabs.children).find(b => b.textContent.toLowerCase().includes(tabName.slice(0, 4)));
+      if (btn) btn.classList.add('active');
     }
-    return line.trim() ? `<p style="font-weight:600;font-size:13px;margin-top:.4rem;color:#1a202c;margin-bottom:4px;">${line}</p>` : '';
-  }).join('');
+  };
 
-  const preview = document.getElementById('resumePreview');
-  if (!preview) return;
+  // Load user resumes
+  async function loadUserResume() {
+    try {
+      const res = await apiFetch('/api/resume');
+      if (res.success && res.resumes.length > 0) {
+        const r = res.resumes[0]; // load first active resume
+        activeResumeId = r.id;
+        personalInfo = r.personal_info || {};
+        summary = r.summary || '';
+        skills = r.skills || {};
+        educationList = r.sections.education || [];
+        experienceList = r.sections.experience || [];
+        projectsList = r.sections.projects || [];
 
-  // Apply templates
-  let font = 'Arial, sans-serif';
-  let primaryColor = '#2b6cb0';
-  let headingBorder = '1px solid #bee3f8';
-  
-  if (template === 'minimalist') {
-    font = 'Georgia, serif';
-    primaryColor = '#1a1a1a';
-    headingBorder = '1px solid #e2e8f0';
-  } else if (template === 'ats') {
-    font = 'Calibri, Arial, sans-serif';
-    primaryColor = '#2d3748';
-    headingBorder = '1px solid #cbd5e0';
+        // Set selected template
+        const selectTmpl = document.getElementById('resumeTemplateSelect');
+        if (selectTmpl) selectTmpl.value = r.template;
+
+        // Populate contact form fields
+        document.getElementById('pName').value = personalInfo.name || '';
+        document.getElementById('pEmail').value = personalInfo.email || '';
+        document.getElementById('pPhone').value = personalInfo.phone || '';
+        document.getElementById('pLocation').value = personalInfo.location || '';
+        document.getElementById('pGithub').value = personalInfo.github || '';
+        document.getElementById('pLinkedin').value = personalInfo.linkedin || '';
+        document.getElementById('pSummary').value = summary;
+
+        // Populate skills fields
+        document.getElementById('skLangs').value = (skills.languages || []).join(', ');
+        document.getElementById('skFrontend').value = (skills.frontend || []).join(', ');
+        document.getElementById('skBackend').value = (skills.backend || []).join(', ');
+        document.getElementById('skDatabase').value = (skills.database || []).join(', ');
+
+        // Sync lists displays
+        renderEducationList();
+        renderExperienceList();
+        renderProjectsList();
+
+        // Render preview canvas
+        renderPreview();
+      }
+    } catch (e) {
+      showToast('Error loading resume details.', 'error');
+    }
   }
 
-  preview.style.fontFamily = font;
-  
-  preview.innerHTML = `
-    <div style="max-width:700px;margin:0 auto;color:#2d3748;">
-      <div style="text-align:center;border-bottom:2px solid ${primaryColor};padding-bottom:1rem;margin-bottom:1.25rem;">
-        <h1 style="font-size:24px;margin:0;color:#1a202c;font-weight:700;letter-spacing:-0.02em;">${name}</h1>
-        <div style="font-size:12px;color:#4a5568;margin-top:.4rem;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-          ${email ? `<span>📧 ${email}</span>` : ''}
-          ${phone ? `<span>📞 ${phone}</span>` : ''}
-          ${linkedin ? `<span>🔗 ${linkedin}</span>` : ''}
-          ${github ? `<span>💻 ${github}</span>` : ''}
+  // Education list handlers
+  function renderEducationList() {
+    const list = document.getElementById('educationListContainer');
+    if (!list) return;
+    list.innerHTML = educationList.map((edu, idx) => `
+      <div class="dynamic-list-item">
+        <div>
+          <strong>${edu.degree} in ${edu.stream}</strong> at <span>${edu.college}</span>
+          <div style="font-size:11px; color:var(--mist-dim);">${edu.start_year} - ${edu.end_year} | CGPA: ${edu.cgpa}</div>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="removeEduItem(${idx})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  window.removeEduItem = function (idx) {
+    educationList.splice(idx, 1);
+    renderEducationList();
+    renderPreview();
+  };
+
+  document.getElementById('btnAddEdu')?.addEventListener('click', () => {
+    const college = document.getElementById('eduColl').value.trim();
+    const degree = document.getElementById('eduDeg').value.trim();
+    const stream = document.getElementById('eduStream').value.trim();
+    const cgpa = document.getElementById('eduCgpa').value.trim();
+    const start_year = document.getElementById('eduStart').value.trim();
+    const end_year = document.getElementById('eduEnd').value.trim();
+
+    if (!college || !degree) {
+      showToast('Please fill College name and Degree.', 'warning');
+      return;
+    }
+
+    educationList.push({ college, degree, stream, cgpa, start_year, end_year });
+    renderEducationList();
+    renderPreview();
+
+    // Clear inputs
+    document.getElementById('eduColl').value = '';
+    document.getElementById('eduDeg').value = '';
+    document.getElementById('eduStream').value = '';
+    document.getElementById('eduCgpa').value = '';
+    document.getElementById('eduStart').value = '';
+    document.getElementById('eduEnd').value = '';
+  });
+
+  // Experience list handlers
+  function renderExperienceList() {
+    const list = document.getElementById('experienceListContainer');
+    if (!list) return;
+    list.innerHTML = experienceList.map((exp, idx) => `
+      <div class="dynamic-list-item">
+        <div>
+          <strong>${exp.role}</strong> at <span>${exp.company}</span>
+          <div style="font-size:11px; color:var(--mist-dim);">${exp.start_date} - ${exp.end_date}</div>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="removeExpItem(${idx})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  window.removeExpItem = function (idx) {
+    experienceList.splice(idx, 1);
+    renderExperienceList();
+    renderPreview();
+  };
+
+  document.getElementById('btnAddExp')?.addEventListener('click', () => {
+    const company = document.getElementById('expCompany').value.trim();
+    const role = document.getElementById('expRole').value.trim();
+    const start_date = document.getElementById('expStart').value.trim();
+    const end_date = document.getElementById('expEnd').value.trim();
+    const description = document.getElementById('expDesc').value.trim();
+
+    if (!company || !role) {
+      showToast('Please fill Company name and Role.', 'warning');
+      return;
+    }
+
+    experienceList.push({ company, role, start_date, end_date, description });
+    renderExperienceList();
+    renderPreview();
+
+    // Clear inputs
+    document.getElementById('expCompany').value = '';
+    document.getElementById('expRole').value = '';
+    document.getElementById('expStart').value = '';
+    document.getElementById('expEnd').value = '';
+    document.getElementById('expDesc').value = '';
+  });
+
+  // Projects list handlers
+  function renderProjectsList() {
+    const list = document.getElementById('projectsListContainer');
+    if (!list) return;
+    list.innerHTML = projectsList.map((proj, idx) => `
+      <div class="dynamic-list-item">
+        <div>
+          <strong>${proj.name}</strong> (${proj.technologies})
+          <div style="font-size:11px; color:var(--mist-dim);">${proj.description}</div>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="removeProjItem(${idx})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  window.removeProjItem = function (idx) {
+    projectsList.splice(idx, 1);
+    renderProjectsList();
+    renderPreview();
+  };
+
+  document.getElementById('btnAddProj')?.addEventListener('click', () => {
+    const name = document.getElementById('projName').value.trim();
+    const technologies = document.getElementById('projTech').value.trim();
+    const github_url = document.getElementById('projGit').value.trim();
+    const live_url = document.getElementById('projLive').value.trim();
+    const description = document.getElementById('projDesc').value.trim();
+
+    if (!name) {
+      showToast('Project Name is required.', 'warning');
+      return;
+    }
+
+    projectsList.push({ name, technologies, github_url, live_url, description });
+    renderProjectsList();
+    renderPreview();
+
+    // Clear inputs
+    document.getElementById('projName').value = '';
+    document.getElementById('projTech').value = '';
+    document.getElementById('projGit').value = '';
+    document.getElementById('projLive').value = '';
+    document.getElementById('projDesc').value = '';
+  });
+
+  // Live Sync Inputs changes to Preview canvas
+  function bindLiveSync() {
+    const fields = ['pName', 'pEmail', 'pPhone', 'pLocation', 'pGithub', 'pLinkedin', 'pSummary', 'skLangs', 'skFrontend', 'skBackend', 'skDatabase'];
+    fields.forEach(id => {
+      document.getElementById(id)?.addEventListener('input', () => {
+        updateLocalState();
+        renderPreview();
+      });
+    });
+
+    document.getElementById('resumeTemplateSelect')?.addEventListener('change', () => {
+      renderPreview();
+    });
+  }
+
+  function updateLocalState() {
+    personalInfo.name = document.getElementById('pName').value;
+    personalInfo.email = document.getElementById('pEmail').value;
+    personalInfo.phone = document.getElementById('pPhone').value;
+    personalInfo.location = document.getElementById('pLocation').value;
+    personalInfo.github = document.getElementById('pGithub').value;
+    personalInfo.linkedin = document.getElementById('pLinkedin').value;
+    
+    summary = document.getElementById('pSummary').value;
+
+    skills.languages = document.getElementById('skLangs').value.split(',').map(s => s.trim()).filter(Boolean);
+    skills.frontend = document.getElementById('skFrontend').value.split(',').map(s => s.trim()).filter(Boolean);
+    skills.backend = document.getElementById('skBackend').value.split(',').map(s => s.trim()).filter(Boolean);
+    skills.database = document.getElementById('skDatabase').value.split(',').map(s => s.trim()).filter(Boolean);
+  }
+
+  // Render HTML preview based on selected template layout rules
+  function renderPreview() {
+    const preview = document.getElementById('resumePreview');
+    const template = document.getElementById('resumeTemplateSelect')?.value || 'classic';
+    if (!preview) return;
+
+    // Apply template styling overrides class
+    preview.className = `preview-container tmpl-${template}`;
+
+    // Render Contact Header Block
+    let headerHtml = `
+      <div style="text-align:center; border-bottom:2px solid ${template === 'modern' ? '#0284c7' : '#cbd5e1'}; padding-bottom:1rem; margin-bottom:1rem;">
+        <h2 style="font-size:20px; font-weight:800; text-transform:uppercase; margin-bottom:0.25rem;">${personalInfo.name || 'Your Name'}</h2>
+        <div style="font-size:11.5px; color:#475569; display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <span>📧 ${personalInfo.email || 'email@example.com'}</span>
+          <span>📞 ${personalInfo.phone || '+91 99999 99999'}</span>
+          <span>📍 ${personalInfo.location || 'City, Country'}</span>
+        </div>
+        <div style="font-size:11px; color:#64748b; margin-top:0.35rem; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+          <span>🐱 ${personalInfo.github || 'github.com'}</span>
+          <span>💼 ${personalInfo.linkedin || 'linkedin.com'}</span>
         </div>
       </div>
-      
-      ${summary ? `
+    `;
+
+    // Render Summary Section
+    let summaryHtml = '';
+    if (summary) {
+      summaryHtml = `
         <div style="margin-bottom:1.25rem;">
-          <h2 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:${primaryColor};border-bottom:${headingBorder};padding-bottom:.3rem;margin-bottom:.5rem;font-weight:700;">Professional Summary</h2>
-          <p style="font-size:12.5px;color:#2d3748;line-height:1.6;margin:0;">${summary}</p>
+          <h4 style="font-size:12px; font-weight:800; text-transform:uppercase; color:${template === 'modern' ? '#0284c7' : '#1e293b'}; border-bottom:1px solid #e2e8f0; padding-bottom:0.25rem; margin-bottom:0.5rem;">Summary</h4>
+          <p style="color:#334155; line-height:1.5;">${summary}</p>
         </div>
-      ` : ''}
-
-      ${skills ? `
-        <div style="margin-bottom:1.25rem;">
-          <h2 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:${primaryColor};border-bottom:${headingBorder};padding-bottom:.3rem;margin-bottom:.5rem;font-weight:700;">Technical Skills</h2>
-          <div style="margin-top:0.4rem;">${skillsList}</div>
-        </div>
-      ` : ''}
-
-      ${exp ? `
-        <div style="margin-bottom:1.25rem;">
-          <h2 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:${primaryColor};border-bottom:${headingBorder};padding-bottom:.3rem;margin-bottom:.5rem;font-weight:700;">Professional Experience</h2>
-          <div style="line-height:1.5;">${formatTextBlock(exp)}</div>
-        </div>
-      ` : ''}
-
-      ${projects ? `
-        <div style="margin-bottom:1.25rem;">
-          <h2 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:${primaryColor};border-bottom:${headingBorder};padding-bottom:.3rem;margin-bottom:.5rem;font-weight:700;">Projects</h2>
-          <div style="line-height:1.5;">${formatTextBlock(projects)}</div>
-        </div>
-      ` : ''}
-
-      ${edu ? `
-        <div style="margin-bottom:1.25rem;">
-          <h2 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:${primaryColor};border-bottom:${headingBorder};padding-bottom:.3rem;margin-bottom:.5rem;font-weight:700;">Education</h2>
-          <div style="line-height:1.5;">${formatTextBlock(edu)}</div>
-        </div>
-      ` : ''}
-      
-      <div style="margin-top:2rem;padding-top:.5rem;border-top:1px solid #e2e8f0;text-align:center;font-size:9px;color:#a0aec0;font-family:var(--font-mono);">Generated by EduNet Profile Tools</div>
-    </div>
-  `;
-
-  updateATSScore();
-}
-
-// Calculate ATS Score & update coach advice
-function updateATSScore() {
-  const get = id => document.getElementById(id)?.value || '';
-  const name = get('rName');
-  const email = get('rEmail');
-  const skills = get('rSkills');
-  const exp = get('rExp');
-  const edu = get('rEdu');
-  const projects = get('rProjects');
-
-  let score = 15; // base
-  const suggestions = [];
-
-  if (name) score += 5;
-  if (email && email.includes('@')) score += 5;
-  else suggestions.push('Add a valid contact email address.');
-
-  const skillsCount = skills.split(',').filter(Boolean).length;
-  if (skillsCount >= 8) {
-    score += 25;
-  } else if (skillsCount >= 4) {
-    score += 15;
-    suggestions.push('Add at least 8 key skills to increase technical search visibility.');
-  } else {
-    suggestions.push('List relevant technologies/tools (e.g. Python, SQL, Git).');
-  }
-
-  if (exp.length > 200) score += 20;
-  else if (exp.length > 50) score += 10;
-  else suggestions.push('Detail your experience. Explain achievements using action verbs.');
-
-  if (edu.length > 30) score += 15;
-  else suggestions.push('Include your degree, institution name, and CGPA.');
-
-  if (projects.length > 100) score += 15;
-  else suggestions.push('Add 2 key projects showing concrete tech stack applications.');
-
-  // Validate action words
-  const actionWords = ['built', 'optimized', 'automated', 'designed', 'developed', 'led', 'managed', 'created', 'implemented'];
-  const hasActionWord = actionWords.some(w => exp.toLowerCase().includes(w) || projects.toLowerCase().includes(w));
-  if (hasActionWord) score = Math.min(100, score + 5);
-  else suggestions.push('Use dynamic action words like "Optimized" or "Automated" in descriptions.');
-
-  const scoreEl = document.getElementById('atsScoreText');
-  if (scoreEl) {
-    scoreEl.textContent = score + '%';
-    if (score >= 80) scoreEl.style.color = 'var(--emerald)';
-    else if (score >= 50) scoreEl.style.color = 'var(--accent)';
-    else scoreEl.style.color = 'var(--rose)';
-  }
-
-  const suggContainer = document.getElementById('aiResumeSuggestions');
-  if (suggContainer) {
-    if (!suggestions.length) {
-      suggContainer.innerHTML = `<li style="color:var(--emerald);">✓ Your resume is fully optimized for ATS screening systems!</li>`;
-    } else {
-      suggContainer.innerHTML = suggestions.slice(0, 3).map(s => `<li>${s}</li>`).join('');
+      `;
     }
+
+    // Render Education Section
+    let eduHtml = '';
+    if (educationList.length > 0) {
+      eduHtml = `
+        <div style="margin-bottom:1.25rem;">
+          <h4 style="font-size:12px; font-weight:800; text-transform:uppercase; color:${template === 'modern' ? '#0284c7' : '#1e293b'}; border-bottom:1px solid #e2e8f0; padding-bottom:0.25rem; margin-bottom:0.5rem;">Education</h4>
+          ${educationList.map(e => `
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+              <div>
+                <strong>${e.college}</strong>
+                <div>${e.degree} in ${e.stream}</div>
+              </div>
+              <div style="text-align:right;">
+                <div>${e.start_year} - ${e.end_year}</div>
+                <div style="font-size:11px; color:#64748b;">CGPA: ${e.cgpa}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Render Experience Section
+    let expHtml = '';
+    if (experienceList.length > 0) {
+      expHtml = `
+        <div style="margin-bottom:1.25rem;">
+          <h4 style="font-size:12px; font-weight:800; text-transform:uppercase; color:${template === 'modern' ? '#0284c7' : '#1e293b'}; border-bottom:1px solid #e2e8f0; padding-bottom:0.25rem; margin-bottom:0.5rem;">Experience</h4>
+          ${experienceList.map(ex => `
+            <div style="margin-bottom:0.6rem;">
+              <div style="display:flex; justify-content:space-between;">
+                <strong>${ex.company}</strong>
+                <span style="color:#64748b; font-size:11.5px;">${ex.start_date} - ${ex.end_date}</span>
+              </div>
+              <div><em>${ex.role}</em></div>
+              <p style="color:#475569; margin-top:0.2rem; font-size:12.5px;">${ex.description}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Render Projects Section
+    let projHtml = '';
+    if (projectsList.length > 0) {
+      projHtml = `
+        <div style="margin-bottom:1.25rem;">
+          <h4 style="font-size:12px; font-weight:800; text-transform:uppercase; color:${template === 'modern' ? '#0284c7' : '#1e293b'}; border-bottom:1px solid #e2e8f0; padding-bottom:0.25rem; margin-bottom:0.5rem;">Projects</h4>
+          ${projectsList.map(p => `
+            <div style="margin-bottom:0.6rem;">
+              <div style="display:flex; justify-content:space-between;">
+                <strong>${p.name}</strong>
+                <span style="font-size:11px; color:#64748b;">${p.technologies}</span>
+              </div>
+              <p style="color:#475569; margin-top:0.15rem; font-size:12.5px;">${p.description}</p>
+              ${p.github_url ? `<div style="font-size:11px; color:#0284c7;">Link: ${p.github_url}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Render Skills Section
+    let skillsHtml = '';
+    const hasSkills = Object.values(skills).some(arr => arr && arr.length > 0);
+    if (hasSkills) {
+      skillsHtml = `
+        <div>
+          <h4 style="font-size:12px; font-weight:800; text-transform:uppercase; color:${template === 'modern' ? '#0284c7' : '#1e293b'}; border-bottom:1px solid #e2e8f0; padding-bottom:0.25rem; margin-bottom:0.5rem;">Skills</h4>
+          <div style="display:flex; flex-direction:column; gap:4px; font-size:12px; color:#334155;">
+            ${skills.languages && skills.languages.length ? `<div><strong>Languages:</strong> ${skills.languages.join(', ')}</div>` : ''}
+            ${skills.frontend && skills.frontend.length ? `<div><strong>Frontend:</strong> ${skills.frontend.join(', ')}</div>` : ''}
+            ${skills.backend && skills.backend.length ? `<div><strong>Backend:</strong> ${skills.backend.join(', ')}</div>` : ''}
+            ${skills.database && skills.database.length ? `<div><strong>Database:</strong> ${skills.database.join(', ')}</div>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    preview.innerHTML = headerHtml + summaryHtml + eduHtml + expHtml + projHtml + skillsHtml;
   }
-}
 
-// Markdown export
-function exportToMarkdown() {
-  const get = id => document.getElementById(id)?.value || '';
-  const name = get('rName') || 'Your Name';
-  const email = get('rEmail') || '';
-  const phone = get('rPhone') || '';
-  const linkedin = get('rLinkedin') || '';
-  const github = get('rGithub') || '';
-  const summary = get('rSummary') || '';
-  const skills = get('rSkills') || '';
-  const exp = get('rExp') || '';
-  const edu = get('rEdu') || '';
-  const projects = get('rProjects') || '';
+  // Save Resume draft trigger
+  document.getElementById('btnSaveResume')?.addEventListener('click', async () => {
+    updateLocalState();
+    const template = document.getElementById('resumeTemplateSelect')?.value || 'classic';
 
-  const md = `# ${name}
-${email ? `* Email: ${email}` : ''}
-${phone ? `* Phone: ${phone}` : ''}
-${linkedin ? `* LinkedIn: ${linkedin}` : ''}
-${github ? `* GitHub: ${github}` : ''}
+    const payload = {
+      id: activeResumeId,
+      title: 'My Saved Resume',
+      template,
+      personal_info: personalInfo,
+      summary,
+      skills,
+      sections: {
+        education: educationList,
+        experience: experienceList,
+        projects: projectsList
+      }
+    };
 
-## Objective
-${summary}
+    try {
+      const endpoint = activeResumeId ? '/api/resume/update' : '/api/resume/save';
+      const method = activeResumeId ? 'PUT' : 'POST';
+      const res = await apiFetch(endpoint, {
+        method,
+        body: JSON.stringify(payload)
+      });
 
-## Technical Skills
-${skills.split(',').map(s => s.trim()).join(', ')}
+      if (res.success) {
+        showToast(res.message, 'success');
+        if (res.id) activeResumeId = res.id;
+        await loadUserResume();
+      } else {
+        showToast(res.message || 'Failed to save resume.', 'error');
+      }
+    } catch (e) {
+      showToast('Connection failed.', 'error');
+    }
+  });
 
-## Professional Experience
-${exp}
+  // Export PDF and print trigger
+  document.getElementById('btnExportPDF')?.addEventListener('click', async () => {
+    if (!activeResumeId) {
+      showToast('Save resume draft first before exporting!', 'warning');
+      return;
+    }
 
-## Projects
-${projects}
+    try {
+      await apiFetch('/api/resume/download', {
+        method: 'POST',
+        body: JSON.stringify({ id: activeResumeId, format: 'pdf' })
+      });
 
-## Education
-${edu}
+      showToast('Export tracked successfully. Triggering print options...', 'success');
+      
+      // Open clean print page using preview content
+      const printWindow = window.open('', '_blank', 'width=800,height=600');
+      if (printWindow) {
+        printWindow.document.open();
+        printWindow.document.write(`
+          <html>
+            <head>
+              <title>Resume Print Preview</title>
+              <style>
+                body { padding: 2rem; background: #fff; color: #1a1a1a; font-family: 'Georgia', serif; }
+                .preview-container { max-width: 800px; margin: 0 auto; }
+              </style>
+            </head>
+            <body onload="window.print(); window.close();">
+              <div class="preview-container">
+                ${document.getElementById('resumePreview').innerHTML}
+              </div>
+            </body>
+          </html>
+        `);
+        printWindow.document.close();
+      }
 
----
-Generated by EduNet Resume Builder
-`;
+    } catch (err) {
+      showToast('Failed to track downloads.', 'error');
+    }
+  });
 
-  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = name.toLowerCase().replace(/\s+/g, '_') + '_resume.md';
-  a.click();
-  URL.revokeObjectURL(url);
-  showToast('Markdown downloaded!', 'success');
-}
+  // ATS scanner triggers
+  document.getElementById('btnScanATS')?.addEventListener('click', async () => {
+    if (!activeResumeId) {
+      showToast('Please save your resume draft first!', 'warning');
+      return;
+    }
 
-// Attach live listeners
-const inputs = ['rName','rEmail','rPhone','rLinkedin','rGithub','rSummary','rSkills','rExp','rEdu','rProjects','resumeTemplate'];
-inputs.forEach(id => {
-  document.getElementById(id)?.addEventListener('input', updatePreview);
-  document.getElementById(id)?.addEventListener('change', updatePreview);
-});
+    const jd = document.getElementById('jobDescriptionInput').value.trim();
+    if (!jd || jd.length < 10) {
+      showToast('Paste a valid job description to scan.', 'warning');
+      return;
+    }
 
-document.getElementById('previewResumeBtn')?.addEventListener('click', updatePreview);
-document.getElementById('saveResumeBtn')?.addEventListener('click', saveResume);
-document.getElementById('exportMdBtn')?.addEventListener('click', exportToMarkdown);
-document.getElementById('exportPdfBtn')?.addEventListener('click', () => {
-  updatePreview();
-  showToast('Preparing PDF layout... Please use "Save as PDF" option in browser.', 'info');
-  setTimeout(() => window.print(), 600);
-});
+    const btnScan = document.getElementById('btnScanATS');
+    btnScan.disabled = true;
+    btnScan.textContent = 'Analyzing...';
 
-// Load init state
-loadSaved();
-updatePreview();
+    try {
+      const res = await apiFetch('/api/resume/scan', {
+        method: 'POST',
+        body: JSON.stringify({
+          id: activeResumeId,
+          job_description: jd
+        })
+      });
+
+      if (res.success) {
+        showToast('ATS Scan complete!', 'success');
+        document.getElementById('scoreDisplayVal').textContent = res.score + '%';
+        
+        // Show result details panel
+        const overlay = document.getElementById('scanResultsOverlay');
+        overlay.style.display = 'block';
+
+        document.getElementById('matchedTags').textContent = res.matched.join(', ') || 'None';
+        document.getElementById('missingTags').textContent = res.missing.join(', ') || 'None';
+
+        const suggestList = document.getElementById('atsSuggestionsBox');
+        if (suggestList) {
+          suggestList.innerHTML = res.suggestions.map(s => `<li>${s}</li>`).join('');
+        }
+      } else {
+        showToast(res.message || 'Scan failed.', 'error');
+      }
+    } catch (e) {
+      showToast('Scan connection failed.', 'error');
+    } finally {
+      btnScan.disabled = false;
+      btnScan.textContent = 'Analyze Blueprint Compatibility';
+    }
+  });
+
+  // AI Summary Polish
+  document.getElementById('btnAiImproveSummary')?.addEventListener('click', async () => {
+    const text = document.getElementById('pSummary').value.trim();
+    if (!text) {
+      showToast('Type a summary draft first.', 'warning');
+      return;
+    }
+
+    try {
+      const res = await apiFetch('/api/resume/ai/improve', {
+        method: 'POST',
+        body: JSON.stringify({
+          id: activeResumeId,
+          section_name: 'summary',
+          content: text
+        })
+      });
+
+      if (res.success) {
+        showToast('AI polished summary generated.', 'success');
+        document.getElementById('pSummary').value = res.improved;
+        updateLocalState();
+        renderPreview();
+      }
+    } catch (e) {
+      showToast('AI polish failed.', 'error');
+    }
+  });
+
+  // Initial loader
+  loadUserResume();
+  bindLiveSync();
+
+})();

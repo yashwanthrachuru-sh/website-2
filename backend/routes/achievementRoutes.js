@@ -64,14 +64,54 @@ router.post('/check', verifyToken, async (req, res) => {
       'SELECT COUNT(*) AS count FROM projects WHERE user_id = ?', [uid]
     ).catch(() => [[{ count: 0 }]]);
 
+    // Fetch roadmaps completed
+    const [[roadmapCompletedRow]] = await db.query(
+      `SELECT COUNT(*) AS count FROM roadmap_progress 
+       WHERE username = (SELECT username FROM users WHERE id = ?) AND completed = 1`, [uid]
+    ).catch(() => [[{ count: 0 }]]);
+
+    // Check specific track completions
+    const [completedTracks] = await db.query(
+      `SELECT track FROM roadmap_progress 
+       WHERE username = (SELECT username FROM users WHERE id = ?) AND completed = 1`, [uid]
+    ).catch(() => [[]]);
+    const tracksSet = new Set(completedTracks.map(t => t.track.toLowerCase()));
+
+    // Tools used count
+    const [[toolsRow]] = await db.query(
+      `SELECT COUNT(DISTINCT tool_id) AS count FROM tool_usage WHERE user_id = ?`, [uid]
+    ).catch(() => [[{ count: 0 }]]);
+
+    // Max interview score
+    const [[interviewRow]] = await db.query(
+      `SELECT MAX(score) AS max_score FROM interview_sessions WHERE user_id = ?`, [uid]
+    ).catch(() => [[{ max_score: 0 }]]);
+
+    // Max SQL quiz score
+    const [[sqlQuizRow]] = await db.query(
+      `SELECT MAX(r.score / r.total_questions * 100) AS max_pct 
+       FROM results r 
+       JOIN tests t ON r.test_id = t.id 
+       WHERE r.user_id = ? AND (t.title LIKE '%SQL%' OR t.title LIKE '%Database%')`, [uid]
+    ).catch(() => [[{ max_pct: 0 }]]);
+
     const stats = {
-      xp:             user?.xp || 0,
-      streak:         user?.streak || 0,
-      lessons_done:   parseInt(lessonRow?.done || 0),
-      quiz_attempts:  parseInt(quizRow?.attempts || 0),
-      certificates:   parseInt(certRow?.count || 0),
-      projects_done:  parseInt(projRow?.count || 0),
+      xp:               user?.xp || 0,
+      streak:           user?.streak || 0,
+      lessons_done:     parseInt(lessonRow?.done || 0),
+      quiz_attempts:    parseInt(quizRow?.attempts || 0),
+      certificates:     parseInt(certRow?.count || 0),
+      projects_done:    parseInt(projRow?.count || 0),
       roadmaps_started: 0,
+      
+      // New Phase 1 condition types
+      roadmap_completed: parseInt(roadmapCompletedRow?.count || 0),
+      roadmap_python:    tracksSet.has('python') ? 1 : 0,
+      roadmap_java:      tracksSet.has('java') ? 1 : 0,
+      roadmap_sde:       tracksSet.has('sde') || tracksSet.has('cse-sde') ? 1 : 0,
+      tools_used:        parseInt(toolsRow?.count || 0),
+      interview_score:   Math.round(interviewRow?.max_score || 0),
+      quiz_score_sql:    Math.round(sqlQuizRow?.max_pct || 0)
     };
 
     // Get all achievement definitions

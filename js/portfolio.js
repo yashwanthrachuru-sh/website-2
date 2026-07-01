@@ -133,6 +133,7 @@
       // Render settings inside edit modals
       if (isOwner) {
         populateSettingsModal();
+        renderCompletionStrength();
       }
 
       // Fetch analytics / charts
@@ -141,10 +142,31 @@
       // Display main container
       document.getElementById('portfolioSkeleton').style.display = 'none';
       document.getElementById('portfolioContent').style.display = 'block';
+
+      // Phase 5: Initialize GitHub, Analytics, Strength, Theme, Recruiter features
+      if (window.__p5Init) window.__p5Init(data);
     } catch (err) {
       console.error(err);
       showToast(err.message || 'Error loading profile.', 'error');
     }
+  }
+
+  // Render portfolio completion strength card for owner
+  function renderCompletionStrength() {
+    const card = document.getElementById('portfolioCompletionCard');
+    const pctVal = document.getElementById('completionPctVal');
+    const pctBar = document.getElementById('completionPctBar');
+    if (!card) return;
+
+    if (!isOwner) {
+      card.style.display = 'none';
+      return;
+    }
+
+    card.style.display = 'block';
+    const pct = portfolioData.completion_percentage || 0;
+    if (pctVal) pctVal.textContent = pct + '%';
+    if (pctBar) setTimeout(() => { pctBar.style.width = pct + '%'; }, 100);
   }
 
   // Render Hero Section
@@ -1220,4 +1242,770 @@
   detectMode();
   loadPortfolio();
 
+  // ============================================================
+  // PHASE 5 — GitHub, Analytics, Strength, Theme, Recruiter
+  // ============================================================
+
+  // ── Phase 5 Tab Navigation ────────────────────────────────────
+  function initP5Tabs() {
+    const tabBtns = document.querySelectorAll('.p5-tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.p5-tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById(btn.dataset.tab);
+        if (target) target.classList.add('active');
+
+        // Lazy-load tab data
+        const tab = btn.dataset.tab;
+        if (tab === 'p5-analytics') loadAnalyticsTab();
+        else if (tab === 'p5-strength') loadStrengthScore();
+        else if (tab === 'p5-resume-analytics') loadResumeAnalytics();
+        else if (tab === 'p5-theme') loadThemeBuilder();
+      });
+    });
+  }
+
+  // ── SEO Meta Tag Injection ─────────────────────────────────────
+  function injectSEOMeta(data) {
+    const { user, settings } = data;
+    const name = user?.username || 'Developer';
+    const headline = settings?.headline || `${name}'s Professional Developer Portfolio`;
+    const about = (settings?.about_me || '').slice(0, 160);
+    const avatarUrl = settings?.profile_picture || '';
+    const url = window.location.href;
+
+    const setMeta = (id, content) => { const el = document.getElementById(id); if (el) el.content = content; };
+    const setEl = (id, content) => { const el = document.getElementById(id); if (el) el.textContent = content; };
+
+    setEl('pageTitle', `${name} — Developer Portfolio | EduNet`);
+    setMeta('metaDesc', about || headline);
+    setMeta('ogTitle', `${name} — Developer Portfolio`);
+    setMeta('ogDesc', about || headline);
+    setMeta('ogUrl', url);
+    setMeta('ogImage', avatarUrl);
+    setMeta('twTitle', `${name} — Developer Portfolio`);
+    setMeta('twDesc', about || headline);
+  }
+
+  // ── Track portfolio view for the currently viewed user ─────────
+  async function trackCurrentView() {
+    try {
+      if (!usernameContext) return;
+      await apiFetch('/api/portfolio/track-view', {
+        method: 'POST',
+        body: JSON.stringify({ username: usernameContext })
+      }).catch(() => {});
+    } catch (_) {}
+  }
+
+  // ── Recruiter Quick Actions Bar ────────────────────────────────
+  function initRecruiterActions(data) {
+    // Track clicks on key public buttons
+    const trackClick = (type, targetName) => {
+      if (!usernameContext) return;
+      apiFetch('/api/portfolio/track-click', {
+        method: 'POST',
+        body: JSON.stringify({ username: usernameContext, click_type: type, target_name: targetName || type })
+      }).catch(() => {});
+    };
+
+    // Resume Download click tracking
+    document.getElementById('btnResumeDownload')?.addEventListener('click', () => {
+      trackClick('resume_download', 'resume');
+    });
+
+    // Contact button
+    document.getElementById('btnContact')?.addEventListener('click', () => {
+      trackClick('contact', 'contact');
+    });
+
+    // Share button → also triggers QR modal (existing)
+    document.getElementById('btnSharePortfolio')?.addEventListener('click', () => {
+      trackClick('share', 'share');
+    });
+
+    // Track GitHub link click if visible in contact panel
+    document.addEventListener('click', e => {
+      const link = e.target.closest('a[href*="github.com"]');
+      if (link && link.href.includes('github.com') && usernameContext) {
+        trackClick('github', 'github_link');
+      }
+      const liLink = e.target.closest('a[href*="linkedin.com"]');
+      if (liLink && usernameContext) {
+        trackClick('linkedin', 'linkedin_link');
+      }
+    });
+  }
+
+  // ── QR Code Generation (use QRCode.js) ────────────────────────
+  async function initQRModal() {
+    const qrBtn = document.getElementById('btnSharePortfolio');
+    const qrModal = document.getElementById('qrModal');
+    const qrContainer = document.getElementById('qrContainer');
+    const qrClose = document.getElementById('qrCloseBtn');
+    const copyBtn = document.getElementById('copyShareLinkBtn');
+
+    if (!qrBtn) return;
+
+    qrBtn.addEventListener('click', async () => {
+      if (!isOwner) return;
+
+      try {
+        const res = await apiFetch('/api/portfolio/qr');
+        if (!res.success) return;
+
+        const shareUrl = res.url;
+
+        // Clear old QR
+        if (qrContainer) qrContainer.innerHTML = '';
+
+        // Generate QR if library loaded
+        if (window.QRCode && qrContainer) {
+          new window.QRCode(qrContainer, {
+            text: shareUrl,
+            width: 160,
+            height: 160,
+            colorDark: '#7c3aed',
+            colorLight: '#ffffff',
+            correctLevel: window.QRCode.CorrectLevel.M
+          });
+        } else if (qrContainer) {
+          qrContainer.innerHTML = `<div style="font-size:10px;color:#888;word-break:break-all;padding:1rem;">${shareUrl}</div>`;
+        }
+
+        if (copyBtn) {
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+              showToast('Portfolio URL copied!', 'success');
+            });
+          };
+        }
+
+        qrModal?.classList.add('open');
+      } catch (err) {
+        showToast('Failed to generate QR code', 'error');
+      }
+    });
+
+    qrClose?.addEventListener('click', () => qrModal?.classList.remove('open'));
+    qrModal?.addEventListener('click', e => {
+      if (e.target === qrModal) qrModal.classList.remove('open');
+    });
+  }
+
+  // ── GitHub Integration ─────────────────────────────────────────
+  const LANG_COLORS = {
+    JavaScript: '#f7df1e', TypeScript: '#3178c6', Python: '#3572A5',
+    Java: '#b07219', 'C++': '#f34b7d', C: '#555555', Go: '#00ADD8',
+    Rust: '#dea584', PHP: '#4F5D95', Ruby: '#701516', Swift: '#F05138',
+    Kotlin: '#A97BFF', HTML: '#e34c26', CSS: '#563d7c', SQL: '#e38c00',
+    Shell: '#89e051', Vue: '#41b883', Dart: '#00B4AB', default: '#8b5cf6'
+  };
+
+  function langColor(lang) { return LANG_COLORS[lang] || LANG_COLORS.default; }
+
+  function renderRepoCard(repo) {
+    const topics = repo.topics ? repo.topics.split(',').filter(Boolean) : [];
+    const topicsHtml = topics.slice(0, 4).map(t =>
+      `<span class="gh-repo-topic">${t}</span>`
+    ).join('');
+
+    const pinClass = repo.is_pinned ? 'is-pinned' : '';
+    const pinLabel = repo.is_pinned ? '📌 Unpin' : '📌 Pin';
+    const hideLabel = repo.is_hidden ? '👁 Show' : '🙈 Hide';
+
+    const lastUpdated = repo.github_updated_at
+      ? new Date(repo.github_updated_at).toLocaleDateString()
+      : 'Unknown';
+
+    return `
+      <div class="gh-repo-card ${pinClass}" data-repo-id="${repo.id}" data-gh-id="${repo.github_repo_id}">
+        <div class="gh-repo-name">
+          ${repo.is_pinned ? '<span title="Pinned">📌</span>' : '<span>📁</span>'}
+          <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+          ${repo.is_fork ? '<span style="font-size:10px;color:var(--mist);">(fork)</span>' : ''}
+          ${repo.is_archived ? '<span style="font-size:10px;color:var(--rose);">[archived]</span>' : ''}
+        </div>
+        ${repo.description ? `<div class="gh-repo-desc">${repo.description}</div>` : ''}
+        ${topicsHtml ? `<div class="gh-repo-topics">${topicsHtml}</div>` : ''}
+        <div class="gh-repo-stats">
+          ${repo.language ? `<div class="gh-repo-stat">
+            <div class="gh-lang-dot" style="background:${langColor(repo.language)};"></div>
+            ${repo.language}
+          </div>` : ''}
+          <div class="gh-repo-stat">⭐ ${repo.stars || 0}</div>
+          <div class="gh-repo-stat">🍴 ${repo.forks || 0}</div>
+          <div class="gh-repo-stat">👁 ${repo.watchers || 0}</div>
+          ${repo.open_issues > 0 ? `<div class="gh-repo-stat">🔴 ${repo.open_issues}</div>` : ''}
+        </div>
+        <div style="font-size:10px; color:var(--mist-dim);">
+          ${repo.last_commit_message ? `💬 ${repo.last_commit_message.slice(0,60)}` : ''}
+          · Updated ${lastUpdated}
+          ${repo.license ? `· ${repo.license}` : ''}
+          ${repo.size_kb ? `· ${(repo.size_kb/1024).toFixed(1)} MB` : ''}
+        </div>
+        <div class="gh-repo-actions">
+          <a href="${repo.html_url}" target="_blank" class="btn btn-secondary btn-sm" style="font-size:10px; padding:3px 8px;" onclick="window.__trackGhClick(event)">GitHub ↗</a>
+          ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-secondary btn-sm" style="font-size:10px; padding:3px 8px;">Demo ↗</a>` : ''}
+          <button class="gh-pin-btn" onclick="togglePin(${repo.id}, ${repo.is_pinned ? 0 : 1})">${pinLabel}</button>
+          <button class="gh-hide-btn" onclick="toggleHide(${repo.id}, ${repo.is_hidden ? 0 : 1})">${hideLabel}</button>
+        </div>
+      </div>
+    `;
+  }
+
+  window.__trackGhClick = function(e) {
+    apiFetch('/api/portfolio/track-click', {
+      method: 'POST',
+      body: JSON.stringify({ username: usernameContext, click_type: 'github', target_name: 'repository' })
+    }).catch(() => {});
+  };
+
+  window.togglePin = async function(repoId, pinned) {
+    try {
+      const res = await apiFetch('/api/github/pin', {
+        method: 'POST',
+        body: JSON.stringify({ repo_id: repoId, pinned: !!pinned })
+      });
+      if (res.success) { showToast(res.message, 'success'); loadGitHubData(); }
+    } catch (e) { showToast('Failed to pin repo', 'error'); }
+  };
+
+  window.toggleHide = async function(repoId, hidden) {
+    try {
+      const res = await apiFetch('/api/github/hide', {
+        method: 'POST',
+        body: JSON.stringify({ repo_id: repoId, hidden: !!hidden })
+      });
+      if (res.success) { showToast(res.message, 'success'); loadGitHubData(); }
+    } catch (e) { showToast('Failed to hide repo', 'error'); }
+  };
+
+  async function loadGitHubData() {
+    if (!isOwner) return;
+
+    try {
+      const res = await apiFetch('/api/github/profile');
+
+      // Show OAuth button if configured
+      const oauthSection = document.getElementById('ghOAuthSection');
+      if (res.oauth_available && oauthSection) oauthSection.style.display = 'block';
+
+      if (!res.connected) {
+        document.getElementById('ghConnectPanel').style.display = 'block';
+        document.getElementById('ghConnectedPanel').style.display = 'none';
+        document.getElementById('ghSyncBtn').style.display = 'none';
+        document.getElementById('ghDisconnectBtn').style.display = 'none';
+        return;
+      }
+
+      // Connected state
+      document.getElementById('ghConnectPanel').style.display = 'none';
+      document.getElementById('ghConnectedPanel').style.display = 'block';
+      document.getElementById('ghSyncBtn').style.display = 'inline-flex';
+      document.getElementById('ghDisconnectBtn').style.display = 'inline-flex';
+
+      const p = res.profile;
+      document.getElementById('ghAvatarImg').src = p.avatar_url || '';
+      document.getElementById('ghDisplayName').textContent = p.name || p.github_username;
+      document.getElementById('ghBio').textContent = p.bio || '';
+      document.getElementById('ghRepoCount').textContent = p.public_repos || 0;
+      document.getElementById('ghStars').textContent = p.total_stars || 0;
+      document.getElementById('ghForks').textContent = p.total_forks || 0;
+      document.getElementById('ghFollowers').textContent = p.followers || 0;
+
+      // Last synced
+      const syncEl = document.getElementById('ghLastSynced');
+      if (syncEl && p.last_synced) {
+        syncEl.innerHTML = `<span class="sync-dot"></span> Synced ${new Date(p.last_synced).toLocaleDateString()}`;
+      }
+
+      // Render repos
+      const repoGrid = document.getElementById('ghRepoGrid');
+      const repos = res.repos || [];
+      document.getElementById('ghRepoTotal').textContent = `(${repos.length})`;
+
+      if (repoGrid) {
+        repoGrid.innerHTML = repos.length
+          ? repos.map(r => renderRepoCard(r)).join('')
+          : '<p style="color:var(--mist); font-size:13px;">No repositories imported yet. Click "Import More" to add repos.</p>';
+      }
+
+    } catch (err) {
+      console.warn('loadGitHubData error:', err.message);
+    }
+  }
+
+  function initGitHubConnectBtn() {
+    document.getElementById('ghManualConnectBtn')?.addEventListener('click', async () => {
+      const input = document.getElementById('ghUsernameInput');
+      const username = input?.value.trim();
+      if (!username) return showToast('Enter a GitHub username', 'error');
+
+      const btn = document.getElementById('ghManualConnectBtn');
+      btn.disabled = true; btn.textContent = 'Connecting...';
+
+      try {
+        const res = await apiFetch('/api/github/manual', {
+          method: 'POST',
+          body: JSON.stringify({ username })
+        });
+        if (res.success) {
+          showToast(res.message, 'success');
+          loadGitHubData();
+          loadContributionHeatmap();
+        } else {
+          showToast(res.message || 'Connection failed', 'error');
+        }
+      } catch (err) {
+        showToast(err.message || 'Connection failed', 'error');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Connect';
+      }
+    });
+
+    document.getElementById('ghOAuthBtn')?.addEventListener('click', async () => {
+      try {
+        const res = await apiFetch('/api/github/connect');
+        if (res.oauth_available && res.url) {
+          window.location.href = res.url;
+        } else {
+          showToast('OAuth not configured. Use manual username.', 'error');
+        }
+      } catch (_) {}
+    });
+
+    document.getElementById('ghSyncBtn')?.addEventListener('click', async () => {
+      const btn = document.getElementById('ghSyncBtn');
+      btn.disabled = true; btn.textContent = '⏳ Syncing...';
+      try {
+        const res = await apiFetch('/api/github/sync', { method: 'POST', body: '{}' });
+        if (res.success) {
+          showToast(`${res.message}`, 'success');
+          loadGitHubData();
+          loadContributionHeatmap();
+        }
+      } catch (err) { showToast('Sync failed', 'error'); }
+      finally { btn.disabled = false; btn.textContent = '🔄 Sync Now'; }
+    });
+
+    document.getElementById('ghDisconnectBtn')?.addEventListener('click', async () => {
+      if (!confirm('Disconnect GitHub? All imported repositories will be removed.')) return;
+      try {
+        const res = await apiFetch('/api/github/disconnect', { method: 'POST', body: '{}' });
+        if (res.success) { showToast(res.message, 'success'); loadGitHubData(); }
+      } catch (err) { showToast('Disconnect failed', 'error'); }
+    });
+
+    document.getElementById('ghImportBtn')?.addEventListener('click', async () => {
+      showToast('Fetching all available repos...', 'info');
+      try {
+        const res = await apiFetch('/api/github/repos');
+        if (!res.success || !res.repos) return showToast('Failed to fetch repos', 'error');
+        const notImported = res.repos.filter(r => !r.already_imported);
+        if (!notImported.length) return showToast('All repositories are already imported!', 'success');
+        const ids = notImported.map(r => r.id);
+        const importRes = await apiFetch('/api/github/import', {
+          method: 'POST',
+          body: JSON.stringify({ repo_ids: ids })
+        });
+        if (importRes.success) {
+          showToast(importRes.message, 'success');
+          loadGitHubData();
+        }
+      } catch (err) { showToast('Import failed', 'error'); }
+    });
+
+    // Handle OAuth callback URL params
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('github_connected')) showToast('GitHub connected successfully!', 'success');
+    if (params.get('github_error')) showToast('GitHub error: ' + params.get('github_error'), 'error');
+  }
+
+  // ── Enhanced Contribution Heatmap (Phase 5) ─────────────────────
+  async function loadContributionHeatmap() {
+    if (!isOwner) return;
+
+    try {
+      const res = await apiFetch('/api/github/contributions');
+      if (!res.success) return;
+
+      const { heatmap, stats, source } = res;
+
+      // Update source label
+      const srcEl = document.getElementById('heatmapSource');
+      const srcLabels = { github: 'GitHub Activity', edunet: 'EduNet Activity', combined: 'Combined: GitHub + EduNet', mock: 'EduNet Activity' };
+      if (srcEl) srcEl.textContent = srcLabels[source] || 'Activity';
+
+      // Update stats
+      const s = stats || {};
+      const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      setVal('csTotalContribs', s.total_contributions || 0);
+      setVal('csActiveDays', s.active_days || 0);
+      setVal('csCurrent', s.current_streak || 0);
+      setVal('csLongest', s.longest_streak || 0);
+
+      // Render heatmap grid
+      renderP5Heatmap(heatmap || {}, stats || {});
+    } catch (err) {
+      console.warn('loadContributionHeatmap error:', err.message);
+    }
+  }
+
+  function renderP5Heatmap(heatmap, stats) {
+    const grid = document.getElementById('p5HeatmapGrid');
+    const monthsRow = document.getElementById('p5HeatmapMonths');
+    const totalEl = document.getElementById('p5HeatmapTotal');
+    if (!grid) return;
+
+    // Build 52-week grid
+    const today = new Date();
+    const start = new Date(today);
+    start.setDate(start.getDate() - 364);
+
+    // Align to Sunday
+    const dayOfWeek = start.getDay();
+    start.setDate(start.getDate() - dayOfWeek);
+
+    grid.innerHTML = '';
+
+    let maxVal = 0;
+    const days = [];
+    for (let i = 0; i < 364; i++) {
+      const d = new Date(start);
+      d.setDate(d.getDate() + i);
+      const key = d.toISOString().slice(0, 10);
+      const val = heatmap[key];
+      const count = val ? (typeof val === 'number' ? val : (val.commits || 0)) : 0;
+      if (count > maxVal) maxVal = count;
+      days.push({ date: key, count, xp: val?.xp || 0, coding: val?.coding_minutes || 0, source: val?.source || '' });
+    }
+
+    days.forEach(d => {
+      const cell = document.createElement('div');
+      cell.style.cssText = 'width:11px;height:11px;border-radius:2px;cursor:pointer;transition:transform 0.1s;';
+      const level = !d.count ? 0 : d.count <= 2 ? 1 : d.count <= 5 ? 2 : d.count <= 10 ? 3 : 4;
+      const colors = ['var(--border)', 'rgba(139,92,246,0.3)', 'rgba(139,92,246,0.55)', 'rgba(139,92,246,0.8)', 'var(--accent)'];
+      cell.style.background = colors[level];
+
+      // Day popup on hover
+      cell.addEventListener('mouseenter', e => {
+        const popup = document.getElementById('hmTooltip');
+        if (!popup) return;
+        const dateStr = new Date(d.date + 'T12:00:00').toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+        popup.innerHTML = `
+          <div class="heatmap-popup-title">${dateStr}</div>
+          <div class="heatmap-popup-row"><span>Contributions</span><span>${d.count}</span></div>
+          ${d.xp ? `<div class="heatmap-popup-row"><span>XP Earned</span><span>+${d.xp}</span></div>` : ''}
+          ${d.coding ? `<div class="heatmap-popup-row"><span>Coding Time</span><span>${d.coding}m</span></div>` : ''}
+          ${d.source ? `<div class="heatmap-popup-row"><span>Source</span><span style="text-transform:capitalize;">${d.source}</span></div>` : ''}
+        `;
+        popup.style.display = 'block';
+        popup.style.left = (e.clientX + 12) + 'px';
+        popup.style.top = (e.clientY - 10) + 'px';
+      });
+
+      cell.addEventListener('mousemove', e => {
+        const popup = document.getElementById('hmTooltip');
+        if (popup) { popup.style.left = (e.clientX + 12) + 'px'; popup.style.top = (e.clientY - 10) + 'px'; }
+      });
+
+      cell.addEventListener('mouseleave', () => {
+        const popup = document.getElementById('hmTooltip');
+        if (popup) popup.style.display = 'none';
+      });
+
+      grid.appendChild(cell);
+    });
+
+    if (totalEl) {
+      totalEl.textContent = `${stats.total_contributions || 0} contributions in the last year`;
+    }
+  }
+
+  // ── Analytics Tab ──────────────────────────────────────────────
+  let analyticsCharts = {};
+
+  async function loadAnalyticsTab() {
+    try {
+      const res = await apiFetch('/api/portfolio/views');
+      if (!res.success) return;
+
+      const { summary, daily, top_projects, traffic_sources } = res;
+
+      const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v ?? '-'; };
+      setText('anTotalViews', summary.total_views);
+      setText('anUniqueVisitors', summary.unique_visitors);
+      setText('anReturning', summary.returning_visitors);
+      setText('anResumeDownloads', summary.resume_downloads);
+      setText('anGithubClicks', summary.github_clicks);
+      setText('anProjectClicks', summary.project_clicks);
+      setText('anContactClicks', summary.contact_clicks);
+      setText('anLinkedinClicks', summary.linkedin_clicks);
+
+      // Daily views line chart
+      const labels = daily.map(d => d.day);
+      const vals = daily.map(d => d.total);
+      const uniqueVals = daily.map(d => d.unique_views);
+
+      renderAnalyticsChart('chartPortfolioViews', 'line', {
+        labels,
+        datasets: [
+          { label: 'Total Views', data: vals, borderColor: '#8b5cf6', backgroundColor: 'rgba(139,92,246,0.1)', fill: true, tension: 0.4 },
+          { label: 'Unique Visitors', data: uniqueVals, borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.1)', fill: true, tension: 0.4 }
+        ]
+      });
+
+      // Traffic sources doughnut
+      const srcLabels = (traffic_sources || []).map(t => t.source);
+      const srcVals = (traffic_sources || []).map(t => t.count);
+      renderAnalyticsChart('chartTrafficSources', 'doughnut', {
+        labels: srcLabels.length ? srcLabels : ['No data'],
+        datasets: [{
+          data: srcVals.length ? srcVals : [1],
+          backgroundColor: ['#8b5cf6','#3b82f6','#10b981','#f59e0b','#ef4444','#ec4899'],
+          borderWidth: 0
+        }]
+      });
+
+      // Top projects bar chart
+      const projLabels = (top_projects || []).map(p => p.project);
+      const projVals = (top_projects || []).map(p => p.clicks);
+      renderAnalyticsChart('chartTopProjects', 'bar', {
+        labels: projLabels.length ? projLabels : ['No data yet'],
+        datasets: [{
+          label: 'Project Clicks',
+          data: projVals.length ? projVals : [0],
+          backgroundColor: 'rgba(139,92,246,0.6)',
+          borderColor: '#8b5cf6',
+          borderWidth: 1,
+          borderRadius: 4
+        }]
+      });
+
+    } catch (err) {
+      console.warn('loadAnalyticsTab error:', err.message);
+    }
+  }
+
+  function renderAnalyticsChart(canvasId, type, data) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    if (analyticsCharts[canvasId]) { analyticsCharts[canvasId].destroy(); }
+    analyticsCharts[canvasId] = new Chart(canvas, {
+      type,
+      data,
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#94a3b8', font: { size: 11 } } } },
+        scales: type === 'doughnut' ? {} : {
+          x: { ticks: { color: '#64748b', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          y: { ticks: { color: '#64748b', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } }
+        }
+      }
+    });
+  }
+
+  // ── Portfolio Strength Score ────────────────────────────────────
+  async function loadStrengthScore() {
+    try {
+      const res = await apiFetch('/api/portfolio/strength');
+      if (!res.success) return;
+
+      const { score, recommendations } = res;
+
+      // Animate SVG circle
+      const circle = document.getElementById('strengthCircle');
+      if (circle) {
+        const circumference = 2 * Math.PI * 50; // r=50
+        const offset = circumference - (score / 100) * circumference;
+        setTimeout(() => {
+          circle.style.strokeDashoffset = offset;
+          // Color grade
+          if (score >= 80) circle.style.stroke = '#10b981';
+          else if (score >= 60) circle.style.stroke = '#f59e0b';
+          else circle.style.stroke = '#ef4444';
+        }, 100);
+      }
+
+      const el = document.getElementById('strengthScoreVal');
+      if (el) {
+        let current = 0;
+        const interval = setInterval(() => {
+          current = Math.min(current + 2, score);
+          el.textContent = current;
+          if (current >= score) clearInterval(interval);
+        }, 20);
+      }
+
+      // Stars
+      const starEl = document.getElementById('strengthStars');
+      if (starEl) {
+        const stars = Math.round(score / 20);
+        starEl.textContent = '★'.repeat(stars) + '☆'.repeat(5 - stars);
+      }
+
+      // Label
+      const label = document.getElementById('strengthLabel');
+      if (label) {
+        if (score >= 90) label.textContent = 'Excellent! Recruiter-ready portfolio.';
+        else if (score >= 75) label.textContent = 'Great portfolio! Keep improving.';
+        else if (score >= 50) label.textContent = 'Good start! Complete the recommendations.';
+        else label.textContent = 'Beginner portfolio — lots of room to grow!';
+      }
+
+      // Recommendations
+      const recsEl = document.getElementById('strengthRecs');
+      if (recsEl && recommendations) {
+        recsEl.innerHTML = recommendations.length
+          ? recommendations.map(r => `<div class="strength-rec-item">💡 ${r}</div>`).join('')
+          : '<div class="strength-rec-item">✅ Your portfolio is complete!</div>';
+      }
+    } catch (err) {
+      console.warn('loadStrengthScore error:', err.message);
+    }
+  }
+
+  // ── Resume Analytics ────────────────────────────────────────────
+  async function loadResumeAnalytics() {
+    try {
+      const res = await apiFetch('/api/portfolio/resume-analytics');
+      if (!res.success) return;
+
+      const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v ?? '-'; };
+      setText('raDownloads', res.total_downloads);
+      setText('raScans', res.scan_history.length);
+
+      const avgScore = res.scan_history.length
+        ? Math.round(res.scan_history.reduce((a, s) => a + s.score, 0) / res.scan_history.length)
+        : '-';
+      setText('raAvgScore', avgScore !== '-' ? avgScore + '%' : '-');
+
+      // Daily downloads chart
+      renderAnalyticsChart('chartResumeDownloads', 'bar', {
+        labels: (res.daily_downloads || []).map(d => d.day),
+        datasets: [{
+          label: 'Downloads',
+          data: (res.daily_downloads || []).map(d => d.cnt),
+          backgroundColor: 'rgba(139,92,246,0.5)',
+          borderColor: '#8b5cf6', borderWidth: 1, borderRadius: 4
+        }]
+      });
+
+      // ATS scan history
+      const histEl = document.getElementById('atsScanHistory');
+      if (histEl) {
+        histEl.innerHTML = (res.scan_history || []).length
+          ? res.scan_history.map(s => {
+            const color = s.score >= 80 ? '#10b981' : s.score >= 60 ? '#f59e0b' : '#ef4444';
+            return `<div style="display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0.75rem; background:rgba(255,255,255,0.02); border-radius:6px; font-size:12.5px;">
+              <span style="color:var(--mist);">${new Date(s.created_at).toLocaleDateString()}</span>
+              <span style="color:${color}; font-weight:700;">${s.score}% ATS Score</span>
+            </div>`;
+          }).join('')
+          : '<p style="color:var(--mist); font-size:13px;">No ATS scans yet. Go to Resume Builder to scan your resume.</p>';
+      }
+    } catch (err) {
+      console.warn('loadResumeAnalytics error:', err.message);
+    }
+  }
+
+  // ── Theme Builder ───────────────────────────────────────────────
+  let selectedAccentColor = '#8b5cf6';
+
+  async function loadThemeBuilder() {
+    try {
+      const res = await apiFetch('/api/portfolio/theme');
+      if (res.success && res.theme) {
+        const t = res.theme;
+        if (t.accent_color) { selectedAccentColor = t.accent_color; highlightSwatch(t.accent_color); }
+        const setVal = (id, v) => { const el = document.getElementById(id); if (el && v) el.value = v; };
+        setVal('themeFontFamily', t.font_family);
+        setVal('themeCardRadius', t.card_radius);
+        setVal('themeAnimSpeed', t.animation_speed);
+        setVal('themeBackground', t.background_style);
+        setVal('themeCardStyle', t.card_style);
+        setVal('themeGlassBlur', t.glass_blur);
+        setVal('themeBorderStyle', t.border_style);
+      }
+    } catch (_) {}
+  }
+
+  function highlightSwatch(color) {
+    document.querySelectorAll('.theme-swatch-btn').forEach(btn => {
+      btn.classList.toggle('selected', btn.dataset.color === color);
+    });
+  }
+
+  function initThemeBuilder() {
+    document.querySelectorAll('.theme-swatch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedAccentColor = btn.dataset.color;
+        highlightSwatch(selectedAccentColor);
+      });
+    });
+
+    document.getElementById('themeCustomColor')?.addEventListener('input', e => {
+      selectedAccentColor = e.target.value;
+      document.querySelectorAll('.theme-swatch-btn').forEach(b => b.classList.remove('selected'));
+    });
+
+    document.getElementById('saveThemeBtn')?.addEventListener('click', async () => {
+      const btn = document.getElementById('saveThemeBtn');
+      btn.disabled = true; btn.textContent = '⏳ Saving...';
+      try {
+        const payload = {
+          accent_color: selectedAccentColor,
+          background_style: document.getElementById('themeBackground')?.value,
+          card_radius: document.getElementById('themeCardRadius')?.value,
+          glass_blur: document.getElementById('themeGlassBlur')?.value,
+          font_family: document.getElementById('themeFontFamily')?.value,
+          animation_speed: document.getElementById('themeAnimSpeed')?.value,
+          border_style: document.getElementById('themeBorderStyle')?.value,
+          card_style: document.getElementById('themeCardStyle')?.value
+        };
+        const res = await apiFetch('/api/portfolio/theme', {
+          method: 'PUT',
+          body: JSON.stringify(payload)
+        });
+        if (res.success) showToast('Theme saved successfully!', 'success');
+        else showToast('Failed to save theme', 'error');
+      } catch (_) { showToast('Failed to save theme', 'error'); }
+      finally { btn.disabled = false; btn.textContent = '💾 Save Theme'; }
+    });
+  }
+
+  // ── Phase 5 Main Initializer ────────────────────────────────────
+  function initPhase5(portfolioData) {
+    // Show Phase 5 cards only for owner
+    const p5Cards = document.getElementById('phase5Cards');
+    if (!isOwner || !p5Cards) return;
+    p5Cards.style.display = 'block';
+
+    // SEO meta injection for public profile
+    if (portfolioData) injectSEOMeta(portfolioData);
+
+    // Init all Phase 5 features
+    initP5Tabs();
+    initGitHubConnectBtn();
+    initThemeBuilder();
+    initQRModal();
+    initRecruiterActions(portfolioData);
+
+    // Load initial GitHub data (first tab active by default)
+    loadGitHubData();
+    loadContributionHeatmap();
+
+    // Track view
+    trackCurrentView();
+  }
+
+  // ── Hook into existing loadPortfolio() success path ─────────────
+  // We intercept the original portfolioContent reveal to trigger Phase 5 init.
+  // Wrap the window.portfolioLoaded hook pattern:
+  window.__p5Init = function(data) { initPhase5(data); };
+
 })();
+

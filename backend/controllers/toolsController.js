@@ -1,15 +1,26 @@
-// ============================================================
-// controllers/toolsController.js — Public AI Tools API
-// ============================================================
-
 const toolModel = require('../models/toolModel');
 const auditModel = require('../models/auditModel');
+
+let approvedToolsCache = null;
+let cacheTimestamp = 0;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes TTL fallback
 
 // GET /api/tools
 // Returns a list of all approved AI tools
 const getApprovedTools = async (req, res) => {
   try {
+    const now = Date.now();
+    if (approvedToolsCache && (now - cacheTimestamp < CACHE_TTL)) {
+      return res.json({
+        success: true,
+        tools: approvedToolsCache
+      });
+    }
+
     const tools = await toolModel.getApprovedTools();
+    approvedToolsCache = tools;
+    cacheTimestamp = now;
+
     res.json({
       success: true,
       tools
@@ -18,6 +29,11 @@ const getApprovedTools = async (req, res) => {
     console.error('Fetch tools error:', err);
     res.status(500).json({ success: false, message: 'Server error while fetching tools.' });
   }
+};
+
+const clearToolsCache = () => {
+  approvedToolsCache = null;
+  cacheTimestamp = 0;
 };
 
 // POST /api/tools/:id/bookmark
@@ -109,5 +125,6 @@ module.exports = {
   rateTool,
   submitReview,
   getReviews,
-  logLaunchUsage
+  logLaunchUsage,
+  clearToolsCache
 };

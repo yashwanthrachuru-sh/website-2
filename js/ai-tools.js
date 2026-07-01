@@ -3,7 +3,7 @@
 // ============================================================
 'use strict';
 const session = window.initPageShell('ai-tools.html');
-const { apiFetch, showToast, addXP } = window.EduNetAPI;
+const { apiFetch, showToast, addXP, debounce } = window.EduNetAPI;
 
 const CAT_ICONS = {
   Coding: '💻', Research: '🔬', Productivity: '⚡', Writing: '✍️',
@@ -145,4 +145,4 @@ document.querySelectorAll('#toolFilterRow .filter-btn').forEach(btn => {
     renderTools(allTools);
   });
 });
-document.getElementById('toolSearchBar')?.addEventListener('input', () => renderTools(allTools));
+document.getElementById('toolSearchBar')?.addEventListener('input', debounce(() => renderTools(allTools), 200));
