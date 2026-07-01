@@ -7,6 +7,18 @@
 
 require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 
+// ── Environment Variables Validation ──────────────────────────
+const requiredEnvVars = ['JWT_SECRET'];
+const missingEnvVars = requiredEnvVars.filter(name => !process.env[name]);
+if (missingEnvVars.length > 0) {
+  console.error(`❌  CRITICAL ERROR: Missing required environment variables: ${missingEnvVars.join(', ')}`);
+  console.error('    Please configure them in your environment or backend/.env file.');
+  process.exit(1);
+}
+if (!process.env.DATABASE_URL && (!process.env.DB_HOST || !process.env.DB_USER)) {
+  console.warn('⚠️  WARNING: Neither DATABASE_URL nor DB_HOST/DB_USER are configured. Database connections may fail.');
+}
+
 const express     = require('express');
 const cors        = require('cors');
 const path        = require('path');
@@ -88,7 +100,14 @@ app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
     const isLocalhost = origin.indexOf('://localhost') !== -1 || origin.indexOf('://127.0.0.1') !== -1;
-    if (isLocalhost || origin === process.env.FRONTEND_ORIGIN) {
+    const isVercelPreview = origin.endsWith('.vercel.app');
+
+    const allowedOrigins = (process.env.FRONTEND_ORIGIN || '')
+      .split(',')
+      .map(o => o.trim())
+      .filter(Boolean);
+
+    if (isLocalhost || allowedOrigins.includes(origin) || isVercelPreview) {
       return callback(null, true);
     }
     return callback(new Error('Not allowed by CORS'));
@@ -103,6 +122,13 @@ app.use(cors({
 // ============================================================
 app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true, limit: '2mb' }));
+
+// Disable Express fingerprinting header
+app.disable('x-powered-by');
+
+// Mount XSS Input HTML Sanitizer middleware
+const { sanitizeInput } = require('./middleware/sanitizeMiddleware');
+app.use(sanitizeInput);
 
 // ============================================================
 // STATIC FRONTEND FILES
@@ -211,7 +237,7 @@ app.use((err, req, res, next) => {
 // ============================================================
 // START SERVER
 // ============================================================
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log('');
   console.log('╔════════════════════════════════════════════╗');
   console.log('║       EduNet API Server — v2.0 Running    ║');
@@ -222,5 +248,31 @@ app.listen(PORT, () => {
   console.log('╚════════════════════════════════════════════╝');
   console.log('');
 });
+
+// ── Graceful Shutdown Handler ──────────────────────────────
+const dbPool = require('./config/db');
+
+function gracefulShutdown() {
+  console.log('⏳ Received shutdown signal (SIGTERM/SIGINT). Closing HTTP server...');
+  server.close(() => {
+    console.log('✅ HTTP server closed. Closing database connections...');
+    dbPool.end().then(() => {
+      console.log('✅ Database connection pool closed. Exiting process.');
+      process.exit(0);
+    }).catch((err) => {
+      console.error('❌ Error during database pool close:', err.message);
+      process.exit(1);
+    });
+  });
+
+  // Force exit after 10 seconds if shutdown hangs
+  setTimeout(() => {
+    console.error('⚠️ Force exiting process after 10s timeout.');
+    process.exit(1);
+  }, 10000);
+}
+
+process.on('SIGTERM', gracefulShutdown);
+process.on('SIGINT', gracefulShutdown);
 
 module.exports = app;

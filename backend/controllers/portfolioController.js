@@ -33,6 +33,20 @@ async function saveBase64File(base64Data, subFolder, prefix, allowedMimes, maxSi
     throw new Error(`File is too large. Maximum size allowed is ${(maxSizeBytes / (1024 * 1024)).toFixed(1)}MB.`);
   }
 
+  // Magic number signature checks to prevent MIME type spoofing
+  if (mimeType === 'application/pdf') {
+    // PDF files must start with %PDF- (hex: 25 50 44 46)
+    if (
+      fileBuffer.length < 4 ||
+      fileBuffer[0] !== 0x25 ||
+      fileBuffer[1] !== 0x50 ||
+      fileBuffer[2] !== 0x44 ||
+      fileBuffer[3] !== 0x46
+    ) {
+      throw new Error('Invalid file signature. The file content is not a valid PDF.');
+    }
+  }
+
   const uploadsDir = path.join(__dirname, '..', '..', 'uploads', subFolder);
   if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });

@@ -213,6 +213,11 @@ const downloadResume = async (req, res) => {
 
     if (!id) return res.status(400).json({ success: false, message: 'Resume ID is required.' });
 
+    // Validate ownership before tracking download
+    const resume = await resumeModel.getResumeById(id);
+    if (!resume) return res.status(404).json({ success: false, message: 'Resume not found.' });
+    if (resume.user_id !== userId) return res.status(403).json({ success: false, message: 'Access denied.' });
+
     await resumeModel.logDownload(userId, id, format || 'pdf');
     res.json({ success: true, message: 'Download tracked successfully.' });
   } catch (err) {

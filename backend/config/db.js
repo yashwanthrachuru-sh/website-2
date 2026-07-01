@@ -10,18 +10,23 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
-// Create the connection pool using environment variables
-const pool = mysql.createPool({
-  host:               process.env.DB_HOST,
-  port:               parseInt(process.env.DB_PORT, 10),
-  user:               process.env.DB_USER,
+// Create the connection pool using environment variables or a connection string
+const poolConfig = {
+  host:               process.env.DB_HOST || 'localhost',
+  port:               parseInt(process.env.DB_PORT, 10) || 3306,
+  user:               process.env.DB_USER || 'root',
   password:           process.env.DB_PASSWORD,
-  database:           process.env.DB_NAME,
+  database:           process.env.DB_NAME || 'edunet',
   waitForConnections: true,   // Queue queries if all connections are busy
   connectionLimit:    10,     // Maximum simultaneous connections
   queueLimit:         0,      // Unlimited queue (0 = no limit)
-  timezone:           '+00:00' // Store timestamps in UTC
-});
+  timezone:           '+00:00', // Store timestamps in UTC
+  connectTimeout:     10000,  // 10 seconds connection timeout
+  enableKeepAlive:    true,   // Keep TCP connection alive
+  keepAliveInitialDelay: 10000 // Initial delay before keep-alive pings
+};
+
+const pool = mysql.createPool(process.env.DATABASE_URL || poolConfig);
 
 // ── Test the connection on startup ──────────────────────────
 // This immediately grabs one connection from the pool,

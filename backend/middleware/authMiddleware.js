@@ -17,9 +17,10 @@
 // ============================================================
 
 const jwt = require('jsonwebtoken');
+const db = require('../config/db');
 
 // ── 1. verifyToken ───────────────────────────────────────────
-const verifyToken = (req, res, next) => {
+const verifyToken = async (req, res, next) => {
   // The client must send: Authorization: Bearer <token>
   const authHeader = req.headers['authorization'];
 
@@ -36,6 +37,15 @@ const verifyToken = (req, res, next) => {
   try {
     // Verify signature and expiry using the secret from .env
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Cross-reference user status against database
+    const [[user]] = await db.query('SELECT status FROM users WHERE id = ?', [decoded.id]);
+    if (!user || user.status !== 'approved') {
+      return res.status(401).json({
+        success: false,
+        message: 'Account is deactivated, suspended, or not approved.'
+      });
+    }
 
     // Attach decoded payload to request so downstream handlers
     // can access req.user.id, req.user.username, req.user.role
@@ -72,7 +82,7 @@ const requireAdmin = (req, res, next) => {
 // ── 3. optionalToken ──────────────────────────────────────────
 // Like verifyToken but does NOT reject if no token is present.
 // req.user will be set if a valid token exists, null otherwise.
-const optionalToken = (req, res, next) => {
+const optionalToken = async (req, res, next) => {
   const authHeader = req.headers['authorization'];
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     req.user = null;
@@ -80,7 +90,13 @@ const optionalToken = (req, res, next) => {
   }
   const token = authHeader.split(' ')[1];
   try {
-    req.user = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const [[user]] = await db.query('SELECT status FROM users WHERE id = ?', [decoded.id]);
+    if (user && user.status === 'approved') {
+      req.user = decoded;
+    } else {
+      req.user = null;
+    }
   } catch (err) {
     req.user = null;
   }

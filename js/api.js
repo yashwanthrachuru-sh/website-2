@@ -6,13 +6,22 @@
 (function () {
   'use strict';
 
-  // ── Base URL ────────────────────────────────────────────────
-  // Auto-detect: if page is served by our Express server (port 5000),
-  // use relative paths. Otherwise target localhost:5000.
+  // ── Environment Config ──────────────────────────────────────
+  const CONFIG = {
+    PRODUCTION_API_BASE: 'https://edunet-backend.onrender.com'
+  };
+
+  // Auto-detect environment: if served by the Express server (port 5000),
+  // use relative paths. If running locally as standalone files, use localhost:5000.
+  // In production, use the Render backend URL.
   const API_BASE = (
     window.location.port === '5000' ||
     window.location.hostname === 'localhost' && window.location.port === '5000'
-  ) ? '' : 'http://localhost:5000';
+  ) ? '' : (
+    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:5000'
+      : CONFIG.PRODUCTION_API_BASE
+  );
 
   // ── Session Helpers ─────────────────────────────────────────
   function getToken() {

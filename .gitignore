@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Secrets
+.env
+backend/.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS & Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gemini/
+.system_generated/
+transcript.jsonl
+audit_report.md
+walkthrough.md
+task.md
+implementation_plan.md
+uiux_audit_report.md
+security_audit_report.md
+deployment_readiness_report.md
+
+# Build outputs
+dist/
+build/
+uploads/
