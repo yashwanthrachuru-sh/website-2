@@ -1,12 +1,13 @@
 const toolModel = require('../models/toolModel');
 const auditModel = require('../models/auditModel');
+const contentEngine = require('../services/contentEngine');
 
 let approvedToolsCache = null;
 let cacheTimestamp = 0;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes TTL fallback
 
 // GET /api/tools
-// Returns a list of all approved AI tools
+// Returns a list of all approved AI tools, enriched with structured learning guides
 const getApprovedTools = async (req, res) => {
   try {
     const now = Date.now();
@@ -18,16 +19,37 @@ const getApprovedTools = async (req, res) => {
     }
 
     const tools = await toolModel.getApprovedTools();
-    approvedToolsCache = tools;
+
+    // Enrich each tool with structured educational content
+    const enrichedTools = tools.map(tool => contentEngine.enrichTool({ ...tool }));
+
+    approvedToolsCache = enrichedTools;
     cacheTimestamp = now;
 
     res.json({
       success: true,
-      tools
+      tools: enrichedTools
     });
   } catch (err) {
     console.error('Fetch tools error:', err);
     res.status(500).json({ success: false, message: 'Server error while fetching tools.' });
+  }
+};
+
+// GET /api/tools/:id
+// Returns a single AI tool with full learning guide
+const getToolById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const tool = await toolModel.findById(id);
+    if (!tool) {
+      return res.status(404).json({ success: false, message: 'AI Tool not found.' });
+    }
+    const enriched = contentEngine.enrichTool({ ...tool });
+    res.json({ success: true, tool: enriched });
+  } catch (err) {
+    console.error('Get tool by id error:', err);
+    res.status(500).json({ success: false, message: 'Server error loading tool.' });
   }
 };
 
@@ -121,6 +143,7 @@ const logLaunchUsage = async (req, res) => {
 
 module.exports = {
   getApprovedTools,
+  getToolById,
   toggleBookmark,
   rateTool,
   submitReview,

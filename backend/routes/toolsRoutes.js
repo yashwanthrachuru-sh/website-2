@@ -10,6 +10,9 @@ const { verifyToken } = require('../middleware/authMiddleware');
 // Public route: list approved tools
 router.get('/', toolsController.getApprovedTools);
 
+// Public route: single AI tool with full learning guide
+router.get('/:id', toolsController.getToolById);
+
 // Secured user routes: bookmarks, ratings, reviews, launches
 router.post('/:id/bookmark', verifyToken, toolsController.toggleBookmark);
 router.post('/:id/rate', verifyToken, toolsController.rateTool);

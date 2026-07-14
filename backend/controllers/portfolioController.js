@@ -999,7 +999,8 @@ const sharePortfolio = async (req, res) => {
       'INSERT INTO portfolio_shares (portfolio_user_id, share_token, share_type) VALUES (?, ?, ?)',
       [userId, shareToken, share_type]
     ).catch(() => {});
-    const origin = process.env.FRONTEND_ORIGIN || 'http://localhost:5000';
+    // FRONTEND_ORIGIN may be comma-separated (dev + prod). Always use the first (production) URL.
+    const origin = (process.env.FRONTEND_ORIGIN || 'https://edunet-seven.vercel.app').split(',')[0].trim();
     const shareUrl = `${origin}/portfolio/${user.username}`;
     res.json({ success: true, share_url: shareUrl, username: user.username });
   } catch (err) {
@@ -1013,7 +1014,8 @@ const getQRCode = async (req, res) => {
   try {
     const userId = req.user.id;
     const [[user]] = await db.query('SELECT username FROM users WHERE id = ?', [userId]);
-    const origin = process.env.FRONTEND_ORIGIN || 'http://localhost:5000';
+    // FRONTEND_ORIGIN may be comma-separated (dev + prod). Always use the first (production) URL.
+    const origin = (process.env.FRONTEND_ORIGIN || 'https://edunet-seven.vercel.app').split(',')[0].trim();
     const shareUrl = `${origin}/portfolio/${user.username}`;
 
     // Return URL for frontend to generate QR with a CDN library

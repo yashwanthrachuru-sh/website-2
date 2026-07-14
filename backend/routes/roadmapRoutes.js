@@ -22,9 +22,17 @@ router.post('/modules/:moduleId/complete',      verifyToken, roadmapController.c
 router.post('/modules/:moduleId/quiz/submit',   verifyToken, roadmapController.submitModuleQuiz);
 router.post('/bookmark',                         verifyToken, roadmapController.bookmarkRoadmap);
 
-// Roadmap exam routes
-router.get('/:id/exam',          roadmapController.getRoadmapExam);
+// ── Level Assessment routes ────────────────────────────────────
+router.get('/:id/level/:level/exam',         optionalToken, roadmapController.getLevelAssessment);
+router.post('/:id/level/:level/exam/submit', verifyToken,   roadmapController.submitLevelAssessment);
+
+// Roadmap exam routes (Certification)
+router.get('/:id/exam',          optionalToken, roadmapController.getRoadmapExam);
 router.post('/:id/exam/submit',  verifyToken, roadmapController.submitRoadmapExam);
+
+// Quiz session save/resume
+router.post('/quiz-session/save',   verifyToken, roadmapController.saveQuizSession);
+router.get('/quiz-session/:type/:targetId', verifyToken, roadmapController.getQuizSession);
 
 // Roadmap by ID (must be after specific routes)
 router.get('/:id/modules',  roadmapController.getRoadmapModules);

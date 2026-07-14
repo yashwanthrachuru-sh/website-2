@@ -47,9 +47,19 @@ require('./config/migrate_phase4').migrate().catch(err => {
 require('./config/migrate_phase5').migrate().catch(err => {
   console.error('Phase 5 migration failed on startup:', err.message);
 });
+require('./config/migrate_roadmap_system').migrate().catch(err => {
+  console.error('Roadmap System migration failed on startup:', err.message);
+});
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
+
+// ── Trust Proxy ───────────────────────────────────────────────
+// Render (and most cloud hosts) route traffic through a reverse
+// proxy. Without this, req.ip always returns the proxy IP,
+// breaking per-IP rate limiting and req.protocol detection.
+app.set('trust proxy', 1);
+
 
 // ============================================================
 // SECURITY MIDDLEWARE
@@ -60,12 +70,12 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc:  ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+      scriptSrc:  ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "cdnjs.cloudflare.com"],
       styleSrc:   ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
       fontSrc:    ["'self'", "fonts.gstatic.com", "fonts.googleapis.com"],
-      imgSrc:     ["'self'", "data:", "blob:", "images.unsplash.com", "img.youtube.com"],
+      imgSrc:     ["'self'", "data:", "blob:", "images.unsplash.com", "img.youtube.com", "*.vercel.app"],
       frameSrc:   ["'self'", "www.youtube.com", "youtube.com"],
-      connectSrc: ["'self'"]
+      connectSrc: ["'self'", "https://edunet-yx17.onrender.com", "https://api.github.com"]
     }
   },
   crossOriginEmbedderPolicy: false // Required for YouTube iframing to work
@@ -274,5 +284,22 @@ function gracefulShutdown() {
 
 process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);
+
+// ── Unhandled Rejection / Exception Guards ─────────────────────
+// Prevents a single unhandled async error from crashing Render.
+// Logs the error and keeps the process alive in production.
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('⚠️  Unhandled Promise Rejection at:', promise, 'reason:', reason);
+  // In development, crash fast to surface bugs quickly
+  if (process.env.NODE_ENV !== 'production') {
+    process.exit(1);
+  }
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('💥  Uncaught Exception:', err.stack || err.message);
+  // Always exit on uncaughtException — the process state is undefined after this
+  process.exit(1);
+});
 
 module.exports = app;

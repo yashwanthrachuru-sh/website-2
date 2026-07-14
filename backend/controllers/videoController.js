@@ -45,7 +45,23 @@ const getVideos = async (req, res) => {
     }
 
     const [rows] = await db.query(sql, params);
-    res.json({ success: true, videos: rows });
+
+    // Enrich videos with content engine learning context
+    const contentEngine = require('../services/contentEngine');
+    const enrichedVideos = rows.map(v => {
+      const topic = v.title || 'Video Topic';
+      const context = contentEngine.generate({ type: 'lesson', topic });
+      return {
+        ...v,
+        learning_context: {
+          overview: context.definition,
+          learning_objectives: context.learning_objectives,
+          practice_ideas: context.project_ideas
+        }
+      };
+    });
+
+    res.json({ success: true, videos: enrichedVideos });
   } catch (err) {
     console.error('Get videos error:', err);
     res.status(500).json({ success: false, message: 'Error fetching videos.' });

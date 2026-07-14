@@ -5,6 +5,48 @@
 'use strict';
 
 const db = require('../config/db');
+const contentEngine = require('../services/contentEngine');
+
+async function updateLearningStreak(userId) {
+  try {
+    const [[user]] = await db.query(
+      `SELECT streak, longest_streak, last_active_date FROM users WHERE id = ?`,
+      [userId]
+    );
+
+    if (!user) return;
+
+    const todayStr = new Date().toISOString().split('T')[0];
+    const lastActive = user.last_active_date ? new Date(user.last_active_date).toISOString().split('T')[0] : null;
+
+    if (lastActive === todayStr) {
+      return;
+    }
+
+    let newStreak = 1;
+    if (lastActive) {
+      const oneDayMs = 24 * 60 * 60 * 1000;
+      const diffDays = Math.round((new Date(todayStr) - new Date(lastActive)) / oneDayMs);
+      if (diffDays === 1) {
+        newStreak = (user.streak || 0) + 1;
+      }
+    }
+
+    const newLongest = Math.max(user.longest_streak || 0, newStreak);
+
+    await db.query(
+      `UPDATE users SET streak = ?, longest_streak = ?, last_active_date = ? WHERE id = ?`,
+      [newStreak, newLongest, todayStr, userId]
+    );
+
+    await db.query(
+      `INSERT IGNORE INTO learning_streak_log (user_id, date, streak_day) VALUES (?, ?, ?)`,
+      [userId, todayStr, newStreak]
+    );
+  } catch (err) {
+    console.error('Failed to update streak:', err.message);
+  }
+}
 
 let roadmapsCache = null;
 let modMapCache = null;
@@ -104,6 +146,12 @@ exports.getRoadmapById = async (req, res) => {
     // Progress per module
     let progMap = {};
     let lessonProgMap = {};
+    let beginnerAssessmentPassed = false;
+    let intermediateAssessmentPassed = false;
+    let expertAssessmentPassed = false;
+    let hasCertificate = false;
+    let certHash = null;
+
     if (req.user) {
       const [prog] = await db.query(`
         SELECT module_id, completed, quiz_score, challenge_done
@@ -120,11 +168,44 @@ exports.getRoadmapById = async (req, res) => {
         WHERE lp.user_id = ? AND rm.roadmap_id = ?
       `, [req.user.id, id]);
       lprog.forEach(lp => lessonProgMap[lp.lesson_id] = !!lp.completed);
+
+      const [levelProg] = await db.query(
+        `SELECT level, passed FROM level_progress WHERE user_id = ? AND roadmap_id = ?`,
+        [req.user.id, id]
+      );
+      levelProg.forEach(lp => {
+        if (lp.level.toLowerCase() === 'beginner' && lp.passed) beginnerAssessmentPassed = true;
+        if (lp.level.toLowerCase() === 'intermediate' && lp.passed) intermediateAssessmentPassed = true;
+        if (lp.level.toLowerCase() === 'expert' && lp.passed) expertAssessmentPassed = true;
+      });
+
+      const [[cert]] = await db.query(
+        `SELECT id, certificate_hash FROM certificates WHERE user_id = ? AND roadmap_id = ? LIMIT 1`,
+        [req.user.id, id]
+      );
+      if (cert) {
+        hasCertificate = true;
+        certHash = cert.certificate_hash;
+      }
     }
 
     // Get all lessons for these modules
     let enrichedModules = [];
-    if (modules.length > 0) {
+    const beginnerLessons = [];
+    const intermediateLessons = [];
+    const expertLessons = [];
+    const totalModules = modules.length;
+
+    // Determine levels for modules dynamically
+    modules.forEach((m, idx) => {
+      const levelIdx = Math.floor((idx / totalModules) * 3);
+      m.level = levelIdx === 0 ? 'beginner' : levelIdx === 1 ? 'intermediate' : 'expert';
+    });
+
+    const flatLessons = [];
+    let doneCount = 0;
+
+    if (totalModules > 0) {
       const mids = modules.map(m => m.id);
       const [lessons] = await db.query(`
         SELECT id, module_id, title, order_index
@@ -142,6 +223,11 @@ exports.getRoadmapById = async (req, res) => {
         });
       });
 
+      // Calculate total done lessons
+      lessons.forEach(l => {
+        if (lessonProgMap[l.id]) doneCount++;
+      });
+
       enrichedModules = modules.map((m, idx) => ({
         ...m,
         lessons: lessonGroup[m.id] || [],
@@ -150,19 +236,96 @@ exports.getRoadmapById = async (req, res) => {
         quiz_score: progMap[m.id]?.quiz_score || 0,
         challenge_done: !!(progMap[m.id]?.challenge_done),
       }));
+
+      // Flatten lessons across the whole roadmap in sequence
+      modules.forEach(m => {
+        const moduleLessons = lessonGroup[m.id] || [];
+        moduleLessons.forEach(l => {
+          flatLessons.push({
+            id: l.id,
+            title: l.title,
+            module_id: m.id,
+            module_title: m.title,
+            level: m.level,
+            completed: !!lessonProgMap[l.id]
+          });
+        });
+      });
+
+      // Apply locking and sequencing rules
+      let prevCompleted = true; // First lesson is unlocked
+      flatLessons.forEach((l, idx) => {
+        let levelLocked = false;
+        if (l.level === 'intermediate' && !beginnerAssessmentPassed) {
+          levelLocked = true;
+        }
+        if (l.level === 'expert' && !intermediateAssessmentPassed) {
+          levelLocked = true;
+        }
+
+        if (l.completed) {
+          l.status = 'completed';
+        } else if (prevCompleted && !levelLocked) {
+          l.status = 'current';
+          prevCompleted = false; // Prevents all following incomplete lessons from unlocking
+        } else {
+          l.status = 'locked';
+        }
+        prevCompleted = l.completed;
+      });
+
+      // Group into level categories
+      flatLessons.forEach(l => {
+        if (l.level === 'beginner') beginnerLessons.push(l);
+        else if (l.level === 'intermediate') intermediateLessons.push(l);
+        else if (l.level === 'expert') expertLessons.push(l);
+      });
     }
 
-    const totalModules = modules.length;
-    const doneCount = Object.values(progMap).filter(p => p.completed).length;
+    const getLevelProgress = (lessonsList) => {
+      if (!lessonsList.length) return 0;
+      const done = lessonsList.filter(l => l.completed).length;
+      return Math.round((done / lessonsList.length) * 100);
+    };
+
+    const beginnerProgress = getLevelProgress(beginnerLessons);
+    const intermediateProgress = getLevelProgress(intermediateLessons);
+    const expertProgress = getLevelProgress(expertLessons);
+
+    const totalLessonsCount = flatLessons.length;
+    const progressPct = totalLessonsCount > 0 ? Math.round((doneCount / totalLessonsCount) * 100) : 0;
 
     res.json({
       success: true,
       roadmap: {
         ...roadmap,
         modules: enrichedModules,
+        beginner: beginnerLessons,
+        intermediate: intermediateLessons,
+        expert: expertLessons,
+        beginner_progress: beginnerProgress,
+        intermediate_progress: intermediateProgress,
+        expert_progress: expertProgress,
+        beginner_assessment: {
+          locked: beginnerLessons.length === 0 || !beginnerLessons.every(l => l.completed),
+          passed: beginnerAssessmentPassed
+        },
+        intermediate_assessment: {
+          locked: intermediateLessons.length === 0 || !intermediateLessons.every(l => l.completed) || !beginnerAssessmentPassed,
+          passed: intermediateAssessmentPassed
+        },
+        expert_assessment: {
+          locked: expertLessons.length === 0 || !expertLessons.every(l => l.completed) || !intermediateAssessmentPassed,
+          passed: expertAssessmentPassed
+        },
+        certification_exam: {
+          locked: !expertAssessmentPassed,
+          passed: hasCertificate,
+          hash: certHash
+        },
         modules_total: totalModules,
         modules_done: doneCount,
-        progress_pct: totalModules > 0 ? Math.round((doneCount / totalModules) * 100) : 0,
+        progress_pct: progressPct,
       }
     });
   } catch (err) {
@@ -688,12 +851,57 @@ exports.getLessonDetail = async (req, res) => {
     );
     if (!lesson) return res.status(404).json({ success: false, message: 'Lesson not found' });
 
+    // ── Lazy content enrichment ──────────────────────────────────────────
+    // Uses isContentComplete() which detects skeleton boilerplate and
+    // validates per-section educational content quality. Unlike the old
+    // hasStructuredContent() / isFullyStructured(), this cannot be fooled
+    // by lessons that merely have the EDUNET_STRUCTURED_V1 marker.
+    if (!contentEngine.isContentComplete(lesson.learning_notes)) {
+      try {
+        console.log(`[getLessonDetail] Lesson ${lid} ("${lesson.title}") — content incomplete. Regenerating...`);
+        const metadata = {
+          language: lesson.language || 'javascript',
+          module: lesson.module_title || 'General',
+          lessonTitle: lesson.title,
+          lessonDescription: lesson.short_desc || '',
+          roadmap: lesson.roadmap_id || 'general'
+        };
+        const sectionsObj = await contentEngine.generateFullLessonContent(
+          metadata,
+          lesson.language || 'javascript'
+        );
+        const fullNotes = contentEngine.serializeLessonContent(sectionsObj);
+        await db.query(
+          `UPDATE module_lessons SET learning_notes = ? WHERE id = ?`,
+          [fullNotes, lid]
+        );
+        lesson.learning_notes = fullNotes;
+        console.log(`[getLessonDetail] Lesson ${lid} — regeneration saved to DB. Sections: ${Object.keys(sectionsObj).length}`);
+      } catch (enrichErr) {
+        console.warn('[getLessonDetail] Enrichment failed (non-fatal):', enrichErr.message);
+      }
+    } else {
+      console.log(`[getLessonDetail] Lesson ${lid} ("${lesson.title}") — content complete, serving from DB.`);
+    }
+
+    // Attach structured_content parsed from learning_notes.
+    // Ensures every field the frontend expects is present (never null/undefined).
+    contentEngine.enrichLesson(lesson);
+
     // Fetch related content
     const [videos] = await db.query(`SELECT * FROM lesson_videos WHERE lesson_id = ?`, [lid]);
     const [resources] = await db.query(`SELECT * FROM lesson_resources WHERE lesson_id = ?`, [lid]);
     const [exercises] = await db.query(`SELECT * FROM lesson_exercises WHERE lesson_id = ? ORDER BY order_index`, [lid]);
     const [quizzes] = await db.query(`SELECT * FROM lesson_quizzes WHERE lesson_id = ? ORDER BY order_index`, [lid]);
     const [projects] = await db.query(`SELECT * FROM lesson_projects WHERE module_id = ?`, [lesson.module_id]);
+
+    // Enrich quiz explanations if sparse
+    const enrichedQuizzes = quizzes.map(q => ({
+      ...q,
+      structured_explanation: q.explanation && q.explanation.length > 50
+        ? q.explanation
+        : `✅ **Correct Answer: ${q.correct_option || 'See above'}**\n\nThis question tests your understanding of **${lesson.title}**. Review the lesson content to reinforce the correct answer and understand why the other options are incorrect.`
+    }));
 
     // Adjacent lessons
     const [[prevLesson]] = await db.query(
@@ -717,11 +925,11 @@ exports.getLessonDetail = async (req, res) => {
 
     res.json({
       success: true,
-      lesson,
+      lesson,           // includes learning_notes (backward compat) + structured_content (new)
       videos,
       resources,
       exercises,
-      quizzes,
+      quizzes: enrichedQuizzes,
       projects,
       prev_lesson: prevLesson || null,
       next_lesson: nextLesson || null,
@@ -799,6 +1007,9 @@ exports.completeLesson = async (req, res) => {
       [req.user.id]
     );
 
+    // Update streak
+    await updateLearningStreak(req.user.id);
+
     // Check if all lessons of this module are completed
     const [[totalLessons]] = await db.query(
       `SELECT COUNT(*) AS cnt FROM module_lessons WHERE module_id = ?`, [lesson.module_id]
@@ -872,12 +1083,85 @@ exports.getLessonNote = async (req, res) => {
 // ── GET /api/roadmaps/:id/exam ───────────────────────────────
 exports.getRoadmapExam = async (req, res) => {
   try {
-    const [questions] = await db.query(
-      `SELECT id, question, option_a, option_b, option_c, option_d FROM roadmap_exams WHERE roadmap_id = ?`,
-      [req.params.id]
+    const roadmapId = req.params.id;
+
+    // Get all modules in this roadmap
+    const [modules] = await db.query(`
+      SELECT id FROM roadmap_modules WHERE roadmap_id = ?
+    `, [roadmapId]);
+
+    if (!modules.length) {
+      return res.json({ success: true, questions: [] });
+    }
+
+    const mids = modules.map(m => m.id);
+    // Get all lessons in these modules
+    const [lessons] = await db.query(
+      `SELECT id FROM module_lessons WHERE module_id IN (${mids.map(() => '?').join(',')})`,
+      mids
     );
-    res.json({ success: true, questions });
+
+    if (!lessons.length) {
+      return res.json({ success: true, questions: [] });
+    }
+
+    const lids = lessons.map(l => l.id);
+
+    // Get quizzes from lesson_id or module_id
+    let [quizzes] = await db.query(`
+      SELECT id, question, option_a, option_b, option_c, option_d, correct_option, explanation
+      FROM lesson_quizzes
+      WHERE (lesson_id IN (${lids.map(() => '?').join(',')})
+        OR module_id IN (${mids.map(() => '?').join(',')}))
+      ORDER BY RAND()
+      LIMIT 150
+    `, [...lids, ...mids]);
+
+    if (!quizzes.length) {
+      // Fallback: search by roadmap_exams table if lesson quizzes are empty
+      const [legacyQuestions] = await db.query(
+        `SELECT id, question, option_a, option_b, option_c, option_d, correct_option, explanation FROM roadmap_exams WHERE roadmap_id = ?`,
+        [roadmapId]
+      );
+      quizzes = legacyQuestions;
+    }
+
+    // Pick 100 questions
+    const selected = shuffleArray(quizzes).slice(0, 100);
+
+    const questions = selected.map(q => ({
+      id: q.id,
+      question: q.question,
+      options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean),
+    }));
+
+    // Check if user has existing session to resume
+    let session = null;
+    if (req.user) {
+      const [[existing]] = await db.query(
+        `SELECT * FROM quiz_sessions WHERE user_id = ? AND type = 'final' AND target_id = ? AND completed = 0`,
+        [req.user.id, roadmapId]
+      );
+      if (existing) {
+        session = {
+          answers: JSON.parse(existing.answers || '{}'),
+          time_left: existing.time_left,
+          bookmarks: JSON.parse(existing.bookmarks || '[]'),
+          question_ids: JSON.parse(existing.questions || '[]'),
+        };
+      }
+    }
+
+    res.json({
+      success: true,
+      questions,
+      total: questions.length,
+      time_limit: 90 * 60, // 90 minutes in seconds
+      passing_score: 70,
+      session,
+    });
   } catch (err) {
+    console.error('getRoadmapExam error:', err);
     res.status(500).json({ success: false, message: err.message });
   }
 };
@@ -886,32 +1170,47 @@ exports.getRoadmapExam = async (req, res) => {
 exports.submitRoadmapExam = async (req, res) => {
   try {
     if (!req.user) return res.status(401).json({ success: false, message: 'Login required' });
-    const { answers } = req.body;
+    const { answers, time_taken = 0 } = req.body;
     if (!answers) return res.status(400).json({ success: false, message: 'answers required' });
+    const roadmapId = req.params.id;
 
-    const [questions] = await db.query(
-      `SELECT id, correct_option, explanation, xp_reward FROM roadmap_exams WHERE roadmap_id = ?`,
-      [req.params.id]
+    const qids = Object.keys(answers);
+    if (!qids.length) return res.status(400).json({ success: false, message: 'No answers provided' });
+
+    // Retrieve the correct option for the questions submitted
+    const [quizzes] = await db.query(
+      `SELECT id, correct_option, explanation, question, option_a, option_b, option_c, option_d
+       FROM lesson_quizzes WHERE id IN (${qids.map(() => '?').join(',')})`,
+      qids
     );
 
     let correct = 0;
-    let totalXp = 0;
-    const results = questions.map(q => {
+    const results = quizzes.map(q => {
       const userAns = answers[q.id];
       const isCorrect = userAns === q.correct_option;
       if (isCorrect) {
         correct++;
-        totalXp += q.xp_reward;
       }
-      return { question_id: q.id, correct: isCorrect, correct_option: q.correct_option, explanation: q.explanation };
+      return {
+        id: q.id,
+        question: q.question,
+        correct: isCorrect,
+        user_answer: userAns,
+        correct_option: q.correct_option,
+        explanation: q.explanation || '',
+        options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean)
+      };
     });
 
-    const score = questions.length > 0 ? Math.round((correct / questions.length) * 100) : 0;
+    const total = quizzes.length;
+    const score = total > 0 ? Math.round((correct / total) * 100) : 0;
     const passed = score >= 70;
 
     let certificate = null;
+    let hash = null;
     if (passed) {
       // Award XP
+      const totalXp = 1000;
       await db.query(
         `UPDATE users SET xp = xp + ?, level = FLOOR((xp + ?) / 500) + 1 WHERE id = ?`,
         [totalXp, totalXp, req.user.id]
@@ -920,22 +1219,39 @@ exports.submitRoadmapExam = async (req, res) => {
       // Check / Create Certificate
       const [[existing]] = await db.query(
         `SELECT id, certificate_hash FROM certificates WHERE user_id = ? AND roadmap_id = ?`,
-        [req.user.id, req.params.id]
+        [req.user.id, roadmapId]
       );
       if (!existing) {
-        const hash = 'EN-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2,8).toUpperCase();
-        const [[rm]] = await db.query(`SELECT title FROM roadmaps WHERE id = ?`, [req.params.id]);
+        hash = 'EN-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2,8).toUpperCase();
+        const [[rm]] = await db.query(`SELECT title FROM roadmaps WHERE id = ?`, [roadmapId]);
         await db.query(`
           INSERT INTO certificates (user_id, roadmap_id, certificate_hash, title)
           VALUES (?, ?, ?, ?)
-        `, [req.user.id, req.params.id, hash, rm?.title + ' Mastery Certificate']);
-        certificate = { hash, title: rm?.title + ' Mastery Certificate' };
+        `, [req.user.id, roadmapId, hash, (rm?.title || 'Roadmap') + ' Mastery Certificate']);
+        certificate = { hash, title: (rm?.title || 'Roadmap') + ' Mastery Certificate' };
       } else {
-        certificate = { hash: existing.certificate_hash };
+        hash = existing.certificate_hash;
+        const [[rm]] = await db.query(`SELECT title FROM roadmaps WHERE id = ?`, [roadmapId]);
+        certificate = { hash, title: (rm?.title || 'Roadmap') + ' Mastery Certificate' };
       }
     }
 
-    res.json({ success: true, score, correct, total: questions.length, passed, xp_awarded: passed ? totalXp : 0, certificate, results });
+    // Save certification attempt
+    await db.query(`
+      INSERT INTO certification_attempts (user_id, roadmap_id, score, correct_count, total_questions, passed, time_taken, answers, certificate_hash)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `, [req.user.id, roadmapId, score, correct, total, passed ? 1 : 0, time_taken, JSON.stringify(answers), hash]);
+
+    // Update streak
+    await updateLearningStreak(req.user.id);
+
+    // Mark quiz session as completed
+    await db.query(`
+      UPDATE quiz_sessions SET completed = 1
+      WHERE user_id = ? AND type = 'final' AND target_id = ?
+    `, [req.user.id, roadmapId]);
+
+    res.json({ success: true, score, correct, total, passed, xp_awarded: passed ? 1000 : 0, certificate, results });
   } catch (err) {
     console.error('submitRoadmapExam error:', err);
     res.status(500).json({ success: false, message: err.message });
@@ -972,4 +1288,343 @@ exports.verifyCertificate = async (req, res) => {
   }
 };
 
+// ── Shuffle helper ─────────────────────────────────────────────
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// ── GET /api/lessons/:id/quiz ─────────────────────────────────
+// Returns 10-15 randomized questions for the topic quiz
+exports.getLessonTopicQuiz = async (req, res) => {
+  try {
+    const lid = req.params.id;
+
+    // First try lesson_id-based lookup, fallback to module_id
+    let [quizzes] = await db.query(
+      `SELECT id, question, option_a, option_b, option_c, option_d, correct_option, explanation, order_index
+       FROM lesson_quizzes WHERE lesson_id = ? ORDER BY RAND() LIMIT 15`,
+      [lid]
+    );
+
+    // Fallback: get module_id and fetch by module
+    if (!quizzes || quizzes.length === 0) {
+      const [[lesson]] = await db.query(`SELECT module_id FROM module_lessons WHERE id = ?`, [lid]);
+      if (lesson) {
+        [quizzes] = await db.query(
+          `SELECT id, question, option_a, option_b, option_c, option_d, correct_option, explanation, order_index
+           FROM lesson_quizzes WHERE module_id = ? ORDER BY RAND() LIMIT 15`,
+          [lesson.module_id]
+        );
+      }
+    }
+
+    if (!quizzes || quizzes.length === 0) {
+      return res.json({ success: true, questions: [] });
+    }
+
+    // Pick 10-15 questions
+    const count = Math.min(quizzes.length, Math.max(10, Math.min(15, quizzes.length)));
+    const selected = shuffleArray(quizzes).slice(0, count);
+
+    // Remove correct_option from public response (client gets it after submit)
+    const questions = selected.map(q => ({
+      id: q.id,
+      question: q.question,
+      options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean),
+      option_a: q.option_a,
+      option_b: q.option_b,
+      option_c: q.option_c,
+      option_d: q.option_d,
+    }));
+
+    res.json({ success: true, questions, total: questions.length });
+  } catch (err) {
+    console.error('getLessonTopicQuiz error:', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── POST /api/lessons/:id/quiz/submit ─────────────────────────
+exports.submitLessonTopicQuiz = async (req, res) => {
+  try {
+    const lid = req.params.id;
+    const { answers } = req.body; // { quiz_id: 'A'|'B'|'C'|'D', ... }
+    if (!answers) return res.status(400).json({ success: false, message: 'answers required' });
+
+    const qids = Object.keys(answers);
+    if (!qids.length) return res.status(400).json({ success: false, message: 'No answers provided' });
+
+    const [quizzes] = await db.query(
+      `SELECT id, correct_option, explanation, question, option_a, option_b, option_c, option_d
+       FROM lesson_quizzes WHERE id IN (${qids.map(() => '?').join(',')})`,
+      qids
+    );
+
+    let correct = 0;
+    const results = quizzes.map(q => {
+      const userAns = answers[q.id];
+      const isCorrect = userAns === q.correct_option;
+      if (isCorrect) correct++;
+      return {
+        id: q.id,
+        question: q.question,
+        correct: isCorrect,
+        user_answer: userAns,
+        correct_option: q.correct_option,
+        explanation: q.explanation || '',
+        options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean),
+      };
+    });
+
+    const total = quizzes.length;
+    const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+    const passed = score >= 70;
+
+    // Save attempt
+    if (req.user) {
+      await db.query(`
+        INSERT INTO topic_quiz_attempts (user_id, lesson_id, score, correct_count, total_questions, passed, answers)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `, [req.user.id, lid, score, correct, total, passed ? 1 : 0, JSON.stringify(answers)]);
+
+      // Award XP for passing
+      if (passed) {
+        await db.query(
+          `UPDATE users SET xp = xp + 50 WHERE id = ?`,
+          [req.user.id]
+        );
+      }
+      
+      // Update streak
+      await updateLearningStreak(req.user.id);
+    }
+
+    res.json({ success: true, score, correct, total, passed, results });
+  } catch (err) {
+    console.error('submitLessonTopicQuiz error:', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── GET /api/roadmaps/:id/level/:level/exam ───────────────────
+// Returns 50 randomized questions for a level assessment
+exports.getLevelAssessment = async (req, res) => {
+  try {
+    const { id: roadmapId, level } = req.params;
+    const levelNorm = level.toLowerCase();
+
+    // Get all modules in this roadmap for this level
+    const [modules] = await db.query(`
+      SELECT id FROM roadmap_modules
+      WHERE roadmap_id = ? AND LOWER(level) = ?
+      ORDER BY order_index ASC
+    `, [roadmapId, levelNorm]);
+
+    if (!modules.length) {
+      return res.json({ success: true, questions: [], message: 'No modules found for this level' });
+    }
+
+    const mids = modules.map(m => m.id);
+    // Get all lessons in these modules
+    const [lessons] = await db.query(
+      `SELECT id FROM module_lessons WHERE module_id IN (${mids.map(() => '?').join(',')})`,
+      mids
+    );
+
+    if (!lessons.length) {
+      return res.json({ success: true, questions: [] });
+    }
+
+    const lids = lessons.map(l => l.id);
+
+    // Get quizzes from lesson_id or module_id
+    let [quizzes] = await db.query(`
+      SELECT id, question, option_a, option_b, option_c, option_d, correct_option, explanation
+      FROM lesson_quizzes
+      WHERE (lesson_id IN (${lids.map(() => '?').join(',')})
+        OR module_id IN (${mids.map(() => '?').join(',')}))
+      ORDER BY RAND()
+      LIMIT 100
+    `, [...lids, ...mids]);
+
+    // Pick up to 50
+    const selected = shuffleArray(quizzes).slice(0, 50);
+
+    const questions = selected.map(q => ({
+      id: q.id,
+      question: q.question,
+      options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean),
+    }));
+
+    // Check if user has existing session to resume
+    let session = null;
+    if (req.user) {
+      const [[existing]] = await db.query(
+        `SELECT * FROM quiz_sessions WHERE user_id = ? AND type = 'level' AND target_id = ? AND completed = 0`,
+        [req.user.id, `${roadmapId}_${levelNorm}`]
+      );
+      if (existing) {
+        session = {
+          answers: JSON.parse(existing.answers || '{}'),
+          time_left: existing.time_left,
+          bookmarks: JSON.parse(existing.bookmarks || '[]'),
+          question_ids: JSON.parse(existing.questions || '[]'),
+        };
+      }
+    }
+
+    res.json({
+      success: true,
+      questions,
+      total: questions.length,
+      time_limit: 60 * 60, // 60 minutes in seconds
+      passing_score: 70,
+      session,
+    });
+  } catch (err) {
+    console.error('getLevelAssessment error:', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── POST /api/roadmaps/:id/level/:level/exam/submit ───────────
+exports.submitLevelAssessment = async (req, res) => {
+  try {
+    if (!req.user) return res.status(401).json({ success: false, message: 'Login required' });
+    const { id: roadmapId, level } = req.params;
+    const { answers, time_taken = 0 } = req.body;
+    if (!answers) return res.status(400).json({ success: false, message: 'answers required' });
+    const levelNorm = level.toLowerCase();
+
+    const qids = Object.keys(answers);
+    if (!qids.length) return res.status(400).json({ success: false, message: 'No answers provided' });
+
+    const [quizzes] = await db.query(
+      `SELECT id, correct_option, explanation, question, option_a, option_b, option_c, option_d
+       FROM lesson_quizzes WHERE id IN (${qids.map(() => '?').join(',')})`,
+      qids
+    );
+
+    let correct = 0;
+    const results = quizzes.map(q => {
+      const userAns = answers[q.id];
+      const isCorrect = userAns === q.correct_option;
+      if (isCorrect) correct++;
+      return {
+        id: q.id,
+        question: q.question,
+        correct: isCorrect,
+        user_answer: userAns,
+        correct_option: q.correct_option,
+        explanation: q.explanation || '',
+        options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean),
+      };
+    });
+
+    const total = quizzes.length;
+    const score = total > 0 ? Math.round((correct / total) * 100) : 0;
+    const passed = score >= 70;
+
+    // Save assessment attempt
+    await db.query(`
+      INSERT INTO level_assessments (user_id, roadmap_id, level, score, correct_count, total_questions, passed, time_taken, answers)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `, [req.user.id, roadmapId, levelNorm, score, correct, total, passed ? 1 : 0, time_taken, JSON.stringify(answers)]);
+
+    // Update level_progress
+    await db.query(`
+      INSERT INTO level_progress (user_id, roadmap_id, level, passed, score)
+      VALUES (?, ?, ?, ?, ?)
+      ON DUPLICATE KEY UPDATE passed = GREATEST(passed, ?), score = GREATEST(score, ?)
+    `, [req.user.id, roadmapId, levelNorm, passed ? 1 : 0, score, passed ? 1 : 0, score]);
+
+    // Mark quiz session as completed
+    await db.query(`
+      UPDATE quiz_sessions SET completed = 1
+      WHERE user_id = ? AND type = 'level' AND target_id = ?
+    `, [req.user.id, `${roadmapId}_${levelNorm}`]);
+
+    // Award XP if passed
+    if (passed) {
+      const xpMap = { beginner: 300, intermediate: 500, expert: 700 };
+      const xp = xpMap[levelNorm] || 300;
+      await db.query(
+        `UPDATE users SET xp = xp + ?, level = FLOOR((xp + ?) / 500) + 1 WHERE id = ?`,
+        [xp, xp, req.user.id]
+      );
+    }
+
+    // Update streak
+    await updateLearningStreak(req.user.id);
+
+    res.json({ success: true, score, correct, total, passed, results, xp_awarded: passed ? (levelNorm === 'beginner' ? 300 : levelNorm === 'intermediate' ? 500 : 700) : 0 });
+  } catch (err) {
+    console.error('submitLevelAssessment error:', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── POST /api/roadmaps/quiz-session/save ─────────────────────
+exports.saveQuizSession = async (req, res) => {
+  try {
+    if (!req.user) return res.status(401).json({ success: false, message: 'Login required' });
+    const { type, target_id, questions, answers, time_left, bookmarks } = req.body;
+    if (!type || !target_id) return res.status(400).json({ success: false, message: 'type and target_id required' });
+
+    await db.query(`
+      INSERT INTO quiz_sessions (user_id, type, target_id, questions, answers, time_left, bookmarks, completed, score)
+      VALUES (?, ?, ?, ?, ?, ?, ?, 0, 0)
+      ON DUPLICATE KEY UPDATE
+        questions = VALUES(questions),
+        answers = VALUES(answers),
+        time_left = VALUES(time_left),
+        bookmarks = VALUES(bookmarks),
+        updated_at = CURRENT_TIMESTAMP
+    `, [
+      req.user.id, type, target_id,
+      JSON.stringify(questions || []),
+      JSON.stringify(answers || {}),
+      time_left || 0,
+      JSON.stringify(bookmarks || [])
+    ]);
+
+    res.json({ success: true, message: 'Session saved' });
+  } catch (err) {
+    console.error('saveQuizSession error:', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+// ── GET /api/roadmaps/quiz-session/:type/:targetId ────────────
+exports.getQuizSession = async (req, res) => {
+  try {
+    if (!req.user) return res.json({ success: true, session: null });
+    const { type, targetId } = req.params;
+
+    const [[session]] = await db.query(
+      `SELECT * FROM quiz_sessions WHERE user_id = ? AND type = ? AND target_id = ? AND completed = 0`,
+      [req.user.id, type, targetId]
+    );
+
+    if (!session) return res.json({ success: true, session: null });
+
+    res.json({
+      success: true,
+      session: {
+        questions: JSON.parse(session.questions || '[]'),
+        answers: JSON.parse(session.answers || '{}'),
+        time_left: session.time_left,
+        bookmarks: JSON.parse(session.bookmarks || '[]'),
+      }
+    });
+  } catch (err) {
+    console.error('getQuizSession error:', err);
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 

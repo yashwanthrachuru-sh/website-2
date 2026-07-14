@@ -5,8 +5,16 @@
 # Node dependencies — never commit node_modules
 node_modules/
 
-# Environment secrets — NEVER commit .env
+# Environment secrets — NEVER commit any .env variants
 .env
+.env.local
+.env.production
+.env.development
+.env.save
+.env.save.*
+.envo
+*.env.bak
+*.env.backup
 
 # Logs
 logs/

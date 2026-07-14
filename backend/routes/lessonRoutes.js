@@ -14,6 +14,12 @@ router.get('/:id',            optionalToken, roadmapController.getLessonDetail);
 router.get('/:id/videos',     roadmapController.getLessonVideos);
 router.get('/:id/resources',  roadmapController.getLessonResources);
 router.get('/:id/exercises',  roadmapController.getLessonExercises);
+
+// Topic Quiz — randomized 10-15 questions
+router.get('/:id/quiz',       optionalToken, roadmapController.getLessonTopicQuiz);
+router.post('/:id/quiz/submit', verifyToken, roadmapController.submitLessonTopicQuiz);
+
+// Legacy quiz list endpoint (kept for compatibility)
 router.get('/:id/quizzes',    roadmapController.getLessonQuizzes);
 
 // Lesson progress

@@ -1,11 +1,12 @@
 // ============================================================
 // backend/controllers/aiController.js
-// EduNet — AI Coding Mentor (Smart Context-Aware, No API Key Required)
+// EduNet — AI Coding Mentor (Content Engine Powered)
 // ============================================================
 'use strict';
 
 const db = require('../config/db');
 const https = require('https');
+const contentEngine = require('../services/contentEngine');
 
 // Helper to call OpenAI API securely using native HTTPS
 function callOpenAI(apiKey, systemPrompt, userMessage) {
@@ -68,13 +69,10 @@ const MODES = {
   debug:         (ctx) => generateDebugHelp(ctx),
   optimize:      (ctx) => generateOptimizeHelp(ctx),
   errors:        (ctx) => generateErrorExplanation(ctx),
-  interview:     (ctx) => generateInterviewQ(ctx),
-  predict_interview: (ctx) => predictInterviewQ(ctx),
   next_topic:    (ctx) => suggestNextTopic(ctx),
-  chat:          (ctx, message) => generateChatResponse(ctx, message),
 };
 
-// ── POST /api/ai/mentor ─────────────────────────────────────────
+// ── POST /api/ai/mentor ────────────────────────────────────────
 const aiMentor = async (req, res) => {
   try {
     const { mode, message, lesson_id, module_id, roadmap_id, user_code } = req.body;
@@ -122,34 +120,54 @@ const aiMentor = async (req, res) => {
       if (rm) ctx.roadmap = rm;
     }
 
-    // Generate response based on mode (GPT first if key exists, else offline templates)
+    const topic = ctx.lesson?.title || ctx.module?.title || ctx.roadmap?.title || 'Programming';
+    const lang  = ctx.lesson?.language || ctx.module?.language || ctx.module?.lang || 'javascript';
+
+    // Generate response: GPT first if key exists, then content engine offline templates
     let reply = '';
+    let structured_content = null;
     const apiKey = process.env.OPENAI_API_KEY;
+
     if (apiKey && apiKey.startsWith('sk-') && apiKey !== 'sk-placeholder_key_here') {
-      const systemPrompt = `You are a helpful, senior AI Coding Mentor on the EduNet learning platform.
-Student Username: ${ctx.username}
-Current Roadmap: ${ctx.roadmap?.title || 'General'}
-Current Module: ${ctx.module?.title || 'General'}
-Current Lesson: ${ctx.lesson?.title || 'General'}
-Programming Language: ${getLang(ctx)}
-${ctx.user_code ? `Current Student Code:\n\`\`\`\n${ctx.user_code}\n\`\`\`` : ''}
+      const systemPrompt = `You are a world-class AI Coding Mentor on EduNet, an educational platform.
+Student: ${ctx.username}
+Roadmap: ${ctx.roadmap?.title || 'General'}
+Module: ${ctx.module?.title || 'General'}
+Lesson: ${ctx.lesson?.title || 'General'}
+Language: ${lang}
+${ctx.user_code ? `Student Code:\n\`\`\`\n${ctx.user_code}\n\`\`\`` : ''}
 Mode: ${mode || 'chat'}
 
-Provide a structured, helpful explanation or helper text based on the mode.
-Keep the response formatted in clean markdown, using emojis, bullet points, and code blocks.`;
+You MUST respond in structured markdown matching this format where applicable:
+## [Emoji] [Section Title]
+[Content with code blocks, tables, bullet points]
 
-      const userMsg = message || `Help me with mode: ${mode || 'general help'}`;
+Be comprehensive, educational, and match the quality of GeeksforGeeks, MDN, or Programiz.
+Use emojis, bullet points, code blocks, and tables for excellent readability.
+Always include at least one code example in ${lang}.
+Always end with a motivational tip or next step for the student.`;
+
+      const userMsg = message || `Help me with mode: ${mode || 'general'} for topic: ${topic}`;
       reply = await callOpenAI(apiKey, systemPrompt, userMsg);
     }
 
+    // Fall back to content engine offline templates
     if (!reply) {
-      if (mode && MODES[mode]) {
-        reply = MODES[mode](ctx, message || '');
-      } else if (message) {
-        reply = generateChatResponse(ctx, message);
-      } else {
-        reply = `👋 Hi ${ctx.username}! I'm your AI Coding Mentor. Ask me anything about **${ctx.lesson?.title || ctx.module?.title || 'your current topic'}** — I can explain concepts, generate examples, debug code, suggest exercises, and prepare you for interviews!`;
+      ctx.userId = uid;
+      const result = await require('../services/mentorEngine').generateTutorResponse(mode || 'explain', ctx);
+      reply = result.reply;
+
+      // Handle chat mode with keyword matching
+      if (mode === 'chat' && message) {
+        reply = generateSmartChatResponse(ctx, message, topic, lang);
+      } else if (!mode && message) {
+        reply = generateSmartChatResponse(ctx, message, topic, lang);
       }
+    }
+
+    // If no structured_content from AI, generate from engine
+    if (!structured_content) {
+      structured_content = await contentEngine.generateFullLessonContent(topic, lang);
     }
 
     // Save to chat log
@@ -163,16 +181,22 @@ Keep the response formatted in clean markdown, using emojis, bullet points, and 
         await db.query(
           `INSERT INTO ai_chat_logs (user_id, lesson_id, role, message)
            VALUES (?, ?, 'assistant', ?)`,
-          [uid, lesson_id, reply]
+          [uid, lesson_id, reply.substring(0, 5000)] // Limit stored length
         );
-      } catch (e) { /* ai_chat_logs table may not exist yet */ }
+      } catch (e) { /* ai_chat_logs table may not exist */ }
     }
 
-    res.json({ success: true, reply, mode, context: {
-      lesson:  ctx.lesson?.title  || null,
-      module:  ctx.module?.title  || null,
-      roadmap: ctx.roadmap?.title || null,
-    }});
+    res.json({
+      success: true,
+      reply,
+      structured_content,  // NEW: structured sections for rich rendering
+      mode,
+      context: {
+        lesson:  ctx.lesson?.title  || null,
+        module:  ctx.module?.title  || null,
+        roadmap: ctx.roadmap?.title || null,
+      }
+    });
   } catch (err) {
     console.error('aiMentor error:', err);
     res.status(500).json({ success: false, message: err.message });
@@ -197,13 +221,15 @@ const getChatHistory = async (req, res) => {
   }
 };
 
-// ── POST /api/ai/flashcards ─────────────────────────────────────
+// ── POST /api/ai/flashcards ───────────────────────────────────
 const generateFlashcards = async (req, res) => {
   try {
     const { lesson_id, module_id } = req.body;
-    const uid = req.user.id;
 
     const ctx = {};
+    let topic = 'Programming';
+    let lang  = 'javascript';
+
     if (lesson_id) {
       const [[lesson]] = await db.query(
         `SELECT ml.title, ml.short_desc, ml.language, rm.title AS module_title
@@ -211,10 +237,14 @@ const generateFlashcards = async (req, res) => {
          JOIN roadmap_modules rm ON ml.module_id = rm.id
          WHERE ml.id = ?`, [lesson_id]
       ).catch(() => [[null]]);
-      if (lesson) ctx.lesson = lesson;
+      if (lesson) {
+        topic = lesson.title;
+        lang  = lesson.language || 'javascript';
+      }
     }
 
-    const cards = buildFlashcards(ctx);
+    // Use content engine for rich structured flashcards
+    const cards = contentEngine.buildStructuredFlashcards(topic, lang);
     res.json({ success: true, flashcards: cards });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

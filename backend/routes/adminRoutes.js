@@ -38,4 +38,7 @@ router.post('/quizzes/:id/questions', adminController.addQuestion);
 router.get('/scores', adminController.getScores);
 router.get('/quiz-analytics', adminController.getQuizAnalytics);
 
+// Content enrichment actions
+router.use('/enrich', require('./adminEnrichRoutes'));
+
 module.exports = router;

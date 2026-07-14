@@ -109,8 +109,13 @@ const submitSolution = async (req, res) => {
     // Save submission records
     await challengeModel.insertSubmission(userId, id, language, source_code, result.status, result.execution_time_ms, result.memory_usage_kb, xpAwarded);
 
-    // Call static AI Review reviews
-    const aiReviewFeedback = runLocalAIReview(source_code, language);
+    // Call static AI Review reviews using Content Engine
+    const contentEngine = require('../services/contentEngine');
+    const aiReviewFeedback = contentEngine.generate({
+      type: 'code_review',
+      code: source_code,
+      language
+    });
 
     res.json({
       success: true,
@@ -173,38 +178,6 @@ const bookmarkChallenge = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server error processing bookmark.' });
   }
 };
-
-// Static AI Review reviews mock generator
-function runLocalAIReview(code, language) {
-  const codeClean = code.replace(/\s+/g, '').toLowerCase();
-  let suggestions = [];
-  let score = 80;
-
-  if (code.length < 50) {
-    suggestions.push('Add modular comments describing your algorithmic decisions.');
-    score -= 10;
-  }
-
-  // Time complexity assessment
-  let complexity = 'O(N)';
-  if (codeClean.includes('for(') && codeClean.split('for(').length > 2) {
-    complexity = 'O(N^2)';
-    suggestions.push('Nested loops detected. Consider optimizing using a Hash Map to achieve O(N) complexity.');
-    score -= 15;
-  }
-
-  if (suggestions.length === 0) {
-    suggestions.push('Excellent variables naming and optimal complexity structure.');
-  }
-
-  return {
-    score,
-    complexity,
-    space_complexity: 'O(1) auxiliary space',
-    naming_rating: 'Good',
-    suggestions
-  };
-}
 
 module.exports = {
   getDaily,
