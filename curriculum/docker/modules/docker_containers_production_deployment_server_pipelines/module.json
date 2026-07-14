@@ -1,0 +1,7 @@
+{
+  "id": "docker_docker_containers_production_deployment_server_pipelines",
+  "name": "Docker Containers Production Deployment & Server Pipelines",
+  "description": "In-depth study on Docker Containers covering deploying built assets to cloud hosting configurations.",
+  "orderIndex": 12,
+  "xpReward": 200
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ai_artificial_intelligence_core_principles_part_6a",
+  "title": "Artificial Intelligence Core Principles Part 6A",
+  "technology": "Artificial Intelligence",
+  "module": "Artificial Intelligence Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Artificial Intelligence Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Artificial Intelligence Core Principles Part 6A.",
+    "Write error-free implementations utilizing Artificial Intelligence Core Principles Part 6A.",
+    "Debug and optimize performance characteristics of Artificial Intelligence Core Principles Part 6A."
+  ],
+  "tags": [
+    "artificial",
+    "intelligence",
+    "core",
+    "principles",
+    "part",
+    "6a"
+  ]
+}

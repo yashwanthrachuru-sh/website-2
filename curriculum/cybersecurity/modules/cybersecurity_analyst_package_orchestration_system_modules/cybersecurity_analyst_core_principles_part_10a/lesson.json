@@ -1,0 +1,29 @@
+{
+  "id": "cybersecurity_cybersecurity_analyst_core_principles_part_10a",
+  "title": "Cybersecurity Analyst Core Principles Part 10A",
+  "technology": "Cybersecurity Analyst",
+  "module": "Cybersecurity Analyst Package Orchestration & System Modules",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Cybersecurity Analyst File Integration & Stream Buffers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Cybersecurity Analyst Core Principles Part 10A.",
+    "Write error-free implementations utilizing Cybersecurity Analyst Core Principles Part 10A.",
+    "Debug and optimize performance characteristics of Cybersecurity Analyst Core Principles Part 10A."
+  ],
+  "tags": [
+    "cybersecurity",
+    "analyst",
+    "core",
+    "principles",
+    "part",
+    "10a"
+  ]
+}

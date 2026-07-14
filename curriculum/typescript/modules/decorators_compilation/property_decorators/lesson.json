@@ -1,0 +1,25 @@
+{
+  "id": "typescript_property_decorators",
+  "title": "Property Decorators",
+  "technology": "TypeScript",
+  "module": "Decorators Compilation",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Utility Types Mapping"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Property Decorators.",
+    "Write error-free implementations utilizing Property Decorators.",
+    "Debug and optimize performance characteristics of Property Decorators."
+  ],
+  "tags": [
+    "property",
+    "decorators"
+  ]
+}

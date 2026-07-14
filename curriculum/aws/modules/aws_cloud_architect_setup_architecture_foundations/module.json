@@ -1,0 +1,7 @@
+{
+  "id": "aws_aws_cloud_architect_setup_architecture_foundations",
+  "name": "AWS Cloud Architect Setup & Architecture Foundations",
+  "description": "In-depth study on AWS Cloud Architect covering understanding execution models and initializing runtime environments.",
+  "orderIndex": 1,
+  "xpReward": 200
+}

@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "Are strings mutable or immutable? What are the performance implications?",
+      "answer": "Strings are immutable in Python, JavaScript, and Java. Each modification creates a new string object. In a loop concatenating strings, this creates O(n) intermediate objects. The fix: use list.append() + \"\".join() in Python, or Array.join() in JavaScript, or StringBuilder in Java — all build the final string in one allocation.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What is the difference between == and .equals() for strings in Java?",
+      "answer": "== compares object references (memory addresses). .equals() compares string content. Two string literals may point to the same String Pool object (== is True), but dynamically created strings (new String(\"x\")) are separate heap objects. Always use .equals() for content comparison in Java.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What is Unicode and why does it matter for strings?",
+      "answer": "Unicode is a standard that assigns a unique code point to every character in every human language. Python 3 strings are Unicode by default (sequence of code points). JavaScript uses UTF-16 encoding. This matters for emoji, multilingual apps, and internationalization — some emoji require 2 JavaScript \"characters\" (surrogate pairs) despite appearing as 1. String length in characters ≠ bytes ≠ code points in some encodings.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Structures & Algorithms Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Structures & Algorithms Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Structures & Algorithms Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Structures & Algorithms Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Structures & Algorithms Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Structures & Algorithms Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Structures & Algorithms Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "typescript_typed_functions",
+  "title": "Typed Functions",
+  "technology": "TypeScript",
+  "module": "Functions & Overloads",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Classes & Access Modifiers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Typed Functions.",
+    "Write error-free implementations utilizing Typed Functions.",
+    "Debug and optimize performance characteristics of Typed Functions."
+  ],
+  "tags": [
+    "typed",
+    "functions"
+  ]
+}

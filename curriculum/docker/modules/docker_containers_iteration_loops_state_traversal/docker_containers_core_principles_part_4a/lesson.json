@@ -1,0 +1,29 @@
+{
+  "id": "docker_docker_containers_core_principles_part_4a",
+  "title": "Docker Containers Core Principles Part 4A",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Docker Containers Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Core Principles Part 4A.",
+    "Write error-free implementations utilizing Docker Containers Core Principles Part 4A.",
+    "Debug and optimize performance characteristics of Docker Containers Core Principles Part 4A."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "core",
+    "principles",
+    "part",
+    "4a"
+  ]
+}

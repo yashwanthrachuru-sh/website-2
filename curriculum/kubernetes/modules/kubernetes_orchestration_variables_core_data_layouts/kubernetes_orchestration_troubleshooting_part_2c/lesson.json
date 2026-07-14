@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_2c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 2C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Variables & Core Data Layouts",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Setup & Architecture Foundations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 2C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 2C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 2C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "2c"
+  ]
+}

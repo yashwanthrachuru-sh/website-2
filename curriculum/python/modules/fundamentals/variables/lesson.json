@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "2.0",
+  "id": "python_fundamentals_variables",
+  "title": "Variables",
+  "technology": "Python",
+  "module": "Fundamentals",
+  "estimatedTime": 90,
+  "difficultyLevels": ["beginner", "intermediate", "expert"],
+  "prerequisites": [],
+  "nextLessons": ["Data Types", "Type Casting"],
+  "learningObjectives": [
+    "Understand what a variable is and why Python needs them.",
+    "Declare, assign, and reassign variables correctly.",
+    "Explain Python's dynamic typing and how it differs from static typing.",
+    "Read memory diagrams showing how variables are stored in RAM.",
+    "Avoid the five most common variable mistakes in Python.",
+    "Apply naming conventions (PEP 8) in real code.",
+    "Answer common interview questions about Python variables."
+  ],
+  "tags": ["variables", "assignment", "dynamic typing", "naming", "PEP 8", "memory model"],
+  "history": "Variables have been a part of computing since FORTRAN in 1957. Python, created by Guido van Rossum in 1991, adopted a clean, dynamic approach — no type declarations needed. The name 'variable' comes from mathematics, where a symbol can represent changing values.",
+  "locales": ["en"]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "c_main_signature_return",
+  "title": "Main Signature Return",
+  "technology": "C Programming",
+  "module": "GCC Compiler & Headers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Main Signature Return.",
+    "Write error-free implementations utilizing Main Signature Return.",
+    "Debug and optimize performance characteristics of Main Signature Return."
+  ],
+  "tags": [
+    "main",
+    "signature",
+    "return"
+  ]
+}

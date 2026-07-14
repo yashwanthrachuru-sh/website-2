@@ -1,0 +1,31 @@
+{
+  "id": "js",
+  "title": "JavaScript",
+  "category": "Web Dev",
+  "difficulty": "Beginner",
+  "icon": "💛",
+  "tags": [
+    "javascript",
+    "dom",
+    "es6",
+    "async",
+    "fetch"
+  ],
+  "description": "Deep-dive into modern JS — DOM, async/await, closures, ES6+, modules, and projects.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in JavaScript"
+  ],
+  "estimatedHours": 100,
+  "projects": [
+    {
+      "title": "JavaScript Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the JavaScript curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of JavaScript",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

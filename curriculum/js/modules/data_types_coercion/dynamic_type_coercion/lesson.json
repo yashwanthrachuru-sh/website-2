@@ -1,0 +1,26 @@
+{
+  "id": "js_dynamic_type_coercion",
+  "title": "Dynamic Type Coercion",
+  "technology": "JavaScript",
+  "module": "Data Types & Coercion",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: JS Engine & Scope"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Dynamic Type Coercion.",
+    "Write error-free implementations utilizing Dynamic Type Coercion.",
+    "Debug and optimize performance characteristics of Dynamic Type Coercion."
+  ],
+  "tags": [
+    "dynamic",
+    "type",
+    "coercion"
+  ]
+}

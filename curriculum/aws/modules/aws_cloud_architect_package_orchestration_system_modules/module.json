@@ -1,0 +1,7 @@
+{
+  "id": "aws_aws_cloud_architect_package_orchestration_system_modules",
+  "name": "AWS Cloud Architect Package Orchestration & System Modules",
+  "description": "In-depth study on AWS Cloud Architect covering managing external libraries and resolving package dependencies.",
+  "orderIndex": 10,
+  "xpReward": 200
+}

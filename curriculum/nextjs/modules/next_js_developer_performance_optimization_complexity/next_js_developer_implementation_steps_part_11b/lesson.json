@@ -1,0 +1,29 @@
+{
+  "id": "nextjs_next_js_developer_implementation_steps_part_11b",
+  "title": "Next.js Developer Implementation Steps Part 11B",
+  "technology": "Next.js Developer",
+  "module": "Next.js Developer Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Next.js Developer Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Next.js Developer Implementation Steps Part 11B.",
+    "Write error-free implementations utilizing Next.js Developer Implementation Steps Part 11B.",
+    "Debug and optimize performance characteristics of Next.js Developer Implementation Steps Part 11B."
+  ],
+  "tags": [
+    "next.js",
+    "developer",
+    "implementation",
+    "steps",
+    "part",
+    "11b"
+  ]
+}

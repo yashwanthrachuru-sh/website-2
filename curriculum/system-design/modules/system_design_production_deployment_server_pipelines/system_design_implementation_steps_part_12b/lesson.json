@@ -1,0 +1,29 @@
+{
+  "id": "system-design_system_design_implementation_steps_part_12b",
+  "title": "System Design Implementation Steps Part 12B",
+  "technology": "System Design",
+  "module": "System Design Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: System Design Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of System Design Implementation Steps Part 12B.",
+    "Write error-free implementations utilizing System Design Implementation Steps Part 12B.",
+    "Debug and optimize performance characteristics of System Design Implementation Steps Part 12B."
+  ],
+  "tags": [
+    "system",
+    "design",
+    "implementation",
+    "steps",
+    "part",
+    "12b"
+  ]
+}

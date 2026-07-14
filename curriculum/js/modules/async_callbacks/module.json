@@ -1,0 +1,7 @@
+{
+  "id": "js_async_callbacks",
+  "name": "Async Callbacks",
+  "description": "Manage asynchronous events using callbacks.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

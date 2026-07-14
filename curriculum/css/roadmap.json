@@ -1,0 +1,30 @@
+{
+  "id": "css",
+  "title": "CSS",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "css",
+    "css",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for CSS from beginner to production-ready design.",
+  "language": "css",
+  "prerequisites": [
+    "Understanding of basics in CSS"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "CSS Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the CSS curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of CSS",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "typescript",
+  "title": "TypeScript",
+  "category": "Programming",
+  "difficulty": "Intermediate",
+  "icon": "📘",
+  "tags": [
+    "typescript",
+    "js",
+    "types",
+    "angular",
+    "react"
+  ],
+  "description": "Master TypeScript, compiler configurations, custom types, generics, and compiler setups.",
+  "language": "typescript",
+  "prerequisites": [
+    "Understanding of basics in TypeScript"
+  ],
+  "estimatedHours": 100,
+  "projects": [
+    {
+      "title": "TypeScript Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the TypeScript curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of TypeScript",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

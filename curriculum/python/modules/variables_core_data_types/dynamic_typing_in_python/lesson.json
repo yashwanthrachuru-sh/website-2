@@ -1,0 +1,27 @@
+{
+  "id": "python_dynamic_typing_in_python",
+  "title": "Dynamic Typing in Python",
+  "technology": "Python",
+  "module": "Variables & Core Data Types",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Python Interpreter & Setup"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Dynamic Typing in Python.",
+    "Write error-free implementations utilizing Dynamic Typing in Python.",
+    "Debug and optimize performance characteristics of Dynamic Typing in Python."
+  ],
+  "tags": [
+    "dynamic",
+    "typing",
+    "in",
+    "python"
+  ]
+}

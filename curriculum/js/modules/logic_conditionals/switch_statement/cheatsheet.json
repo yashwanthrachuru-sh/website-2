@@ -1,0 +1,22 @@
+{
+  "syntax": "## JavaScript Conditionals Cheat Sheet\n\n### If/Else\n```javascript\nif (condition) { ... }\nelse if (other) { ... }\nelse { ... }\n```\n\n### Ternary\n```javascript\nconst result = condition ? valueIfTrue : valueIfFalse;\n```\n\n### Nullish Coalescing\n```javascript\nconst name = user.name ?? 'Guest'; // if null/undefined\n```\n\n### Optional Chaining\n```javascript\nconst city = user?.address?.city; // no error if undefined\n```\n\n### Common Pitfalls\n- Use `===` not `==` (strict equality)\n- `0`, `\"\"`, `null`, `undefined` are falsy\n- `switch` falls through — always `break`",
+  "quickExamples": "// Simple usage\n",
+  "commonErrors": [
+    {
+      "error": "ReferenceError",
+      "description": "Calling variables outside their declared scope."
+    }
+  ],
+  "tips": [
+    "Keep naming conventions consistent.",
+    "Document complex parameters."
+  ],
+  "shortcuts": [],
+  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
+  "bestPractices": [
+    "Avoid global namespaces.",
+    "Use const / final for read-only variables."
+  ],
+  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
+  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "typescript_intersection_types",
+  "title": "Intersection Types",
+  "technology": "TypeScript",
+  "module": "Union & Intersection",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Interfaces & Types"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Intersection Types.",
+    "Write error-free implementations utilizing Intersection Types.",
+    "Debug and optimize performance characteristics of Intersection Types."
+  ],
+  "tags": [
+    "intersection",
+    "types"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "data-science_data_science_implementation_steps_part_6b",
+  "title": "Data Science Implementation Steps Part 6B",
+  "technology": "Data Science",
+  "module": "Data Science Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Implementation Steps Part 6B.",
+    "Write error-free implementations utilizing Data Science Implementation Steps Part 6B.",
+    "Debug and optimize performance characteristics of Data Science Implementation Steps Part 6B."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "implementation",
+    "steps",
+    "part",
+    "6b"
+  ]
+}

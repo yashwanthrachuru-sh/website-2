@@ -1,0 +1,29 @@
+{
+  "id": "azure_azure_cloud_engineer_troubleshooting_part_7c",
+  "title": "Azure Cloud Engineer Troubleshooting Part 7C",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

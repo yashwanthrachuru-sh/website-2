@@ -1,0 +1,30 @@
+{
+  "id": "dsa_data_structures_algorithms_troubleshooting_part_5c",
+  "title": "Data Structures & Algorithms Troubleshooting Part 5C",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Structures & Algorithms Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Troubleshooting Part 5C.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Troubleshooting Part 5C.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Troubleshooting Part 5C."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "troubleshooting",
+    "part",
+    "5c"
+  ]
+}

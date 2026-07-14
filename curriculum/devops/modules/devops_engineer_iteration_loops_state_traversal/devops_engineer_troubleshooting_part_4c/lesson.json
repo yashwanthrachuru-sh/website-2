@@ -1,0 +1,28 @@
+{
+  "id": "devops_devops_engineer_troubleshooting_part_4c",
+  "title": "DevOps Engineer Troubleshooting Part 4C",
+  "technology": "DevOps Engineer",
+  "module": "DevOps Engineer Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: DevOps Engineer Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of DevOps Engineer Troubleshooting Part 4C.",
+    "Write error-free implementations utilizing DevOps Engineer Troubleshooting Part 4C.",
+    "Debug and optimize performance characteristics of DevOps Engineer Troubleshooting Part 4C."
+  ],
+  "tags": [
+    "devops",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "4c"
+  ]
+}

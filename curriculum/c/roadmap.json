@@ -1,0 +1,31 @@
+{
+  "id": "c",
+  "title": "C Programming",
+  "category": "Programming",
+  "difficulty": "Beginner",
+  "icon": "🔵",
+  "tags": [
+    "c",
+    "pointers",
+    "arrays",
+    "structures",
+    "memory"
+  ],
+  "description": "Master procedural C with memory management, pointers, data structures, and systems programming.",
+  "language": "c",
+  "prerequisites": [
+    "Understanding of basics in C Programming"
+  ],
+  "estimatedHours": 100,
+  "projects": [
+    {
+      "title": "C Programming Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the C Programming curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of C Programming",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

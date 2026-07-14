@@ -1,0 +1,28 @@
+{
+  "id": "ai_artificial_intelligence_troubleshooting_part_1c",
+  "title": "Artificial Intelligence Troubleshooting Part 1C",
+  "technology": "Artificial Intelligence",
+  "module": "Artificial Intelligence Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Artificial Intelligence Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Artificial Intelligence Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Artificial Intelligence Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "artificial",
+    "intelligence",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

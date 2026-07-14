@@ -1,0 +1,27 @@
+{
+  "id": "cpp_c_troubleshooting_part_1c",
+  "title": "C++ Troubleshooting Part 1C",
+  "technology": "C++",
+  "module": "C++ Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing C++ Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of C++ Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "c++",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "mcqs": [
+    {
+      "id": "q_1",
+      "question": "What is the primary role of TS Access Modifiers?",
+      "options": [
+        "To manage and coordinate state transformations for TS Access Modifiers.",
+        "To override platform-level memory access constraints.",
+        "To run asynchronous file compression routines.",
+        "To construct direct database socket bindings."
+      ],
+      "answer": "A",
+      "explanation": "TS Access Modifiers organizes logic flow and handles operations safely at runtime.",
+      "difficulty": "Beginner",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_2",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_3",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_4",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_5",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_6",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_7",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_8",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_9",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "TS Access Modifiers"
+    },
+    {
+      "id": "q_10",
+      "question": "In typescript, which of the following is true about TS Access Modifiers?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "TS Access Modifiers"
+    }
+  ]
+}

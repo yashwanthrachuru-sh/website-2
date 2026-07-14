@@ -1,0 +1,29 @@
+{
+  "id": "ai-engineer_ai_engineer_implementation_steps_part_12b",
+  "title": "AI Engineer Implementation Steps Part 12B",
+  "technology": "AI Engineer",
+  "module": "AI Engineer Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AI Engineer Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AI Engineer Implementation Steps Part 12B.",
+    "Write error-free implementations utilizing AI Engineer Implementation Steps Part 12B.",
+    "Debug and optimize performance characteristics of AI Engineer Implementation Steps Part 12B."
+  ],
+  "tags": [
+    "ai",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "12b"
+  ]
+}

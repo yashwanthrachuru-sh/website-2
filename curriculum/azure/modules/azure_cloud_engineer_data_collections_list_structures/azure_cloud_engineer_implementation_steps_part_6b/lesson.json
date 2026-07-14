@@ -1,0 +1,30 @@
+{
+  "id": "azure_azure_cloud_engineer_implementation_steps_part_6b",
+  "title": "Azure Cloud Engineer Implementation Steps Part 6B",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Implementation Steps Part 6B.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Implementation Steps Part 6B.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Implementation Steps Part 6B."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "6b"
+  ]
+}

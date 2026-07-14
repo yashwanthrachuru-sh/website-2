@@ -1,0 +1,26 @@
+{
+  "id": "java_try_catch_catch",
+  "title": "Try Catch Catch",
+  "technology": "Java",
+  "module": "Exception Handling",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Interfaces & Inheritance"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Try Catch Catch.",
+    "Write error-free implementations utilizing Try Catch Catch.",
+    "Debug and optimize performance characteristics of Try Catch Catch."
+  ],
+  "tags": [
+    "try",
+    "catch",
+    "catch"
+  ]
+}

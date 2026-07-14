@@ -1,0 +1,29 @@
+{
+  "id": "ai-engineer_ai_engineer_implementation_steps_part_1b",
+  "title": "AI Engineer Implementation Steps Part 1B",
+  "technology": "AI Engineer",
+  "module": "AI Engineer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AI Engineer Implementation Steps Part 1B.",
+    "Write error-free implementations utilizing AI Engineer Implementation Steps Part 1B.",
+    "Debug and optimize performance characteristics of AI Engineer Implementation Steps Part 1B."
+  ],
+  "tags": [
+    "ai",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "1b"
+  ]
+}

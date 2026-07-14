@@ -1,0 +1,165 @@
+{
+  "mcqs": [
+    {
+      "id": "q1",
+      "level": "beginner",
+      "question": "Which of the following correctly creates a variable called `age` with the value 25 in Python?",
+      "options": [
+        "int age = 25",
+        "var age = 25",
+        "age = 25",
+        "age := 25"
+      ],
+      "answer": "C",
+      "explanation": "Python uses `name = value`. No type keyword (int, var) is needed — Python detects the type automatically. Option D (`:=`) is the walrus operator, which assigns inside an expression but cannot be used as a standalone statement."
+    },
+    {
+      "id": "q2",
+      "level": "beginner",
+      "question": "What error does the following produce?\n```python\n1score = 100\n```",
+      "options": [
+        "NameError",
+        "TypeError",
+        "SyntaxError",
+        "ValueError"
+      ],
+      "answer": "C",
+      "explanation": "Variable names cannot start with a digit. Python's parser reads '1' as a number token and '1score' does not match any valid syntax rule, so it raises SyntaxError immediately — before even running the code."
+    },
+    {
+      "id": "q3",
+      "level": "beginner",
+      "question": "After running these two lines, what does `print(score)` output?\n```python\nscore = 50\nscore = 95\n```",
+      "options": [
+        "50",
+        "95",
+        "50 95",
+        "Error — cannot reassign"
+      ],
+      "answer": "B",
+      "explanation": "Variables can be reassigned at any time. The second assignment `score = 95` replaces the previous value. Python has no 'const' keyword — any variable can be reassigned unless you use external tools to enforce it."
+    },
+    {
+      "id": "q4",
+      "level": "beginner",
+      "question": "What does `type(x)` return after `x = True`?",
+      "options": [
+        "<class 'int'>",
+        "<class 'bool'>",
+        "<class 'string'>",
+        "<class 'flag'>"
+      ],
+      "answer": "B",
+      "explanation": "True and False are boolean literals. Python creates a bool object. Note that in Python, bool is a subclass of int, so isinstance(True, int) also returns True — but type(True) specifically returns <class 'bool'>."
+    },
+    {
+      "id": "q5",
+      "level": "intermediate",
+      "question": "What is the output?\n```python\na = [1, 2, 3]\nb = a\nb.append(4)\nprint(len(a))\n```",
+      "options": [
+        "3",
+        "4",
+        "1",
+        "Error"
+      ],
+      "answer": "B",
+      "explanation": "'b = a' copies the reference, not the list. Both 'a' and 'b' point to the SAME list object in memory. Appending through 'b' modifies the shared object. len(a) returns 4 because 'a' sees the same list that was modified through 'b'."
+    },
+    {
+      "id": "q6",
+      "level": "intermediate",
+      "question": "What is the output?\n```python\nx = 5\ndef change():\n    x = 99\nchange()\nprint(x)\n```",
+      "options": [
+        "99",
+        "5",
+        "None",
+        "UnboundLocalError"
+      ],
+      "answer": "B",
+      "explanation": "Inside change(), 'x = 99' creates a NEW local variable 'x'. It does NOT modify the global 'x'. The global 'x' is still 5. To modify the global, you would need 'global x' inside the function. This is the LEGB rule — assignment defaults to local scope."
+    },
+    {
+      "id": "q7",
+      "level": "intermediate",
+      "question": "Which line correctly creates an independent copy of a list?\n```python\noriginal = [1, 2, 3]\n```",
+      "options": [
+        "copy = original",
+        "copy = original[:]",
+        "copy = &original",
+        "copy = original.ref()"
+      ],
+      "answer": "B",
+      "explanation": "Slicing with [:] creates a new list containing the same elements. 'copy = original' copies the reference (same object). '&' is not Python syntax. '.ref()' does not exist. Alternatives: original.copy() or list(original)."
+    },
+    {
+      "id": "q8",
+      "level": "intermediate",
+      "question": "What is the CORRECT way to check if a variable `result` contains no value?",
+      "options": [
+        "if result == None:",
+        "if result = None:",
+        "if result is None:",
+        "if not result:"
+      ],
+      "answer": "C",
+      "explanation": "'is None' checks memory identity — always correct. '== None' checks equality, which custom objects can override to return True even when they are not None. '= None' is assignment — SyntaxError in an if condition. 'not result' catches None but also catches 0, [], '', and other falsy values — too broad."
+    },
+    {
+      "id": "q9",
+      "level": "intermediate",
+      "question": "Which name follows PEP 8 conventions for a variable storing the maximum number of login attempts?",
+      "options": [
+        "maxLoginAttempts",
+        "MaxLoginAttempts",
+        "max_login_attempts",
+        "max-login-attempts"
+      ],
+      "answer": "C",
+      "explanation": "PEP 8 mandates lowercase_with_underscores for variable names. camelCase (maxLoginAttempts) is a JavaScript/Java convention. PascalCase (MaxLoginAttempts) is for class names. Hyphens (max-login-attempts) are invalid in Python variable names — Python reads '-' as the subtraction operator."
+    },
+    {
+      "id": "q10",
+      "level": "expert",
+      "question": "What does this code print?\n```python\nfuncs = [lambda: i for i in range(3)]\nprint(funcs[0](), funcs[1](), funcs[2]())\n```",
+      "options": [
+        "0 1 2",
+        "2 2 2",
+        "0 0 0",
+        "Error"
+      ],
+      "answer": "B",
+      "explanation": "All three lambdas capture the variable 'i' by reference, not by value. When called after the loop, 'i' has its final value: 2. All three lambdas return 2. Fix: use 'lambda i=i: i' to capture by value at creation time."
+    }
+  ],
+
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "after": "beginner",
+      "title": "Beginner Checkpoint",
+      "question": "A program stores a user's age as `age = 17`. Next year the user turns 18. Which line correctly updates the variable?",
+      "options": [
+        "age + 1",
+        "age == 18",
+        "age = 18",
+        "new age = 18"
+      ],
+      "correct": 2,
+      "explanation": "To update a variable, use assignment: 'age = 18'. 'age + 1' computes a new value but does not save it anywhere. 'age == 18' is a comparison that returns True/False. 'new age' has a space — invalid variable name. You could also write 'age += 1' which adds 1 to the current value."
+    },
+    {
+      "id": "cp2",
+      "after": "intermediate",
+      "title": "Intermediate Checkpoint",
+      "question": "You write `x = [1, 2, 3]` and then `y = x`. You then call `y.append(4)`. What does `print(x)` show and why?",
+      "options": [
+        "[1, 2, 3] — because x and y are separate copies",
+        "[1, 2, 3, 4] — because x and y point to the same list",
+        "Error — cannot append to x through y",
+        "[4] — y overwrites x"
+      ],
+      "correct": 1,
+      "explanation": "'y = x' copies the memory address of the list, not the list itself. Both x and y point to the SAME list object. Calling y.append(4) modifies that shared object. x also reflects the change because x is another name for the same object. To avoid this, use 'y = x.copy()' or 'y = x[:]'."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "cpp_c_core_principles_part_7a",
+  "title": "C++ Core Principles Part 7A",
+  "technology": "C++",
+  "module": "C++ Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: C++ Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Core Principles Part 7A.",
+    "Write error-free implementations utilizing C++ Core Principles Part 7A.",
+    "Debug and optimize performance characteristics of C++ Core Principles Part 7A."
+  ],
+  "tags": [
+    "c++",
+    "core",
+    "principles",
+    "part",
+    "7a"
+  ]
+}

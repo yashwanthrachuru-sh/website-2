@@ -1,0 +1,28 @@
+{
+  "id": "flutter_flutter_developer_troubleshooting_part_4c",
+  "title": "Flutter Developer Troubleshooting Part 4C",
+  "technology": "Flutter Developer",
+  "module": "Flutter Developer Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Flutter Developer Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Flutter Developer Troubleshooting Part 4C.",
+    "Write error-free implementations utilizing Flutter Developer Troubleshooting Part 4C.",
+    "Debug and optimize performance characteristics of Flutter Developer Troubleshooting Part 4C."
+  ],
+  "tags": [
+    "flutter",
+    "developer",
+    "troubleshooting",
+    "part",
+    "4c"
+  ]
+}

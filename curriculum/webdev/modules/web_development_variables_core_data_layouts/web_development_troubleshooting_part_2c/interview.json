@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What is the difference between a variable and a constant?",
+      "answer": "A variable can have its value changed after initial assignment. A constant is bound to a value that should not change. In Python, constants are a convention (SCREAMING_SNAKE_CASE) with no runtime enforcement. In JavaScript, const prevents reassignment of the binding but not mutation of the object. In Java, final prevents reassignment.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are the differences between var, let, and const?",
+      "answer": "var: function-scoped, hoisted and initialized to undefined, can be redeclared. let: block-scoped, hoisted but NOT initialized (accessing before declaration = ReferenceError / TDZ), cannot be redeclared in same scope. const: block-scoped, TDZ, cannot be reassigned (but object properties can still be mutated). Modern JS: prefer const by default, let when reassignment is needed, never var.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What is the Temporal Dead Zone (TDZ)?",
+      "answer": "The TDZ is the region from the start of a block scope to the point where a let or const variable is declared. Accessing the variable in this region throws a ReferenceError. This exists because let/const are hoisted (moved to the top of their block) but not initialized — the engine knows the variable will exist but refuses access before the declaration line.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "Why does typeof null === \"object\" in JavaScript?",
+      "answer": "This is a historical bug in the original JavaScript implementation. In the first version of JS, values were represented as tagged 32-bit words, and the null pointer (all zeros) shared the \"object\" tag. The bug was kept for backward compatibility. The correct check for null is: value === null (strict equality).",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Web Development Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Web Development Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Web Development Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Web Development Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Web Development Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Web Development Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

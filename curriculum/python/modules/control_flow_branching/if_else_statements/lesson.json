@@ -1,0 +1,26 @@
+{
+  "id": "python_if_else_statements",
+  "title": "If Else Statements",
+  "technology": "Python",
+  "module": "Control Flow & Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Variables & Core Data Types"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of If Else Statements.",
+    "Write error-free implementations utilizing If Else Statements.",
+    "Debug and optimize performance characteristics of If Else Statements."
+  ],
+  "tags": [
+    "if",
+    "else",
+    "statements"
+  ]
+}

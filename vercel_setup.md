@@ -2,12 +2,15 @@
 
 This guide details the procedure to deploy the static HTML/JS/CSS frontend of EduNet to Vercel.
 
+**Frontend Production URL**: `https://edunet-seven.vercel.app`
+**Backend Production URL**: `https://edunet-yx17.onrender.com`
+
 ---
 
 ## 1. Prerequisites
 * A [Vercel account](https://vercel.com/).
 * A GitHub repository containing the EduNet source code.
-* The public URL of your deployed Render backend (e.g. `https://edunet-backend.onrender.com`).
+* The EduNet Render backend deployed and healthy at `https://edunet-yx17.onrender.com/api/health`.
 
 ---
 
@@ -19,35 +22,58 @@ This guide details the procedure to deploy the static HTML/JS/CSS frontend of Ed
    * Import your GitHub repository.
 
 2. **Configure Settings**:
-   * **Project Name**: `edunet-frontend`
-   * **Framework Preset**: `Other` or `Vanilla` (EduNet uses vanilla CSS and JS).
-   * **Root Directory**: `./` (The static HTML/CSS files are located at the root of the workspace).
-   * **Build Command**: Leave blank (no build compilation needed).
-   * **Output Directory**: `.` or leave default (Vercel will serve all root static assets).
+   * **Project Name**: `edunet-seven`
+   * **Framework Preset**: `Other` (EduNet uses vanilla HTML/CSS/JS — no build step needed).
+   * **Root Directory**: `./` (static files are in the repository root).
+   * **Build Command**: Leave blank.
+   * **Output Directory**: Leave blank (Vercel serves the root directory).
 
-3. **Routing Configuration**:
-   * Ensure `vercel.json` exists in the repository root. Vercel automatically reads this file to configure redirects and clean URLs so that sub-paths like `/portfolio/:username` correctly map to `/portfolio.html`.
-
----
-
-## 3. Configuring Backend URL Config
-
-To connect your deployed frontend to the production Render backend, update the `PRODUCTION_API_BASE` setting in `/js/api.js`:
-
-1. Open `js/api.js`.
-2. Locate the `CONFIG` constant near the top:
-   ```javascript
-   const CONFIG = {
-     PRODUCTION_API_BASE: 'https://edunet-backend.onrender.com' // Replace with your Render URL
-   };
-   ```
-3. Commit and push this change to your repository. Vercel will automatically trigger a rebuild and redeploy the frontend with the corrected API endpoint.
+3. **No Frontend Environment Variables Needed**:
+   * The backend URL is baked into `js/api.js` and auto-detects the environment.
+   * You do **not** need to configure any Vercel environment variables.
 
 ---
 
-## 4. Verification
+## 3. Routing Configuration
 
-After deployment, visit your Vercel URL (e.g. `https://edunet-frontend.vercel.app`):
-* Try clicking **Sign in** or registering a user to verify the login forms connect and fetch data from your Render backend API.
-* Visit a developer portfolio link (e.g. `/portfolio/john_doe`) to ensure the page resolves without throwing a Vercel 404 router error.
-* Check your browser Console logs (F12) for any network connection or CORS block errors.
+The `vercel.json` at the repository root handles all routing:
+
+```json
+{
+  "rewrites": [
+    { "source": "/portfolio/:username",  "destination": "/portfolio.html" },
+    { "source": "/(.*)",                 "destination": "/index.html" }
+  ]
+}
+```
+
+This ensures:
+- `/portfolio/johndoe` → serves `portfolio.html` (SPA routing)
+- Any direct URL (e.g. `/roadmaps`, `/profile`) on page refresh → serves `index.html`
+- No 404 errors on Vercel when navigating to internal pages directly
+
+---
+
+## 4. Verify Deployment
+
+After deployment, test the following:
+
+1. Visit `https://edunet-seven.vercel.app` — confirm the landing page loads.
+2. Open browser **DevTools → Network** and log in. Confirm API calls go to `https://edunet-yx17.onrender.com`.
+3. Navigate to `https://edunet-seven.vercel.app/roadmaps` and **refresh** — confirm it loads without 404.
+4. Visit a portfolio at `https://edunet-seven.vercel.app/portfolio/testuser` — confirm it loads.
+5. Check the browser **Console** for any CORS errors.
+
+---
+
+## 5. API URL — How it Works
+
+The API URL is centralized in `js/api.js`. No manual URL changes are needed after the initial setup:
+
+| Environment | API Base URL |
+|-------------|-------------|
+| Vercel (production) | `https://edunet-yx17.onrender.com` |
+| `localhost:5000` (served by Express) | `` (relative paths) |
+| File open locally | `http://localhost:5000` |
+
+The detection is automatic based on `window.location.hostname` and `window.location.port`.

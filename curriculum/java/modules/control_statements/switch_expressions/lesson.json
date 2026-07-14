@@ -1,0 +1,25 @@
+{
+  "id": "java_switch_expressions",
+  "title": "Switch Expressions",
+  "technology": "Java",
+  "module": "Control Statements",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Types & Operators"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Switch Expressions.",
+    "Write error-free implementations utilizing Switch Expressions.",
+    "Debug and optimize performance characteristics of Switch Expressions."
+  ],
+  "tags": [
+    "switch",
+    "expressions"
+  ]
+}

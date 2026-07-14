@@ -1,0 +1,29 @@
+{
+  "id": "webdev_web_development_core_principles_part_9a",
+  "title": "Web Development Core Principles Part 9A",
+  "technology": "Web Development",
+  "module": "Web Development File Integration & Stream Buffers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Web Development Error Handling & Diagnostic Operations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Web Development Core Principles Part 9A.",
+    "Write error-free implementations utilizing Web Development Core Principles Part 9A.",
+    "Debug and optimize performance characteristics of Web Development Core Principles Part 9A."
+  ],
+  "tags": [
+    "web",
+    "development",
+    "core",
+    "principles",
+    "part",
+    "9a"
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "mcqs": [
+    {
+      "id": "q_1",
+      "question": "What is the primary role of Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "To manage and coordinate state transformations for Node.js Developer Core Principles Part 7A.",
+        "To override platform-level memory access constraints.",
+        "To run asynchronous file compression routines.",
+        "To construct direct database socket bindings."
+      ],
+      "answer": "A",
+      "explanation": "Node.js Developer Core Principles Part 7A organizes logic flow and handles operations safely at runtime.",
+      "difficulty": "Beginner",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_2",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_3",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_4",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_5",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_6",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_7",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_8",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_9",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    },
+    {
+      "id": "q_10",
+      "question": "In javascript, which of the following is true about Node.js Developer Core Principles Part 7A?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Node.js Developer Core Principles Part 7A"
+    }
+  ]
+}

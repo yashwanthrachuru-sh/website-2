@@ -1,0 +1,7 @@
+{
+  "id": "python_database_integration",
+  "name": "Database Integration",
+  "description": "Connect Python to persistent database tables.",
+  "orderIndex": 12,
+  "xpReward": 200
+}

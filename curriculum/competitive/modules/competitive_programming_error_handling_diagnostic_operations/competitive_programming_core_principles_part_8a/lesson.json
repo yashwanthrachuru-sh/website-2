@@ -1,0 +1,29 @@
+{
+  "id": "competitive_competitive_programming_core_principles_part_8a",
+  "title": "Competitive Programming Core Principles Part 8A",
+  "technology": "Competitive Programming",
+  "module": "Competitive Programming Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Competitive Programming Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Competitive Programming Core Principles Part 8A.",
+    "Write error-free implementations utilizing Competitive Programming Core Principles Part 8A.",
+    "Debug and optimize performance characteristics of Competitive Programming Core Principles Part 8A."
+  ],
+  "tags": [
+    "competitive",
+    "programming",
+    "core",
+    "principles",
+    "part",
+    "8a"
+  ]
+}

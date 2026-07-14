@@ -1,0 +1,28 @@
+{
+  "id": "ai-engineer_ai_engineer_troubleshooting_part_5c",
+  "title": "AI Engineer Troubleshooting Part 5C",
+  "technology": "AI Engineer",
+  "module": "AI Engineer Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AI Engineer Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AI Engineer Troubleshooting Part 5C.",
+    "Write error-free implementations utilizing AI Engineer Troubleshooting Part 5C.",
+    "Debug and optimize performance characteristics of AI Engineer Troubleshooting Part 5C."
+  ],
+  "tags": [
+    "ai",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "5c"
+  ]
+}

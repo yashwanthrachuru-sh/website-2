@@ -1,0 +1,29 @@
+{
+  "id": "devops_devops_engineer_implementation_steps_part_3b",
+  "title": "DevOps Engineer Implementation Steps Part 3B",
+  "technology": "DevOps Engineer",
+  "module": "DevOps Engineer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: DevOps Engineer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of DevOps Engineer Implementation Steps Part 3B.",
+    "Write error-free implementations utilizing DevOps Engineer Implementation Steps Part 3B.",
+    "Debug and optimize performance characteristics of DevOps Engineer Implementation Steps Part 3B."
+  ],
+  "tags": [
+    "devops",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "3b"
+  ]
+}

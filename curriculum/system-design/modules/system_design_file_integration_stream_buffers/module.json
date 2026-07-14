@@ -1,0 +1,7 @@
+{
+  "id": "system-design_system_design_file_integration_stream_buffers",
+  "name": "System Design File Integration & Stream Buffers",
+  "description": "In-depth study on System Design covering reading and writing inputs to persistent storage structures.",
+  "orderIndex": 9,
+  "xpReward": 200
+}

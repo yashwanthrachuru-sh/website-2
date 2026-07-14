@@ -1,0 +1,30 @@
+{
+  "id": "placement",
+  "title": "Placement Preparation",
+  "category": "Career",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "placement",
+    "cpp",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Placement Preparation from beginner to production-ready design.",
+  "language": "cpp",
+  "prerequisites": [
+    "Understanding of basics in Placement Preparation"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Placement Preparation Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Placement Preparation curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Placement Preparation",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

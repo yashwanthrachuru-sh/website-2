@@ -1,0 +1,29 @@
+{
+  "id": "blockchain_blockchain_developer_core_principles_part_1a",
+  "title": "Blockchain Developer Core Principles Part 1A",
+  "technology": "Blockchain Developer",
+  "module": "Blockchain Developer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Blockchain Developer Core Principles Part 1A.",
+    "Write error-free implementations utilizing Blockchain Developer Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of Blockchain Developer Core Principles Part 1A."
+  ],
+  "tags": [
+    "blockchain",
+    "developer",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

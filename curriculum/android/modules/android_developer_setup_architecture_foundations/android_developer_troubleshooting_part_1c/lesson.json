@@ -1,0 +1,28 @@
+{
+  "id": "android_android_developer_troubleshooting_part_1c",
+  "title": "Android Developer Troubleshooting Part 1C",
+  "technology": "Android Developer",
+  "module": "Android Developer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Android Developer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Android Developer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Android Developer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "android",
+    "developer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

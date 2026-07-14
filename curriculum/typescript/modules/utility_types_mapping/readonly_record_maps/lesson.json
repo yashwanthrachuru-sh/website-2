@@ -1,0 +1,26 @@
+{
+  "id": "typescript_readonly_record_maps",
+  "title": "Readonly Record Maps",
+  "technology": "TypeScript",
+  "module": "Utility Types Mapping",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Modules Namespaces"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Readonly Record Maps.",
+    "Write error-free implementations utilizing Readonly Record Maps.",
+    "Debug and optimize performance characteristics of Readonly Record Maps."
+  ],
+  "tags": [
+    "readonly",
+    "record",
+    "maps"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "java_threadpool_executor",
+  "title": "ThreadPool Executor",
+  "technology": "Java",
+  "module": "Java Multithreading",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Collections & Generics"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of ThreadPool Executor.",
+    "Write error-free implementations utilizing ThreadPool Executor.",
+    "Debug and optimize performance characteristics of ThreadPool Executor."
+  ],
+  "tags": [
+    "threadpool",
+    "executor"
+  ]
+}

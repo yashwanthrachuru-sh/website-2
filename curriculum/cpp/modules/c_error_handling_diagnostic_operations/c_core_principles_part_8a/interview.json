@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What is the difference between checked and unchecked exceptions in Java?",
+      "answer": "Checked exceptions (IOException, SQLException) extend Exception and must be handled or declared. The compiler enforces this. They represent expected failure conditions (file not found, DB connection lost). Unchecked exceptions (RuntimeException: NullPointerException, ArrayIndexOutOfBoundsException) don't need to be declared. They represent programming bugs. The controversy: Spring/modern Java prefers unchecked exceptions for cleaner APIs; traditional Java uses checked for explicit contracts.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "When should you catch Exception vs specific exception types?",
+      "answer": "Always catch the most specific exception type possible. Catching Exception catches everything including bugs you should fix, not hide. Only catch Exception/Throwable at the very top level (server middleware, main()) to log and return proper HTTP responses. In all other code, catch specific types: FileNotFoundError, ValueError, HTTPError. This way, unexpected errors propagate up and get noticed instead of being silently swallowed.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What does the \"finally\" block do?",
+      "answer": "The finally block always executes, whether the try block succeeded, an exception was caught, or an uncaught exception is propagating. It is used for guaranteed cleanup: closing file handles, releasing database connections, stopping loading spinners, closing network sockets. Even if a return statement is in the try block, finally still runs before the function returns. The only time finally doesn't run: System.exit() in Java, or process.exit() in Node.js.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency C++ Core Principles Part 8A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency C++ Core Principles Part 8A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency C++ Core Principles Part 8A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency C++ Core Principles Part 8A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency C++ Core Principles Part 8A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency C++ Core Principles Part 8A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency C++ Core Principles Part 8A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

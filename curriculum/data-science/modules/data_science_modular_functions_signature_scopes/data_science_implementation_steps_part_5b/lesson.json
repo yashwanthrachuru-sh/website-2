@@ -1,0 +1,29 @@
+{
+  "id": "data-science_data_science_implementation_steps_part_5b",
+  "title": "Data Science Implementation Steps Part 5B",
+  "technology": "Data Science",
+  "module": "Data Science Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Implementation Steps Part 5B.",
+    "Write error-free implementations utilizing Data Science Implementation Steps Part 5B.",
+    "Debug and optimize performance characteristics of Data Science Implementation Steps Part 5B."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "implementation",
+    "steps",
+    "part",
+    "5b"
+  ]
+}

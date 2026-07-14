@@ -1,0 +1,27 @@
+{
+  "id": "html_html_troubleshooting_part_1c",
+  "title": "HTML Troubleshooting Part 1C",
+  "technology": "HTML",
+  "module": "HTML Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing HTML Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of HTML Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "html",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

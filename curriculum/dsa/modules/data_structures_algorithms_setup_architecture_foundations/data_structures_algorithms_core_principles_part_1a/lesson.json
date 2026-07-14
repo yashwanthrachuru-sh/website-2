@@ -1,0 +1,31 @@
+{
+  "id": "dsa_data_structures_algorithms_core_principles_part_1a",
+  "title": "Data Structures & Algorithms Core Principles Part 1A",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Core Principles Part 1A.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Core Principles Part 1A."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ai-engineer_ai_engineer_core_principles_part_1a",
+  "title": "AI Engineer Core Principles Part 1A",
+  "technology": "AI Engineer",
+  "module": "AI Engineer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AI Engineer Core Principles Part 1A.",
+    "Write error-free implementations utilizing AI Engineer Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of AI Engineer Core Principles Part 1A."
+  ],
+  "tags": [
+    "ai",
+    "engineer",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

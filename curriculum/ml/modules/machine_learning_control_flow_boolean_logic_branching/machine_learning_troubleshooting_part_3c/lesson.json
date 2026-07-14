@@ -1,0 +1,28 @@
+{
+  "id": "ml_machine_learning_troubleshooting_part_3c",
+  "title": "Machine Learning Troubleshooting Part 3C",
+  "technology": "Machine Learning",
+  "module": "Machine Learning Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Machine Learning Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Machine Learning Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing Machine Learning Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of Machine Learning Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "machine",
+    "learning",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

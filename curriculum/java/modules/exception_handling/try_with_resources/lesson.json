@@ -1,0 +1,26 @@
+{
+  "id": "java_try_with_resources",
+  "title": "Try With Resources",
+  "technology": "Java",
+  "module": "Exception Handling",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Interfaces & Inheritance"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Try With Resources.",
+    "Write error-free implementations utilizing Try With Resources.",
+    "Debug and optimize performance characteristics of Try With Resources."
+  ],
+  "tags": [
+    "try",
+    "with",
+    "resources"
+  ]
+}

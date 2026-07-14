@@ -1,0 +1,28 @@
+{
+  "id": "placement_placement_preparation_troubleshooting_part_1c",
+  "title": "Placement Preparation Troubleshooting Part 1C",
+  "technology": "Placement Preparation",
+  "module": "Placement Preparation Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Placement Preparation Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Placement Preparation Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Placement Preparation Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "placement",
+    "preparation",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

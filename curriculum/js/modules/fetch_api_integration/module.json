@@ -1,0 +1,7 @@
+{
+  "id": "js_fetch_api_integration",
+  "name": "Fetch API integration",
+  "description": "Request data from external network APIs.",
+  "orderIndex": 11,
+  "xpReward": 200
+}

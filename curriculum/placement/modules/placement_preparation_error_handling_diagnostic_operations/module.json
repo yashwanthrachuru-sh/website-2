@@ -1,0 +1,7 @@
+{
+  "id": "placement_placement_preparation_error_handling_diagnostic_operations",
+  "name": "Placement Preparation Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Placement Preparation covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

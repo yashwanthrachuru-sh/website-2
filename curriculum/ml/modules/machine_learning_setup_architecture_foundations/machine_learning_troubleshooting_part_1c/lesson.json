@@ -1,0 +1,28 @@
+{
+  "id": "ml_machine_learning_troubleshooting_part_1c",
+  "title": "Machine Learning Troubleshooting Part 1C",
+  "technology": "Machine Learning",
+  "module": "Machine Learning Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Machine Learning Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Machine Learning Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Machine Learning Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "machine",
+    "learning",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

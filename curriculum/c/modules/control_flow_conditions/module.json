@@ -1,0 +1,7 @@
+{
+  "id": "c_control_flow_conditions",
+  "name": "Control Flow Conditions",
+  "description": "Branch execution routes based on logic checks.",
+  "orderIndex": 4,
+  "xpReward": 200
+}

@@ -1,0 +1,29 @@
+{
+  "id": "docker_docker_containers_implementation_steps_part_2b",
+  "title": "Docker Containers Implementation Steps Part 2B",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Variables & Core Data Layouts",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Docker Containers Setup & Architecture Foundations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Implementation Steps Part 2B.",
+    "Write error-free implementations utilizing Docker Containers Implementation Steps Part 2B.",
+    "Debug and optimize performance characteristics of Docker Containers Implementation Steps Part 2B."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "implementation",
+    "steps",
+    "part",
+    "2b"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "js_variable_declarations",
+  "title": "Variable Declarations",
+  "technology": "JavaScript",
+  "module": "JS Engine & Scope",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Variable Declarations.",
+    "Write error-free implementations utilizing Variable Declarations.",
+    "Debug and optimize performance characteristics of Variable Declarations."
+  ],
+  "tags": [
+    "variable",
+    "declarations"
+  ]
+}

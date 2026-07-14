@@ -1,0 +1,23 @@
+{
+  "summary": "You have completed this lesson! You studied how Competitive Programming Core Principles Part 3A allocates memory, processes syntax rules, handles errors, and executes in production environments.",
+  "keyFormulas": [
+    "O(1) hash mapping",
+    "O(N) linear scan"
+  ],
+  "keySyntax": [
+    "// cpp syntax definition\n"
+  ],
+  "mindMap": [
+    "State -> Declarations -> Stack Frame -> Heap allocation"
+  ],
+  "flashcards": [
+    {
+      "front": "What is the primary role of Competitive Programming Core Principles Part 3A?",
+      "back": "To manage states, loop checks, or object definitions."
+    },
+    {
+      "front": "Is local scope preferred over global scope?",
+      "back": "Yes, to avoid namespace collisions and memory leakage."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "docker_docker_containers_implementation_steps_part_12b",
+  "title": "Docker Containers Implementation Steps Part 12B",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Docker Containers Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Implementation Steps Part 12B.",
+    "Write error-free implementations utilizing Docker Containers Implementation Steps Part 12B.",
+    "Debug and optimize performance characteristics of Docker Containers Implementation Steps Part 12B."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "implementation",
+    "steps",
+    "part",
+    "12b"
+  ]
+}

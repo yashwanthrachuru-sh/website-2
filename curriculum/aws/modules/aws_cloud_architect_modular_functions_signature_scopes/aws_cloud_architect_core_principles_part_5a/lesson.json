@@ -1,0 +1,30 @@
+{
+  "id": "aws_aws_cloud_architect_core_principles_part_5a",
+  "title": "AWS Cloud Architect Core Principles Part 5A",
+  "technology": "AWS Cloud Architect",
+  "module": "AWS Cloud Architect Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AWS Cloud Architect Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AWS Cloud Architect Core Principles Part 5A.",
+    "Write error-free implementations utilizing AWS Cloud Architect Core Principles Part 5A.",
+    "Debug and optimize performance characteristics of AWS Cloud Architect Core Principles Part 5A."
+  ],
+  "tags": [
+    "aws",
+    "cloud",
+    "architect",
+    "core",
+    "principles",
+    "part",
+    "5a"
+  ]
+}

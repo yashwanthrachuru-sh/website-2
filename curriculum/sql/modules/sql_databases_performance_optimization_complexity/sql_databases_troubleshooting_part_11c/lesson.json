@@ -1,0 +1,29 @@
+{
+  "id": "sql_sql_databases_troubleshooting_part_11c",
+  "title": "SQL & Databases Troubleshooting Part 11C",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing SQL & Databases Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of SQL & Databases Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

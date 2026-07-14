@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_7c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 7C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

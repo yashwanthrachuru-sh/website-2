@@ -1,0 +1,7 @@
+{
+  "id": "sql_sql_databases_production_deployment_server_pipelines",
+  "name": "SQL & Databases Production Deployment & Server Pipelines",
+  "description": "In-depth study on SQL & Databases covering deploying built assets to cloud hosting configurations.",
+  "orderIndex": 12,
+  "xpReward": 200
+}

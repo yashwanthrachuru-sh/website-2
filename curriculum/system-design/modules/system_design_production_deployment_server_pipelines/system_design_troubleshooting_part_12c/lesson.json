@@ -1,0 +1,28 @@
+{
+  "id": "system-design_system_design_troubleshooting_part_12c",
+  "title": "System Design Troubleshooting Part 12C",
+  "technology": "System Design",
+  "module": "System Design Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: System Design Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of System Design Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing System Design Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of System Design Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "system",
+    "design",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

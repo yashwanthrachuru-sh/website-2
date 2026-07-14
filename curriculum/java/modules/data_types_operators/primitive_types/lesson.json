@@ -1,0 +1,25 @@
+{
+  "id": "java_primitive_types",
+  "title": "Primitive Types",
+  "technology": "Java",
+  "module": "Data Types & Operators",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Java JVM & Setup"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Primitive Types.",
+    "Write error-free implementations utilizing Primitive Types.",
+    "Debug and optimize performance characteristics of Primitive Types."
+  ],
+  "tags": [
+    "primitive",
+    "types"
+  ]
+}

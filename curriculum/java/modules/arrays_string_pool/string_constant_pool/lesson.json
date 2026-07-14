@@ -1,0 +1,26 @@
+{
+  "id": "java_string_constant_pool",
+  "title": "String Constant Pool",
+  "technology": "Java",
+  "module": "Arrays & String Pool",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Methods & Signatures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of String Constant Pool.",
+    "Write error-free implementations utilizing String Constant Pool.",
+    "Debug and optimize performance characteristics of String Constant Pool."
+  ],
+  "tags": [
+    "string",
+    "constant",
+    "pool"
+  ]
+}

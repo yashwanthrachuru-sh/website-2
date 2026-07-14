@@ -1,0 +1,28 @@
+{
+  "id": "cpp_c_implementation_steps_part_4b",
+  "title": "C++ Implementation Steps Part 4B",
+  "technology": "C++",
+  "module": "C++ Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: C++ Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Implementation Steps Part 4B.",
+    "Write error-free implementations utilizing C++ Implementation Steps Part 4B.",
+    "Debug and optimize performance characteristics of C++ Implementation Steps Part 4B."
+  ],
+  "tags": [
+    "c++",
+    "implementation",
+    "steps",
+    "part",
+    "4b"
+  ]
+}

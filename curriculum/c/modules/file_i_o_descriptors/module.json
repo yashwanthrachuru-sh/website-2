@@ -1,0 +1,7 @@
+{
+  "id": "c_file_i_o_descriptors",
+  "name": "File I/O Descriptors",
+  "description": "Read and write persistent files records.",
+  "orderIndex": 11,
+  "xpReward": 200
+}

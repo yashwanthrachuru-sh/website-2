@@ -1,0 +1,28 @@
+{
+  "id": "frontend_frontend_development_troubleshooting_part_3c",
+  "title": "Frontend Development Troubleshooting Part 3C",
+  "technology": "Frontend Development",
+  "module": "Frontend Development Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Frontend Development Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Frontend Development Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing Frontend Development Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of Frontend Development Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "frontend",
+    "development",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

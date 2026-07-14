@@ -1,0 +1,26 @@
+{
+  "id": "typescript_ts_access_modifiers",
+  "title": "TS Access Modifiers",
+  "technology": "TypeScript",
+  "module": "Classes & Access Modifiers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Union & Intersection"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of TS Access Modifiers.",
+    "Write error-free implementations utilizing TS Access Modifiers.",
+    "Debug and optimize performance characteristics of TS Access Modifiers."
+  ],
+  "tags": [
+    "ts",
+    "access",
+    "modifiers"
+  ]
+}

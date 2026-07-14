@@ -1,0 +1,26 @@
+{
+  "id": "typescript_strict_mode_configs",
+  "title": "Strict Mode Configs",
+  "technology": "TypeScript",
+  "module": "Compiler & Setup",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Strict Mode Configs.",
+    "Write error-free implementations utilizing Strict Mode Configs.",
+    "Debug and optimize performance characteristics of Strict Mode Configs."
+  ],
+  "tags": [
+    "strict",
+    "mode",
+    "configs"
+  ]
+}

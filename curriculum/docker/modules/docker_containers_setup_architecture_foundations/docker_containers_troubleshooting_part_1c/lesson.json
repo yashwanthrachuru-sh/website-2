@@ -1,0 +1,28 @@
+{
+  "id": "docker_docker_containers_troubleshooting_part_1c",
+  "title": "Docker Containers Troubleshooting Part 1C",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Docker Containers Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Docker Containers Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

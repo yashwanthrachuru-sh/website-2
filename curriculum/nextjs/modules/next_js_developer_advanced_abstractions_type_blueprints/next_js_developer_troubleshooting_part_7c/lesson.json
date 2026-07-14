@@ -1,0 +1,28 @@
+{
+  "id": "nextjs_next_js_developer_troubleshooting_part_7c",
+  "title": "Next.js Developer Troubleshooting Part 7C",
+  "technology": "Next.js Developer",
+  "module": "Next.js Developer Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Next.js Developer Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Next.js Developer Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "next.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

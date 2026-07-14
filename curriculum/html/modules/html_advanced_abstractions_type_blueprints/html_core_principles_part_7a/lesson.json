@@ -1,0 +1,28 @@
+{
+  "id": "html_html_core_principles_part_7a",
+  "title": "HTML Core Principles Part 7A",
+  "technology": "HTML",
+  "module": "HTML Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Core Principles Part 7A.",
+    "Write error-free implementations utilizing HTML Core Principles Part 7A.",
+    "Debug and optimize performance characteristics of HTML Core Principles Part 7A."
+  ],
+  "tags": [
+    "html",
+    "core",
+    "principles",
+    "part",
+    "7a"
+  ]
+}

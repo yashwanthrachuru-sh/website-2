@@ -1,0 +1,31 @@
+{
+  "title": "Personal Expense Tracker",
+  "tagline": "Build a real-world CLI tool that tracks daily spending — the same kind of logic used in fintech apps like Splitwise, Walnut, and Monefy.",
+  "description": "You will build a command-line expense tracker that stores spending data in variables, computes totals, and produces a formatted daily spending report. This is the exact workflow used in real financial applications — except those use databases instead of variables.",
+  "learningGoals": [
+    "Practice creating and updating variables across multiple steps.",
+    "Apply arithmetic operators on financial data (real-world floats).",
+    "Use conditional logic based on computed budget values.",
+    "Produce formatted output using f-strings with 2 decimal precision.",
+    "Think about variable naming in a business context."
+  ],
+  "context": "You are building the core logic for an expense tracking app. For this version, expenses are hardcoded (like reading from a saved file). Later lessons will teach you to accept user input and store data persistently.",
+  "requirements": [
+    "Create variables for the user's name and monthly budget.",
+    "Create variables for 5 daily expenses with descriptive names (what was bought, how much).",
+    "Compute the total spending and remaining budget.",
+    "Determine spending status: 'On Track' if spent ≤ 70% of budget, 'Warning' if 70-100%, 'Over Budget' if > budget.",
+    "Print a formatted daily spending report.",
+    "Print a budget status line with the spending percentage."
+  ],
+  "starterCode": "# ============================================\n# Personal Expense Tracker\n# ============================================\n\n# --- User Profile ---\nuser_name = \"Arjun\"\nmonthly_budget = 15000.00   # in rupees\n\n# --- Today's Expenses ---\n# Create 5 expense variables with descriptive names\n# Format: item_cost (e.g., lunch_cost, coffee_cost)\nbreakfast_cost  = \nbus_fare        = \nlunch_cost      = \nstationery_cost = \ndinner_cost     = \n\n# --- Calculations ---\ntotal_spent     = \nremaining       = \nspent_percent   = \n\n# --- Determine status ---\nif spent_percent <= 70:\n    status = \"✅ On Track\"\nelif spent_percent <= 100:\n    status = \nelse:\n    status = \n\n# --- Report ---\nprint(\"============================================\")\nprint(f\"  Daily Expense Report — {user_name}\")\nprint(\"============================================\")\nprint(f\"  Breakfast:    ₹{breakfast_cost:.2f}\")\nprint(f\"  Bus Fare:     ₹{bus_fare:.2f}\")\nprint(f\"  Lunch:        ₹{lunch_cost:.2f}\")\nprint(f\"  Stationery:   ₹{stationery_cost:.2f}\")\nprint(f\"  Dinner:       ₹{dinner_cost:.2f}\")\nprint(\"--------------------------------------------\")\nprint(f\"  Total Spent:  ₹{total_spent:.2f}\")\nprint(f\"  Remaining:    ₹{remaining:.2f}\")\nprint(f\"  Used:         {spent_percent:.1f}% of budget\")\nprint(f\"  Status:       {status}\")\nprint(\"============================================\")",
+  "solution": "user_name = \"Arjun\"\nmonthly_budget = 15000.00\n\nbreakfast_cost  = 120.00\nbus_fare        = 40.00\nlunch_cost      = 180.00\nstationery_cost = 95.50\ndinner_cost     = 250.00\n\ntotal_spent   = breakfast_cost + bus_fare + lunch_cost + stationery_cost + dinner_cost\nremaining     = monthly_budget - total_spent\nspent_percent = (total_spent / monthly_budget) * 100\n\nif spent_percent <= 70:\n    status = \"✅ On Track\"\nelif spent_percent <= 100:\n    status = \"⚠️  Warning — Nearing limit\"\nelse:\n    status = \"❌ Over Budget\"\n\nprint(\"============================================\")\nprint(f\"  Daily Expense Report — {user_name}\")\nprint(\"============================================\")\nprint(f\"  Breakfast:    ₹{breakfast_cost:.2f}\")\nprint(f\"  Bus Fare:     ₹{bus_fare:.2f}\")\nprint(f\"  Lunch:        ₹{lunch_cost:.2f}\")\nprint(f\"  Stationery:   ₹{stationery_cost:.2f}\")\nprint(f\"  Dinner:       ₹{dinner_cost:.2f}\")\nprint(\"--------------------------------------------\")\nprint(f\"  Total Spent:  ₹{total_spent:.2f}\")\nprint(f\"  Remaining:    ₹{remaining:.2f}\")\nprint(f\"  Used:         {spent_percent:.1f}% of budget\")\nprint(f\"  Status:       {status}\")\nprint(\"============================================\")",
+  "expectedOutput": "============================================\n  Daily Expense Report — Arjun\n============================================\n  Breakfast:    ₹120.00\n  Bus Fare:     ₹40.00\n  Lunch:        ₹180.00\n  Stationery:   ₹95.50\n  Dinner:       ₹250.00\n--------------------------------------------\n  Total Spent:  ₹685.50\n  Remaining:    ₹14314.50\n  Used:         4.6% of budget\n  Status:       ✅ On Track\n============================================",
+  "solutionExplanation": "The key professional habits demonstrated:\n1. `spent_percent = (total_spent / monthly_budget) * 100` — compute derived values from base variables, not from hardcoded numbers. If the budget changes, only one variable needs updating.\n2. Descriptive names like `breakfast_cost`, not `c1`, `c2`, `c3`.\n3. The f-string `:.2f` formats floats to 2 decimal places — mandatory for financial display.\n4. The status logic reads like business rules, not cryptic conditions.",
+  "extensions": [
+    "Add a `savings_goal` variable (e.g., ₹5000) and print whether the remaining budget covers it.",
+    "Add a `weekly_total` variable that multiplies today's total by 7 and compare it against monthly budget.",
+    "Create a `category_breakdown` by grouping expenses: transport, food, other — print subtotals for each group.",
+    "Change the budget to ₹500 and observe how the status changes to 'Over Budget' — this is how you test your logic."
+  ]
+}

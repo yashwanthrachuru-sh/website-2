@@ -1,0 +1,28 @@
+{
+  "id": "docker_docker_containers_troubleshooting_part_11c",
+  "title": "Docker Containers Troubleshooting Part 11C",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Docker Containers Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing Docker Containers Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of Docker Containers Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_package_orchestration_system_modules",
+  "name": "Kubernetes Orchestration Package Orchestration & System Modules",
+  "description": "In-depth study on Kubernetes Orchestration covering managing external libraries and resolving package dependencies.",
+  "orderIndex": 10,
+  "xpReward": 200
+}

@@ -1,0 +1,30 @@
+{
+  "id": "gcp_gcp_cloud_engineer_implementation_steps_part_6b",
+  "title": "GCP Cloud Engineer Implementation Steps Part 6B",
+  "technology": "GCP Cloud Engineer",
+  "module": "GCP Cloud Engineer Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: GCP Cloud Engineer Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCP Cloud Engineer Implementation Steps Part 6B.",
+    "Write error-free implementations utilizing GCP Cloud Engineer Implementation Steps Part 6B.",
+    "Debug and optimize performance characteristics of GCP Cloud Engineer Implementation Steps Part 6B."
+  ],
+  "tags": [
+    "gcp",
+    "cloud",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "6b"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "azure_azure_cloud_engineer_implementation_steps_part_5b",
+  "title": "Azure Cloud Engineer Implementation Steps Part 5B",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Implementation Steps Part 5B.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Implementation Steps Part 5B.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Implementation Steps Part 5B."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "5b"
+  ]
+}

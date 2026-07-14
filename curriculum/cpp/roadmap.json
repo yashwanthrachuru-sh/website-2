@@ -1,0 +1,30 @@
+{
+  "id": "cpp",
+  "title": "C++",
+  "category": "Programming",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "cpp",
+    "cpp",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for C++ from beginner to production-ready design.",
+  "language": "cpp",
+  "prerequisites": [
+    "Understanding of basics in C++"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "C++ Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the C++ curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of C++",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

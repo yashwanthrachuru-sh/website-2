@@ -1,0 +1,29 @@
+{
+  "id": "android_android_developer_core_principles_part_4a",
+  "title": "Android Developer Core Principles Part 4A",
+  "technology": "Android Developer",
+  "module": "Android Developer Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Android Developer Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Android Developer Core Principles Part 4A.",
+    "Write error-free implementations utilizing Android Developer Core Principles Part 4A.",
+    "Debug and optimize performance characteristics of Android Developer Core Principles Part 4A."
+  ],
+  "tags": [
+    "android",
+    "developer",
+    "core",
+    "principles",
+    "part",
+    "4a"
+  ]
+}

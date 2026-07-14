@@ -1,0 +1,22 @@
+{
+  "syntax": "## JavaScript Async Cheat Sheet\n\n### Promise Basics\n```javascript\nconst p = new Promise((resolve, reject) => {\n  // async work here\n  resolve(data);   // success\n  reject(error);   // failure\n});\np.then(data => ...).catch(err => ...);\n```\n\n### Async/Await\n```javascript\nasync function fetchUser(id) {\n  try {\n    const res = await fetch(`/api/users/${id}`);\n    const data = await res.json();\n    return data;\n  } catch (err) {\n    console.error('Fetch failed:', err);\n  }\n}\n```\n\n### Parallel Execution\n```javascript\n// Sequential (slower): 2 seconds total\nconst a = await fetchA();  // 1s\nconst b = await fetchB();  // 1s\n\n// Parallel (faster): 1 second total\nconst [a, b] = await Promise.all([fetchA(), fetchB()]);\n```\n\n### Common Pitfalls\n- Forgetting `await` → you get a Promise object, not the resolved value\n- Not catching errors → unhandled Promise rejection crashes Node\n- `await` in a regular (non-async) function → SyntaxError",
+  "quickExamples": "// Simple usage\n",
+  "commonErrors": [
+    {
+      "error": "ReferenceError",
+      "description": "Calling variables outside their declared scope."
+    }
+  ],
+  "tips": [
+    "Keep naming conventions consistent.",
+    "Document complex parameters."
+  ],
+  "shortcuts": [],
+  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
+  "bestPractices": [
+    "Avoid global namespaces.",
+    "Use const / final for read-only variables."
+  ],
+  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
+  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+}

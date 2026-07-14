@@ -1,0 +1,29 @@
+{
+  "id": "nextjs_next_js_developer_core_principles_part_4a",
+  "title": "Next.js Developer Core Principles Part 4A",
+  "technology": "Next.js Developer",
+  "module": "Next.js Developer Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Next.js Developer Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Next.js Developer Core Principles Part 4A.",
+    "Write error-free implementations utilizing Next.js Developer Core Principles Part 4A.",
+    "Debug and optimize performance characteristics of Next.js Developer Core Principles Part 4A."
+  ],
+  "tags": [
+    "next.js",
+    "developer",
+    "core",
+    "principles",
+    "part",
+    "4a"
+  ]
+}

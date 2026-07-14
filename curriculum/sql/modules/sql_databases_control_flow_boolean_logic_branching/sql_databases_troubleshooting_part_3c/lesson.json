@@ -1,0 +1,29 @@
+{
+  "id": "sql_sql_databases_troubleshooting_part_3c",
+  "title": "SQL & Databases Troubleshooting Part 3C",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing SQL & Databases Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of SQL & Databases Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

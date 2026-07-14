@@ -1,0 +1,7 @@
+{
+  "id": "aws_aws_cloud_architect_control_flow_boolean_logic_branching",
+  "name": "AWS Cloud Architect Control Flow & Boolean Logic Branching",
+  "description": "In-depth study on AWS Cloud Architect covering steering execution routines using conditional branching checks.",
+  "orderIndex": 3,
+  "xpReward": 200
+}

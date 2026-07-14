@@ -1,0 +1,25 @@
+{
+  "id": "js_attribute_modifiers",
+  "title": "Attribute Modifiers",
+  "technology": "JavaScript",
+  "module": "DOM Manipulation",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Closures & Functions"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Attribute Modifiers.",
+    "Write error-free implementations utilizing Attribute Modifiers.",
+    "Debug and optimize performance characteristics of Attribute Modifiers."
+  ],
+  "tags": [
+    "attribute",
+    "modifiers"
+  ]
+}

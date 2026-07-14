@@ -1,0 +1,26 @@
+{
+  "id": "typescript_any_vs_unknown",
+  "title": "Any vs Unknown",
+  "technology": "TypeScript",
+  "module": "Basic Types Annotation",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Compiler & Setup"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Any vs Unknown.",
+    "Write error-free implementations utilizing Any vs Unknown.",
+    "Debug and optimize performance characteristics of Any vs Unknown."
+  ],
+  "tags": [
+    "any",
+    "vs",
+    "unknown"
+  ]
+}

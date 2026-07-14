@@ -1,0 +1,7 @@
+{
+  "id": "python_fundamentals",
+  "name": "Fundamentals",
+  "description": "The core building blocks of Python — variables, types, and how Python manages your data.",
+  "orderIndex": 1,
+  "xpReward": 150
+}

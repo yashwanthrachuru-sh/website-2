@@ -1,0 +1,28 @@
+{
+  "id": "nodejs_node_js_developer_troubleshooting_part_4c",
+  "title": "Node.js Developer Troubleshooting Part 4C",
+  "technology": "Node.js Developer",
+  "module": "Node.js Developer Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Node.js Developer Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Node.js Developer Troubleshooting Part 4C.",
+    "Write error-free implementations utilizing Node.js Developer Troubleshooting Part 4C.",
+    "Debug and optimize performance characteristics of Node.js Developer Troubleshooting Part 4C."
+  ],
+  "tags": [
+    "node.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "4c"
+  ]
+}

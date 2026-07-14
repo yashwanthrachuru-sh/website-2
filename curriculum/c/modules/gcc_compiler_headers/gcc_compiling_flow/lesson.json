@@ -1,0 +1,26 @@
+{
+  "id": "c_gcc_compiling_flow",
+  "title": "GCC Compiling Flow",
+  "technology": "C Programming",
+  "module": "GCC Compiler & Headers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCC Compiling Flow.",
+    "Write error-free implementations utilizing GCC Compiling Flow.",
+    "Debug and optimize performance characteristics of GCC Compiling Flow."
+  ],
+  "tags": [
+    "gcc",
+    "compiling",
+    "flow"
+  ]
+}

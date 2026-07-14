@@ -1,0 +1,27 @@
+{
+  "id": "c_singly_linked_list_c",
+  "title": "Singly Linked List C",
+  "technology": "C Programming",
+  "module": "Dynamic Data Structures C",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: File I/O Descriptors"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Singly Linked List C.",
+    "Write error-free implementations utilizing Singly Linked List C.",
+    "Debug and optimize performance characteristics of Singly Linked List C."
+  ],
+  "tags": [
+    "singly",
+    "linked",
+    "list",
+    "c"
+  ]
+}

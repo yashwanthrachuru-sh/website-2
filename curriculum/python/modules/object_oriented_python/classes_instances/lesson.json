@@ -1,0 +1,26 @@
+{
+  "id": "python_classes_instances",
+  "title": "Classes & Instances",
+  "technology": "Python",
+  "module": "Object Oriented Python",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: File Handling & I/O"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Classes & Instances.",
+    "Write error-free implementations utilizing Classes & Instances.",
+    "Debug and optimize performance characteristics of Classes & Instances."
+  ],
+  "tags": [
+    "classes",
+    "&",
+    "instances"
+  ]
+}

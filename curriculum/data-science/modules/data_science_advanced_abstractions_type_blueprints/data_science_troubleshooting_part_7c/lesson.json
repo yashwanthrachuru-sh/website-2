@@ -1,0 +1,28 @@
+{
+  "id": "data-science_data_science_troubleshooting_part_7c",
+  "title": "Data Science Troubleshooting Part 7C",
+  "technology": "Data Science",
+  "module": "Data Science Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing Data Science Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of Data Science Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

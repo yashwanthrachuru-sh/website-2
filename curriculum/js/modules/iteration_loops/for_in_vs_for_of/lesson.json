@@ -1,0 +1,28 @@
+{
+  "id": "js_for_in_vs_for_of",
+  "title": "For In vs For Of",
+  "technology": "JavaScript",
+  "module": "Iteration & Loops",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Logic & Conditionals"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of For In vs For Of.",
+    "Write error-free implementations utilizing For In vs For Of.",
+    "Debug and optimize performance characteristics of For In vs For Of."
+  ],
+  "tags": [
+    "for",
+    "in",
+    "vs",
+    "for",
+    "of"
+  ]
+}

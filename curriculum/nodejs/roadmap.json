@@ -1,0 +1,30 @@
+{
+  "id": "nodejs",
+  "title": "Node.js Developer",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "nodejs",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Node.js Developer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Node.js Developer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Node.js Developer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Node.js Developer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Node.js Developer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

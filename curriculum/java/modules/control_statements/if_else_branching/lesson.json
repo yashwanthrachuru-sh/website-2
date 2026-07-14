@@ -1,0 +1,26 @@
+{
+  "id": "java_if_else_branching",
+  "title": "If Else Branching",
+  "technology": "Java",
+  "module": "Control Statements",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Types & Operators"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of If Else Branching.",
+    "Write error-free implementations utilizing If Else Branching.",
+    "Debug and optimize performance characteristics of If Else Branching."
+  ],
+  "tags": [
+    "if",
+    "else",
+    "branching"
+  ]
+}

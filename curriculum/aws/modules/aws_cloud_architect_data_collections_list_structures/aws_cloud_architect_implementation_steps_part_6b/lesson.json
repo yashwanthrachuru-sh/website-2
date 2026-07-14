@@ -1,0 +1,30 @@
+{
+  "id": "aws_aws_cloud_architect_implementation_steps_part_6b",
+  "title": "AWS Cloud Architect Implementation Steps Part 6B",
+  "technology": "AWS Cloud Architect",
+  "module": "AWS Cloud Architect Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AWS Cloud Architect Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AWS Cloud Architect Implementation Steps Part 6B.",
+    "Write error-free implementations utilizing AWS Cloud Architect Implementation Steps Part 6B.",
+    "Debug and optimize performance characteristics of AWS Cloud Architect Implementation Steps Part 6B."
+  ],
+  "tags": [
+    "aws",
+    "cloud",
+    "architect",
+    "implementation",
+    "steps",
+    "part",
+    "6b"
+  ]
+}

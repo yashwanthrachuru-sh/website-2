@@ -1,0 +1,29 @@
+{
+  "id": "data-science_data_science_core_principles_part_3a",
+  "title": "Data Science Core Principles Part 3A",
+  "technology": "Data Science",
+  "module": "Data Science Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Core Principles Part 3A.",
+    "Write error-free implementations utilizing Data Science Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of Data Science Core Principles Part 3A."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

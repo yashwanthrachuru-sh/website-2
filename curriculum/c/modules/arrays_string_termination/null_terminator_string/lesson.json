@@ -1,0 +1,26 @@
+{
+  "id": "c_null_terminator_string",
+  "title": "Null Terminator String",
+  "technology": "C Programming",
+  "module": "Arrays String Termination",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Functions Recursion"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Null Terminator String.",
+    "Write error-free implementations utilizing Null Terminator String.",
+    "Debug and optimize performance characteristics of Null Terminator String."
+  ],
+  "tags": [
+    "null",
+    "terminator",
+    "string"
+  ]
+}

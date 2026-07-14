@@ -1,0 +1,94 @@
+{
+  "questions": [
+    {
+      "id": "iv1",
+      "level": "beginner",
+      "question": "What is a variable in Python?",
+      "shortAnswer": "A name that points to a value stored in memory.",
+      "fullAnswer": "A variable is a named reference to an object in Python's memory. When you write `score = 95`, Python does three things:\n1. Creates an integer object with value 95 in memory.\n2. Stores the name `score` in the current namespace (a dictionary).\n3. Points `score` at that object's memory address.\n\nThe variable name itself has no type — the object it points to does. This is why the same name can point to different types over time:\n```python\nscore = 95         # points to int\nscore = 'pending'  # now points to str — perfectly valid\n```\nThis is called **dynamic typing** — types are checked at runtime, not compile time.",
+      "followUp": "How is a Python variable different from a variable in Java or C++?",
+      "followUpAnswer": "In Java/C++, variables are typed boxes — you declare `int score;` and the box can ONLY ever hold an integer. In Python, variables are labels that can be moved to point at any object of any type."
+    },
+    {
+      "id": "iv2",
+      "level": "beginner",
+      "question": "What are the rules for naming a variable in Python?",
+      "shortAnswer": "Start with letter or underscore, use only letters/digits/underscores, not a keyword, case-sensitive.",
+      "fullAnswer": "Python variable names must follow these rules:\n\n**Required (syntax rules — violating these causes SyntaxError):**\n- Must start with a letter (a–z, A–Z) or underscore (_)\n- Can only contain letters, digits (0–9), and underscores\n- Cannot be a Python keyword: `if, for, while, class, def, return, import, True, False, None` (and others)\n- Are case-sensitive: `Score` ≠ `score` ≠ `SCORE`\n\n**Recommended (PEP 8 style — violating these is legal but bad practice):**\n- Use `lowercase_with_underscores` for variables\n- Use `UPPER_SNAKE_CASE` for module-level constants\n- Use descriptive names: `user_email` not `ue`\n- Never shadow built-in names: `list`, `str`, `type`, `print`, `id`",
+      "followUp": "Name three Python keywords that are commonly used as variable names by beginners.",
+      "followUpAnswer": "`type` (to store a type value), `list` (to store a list), `id` (to store a database ID). All three shadow built-in functions of the same name."
+    },
+    {
+      "id": "iv3",
+      "level": "beginner",
+      "question": "What is the difference between `=` and `==` in Python?",
+      "shortAnswer": "`=` assigns a value to a name. `==` compares two values and returns True or False.",
+      "fullAnswer": "`=` is the **assignment operator**: `score = 95` stores 95 under the name `score`.\n\n`==` is the **equality operator**: `score == 95` is a question — 'is score equal to 95?' It returns True or False.\n\nMixing them causes errors:\n```python\n# Wrong — SyntaxError\nif score = 95:\n    print('Pass')\n\n# Right\nif score == 95:\n    print('Pass')\n```\n\nOther related operators:\n- `!=` — not equal\n- `is` — same object identity (use for None: `if x is None:`)\n- `is not` — not the same object",
+      "followUp": "When should you use `is` instead of `==`?",
+      "followUpAnswer": "Use `is` when checking for `None`, `True`, or `False` (singletons). Always use `==` for value comparison of numbers, strings, and custom objects."
+    },
+    {
+      "id": "iv4",
+      "level": "intermediate",
+      "question": "What is dynamic typing and what are its trade-offs?",
+      "shortAnswer": "Types are attached to objects, not variable names. Flexible but requires discipline.",
+      "fullAnswer": "**Dynamic typing** means the type of a value is determined at runtime, not at compile time. The type is attached to the object, not to the variable name:\n\n```python\nx = 42       # int at this moment\nx = 'hello'  # str at this moment — no error\nx = [1, 2]   # list at this moment\n```\n\n**Advantages:**\n- Less boilerplate — no type declarations\n- More flexible — functions can accept multiple types\n- Faster prototyping\n\n**Disadvantages:**\n- Type errors surface at runtime, not before execution\n- IDEs have less information for autocomplete\n- Large teams need type annotations to stay sane\n- Performance: Python must check types at every operation\n\n**How professionals handle this:** Type annotations + static analysis tools (mypy, pyright) give you the safety of static typing without abandoning Python's flexibility.",
+      "followUp": "What is the difference between dynamic typing and weak typing?",
+      "followUpAnswer": "Dynamic typing = type is checked at runtime. Weak typing = types are coerced automatically (e.g., JavaScript: '2' + 2 = '22'). Python is dynamically typed BUT strongly typed — it never silently coerces types. `'2' + 2` raises TypeError in Python."
+    },
+    {
+      "id": "iv5",
+      "level": "intermediate",
+      "question": "Explain what happens in memory when you write `b = a` where `a` is a list.",
+      "shortAnswer": "Both `a` and `b` point to the same list object — no copy is made.",
+      "fullAnswer": "Python's assignment operator NEVER copies an object. It copies the reference (memory address).\n\nAfter `a = [1, 2, 3]; b = a`:\n```\nNamespace:\n  'a' → 0x7f1a\n  'b' → 0x7f1a  ← same address!\n\nMemory at 0x7f1a: [1, 2, 3]\n```\n\nBoth names point to the same list. Consequences:\n```python\nb.append(4)\nprint(a)  # [1, 2, 3, 4] — a sees the change!\nprint(a is b)  # True — same object\n```\n\nTo make an independent copy:\n```python\nb = a[:]        # slice copy\nb = a.copy()    # explicit copy\nb = list(a)     # constructor copy\nimport copy; b = copy.deepcopy(a)  # for nested structures\n```",
+      "followUp": "Does the same behaviour apply to integers?",
+      "followUpAnswer": "The mechanics are the same (both names point to the same object), but the observable effect differs. Integers are immutable — you cannot change the value 5. When you do `a += 1`, Python creates a NEW integer object and reassigns `a`. The original object (5) still exists and `b` still points to it. This is why integers appear to behave differently from lists."
+    },
+    {
+      "id": "iv6",
+      "level": "intermediate",
+      "question": "What is the LEGB rule?",
+      "shortAnswer": "The order Python searches for a name: Local → Enclosing → Global → Built-in.",
+      "fullAnswer": "When Python encounters a name, it searches four scopes in order until it finds the name or raises NameError:\n\n**L — Local**: Names defined inside the current function.\n**E — Enclosing**: Names in any enclosing functions (for closures).\n**G — Global**: Names defined at the top level of the module.\n**B — Built-in**: Python's built-in names: `print`, `len`, `range`, `type`, etc.\n\n```python\nx = 'global'\n\ndef outer():\n    x = 'enclosing'\n    def inner():\n        x = 'local'\n        print(x)   # 'local' — found at L, stops searching\n    inner()\n    print(x)       # 'enclosing' — 'local' x is gone, found at E\n\nouter()\nprint(x)           # 'global' — 'enclosing' x is gone, found at G\n```\n\nKey rule: **Assignment always creates a local variable** unless you declare `global` or `nonlocal`.",
+      "followUp": "What happens if you assign to a name that exists globally, without using `global`?",
+      "followUpAnswer": "Python creates a new LOCAL variable with that name. The global is untouched. If you try to read the local name before assigning it (in the same function), you get UnboundLocalError — because Python scanned the function, saw the assignment, and decided the name is local throughout the function."
+    },
+    {
+      "id": "iv7",
+      "level": "intermediate",
+      "question": "What causes an `UnboundLocalError` and how do you fix it?",
+      "shortAnswer": "Reading a local variable before it has been assigned in the same function.",
+      "fullAnswer": "Python scans a function's body BEFORE executing it. If it sees an assignment to a name inside the function, it marks that name as LOCAL for the entire function — even lines before the assignment.\n\n```python\ntotal = 100\n\ndef apply_discount():\n    print(total)       # UnboundLocalError!\n    total = total * 0.9  # This line makes 'total' a local\n```\n\nPython sees `total = ...` on line 4 and decides `total` is local for the whole function. When line 3 tries to print the local `total`, it has not been assigned yet.\n\n**Fix 1: `global` declaration**\n```python\ndef apply_discount():\n    global total\n    print(total)      # Now reads the global\n    total *= 0.9\n```\n\n**Fix 2 (better): pass data as arguments**\n```python\ndef apply_discount(amount):\n    return amount * 0.9\n\ntotal = apply_discount(100)\n```\n\nFix 2 is always preferred in production code — it makes the function pure, testable, and reusable.",
+      "followUp": "What is the difference between `global` and `nonlocal`?",
+      "followUpAnswer": "`global` makes a name refer to the module-level namespace. `nonlocal` makes a name refer to the immediately enclosing function's namespace (for closures). `nonlocal` cannot reach the module level — only the enclosing function scope."
+    },
+    {
+      "id": "iv8",
+      "level": "expert",
+      "question": "Explain the late-binding closure problem and its solutions.",
+      "shortAnswer": "Closures capture the variable by reference. At call time, the loop variable has its final value.",
+      "fullAnswer": "A closure is a function that remembers the variables from its enclosing scope. The problem: it captures the **variable**, not a copy of its current value.\n\n```python\nhandlers = [lambda: i for i in range(3)]\nprint([h() for h in handlers])  # [2, 2, 2] — all see the final i=2\n```\n\n**Why:** The three lambdas all look up `i` at call time. After the loop, `i` is 2. All three return 2.\n\n**Solution 1: default argument (captures value at creation time)**\n```python\nhandlers = [lambda i=i: i for i in range(3)]\nprint([h() for h in handlers])  # [0, 1, 2] — each has its own i\n```\n\n**Solution 2: functools.partial (cleaner for named functions)**\n```python\nfrom functools import partial\n\ndef handle(i):\n    return i\n\nhandlers = [partial(handle, i) for i in range(3)]\n```\n\n**Solution 3: immediately-invoked function (for complex cases)**\n```python\nhandlers = [(lambda i: lambda: i)(i) for i in range(3)]\n```",
+      "followUp": "Name a real-world scenario where this bug appears.",
+      "followUpAnswer": "GUI event binding: `for btn in buttons: btn.command = lambda: open_file(i)` — all buttons open the same file (the last one). Database cursor rows: `callbacks = [lambda: process(row) for row in cursor]` — all process the last row. This bug is so common it has its own FAQ entry in Python documentation."
+    },
+    {
+      "id": "iv9",
+      "level": "expert",
+      "question": "How does `__slots__` reduce memory usage and when should you use it?",
+      "shortAnswer": "Replaces per-instance __dict__ with a fixed C array — saves ~40% memory per instance.",
+      "fullAnswer": "By default, every Python object instance stores its attributes in a `__dict__` (a hash table). This provides flexibility (add any attribute at runtime) but costs memory:\n\n- Empty `__dict__`: ~200 bytes overhead per instance\n- Each attribute: additional key-value entry in the hash table\n\n`__slots__` declares a fixed set of attributes. Python uses a compact C array instead:\n\n```python\nclass Regular:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\nclass Slotted:\n    __slots__ = ('x', 'y')\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\nimport sys\nprint(sys.getsizeof(Regular(1,2)))  # 48 bytes + __dict__ overhead\nprint(sys.getsizeof(Slotted(1,2)))  # 56 bytes flat — no __dict__\n```\n\n**When to use:**\n- Creating millions of instances (game entities, data frames, network packets)\n- Memory is a constraint (embedded systems, large-scale servers)\n\n**When NOT to use:**\n- You need to add arbitrary attributes at runtime\n- You're using mixins or complex inheritance\n- Code simplicity is more important than memory",
+      "followUp": "What is the trade-off when using __slots__ with inheritance?",
+      "followUpAnswer": "If a parent class uses __slots__ but a subclass does not, the subclass still gets a __dict__ (negating the benefit). All classes in the inheritance chain must define __slots__ for full benefit. Also, classes with __slots__ cannot be pickled without custom __getstate__/__setstate__."
+    },
+    {
+      "id": "iv10",
+      "level": "expert",
+      "question": "How do type annotations work in Python and why do production teams require them?",
+      "shortAnswer": "Optional metadata attached to names — enforced by tools (mypy/pyright), not at runtime.",
+      "fullAnswer": "Type annotations (introduced in PEP 484, Python 3.5+) let you declare the expected type of a variable or parameter:\n\n```python\nname: str = 'Alice'          # annotated variable\nage: int                     # annotation without value (declared but not assigned)\nscores: list[int] = []       # Python 3.9+\nresult: str | None = None    # Python 3.10+ union syntax\n```\n\n**Runtime behaviour:** Annotations are stored in `__annotations__` but are NOT enforced:\n```python\nname: str = 42   # No error at runtime!\n```\n\n**Why production teams require them:**\n1. **IDE autocomplete** — mypy/pyright/VS Code use annotations for intellisense\n2. **Catch type bugs early** — `mypy your_code.py` catches `str + int` before deployment\n3. **Self-documenting** — `def get_user(user_id: int) -> Optional[User]` is clearer than `def get_user(x)`\n4. **API contracts** — FastAPI, Pydantic, SQLModel generate validation, serialisation, and docs from annotations\n5. **Refactoring safety** — when you change a type, the type checker flags every affected callsite",
+      "followUp": "What is the difference between `Optional[str]` and `str | None`?",
+      "followUpAnswer": "`Optional[str]` from `typing` module is available since Python 3.5. `str | None` is the newer union syntax available since Python 3.10. Both mean 'can be a str or None'. For new code targeting Python 3.10+, prefer `str | None` — it is cleaner and requires no import."
+    }
+  ]
+}

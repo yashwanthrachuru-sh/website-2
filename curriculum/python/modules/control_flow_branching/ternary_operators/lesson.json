@@ -1,0 +1,25 @@
+{
+  "id": "python_ternary_operators",
+  "title": "Ternary Operators",
+  "technology": "Python",
+  "module": "Control Flow & Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Variables & Core Data Types"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Ternary Operators.",
+    "Write error-free implementations utilizing Ternary Operators.",
+    "Debug and optimize performance characteristics of Ternary Operators."
+  ],
+  "tags": [
+    "ternary",
+    "operators"
+  ]
+}

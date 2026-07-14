@@ -1,0 +1,30 @@
+{
+  "id": "azure_azure_cloud_engineer_core_principles_part_3a",
+  "title": "Azure Cloud Engineer Core Principles Part 3A",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Core Principles Part 3A.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Core Principles Part 3A."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

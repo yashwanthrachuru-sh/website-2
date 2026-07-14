@@ -1,0 +1,29 @@
+{
+  "id": "azure_azure_cloud_engineer_troubleshooting_part_4c",
+  "title": "Azure Cloud Engineer Troubleshooting Part 4C",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Troubleshooting Part 4C.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Troubleshooting Part 4C.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Troubleshooting Part 4C."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "4c"
+  ]
+}

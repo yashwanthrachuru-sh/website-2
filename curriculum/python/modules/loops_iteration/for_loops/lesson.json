@@ -1,0 +1,25 @@
+{
+  "id": "python_for_loops",
+  "title": "For Loops",
+  "technology": "Python",
+  "module": "Loops & Iteration",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Control Flow & Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of For Loops.",
+    "Write error-free implementations utilizing For Loops.",
+    "Debug and optimize performance characteristics of For Loops."
+  ],
+  "tags": [
+    "for",
+    "loops"
+  ]
+}

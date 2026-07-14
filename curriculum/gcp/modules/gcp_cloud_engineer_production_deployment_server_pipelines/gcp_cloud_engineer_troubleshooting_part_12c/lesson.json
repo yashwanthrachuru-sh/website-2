@@ -1,0 +1,29 @@
+{
+  "id": "gcp_gcp_cloud_engineer_troubleshooting_part_12c",
+  "title": "GCP Cloud Engineer Troubleshooting Part 12C",
+  "technology": "GCP Cloud Engineer",
+  "module": "GCP Cloud Engineer Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: GCP Cloud Engineer Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCP Cloud Engineer Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing GCP Cloud Engineer Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of GCP Cloud Engineer Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "gcp",
+    "cloud",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

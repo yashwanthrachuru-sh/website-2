@@ -1,0 +1,28 @@
+{
+  "id": "devops_devops_engineer_troubleshooting_part_3c",
+  "title": "DevOps Engineer Troubleshooting Part 3C",
+  "technology": "DevOps Engineer",
+  "module": "DevOps Engineer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: DevOps Engineer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of DevOps Engineer Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing DevOps Engineer Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of DevOps Engineer Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "devops",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

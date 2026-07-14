@@ -1,0 +1,29 @@
+{
+  "id": "aws_aws_cloud_architect_troubleshooting_part_7c",
+  "title": "AWS Cloud Architect Troubleshooting Part 7C",
+  "technology": "AWS Cloud Architect",
+  "module": "AWS Cloud Architect Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AWS Cloud Architect Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AWS Cloud Architect Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing AWS Cloud Architect Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of AWS Cloud Architect Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "aws",
+    "cloud",
+    "architect",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

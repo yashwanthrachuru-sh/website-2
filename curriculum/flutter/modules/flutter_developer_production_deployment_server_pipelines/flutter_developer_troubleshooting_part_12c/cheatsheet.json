@@ -1,0 +1,22 @@
+{
+  "syntax": "## Syntax Reference\n```javascript\n// Declaring and executing Flutter Developer Troubleshooting Part 12C\n```",
+  "quickExamples": "// Simple usage\n",
+  "commonErrors": [
+    {
+      "error": "ReferenceError",
+      "description": "Calling variables outside their declared scope."
+    }
+  ],
+  "tips": [
+    "Keep naming conventions consistent.",
+    "Document complex parameters."
+  ],
+  "shortcuts": [],
+  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
+  "bestPractices": [
+    "Avoid global namespaces.",
+    "Use const / final for read-only variables."
+  ],
+  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
+  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+}

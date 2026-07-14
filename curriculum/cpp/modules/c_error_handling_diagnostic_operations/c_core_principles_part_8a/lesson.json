@@ -1,0 +1,28 @@
+{
+  "id": "cpp_c_core_principles_part_8a",
+  "title": "C++ Core Principles Part 8A",
+  "technology": "C++",
+  "module": "C++ Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: C++ Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Core Principles Part 8A.",
+    "Write error-free implementations utilizing C++ Core Principles Part 8A.",
+    "Debug and optimize performance characteristics of C++ Core Principles Part 8A."
+  ],
+  "tags": [
+    "c++",
+    "core",
+    "principles",
+    "part",
+    "8a"
+  ]
+}

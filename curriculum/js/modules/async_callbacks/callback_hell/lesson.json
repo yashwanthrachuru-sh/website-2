@@ -1,0 +1,25 @@
+{
+  "id": "js_callback_hell",
+  "title": "Callback Hell",
+  "technology": "JavaScript",
+  "module": "Async Callbacks",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Event Handling"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Callback Hell.",
+    "Write error-free implementations utilizing Callback Hell.",
+    "Debug and optimize performance characteristics of Callback Hell."
+  ],
+  "tags": [
+    "callback",
+    "hell"
+  ]
+}

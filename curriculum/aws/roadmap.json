@@ -1,0 +1,30 @@
+{
+  "id": "aws",
+  "title": "AWS Cloud Architect",
+  "category": "Cloud",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "aws",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for AWS Cloud Architect from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in AWS Cloud Architect"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "AWS Cloud Architect Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the AWS Cloud Architect curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of AWS Cloud Architect",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

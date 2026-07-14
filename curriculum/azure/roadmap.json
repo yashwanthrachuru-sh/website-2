@@ -1,0 +1,30 @@
+{
+  "id": "azure",
+  "title": "Azure Cloud Engineer",
+  "category": "Cloud",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "azure",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Azure Cloud Engineer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Azure Cloud Engineer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Azure Cloud Engineer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Azure Cloud Engineer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Azure Cloud Engineer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

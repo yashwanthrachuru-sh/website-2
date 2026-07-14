@@ -1,0 +1,31 @@
+{
+  "id": "dsa_data_structures_algorithms_implementation_steps_part_3b",
+  "title": "Data Structures & Algorithms Implementation Steps Part 3B",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Structures & Algorithms Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Implementation Steps Part 3B.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Implementation Steps Part 3B.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Implementation Steps Part 3B."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "implementation",
+    "steps",
+    "part",
+    "3b"
+  ]
+}

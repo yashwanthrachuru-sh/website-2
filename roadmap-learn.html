@@ -136,6 +136,97 @@
 .lesson-list-item.completed { color: var(--emerald); }
 .lesson-list-item-icon { font-size: 11px; flex-shrink: 0; }
 
+/* Level based styling */
+.level-section {
+  border-bottom: 1px solid var(--border);
+}
+.level-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--abyss-2);
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.level-header:hover {
+  background: rgba(255,255,255,0.03);
+}
+.level-header-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.level-header-progress {
+  flex: 1;
+  margin: 0 0.75rem;
+  height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+.level-header-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.level-header-percentage {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mist);
+  margin-right: 0.5rem;
+}
+.level-header-icon {
+  font-size: 10px;
+  color: var(--mist-dim);
+  transition: transform 0.2s;
+}
+.level-section.open .level-header-icon {
+  transform: rotate(180deg);
+}
+.level-body {
+  display: none;
+}
+.level-section.open .level-body {
+  display: block;
+}
+
+/* Level assessments and Certification item style */
+.level-assessment-item, .certification-exam-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  background: rgba(99,102,241,0.04);
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+}
+.level-assessment-item:hover, .certification-exam-item:hover {
+  background: rgba(99,102,241,0.08);
+  color: #fff;
+}
+.level-assessment-item.locked, .certification-exam-item.locked {
+  color: var(--mist-dim);
+  cursor: not-allowed;
+  background: transparent;
+  opacity: 0.6;
+}
+.level-assessment-item.completed, .certification-exam-item.completed {
+  color: var(--emerald);
+  background: rgba(16,185,129,0.04);
+}
+
 /* Center — content area */
 .learn-content {
   overflow-y: auto;
@@ -337,6 +428,404 @@
 .vid-modal-title { font-size: 14px; font-weight: 600; }
 .vid-iframe-wrap { aspect-ratio: 16/9; background: #000; }
 .vid-iframe-wrap iframe { width: 100%; height: 100%; border: none; }
+
+/* ── EduNet v6.1 Learning Journey Styling ───────────────────── */
+.lesson-journey-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 1rem;
+}
+
+/* Base Card */
+.journey-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid var(--concept-accent, var(--accent));
+}
+
+.journey-card h2, .journey-card h3 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+}
+
+.journey-card-content {
+  color: var(--mist);
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+
+/* Concept Color Themes */
+.theme-variables { --concept-accent: #3b82f6; }
+.theme-constants { --concept-accent: #60a5fa; }
+.theme-ifstatement { --concept-accent: #f59e0b; }
+.theme-loops     { --concept-accent: #10b981; }
+.theme-functions { --concept-accent: #8b5cf6; }
+.theme-arrays    { --concept-accent: #f43f5e; }
+.theme-classes   { --concept-accent: #ec4899; }
+.theme-objects   { --concept-accent: #14b8a6; }
+.theme-joins     { --concept-accent: #a855f7; }
+.theme-restapi   { --concept-accent: #06b6d4; }
+.theme-json      { --concept-accent: #84cc16; }
+.theme-http      { --concept-accent: #e11d48; }
+
+/* Interactive Checkpoint */
+.checkpoint-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(99, 102, 241, 0.04));
+  border: 1px dashed rgba(59, 130, 246, 0.3);
+  border-left: 4px solid #3b82f6;
+}
+.checkpoint-question {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 1rem;
+}
+.checkpoint-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+.checkpoint-option {
+  padding: 0.75rem 1rem;
+  background: var(--abyss);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s;
+  font-size: 13.5px;
+}
+.checkpoint-option:hover {
+  background: var(--abyss-2);
+  border-color: var(--accent);
+}
+.checkpoint-option.correct {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: var(--emerald) !important;
+  color: var(--emerald) !important;
+}
+.checkpoint-option.wrong {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+}
+.checkpoint-feedback {
+  font-size: 13px;
+  color: var(--mist);
+  background: var(--abyss-2);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--concept-accent);
+  display: none;
+}
+.checkpoint-feedback.show {
+  display: block;
+}
+
+/* Stepper Card */
+.stepper-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+@media (max-width: 768px) {
+  .stepper-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.stepper-code-panel {
+  background: var(--abyss);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  position: relative;
+  overflow: hidden;
+}
+.stepper-code-line {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: all 0.25s;
+  display: flex;
+}
+.stepper-code-line.active {
+  opacity: 1;
+  background: rgba(99, 102, 241, 0.15);
+  box-shadow: inset 3px 0 0 var(--concept-accent);
+}
+.stepper-line-number {
+  color: var(--mist-dim);
+  width: 25px;
+  user-select: none;
+}
+.stepper-visual-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.stepper-explanation-box {
+  background: var(--abyss-2);
+  padding: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  min-height: 80px;
+}
+.stepper-console-box {
+  background: #000;
+  border-radius: 8px;
+  padding: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: #fff;
+  border: 1px solid #222;
+}
+.stepper-console-line {
+  color: #10b981;
+}
+.stepper-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* RAM Memory Card Diagram */
+.memory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--abyss);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.memory-table th, .memory-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.memory-table th {
+  background: var(--abyss-2);
+  color: var(--mist-dim);
+}
+.memory-table tr.active-slot {
+  background: rgba(59, 130, 246, 0.08);
+}
+.memory-address { color: var(--mist-dim); }
+.memory-label { color: var(--concept-accent); font-weight: 700; }
+.memory-value { color: var(--emerald); }
+
+/* Gradual Code Progress */
+.gradual-code-card {
+  background: var(--abyss);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+  overflow: hidden;
+}
+.gradual-code-step {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.gradual-code-step.active {
+  background: rgba(99,102,241,0.05);
+}
+.gradual-code-explain {
+  font-size: 13.5px;
+  color: var(--mist);
+  margin-bottom: 0.5rem;
+}
+
+/* BTS details panel */
+.bts-summary {
+  cursor: pointer;
+  padding: 0.75rem;
+  font-weight: 600;
+  color: var(--concept-accent);
+  background: var(--abyss);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  user-select: none;
+}
+.bts-summary:hover {
+  background: var(--abyss-2);
+}
+.bts-details-box {
+  padding: 1.25rem;
+  background: var(--abyss-2);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  font-size: 13.5px;
+}
+
+/* Locked card overlay */
+.journey-card-locked {
+  filter: blur(2px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.lock-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+}
+
+/* ── Stepper Header ─────────────────────────────────────────── */
+.stepper-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.75rem 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+.stepper-header::-webkit-scrollbar {
+  display: none;
+}
+.stepper-step {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--mist-dim);
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.01);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.stepper-step:hover {
+  color: var(--frost);
+  background: var(--surface-hover);
+}
+.stepper-step.active {
+  color: var(--accent);
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+.stepper-step.completed {
+  color: var(--emerald);
+}
+.stepper-step-indicator {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--mist-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+}
+.stepper-step.active .stepper-step-indicator {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.stepper-step.completed .stepper-step-indicator {
+  border-color: var(--emerald);
+  background: var(--emerald);
+  color: #fff;
+}
+.stepper-arrow {
+  color: var(--border);
+  font-size: 10px;
+}
+
+/* ── Interactive Quiz & Checkpoint option buttons ────────────── */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--abyss-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+.quiz-option:hover {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.04);
+}
+.quiz-option.selected {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.08);
+  box-shadow: 0 0 12px rgba(99,102,241,0.15);
+}
+.quiz-option.correct {
+  border-color: var(--emerald) !important;
+  background: rgba(16,185,129,0.1) !important;
+  color: var(--emerald) !important;
+}
+.quiz-option.wrong {
+  border-color: var(--rose) !important;
+  background: rgba(244,63,94,0.1) !important;
+  color: var(--rose) !important;
+}
+
+/* ── Interactive Practice solution blocks ───────────────────── */
+.exercise-sol-toggle {
+  background: var(--abyss-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* ── Bottom Step Navigation Bar ────────────────────────────── */
+.step-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
 </style>
 </head>
 <body>
@@ -428,11 +917,8 @@
     <div class="learn-sidebar-header">
       <div class="learn-sidebar-title" id="sbRoadmapTitle">Loading...</div>
       <div class="learn-sidebar-sub" id="sbRoadmapSub">12 modules</div>
-      <div class="learn-sidebar-prog">
-        <div class="progress-bar" style="margin-top:.4rem;">
-          <div class="progress-fill" id="sbProgressFill" style="width:0%"></div>
-        </div>
-        <div style="font-size:11px;color:var(--mist-dim);margin-top:.3rem;" id="sbProgressText">0 / 0 complete</div>
+      <div class="learn-sidebar-prog" id="sbProgressContainer" style="display:flex; flex-direction:column; gap:0.4rem; margin-top:0.6rem;">
+        <!-- Level-based progress bars dynamically loaded here -->
       </div>
     </div>
     <div class="learn-module-accordion" id="moduleList">
@@ -470,58 +956,64 @@
           </div>
         </div>
 
+        <!-- Stepper Visual Progress Tracker -->
+        <div id="courseStepper" class="stepper-header" style="display:none;"></div>
+
         <!-- Tabs -->
         <div class="learn-tabs" id="learnTabs">
-          <button class="learn-tab active" data-tab="learn">📖 Learn</button>
-          <button class="learn-tab" data-tab="exercises">💪 Exercises</button>
-          <button class="learn-tab" data-tab="projects">🛠️ Module Project</button>
-          <button class="learn-tab" data-tab="quiz">🧠 Lesson Quiz</button>
-          <button class="learn-tab" data-tab="notes">📝 Personal Notes</button>
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Tab: Overview -->
+        <div id="tab-overview" class="tab-panel">
+          <div id="overviewContainer"></div>
         </div>
 
         <!-- Tab: Learn -->
-        <div id="tab-learn" class="tab-panel">
-          <!-- Toggle level switcher -->
-          <div class="level-toggle-bar">
-            <button class="level-toggle-btn active" data-level="detailed">📖 Detailed theory</button>
-            <button class="level-toggle-btn" data-level="beginner">👶 Beginner friendly</button>
-            <button class="level-toggle-btn" data-level="advanced">🚀 Deep-Dive/Advanced</button>
-          </div>
-          
-          <div class="learn-notes-body" id="notesBody"><!-- rendered markdown --></div>
-          <div style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap;">
-            <button class="btn btn-primary" id="openCodingLabBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6L2 12l6 6"/></svg>
-              Practice in Coding Lab
-            </button>
-            <button class="btn btn-secondary" id="markCompleteBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-              Mark Lesson Complete
-            </button>
-            <button class="btn btn-secondary" id="bookmarkModBtn">🔖 Bookmark</button>
-          </div>
+        <div id="tab-learn" class="tab-panel" style="display:none;">
+          <div id="learnContainer"></div>
         </div>
 
-        <!-- Tab: Exercises -->
-        <div id="tab-exercises" class="tab-panel" style="display:none;">
-          <div id="exercisesContainer"><!-- exercises --></div>
+        <!-- Tab: Examples -->
+        <div id="tab-examples" class="tab-panel" style="display:none;">
+          <div id="examplesContainer"></div>
         </div>
 
-        <!-- Tab: Projects -->
-        <div id="tab-projects" class="tab-panel" style="display:none;">
-          <div id="projectsContainer"><!-- projects --></div>
+        <!-- Tab: Visualization -->
+        <div id="tab-visualization" class="tab-panel" style="display:none;">
+          <div id="visualizationContainer"></div>
+        </div>
+
+        <!-- Tab: Practice -->
+        <div id="tab-practice" class="tab-panel" style="display:none;">
+          <div id="practiceContainer"></div>
         </div>
 
         <!-- Tab: Quiz -->
         <div id="tab-quiz" class="tab-panel" style="display:none;">
-          <div id="quizContainer"><!-- quiz --></div>
+          <div id="quizContainer"></div>
           <div id="quizActions" style="display:none;margin-top:1.5rem;">
             <button class="btn btn-primary" id="submitQuizBtn">Submit Lesson Quiz</button>
             <div id="quizScore" style="display:none;margin-top:1rem;padding:1rem;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);"></div>
           </div>
         </div>
 
-        <!-- Tab: Notes (Student Notes) -->
+        <!-- Tab: Project -->
+        <div id="tab-project" class="tab-panel" style="display:none;">
+          <div id="projectContainer"></div>
+        </div>
+
+        <!-- Tab: Cheat Sheet -->
+        <div id="tab-cheatsheet" class="tab-panel" style="display:none;">
+          <div id="cheatsheetContainer"></div>
+        </div>
+
+        <!-- Tab: Interview Prep -->
+        <div id="tab-interview" class="tab-panel" style="display:none;">
+          <div id="interviewContainer"></div>
+        </div>
+
+        <!-- Tab: Notes -->
         <div id="tab-notes" class="tab-panel" style="display:none;">
           <div style="margin-bottom:1rem;">
             <label for="studentNotesArea" style="display:block;font-size:13px;font-weight:600;margin-bottom:.5rem;color:var(--text);">Write your personal notes for this lesson:</label>
@@ -530,6 +1022,36 @@
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <span id="notesStatus" style="font-size:12px;color:var(--mist-dim);">All notes are auto-saved to database.</span>
             <button class="btn btn-primary btn-sm" id="saveNotesBtn">Save Notes</button>
+          </div>
+        </div>
+
+        <!-- Tab: Summary -->
+        <div id="tab-summary" class="tab-panel" style="display:none;">
+          <div id="summaryContainer"></div>
+        </div>
+
+        <!-- Timed Exam/Assessment Workspace -->
+        <div id="examWorkspace" style="display:none; margin-top:2rem; padding:2rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md); position:relative;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:1rem; margin-bottom:1.5rem;">
+            <div>
+              <h2 id="examTitle" style="margin:0; font-size:1.5rem; color:var(--text);">Level Assessment</h2>
+              <p id="examSubtitle" style="margin:.25rem 0 0 0; font-size:12px; color:var(--mist);"></p>
+            </div>
+            <div style="display:flex; align-items:center; gap:1.5rem;">
+              <div id="examTimer" style="font-size:1.25rem; font-weight:800; color:var(--accent); font-family:var(--font-mono); background:var(--abyss-2); padding:0.5rem 1rem; border-radius:6px; border:1px solid var(--border);">00:00</div>
+              <button class="btn btn-secondary btn-sm" id="exitExamBtn">Exit Exam</button>
+            </div>
+          </div>
+          <div id="examQuestionsContainer" style="min-height:200px;"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2rem;">
+            <button class="btn btn-secondary" id="examPrevBtn">Previous Question</button>
+            <div id="examProgress" style="font-weight:600; font-size:13px; color:var(--mist);">Question 1 of 50</div>
+            <button class="btn btn-primary" id="examNextBtn">Next Question</button>
+          </div>
+          <div style="display:flex; justify-content:center; gap:0.5rem; margin-top:1.5rem; flex-wrap:wrap;" id="examPagination"></div>
+          <div style="display:flex; justify-content:flex-end; gap:1rem; margin-top:2rem; border-top:1px solid var(--border); padding-top:1.5rem;">
+            <button class="btn btn-secondary" id="saveExamSessionBtn">Save & Resume</button>
+            <button class="btn btn-primary" id="submitExamBtn" style="background:var(--emerald);">Submit Assessment</button>
           </div>
         </div>
 
@@ -624,6 +1146,7 @@
 
 <script src="js/api.js"></script>
 <script src="js/page-shell.js"></script>
+<script src="js/lesson-adapter.js"></script>
 <script src="js/roadmap-learn.js"></script>
 </body>
 </html>

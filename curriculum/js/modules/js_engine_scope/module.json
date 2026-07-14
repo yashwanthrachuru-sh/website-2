@@ -1,0 +1,7 @@
+{
+  "id": "js_js_engine_scope",
+  "name": "JS Engine & Scope",
+  "description": "Understand execution contexts and variable boundaries.",
+  "orderIndex": 1,
+  "xpReward": 200
+}

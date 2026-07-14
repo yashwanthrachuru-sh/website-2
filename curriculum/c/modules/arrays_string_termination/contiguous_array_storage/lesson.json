@@ -1,0 +1,26 @@
+{
+  "id": "c_contiguous_array_storage",
+  "title": "Contiguous Array Storage",
+  "technology": "C Programming",
+  "module": "Arrays String Termination",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Functions Recursion"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Contiguous Array Storage.",
+    "Write error-free implementations utilizing Contiguous Array Storage.",
+    "Debug and optimize performance characteristics of Contiguous Array Storage."
+  ],
+  "tags": [
+    "contiguous",
+    "array",
+    "storage"
+  ]
+}

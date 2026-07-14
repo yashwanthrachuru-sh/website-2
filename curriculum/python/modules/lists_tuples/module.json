@@ -1,0 +1,7 @@
+{
+  "id": "python_lists_tuples",
+  "name": "Lists & Tuples",
+  "description": "Sequence variables using contiguous array wrappers.",
+  "orderIndex": 6,
+  "xpReward": 200
+}

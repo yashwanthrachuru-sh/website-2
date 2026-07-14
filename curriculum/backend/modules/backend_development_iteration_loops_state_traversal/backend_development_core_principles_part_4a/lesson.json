@@ -1,0 +1,29 @@
+{
+  "id": "backend_backend_development_core_principles_part_4a",
+  "title": "Backend Development Core Principles Part 4A",
+  "technology": "Backend Development",
+  "module": "Backend Development Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Backend Development Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Backend Development Core Principles Part 4A.",
+    "Write error-free implementations utilizing Backend Development Core Principles Part 4A.",
+    "Debug and optimize performance characteristics of Backend Development Core Principles Part 4A."
+  ],
+  "tags": [
+    "backend",
+    "development",
+    "core",
+    "principles",
+    "part",
+    "4a"
+  ]
+}

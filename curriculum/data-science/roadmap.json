@@ -1,0 +1,30 @@
+{
+  "id": "data-science",
+  "title": "Data Science",
+  "category": "Data",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "data-science",
+    "python",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Data Science from beginner to production-ready design.",
+  "language": "python",
+  "prerequisites": [
+    "Understanding of basics in Data Science"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Data Science Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Data Science curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Data Science",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

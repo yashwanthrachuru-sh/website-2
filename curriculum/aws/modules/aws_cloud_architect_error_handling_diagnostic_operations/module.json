@@ -1,0 +1,7 @@
+{
+  "id": "aws_aws_cloud_architect_error_handling_diagnostic_operations",
+  "name": "AWS Cloud Architect Error Handling & Diagnostic Operations",
+  "description": "In-depth study on AWS Cloud Architect covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

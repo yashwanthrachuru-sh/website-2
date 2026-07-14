@@ -1,0 +1,29 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_core_principles_part_11a",
+  "title": "Kubernetes Orchestration Core Principles Part 11A",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Core Principles Part 11A.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Core Principles Part 11A.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Core Principles Part 11A."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "core",
+    "principles",
+    "part",
+    "11a"
+  ]
+}

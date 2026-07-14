@@ -1,0 +1,26 @@
+{
+  "id": "js_primitive_types_js",
+  "title": "Primitive Types JS",
+  "technology": "JavaScript",
+  "module": "Data Types & Coercion",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: JS Engine & Scope"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Primitive Types JS.",
+    "Write error-free implementations utilizing Primitive Types JS.",
+    "Debug and optimize performance characteristics of Primitive Types JS."
+  ],
+  "tags": [
+    "primitive",
+    "types",
+    "js"
+  ]
+}

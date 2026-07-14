@@ -1,0 +1,7 @@
+{
+  "id": "ai-engineer_ai_engineer_error_handling_diagnostic_operations",
+  "name": "AI Engineer Error Handling & Diagnostic Operations",
+  "description": "In-depth study on AI Engineer covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

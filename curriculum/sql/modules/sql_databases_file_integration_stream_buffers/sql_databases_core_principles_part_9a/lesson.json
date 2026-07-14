@@ -1,0 +1,30 @@
+{
+  "id": "sql_sql_databases_core_principles_part_9a",
+  "title": "SQL & Databases Core Principles Part 9A",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases File Integration & Stream Buffers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Error Handling & Diagnostic Operations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Core Principles Part 9A.",
+    "Write error-free implementations utilizing SQL & Databases Core Principles Part 9A.",
+    "Debug and optimize performance characteristics of SQL & Databases Core Principles Part 9A."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "core",
+    "principles",
+    "part",
+    "9a"
+  ]
+}

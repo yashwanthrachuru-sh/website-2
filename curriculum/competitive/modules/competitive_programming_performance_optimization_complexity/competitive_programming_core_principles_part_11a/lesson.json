@@ -1,0 +1,29 @@
+{
+  "id": "competitive_competitive_programming_core_principles_part_11a",
+  "title": "Competitive Programming Core Principles Part 11A",
+  "technology": "Competitive Programming",
+  "module": "Competitive Programming Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Competitive Programming Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Competitive Programming Core Principles Part 11A.",
+    "Write error-free implementations utilizing Competitive Programming Core Principles Part 11A.",
+    "Debug and optimize performance characteristics of Competitive Programming Core Principles Part 11A."
+  ],
+  "tags": [
+    "competitive",
+    "programming",
+    "core",
+    "principles",
+    "part",
+    "11a"
+  ]
+}

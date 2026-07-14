@@ -1,0 +1,26 @@
+{
+  "id": "c_file_handlers_fopen",
+  "title": "File Handlers fopen",
+  "technology": "C Programming",
+  "module": "File I/O Descriptors",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Dynamic Memory Allocation"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of File Handlers fopen.",
+    "Write error-free implementations utilizing File Handlers fopen.",
+    "Debug and optimize performance characteristics of File Handlers fopen."
+  ],
+  "tags": [
+    "file",
+    "handlers",
+    "fopen"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ml",
+  "title": "Machine Learning",
+  "category": "AI/ML",
+  "difficulty": "Advanced",
+  "icon": "🧭",
+  "tags": [
+    "ml",
+    "python",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Machine Learning from beginner to production-ready design.",
+  "language": "python",
+  "prerequisites": [
+    "Understanding of basics in Machine Learning"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Machine Learning Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Machine Learning curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Machine Learning",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

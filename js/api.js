@@ -7,21 +7,37 @@
   'use strict';
 
   // ── Environment Config ──────────────────────────────────────
+  // ⚠️  These are the ONLY production URLs. Do not change them.
   const CONFIG = {
-    PRODUCTION_API_BASE: 'https://edunet-backend.onrender.com'
+    PRODUCTION_API_BASE:  'https://edunet-yx17.onrender.com',
+    PRODUCTION_FRONTEND:  'https://edunet-seven.vercel.app'
   };
 
-  // Auto-detect environment: if served by the Express server (port 5000),
-  // use relative paths. If running locally as standalone files, use localhost:5000.
-  // In production, use the Render backend URL.
-  const API_BASE = (
-    window.location.port === '5000' ||
-    window.location.hostname === 'localhost' && window.location.port === '5000'
-  ) ? '' : (
-    window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-      ? 'http://localhost:5000'
-      : CONFIG.PRODUCTION_API_BASE
+  // Auto-detect environment:
+  //  - If served by the Express server (port 5000) → use relative paths (no prefix)
+  //  - If running locally as standalone files → use http://localhost:5000
+  //  - In production (Vercel) → use the Render backend URL
+  const IS_LOCAL = (
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1' ||
+    window.location.protocol === 'file:'
   );
+
+  const IS_SERVED_BY_EXPRESS = (
+    window.location.port === '5000' ||
+    (window.location.hostname === 'localhost' && window.location.port === '5000')
+  );
+
+  const API_BASE = IS_SERVED_BY_EXPRESS
+    ? ''
+    : IS_LOCAL
+      ? 'http://localhost:5000'
+      : CONFIG.PRODUCTION_API_BASE;
+
+  // Exported for use in share links, QR codes, etc.
+  const FRONTEND_BASE = IS_LOCAL
+    ? ('http://localhost:' + (window.location.port || '5000'))
+    : CONFIG.PRODUCTION_FRONTEND;
 
   // ── Session Helpers ─────────────────────────────────────────
   function getToken() {
@@ -223,6 +239,7 @@
   // ── Expose public API ────────────────────────────────────────
   window.EduNetAPI = {
     API_BASE:        API_BASE,
+    FRONTEND_BASE:   FRONTEND_BASE,
     apiFetch:        apiFetch,
     getToken:        getToken,
     getSession:      getSession,

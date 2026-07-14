@@ -1,0 +1,29 @@
+{
+  "id": "competitive_competitive_programming_core_principles_part_1a",
+  "title": "Competitive Programming Core Principles Part 1A",
+  "technology": "Competitive Programming",
+  "module": "Competitive Programming Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Competitive Programming Core Principles Part 1A.",
+    "Write error-free implementations utilizing Competitive Programming Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of Competitive Programming Core Principles Part 1A."
+  ],
+  "tags": [
+    "competitive",
+    "programming",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

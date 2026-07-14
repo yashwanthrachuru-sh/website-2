@@ -1,0 +1,25 @@
+{
+  "id": "typescript_type_aliases",
+  "title": "Type Aliases",
+  "technology": "TypeScript",
+  "module": "Interfaces & Types",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Basic Types Annotation"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Type Aliases.",
+    "Write error-free implementations utilizing Type Aliases.",
+    "Debug and optimize performance characteristics of Type Aliases."
+  ],
+  "tags": [
+    "type",
+    "aliases"
+  ]
+}

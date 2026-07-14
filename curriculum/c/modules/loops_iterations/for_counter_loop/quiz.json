@@ -1,0 +1,144 @@
+{
+  "mcqs": [
+    {
+      "id": "q_1",
+      "question": "What is the primary role of For Counter Loop?",
+      "options": [
+        "To manage and coordinate state transformations for For Counter Loop.",
+        "To override platform-level memory access constraints.",
+        "To run asynchronous file compression routines.",
+        "To construct direct database socket bindings."
+      ],
+      "answer": "A",
+      "explanation": "For Counter Loop organizes logic flow and handles operations safely at runtime.",
+      "difficulty": "Beginner",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_2",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_3",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_4",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_5",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_6",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_7",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_8",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_9",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "For Counter Loop"
+    },
+    {
+      "id": "q_10",
+      "question": "In c, which of the following is true about For Counter Loop?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "For Counter Loop"
+    }
+  ]
+}

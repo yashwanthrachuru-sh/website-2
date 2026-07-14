@@ -1,0 +1,215 @@
+{
+  "oneLineSummary": "A Python variable is a name that points to an object in memory — the type lives on the object, not the name.",
+
+  "summary": "Python variables are **name-to-object bindings** stored in namespace dictionaries. Unlike statically-typed languages where a variable is a typed memory box, Python variables are labels that can be moved to point at any object. The type belongs to the object. This is **dynamic typing**.\n\nThe key mechanical fact: `=` never copies an object. It copies a reference (memory address). For mutable objects (lists, dicts), this means multiple names can silently share the same object.",
+
+  "preInterviewChecklist": [
+    "Can I explain what `=` does in one sentence WITHOUT saying 'equals'?",
+    "Can I name 5 invalid variable name patterns and why each fails?",
+    "Can I explain the difference between mutable and immutable and give an example of each?",
+    "Can I predict what `a = [1,2]; b = a; b.append(3); print(a)` outputs and WHY?",
+    "Can I explain the LEGB rule using my own example?",
+    "Can I explain what `global` and `nonlocal` do and when each is needed?",
+    "Can I explain why `list = []` is dangerous?",
+    "Can I write the fix for the late-binding closure bug?",
+    "Can I explain what `is None` tests vs `== None`?"
+  ],
+
+  "memoryTricks": [
+    {
+      "concept": "The = operator direction",
+      "trick": "Think of = as an arrow pointing LEFT: `score ← 95`. Whatever is on the right goes INTO the name on the left. Never right-to-left."
+    },
+    {
+      "concept": "LEGB order",
+      "trick": "**'Last Exits, Goes Broad'** — Local (current function), Enclosing (outer functions), Global (module), Built-in (Python itself). Python always starts at the most local scope and expands outward."
+    },
+    {
+      "concept": "Mutable vs Immutable",
+      "trick": "**MIL** — Mutable Is Listlike (list, dict, set). Everything else (int, str, float, bool, tuple) is immutable. When you change an immutable, Python creates a NEW object. When you change a mutable, Python modifies the EXISTING object."
+    },
+    {
+      "concept": "b = a for lists",
+      "trick": "Assignment of a list is like giving someone the KEY to your house — not a copy of the house. They can come in and rearrange the furniture. Use `.copy()` to give them a copy of the house."
+    },
+    {
+      "concept": "None check",
+      "trick": "Always use **`is None`** — remember: 'None IS none' (identity). Never `== None` (equality can be overridden by custom classes)."
+    }
+  ],
+
+  "keyTakeaways": [
+    {
+      "point": "Variables are name → object bindings, not typed boxes.",
+      "why": "This explains why the same name can hold different types and why type() returns the object's type, not the name's type."
+    },
+    {
+      "point": "`=` copies a reference — never the object itself.",
+      "why": "Critical for understanding why mutations through one name affect all other names pointing to the same mutable object."
+    },
+    {
+      "point": "Mutable objects (list, dict, set) are shared by reference; immutable objects (int, str, tuple) appear to be independent because 'changing' them creates new objects.",
+      "why": "This is the source of the most common Python bugs for developers coming from other languages."
+    },
+    {
+      "point": "Python resolves names using LEGB: Local → Enclosing → Global → Built-in.",
+      "why": "Explains NameError, UnboundLocalError, and why `global` and `nonlocal` exist."
+    },
+    {
+      "point": "Assignment inside a function makes the name local for the ENTIRE function — even lines before the assignment.",
+      "why": "The cause of UnboundLocalError — Python scans the whole function body before executing it."
+    },
+    {
+      "point": "Never name variables after built-ins: `list`, `str`, `dict`, `id`, `type`, `print`, `input`.",
+      "why": "Shadows the built-in function for the rest of the scope. Very hard to debug."
+    },
+    {
+      "point": "PEP 8: `lowercase_with_underscores` for variables, `UPPER_SNAKE_CASE` for constants, `PascalCase` for classes.",
+      "why": "Convention is not enforced but is expected in every team and code review."
+    },
+    {
+      "point": "Closures capture the variable by reference — not its value at creation time.",
+      "why": "The late-binding closure bug: all lambdas in a loop see the loop variable's FINAL value. Fix with default arguments."
+    },
+    {
+      "point": "Use `is None` not `== None`. Use `isinstance()` not `type(x) == T`.",
+      "why": "Identity checks are always safe. Equality and type checks can be overridden by custom classes."
+    },
+    {
+      "point": "Type annotations are documentation for tools — they are not enforced at runtime.",
+      "why": "You get IDE autocomplete and mypy checking without any runtime cost or restriction."
+    }
+  ],
+
+  "commonErrors": [
+    {
+      "error": "SyntaxError: invalid decimal literal",
+      "cause": "Variable name starts with a digit: `1score = 95`",
+      "fix": "Move the digit to the end: `score1 = 95`"
+    },
+    {
+      "error": "SyntaxError: invalid syntax",
+      "cause": "Space in variable name: `final score = 100`, or keyword used: `class = 'Math'`, or `=` in condition: `if x = 5:`",
+      "fix": "Use underscores: `final_score`. Rename keyword clashes. Use `==` for comparison."
+    },
+    {
+      "error": "NameError: name 'x' is not defined",
+      "cause": "Reading a variable before creating it, or typo in the name (case mismatch)",
+      "fix": "Assign before reading. Check spelling and case."
+    },
+    {
+      "error": "UnboundLocalError: local variable 'x' referenced before assignment",
+      "cause": "Function has `x = ...` somewhere in its body, so Python treats `x` as local everywhere in the function — including lines before the assignment",
+      "fix": "Add `global x` at the top of the function, or better: pass `x` as an argument and return the result"
+    },
+    {
+      "error": "Unexpected mutation — list changed without direct assignment",
+      "cause": "`b = a` followed by `b.append(...)` — both names share the same list object",
+      "fix": "Use `b = a.copy()` or `b = a[:]` to create an independent copy"
+    },
+    {
+      "error": "TypeError: 'list' object is not callable",
+      "cause": "`list = [1, 2, 3]` shadows the built-in. Later `list([4, 5])` tries to call your variable.",
+      "fix": "Rename the variable: `my_list = [1, 2, 3]`"
+    },
+    {
+      "error": "All loop-generated functions return the same value",
+      "cause": "Late-binding closure: `funcs = [lambda: i for i in range(3)]` — all lambdas share one `i`",
+      "fix": "Use default argument: `funcs = [lambda i=i: i for i in range(3)]`"
+    }
+  ],
+
+  "quickRecap": {
+    "in30Seconds": "A variable is a label in Python. You make one with `name = value`. The label can be moved to any object of any type — Python figures out the type for you. The most important thing to remember: for lists and dicts, `b = a` means both names share the SAME data. Use `.copy()` when you need independence.",
+    "analogies": {
+      "forKids": "A variable is like a box with a name written on it. You put something inside. You can open the box and change what's inside. But if you give the box's address to a friend (like you do with lists), they can reach inside and change things too.",
+      "forProgrammers": "A variable is an entry in a hash table (the namespace dict). The entry maps a string key (the name) to a PyObject pointer (the reference). Assignment updates the pointer. Mutation changes the object at the pointer's destination."
+    }
+  },
+
+  "mindMap": {
+    "root": "Python Variables",
+    "branches": [
+      {
+        "topic": "Core Concept",
+        "level": "beginner",
+        "children": [
+          "Name bound to an object (not a typed box)",
+          "Lives in a namespace dict",
+          "= copies reference, not value",
+          "Dynamic typing — type on object"
+        ]
+      },
+      {
+        "topic": "Syntax",
+        "level": "beginner",
+        "children": [
+          "name = value",
+          "a, b = val1, val2 (unpacking)",
+          "a, b = b, a (swap)",
+          "+= -= *= /= //= **= %= (augmented)",
+          "n := expr (walrus, Python 3.8+)"
+        ]
+      },
+      {
+        "topic": "Mutability",
+        "level": "intermediate",
+        "children": [
+          "Immutable: int, str, float, bool, tuple",
+          "Mutable: list, dict, set",
+          "b = a [list] → shared object",
+          "b = a.copy() → independent",
+          "deepcopy() for nested mutables"
+        ]
+      },
+      {
+        "topic": "Scope (LEGB)",
+        "level": "intermediate",
+        "children": [
+          "Local — current function",
+          "Enclosing — outer function (closures)",
+          "Global — module level",
+          "Built-in — print, len, range…",
+          "global to assign to module var",
+          "nonlocal to assign to enclosing var"
+        ]
+      },
+      {
+        "topic": "Common Bugs",
+        "level": "intermediate",
+        "children": [
+          "UnboundLocalError — assign before read in function",
+          "Shared list mutation — b = a for lists",
+          "Built-in shadowing — list = [], str = ''",
+          "Late-binding closure — lambda captures var, not value"
+        ]
+      },
+      {
+        "topic": "Professional",
+        "level": "expert",
+        "children": [
+          "Type annotations: name: type = value",
+          "__slots__ for memory-efficient classes",
+          "Sentinel pattern for missing values",
+          "Secrets in os.environ, not variables",
+          "Global state → function arguments"
+        ]
+      }
+    ]
+  },
+
+  "estimatedLearningTime": {
+    "beginner": "25–35 minutes",
+    "intermediate": "20–30 minutes",
+    "expert": "30–45 minutes",
+    "practice": "20–30 minutes",
+    "total": "90–140 minutes for complete mastery"
+  },
+
+  "nextTopics": [
+    { "title": "Data Types", "whyNext": "Now that you know what variables ARE, learn what they can HOLD — int, float, str, bool, None — in depth." },
+    { "title": "Type Casting", "whyNext": "Learn to convert between types: int(), str(), float(). Required for processing user input." },
+    { "title": "Operators", "whyNext": "Arithmetic (+, -, *, /), comparison (==, !=, <, >), logical (and, or, not). The operations you perform on your variables." },
+    { "title": "String Methods", "whyNext": "Since strings are immutable and the most common variable type in real applications, their methods (split, join, strip, format) are immediately practical." }
+  ]
+}

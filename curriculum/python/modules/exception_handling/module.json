@@ -1,0 +1,7 @@
+{
+  "id": "python_exception_handling",
+  "name": "Exception Handling",
+  "description": "Gracefully capture and resolve execution failures.",
+  "orderIndex": 11,
+  "xpReward": 200
+}

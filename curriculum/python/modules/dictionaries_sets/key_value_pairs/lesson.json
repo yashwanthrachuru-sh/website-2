@@ -1,0 +1,26 @@
+{
+  "id": "python_key_value_pairs",
+  "title": "Key Value Pairs",
+  "technology": "Python",
+  "module": "Dictionaries & Sets",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Lists & Tuples"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Key Value Pairs.",
+    "Write error-free implementations utilizing Key Value Pairs.",
+    "Debug and optimize performance characteristics of Key Value Pairs."
+  ],
+  "tags": [
+    "key",
+    "value",
+    "pairs"
+  ]
+}

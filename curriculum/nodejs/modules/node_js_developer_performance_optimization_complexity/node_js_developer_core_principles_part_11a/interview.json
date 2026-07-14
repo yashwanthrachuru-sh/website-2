@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "How do you detect a cycle in a linked list?",
+      "answer": "Floyd's Cycle Detection (Tortoise and Hare): Use two pointers — slow moves 1 step, fast moves 2 steps. If they ever point to the same node, there's a cycle. If fast reaches null, no cycle. Why it works: in a cycle, the fast pointer gains 1 step per iteration on the slow pointer. Since they're in a finite loop, they must eventually meet. Time: O(n), Space: O(1) — better than using a hash set (O(n) space).",
+      "difficulty": "Medium"
+    },
+    {
+      "question": "When would you choose a linked list over an array?",
+      "answer": "Choose linked list when: (1) You frequently insert/delete at the HEAD (O(1) vs O(n) for array). (2) Size is unknown and changes frequently — no need to pre-allocate or resize. (3) Implementing a stack, queue, or LRU cache. Choose array when: (1) You need random access by index (O(1) vs O(n) for linked list). (2) Memory locality matters (arrays are cache-friendly — elements are contiguous). (3) You need binary search. In practice, arrays (and Python lists, Java ArrayLists) are used far more often due to cache performance.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "How do you reverse a singly linked list in O(1) space?",
+      "answer": "Three-pointer technique: prev = None, current = head, next_node = None. While current is not None: (1) save current.next to next_node, (2) reverse: current.next = prev, (3) advance: prev = current, current = next_node. At end, prev points to the new head. This reverses pointers in place without extra memory — O(n) time, O(1) space.",
+      "difficulty": "Medium"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Node.js Developer Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Node.js Developer Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Node.js Developer Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Node.js Developer Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Node.js Developer Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Node.js Developer Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Node.js Developer Core Principles Part 11A queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

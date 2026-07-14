@@ -1,0 +1,30 @@
+{
+  "id": "gcp_gcp_cloud_engineer_core_principles_part_9a",
+  "title": "GCP Cloud Engineer Core Principles Part 9A",
+  "technology": "GCP Cloud Engineer",
+  "module": "GCP Cloud Engineer File Integration & Stream Buffers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: GCP Cloud Engineer Error Handling & Diagnostic Operations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCP Cloud Engineer Core Principles Part 9A.",
+    "Write error-free implementations utilizing GCP Cloud Engineer Core Principles Part 9A.",
+    "Debug and optimize performance characteristics of GCP Cloud Engineer Core Principles Part 9A."
+  ],
+  "tags": [
+    "gcp",
+    "cloud",
+    "engineer",
+    "core",
+    "principles",
+    "part",
+    "9a"
+  ]
+}

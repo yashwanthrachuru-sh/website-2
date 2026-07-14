@@ -1,0 +1,28 @@
+{
+  "id": "ai-engineer_ai_engineer_troubleshooting_part_7c",
+  "title": "AI Engineer Troubleshooting Part 7C",
+  "technology": "AI Engineer",
+  "module": "AI Engineer Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AI Engineer Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AI Engineer Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing AI Engineer Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of AI Engineer Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "ai",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

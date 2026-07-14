@@ -1,0 +1,28 @@
+{
+  "id": "devops_devops_engineer_troubleshooting_part_1c",
+  "title": "DevOps Engineer Troubleshooting Part 1C",
+  "technology": "DevOps Engineer",
+  "module": "DevOps Engineer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of DevOps Engineer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing DevOps Engineer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of DevOps Engineer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "devops",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

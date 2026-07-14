@@ -1,0 +1,25 @@
+{
+  "id": "python_import_statements",
+  "title": "Import Statements",
+  "technology": "Python",
+  "module": "Modules & Packages",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Object Oriented Python"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Import Statements.",
+    "Write error-free implementations utilizing Import Statements.",
+    "Debug and optimize performance characteristics of Import Statements."
+  ],
+  "tags": [
+    "import",
+    "statements"
+  ]
+}

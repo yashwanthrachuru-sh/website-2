@@ -1,0 +1,30 @@
+{
+  "id": "flutter",
+  "title": "Flutter Developer",
+  "category": "Mobile",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "flutter",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Flutter Developer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Flutter Developer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Flutter Developer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Flutter Developer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Flutter Developer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

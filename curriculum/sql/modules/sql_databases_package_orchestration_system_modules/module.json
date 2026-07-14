@@ -1,0 +1,7 @@
+{
+  "id": "sql_sql_databases_package_orchestration_system_modules",
+  "name": "SQL & Databases Package Orchestration & System Modules",
+  "description": "In-depth study on SQL & Databases covering managing external libraries and resolving package dependencies.",
+  "orderIndex": 10,
+  "xpReward": 200
+}

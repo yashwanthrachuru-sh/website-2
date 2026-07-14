@@ -1,0 +1,27 @@
+{
+  "id": "html_html_troubleshooting_part_8c",
+  "title": "HTML Troubleshooting Part 8C",
+  "technology": "HTML",
+  "module": "HTML Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Troubleshooting Part 8C.",
+    "Write error-free implementations utilizing HTML Troubleshooting Part 8C.",
+    "Debug and optimize performance characteristics of HTML Troubleshooting Part 8C."
+  ],
+  "tags": [
+    "html",
+    "troubleshooting",
+    "part",
+    "8c"
+  ]
+}

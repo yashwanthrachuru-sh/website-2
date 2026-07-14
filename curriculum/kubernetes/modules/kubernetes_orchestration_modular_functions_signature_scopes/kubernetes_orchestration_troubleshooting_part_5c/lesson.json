@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_5c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 5C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 5C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 5C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 5C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "5c"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "react_react_developer_troubleshooting_part_12c",
+  "title": "React Developer Troubleshooting Part 12C",
+  "technology": "React Developer",
+  "module": "React Developer Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: React Developer Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of React Developer Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing React Developer Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of React Developer Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "react",
+    "developer",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

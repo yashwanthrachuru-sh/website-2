@@ -1,0 +1,25 @@
+{
+  "id": "python_virtual_environments",
+  "title": "Virtual Environments",
+  "technology": "Python",
+  "module": "Modules & Packages",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Object Oriented Python"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Virtual Environments.",
+    "Write error-free implementations utilizing Virtual Environments.",
+    "Debug and optimize performance characteristics of Virtual Environments."
+  ],
+  "tags": [
+    "virtual",
+    "environments"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "kubernetes",
+  "title": "Kubernetes Orchestration",
+  "category": "DevOps",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "kubernetes",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Kubernetes Orchestration from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Kubernetes Orchestration"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Kubernetes Orchestration Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Kubernetes Orchestration curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Kubernetes Orchestration",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

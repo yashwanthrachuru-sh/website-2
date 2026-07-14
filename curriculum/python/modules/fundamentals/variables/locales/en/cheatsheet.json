@@ -1,0 +1,106 @@
+{
+  "title": "Python Variables — Quick Reference Card",
+  "printNote": "This cheat sheet covers the complete syntax for Python variables. Print it and keep it on your desk during the first two weeks of learning Python.",
+  "sections": [
+    {
+      "heading": "Creating & Assigning Variables",
+      "entries": [
+        {
+          "syntax": "name = value",
+          "example": "score = 95",
+          "description": "Create a variable and assign a value",
+          "commonMistake": "Do not use 'int name = 95' — Python needs no type keyword"
+        },
+        {
+          "syntax": "a = b = c = value",
+          "example": "x = y = z = 0",
+          "description": "Assign the same value to multiple names at once",
+          "commonMistake": "All three names point to the SAME object (fine for immutables, be careful with mutables)"
+        },
+        {
+          "syntax": "a, b = value1, value2",
+          "example": "name, age = \"Alice\", 25",
+          "description": "Assign multiple values in one line (tuple unpacking)",
+          "commonMistake": "Number of names must match number of values, else ValueError"
+        },
+        {
+          "syntax": "a, b = b, a",
+          "example": "x, y = y, x",
+          "description": "Swap two variables without a temporary variable",
+          "commonMistake": "In other languages this needs: temp = a; a = b; b = temp"
+        },
+        {
+          "syntax": "a, *rest = iterable",
+          "example": "first, *others = [1, 2, 3, 4]  # first=1, others=[2,3,4]",
+          "description": "Star unpacking — captures remaining items into a list",
+          "commonMistake": "Only one starred name allowed per unpacking expression"
+        },
+        {
+          "syntax": "name := value  (walrus)",
+          "example": "if n := len(data) > 10: print(n)",
+          "description": "Assign and return in one expression (Python 3.8+)",
+          "commonMistake": "Cannot use := as a standalone statement — must be inside an expression"
+        }
+      ]
+    },
+    {
+      "heading": "Augmented Assignment Operators",
+      "entries": [
+        { "syntax": "x += n",   "example": "score += 10   # score = score + 10",  "description": "Add n to x",                "commonMistake": "For immutables (int, str), creates a NEW object. For list, extends in-place." },
+        { "syntax": "x -= n",   "example": "health -= 20  # health = health - 20", "description": "Subtract n from x",          "commonMistake": "" },
+        { "syntax": "x *= n",   "example": "price *= 1.1  # 10% increase",         "description": "Multiply x by n",            "commonMistake": "list *= 2 repeats the list: [1,2]*2 = [1,2,1,2]" },
+        { "syntax": "x /= n",   "example": "total /= 2    # always float result",   "description": "Divide x by n (float result)","commonMistake": "Result is always float even if divisible evenly: 10/2 = 5.0" },
+        { "syntax": "x //= n",  "example": "total //= 2   # integer floor division","description": "Floor divide (drops decimal)", "commonMistake": "" },
+        { "syntax": "x **= n",  "example": "value **= 2   # value = value squared", "description": "Raise x to the power n",     "commonMistake": "" },
+        { "syntax": "x %= n",   "example": "count %= 10   # wraps around 0-9",      "description": "Remainder when dividing x by n","commonMistake": "" }
+      ]
+    },
+    {
+      "heading": "Type Inspection & Identity",
+      "entries": [
+        { "syntax": "type(x)",           "example": "type(42)  # <class 'int'>",          "description": "Returns the type/class of x",                        "commonMistake": "type(x) == int is valid but isinstance() is preferred" },
+        { "syntax": "isinstance(x, T)",  "example": "isinstance(42, int)  # True",         "description": "True if x is an instance of T (or subclass of T)",  "commonMistake": "isinstance(True, int) is True — bool is a subclass of int" },
+        { "syntax": "id(x)",             "example": "id(score)  # e.g., 140234",           "description": "Returns the memory address of the object x points to","commonMistake": "Never use id() for equality checks — use == or is" },
+        { "syntax": "x is y",            "example": "x is None  # idiomatic None check",   "description": "True if x and y point to the SAME object in memory",  "commonMistake": "Use 'is' only for None/True/False and sentinel checks. Use '==' for value comparison." },
+        { "syntax": "x is not y",        "example": "if result is not None:",              "description": "True if x and y are DIFFERENT objects",             "commonMistake": "" },
+        { "syntax": "del x",             "example": "del temp_var",                         "description": "Removes the name binding. Object freed if refcount → 0","commonMistake": "del removes the NAME, not necessarily the object (if other names still point to it)" }
+      ]
+    },
+    {
+      "heading": "Scope Keywords",
+      "entries": [
+        { "syntax": "global name",   "example": "global counter  # use module-level counter inside a function", "description": "Declare name refers to the module-level (global) variable", "commonMistake": "global is needed only when you ASSIGN to the name inside the function. Reading a global works without declaring it." },
+        { "syntax": "nonlocal name", "example": "nonlocal count  # use enclosing function's count",           "description": "Declare name refers to the enclosing function's variable",  "commonMistake": "nonlocal cannot reach a global variable — only an enclosing function scope." }
+      ]
+    },
+    {
+      "heading": "Making Independent Copies",
+      "entries": [
+        { "syntax": "copy = original[:]",         "example": "new_list = scores[:]",              "description": "Shallow copy of a list using slice",    "commonMistake": "Shallow — nested lists inside are still shared" },
+        { "syntax": "copy = original.copy()",     "example": "new_list = scores.copy()",          "description": "Shallow copy using .copy() method",    "commonMistake": "" },
+        { "syntax": "copy = list(original)",      "example": "new_list = list(scores)",           "description": "Shallow copy using the list constructor","commonMistake": "" },
+        { "syntax": "import copy; copy.deepcopy(x)","example": "deep = copy.deepcopy(nested_list)","description": "Deep copy — independent at all nesting levels","commonMistake": "Required only for nested mutable structures (list of lists, list of dicts)" }
+      ]
+    },
+    {
+      "heading": "PEP 8 Naming Conventions",
+      "entries": [
+        { "syntax": "user_name",     "example": "account_balance = 0",         "description": "Variables — lowercase_with_underscores",           "commonMistake": "Not camelCase (accountBalance) — that's Java style" },
+        { "syntax": "MAX_SIZE",      "example": "MAX_RETRIES = 3",              "description": "Constants — UPPER_SNAKE_CASE",                      "commonMistake": "Python does not enforce constants — by convention, uppercase means 'do not change'" },
+        { "syntax": "MyClass",       "example": "class UserProfile:",           "description": "Class names — CapWords / PascalCase",               "commonMistake": "" },
+        { "syntax": "_internal",     "example": "_cache = {}",                  "description": "Module-private by convention",                       "commonMistake": "Single underscore is convention, not enforced" },
+        { "syntax": "__name",        "example": "class Foo:\\n  __secret = 1", "description": "Name mangling — becomes _ClassName__name",           "commonMistake": "Double underscore triggers name mangling inside classes — not just convention" },
+        { "syntax": "__dunder__",    "example": "__init__, __repr__",           "description": "Python magic/special methods — do not create your own","commonMistake": "" }
+      ]
+    },
+    {
+      "heading": "Built-in Names to Never Shadow",
+      "entries": [
+        { "syntax": "list, dict, set",   "example": "❌ list = []   ✅ my_list = []",   "description": "These are the type constructors — shadowing breaks list(), dict(), set()",    "commonMistake": "Hardest to spot because PyCharm may not warn you" },
+        { "syntax": "str, int, float",   "example": "❌ str = 'hi'  ✅ my_str = 'hi'", "description": "Type conversion functions — shadowing breaks int(), str(), float()",        "commonMistake": "" },
+        { "syntax": "print, input, open","example": "❌ print = ''  ✅ output = ''",   "description": "Core built-in functions — shadowing makes them uncallable",                "commonMistake": "" },
+        { "syntax": "id, type, len",     "example": "❌ id = 42     ✅ user_id = 42",  "description": "Inspection built-ins — id is the most commonly accidentally shadowed",      "commonMistake": "Very common: naming a variable 'id' shadows the built-in id() function" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "azure_azure_cloud_engineer_troubleshooting_part_6c",
+  "title": "Azure Cloud Engineer Troubleshooting Part 6C",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Troubleshooting Part 6C.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Troubleshooting Part 6C.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Troubleshooting Part 6C."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "6c"
+  ]
+}

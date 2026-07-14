@@ -1,0 +1,28 @@
+{
+  "id": "docker_docker_containers_troubleshooting_part_3c",
+  "title": "Docker Containers Troubleshooting Part 3C",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Docker Containers Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing Docker Containers Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of Docker Containers Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "ui-ux_ui_ux_design_troubleshooting_part_1c",
+  "title": "UI/UX Design Troubleshooting Part 1C",
+  "technology": "UI/UX Design",
+  "module": "UI/UX Design Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of UI/UX Design Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing UI/UX Design Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of UI/UX Design Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "ui/ux",
+    "design",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

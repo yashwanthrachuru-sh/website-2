@@ -1,0 +1,30 @@
+{
+  "id": "sql",
+  "title": "SQL & Databases",
+  "category": "Data",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "sql",
+    "sql",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for SQL & Databases from beginner to production-ready design.",
+  "language": "sql",
+  "prerequisites": [
+    "Understanding of basics in SQL & Databases"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "SQL & Databases Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the SQL & Databases curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of SQL & Databases",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

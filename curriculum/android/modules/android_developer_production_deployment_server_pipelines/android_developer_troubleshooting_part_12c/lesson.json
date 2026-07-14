@@ -1,0 +1,28 @@
+{
+  "id": "android_android_developer_troubleshooting_part_12c",
+  "title": "Android Developer Troubleshooting Part 12C",
+  "technology": "Android Developer",
+  "module": "Android Developer Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Android Developer Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Android Developer Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing Android Developer Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of Android Developer Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "android",
+    "developer",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

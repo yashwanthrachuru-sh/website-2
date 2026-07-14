@@ -1,0 +1,26 @@
+{
+  "id": "js_lexical_scope_contexts",
+  "title": "Lexical Scope Contexts",
+  "technology": "JavaScript",
+  "module": "Closures & Functions",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Iteration & Loops"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Lexical Scope Contexts.",
+    "Write error-free implementations utilizing Lexical Scope Contexts.",
+    "Debug and optimize performance characteristics of Lexical Scope Contexts."
+  ],
+  "tags": [
+    "lexical",
+    "scope",
+    "contexts"
+  ]
+}

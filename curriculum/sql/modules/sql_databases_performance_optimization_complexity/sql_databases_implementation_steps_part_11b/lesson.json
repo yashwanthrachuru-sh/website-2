@@ -1,0 +1,30 @@
+{
+  "id": "sql_sql_databases_implementation_steps_part_11b",
+  "title": "SQL & Databases Implementation Steps Part 11B",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Implementation Steps Part 11B.",
+    "Write error-free implementations utilizing SQL & Databases Implementation Steps Part 11B.",
+    "Debug and optimize performance characteristics of SQL & Databases Implementation Steps Part 11B."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "implementation",
+    "steps",
+    "part",
+    "11b"
+  ]
+}

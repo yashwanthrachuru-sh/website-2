@@ -1,0 +1,28 @@
+{
+  "id": "cpp_c_core_principles_part_6a",
+  "title": "C++ Core Principles Part 6A",
+  "technology": "C++",
+  "module": "C++ Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: C++ Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Core Principles Part 6A.",
+    "Write error-free implementations utilizing C++ Core Principles Part 6A.",
+    "Debug and optimize performance characteristics of C++ Core Principles Part 6A."
+  ],
+  "tags": [
+    "c++",
+    "core",
+    "principles",
+    "part",
+    "6a"
+  ]
+}

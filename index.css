@@ -1809,6 +1809,116 @@ tr:hover td { background: var(--surface); }
 .badge-accent { background:var(--accent-soft); color:var(--accent); border:1px solid var(--border-accent); border-radius:var(--r-full); padding:3px 10px; font-size:11px; font-weight:600; font-family:var(--font-mono); }
 
 /* ── Form validation colors ──────────────────────────────── */
+/* ── Form validation colors ──────────────────────────────── */
 .form-error   { color:var(--rose);    font-size:12.5px; margin-top:.3rem; min-height:1.2rem; }
 .form-success { color:var(--emerald); font-size:12.5px; margin-top:.3rem; min-height:1.2rem; }
+
+/* ── Premium Learning Card Components ────────────────────────── */
+.premium-callout {
+  display: flex;
+  gap: 1rem;
+  background: var(--abyss-2);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--r-sm);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+}
+.premium-callout.callout-info {
+  border-left-color: var(--blue);
+  background: rgba(59,130,246,0.04);
+}
+.premium-callout.callout-mistake {
+  border-left-color: var(--rose);
+  background: rgba(244,63,94,0.04);
+}
+.premium-callout.callout-tip {
+  border-left-color: var(--emerald);
+  background: rgba(16,185,129,0.04);
+}
+.callout-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.callout-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--frost);
+}
+
+.mistake-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 680px) {
+  .mistake-comparison-grid { grid-template-columns: 1fr; }
+}
+.comparison-card {
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--abyss);
+}
+.comparison-card.bad {
+  border-color: rgba(244,63,94,0.25);
+}
+.comparison-card.bad .card-header {
+  background: rgba(244,63,94,0.08);
+  color: var(--rose);
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(244,63,94,0.2);
+}
+.comparison-card.good {
+  border-color: rgba(16,185,129,0.25);
+}
+.comparison-card.good .card-header {
+  background: rgba(16,185,129,0.08);
+  color: var(--emerald);
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(16,185,129,0.2);
+}
+.comparison-card .card-body {
+  padding: 1rem;
+}
+.comparison-card .card-desc {
+  margin-top: 0.75rem;
+  font-size: 13px;
+  color: var(--mist);
+  line-height: 1.5;
+}
+
+.premium-visual-diagram-card {
+  background: #020617;
+  border: 1px dashed var(--border);
+  border-radius: var(--r-sm);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+.premium-visual-diagram-card pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+.premium-application-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+.premium-application-item:last-child {
+  border-bottom: none;
+}
+.app-icon {
+  font-size: 1.35rem;
+}
+
 

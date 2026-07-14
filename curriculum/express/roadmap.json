@@ -1,0 +1,30 @@
+{
+  "id": "express",
+  "title": "Express.js Developer",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "express",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Express.js Developer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Express.js Developer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Express.js Developer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Express.js Developer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Express.js Developer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

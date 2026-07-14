@@ -1,0 +1,7 @@
+{
+  "id": "docker_docker_containers_file_integration_stream_buffers",
+  "name": "Docker Containers File Integration & Stream Buffers",
+  "description": "In-depth study on Docker Containers covering reading and writing inputs to persistent storage structures.",
+  "orderIndex": 9,
+  "xpReward": 200
+}

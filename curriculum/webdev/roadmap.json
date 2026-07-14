@@ -1,0 +1,30 @@
+{
+  "id": "webdev",
+  "title": "Web Development",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "webdev",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Web Development from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Web Development"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Web Development Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Web Development curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Web Development",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

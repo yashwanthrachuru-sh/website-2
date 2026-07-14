@@ -1,0 +1,29 @@
+{
+  "id": "devops_devops_engineer_core_principles_part_5a",
+  "title": "DevOps Engineer Core Principles Part 5A",
+  "technology": "DevOps Engineer",
+  "module": "DevOps Engineer Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: DevOps Engineer Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of DevOps Engineer Core Principles Part 5A.",
+    "Write error-free implementations utilizing DevOps Engineer Core Principles Part 5A.",
+    "Debug and optimize performance characteristics of DevOps Engineer Core Principles Part 5A."
+  ],
+  "tags": [
+    "devops",
+    "engineer",
+    "core",
+    "principles",
+    "part",
+    "5a"
+  ]
+}

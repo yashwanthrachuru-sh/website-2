@@ -1,0 +1,25 @@
+{
+  "id": "typescript_class_decorators",
+  "title": "Class Decorators",
+  "technology": "TypeScript",
+  "module": "Decorators Compilation",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Utility Types Mapping"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Class Decorators.",
+    "Write error-free implementations utilizing Class Decorators.",
+    "Debug and optimize performance characteristics of Class Decorators."
+  ],
+  "tags": [
+    "class",
+    "decorators"
+  ]
+}

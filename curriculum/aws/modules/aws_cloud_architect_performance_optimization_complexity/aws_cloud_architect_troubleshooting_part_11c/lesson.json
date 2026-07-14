@@ -1,0 +1,29 @@
+{
+  "id": "aws_aws_cloud_architect_troubleshooting_part_11c",
+  "title": "AWS Cloud Architect Troubleshooting Part 11C",
+  "technology": "AWS Cloud Architect",
+  "module": "AWS Cloud Architect Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AWS Cloud Architect Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AWS Cloud Architect Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing AWS Cloud Architect Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of AWS Cloud Architect Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "aws",
+    "cloud",
+    "architect",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

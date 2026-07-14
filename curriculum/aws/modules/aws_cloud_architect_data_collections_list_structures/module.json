@@ -1,0 +1,7 @@
+{
+  "id": "aws_aws_cloud_architect_data_collections_list_structures",
+  "name": "AWS Cloud Architect Data Collections & List Structures",
+  "description": "In-depth study on AWS Cloud Architect covering storing sorted items and manipulating contiguous tables.",
+  "orderIndex": 6,
+  "xpReward": 200
+}

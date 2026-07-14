@@ -1,0 +1,29 @@
+{
+  "id": "frontend_frontend_development_core_principles_part_2a",
+  "title": "Frontend Development Core Principles Part 2A",
+  "technology": "Frontend Development",
+  "module": "Frontend Development Variables & Core Data Layouts",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Frontend Development Setup & Architecture Foundations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Frontend Development Core Principles Part 2A.",
+    "Write error-free implementations utilizing Frontend Development Core Principles Part 2A.",
+    "Debug and optimize performance characteristics of Frontend Development Core Principles Part 2A."
+  ],
+  "tags": [
+    "frontend",
+    "development",
+    "core",
+    "principles",
+    "part",
+    "2a"
+  ]
+}

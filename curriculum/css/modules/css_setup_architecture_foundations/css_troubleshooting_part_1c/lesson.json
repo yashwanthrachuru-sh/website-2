@@ -1,0 +1,27 @@
+{
+  "id": "css_css_troubleshooting_part_1c",
+  "title": "CSS Troubleshooting Part 1C",
+  "technology": "CSS",
+  "module": "CSS Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of CSS Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing CSS Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of CSS Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "css",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "competitive_competitive_programming_troubleshooting_part_7c",
+  "title": "Competitive Programming Troubleshooting Part 7C",
+  "technology": "Competitive Programming",
+  "module": "Competitive Programming Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Competitive Programming Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Competitive Programming Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing Competitive Programming Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of Competitive Programming Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "competitive",
+    "programming",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

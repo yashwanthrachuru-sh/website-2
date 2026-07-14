@@ -1,0 +1,30 @@
+{
+  "id": "full-stack_full_stack_development_core_principles_part_3a",
+  "title": "Full Stack Development Core Principles Part 3A",
+  "technology": "Full Stack Development",
+  "module": "Full Stack Development Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Full Stack Development Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Full Stack Development Core Principles Part 3A.",
+    "Write error-free implementations utilizing Full Stack Development Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of Full Stack Development Core Principles Part 3A."
+  ],
+  "tags": [
+    "full",
+    "stack",
+    "development",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

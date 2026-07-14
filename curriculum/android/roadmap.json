@@ -1,0 +1,30 @@
+{
+  "id": "android",
+  "title": "Android Developer",
+  "category": "Mobile",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "android",
+    "java",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Android Developer from beginner to production-ready design.",
+  "language": "java",
+  "prerequisites": [
+    "Understanding of basics in Android Developer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Android Developer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Android Developer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Android Developer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "js_async_await_syntax",
+  "name": "Async Await Syntax",
+  "description": "Write async operations like sync files.",
+  "orderIndex": 10,
+  "xpReward": 200
+}

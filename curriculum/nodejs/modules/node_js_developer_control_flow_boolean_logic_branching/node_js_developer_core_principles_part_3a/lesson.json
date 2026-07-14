@@ -1,0 +1,29 @@
+{
+  "id": "nodejs_node_js_developer_core_principles_part_3a",
+  "title": "Node.js Developer Core Principles Part 3A",
+  "technology": "Node.js Developer",
+  "module": "Node.js Developer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Node.js Developer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Node.js Developer Core Principles Part 3A.",
+    "Write error-free implementations utilizing Node.js Developer Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of Node.js Developer Core Principles Part 3A."
+  ],
+  "tags": [
+    "node.js",
+    "developer",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

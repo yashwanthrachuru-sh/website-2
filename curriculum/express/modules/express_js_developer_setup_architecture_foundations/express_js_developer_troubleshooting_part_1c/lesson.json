@@ -1,0 +1,28 @@
+{
+  "id": "express_express_js_developer_troubleshooting_part_1c",
+  "title": "Express.js Developer Troubleshooting Part 1C",
+  "technology": "Express.js Developer",
+  "module": "Express.js Developer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Express.js Developer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Express.js Developer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Express.js Developer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "express.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "data-science_data_science_core_principles_part_2a",
+  "title": "Data Science Core Principles Part 2A",
+  "technology": "Data Science",
+  "module": "Data Science Variables & Core Data Layouts",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Setup & Architecture Foundations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Core Principles Part 2A.",
+    "Write error-free implementations utilizing Data Science Core Principles Part 2A.",
+    "Debug and optimize performance characteristics of Data Science Core Principles Part 2A."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "core",
+    "principles",
+    "part",
+    "2a"
+  ]
+}

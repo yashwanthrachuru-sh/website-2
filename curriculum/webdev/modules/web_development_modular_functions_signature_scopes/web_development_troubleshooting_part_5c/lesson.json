@@ -1,0 +1,28 @@
+{
+  "id": "webdev_web_development_troubleshooting_part_5c",
+  "title": "Web Development Troubleshooting Part 5C",
+  "technology": "Web Development",
+  "module": "Web Development Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Web Development Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Web Development Troubleshooting Part 5C.",
+    "Write error-free implementations utilizing Web Development Troubleshooting Part 5C.",
+    "Debug and optimize performance characteristics of Web Development Troubleshooting Part 5C."
+  ],
+  "tags": [
+    "web",
+    "development",
+    "troubleshooting",
+    "part",
+    "5c"
+  ]
+}

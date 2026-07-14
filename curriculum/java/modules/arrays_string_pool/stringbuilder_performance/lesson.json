@@ -1,0 +1,25 @@
+{
+  "id": "java_stringbuilder_performance",
+  "title": "StringBuilder Performance",
+  "technology": "Java",
+  "module": "Arrays & String Pool",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Methods & Signatures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of StringBuilder Performance.",
+    "Write error-free implementations utilizing StringBuilder Performance.",
+    "Debug and optimize performance characteristics of StringBuilder Performance."
+  ],
+  "tags": [
+    "stringbuilder",
+    "performance"
+  ]
+}

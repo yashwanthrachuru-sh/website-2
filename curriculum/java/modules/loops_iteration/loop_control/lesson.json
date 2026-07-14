@@ -1,0 +1,25 @@
+{
+  "id": "java_loop_control",
+  "title": "Loop Control",
+  "technology": "Java",
+  "module": "Loops & Iteration",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Control Statements"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Loop Control.",
+    "Write error-free implementations utilizing Loop Control.",
+    "Debug and optimize performance characteristics of Loop Control."
+  ],
+  "tags": [
+    "loop",
+    "control"
+  ]
+}

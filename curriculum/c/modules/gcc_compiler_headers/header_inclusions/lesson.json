@@ -1,0 +1,25 @@
+{
+  "id": "c_header_inclusions",
+  "title": "Header Inclusions",
+  "technology": "C Programming",
+  "module": "GCC Compiler & Headers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Header Inclusions.",
+    "Write error-free implementations utilizing Header Inclusions.",
+    "Debug and optimize performance characteristics of Header Inclusions."
+  ],
+  "tags": [
+    "header",
+    "inclusions"
+  ]
+}

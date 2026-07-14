@@ -1,0 +1,29 @@
+{
+  "id": "system-design_system_design_core_principles_part_3a",
+  "title": "System Design Core Principles Part 3A",
+  "technology": "System Design",
+  "module": "System Design Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: System Design Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of System Design Core Principles Part 3A.",
+    "Write error-free implementations utilizing System Design Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of System Design Core Principles Part 3A."
+  ],
+  "tags": [
+    "system",
+    "design",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

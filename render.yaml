@@ -1,0 +1,70 @@
+# ============================================================
+# render.yaml — EduNet Backend Deployment Configuration
+# ============================================================
+# Render reads this file automatically when you connect your
+# GitHub repository. It codifies service settings so no manual
+# dashboard configuration is needed for future deployments.
+#
+# Docs: https://render.com/docs/infrastructure-as-code
+# ============================================================
+
+services:
+  - type: web
+    name: edunet-yx17
+    runtime: node
+    region: oregon
+
+    # Root directory: backend code lives inside /backend subdirectory
+    rootDir: backend
+
+    # Build: install production dependencies only
+    buildCommand: npm install --production
+
+    # Start: run the Express server
+    startCommand: npm start
+
+    # Health check: Render pings this before routing traffic to the container
+    healthCheckPath: /api/health
+
+    # Auto-deploy whenever the main branch is pushed
+    autoDeploy: true
+
+    # Environment variables
+    # ⚠️  Values marked as REQUIRED must be set in the Render dashboard manually.
+    #     Do NOT store secrets in this file.
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: PORT
+        value: 10000
+
+      # ── Allowed CORS origins ─────────────────────────────────
+      # Only the production Vercel frontend should be allowed in production.
+      - key: FRONTEND_ORIGIN
+        value: https://edunet-seven.vercel.app
+
+      # ── Database ─────────────────────────────────────────────
+      # Set DATABASE_URL in the Render dashboard (copy from Railway).
+      # Format: mysql://user:password@host:port/dbname
+      - key: DATABASE_URL
+        sync: false   # Render will prompt for this secret — do not store value here
+
+      # ── JWT Authentication ────────────────────────────────────
+      # Generate: node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+      - key: JWT_SECRET
+        sync: false   # Must be set manually in Render dashboard
+
+      - key: JWT_EXPIRES_IN
+        value: 7d
+
+      # ── AI Integration (Optional) ─────────────────────────────
+      - key: OPENAI_API_KEY
+        sync: false   # Optional — leave blank to use built-in offline AI mentor
+
+      # ── Rate Limiting ─────────────────────────────────────────
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "900000"
+
+      - key: RATE_LIMIT_MAX
+        value: "150"

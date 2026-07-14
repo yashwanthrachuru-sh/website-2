@@ -1,0 +1,28 @@
+{
+  "id": "ai-engineer_ai_engineer_troubleshooting_part_11c",
+  "title": "AI Engineer Troubleshooting Part 11C",
+  "technology": "AI Engineer",
+  "module": "AI Engineer Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AI Engineer Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AI Engineer Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing AI Engineer Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of AI Engineer Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "ai",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

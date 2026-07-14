@@ -1,0 +1,7 @@
+{
+  "id": "c_dynamic_memory_allocation",
+  "name": "Dynamic Memory Allocation",
+  "description": "Request and release heap memory segments.",
+  "orderIndex": 10,
+  "xpReward": 200
+}

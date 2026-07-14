@@ -1,0 +1,28 @@
+{
+  "id": "cybersecurity_cybersecurity_analyst_troubleshooting_part_3c",
+  "title": "Cybersecurity Analyst Troubleshooting Part 3C",
+  "technology": "Cybersecurity Analyst",
+  "module": "Cybersecurity Analyst Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Cybersecurity Analyst Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Cybersecurity Analyst Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing Cybersecurity Analyst Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of Cybersecurity Analyst Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "cybersecurity",
+    "analyst",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

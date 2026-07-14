@@ -1,0 +1,25 @@
+{
+  "id": "java_method_parameters",
+  "title": "Method Parameters",
+  "technology": "Java",
+  "module": "Methods & Signatures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Loops & Iteration"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Method Parameters.",
+    "Write error-free implementations utilizing Method Parameters.",
+    "Debug and optimize performance characteristics of Method Parameters."
+  ],
+  "tags": [
+    "method",
+    "parameters"
+  ]
+}

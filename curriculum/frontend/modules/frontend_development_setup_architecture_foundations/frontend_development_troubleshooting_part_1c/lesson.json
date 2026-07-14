@@ -1,0 +1,28 @@
+{
+  "id": "frontend_frontend_development_troubleshooting_part_1c",
+  "title": "Frontend Development Troubleshooting Part 1C",
+  "technology": "Frontend Development",
+  "module": "Frontend Development Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Frontend Development Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Frontend Development Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Frontend Development Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "frontend",
+    "development",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

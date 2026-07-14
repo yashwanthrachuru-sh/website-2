@@ -1,0 +1,25 @@
+{
+  "id": "java_concurrency_synchronize",
+  "title": "Concurrency Synchronize",
+  "technology": "Java",
+  "module": "Java Multithreading",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Collections & Generics"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Concurrency Synchronize.",
+    "Write error-free implementations utilizing Concurrency Synchronize.",
+    "Debug and optimize performance characteristics of Concurrency Synchronize."
+  ],
+  "tags": [
+    "concurrency",
+    "synchronize"
+  ]
+}

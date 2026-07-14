@@ -1,0 +1,25 @@
+{
+  "id": "js_js_closures",
+  "title": "JS Closures",
+  "technology": "JavaScript",
+  "module": "Closures & Functions",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Iteration & Loops"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of JS Closures.",
+    "Write error-free implementations utilizing JS Closures.",
+    "Debug and optimize performance characteristics of JS Closures."
+  ],
+  "tags": [
+    "js",
+    "closures"
+  ]
+}

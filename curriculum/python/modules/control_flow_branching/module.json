@@ -1,0 +1,7 @@
+{
+  "id": "python_control_flow_branching",
+  "name": "Control Flow & Branching",
+  "description": "Direct program routes using conditional branching.",
+  "orderIndex": 3,
+  "xpReward": 200
+}

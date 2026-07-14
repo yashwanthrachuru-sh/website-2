@@ -1,0 +1,26 @@
+{
+  "id": "c_calloc_realloc",
+  "title": "Calloc & Realloc",
+  "technology": "C Programming",
+  "module": "Dynamic Memory Allocation",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Structures Unions"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Calloc & Realloc.",
+    "Write error-free implementations utilizing Calloc & Realloc.",
+    "Debug and optimize performance characteristics of Calloc & Realloc."
+  ],
+  "tags": [
+    "calloc",
+    "&",
+    "realloc"
+  ]
+}

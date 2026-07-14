@@ -1,0 +1,46 @@
+{
+  "easy": {
+    "problem": "Implement a basic routine demonstrating the startup code syntax for Kubernetes Orchestration Core Principles Part 12A.",
+    "starterCode": "// Write your code here\n",
+    "hints": [
+      "Review the syntax rules in the beginner notes.",
+      "Check name spelling."
+    ],
+    "expectedOutput": "Success",
+    "solution": "// Solution goes here\n",
+    "explanation": "Verifies basic execution."
+  },
+  "medium": {
+    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
+    "starterCode": "function process(val) {\n}",
+    "hints": [
+      "Use conditional statements to inspect values.",
+      "Throw ValueError or Error."
+    ],
+    "expectedOutput": "Error raised",
+    "solution": "function process(val) {\n    if (val < 0) throw new Error('Negative value');\n    return val;\n}",
+    "explanation": "Ensures input validation constraints are met."
+  },
+  "hard": {
+    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
+    "starterCode": "const cache = new Map();\nfunction lookup(key) {\n}",
+    "hints": [
+      "Use a dictionary or Map.",
+      "Store results after the first query."
+    ],
+    "expectedOutput": "Cached output retrieved",
+    "solution": "const cache = new Map();\nfunction lookup(key, calculator) {\n    if (!cache.has(key)) cache.set(key, calculator(key));\n    return cache.get(key);\n}",
+    "explanation": "Implements high-performance memoization caching."
+  },
+  "debugging": {
+    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
+    "starterCode": "const recordData = 100;\nconsole.log(recordDatas);",
+    "hints": [
+      "Inspect variable identifiers.",
+      "Match call names exactly."
+    ],
+    "expectedOutput": "100",
+    "solution": "const recordData = 100;\nconsole.log(recordData);",
+    "explanation": "Aligns identifiers within namespace bindings."
+  }
+}

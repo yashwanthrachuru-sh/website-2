@@ -1,0 +1,25 @@
+{
+  "id": "typescript_abstract_classes",
+  "title": "Abstract Classes",
+  "technology": "TypeScript",
+  "module": "Classes & Access Modifiers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Union & Intersection"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Abstract Classes.",
+    "Write error-free implementations utilizing Abstract Classes.",
+    "Debug and optimize performance characteristics of Abstract Classes."
+  ],
+  "tags": [
+    "abstract",
+    "classes"
+  ]
+}

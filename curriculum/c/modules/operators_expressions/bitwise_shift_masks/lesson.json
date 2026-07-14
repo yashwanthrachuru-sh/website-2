@@ -1,0 +1,26 @@
+{
+  "id": "c_bitwise_shift_masks",
+  "title": "Bitwise Shift Masks",
+  "technology": "C Programming",
+  "module": "Operators Expressions",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Format Specifiers I/O"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Bitwise Shift Masks.",
+    "Write error-free implementations utilizing Bitwise Shift Masks.",
+    "Debug and optimize performance characteristics of Bitwise Shift Masks."
+  ],
+  "tags": [
+    "bitwise",
+    "shift",
+    "masks"
+  ]
+}

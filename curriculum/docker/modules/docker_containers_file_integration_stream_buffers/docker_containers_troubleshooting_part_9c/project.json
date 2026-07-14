@@ -1,0 +1,11 @@
+{
+  "title": "Docker Containers Troubleshooting Part 9C System Dashboard",
+  "description": "Build a small utility tracking dynamic state representations of Docker Containers Troubleshooting Part 9C.",
+  "requirements": [
+    "Initialize state attributes cleanly.",
+    "Provide functions to query and update values.",
+    "Handle invalid input boundaries gracefully."
+  ],
+  "starterCode": "// Project starting point\n",
+  "solution": "console.log('Project Complete!');"
+}

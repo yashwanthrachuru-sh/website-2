@@ -1,0 +1,28 @@
+{
+  "id": "html_html_core_principles_part_1a",
+  "title": "HTML Core Principles Part 1A",
+  "technology": "HTML",
+  "module": "HTML Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Core Principles Part 1A.",
+    "Write error-free implementations utilizing HTML Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of HTML Core Principles Part 1A."
+  ],
+  "tags": [
+    "html",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

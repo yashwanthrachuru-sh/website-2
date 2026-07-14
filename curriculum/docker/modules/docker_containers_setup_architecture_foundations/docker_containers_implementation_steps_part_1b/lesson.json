@@ -1,0 +1,29 @@
+{
+  "id": "docker_docker_containers_implementation_steps_part_1b",
+  "title": "Docker Containers Implementation Steps Part 1B",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Implementation Steps Part 1B.",
+    "Write error-free implementations utilizing Docker Containers Implementation Steps Part 1B.",
+    "Debug and optimize performance characteristics of Docker Containers Implementation Steps Part 1B."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "implementation",
+    "steps",
+    "part",
+    "1b"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "data-science_data_science_implementation_steps_part_1b",
+  "title": "Data Science Implementation Steps Part 1B",
+  "technology": "Data Science",
+  "module": "Data Science Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Implementation Steps Part 1B.",
+    "Write error-free implementations utilizing Data Science Implementation Steps Part 1B.",
+    "Debug and optimize performance characteristics of Data Science Implementation Steps Part 1B."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "implementation",
+    "steps",
+    "part",
+    "1b"
+  ]
+}

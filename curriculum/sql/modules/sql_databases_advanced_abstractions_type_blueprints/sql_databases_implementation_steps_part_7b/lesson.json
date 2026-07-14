@@ -1,0 +1,30 @@
+{
+  "id": "sql_sql_databases_implementation_steps_part_7b",
+  "title": "SQL & Databases Implementation Steps Part 7B",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Implementation Steps Part 7B.",
+    "Write error-free implementations utilizing SQL & Databases Implementation Steps Part 7B.",
+    "Debug and optimize performance characteristics of SQL & Databases Implementation Steps Part 7B."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "implementation",
+    "steps",
+    "part",
+    "7b"
+  ]
+}

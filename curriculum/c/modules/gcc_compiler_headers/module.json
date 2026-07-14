@@ -1,0 +1,7 @@
+{
+  "id": "c_gcc_compiler_headers",
+  "name": "GCC Compiler & Headers",
+  "description": "Compile C scripts and manage header libraries.",
+  "orderIndex": 1,
+  "xpReward": 200
+}

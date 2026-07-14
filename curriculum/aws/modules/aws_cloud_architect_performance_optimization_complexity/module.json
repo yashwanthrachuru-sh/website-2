@@ -1,0 +1,7 @@
+{
+  "id": "aws_aws_cloud_architect_performance_optimization_complexity",
+  "name": "AWS Cloud Architect Performance Optimization & Complexity",
+  "description": "In-depth study on AWS Cloud Architect covering analyzing scale limits and reducing execution bottlenecks.",
+  "orderIndex": 11,
+  "xpReward": 200
+}

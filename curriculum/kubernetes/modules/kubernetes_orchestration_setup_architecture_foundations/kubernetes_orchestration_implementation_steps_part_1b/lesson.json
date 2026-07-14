@@ -1,0 +1,29 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_implementation_steps_part_1b",
+  "title": "Kubernetes Orchestration Implementation Steps Part 1B",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Implementation Steps Part 1B.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Implementation Steps Part 1B.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Implementation Steps Part 1B."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "implementation",
+    "steps",
+    "part",
+    "1b"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "system-design_system_design_core_principles_part_1a",
+  "title": "System Design Core Principles Part 1A",
+  "technology": "System Design",
+  "module": "System Design Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of System Design Core Principles Part 1A.",
+    "Write error-free implementations utilizing System Design Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of System Design Core Principles Part 1A."
+  ],
+  "tags": [
+    "system",
+    "design",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

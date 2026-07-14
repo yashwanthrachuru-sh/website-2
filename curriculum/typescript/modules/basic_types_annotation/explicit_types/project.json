@@ -1,0 +1,11 @@
+{
+  "title": "Explicit Types System Dashboard",
+  "description": "Build a small utility tracking dynamic state representations of Explicit Types.",
+  "requirements": [
+    "Initialize state attributes cleanly.",
+    "Provide functions to query and update values.",
+    "Handle invalid input boundaries gracefully."
+  ],
+  "starterCode": "// Project starting point\n",
+  "solution": "console.log('Project Complete!');"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_11c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 11C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

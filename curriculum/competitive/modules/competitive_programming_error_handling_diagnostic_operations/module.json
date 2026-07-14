@@ -1,0 +1,7 @@
+{
+  "id": "competitive_competitive_programming_error_handling_diagnostic_operations",
+  "name": "Competitive Programming Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Competitive Programming covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

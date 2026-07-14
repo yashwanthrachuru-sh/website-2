@@ -1,0 +1,31 @@
+{
+  "id": "python",
+  "title": "Python",
+  "category": "Programming",
+  "difficulty": "Beginner",
+  "icon": "🐍",
+  "tags": [
+    "python",
+    "oop",
+    "flask",
+    "django",
+    "pandas"
+  ],
+  "description": "Master Python from basics through OOP, Flask, Django, automation, and data science.",
+  "language": "python",
+  "prerequisites": [
+    "Understanding of basics in Python"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Python Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Python curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Python",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

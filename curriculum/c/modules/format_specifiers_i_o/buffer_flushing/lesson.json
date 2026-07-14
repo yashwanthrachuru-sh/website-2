@@ -1,0 +1,25 @@
+{
+  "id": "c_buffer_flushing",
+  "title": "Buffer Flushing",
+  "technology": "C Programming",
+  "module": "Format Specifiers I/O",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: GCC Compiler & Headers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Buffer Flushing.",
+    "Write error-free implementations utilizing Buffer Flushing.",
+    "Debug and optimize performance characteristics of Buffer Flushing."
+  ],
+  "tags": [
+    "buffer",
+    "flushing"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "java_hashmap_hashing",
+  "title": "HashMap Hashing",
+  "technology": "Java",
+  "module": "Collections & Generics",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Exception Handling"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HashMap Hashing.",
+    "Write error-free implementations utilizing HashMap Hashing.",
+    "Debug and optimize performance characteristics of HashMap Hashing."
+  ],
+  "tags": [
+    "hashmap",
+    "hashing"
+  ]
+}

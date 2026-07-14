@@ -1,0 +1,30 @@
+{
+  "id": "devops",
+  "title": "DevOps Engineer",
+  "category": "DevOps",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "devops",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for DevOps Engineer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in DevOps Engineer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "DevOps Engineer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the DevOps Engineer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of DevOps Engineer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

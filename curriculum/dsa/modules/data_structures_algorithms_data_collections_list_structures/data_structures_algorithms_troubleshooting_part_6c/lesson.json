@@ -1,0 +1,30 @@
+{
+  "id": "dsa_data_structures_algorithms_troubleshooting_part_6c",
+  "title": "Data Structures & Algorithms Troubleshooting Part 6C",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Structures & Algorithms Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Troubleshooting Part 6C.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Troubleshooting Part 6C.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Troubleshooting Part 6C."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "troubleshooting",
+    "part",
+    "6c"
+  ]
+}

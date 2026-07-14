@@ -1,0 +1,28 @@
+{
+  "id": "cybersecurity_cybersecurity_analyst_troubleshooting_part_6c",
+  "title": "Cybersecurity Analyst Troubleshooting Part 6C",
+  "technology": "Cybersecurity Analyst",
+  "module": "Cybersecurity Analyst Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Cybersecurity Analyst Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Cybersecurity Analyst Troubleshooting Part 6C.",
+    "Write error-free implementations utilizing Cybersecurity Analyst Troubleshooting Part 6C.",
+    "Debug and optimize performance characteristics of Cybersecurity Analyst Troubleshooting Part 6C."
+  ],
+  "tags": [
+    "cybersecurity",
+    "analyst",
+    "troubleshooting",
+    "part",
+    "6c"
+  ]
+}

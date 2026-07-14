@@ -1,0 +1,29 @@
+{
+  "id": "ui-ux_ui_ux_design_core_principles_part_3a",
+  "title": "UI/UX Design Core Principles Part 3A",
+  "technology": "UI/UX Design",
+  "module": "UI/UX Design Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: UI/UX Design Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of UI/UX Design Core Principles Part 3A.",
+    "Write error-free implementations utilizing UI/UX Design Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 3A."
+  ],
+  "tags": [
+    "ui/ux",
+    "design",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

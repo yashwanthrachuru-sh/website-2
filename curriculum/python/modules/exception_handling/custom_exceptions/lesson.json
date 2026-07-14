@@ -1,0 +1,25 @@
+{
+  "id": "python_custom_exceptions",
+  "title": "Custom Exceptions",
+  "technology": "Python",
+  "module": "Exception Handling",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Modules & Packages"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Custom Exceptions.",
+    "Write error-free implementations utilizing Custom Exceptions.",
+    "Debug and optimize performance characteristics of Custom Exceptions."
+  ],
+  "tags": [
+    "custom",
+    "exceptions"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "nodejs_node_js_developer_core_principles_part_9a",
+  "title": "Node.js Developer Core Principles Part 9A",
+  "technology": "Node.js Developer",
+  "module": "Node.js Developer File Integration & Stream Buffers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Node.js Developer Error Handling & Diagnostic Operations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Node.js Developer Core Principles Part 9A.",
+    "Write error-free implementations utilizing Node.js Developer Core Principles Part 9A.",
+    "Debug and optimize performance characteristics of Node.js Developer Core Principles Part 9A."
+  ],
+  "tags": [
+    "node.js",
+    "developer",
+    "core",
+    "principles",
+    "part",
+    "9a"
+  ]
+}

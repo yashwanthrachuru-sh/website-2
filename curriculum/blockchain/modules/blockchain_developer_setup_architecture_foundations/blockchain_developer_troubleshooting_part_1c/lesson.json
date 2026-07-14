@@ -1,0 +1,28 @@
+{
+  "id": "blockchain_blockchain_developer_troubleshooting_part_1c",
+  "title": "Blockchain Developer Troubleshooting Part 1C",
+  "technology": "Blockchain Developer",
+  "module": "Blockchain Developer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Blockchain Developer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Blockchain Developer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Blockchain Developer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "blockchain",
+    "developer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

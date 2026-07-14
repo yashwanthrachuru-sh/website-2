@@ -1,0 +1,28 @@
+{
+  "id": "placement_placement_preparation_troubleshooting_part_3c",
+  "title": "Placement Preparation Troubleshooting Part 3C",
+  "technology": "Placement Preparation",
+  "module": "Placement Preparation Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Placement Preparation Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Placement Preparation Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing Placement Preparation Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of Placement Preparation Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "placement",
+    "preparation",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

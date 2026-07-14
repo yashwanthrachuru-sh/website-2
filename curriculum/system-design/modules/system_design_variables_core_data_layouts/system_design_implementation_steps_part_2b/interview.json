@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "How does the compiler handle variables or instructions for System Design Implementation Steps Part 2B in memory?",
+      "answer": "It creates registers in symbol lookups, mapping names to stack stack offsets or heap addresses.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency System Design Implementation Steps Part 2B queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

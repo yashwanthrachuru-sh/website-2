@@ -1,0 +1,30 @@
+{
+  "id": "azure_azure_cloud_engineer_core_principles_part_8a",
+  "title": "Azure Cloud Engineer Core Principles Part 8A",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Core Principles Part 8A.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Core Principles Part 8A.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Core Principles Part 8A."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "core",
+    "principles",
+    "part",
+    "8a"
+  ]
+}

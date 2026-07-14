@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_1c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 1C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

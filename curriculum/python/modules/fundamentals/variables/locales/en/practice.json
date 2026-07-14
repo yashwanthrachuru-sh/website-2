@@ -1,0 +1,68 @@
+{
+  "easy": {
+    "title": "Track a Student's Exam Score",
+    "objective": "Practice creating variables of different types and printing them in a formatted sentence.",
+    "problem": "A student just finished their Python exam. Store the following information as variables:\n- Student's name: `\"Priya\"`\n- Exam score out of 100: `88`\n- Did they pass? (True if score >= 60): work this out yourself\n- Their letter grade: `\"B\"`\n\nThen print this output exactly:\n```\nStudent: Priya\nScore: 88/100\nPassed: True\nGrade: B\n```",
+    "hints": [
+      "Create four separate variables for name, score, passed, and grade.",
+      "For 'passed': if score is 88 and passing is >= 60, then passed = True.",
+      "Use print() four times, once for each line.",
+      "f-strings let you embed variables: f'Score: {score}/100'"
+    ],
+    "starterCode": "# Store student information\nstudent_name = \nscore = \npassed = \ngrade = \n\n# Print the report\nprint(f\"Student: {student_name}\")\nprint(f\"Score: {score}/100\")\nprint(f\"Passed: {passed}\")\nprint(f\"Grade: {grade}\")",
+    "solution": "student_name = \"Priya\"\nscore = 88\npassed = score >= 60   # Python evaluates this: 88 >= 60 = True\ngrade = \"B\"\n\nprint(f\"Student: {student_name}\")\nprint(f\"Score: {score}/100\")\nprint(f\"Passed: {passed}\")\nprint(f\"Grade: {grade}\")",
+    "solutionExplanation": "Notice that `passed = score >= 60` is not hardcoded as True — it is computed from the score. If score changes to 45, `passed` automatically becomes False. This is the power of using variables and expressions together.",
+    "expectedOutput": "Student: Priya\nScore: 88/100\nPassed: True\nGrade: B"
+  },
+
+  "medium": {
+    "title": "Shopping Cart Total",
+    "objective": "Practice using variables across multiple calculations — the pattern used in real e-commerce backends.",
+    "problem": "Write a program for a simplified shopping cart:\n\n1. Three items with prices: book (₹299), headphones (₹1499), notebook (₹89)\n2. Apply a 15% discount if total is above ₹1000\n3. Add 18% GST (tax) on the discounted total\n4. Print an itemised receipt showing each step\n\nExpected output:\n```\n=== Shopping Cart ===\nBook:       ₹299\nHeadphones: ₹1499\nNotebook:   ₹89\n---------------------\nSubtotal:   ₹1887\nDiscount (15%): -₹283.05\nAfter discount: ₹1603.95\nGST (18%):  ₹288.71\nFinal Total: ₹1892.66\n```",
+    "hints": [
+      "Create separate variables for each item price.",
+      "subtotal = book + headphones + notebook",
+      "Check if subtotal > 1000 using an if statement.",
+      "discount_amount = subtotal * 0.15",
+      "after_discount = subtotal - discount_amount",
+      "gst = after_discount * 0.18",
+      "Use :.2f in f-strings to format to 2 decimal places: f'{value:.2f}'"
+    ],
+    "starterCode": "# Item prices\nbook = 299\nheadphones = 1499\nnotebook = 89\n\n# Calculate subtotal\nsubtotal = \n\n# Apply 15% discount if subtotal > 1000\ndiscount_amount = 0\nif subtotal > 1000:\n    discount_amount = \n\nafter_discount = subtotal - discount_amount\n\n# Calculate 18% GST\ngst = \nfinal_total = after_discount + gst\n\n# Print receipt\nprint(\"=== Shopping Cart ===\")\nprint(f\"Book:       ₹{book}\")\nprint(f\"Headphones: ₹{headphones}\")\nprint(f\"Notebook:   ₹{notebook}\")\nprint(\"---------------------\")\nprint(f\"Subtotal:   ₹{subtotal}\")\nprint(f\"Discount (15%): -₹{discount_amount:.2f}\")\nprint(f\"After discount: ₹{after_discount:.2f}\")\nprint(f\"GST (18%):  ₹{gst:.2f}\")\nprint(f\"Final Total: ₹{final_total:.2f}\")",
+    "solution": "book = 299\nheadphones = 1499\nnotebook = 89\n\nsubtotal = book + headphones + notebook\n\ndiscount_amount = 0\nif subtotal > 1000:\n    discount_amount = subtotal * 0.15\n\nafter_discount = subtotal - discount_amount\ngst = after_discount * 0.18\nfinal_total = after_discount + gst\n\nprint(\"=== Shopping Cart ===\")\nprint(f\"Book:       ₹{book}\")\nprint(f\"Headphones: ₹{headphones}\")\nprint(f\"Notebook:   ₹{notebook}\")\nprint(\"---------------------\")\nprint(f\"Subtotal:   ₹{subtotal}\")\nprint(f\"Discount (15%): -₹{discount_amount:.2f}\")\nprint(f\"After discount: ₹{after_discount:.2f}\")\nprint(f\"GST (18%):  ₹{gst:.2f}\")\nprint(f\"Final Total: ₹{final_total:.2f}\")",
+    "solutionExplanation": "The key lesson: each computation step is its own named variable. You can read the code like English: 'discount_amount is subtotal times 0.15'. If the business rule changes (say, discount becomes 20%), you change one number in one place.",
+    "expectedOutput": "=== Shopping Cart ===\nBook:       ₹299\nHeadphones: ₹1499\nNotebook:   ₹89\n---------------------\nSubtotal:   ₹1887\nDiscount (15%): -₹283.05\nAfter discount: ₹1603.95\nGST (18%):  ₹288.71\nFinal Total: ₹1892.66"
+  },
+
+  "hard": {
+    "title": "Reference vs Copy — Debug the Shared List",
+    "objective": "Understand Python's reference model by tracing and fixing a real mutation bug.",
+    "problem": "The following program is supposed to calculate scores for two teams independently. But it has a bug — both teams end up with the same scores. Your job:\n\n1. Run the code mentally (or actually) and predict the output.\n2. Identify exactly why the bug occurs.\n3. Fix it so Team A and Team B have independent score lists.\n\n```python\nteam_a_scores = [10, 20, 30]\nteam_b_scores = team_a_scores   # BUG IS HERE\n\nteam_b_scores.append(40)\n\nprint('Team A:', team_a_scores)\nprint('Team B:', team_b_scores)\n```\n\n**Expected (after fix):**\n```\nTeam A: [10, 20, 30]\nTeam B: [10, 20, 30, 40]\n```",
+    "hints": [
+      "team_b_scores = team_a_scores does NOT copy the list — both names point to the SAME list.",
+      "To make a copy: team_b_scores = team_a_scores[:] OR team_a_scores.copy() OR list(team_a_scores)",
+      "After your fix, id(team_a_scores) should NOT equal id(team_b_scores)."
+    ],
+    "starterCode": "team_a_scores = [10, 20, 30]\nteam_b_scores = team_a_scores   # Fix this line\n\nteam_b_scores.append(40)\n\nprint('Team A:', team_a_scores)\nprint('Team B:', team_b_scores)\n\n# Bonus: verify they are independent\nprint('Same object?', team_a_scores is team_b_scores)",
+    "solution": "team_a_scores = [10, 20, 30]\nteam_b_scores = team_a_scores.copy()   # Creates an independent copy\n\nteam_b_scores.append(40)\n\nprint('Team A:', team_a_scores)\nprint('Team B:', team_b_scores)\nprint('Same object?', team_a_scores is team_b_scores)",
+    "solutionExplanation": "When you write `b = a` for a list, Python copies the reference (memory address), not the data. Both `a` and `b` point to the same list. Any mutation through either name affects the shared object. This is one of the most common Python bugs. Always copy explicitly when you need independence.",
+    "expectedOutput": "Team A: [10, 20, 30]\nTeam B: [10, 20, 30, 40]\nSame object? False"
+  },
+
+  "debugging": {
+    "title": "Five Bugs, One Program",
+    "objective": "Find and fix all bugs in a realistic short program. Each bug represents a real mistake Python beginners and even intermediate developers make.",
+    "problem": "The following program is supposed to calculate a student's exam result. It has **5 bugs**. Find them all.",
+    "brokenCode": "student name = \"Ravi\"\nScore = 78\nPassing score = 60\n\nif Score = Passing score:\n    result = \"Pass\"\nelse:\n    Result = \"Fail\"\n\nprint(f\"{student name} scored {score} and {result}\")",
+    "bugs": [
+      { "line": 1, "bug": "Variable name contains a space: 'student name'", "fix": "Use underscore: student_name" },
+      { "line": 2, "bug": "'Score' starts with uppercase — this is fine syntax, but inconsistent with PEP 8 and will cause NameError on line 10 where 'score' (lowercase) is used", "fix": "Rename to 'score' throughout" },
+      { "line": 3, "bug": "'Passing score' contains a space", "fix": "Rename to 'passing_score'" },
+      { "line": 5, "bug": "'if Score = Passing score:' uses = (assignment) instead of == (comparison)", "fix": "Change to '==' and use consistent names: if score >= passing_score:" },
+      { "line": 8, "bug": "'Result' is assigned in the else branch but 'result' (lowercase) is used on line 10 — NameError if the else branch runs", "fix": "Use consistent lowercase 'result' everywhere" }
+    ],
+    "solution": "student_name = \"Ravi\"\nscore = 78\npassing_score = 60\n\nif score >= passing_score:\n    result = \"Pass\"\nelse:\n    result = \"Fail\"\n\nprint(f\"{student_name} scored {score} and {result}\")",
+    "expectedOutput": "Ravi scored 78 and Pass",
+    "teachingPoint": "Notice how many bugs come from inconsistent naming (Score vs score, Result vs result) and spaces in names. A consistent naming convention (PEP 8: lowercase_with_underscores) eliminates entire categories of bugs."
+  }
+}

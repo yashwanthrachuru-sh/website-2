@@ -1,0 +1,26 @@
+{
+  "id": "python_loop_control_statements",
+  "title": "Loop Control Statements",
+  "technology": "Python",
+  "module": "Loops & Iteration",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Control Flow & Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Loop Control Statements.",
+    "Write error-free implementations utilizing Loop Control Statements.",
+    "Debug and optimize performance characteristics of Loop Control Statements."
+  ],
+  "tags": [
+    "loop",
+    "control",
+    "statements"
+  ]
+}

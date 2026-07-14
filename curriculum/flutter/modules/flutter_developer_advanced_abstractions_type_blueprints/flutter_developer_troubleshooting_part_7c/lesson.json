@@ -1,0 +1,28 @@
+{
+  "id": "flutter_flutter_developer_troubleshooting_part_7c",
+  "title": "Flutter Developer Troubleshooting Part 7C",
+  "technology": "Flutter Developer",
+  "module": "Flutter Developer Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Flutter Developer Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Flutter Developer Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing Flutter Developer Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of Flutter Developer Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "flutter",
+    "developer",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

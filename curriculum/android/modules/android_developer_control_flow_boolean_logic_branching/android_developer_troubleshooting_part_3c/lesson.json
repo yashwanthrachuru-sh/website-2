@@ -1,0 +1,28 @@
+{
+  "id": "android_android_developer_troubleshooting_part_3c",
+  "title": "Android Developer Troubleshooting Part 3C",
+  "technology": "Android Developer",
+  "module": "Android Developer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Android Developer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Android Developer Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing Android Developer Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of Android Developer Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "android",
+    "developer",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "dsa_data_structures_algorithms_implementation_steps_part_5b",
+  "title": "Data Structures & Algorithms Implementation Steps Part 5B",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Structures & Algorithms Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Implementation Steps Part 5B.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Implementation Steps Part 5B.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Implementation Steps Part 5B."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "implementation",
+    "steps",
+    "part",
+    "5b"
+  ]
+}

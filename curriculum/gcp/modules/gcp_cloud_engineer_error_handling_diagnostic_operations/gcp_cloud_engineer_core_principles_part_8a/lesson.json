@@ -1,0 +1,30 @@
+{
+  "id": "gcp_gcp_cloud_engineer_core_principles_part_8a",
+  "title": "GCP Cloud Engineer Core Principles Part 8A",
+  "technology": "GCP Cloud Engineer",
+  "module": "GCP Cloud Engineer Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: GCP Cloud Engineer Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCP Cloud Engineer Core Principles Part 8A.",
+    "Write error-free implementations utilizing GCP Cloud Engineer Core Principles Part 8A.",
+    "Debug and optimize performance characteristics of GCP Cloud Engineer Core Principles Part 8A."
+  ],
+  "tags": [
+    "gcp",
+    "cloud",
+    "engineer",
+    "core",
+    "principles",
+    "part",
+    "8a"
+  ]
+}

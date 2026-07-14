@@ -1,0 +1,7 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_data_collections_list_structures",
+  "name": "Kubernetes Orchestration Data Collections & List Structures",
+  "description": "In-depth study on Kubernetes Orchestration covering storing sorted items and manipulating contiguous tables.",
+  "orderIndex": 6,
+  "xpReward": 200
+}

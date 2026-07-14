@@ -1,0 +1,28 @@
+{
+  "id": "nodejs_node_js_developer_troubleshooting_part_1c",
+  "title": "Node.js Developer Troubleshooting Part 1C",
+  "technology": "Node.js Developer",
+  "module": "Node.js Developer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Node.js Developer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Node.js Developer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Node.js Developer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "node.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

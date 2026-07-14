@@ -1,0 +1,26 @@
+{
+  "id": "c_union_memory_share",
+  "title": "Union Memory Share",
+  "technology": "C Programming",
+  "module": "Structures Unions",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Pointers Dereferencing"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Union Memory Share.",
+    "Write error-free implementations utilizing Union Memory Share.",
+    "Debug and optimize performance characteristics of Union Memory Share."
+  ],
+  "tags": [
+    "union",
+    "memory",
+    "share"
+  ]
+}

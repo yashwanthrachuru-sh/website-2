@@ -1,0 +1,26 @@
+{
+  "id": "typescript_ts_compilation_flow",
+  "title": "TS Compilation Flow",
+  "technology": "TypeScript",
+  "module": "Compiler & Setup",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of TS Compilation Flow.",
+    "Write error-free implementations utilizing TS Compilation Flow.",
+    "Debug and optimize performance characteristics of TS Compilation Flow."
+  ],
+  "tags": [
+    "ts",
+    "compilation",
+    "flow"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "css_css_core_principles_part_1a",
+  "title": "CSS Core Principles Part 1A",
+  "technology": "CSS",
+  "module": "CSS Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of CSS Core Principles Part 1A.",
+    "Write error-free implementations utilizing CSS Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of CSS Core Principles Part 1A."
+  ],
+  "tags": [
+    "css",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

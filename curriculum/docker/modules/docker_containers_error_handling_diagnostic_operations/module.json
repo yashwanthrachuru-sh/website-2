@@ -1,0 +1,7 @@
+{
+  "id": "docker_docker_containers_error_handling_diagnostic_operations",
+  "name": "Docker Containers Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Docker Containers covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

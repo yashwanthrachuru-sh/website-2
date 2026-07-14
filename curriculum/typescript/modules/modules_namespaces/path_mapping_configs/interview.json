@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "How does a hash table work internally?",
+      "answer": "A hash table uses a hash function to convert a key into an integer index in an array. The value is stored at that index. For lookup, the same hash function maps the key to the index, and the value is retrieved in O(1). Hash collisions (two keys map to the same index) are handled by chaining (linked list at each slot) or open addressing (probing adjacent slots). Python's dict uses open addressing with a clever probing strategy.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What is the difference between == and === for objects in JavaScript?",
+      "answer": "For primitive values, == does type coercion before comparing; === checks type and value. For objects (including arrays), both == and === check REFERENCE EQUALITY (same object in memory), not structural equality. {a:1} == {a:1} is false — two different objects. To check structural equality, use JSON.stringify (limited) or a deep equality library (lodash.isEqual).",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "When would you use a Map vs a plain object in JavaScript?",
+      "answer": "Map advantages: any value type as key (not just strings/symbols), guaranteed insertion order, O(1) size with .size, better performance for frequent additions/deletions, clean iteration with for...of. Object advantages: simpler syntax, JSON serializable, natural method attachment, prototype inheritance. Use Map when: keys are non-strings, key set changes frequently, or you need guaranteed iteration order.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Path Mapping Configs queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Path Mapping Configs queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Path Mapping Configs queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Path Mapping Configs queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Path Mapping Configs queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Path Mapping Configs queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Path Mapping Configs queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

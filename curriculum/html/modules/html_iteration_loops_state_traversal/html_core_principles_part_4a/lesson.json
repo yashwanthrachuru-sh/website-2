@@ -1,0 +1,28 @@
+{
+  "id": "html_html_core_principles_part_4a",
+  "title": "HTML Core Principles Part 4A",
+  "technology": "HTML",
+  "module": "HTML Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Core Principles Part 4A.",
+    "Write error-free implementations utilizing HTML Core Principles Part 4A.",
+    "Debug and optimize performance characteristics of HTML Core Principles Part 4A."
+  ],
+  "tags": [
+    "html",
+    "core",
+    "principles",
+    "part",
+    "4a"
+  ]
+}

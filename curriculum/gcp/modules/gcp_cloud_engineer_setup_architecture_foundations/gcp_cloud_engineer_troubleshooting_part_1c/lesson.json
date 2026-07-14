@@ -1,0 +1,29 @@
+{
+  "id": "gcp_gcp_cloud_engineer_troubleshooting_part_1c",
+  "title": "GCP Cloud Engineer Troubleshooting Part 1C",
+  "technology": "GCP Cloud Engineer",
+  "module": "GCP Cloud Engineer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCP Cloud Engineer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing GCP Cloud Engineer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of GCP Cloud Engineer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "gcp",
+    "cloud",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

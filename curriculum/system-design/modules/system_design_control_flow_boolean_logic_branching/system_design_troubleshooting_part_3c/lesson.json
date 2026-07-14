@@ -1,0 +1,28 @@
+{
+  "id": "system-design_system_design_troubleshooting_part_3c",
+  "title": "System Design Troubleshooting Part 3C",
+  "technology": "System Design",
+  "module": "System Design Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: System Design Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of System Design Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing System Design Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of System Design Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "system",
+    "design",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

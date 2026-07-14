@@ -201,3 +201,90 @@ This document details the complete REST API endpoints, request/response formats,
       "id": 12
     }
     ```
+
+---
+
+## 6. Roadmap & Assessment System
+
+### 6.1. Get Roadmap Modules & Progress
+*   **Method**: `GET`
+*   **URL**: `/api/roadmaps/:id`
+*   **Authentication**: Bearer Token
+*   **Response (200 OK)**: Returns the roadmap track details, modules grouped into beginner, intermediate, and expert levels, and user level completion progress percentages.
+
+### 6.2. Get Lesson Topic Quiz
+*   **Method**: `GET`
+*   **URL**: `/api/lessons/:id/quiz`
+*   **Authentication**: Bearer Token
+*   **Response (200 OK)**: Returns 10-15 randomized multiple choice questions mapped to the lesson.
+
+### 6.3. Submit Lesson Topic Quiz
+*   **Method**: `POST`
+*   **URL**: `/api/lessons/:id/quiz/submit`
+*   **Authentication**: Bearer Token
+*   **Request Body**:
+    ```json
+    {
+      "answers": {
+        "quiz_question_id_1": "A",
+        "quiz_question_id_2": "C"
+      }
+    }
+    ```
+*   **Response (200 OK)**: Returns the score, pass/fail status (70% passing threshold), and explanations for each question. Award 50 XP upon passing.
+
+### 6.4. Get Level Assessment
+*   **Method**: `GET`
+*   **URL**: `/api/roadmaps/:id/level/:level/exam`
+*   **Authentication**: Bearer Token
+*   **Response (200 OK)**: Returns 50 randomized questions covering all modules in the level.
+
+### 6.5. Submit Level Assessment
+*   **Method**: `POST`
+*   **URL**: `/api/roadmaps/:id/level/:level/exam/submit`
+*   **Authentication**: Bearer Token
+*   **Request Body**:
+    ```json
+    {
+      "answers": { "q_id": "A" },
+      "time_taken": 1200
+    }
+    ```
+*   **Response (200 OK)**: Returns graded report, pass/fail status, and unlocks the next level. Awards 300/500/700 XP based on level.
+
+### 6.6. Get Roadmap Certification Exam
+*   **Method**: `GET`
+*   **URL**: `/api/roadmaps/:id/exam`
+*   **Authentication**: Bearer Token
+*   **Response (200 OK)**: Returns 100 randomized questions covering the entire roadmap curriculum.
+
+### 6.7. Submit Roadmap Certification Exam
+*   **Method**: `POST`
+*   **URL**: `/api/roadmaps/:id/exam/submit`
+*   **Authentication**: Bearer Token
+*   **Request Body**:
+    ```json
+    {
+      "answers": { "q_id": "B" },
+      "time_taken": 3500
+    }
+    ```
+*   **Response (200 OK)**: Returns final score, pass status, and verified completion certificate hash. Awards 1000 XP.
+
+### 6.8. Save Quiz Session State
+*   **Method**: `POST`
+*   **URL**: `/api/roadmaps/quiz-session/save`
+*   **Authentication**: Bearer Token
+*   **Request Body**:
+    ```json
+    {
+      "type": "level",
+      "target_id": "python_beginner",
+      "questions": [1, 2, 3],
+      "answers": { "1": "A" },
+      "time_left": 3000,
+      "bookmarks": [2]
+    }
+    ```
+*   **Response (200 OK)**: Returns `{ "success": true }`. Allows resuming the assessment state.
+

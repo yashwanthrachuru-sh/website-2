@@ -1,0 +1,7 @@
+{
+  "id": "c_pointers_dereferencing",
+  "name": "Pointers Dereferencing",
+  "description": "Direct hardware memory access.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

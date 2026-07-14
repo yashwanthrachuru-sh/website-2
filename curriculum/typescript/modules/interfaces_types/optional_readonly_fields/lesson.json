@@ -1,0 +1,26 @@
+{
+  "id": "typescript_optional_readonly_fields",
+  "title": "Optional Readonly Fields",
+  "technology": "TypeScript",
+  "module": "Interfaces & Types",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Basic Types Annotation"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Optional Readonly Fields.",
+    "Write error-free implementations utilizing Optional Readonly Fields.",
+    "Debug and optimize performance characteristics of Optional Readonly Fields."
+  ],
+  "tags": [
+    "optional",
+    "readonly",
+    "fields"
+  ]
+}

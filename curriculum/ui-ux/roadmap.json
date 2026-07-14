@@ -1,0 +1,30 @@
+{
+  "id": "ui-ux",
+  "title": "UI/UX Design",
+  "category": "Design",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "ui-ux",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for UI/UX Design from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in UI/UX Design"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "UI/UX Design Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the UI/UX Design curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of UI/UX Design",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

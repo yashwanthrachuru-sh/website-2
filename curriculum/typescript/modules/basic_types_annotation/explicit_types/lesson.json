@@ -1,0 +1,25 @@
+{
+  "id": "typescript_explicit_types",
+  "title": "Explicit Types",
+  "technology": "TypeScript",
+  "module": "Basic Types Annotation",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Compiler & Setup"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Explicit Types.",
+    "Write error-free implementations utilizing Explicit Types.",
+    "Debug and optimize performance characteristics of Explicit Types."
+  ],
+  "tags": [
+    "explicit",
+    "types"
+  ]
+}

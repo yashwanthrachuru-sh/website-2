@@ -1,0 +1,7 @@
+{
+  "id": "docker_docker_containers_control_flow_boolean_logic_branching",
+  "name": "Docker Containers Control Flow & Boolean Logic Branching",
+  "description": "In-depth study on Docker Containers covering steering execution routines using conditional branching checks.",
+  "orderIndex": 3,
+  "xpReward": 200
+}

@@ -1,0 +1,7 @@
+{
+  "id": "typescript_union_intersection",
+  "name": "Union & Intersection",
+  "description": "Combine and intersect custom types.",
+  "orderIndex": 4,
+  "xpReward": 200
+}

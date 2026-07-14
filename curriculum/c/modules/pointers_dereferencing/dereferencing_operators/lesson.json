@@ -1,0 +1,25 @@
+{
+  "id": "c_dereferencing_operators",
+  "title": "Dereferencing Operators",
+  "technology": "C Programming",
+  "module": "Pointers Dereferencing",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Arrays String Termination"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Dereferencing Operators.",
+    "Write error-free implementations utilizing Dereferencing Operators.",
+    "Debug and optimize performance characteristics of Dereferencing Operators."
+  ],
+  "tags": [
+    "dereferencing",
+    "operators"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_10c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 10C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Package Orchestration & System Modules",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration File Integration & Stream Buffers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 10C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 10C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 10C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "10c"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "typescript_literal_value_types",
+  "title": "Literal Value Types",
+  "technology": "TypeScript",
+  "module": "Enums & Literal Types",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Generics Constraints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Literal Value Types.",
+    "Write error-free implementations utilizing Literal Value Types.",
+    "Debug and optimize performance characteristics of Literal Value Types."
+  ],
+  "tags": [
+    "literal",
+    "value",
+    "types"
+  ]
+}

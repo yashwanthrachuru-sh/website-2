@@ -1,0 +1,7 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_production_deployment_server_pipelines",
+  "name": "Kubernetes Orchestration Production Deployment & Server Pipelines",
+  "description": "In-depth study on Kubernetes Orchestration covering deploying built assets to cloud hosting configurations.",
+  "orderIndex": 12,
+  "xpReward": 200
+}

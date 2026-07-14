@@ -1,0 +1,28 @@
+{
+  "id": "react_react_developer_troubleshooting_part_1c",
+  "title": "React Developer Troubleshooting Part 1C",
+  "technology": "React Developer",
+  "module": "React Developer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of React Developer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing React Developer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of React Developer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "react",
+    "developer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

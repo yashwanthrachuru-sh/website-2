@@ -1,0 +1,11 @@
+{
+  "title": "Data Engineering Core Principles Part 8A System Dashboard",
+  "description": "Build a small utility tracking dynamic state representations of Data Engineering Core Principles Part 8A.",
+  "requirements": [
+    "Initialize state attributes cleanly.",
+    "Provide functions to query and update values.",
+    "Handle invalid input boundaries gracefully."
+  ],
+  "starterCode": "# Project starting point\n",
+  "solution": "print('Project Complete!')"
+}

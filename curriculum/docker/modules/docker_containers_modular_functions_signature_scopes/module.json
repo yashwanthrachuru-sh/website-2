@@ -1,0 +1,7 @@
+{
+  "id": "docker_docker_containers_modular_functions_signature_scopes",
+  "name": "Docker Containers Modular Functions & Signature Scopes",
+  "description": "In-depth study on Docker Containers covering isolating code blocks and managing call frames stacks.",
+  "orderIndex": 5,
+  "xpReward": 200
+}

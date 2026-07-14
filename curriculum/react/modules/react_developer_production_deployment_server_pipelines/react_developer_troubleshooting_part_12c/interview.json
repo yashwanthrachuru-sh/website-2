@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What is the Virtual DOM and how does React use it?",
+      "answer": "The Virtual DOM is a JavaScript representation of the real DOM — a lightweight copy in memory. When state changes, React creates a new Virtual DOM tree, compares it to the previous one (diffing), and calculates the minimum set of changes needed. Then it applies only those changes to the real DOM (reconciliation). This is more efficient than directly manipulating the real DOM because: (1) DOM operations are slow (they trigger layout, paint, composite), (2) React batches updates, (3) React skips unchanged subtrees. Modern React uses a Fiber architecture for incremental rendering.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What is the difference between state and props?",
+      "answer": "Props (properties): data passed FROM parent TO child. Read-only inside the component. Used for configuration and data flow downward. State: data managed INSIDE the component. Mutable (via setState / useState setter). When state changes, React re-renders the component. Rule of thumb: If a component receives it from outside → prop. If a component manages it internally → state. Lifting state: when two siblings need the same data, move state to their common parent and pass it down as props.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are React hooks and why were they introduced?",
+      "answer": "Hooks (React 16.8+) are functions that let functional components use state and lifecycle features that were previously only available in class components. Motivation: class components had problems — complex lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount), hard to reuse stateful logic (higher-order components were messy), \"this\" confusion. Hooks solve this: useState replaces state, useEffect replaces lifecycle methods, custom hooks enable reusable stateful logic. Key rules: hooks can only be called at the top level (not in loops/conditions), and only inside React functions.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency React Developer Troubleshooting Part 12C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency React Developer Troubleshooting Part 12C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency React Developer Troubleshooting Part 12C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency React Developer Troubleshooting Part 12C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency React Developer Troubleshooting Part 12C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency React Developer Troubleshooting Part 12C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency React Developer Troubleshooting Part 12C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

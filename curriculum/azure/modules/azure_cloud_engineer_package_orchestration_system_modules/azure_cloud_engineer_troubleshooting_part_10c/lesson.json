@@ -1,0 +1,29 @@
+{
+  "id": "azure_azure_cloud_engineer_troubleshooting_part_10c",
+  "title": "Azure Cloud Engineer Troubleshooting Part 10C",
+  "technology": "Azure Cloud Engineer",
+  "module": "Azure Cloud Engineer Package Orchestration & System Modules",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Azure Cloud Engineer File Integration & Stream Buffers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Azure Cloud Engineer Troubleshooting Part 10C.",
+    "Write error-free implementations utilizing Azure Cloud Engineer Troubleshooting Part 10C.",
+    "Debug and optimize performance characteristics of Azure Cloud Engineer Troubleshooting Part 10C."
+  ],
+  "tags": [
+    "azure",
+    "cloud",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "10c"
+  ]
+}

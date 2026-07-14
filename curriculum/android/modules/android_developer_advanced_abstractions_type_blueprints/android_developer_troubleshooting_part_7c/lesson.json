@@ -1,0 +1,28 @@
+{
+  "id": "android_android_developer_troubleshooting_part_7c",
+  "title": "Android Developer Troubleshooting Part 7C",
+  "technology": "Android Developer",
+  "module": "Android Developer Advanced Abstractions & Type Blueprints",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Android Developer Data Collections & List Structures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Android Developer Troubleshooting Part 7C.",
+    "Write error-free implementations utilizing Android Developer Troubleshooting Part 7C.",
+    "Debug and optimize performance characteristics of Android Developer Troubleshooting Part 7C."
+  ],
+  "tags": [
+    "android",
+    "developer",
+    "troubleshooting",
+    "part",
+    "7c"
+  ]
+}

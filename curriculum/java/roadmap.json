@@ -1,0 +1,31 @@
+{
+  "id": "java",
+  "title": "Java",
+  "category": "Programming",
+  "difficulty": "Intermediate",
+  "icon": "☕",
+  "tags": [
+    "java",
+    "spring",
+    "hibernate",
+    "jdbc",
+    "maven"
+  ],
+  "description": "Java ecosystem from fundamentals to Spring Boot, microservices, and JDBC.",
+  "language": "java",
+  "prerequisites": [
+    "Understanding of basics in Java"
+  ],
+  "estimatedHours": 140,
+  "projects": [
+    {
+      "title": "Java Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Java curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Java",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

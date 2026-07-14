@@ -1,0 +1,29 @@
+{
+  "id": "ui-ux_ui_ux_design_core_principles_part_8a",
+  "title": "UI/UX Design Core Principles Part 8A",
+  "technology": "UI/UX Design",
+  "module": "UI/UX Design Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: UI/UX Design Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of UI/UX Design Core Principles Part 8A.",
+    "Write error-free implementations utilizing UI/UX Design Core Principles Part 8A.",
+    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 8A."
+  ],
+  "tags": [
+    "ui/ux",
+    "design",
+    "core",
+    "principles",
+    "part",
+    "8a"
+  ]
+}

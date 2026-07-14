@@ -1,0 +1,30 @@
+{
+  "id": "aws_aws_cloud_architect_implementation_steps_part_12b",
+  "title": "AWS Cloud Architect Implementation Steps Part 12B",
+  "technology": "AWS Cloud Architect",
+  "module": "AWS Cloud Architect Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AWS Cloud Architect Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AWS Cloud Architect Implementation Steps Part 12B.",
+    "Write error-free implementations utilizing AWS Cloud Architect Implementation Steps Part 12B.",
+    "Debug and optimize performance characteristics of AWS Cloud Architect Implementation Steps Part 12B."
+  ],
+  "tags": [
+    "aws",
+    "cloud",
+    "architect",
+    "implementation",
+    "steps",
+    "part",
+    "12b"
+  ]
+}

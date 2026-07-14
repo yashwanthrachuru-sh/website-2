@@ -1,0 +1,30 @@
+{
+  "id": "frontend",
+  "title": "Frontend Development",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "frontend",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Frontend Development from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Frontend Development"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Frontend Development Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Frontend Development curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Frontend Development",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "devops_devops_engineer_troubleshooting_part_8c",
+  "title": "DevOps Engineer Troubleshooting Part 8C",
+  "technology": "DevOps Engineer",
+  "module": "DevOps Engineer Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: DevOps Engineer Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of DevOps Engineer Troubleshooting Part 8C.",
+    "Write error-free implementations utilizing DevOps Engineer Troubleshooting Part 8C.",
+    "Debug and optimize performance characteristics of DevOps Engineer Troubleshooting Part 8C."
+  ],
+  "tags": [
+    "devops",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "8c"
+  ]
+}

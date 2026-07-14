@@ -1,0 +1,28 @@
+{
+  "id": "flutter_flutter_developer_troubleshooting_part_10c",
+  "title": "Flutter Developer Troubleshooting Part 10C",
+  "technology": "Flutter Developer",
+  "module": "Flutter Developer Package Orchestration & System Modules",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Flutter Developer File Integration & Stream Buffers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Flutter Developer Troubleshooting Part 10C.",
+    "Write error-free implementations utilizing Flutter Developer Troubleshooting Part 10C.",
+    "Debug and optimize performance characteristics of Flutter Developer Troubleshooting Part 10C."
+  ],
+  "tags": [
+    "flutter",
+    "developer",
+    "troubleshooting",
+    "part",
+    "10c"
+  ]
+}

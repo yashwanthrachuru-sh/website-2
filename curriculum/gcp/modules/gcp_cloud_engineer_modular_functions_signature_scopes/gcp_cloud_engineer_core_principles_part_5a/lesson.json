@@ -1,0 +1,30 @@
+{
+  "id": "gcp_gcp_cloud_engineer_core_principles_part_5a",
+  "title": "GCP Cloud Engineer Core Principles Part 5A",
+  "technology": "GCP Cloud Engineer",
+  "module": "GCP Cloud Engineer Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: GCP Cloud Engineer Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCP Cloud Engineer Core Principles Part 5A.",
+    "Write error-free implementations utilizing GCP Cloud Engineer Core Principles Part 5A.",
+    "Debug and optimize performance characteristics of GCP Cloud Engineer Core Principles Part 5A."
+  ],
+  "tags": [
+    "gcp",
+    "cloud",
+    "engineer",
+    "core",
+    "principles",
+    "part",
+    "5a"
+  ]
+}

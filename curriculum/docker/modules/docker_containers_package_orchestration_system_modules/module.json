@@ -1,0 +1,7 @@
+{
+  "id": "docker_docker_containers_package_orchestration_system_modules",
+  "name": "Docker Containers Package Orchestration & System Modules",
+  "description": "In-depth study on Docker Containers covering managing external libraries and resolving package dependencies.",
+  "orderIndex": 10,
+  "xpReward": 200
+}

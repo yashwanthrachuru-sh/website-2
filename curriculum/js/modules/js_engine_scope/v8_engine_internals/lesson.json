@@ -1,0 +1,26 @@
+{
+  "id": "js_v8_engine_internals",
+  "title": "V8 Engine Internals",
+  "technology": "JavaScript",
+  "module": "JS Engine & Scope",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of V8 Engine Internals.",
+    "Write error-free implementations utilizing V8 Engine Internals.",
+    "Debug and optimize performance characteristics of V8 Engine Internals."
+  ],
+  "tags": [
+    "v8",
+    "engine",
+    "internals"
+  ]
+}

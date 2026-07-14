@@ -1,0 +1,28 @@
+{
+  "id": "html_html_core_principles_part_10a",
+  "title": "HTML Core Principles Part 10A",
+  "technology": "HTML",
+  "module": "HTML Package Orchestration & System Modules",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML File Integration & Stream Buffers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Core Principles Part 10A.",
+    "Write error-free implementations utilizing HTML Core Principles Part 10A.",
+    "Debug and optimize performance characteristics of HTML Core Principles Part 10A."
+  ],
+  "tags": [
+    "html",
+    "core",
+    "principles",
+    "part",
+    "10a"
+  ]
+}

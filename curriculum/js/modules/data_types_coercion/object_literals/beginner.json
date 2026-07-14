@@ -1,0 +1,45 @@
+{
+  "motivation": "Store dynamic fields inside JavaScript objects.",
+  "whyExists": "JSON (JavaScript Object Notation) — the universal data interchange format of the web — is directly modeled on object/dictionary syntax. Every API response, configuration file, and database document is a nested structure of key-value pairs. Dictionaries and objects power: user session data, API request/response bodies, caching layers (Redis stores key-value pairs), database indices, and in-memory lookup tables. Choosing the right data structure (dict for O(1) lookups vs list for ordered iteration) is critical for performance at scale.",
+  "realWorldAnalogy": "Imagine you are working in a warehouse. Instead of tossing boxes around randomly, you place them into labeled shelves. When a package arrives, you look up its shelf label to update the stock index. Similarly, **Object Literals** acts as a named workspace or rule that coordinates statements, keeping variables safe and ensuring operations execute only when matching conditions are met.",
+  "simpleExplanation": "To learn Object Literals from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Object Literals defines how values bind, operations evaluate, and stack structures are clean.",
+  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Object Literals] ──► [Memory Address] ──► [Console Output]\n```",
+  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the javascript syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "desc": "Allocate memory segment and load bindings."
+    },
+    {
+      "step": 2,
+      "desc": "Process instruction registers."
+    },
+    {
+      "step": 3,
+      "desc": "Pop current stack frame."
+    }
+  ],
+  "memoryDiagram": {
+    "type": "variables",
+    "theme": "dark",
+    "slots": [
+      {
+        "address": "0x7fff01",
+        "name": "object_literals_ref",
+        "value": "0x7fff08"
+      },
+      {
+        "address": "0x7fff08",
+        "name": "object_literals_val",
+        "value": "100"
+      }
+    ]
+  },
+  "examples": [
+    {
+      "title": "Basic Syntax Pattern",
+      "code": "console.log(\"Running Object Literals...\");",
+      "explanation": "This output statement verifies execution."
+    }
+  ]
+}

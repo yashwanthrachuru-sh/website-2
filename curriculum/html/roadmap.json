@@ -1,0 +1,30 @@
+{
+  "id": "html",
+  "title": "HTML",
+  "category": "Web Dev",
+  "difficulty": "Advanced",
+  "icon": "🧭",
+  "tags": [
+    "html",
+    "html",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for HTML from beginner to production-ready design.",
+  "language": "html",
+  "prerequisites": [
+    "Understanding of basics in HTML"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "HTML Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the HTML curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of HTML",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

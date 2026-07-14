@@ -1,0 +1,30 @@
+{
+  "id": "blockchain",
+  "title": "Blockchain Developer",
+  "category": "Blockchain",
+  "difficulty": "Advanced",
+  "icon": "🧭",
+  "tags": [
+    "blockchain",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Blockchain Developer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Blockchain Developer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Blockchain Developer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Blockchain Developer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Blockchain Developer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

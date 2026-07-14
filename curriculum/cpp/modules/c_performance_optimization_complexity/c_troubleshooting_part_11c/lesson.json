@@ -1,0 +1,27 @@
+{
+  "id": "cpp_c_troubleshooting_part_11c",
+  "title": "C++ Troubleshooting Part 11C",
+  "technology": "C++",
+  "module": "C++ Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: C++ Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing C++ Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of C++ Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "c++",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

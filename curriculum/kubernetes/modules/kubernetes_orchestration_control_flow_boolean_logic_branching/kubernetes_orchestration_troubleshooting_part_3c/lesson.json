@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_3c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 3C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

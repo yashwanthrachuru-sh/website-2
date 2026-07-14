@@ -1,0 +1,25 @@
+{
+  "id": "java_recursion_stack",
+  "title": "Recursion Stack",
+  "technology": "Java",
+  "module": "Methods & Signatures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Loops & Iteration"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Recursion Stack.",
+    "Write error-free implementations utilizing Recursion Stack.",
+    "Debug and optimize performance characteristics of Recursion Stack."
+  ],
+  "tags": [
+    "recursion",
+    "stack"
+  ]
+}

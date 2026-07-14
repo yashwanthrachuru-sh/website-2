@@ -1,0 +1,30 @@
+{
+  "id": "react",
+  "title": "React Developer",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "react",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for React Developer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in React Developer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "React Developer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the React Developer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of React Developer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

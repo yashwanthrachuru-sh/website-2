@@ -1,0 +1,28 @@
+{
+  "id": "data-science_data_science_troubleshooting_part_6c",
+  "title": "Data Science Troubleshooting Part 6C",
+  "technology": "Data Science",
+  "module": "Data Science Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Troubleshooting Part 6C.",
+    "Write error-free implementations utilizing Data Science Troubleshooting Part 6C.",
+    "Debug and optimize performance characteristics of Data Science Troubleshooting Part 6C."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "troubleshooting",
+    "part",
+    "6c"
+  ]
+}

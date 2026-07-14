@@ -1,0 +1,29 @@
+{
+  "id": "sql_sql_databases_troubleshooting_part_1c",
+  "title": "SQL & Databases Troubleshooting Part 1C",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing SQL & Databases Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of SQL & Databases Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

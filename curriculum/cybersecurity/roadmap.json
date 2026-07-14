@@ -1,0 +1,30 @@
+{
+  "id": "cybersecurity",
+  "title": "Cybersecurity Analyst",
+  "category": "Security",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "cybersecurity",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Cybersecurity Analyst from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Cybersecurity Analyst"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Cybersecurity Analyst Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Cybersecurity Analyst curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Cybersecurity Analyst",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

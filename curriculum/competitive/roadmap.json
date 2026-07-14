@@ -1,0 +1,30 @@
+{
+  "id": "competitive",
+  "title": "Competitive Programming",
+  "category": "Programming",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "competitive",
+    "cpp",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Competitive Programming from beginner to production-ready design.",
+  "language": "cpp",
+  "prerequisites": [
+    "Understanding of basics in Competitive Programming"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Competitive Programming Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Competitive Programming curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Competitive Programming",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

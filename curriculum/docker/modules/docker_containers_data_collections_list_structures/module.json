@@ -1,0 +1,7 @@
+{
+  "id": "docker_docker_containers_data_collections_list_structures",
+  "name": "Docker Containers Data Collections & List Structures",
+  "description": "In-depth study on Docker Containers covering storing sorted items and manipulating contiguous tables.",
+  "orderIndex": 6,
+  "xpReward": 200
+}

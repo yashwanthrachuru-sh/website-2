@@ -1,0 +1,30 @@
+{
+  "id": "dsa_data_structures_algorithms_troubleshooting_part_11c",
+  "title": "Data Structures & Algorithms Troubleshooting Part 11C",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Structures & Algorithms Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

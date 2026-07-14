@@ -1,0 +1,25 @@
+{
+  "id": "java_jvm_architecture",
+  "title": "JVM Architecture",
+  "technology": "Java",
+  "module": "Java JVM & Setup",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of JVM Architecture.",
+    "Write error-free implementations utilizing JVM Architecture.",
+    "Debug and optimize performance characteristics of JVM Architecture."
+  ],
+  "tags": [
+    "jvm",
+    "architecture"
+  ]
+}

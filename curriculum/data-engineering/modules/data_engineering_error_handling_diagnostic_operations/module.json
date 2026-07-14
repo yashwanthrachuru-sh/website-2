@@ -1,0 +1,7 @@
+{
+  "id": "data-engineering_data_engineering_error_handling_diagnostic_operations",
+  "name": "Data Engineering Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Data Engineering covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

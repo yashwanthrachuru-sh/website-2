@@ -1,0 +1,30 @@
+{
+  "id": "ai-engineer",
+  "title": "AI Engineer",
+  "category": "AI/ML",
+  "difficulty": "Advanced",
+  "icon": "🧭",
+  "tags": [
+    "ai-engineer",
+    "python",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for AI Engineer from beginner to production-ready design.",
+  "language": "python",
+  "prerequisites": [
+    "Understanding of basics in AI Engineer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "AI Engineer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the AI Engineer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of AI Engineer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

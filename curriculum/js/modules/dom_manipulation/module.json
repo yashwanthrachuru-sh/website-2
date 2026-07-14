@@ -1,0 +1,7 @@
+{
+  "id": "js_dom_manipulation",
+  "name": "DOM Manipulation",
+  "description": "Select and modify HTML nodes dynamically.",
+  "orderIndex": 6,
+  "xpReward": 200
+}

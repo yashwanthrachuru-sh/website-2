@@ -1,0 +1,26 @@
+{
+  "id": "typescript_casting_with_as",
+  "title": "Casting with As",
+  "technology": "TypeScript",
+  "module": "Type Assertions Casting",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Enums & Literal Types"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Casting with As.",
+    "Write error-free implementations utilizing Casting with As.",
+    "Debug and optimize performance characteristics of Casting with As."
+  ],
+  "tags": [
+    "casting",
+    "with",
+    "as"
+  ]
+}

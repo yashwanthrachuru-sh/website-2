@@ -1,0 +1,26 @@
+{
+  "id": "c_arithmetic_operations_c",
+  "title": "Arithmetic Operations C",
+  "technology": "C Programming",
+  "module": "Operators Expressions",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Format Specifiers I/O"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Arithmetic Operations C.",
+    "Write error-free implementations utilizing Arithmetic Operations C.",
+    "Debug and optimize performance characteristics of Arithmetic Operations C."
+  ],
+  "tags": [
+    "arithmetic",
+    "operations",
+    "c"
+  ]
+}

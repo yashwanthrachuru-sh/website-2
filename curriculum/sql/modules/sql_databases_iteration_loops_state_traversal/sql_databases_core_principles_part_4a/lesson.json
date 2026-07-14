@@ -1,0 +1,30 @@
+{
+  "id": "sql_sql_databases_core_principles_part_4a",
+  "title": "SQL & Databases Core Principles Part 4A",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Core Principles Part 4A.",
+    "Write error-free implementations utilizing SQL & Databases Core Principles Part 4A.",
+    "Debug and optimize performance characteristics of SQL & Databases Core Principles Part 4A."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "core",
+    "principles",
+    "part",
+    "4a"
+  ]
+}

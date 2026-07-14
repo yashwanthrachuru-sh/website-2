@@ -1,0 +1,30 @@
+{
+  "id": "sql_sql_databases_implementation_steps_part_12b",
+  "title": "SQL & Databases Implementation Steps Part 12B",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Implementation Steps Part 12B.",
+    "Write error-free implementations utilizing SQL & Databases Implementation Steps Part 12B.",
+    "Debug and optimize performance characteristics of SQL & Databases Implementation Steps Part 12B."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "implementation",
+    "steps",
+    "part",
+    "12b"
+  ]
+}

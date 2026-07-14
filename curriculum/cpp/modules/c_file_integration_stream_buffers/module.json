@@ -1,0 +1,7 @@
+{
+  "id": "cpp_c_file_integration_stream_buffers",
+  "name": "C++ File Integration & Stream Buffers",
+  "description": "In-depth study on C++ covering reading and writing inputs to persistent storage structures.",
+  "orderIndex": 9,
+  "xpReward": 200
+}

@@ -1,0 +1,28 @@
+{
+  "id": "cpp_c_core_principles_part_10a",
+  "title": "C++ Core Principles Part 10A",
+  "technology": "C++",
+  "module": "C++ Package Orchestration & System Modules",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: C++ File Integration & Stream Buffers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Core Principles Part 10A.",
+    "Write error-free implementations utilizing C++ Core Principles Part 10A.",
+    "Debug and optimize performance characteristics of C++ Core Principles Part 10A."
+  ],
+  "tags": [
+    "c++",
+    "core",
+    "principles",
+    "part",
+    "10a"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "docker",
+  "title": "Docker Containers",
+  "category": "DevOps",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "docker",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Docker Containers from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Docker Containers"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Docker Containers Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Docker Containers curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Docker Containers",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

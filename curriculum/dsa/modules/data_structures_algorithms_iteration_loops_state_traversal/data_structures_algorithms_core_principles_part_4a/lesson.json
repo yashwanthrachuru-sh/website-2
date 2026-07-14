@@ -1,0 +1,31 @@
+{
+  "id": "dsa_data_structures_algorithms_core_principles_part_4a",
+  "title": "Data Structures & Algorithms Core Principles Part 4A",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Structures & Algorithms Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Core Principles Part 4A.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Core Principles Part 4A.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Core Principles Part 4A."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "core",
+    "principles",
+    "part",
+    "4a"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "backend_backend_development_troubleshooting_part_1c",
+  "title": "Backend Development Troubleshooting Part 1C",
+  "technology": "Backend Development",
+  "module": "Backend Development Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Backend Development Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Backend Development Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Backend Development Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "backend",
+    "development",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

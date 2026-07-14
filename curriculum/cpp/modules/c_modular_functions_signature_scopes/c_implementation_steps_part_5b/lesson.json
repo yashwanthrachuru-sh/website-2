@@ -1,0 +1,28 @@
+{
+  "id": "cpp_c_implementation_steps_part_5b",
+  "title": "C++ Implementation Steps Part 5B",
+  "technology": "C++",
+  "module": "C++ Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: C++ Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of C++ Implementation Steps Part 5B.",
+    "Write error-free implementations utilizing C++ Implementation Steps Part 5B.",
+    "Debug and optimize performance characteristics of C++ Implementation Steps Part 5B."
+  ],
+  "tags": [
+    "c++",
+    "implementation",
+    "steps",
+    "part",
+    "5b"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "cybersecurity_cybersecurity_analyst_troubleshooting_part_1c",
+  "title": "Cybersecurity Analyst Troubleshooting Part 1C",
+  "technology": "Cybersecurity Analyst",
+  "module": "Cybersecurity Analyst Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Cybersecurity Analyst Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Cybersecurity Analyst Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Cybersecurity Analyst Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "cybersecurity",
+    "analyst",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

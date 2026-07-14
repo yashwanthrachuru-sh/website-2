@@ -1,0 +1,7 @@
+{
+  "id": "typescript_type_assertions_casting",
+  "name": "Type Assertions Casting",
+  "description": "Override compiler type inferences.",
+  "orderIndex": 9,
+  "xpReward": 200
+}

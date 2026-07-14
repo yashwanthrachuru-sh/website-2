@@ -1,0 +1,45 @@
+{
+  "motivation": "Branching scripts using if and else statements.",
+  "whyExists": "Without conditionals, every program would execute identically regardless of input. Conditionals enable **business logic**: charge a different tax rate based on country, show different UI based on user role, retry a network request only if it failed, validate form input before sending. Every meaningful program contains conditional logic — it is the foundation of decision-making in software.",
+  "realWorldAnalogy": "Imagine you're playing a video game. If you have enough coins, the door opens. If you don't, it stays locked. That's a conditional!\n\nIn programming: **if** something is true → do this. **else** → do that.\n\nExample: if your age is over 18, you can vote. Otherwise, you cannot. The computer checks the condition (age > 18) and picks the right path.",
+  "simpleExplanation": "To learn Conditional Branches from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Conditional Branches defines how values bind, operations evaluate, and stack structures are clean.",
+  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Conditional Branches] ──► [Memory Address] ──► [Console Output]\n```",
+  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the c syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "desc": "Allocate memory segment and load bindings."
+    },
+    {
+      "step": 2,
+      "desc": "Process instruction registers."
+    },
+    {
+      "step": 3,
+      "desc": "Pop current stack frame."
+    }
+  ],
+  "memoryDiagram": {
+    "type": "variables",
+    "theme": "dark",
+    "slots": [
+      {
+        "address": "0x7fff01",
+        "name": "conditional_branches_ref",
+        "value": "0x7fff08"
+      },
+      {
+        "address": "0x7fff08",
+        "name": "conditional_branches_val",
+        "value": "100"
+      }
+    ]
+  },
+  "examples": [
+    {
+      "title": "Basic Syntax Pattern",
+      "code": "console.log(\"Running Conditional Branches...\");",
+      "explanation": "This output statement verifies execution."
+    }
+  ]
+}

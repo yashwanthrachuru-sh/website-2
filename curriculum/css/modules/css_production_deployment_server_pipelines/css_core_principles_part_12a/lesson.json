@@ -1,0 +1,28 @@
+{
+  "id": "css_css_core_principles_part_12a",
+  "title": "CSS Core Principles Part 12A",
+  "technology": "CSS",
+  "module": "CSS Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: CSS Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of CSS Core Principles Part 12A.",
+    "Write error-free implementations utilizing CSS Core Principles Part 12A.",
+    "Debug and optimize performance characteristics of CSS Core Principles Part 12A."
+  ],
+  "tags": [
+    "css",
+    "core",
+    "principles",
+    "part",
+    "12a"
+  ]
+}

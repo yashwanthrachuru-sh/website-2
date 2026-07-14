@@ -1,0 +1,29 @@
+{
+  "id": "devops_devops_engineer_implementation_steps_part_6b",
+  "title": "DevOps Engineer Implementation Steps Part 6B",
+  "technology": "DevOps Engineer",
+  "module": "DevOps Engineer Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: DevOps Engineer Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of DevOps Engineer Implementation Steps Part 6B.",
+    "Write error-free implementations utilizing DevOps Engineer Implementation Steps Part 6B.",
+    "Debug and optimize performance characteristics of DevOps Engineer Implementation Steps Part 6B."
+  ],
+  "tags": [
+    "devops",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "6b"
+  ]
+}

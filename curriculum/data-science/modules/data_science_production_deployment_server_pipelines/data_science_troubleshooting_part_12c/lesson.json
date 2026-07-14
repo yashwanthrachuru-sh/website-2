@@ -1,0 +1,28 @@
+{
+  "id": "data-science_data_science_troubleshooting_part_12c",
+  "title": "Data Science Troubleshooting Part 12C",
+  "technology": "Data Science",
+  "module": "Data Science Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing Data Science Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of Data Science Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_implementation_steps_part_11b",
+  "title": "Kubernetes Orchestration Implementation Steps Part 11B",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Implementation Steps Part 11B.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Implementation Steps Part 11B.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Implementation Steps Part 11B."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "implementation",
+    "steps",
+    "part",
+    "11b"
+  ]
+}

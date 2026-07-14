@@ -1,0 +1,26 @@
+{
+  "id": "typescript_partial_and_required",
+  "title": "Partial and Required",
+  "technology": "TypeScript",
+  "module": "Utility Types Mapping",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Modules Namespaces"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Partial and Required.",
+    "Write error-free implementations utilizing Partial and Required.",
+    "Debug and optimize performance characteristics of Partial and Required."
+  ],
+  "tags": [
+    "partial",
+    "and",
+    "required"
+  ]
+}

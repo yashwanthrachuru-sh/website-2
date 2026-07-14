@@ -1,0 +1,25 @@
+{
+  "id": "python_nested_conditions",
+  "title": "Nested Conditions",
+  "technology": "Python",
+  "module": "Control Flow & Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Variables & Core Data Types"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Nested Conditions.",
+    "Write error-free implementations utilizing Nested Conditions.",
+    "Debug and optimize performance characteristics of Nested Conditions."
+  ],
+  "tags": [
+    "nested",
+    "conditions"
+  ]
+}

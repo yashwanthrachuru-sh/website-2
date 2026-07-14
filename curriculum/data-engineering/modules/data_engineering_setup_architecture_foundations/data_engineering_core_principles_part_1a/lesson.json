@@ -1,0 +1,29 @@
+{
+  "id": "data-engineering_data_engineering_core_principles_part_1a",
+  "title": "Data Engineering Core Principles Part 1A",
+  "technology": "Data Engineering",
+  "module": "Data Engineering Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Engineering Core Principles Part 1A.",
+    "Write error-free implementations utilizing Data Engineering Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of Data Engineering Core Principles Part 1A."
+  ],
+  "tags": [
+    "data",
+    "engineering",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

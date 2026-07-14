@@ -1,0 +1,29 @@
+{
+  "id": "docker_docker_containers_core_principles_part_12a",
+  "title": "Docker Containers Core Principles Part 12A",
+  "technology": "Docker Containers",
+  "module": "Docker Containers Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Docker Containers Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Core Principles Part 12A.",
+    "Write error-free implementations utilizing Docker Containers Core Principles Part 12A.",
+    "Debug and optimize performance characteristics of Docker Containers Core Principles Part 12A."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "core",
+    "principles",
+    "part",
+    "12a"
+  ]
+}

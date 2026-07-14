@@ -1,0 +1,7 @@
+{
+  "id": "azure_azure_cloud_engineer_error_handling_diagnostic_operations",
+  "name": "Azure Cloud Engineer Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Azure Cloud Engineer covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What is the JavaScript Event Loop?",
+      "answer": "The Event Loop is a mechanism that allows JavaScript to perform async operations despite being single-threaded. It continuously checks: (1) Is the Call Stack empty? (2) Is there something in the Microtask Queue (Promise callbacks)? (3) Is there something in the Macrotask Queue (setTimeout, setInterval, I/O callbacks)? Microtasks are processed first, then one macrotask, then microtasks again. This determines when Promise .then() callbacks and setTimeout callbacks execute.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What is the difference between Promise.all, Promise.allSettled, Promise.race, and Promise.any?",
+      "answer": "Promise.all: waits for ALL to resolve; rejects immediately if ANY rejects. Promise.allSettled: waits for ALL to finish (resolve or reject); never rejects; returns array of {status, value/reason}. Promise.race: resolves/rejects as soon as the FIRST promise settles (used for timeouts). Promise.any: resolves when the FIRST resolves; only rejects if ALL reject (AggregateError). Use case: Promise.all for parallel required operations, Promise.allSettled for optional parallel operations, Promise.race for timeout patterns.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What happens if you forget \"await\" before an async call?",
+      "answer": "Without await, you get the Promise object itself instead of its resolved value. The code continues executing immediately without waiting. Example: const data = fetchData(); // data is a Promise, not the data. data.name is undefined. This is a very common bug — TypeScript helps catch it by showing that data has type Promise<T> rather than T.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Promise Chains queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Promise Chains queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Promise Chains queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Promise Chains queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Promise Chains queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Promise Chains queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Promise Chains queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

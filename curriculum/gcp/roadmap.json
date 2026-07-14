@@ -1,0 +1,30 @@
+{
+  "id": "gcp",
+  "title": "GCP Cloud Engineer",
+  "category": "Cloud",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "gcp",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for GCP Cloud Engineer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in GCP Cloud Engineer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "GCP Cloud Engineer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the GCP Cloud Engineer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of GCP Cloud Engineer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

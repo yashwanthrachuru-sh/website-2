@@ -1,0 +1,144 @@
+{
+  "mcqs": [
+    {
+      "id": "q_1",
+      "question": "What is the primary role of Union Types?",
+      "options": [
+        "To manage and coordinate state transformations for Union Types.",
+        "To override platform-level memory access constraints.",
+        "To run asynchronous file compression routines.",
+        "To construct direct database socket bindings."
+      ],
+      "answer": "A",
+      "explanation": "Union Types organizes logic flow and handles operations safely at runtime.",
+      "difficulty": "Beginner",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_2",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_3",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_4",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_5",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_6",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Intermediate",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_7",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_8",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_9",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Union Types"
+    },
+    {
+      "id": "q_10",
+      "question": "In typescript, which of the following is true about Union Types?",
+      "options": [
+        "It follows local scope rules.",
+        "It runs directly on GPUs with zero CPU usage.",
+        "It requires network connections to execute.",
+        "It is deprecated in the latest release."
+      ],
+      "answer": "A",
+      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "difficulty": "Advanced",
+      "topic": "Union Types"
+    }
+  ]
+}

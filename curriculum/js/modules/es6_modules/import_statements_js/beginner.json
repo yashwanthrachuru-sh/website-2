@@ -1,0 +1,45 @@
+{
+  "motivation": "Load external script modules into scopes.",
+  "whyExists": "A 100,000-line application in a single file is unmaintainable. Modules provide: (1) Encapsulation — internals are hidden; only the public API is exported. (2) Reusability — a `validate_email` function in `validators.py` can be used by registration, settings, and admin modules. (3) Namespace isolation — two modules can both define `calculate_tax` without conflict. (4) Lazy loading — browser apps can defer loading heavy modules until needed, improving initial load time.",
+  "realWorldAnalogy": "Imagine you are working in a warehouse. Instead of tossing boxes around randomly, you place them into labeled shelves. When a package arrives, you look up its shelf label to update the stock index. Similarly, **Import Statements JS** acts as a named workspace or rule that coordinates statements, keeping variables safe and ensuring operations execute only when matching conditions are met.",
+  "simpleExplanation": "To learn Import Statements JS from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Import Statements JS defines how values bind, operations evaluate, and stack structures are clean.",
+  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Import Statements JS] ──► [Memory Address] ──► [Console Output]\n```",
+  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the javascript syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "desc": "Allocate memory segment and load bindings."
+    },
+    {
+      "step": 2,
+      "desc": "Process instruction registers."
+    },
+    {
+      "step": 3,
+      "desc": "Pop current stack frame."
+    }
+  ],
+  "memoryDiagram": {
+    "type": "variables",
+    "theme": "dark",
+    "slots": [
+      {
+        "address": "0x7fff01",
+        "name": "import_statements_js_ref",
+        "value": "0x7fff08"
+      },
+      {
+        "address": "0x7fff08",
+        "name": "import_statements_js_val",
+        "value": "100"
+      }
+    ]
+  },
+  "examples": [
+    {
+      "title": "Basic Syntax Pattern",
+      "code": "console.log(\"Running Import Statements JS...\");",
+      "explanation": "This output statement verifies execution."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "syntax": "## Conditionals Cheat Sheet\n\n### Pattern\n```\nif (condition) { run this }\nelse if (other) { run this }\nelse { fallback }\n```\n\n- Check truthiness, not equality where possible\n- Prefer early returns over deeply nested else chains\n- Use switch/match for multiple known values",
+  "quickExamples": "// Simple usage\n",
+  "commonErrors": [
+    {
+      "error": "ReferenceError",
+      "description": "Calling variables outside their declared scope."
+    }
+  ],
+  "tips": [
+    "Keep naming conventions consistent.",
+    "Document complex parameters."
+  ],
+  "shortcuts": [],
+  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
+  "bestPractices": [
+    "Avoid global namespaces.",
+    "Use const / final for read-only variables."
+  ],
+  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
+  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+}

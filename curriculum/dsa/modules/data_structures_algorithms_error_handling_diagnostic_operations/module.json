@@ -1,0 +1,7 @@
+{
+  "id": "dsa_data_structures_algorithms_error_handling_diagnostic_operations",
+  "name": "Data Structures & Algorithms Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Data Structures & Algorithms covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

@@ -1,0 +1,30 @@
+{
+  "id": "data-engineering",
+  "title": "Data Engineering",
+  "category": "Data",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "data-engineering",
+    "python",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Data Engineering from beginner to production-ready design.",
+  "language": "python",
+  "prerequisites": [
+    "Understanding of basics in Data Engineering"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Data Engineering Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Data Engineering curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Data Engineering",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

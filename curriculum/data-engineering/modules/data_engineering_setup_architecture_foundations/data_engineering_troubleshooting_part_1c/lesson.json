@@ -1,0 +1,28 @@
+{
+  "id": "data-engineering_data_engineering_troubleshooting_part_1c",
+  "title": "Data Engineering Troubleshooting Part 1C",
+  "technology": "Data Engineering",
+  "module": "Data Engineering Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Engineering Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Data Engineering Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Data Engineering Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "data",
+    "engineering",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "react_react_developer_implementation_steps_part_3b",
+  "title": "React Developer Implementation Steps Part 3B",
+  "technology": "React Developer",
+  "module": "React Developer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: React Developer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of React Developer Implementation Steps Part 3B.",
+    "Write error-free implementations utilizing React Developer Implementation Steps Part 3B.",
+    "Debug and optimize performance characteristics of React Developer Implementation Steps Part 3B."
+  ],
+  "tags": [
+    "react",
+    "developer",
+    "implementation",
+    "steps",
+    "part",
+    "3b"
+  ]
+}

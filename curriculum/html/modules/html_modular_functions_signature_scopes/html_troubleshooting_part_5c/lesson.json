@@ -1,0 +1,27 @@
+{
+  "id": "html_html_troubleshooting_part_5c",
+  "title": "HTML Troubleshooting Part 5C",
+  "technology": "HTML",
+  "module": "HTML Modular Functions & Signature Scopes",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML Iteration loops & State Traversal"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Troubleshooting Part 5C.",
+    "Write error-free implementations utilizing HTML Troubleshooting Part 5C.",
+    "Debug and optimize performance characteristics of HTML Troubleshooting Part 5C."
+  ],
+  "tags": [
+    "html",
+    "troubleshooting",
+    "part",
+    "5c"
+  ]
+}

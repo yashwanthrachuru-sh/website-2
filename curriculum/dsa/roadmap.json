@@ -1,0 +1,30 @@
+{
+  "id": "dsa",
+  "title": "Data Structures & Algorithms",
+  "category": "Programming",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "dsa",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Data Structures & Algorithms from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Data Structures & Algorithms"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Data Structures & Algorithms Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Data Structures & Algorithms curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Data Structures & Algorithms",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

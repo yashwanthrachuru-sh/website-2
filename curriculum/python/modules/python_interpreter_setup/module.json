@@ -1,0 +1,7 @@
+{
+  "id": "python_python_interpreter_setup",
+  "name": "Python Interpreter & Setup",
+  "description": "Setting up Python environment and understanding bytecode execution.",
+  "orderIndex": 1,
+  "xpReward": 200
+}

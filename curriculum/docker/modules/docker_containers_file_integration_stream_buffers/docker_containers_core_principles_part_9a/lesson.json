@@ -1,0 +1,29 @@
+{
+  "id": "docker_docker_containers_core_principles_part_9a",
+  "title": "Docker Containers Core Principles Part 9A",
+  "technology": "Docker Containers",
+  "module": "Docker Containers File Integration & Stream Buffers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Docker Containers Error Handling & Diagnostic Operations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Docker Containers Core Principles Part 9A.",
+    "Write error-free implementations utilizing Docker Containers Core Principles Part 9A.",
+    "Debug and optimize performance characteristics of Docker Containers Core Principles Part 9A."
+  ],
+  "tags": [
+    "docker",
+    "containers",
+    "core",
+    "principles",
+    "part",
+    "9a"
+  ]
+}

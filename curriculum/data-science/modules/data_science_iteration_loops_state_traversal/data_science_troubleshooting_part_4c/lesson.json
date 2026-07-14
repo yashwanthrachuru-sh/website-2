@@ -1,0 +1,28 @@
+{
+  "id": "data-science_data_science_troubleshooting_part_4c",
+  "title": "Data Science Troubleshooting Part 4C",
+  "technology": "Data Science",
+  "module": "Data Science Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Data Science Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Science Troubleshooting Part 4C.",
+    "Write error-free implementations utilizing Data Science Troubleshooting Part 4C.",
+    "Debug and optimize performance characteristics of Data Science Troubleshooting Part 4C."
+  ],
+  "tags": [
+    "data",
+    "science",
+    "troubleshooting",
+    "part",
+    "4c"
+  ]
+}

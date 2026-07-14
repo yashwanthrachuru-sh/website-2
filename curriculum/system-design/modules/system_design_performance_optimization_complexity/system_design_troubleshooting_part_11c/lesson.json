@@ -1,0 +1,28 @@
+{
+  "id": "system-design_system_design_troubleshooting_part_11c",
+  "title": "System Design Troubleshooting Part 11C",
+  "technology": "System Design",
+  "module": "System Design Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: System Design Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of System Design Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing System Design Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of System Design Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "system",
+    "design",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

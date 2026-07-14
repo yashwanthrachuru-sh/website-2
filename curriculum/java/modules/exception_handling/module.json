@@ -1,0 +1,7 @@
+{
+  "id": "java_exception_handling",
+  "name": "Exception Handling",
+  "description": "Capture runtime stack errors gracefully.",
+  "orderIndex": 9,
+  "xpReward": 200
+}

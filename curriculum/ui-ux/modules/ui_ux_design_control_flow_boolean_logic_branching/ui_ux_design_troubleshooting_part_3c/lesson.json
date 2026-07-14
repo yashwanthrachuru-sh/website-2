@@ -1,0 +1,28 @@
+{
+  "id": "ui-ux_ui_ux_design_troubleshooting_part_3c",
+  "title": "UI/UX Design Troubleshooting Part 3C",
+  "technology": "UI/UX Design",
+  "module": "UI/UX Design Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: UI/UX Design Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of UI/UX Design Troubleshooting Part 3C.",
+    "Write error-free implementations utilizing UI/UX Design Troubleshooting Part 3C.",
+    "Debug and optimize performance characteristics of UI/UX Design Troubleshooting Part 3C."
+  ],
+  "tags": [
+    "ui/ux",
+    "design",
+    "troubleshooting",
+    "part",
+    "3c"
+  ]
+}

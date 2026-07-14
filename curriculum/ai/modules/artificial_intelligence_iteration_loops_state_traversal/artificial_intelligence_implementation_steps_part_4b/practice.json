@@ -1,0 +1,46 @@
+{
+  "easy": {
+    "problem": "Implement a basic routine demonstrating the startup code syntax for Artificial Intelligence Implementation Steps Part 4B.",
+    "starterCode": "# Write your code here\n",
+    "hints": [
+      "Review the syntax rules in the beginner notes.",
+      "Check name spelling."
+    ],
+    "expectedOutput": "Success",
+    "solution": "# Solution goes here\n",
+    "explanation": "Verifies basic execution."
+  },
+  "medium": {
+    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
+    "starterCode": "def process(val):\n    pass",
+    "hints": [
+      "Use conditional statements to inspect values.",
+      "Throw ValueError or Error."
+    ],
+    "expectedOutput": "Error raised",
+    "solution": "def process(val):\n    if val < 0:\n        raise ValueError('Negative value')\n    return val",
+    "explanation": "Ensures input validation constraints are met."
+  },
+  "hard": {
+    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
+    "starterCode": "cache = {}\ndef lookup(key):\n    pass",
+    "hints": [
+      "Use a dictionary or Map.",
+      "Store results after the first query."
+    ],
+    "expectedOutput": "Cached output retrieved",
+    "solution": "cache = {}\ndef lookup(key, calculator):\n    if key not in cache:\n        cache[key] = calculator(key)\n    return cache[key]",
+    "explanation": "Implements high-performance memoization caching."
+  },
+  "debugging": {
+    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
+    "starterCode": "record_data = 100\nprint(record_datas)",
+    "hints": [
+      "Inspect variable identifiers.",
+      "Match call names exactly."
+    ],
+    "expectedOutput": "100",
+    "solution": "record_data = 100\nprint(record_data)",
+    "explanation": "Aligns identifiers within namespace bindings."
+  }
+}

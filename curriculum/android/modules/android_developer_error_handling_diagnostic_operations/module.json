@@ -1,0 +1,7 @@
+{
+  "id": "android_android_developer_error_handling_diagnostic_operations",
+  "name": "Android Developer Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Android Developer covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

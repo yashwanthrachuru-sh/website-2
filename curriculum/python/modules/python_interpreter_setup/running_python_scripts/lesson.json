@@ -1,0 +1,26 @@
+{
+  "id": "python_running_python_scripts",
+  "title": "Running Python Scripts",
+  "technology": "Python",
+  "module": "Python Interpreter & Setup",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Running Python Scripts.",
+    "Write error-free implementations utilizing Running Python Scripts.",
+    "Debug and optimize performance characteristics of Running Python Scripts."
+  ],
+  "tags": [
+    "running",
+    "python",
+    "scripts"
+  ]
+}

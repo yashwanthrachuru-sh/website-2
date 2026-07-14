@@ -1,0 +1,30 @@
+{
+  "id": "gcp_gcp_cloud_engineer_implementation_steps_part_3b",
+  "title": "GCP Cloud Engineer Implementation Steps Part 3B",
+  "technology": "GCP Cloud Engineer",
+  "module": "GCP Cloud Engineer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: GCP Cloud Engineer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of GCP Cloud Engineer Implementation Steps Part 3B.",
+    "Write error-free implementations utilizing GCP Cloud Engineer Implementation Steps Part 3B.",
+    "Debug and optimize performance characteristics of GCP Cloud Engineer Implementation Steps Part 3B."
+  ],
+  "tags": [
+    "gcp",
+    "cloud",
+    "engineer",
+    "implementation",
+    "steps",
+    "part",
+    "3b"
+  ]
+}

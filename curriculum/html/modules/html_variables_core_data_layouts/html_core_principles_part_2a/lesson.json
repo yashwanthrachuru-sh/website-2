@@ -1,0 +1,28 @@
+{
+  "id": "html_html_core_principles_part_2a",
+  "title": "HTML Core Principles Part 2A",
+  "technology": "HTML",
+  "module": "HTML Variables & Core Data Layouts",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML Setup & Architecture Foundations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Core Principles Part 2A.",
+    "Write error-free implementations utilizing HTML Core Principles Part 2A.",
+    "Debug and optimize performance characteristics of HTML Core Principles Part 2A."
+  ],
+  "tags": [
+    "html",
+    "core",
+    "principles",
+    "part",
+    "2a"
+  ]
+}

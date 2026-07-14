@@ -1,0 +1,25 @@
+{
+  "id": "java_interface_rules",
+  "title": "Interface Rules",
+  "technology": "Java",
+  "module": "Interfaces & Inheritance",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: OOP Classes & Objects"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Interface Rules.",
+    "Write error-free implementations utilizing Interface Rules.",
+    "Debug and optimize performance characteristics of Interface Rules."
+  ],
+  "tags": [
+    "interface",
+    "rules"
+  ]
+}

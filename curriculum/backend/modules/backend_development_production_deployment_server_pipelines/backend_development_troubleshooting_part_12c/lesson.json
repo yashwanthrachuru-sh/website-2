@@ -1,0 +1,28 @@
+{
+  "id": "backend_backend_development_troubleshooting_part_12c",
+  "title": "Backend Development Troubleshooting Part 12C",
+  "technology": "Backend Development",
+  "module": "Backend Development Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Backend Development Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Backend Development Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing Backend Development Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of Backend Development Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "backend",
+    "development",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

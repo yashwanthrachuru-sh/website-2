@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What is the difference between a Docker image and a container?",
+      "answer": "An image is a read-only blueprint — a layered filesystem containing the OS, runtime, libraries, and application code. It is built once and can be shared. A container is a running instance of an image — it has a writable layer on top, its own network stack, process space, and resource limits. You can run multiple containers from the same image simultaneously. Think: image = class definition, container = object instance.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What is Docker layer caching and why does the order of Dockerfile instructions matter?",
+      "answer": "Docker builds images as layers. Each instruction (FROM, RUN, COPY) creates a layer. Layers are cached — if a layer hasn't changed, Docker reuses the cached layer. If any layer changes, all subsequent layers are rebuilt. This means: put slow-changing layers early (COPY package.json; RUN npm install) and fast-changing layers late (COPY . .). Otherwise, every code change would trigger a full npm install — slow and wasteful.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "How would you keep secrets out of Docker images?",
+      "answer": "Never hardcode secrets in Dockerfile or commit .env files. Options: (1) Environment variables passed at runtime: docker run -e DB_PASSWORD=secret (not in image, but visible in docker inspect). (2) Docker secrets (Swarm) or Kubernetes secrets — injected as files, not env vars. (3) Volume-mount secrets files. (4) Use a secrets manager (AWS Secrets Manager, HashiCorp Vault) and fetch at runtime. (5) Multi-stage builds to exclude secrets used only during build. Docker BuildKit secrets (--secret) for build-time secrets.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Docker Containers Troubleshooting Part 8C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Docker Containers Troubleshooting Part 8C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Docker Containers Troubleshooting Part 8C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Docker Containers Troubleshooting Part 8C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Docker Containers Troubleshooting Part 8C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Docker Containers Troubleshooting Part 8C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Docker Containers Troubleshooting Part 8C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

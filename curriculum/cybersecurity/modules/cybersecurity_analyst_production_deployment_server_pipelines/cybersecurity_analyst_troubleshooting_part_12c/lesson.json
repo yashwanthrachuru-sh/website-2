@@ -1,0 +1,28 @@
+{
+  "id": "cybersecurity_cybersecurity_analyst_troubleshooting_part_12c",
+  "title": "Cybersecurity Analyst Troubleshooting Part 12C",
+  "technology": "Cybersecurity Analyst",
+  "module": "Cybersecurity Analyst Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Cybersecurity Analyst Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Cybersecurity Analyst Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing Cybersecurity Analyst Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of Cybersecurity Analyst Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "cybersecurity",
+    "analyst",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "backend",
+  "title": "Backend Development",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "backend",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Backend Development from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Backend Development"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Backend Development Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Backend Development curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Backend Development",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "nextjs_next_js_developer_troubleshooting_part_11c",
+  "title": "Next.js Developer Troubleshooting Part 11C",
+  "technology": "Next.js Developer",
+  "module": "Next.js Developer Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Next.js Developer Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Next.js Developer Troubleshooting Part 11C.",
+    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 11C.",
+    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 11C."
+  ],
+  "tags": [
+    "next.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "11c"
+  ]
+}

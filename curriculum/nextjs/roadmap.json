@@ -1,0 +1,30 @@
+{
+  "id": "nextjs",
+  "title": "Next.js Developer",
+  "category": "Web Dev",
+  "difficulty": "Intermediate",
+  "icon": "🧭",
+  "tags": [
+    "nextjs",
+    "javascript",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Next.js Developer from beginner to production-ready design.",
+  "language": "javascript",
+  "prerequisites": [
+    "Understanding of basics in Next.js Developer"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Next.js Developer Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Next.js Developer curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Next.js Developer",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

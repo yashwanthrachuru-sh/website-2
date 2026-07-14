@@ -1,0 +1,24 @@
+{
+  "id": "python_polymorphism",
+  "title": "Polymorphism",
+  "technology": "Python",
+  "module": "Object Oriented Python",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: File Handling & I/O"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Polymorphism.",
+    "Write error-free implementations utilizing Polymorphism.",
+    "Debug and optimize performance characteristics of Polymorphism."
+  ],
+  "tags": [
+    "polymorphism"
+  ]
+}

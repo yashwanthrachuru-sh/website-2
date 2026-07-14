@@ -1,0 +1,26 @@
+{
+  "id": "c_pointer_arithmetic_offset",
+  "title": "Pointer Arithmetic Offset",
+  "technology": "C Programming",
+  "module": "Pointers Dereferencing",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Arrays String Termination"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Pointer Arithmetic Offset.",
+    "Write error-free implementations utilizing Pointer Arithmetic Offset.",
+    "Debug and optimize performance characteristics of Pointer Arithmetic Offset."
+  ],
+  "tags": [
+    "pointer",
+    "arithmetic",
+    "offset"
+  ]
+}

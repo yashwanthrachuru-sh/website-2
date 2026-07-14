@@ -101,12 +101,75 @@ function openToolModal(tool) {
   const modal = document.getElementById('toolModal');
   const box = document.getElementById('toolModalContent');
   const stars = '★'.repeat(Math.round(tool.rating)) + '☆'.repeat(5 - Math.round(tool.rating));
+  
+  let guideHtml = '';
+  const sc = tool.structured_content;
+
+  // Sanitization: Any raw tags or scripts should be stripped/escaped to prevent XSS
+  const sanitize = (text) => {
+    if (!text) return '';
+    return text
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      .replace(/on\w+\s*=\s*"[^"]*"/gi, '')
+      .replace(/on\w+\s*=\s*'[^']*'/gi, '');
+  };
+
+  if (sc) {
+    // Generate beautiful learning tabs/sections for the AI tool
+    guideHtml = `
+      <div style="margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+        <h4 style="font-size: 15px; color: var(--frost); margin-bottom: 1rem; font-weight: 700;">📘 Comprehensive AI Tool Learning Guide</h4>
+        
+        <!-- Accordion container -->
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          ${[
+            { title: "📌 What is this tool?", content: sc.definition },
+            { title: "📅 History & Origins", content: sc.history },
+            { title: "🌱 Why it exists", content: sc.why_created },
+            { title: "⚙️ How it works", content: sc.how_it_works },
+            { title: "🏗️ System Architecture", content: sc.architecture },
+            { title: "🌟 Core Features", content: sc.core_features },
+            { title: "✅ Advantages", content: sc.advantages },
+            { title: "⚠️ Limitations", content: sc.limitations },
+            { title: "💰 Pricing structure", content: sc.pricing },
+            { title: "🆓 Free vs Paid comparison", content: sc.free_vs_paid },
+            { title: "🏢 Industry Use Cases", content: sc.industry_use_cases },
+            { title: "🎓 Student Use Cases", content: sc.student_use_cases },
+            { title: "👨‍💻 Developer Use Cases", content: sc.developer_use_cases },
+            { title: "💬 Prompt Engineering Tips", content: sc.prompt_tips },
+            { title: "🚀 Step-by-step Beginner Guide", content: sc.beginner_guide },
+            { title: "🏆 Professional Workflow", content: sc.professional_workflow },
+            { title: "✅ Best Practices", content: sc.best_practices },
+            { title: "🔄 Alternatives & Comparison", content: `${sc.alternatives || ''}\n\n${sc.comparison_table || ''}` },
+            { title: "❓ Frequently Asked Questions (FAQs)", content: sc.faqs },
+            { title: "📝 Mini Quiz", content: sc.mini_quiz },
+            { title: "💪 Practice Tasks", content: sc.practice_tasks },
+            { title: "🚀 Project Ideas", content: sc.project_ideas },
+            { title: "🔗 Related AI Tools", content: sc.related_tools },
+            { title: "📚 Summary", content: sc.summary }
+          ].filter(item => item.content).map((item, index) => `
+            <div style="border: 1px solid var(--border); border-radius: 6px; background: var(--abyss);">
+              <div onclick="const body = this.nextElementSibling; body.style.display = body.style.display === 'none' ? 'block' : 'none';" 
+                   style="padding: 0.75rem 1rem; font-weight: 600; font-size: 13px; color: var(--frost); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+                <span>${item.title}</span>
+                <span style="font-size: 10px; color: var(--mist-dim);">▼</span>
+              </div>
+              <div style="display: none; padding: 1rem; border-top: 1px solid var(--border); font-size: 13px; color: var(--mist); line-height: 1.6; max-height: 400px; overflow-y: auto;">
+                ${markdownToHtml(sanitize(item.content))}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   box.innerHTML = `
     <div class="drawer-header">
       <h3 style="display:flex;align-items:center;gap:10px;font-size:17px;">${CAT_ICONS[tool.category] || '🛠'} ${tool.name}</h3>
       <button onclick="document.getElementById('toolModal').classList.remove('open')" class="btn btn-icon" style="width:28px;height:28px;">&times;</button>
     </div>
-    <div style="padding:1.5rem;">
+    <div style="padding:1.5rem; max-height: calc(100vh - 80px); overflow-y: auto;">
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
         <span class="badge badge-accent">${tool.category}</span>
         <span class="badge badge-muted">${tool.pricing}</span>
@@ -117,15 +180,70 @@ function openToolModal(tool) {
       <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;">
         ${(tool.features || []).map(f => `<li style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--mist);"><span style="color:var(--emerald);">✓</span>${f}</li>`).join('')}
       </ul>
-      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem;">
         <a href="${tool.official_link}" target="_blank" rel="noopener" class="btn btn-primary">🚀 Launch Tool</a>
         <button onclick="toggleBookmark('${tool.id}');document.getElementById('toolModal').classList.remove('open');" class="btn btn-secondary">🔖 ${isBookmarked(tool.id) ? 'Remove Bookmark' : 'Bookmark'}</button>
       </div>
+      ${guideHtml}
     </div>
   `;
   modal.classList.add('open');
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
 }
+
+// ── Markdown Parser ────────────────────────────────────────────
+function markdownToHtml(md) {
+  if (!md) return '';
+  let html = md
+    .replace(/```(\w+)?\n?([\s\S]*?)```/gm, (_, lang, code) => {
+      return `<pre><button class="copy-btn" onclick="copyCode(this)">Copy</button><code class="lang-${lang || 'text'}">${escapeHtml(code.trim())}</code></pre>`;
+    })
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    .replace(/^[*\-] (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+    .replace(/^---$/gm, '<hr>')
+    .replace(/\n\n(?!<[uh]|<li|<hr)/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+
+  // Premium parser overlays
+  html = html.replace(/<blockquote>\s*<p>\s*💡\s*([\s\S]*?)<\/p>\s*<\/blockquote>/gi, (m, content) => {
+    return `<div class="premium-callout callout-info"><div class="callout-icon">💡</div><div class="callout-body"><strong>Remember:</strong> ${content}</div></div>`;
+  });
+  html = html.replace(/<h3>❌ Bad Prompt:<\/h3>([\s\S]*?)<h3>✅ Good Prompt:<\/h3>([\s\S]*?)(?=<div|$)/gi, (m, bad, good) => {
+    return `
+      <div class="mistake-comparison-grid">
+        <div class="comparison-card bad">
+          <div class="card-header">❌ Weak Prompt</div>
+          <div class="card-body">${bad}</div>
+        </div>
+        <div class="comparison-card good">
+          <div class="card-header">✅ Highly Effective Prompt</div>
+          <div class="card-body">${good}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  return `<p>${html}</p>`;
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+window.copyCode = function(btn) {
+  const code = btn.nextElementSibling?.textContent || '';
+  navigator.clipboard.writeText(code).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+};
 
 let allTools = [...TOOLS_DATA];
 

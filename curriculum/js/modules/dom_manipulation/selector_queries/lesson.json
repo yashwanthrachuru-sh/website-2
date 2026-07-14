@@ -1,0 +1,25 @@
+{
+  "id": "js_selector_queries",
+  "title": "Selector Queries",
+  "technology": "JavaScript",
+  "module": "DOM Manipulation",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Closures & Functions"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Selector Queries.",
+    "Write error-free implementations utilizing Selector Queries.",
+    "Debug and optimize performance characteristics of Selector Queries."
+  ],
+  "tags": [
+    "selector",
+    "queries"
+  ]
+}

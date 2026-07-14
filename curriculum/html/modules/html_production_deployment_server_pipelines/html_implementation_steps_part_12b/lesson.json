@@ -1,0 +1,28 @@
+{
+  "id": "html_html_implementation_steps_part_12b",
+  "title": "HTML Implementation Steps Part 12B",
+  "technology": "HTML",
+  "module": "HTML Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Implementation Steps Part 12B.",
+    "Write error-free implementations utilizing HTML Implementation Steps Part 12B.",
+    "Debug and optimize performance characteristics of HTML Implementation Steps Part 12B."
+  ],
+  "tags": [
+    "html",
+    "implementation",
+    "steps",
+    "part",
+    "12b"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "kubernetes_kubernetes_orchestration_troubleshooting_part_12c",
+  "title": "Kubernetes Orchestration Troubleshooting Part 12C",
+  "technology": "Kubernetes Orchestration",
+  "module": "Kubernetes Orchestration Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Kubernetes Orchestration Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "kubernetes",
+    "orchestration",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

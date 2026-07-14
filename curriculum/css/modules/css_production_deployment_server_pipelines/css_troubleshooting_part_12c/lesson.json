@@ -1,0 +1,27 @@
+{
+  "id": "css_css_troubleshooting_part_12c",
+  "title": "CSS Troubleshooting Part 12C",
+  "technology": "CSS",
+  "module": "CSS Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: CSS Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of CSS Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing CSS Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of CSS Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "css",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

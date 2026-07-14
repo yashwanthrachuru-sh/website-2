@@ -1,0 +1,7 @@
+{
+  "id": "data-engineering_data_engineering_file_integration_stream_buffers",
+  "name": "Data Engineering File Integration & Stream Buffers",
+  "description": "In-depth study on Data Engineering covering reading and writing inputs to persistent storage structures.",
+  "orderIndex": 9,
+  "xpReward": 200
+}

@@ -1,0 +1,28 @@
+{
+  "id": "nextjs_next_js_developer_troubleshooting_part_1c",
+  "title": "Next.js Developer Troubleshooting Part 1C",
+  "technology": "Next.js Developer",
+  "module": "Next.js Developer Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Next.js Developer Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "next.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

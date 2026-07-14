@@ -1,0 +1,28 @@
+{
+  "id": "html_html_core_principles_part_8a",
+  "title": "HTML Core Principles Part 8A",
+  "technology": "HTML",
+  "module": "HTML Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Core Principles Part 8A.",
+    "Write error-free implementations utilizing HTML Core Principles Part 8A.",
+    "Debug and optimize performance characteristics of HTML Core Principles Part 8A."
+  ],
+  "tags": [
+    "html",
+    "core",
+    "principles",
+    "part",
+    "8a"
+  ]
+}

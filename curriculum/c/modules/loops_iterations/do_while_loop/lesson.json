@@ -1,0 +1,26 @@
+{
+  "id": "c_do_while_loop",
+  "title": "Do While Loop",
+  "technology": "C Programming",
+  "module": "Loops Iterations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Control Flow Conditions"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Do While Loop.",
+    "Write error-free implementations utilizing Do While Loop.",
+    "Debug and optimize performance characteristics of Do While Loop."
+  ],
+  "tags": [
+    "do",
+    "while",
+    "loop"
+  ]
+}

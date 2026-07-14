@@ -1,0 +1,54 @@
+{
+  "questions": [
+    {
+      "question": "What is the difference between a variable and a constant?",
+      "answer": "A variable can have its value changed after initial assignment. A constant is bound to a value that should not change. In Python, constants are a convention (SCREAMING_SNAKE_CASE) with no runtime enforcement. In JavaScript, const prevents reassignment of the binding but not mutation of the object. In Java, final prevents reassignment.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "Explain Python's dynamic typing. How is it different from Java's static typing?",
+      "answer": "Python is dynamically typed: types are associated with objects, not variables. A variable can point to an int, then be rebound to a string — the interpreter checks types at runtime, not compilation. Java is statically typed: the variable's type is declared at compile time and never changes. Java catches type mismatches before execution; Python raises TypeError at runtime.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What is the difference between == and is in Python?",
+      "answer": "== tests value equality (do two objects have equal content?). is tests identity (do two variables point to the exact same object in memory?). a = [1,2]; b = [1,2]; a==b is True but a is b is False. For singletons like None, always use is: if value is None.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "Explain the LEGB rule with an example.",
+      "answer": "LEGB = Local → Enclosing → Global → Built-in. Python searches for a name starting at the innermost Local scope, then the Enclosing function scopes (for nested functions), then the Global (module-level) scope, then Built-in names (print, len, etc.). Example: a function can access a global variable without declaring it global, but to modify it, must use the global keyword.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "Why is using a mutable default argument dangerous?",
+      "answer": "Default values are evaluated once when the function is defined — a mutable default (list, dict) is shared across all calls. If any call mutates it, later calls see the modified state. The fix: use None as default and create a fresh mutable inside the function body.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "How does Python garbage collection work?",
+      "answer": "CPython uses reference counting as its primary strategy. Every object has a refcount — the number of references pointing to it. When refcount reaches zero, memory is freed immediately. A cyclic garbage collector handles circular references (two objects pointing to each other) that reference counting cannot resolve, running periodically to find and collect these cycles.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Science Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Science Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Science Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    },
+    {
+      "question": "What are the performance characteristics of high-frequency Data Science Troubleshooting Part 2C queries?",
+      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

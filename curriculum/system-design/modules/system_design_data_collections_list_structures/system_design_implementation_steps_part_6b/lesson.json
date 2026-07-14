@@ -1,0 +1,29 @@
+{
+  "id": "system-design_system_design_implementation_steps_part_6b",
+  "title": "System Design Implementation Steps Part 6B",
+  "technology": "System Design",
+  "module": "System Design Data Collections & List Structures",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: System Design Modular Functions & Signature Scopes"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of System Design Implementation Steps Part 6B.",
+    "Write error-free implementations utilizing System Design Implementation Steps Part 6B.",
+    "Debug and optimize performance characteristics of System Design Implementation Steps Part 6B."
+  ],
+  "tags": [
+    "system",
+    "design",
+    "implementation",
+    "steps",
+    "part",
+    "6b"
+  ]
+}

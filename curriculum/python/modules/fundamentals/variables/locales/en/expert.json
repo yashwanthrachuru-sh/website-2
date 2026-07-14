@@ -1,0 +1,121 @@
+{
+  "overview": "At the professional level, variables are managed at scale. Real codebases have thousands of variables, dozens of modules, and multiple developers. The decisions you make about naming, scoping, mutability, and typing directly affect code review outcomes, test coverage, team onboarding speed, and production bug rates.",
+
+  "industryContext": "When a senior developer reviews a pull request, they look at variable names, scope, and mutability before reading the logic. A function with `global` statements fails code review at most companies without justification. A class with a clear `__slots__` declaration signals the author understands performance. Type annotations are mandatory in production Python at companies including Google, Meta, Dropbox, and Instagram.",
+
+  "examples": [
+    {
+      "title": "Production configuration management with python-dotenv",
+      "code": "# config.py — Never hardcode secrets\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()  # reads .env file into os.environ\n\n# Constants — uppercase, module-level, loaded once\nDATABASE_URL    = os.environ['DATABASE_URL']    # raises if missing — fail fast\nSECRET_KEY      = os.environ['SECRET_KEY']\nDEBUG           = os.environ.get('DEBUG', 'false').lower() == 'true'\nMAX_CONNECTIONS = int(os.environ.get('MAX_CONNECTIONS', '10'))\n\n# In your application:\n# from config import DATABASE_URL, MAX_CONNECTIONS",
+      "explanation": "In production, credentials live in environment variables or secret managers — never in Python source code. python-dotenv loads a .env file for local development. os.environ['KEY'] raises KeyError if missing (fail-fast). os.environ.get('KEY', 'default') provides a fallback. Constants are loaded once at module import time.",
+      "expectedOutput": "(no output — configuration is loaded silently)"
+    },
+    {
+      "title": "LEGB scope chain — where Python looks for a name",
+      "code": "# Module level (Global scope)\nAPI_TIMEOUT = 30\n\nclass NetworkClient:\n    # Class scope (not in LEGB — class variables are not a scope level)\n    default_retry = 3\n\n    def fetch(self, url, timeout=None):\n        # Local scope\n        timeout = timeout or API_TIMEOUT  # falls through to Global\n        retry = self.default_retry        # class attribute (not scope)\n\n        def _attempt(n):\n            # Enclosing scope: 'timeout' and 'retry' from fetch()\n            nonlocal retry  # needed if we modify retry\n            if n > 0:\n                retry -= 1\n                print(f'Attempt {n}, timeout={timeout}, retries_left={retry}')\n                _attempt(n - 1)\n\n        _attempt(retry)\n\nclient = NetworkClient()\nclient.fetch('https://api.example.com')",
+      "explanation": "This shows all LEGB levels in a realistic context. 'timeout' resolves: first checks Local (finds it), stops. 'API_TIMEOUT' resolves: Local? No. Enclosing? No. Global? Yes. 'retry' in _attempt needs nonlocal because the function modifies (not just reads) it.",
+      "expectedOutput": "Attempt 3, timeout=30, retries_left=2\nAttempt 2, timeout=30, retries_left=1\nAttempt 1, timeout=30, retries_left=0"
+    },
+    {
+      "title": "Late binding closure bug — the interview classic",
+      "code": "# --- BUG: common in loop-generated functions ---\nhandlers = []\nfor event_id in range(3):\n    def handle():\n        print(f'Handling event {event_id}')  # captures 'event_id' by reference\n    handlers.append(handle)\n\n# By the time we call them, the loop is done and event_id = 2\nfor h in handlers:\n    h()   # All print: 'Handling event 2'\n\nprint('--- Fixed version ---')\n# FIX 1: default argument captures value at function creation time\nhandlers_fixed = []\nfor event_id in range(3):\n    def handle(eid=event_id):\n        print(f'Handling event {eid}')\n    handlers_fixed.append(handle)\n\nfor h in handlers_fixed:\n    h()   # Prints 0, 1, 2 correctly\n\n# FIX 2: functools.partial (cleaner for complex cases)\nfrom functools import partial\n\ndef handle_event(eid):\n    print(f'Handling event {eid}')\n\nhandlers_partial = [partial(handle_event, i) for i in range(3)]\nfor h in handlers_partial:\n    h()   # Prints 0, 1, 2 correctly",
+      "explanation": "All three closures share the loop variable 'event_id'. When called after the loop, event_id is 2. The default-argument trick binds the current value at definition time. functools.partial is the professional solution for creating specialised functions from general ones.",
+      "expectedOutput": "Handling event 2\nHandling event 2\nHandling event 2\n--- Fixed version ---\nHandling event 0\nHandling event 1\nHandling event 2"
+    },
+    {
+      "title": "Memory-efficient objects with __slots__ — production scale",
+      "code": "import sys\n\n# Standard class — has __dict__ per instance\nclass RegularPoint:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n# Slotted class — no __dict__ per instance\nclass SlottedPoint:\n    __slots__ = ('x', 'y')\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\nregular = RegularPoint(3, 4)\nslotted = SlottedPoint(3, 4)\n\nprint('Regular size:', sys.getsizeof(regular), 'bytes')  # ~48 + __dict__ overhead\nprint('Slotted size:', sys.getsizeof(slotted), 'bytes')  # ~56 bytes flat\nprint('Has __dict__:', hasattr(regular, '__dict__'))     # True\nprint('Has __dict__:', hasattr(slotted, '__dict__'))     # False\n\n# At 10 million instances, the difference is hundreds of MB",
+      "explanation": "Each regular instance carries an overhead __dict__ (a hash table) for attribute storage — roughly 200+ bytes per instance. __slots__ replaces it with a fixed-size C array. At scale (game entities, data processing, web servers handling millions of objects), this difference determines whether your application fits in RAM.",
+      "expectedOutput": "Regular size: 48 bytes\nSlotted size: 56 bytes\nHas __dict__: True\nHas __dict__: False"
+    },
+    {
+      "title": "Type annotations in production — mypy and pyright",
+      "code": "from typing import Optional, Union\n\n# Production-grade variable declarations with type hints\nusername: str\nretry_count: int = 0\nerror_message: Optional[str] = None   # can be str or None\nresponse_code: Union[int, str] = 200  # can be int or str (avoid if possible)\n\n# Dataclass — combines __init__ and type annotations cleanly\nfrom dataclasses import dataclass\n\n@dataclass\nclass UserSession:\n    user_id: int\n    username: str\n    is_authenticated: bool = False\n    access_token: Optional[str] = None\n\nsession = UserSession(user_id=42, username='alice')\nprint(session)\nprint(session.is_authenticated)  # False (default)",
+      "explanation": "In production teams, type annotations serve as machine-readable documentation. Tools like mypy and pyright (used by VS Code) catch type errors before runtime. @dataclass auto-generates __init__, __repr__, __eq__ from annotations. Optional[str] means 'str or None' — the most common pattern for values that might not exist yet.",
+      "expectedOutput": "UserSession(user_id=42, username='alice', is_authenticated=False, access_token=None)\nFalse"
+    }
+  ],
+
+  "codeReviewChecklist": [
+    "Variable names are descriptive and follow PEP 8 — no single letters except i/j/k in loops",
+    "No global variables without documented justification",
+    "Type annotations present on all public function parameters and return values",
+    "Mutable default arguments are NOT used: def f(items=[]) is a bug — use def f(items=None)",
+    "None checks use 'is None' / 'is not None', not '== None'",
+    "Sensitive values (passwords, API keys) are not in source code — use os.environ",
+    "Large-scale objects (created by millions) use __slots__",
+    "Closures in loops use default arguments or functools.partial to avoid late binding"
+  ],
+
+  "testingVariables": {
+    "explanation": "In professional Python, variables are tested indirectly through function and class behaviour. But some patterns require direct variable testing:",
+    "examples": [
+      {
+        "scenario": "Testing that a function does not mutate its argument",
+        "code": "def process_scores(scores):\n    # Good: works on a copy, does not mutate the original\n    result = scores[:]\n    result.sort()\n    return result\n\ndef test_process_scores_does_not_mutate():\n    original = [3, 1, 4, 1, 5]\n    snapshot = original[:]\n    process_scores(original)\n    assert original == snapshot, 'Function must not mutate input'"
+      },
+      {
+        "scenario": "Testing a class with __slots__",
+        "code": "def test_slotted_point_rejects_extra_attributes():\n    p = SlottedPoint(1, 2)\n    try:\n        p.z = 3\n        assert False, 'Should have raised AttributeError'\n    except AttributeError:\n        pass  # expected"
+      }
+    ]
+  },
+
+  "refactoringGuide": {
+    "title": "Refactoring: from global state to clean functions",
+    "before": "# Anti-pattern: mutable global state\nuser_data = {}\nerrors = []\n\ndef load_user(user_id):\n    global user_data, errors\n    # ... mutates globals ...\n    user_data['id'] = user_id\n    errors.append('Some error')",
+    "after": "# Clean: functions receive and return data\nfrom dataclasses import dataclass, field\nfrom typing import Optional\n\n@dataclass\nclass LoadResult:\n    user_id: int\n    data: dict = field(default_factory=dict)\n    errors: list = field(default_factory=list)\n    success: bool = True\n\ndef load_user(user_id: int) -> LoadResult:\n    result = LoadResult(user_id=user_id)\n    # ... populates result ...\n    return result",
+    "why": "Global mutable state makes functions impossible to test in isolation (calling order matters), impossible to run concurrently (race conditions), and confusing to debug (any function anywhere may have modified the state). Pure functions — those that take inputs and return outputs without touching globals — are testable, composable, and thread-safe."
+  },
+
+  "securityConsiderations": [
+    {
+      "risk": "Hardcoded credentials",
+      "bad": "DB_PASSWORD = 'secretpassword123'",
+      "good": "DB_PASSWORD = os.environ['DB_PASSWORD']",
+      "why": "Source code is committed to version control. Credentials in code get leaked to anyone with repo access, CI logs, error messages, and stack traces."
+    },
+    {
+      "risk": "Dynamic variable names via eval/exec",
+      "bad": "eval(f'{user_input} = 42')",
+      "good": "data = {}; data[user_input] = 42",
+      "why": "eval() executes arbitrary Python. If user_input is '__import__(\"os\").system(\"rm -rf /\")', you have a remote code execution vulnerability. Use dictionaries to map dynamic names to values."
+    },
+    {
+      "risk": "Logging sensitive variables",
+      "bad": "logger.debug(f'User token: {access_token}')",
+      "good": "logger.debug(f'Token present: {bool(access_token)}')",
+      "why": "Log files are often stored unencrypted, shipped to third-party services, and accessible to ops teams. Never log tokens, passwords, PII, or financial data."
+    }
+  ],
+
+  "designPatterns": [
+    {
+      "name": "Sentinel object pattern",
+      "description": "When None is a valid value and you need a distinct 'not provided' signal, create a unique sentinel.",
+      "example": "_MISSING = object()  # unique object — nothing else is this\n\ndef get_config(key: str, default=_MISSING):\n    if key in config:\n        return config[key]\n    if default is _MISSING:\n        raise KeyError(f'Config key not found: {key}')\n    return default\n\n# Now callers can pass None as a valid default:\nget_config('debug_mode', default=None)   # returns None if key missing\nget_config('required_key')              # raises KeyError if key missing"
+    },
+    {
+      "name": "Walrus operator for assignment expressions (Python 3.8+)",
+      "description": "Assign and test in a single expression. Avoids calling an expensive function twice.",
+      "example": "import re\n\n# Before walrus\nlog_lines = ['INFO: ok', 'ERROR: 404', 'INFO: ok']\nfor line in log_lines:\n    match = re.search(r'ERROR: (\\d+)', line)\n    if match:\n        print(f'Error code: {match.group(1)}')\n\n# With walrus — cleaner\nfor line in log_lines:\n    if m := re.search(r'ERROR: (\\d+)', line):\n        print(f'Error code: {m.group(1)}')"
+    },
+    {
+      "name": "Named constants over magic numbers",
+      "description": "Every literal number or string that has business meaning should be a named constant.",
+      "example": "# Bad — magic numbers\nif retry_count > 3:\n    time.sleep(0.5)\n    if error_code == 429:\n        raise RateLimitError()\n\n# Good — named constants\nMAX_RETRIES = 3\nBACKOFF_SECONDS = 0.5\nHTTP_TOO_MANY_REQUESTS = 429\n\nif retry_count > MAX_RETRIES:\n    time.sleep(BACKOFF_SECONDS)\n    if error_code == HTTP_TOO_MANY_REQUESTS:\n        raise RateLimitError()"
+    }
+  ],
+
+  "scalabilityConsiderations": {
+    "namespaceSize": "Python's namespace dict grows with each variable. In modules with hundreds of top-level variables, import time and memory footprint both grow. Structure large modules as classes or split into submodules.",
+    "threadSafety": "Python variables are NOT thread-safe. If two threads read and write the same variable simultaneously, you get race conditions. Use threading.Lock() or atomic types from the queue/multiprocessing modules.",
+    "globalInterpreterLock": "CPython's GIL means only one thread executes Python bytecode at a time. For CPU-bound operations, use multiprocessing (separate Python processes, each with their own variables). For I/O-bound operations, use asyncio (single-threaded cooperative multitasking)."
+  },
+
+  "complexityAnalysis": {
+    "variableLookup": "O(1) average — CPython namespaces are dicts. Local variable access is LOAD_FAST (compile-time indexed), even faster than global LOAD_GLOBAL.",
+    "scopeChainWalk": "O(k) where k = scope depth. In practice k ≤ 4 (LEGB). Python bytecode LOAD_GLOBAL handles global lookup in one operation, not a chain walk.",
+    "attributeLookup": "O(1) with __slots__ (C array index), O(1) average with __dict__ (hash table), O(n) worst case (hash collisions — extremely rare in CPython 3.6+ with random hash seeds)."
+  }
+}

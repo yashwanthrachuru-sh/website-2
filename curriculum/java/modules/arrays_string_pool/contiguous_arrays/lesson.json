@@ -1,0 +1,25 @@
+{
+  "id": "java_contiguous_arrays",
+  "title": "Contiguous Arrays",
+  "technology": "Java",
+  "module": "Arrays & String Pool",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Methods & Signatures"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Contiguous Arrays.",
+    "Write error-free implementations utilizing Contiguous Arrays.",
+    "Debug and optimize performance characteristics of Contiguous Arrays."
+  ],
+  "tags": [
+    "contiguous",
+    "arrays"
+  ]
+}

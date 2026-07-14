@@ -1,0 +1,29 @@
+{
+  "id": "android_android_developer_core_principles_part_11a",
+  "title": "Android Developer Core Principles Part 11A",
+  "technology": "Android Developer",
+  "module": "Android Developer Performance Optimization & Complexity",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Android Developer Package Orchestration & System Modules"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Android Developer Core Principles Part 11A.",
+    "Write error-free implementations utilizing Android Developer Core Principles Part 11A.",
+    "Debug and optimize performance characteristics of Android Developer Core Principles Part 11A."
+  ],
+  "tags": [
+    "android",
+    "developer",
+    "core",
+    "principles",
+    "part",
+    "11a"
+  ]
+}

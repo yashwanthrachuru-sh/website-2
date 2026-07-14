@@ -1,0 +1,7 @@
+{
+  "id": "data-science_data_science_error_handling_diagnostic_operations",
+  "name": "Data Science Error Handling & Diagnostic Operations",
+  "description": "In-depth study on Data Science covering handling stack faults and recovering gracefully from crashes.",
+  "orderIndex": 8,
+  "xpReward": 200
+}

@@ -1,0 +1,28 @@
+{
+  "id": "webdev_web_development_troubleshooting_part_4c",
+  "title": "Web Development Troubleshooting Part 4C",
+  "technology": "Web Development",
+  "module": "Web Development Iteration loops & State Traversal",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Web Development Control Flow & Boolean Logic Branching"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Web Development Troubleshooting Part 4C.",
+    "Write error-free implementations utilizing Web Development Troubleshooting Part 4C.",
+    "Debug and optimize performance characteristics of Web Development Troubleshooting Part 4C."
+  ],
+  "tags": [
+    "web",
+    "development",
+    "troubleshooting",
+    "part",
+    "4c"
+  ]
+}

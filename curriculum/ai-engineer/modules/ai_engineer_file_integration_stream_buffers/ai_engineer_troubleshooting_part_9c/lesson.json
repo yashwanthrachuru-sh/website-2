@@ -1,0 +1,28 @@
+{
+  "id": "ai-engineer_ai_engineer_troubleshooting_part_9c",
+  "title": "AI Engineer Troubleshooting Part 9C",
+  "technology": "AI Engineer",
+  "module": "AI Engineer File Integration & Stream Buffers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: AI Engineer Error Handling & Diagnostic Operations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of AI Engineer Troubleshooting Part 9C.",
+    "Write error-free implementations utilizing AI Engineer Troubleshooting Part 9C.",
+    "Debug and optimize performance characteristics of AI Engineer Troubleshooting Part 9C."
+  ],
+  "tags": [
+    "ai",
+    "engineer",
+    "troubleshooting",
+    "part",
+    "9c"
+  ]
+}

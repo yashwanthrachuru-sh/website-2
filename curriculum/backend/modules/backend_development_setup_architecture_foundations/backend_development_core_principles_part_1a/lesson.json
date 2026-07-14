@@ -1,0 +1,29 @@
+{
+  "id": "backend_backend_development_core_principles_part_1a",
+  "title": "Backend Development Core Principles Part 1A",
+  "technology": "Backend Development",
+  "module": "Backend Development Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Backend Development Core Principles Part 1A.",
+    "Write error-free implementations utilizing Backend Development Core Principles Part 1A.",
+    "Debug and optimize performance characteristics of Backend Development Core Principles Part 1A."
+  ],
+  "tags": [
+    "backend",
+    "development",
+    "core",
+    "principles",
+    "part",
+    "1a"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "officialDocs": "https://docs.microsoft.com/en-us/ OR https://docs.python.org/3/",
+  "books": [
+    {
+      "title": "Clean Code",
+      "author": "Robert C. Martin"
+    },
+    {
+      "title": "Design Patterns",
+      "author": "Gang of Four"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Understanding Data Engineering Troubleshooting Part 2C Internals",
+      "url": "https://medium.com"
+    }
+  ],
+  "references": [
+    "MDN Web Docs",
+    "Stack Overflow Guide"
+  ],
+  "externalTools": [
+    "Visual Studio Code",
+    "Git"
+  ],
+  "practiceWebsites": [
+    "LeetCode",
+    "HackerRank"
+  ]
+}

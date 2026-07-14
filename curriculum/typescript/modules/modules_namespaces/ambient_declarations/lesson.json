@@ -1,0 +1,25 @@
+{
+  "id": "typescript_ambient_declarations",
+  "title": "Ambient Declarations",
+  "technology": "TypeScript",
+  "module": "Modules Namespaces",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Type Assertions Casting"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Ambient Declarations.",
+    "Write error-free implementations utilizing Ambient Declarations.",
+    "Debug and optimize performance characteristics of Ambient Declarations."
+  ],
+  "tags": [
+    "ambient",
+    "declarations"
+  ]
+}

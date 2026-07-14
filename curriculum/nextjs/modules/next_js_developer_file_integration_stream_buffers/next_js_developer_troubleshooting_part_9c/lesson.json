@@ -1,0 +1,28 @@
+{
+  "id": "nextjs_next_js_developer_troubleshooting_part_9c",
+  "title": "Next.js Developer Troubleshooting Part 9C",
+  "technology": "Next.js Developer",
+  "module": "Next.js Developer File Integration & Stream Buffers",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Next.js Developer Error Handling & Diagnostic Operations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Next.js Developer Troubleshooting Part 9C.",
+    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 9C.",
+    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 9C."
+  ],
+  "tags": [
+    "next.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "9c"
+  ]
+}

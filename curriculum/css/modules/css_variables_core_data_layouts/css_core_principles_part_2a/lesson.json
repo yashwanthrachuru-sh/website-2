@@ -1,0 +1,28 @@
+{
+  "id": "css_css_core_principles_part_2a",
+  "title": "CSS Core Principles Part 2A",
+  "technology": "CSS",
+  "module": "CSS Variables & Core Data Layouts",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: CSS Setup & Architecture Foundations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of CSS Core Principles Part 2A.",
+    "Write error-free implementations utilizing CSS Core Principles Part 2A.",
+    "Debug and optimize performance characteristics of CSS Core Principles Part 2A."
+  ],
+  "tags": [
+    "css",
+    "core",
+    "principles",
+    "part",
+    "2a"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "dsa_data_structures_algorithms_troubleshooting_part_1c",
+  "title": "Data Structures & Algorithms Troubleshooting Part 1C",
+  "technology": "Data Structures & Algorithms",
+  "module": "Data Structures & Algorithms Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Data Structures & Algorithms Troubleshooting Part 1C.",
+    "Write error-free implementations utilizing Data Structures & Algorithms Troubleshooting Part 1C.",
+    "Debug and optimize performance characteristics of Data Structures & Algorithms Troubleshooting Part 1C."
+  ],
+  "tags": [
+    "data",
+    "structures",
+    "&",
+    "algorithms",
+    "troubleshooting",
+    "part",
+    "1c"
+  ]
+}

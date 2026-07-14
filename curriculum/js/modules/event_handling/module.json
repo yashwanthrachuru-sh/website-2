@@ -1,0 +1,7 @@
+{
+  "id": "js_event_handling",
+  "name": "Event Handling",
+  "description": "Respond to client actions in the browser.",
+  "orderIndex": 7,
+  "xpReward": 200
+}

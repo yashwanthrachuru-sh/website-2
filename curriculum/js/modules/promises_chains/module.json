@@ -1,0 +1,7 @@
+{
+  "id": "js_promises_chains",
+  "name": "Promises & Chains",
+  "description": "Track future values using promise objects.",
+  "orderIndex": 9,
+  "xpReward": 200
+}

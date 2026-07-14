@@ -1,0 +1,28 @@
+{
+  "id": "nextjs_next_js_developer_troubleshooting_part_12c",
+  "title": "Next.js Developer Troubleshooting Part 12C",
+  "technology": "Next.js Developer",
+  "module": "Next.js Developer Production Deployment & Server Pipelines",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Next.js Developer Performance Optimization & Complexity"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Next.js Developer Troubleshooting Part 12C.",
+    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 12C.",
+    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 12C."
+  ],
+  "tags": [
+    "next.js",
+    "developer",
+    "troubleshooting",
+    "part",
+    "12c"
+  ]
+}

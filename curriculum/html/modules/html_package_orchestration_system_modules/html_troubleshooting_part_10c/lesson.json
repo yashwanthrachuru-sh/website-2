@@ -1,0 +1,27 @@
+{
+  "id": "html_html_troubleshooting_part_10c",
+  "title": "HTML Troubleshooting Part 10C",
+  "technology": "HTML",
+  "module": "HTML Package Orchestration & System Modules",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: HTML File Integration & Stream Buffers"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of HTML Troubleshooting Part 10C.",
+    "Write error-free implementations utilizing HTML Troubleshooting Part 10C.",
+    "Debug and optimize performance characteristics of HTML Troubleshooting Part 10C."
+  ],
+  "tags": [
+    "html",
+    "troubleshooting",
+    "part",
+    "10c"
+  ]
+}

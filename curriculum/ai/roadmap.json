@@ -1,0 +1,30 @@
+{
+  "id": "ai",
+  "title": "Artificial Intelligence",
+  "category": "AI/ML",
+  "difficulty": "Advanced",
+  "icon": "🧭",
+  "tags": [
+    "ai",
+    "python",
+    "coding",
+    "edunet"
+  ],
+  "description": "Complete structured curriculum mapping for Artificial Intelligence from beginner to production-ready design.",
+  "language": "python",
+  "prerequisites": [
+    "Understanding of basics in Artificial Intelligence"
+  ],
+  "estimatedHours": 120,
+  "projects": [
+    {
+      "title": "Artificial Intelligence Capstone Utility",
+      "description": "Build a fully-featured, production-ready system combining all concepts in the Artificial Intelligence curriculum."
+    }
+  ],
+  "interviewTopics": [
+    "Core syntax of Artificial Intelligence",
+    "Debugging memory leaks",
+    "Time/space complexity tradeoffs"
+  ]
+}

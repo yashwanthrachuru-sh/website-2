@@ -1,0 +1,29 @@
+{
+  "id": "ml_machine_learning_core_principles_part_8a",
+  "title": "Machine Learning Core Principles Part 8A",
+  "technology": "Machine Learning",
+  "module": "Machine Learning Error Handling & Diagnostic Operations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Machine Learning Advanced Abstractions & Type Blueprints"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Machine Learning Core Principles Part 8A.",
+    "Write error-free implementations utilizing Machine Learning Core Principles Part 8A.",
+    "Debug and optimize performance characteristics of Machine Learning Core Principles Part 8A."
+  ],
+  "tags": [
+    "machine",
+    "learning",
+    "core",
+    "principles",
+    "part",
+    "8a"
+  ]
+}

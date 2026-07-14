@@ -1,0 +1,29 @@
+{
+  "id": "ui-ux_ui_ux_design_implementation_steps_part_1b",
+  "title": "UI/UX Design Implementation Steps Part 1B",
+  "technology": "UI/UX Design",
+  "module": "UI/UX Design Setup & Architecture Foundations",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Basic computer literacy"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of UI/UX Design Implementation Steps Part 1B.",
+    "Write error-free implementations utilizing UI/UX Design Implementation Steps Part 1B.",
+    "Debug and optimize performance characteristics of UI/UX Design Implementation Steps Part 1B."
+  ],
+  "tags": [
+    "ui/ux",
+    "design",
+    "implementation",
+    "steps",
+    "part",
+    "1b"
+  ]
+}

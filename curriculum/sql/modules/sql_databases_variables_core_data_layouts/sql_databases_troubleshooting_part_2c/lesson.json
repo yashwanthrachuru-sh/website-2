@@ -1,0 +1,29 @@
+{
+  "id": "sql_sql_databases_troubleshooting_part_2c",
+  "title": "SQL & Databases Troubleshooting Part 2C",
+  "technology": "SQL & Databases",
+  "module": "SQL & Databases Variables & Core Data Layouts",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: SQL & Databases Setup & Architecture Foundations"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of SQL & Databases Troubleshooting Part 2C.",
+    "Write error-free implementations utilizing SQL & Databases Troubleshooting Part 2C.",
+    "Debug and optimize performance characteristics of SQL & Databases Troubleshooting Part 2C."
+  ],
+  "tags": [
+    "sql",
+    "&",
+    "databases",
+    "troubleshooting",
+    "part",
+    "2c"
+  ]
+}

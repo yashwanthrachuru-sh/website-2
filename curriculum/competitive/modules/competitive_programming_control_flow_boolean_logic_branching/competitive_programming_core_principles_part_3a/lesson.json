@@ -1,0 +1,29 @@
+{
+  "id": "competitive_competitive_programming_core_principles_part_3a",
+  "title": "Competitive Programming Core Principles Part 3A",
+  "technology": "Competitive Programming",
+  "module": "Competitive Programming Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Competitive Programming Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Competitive Programming Core Principles Part 3A.",
+    "Write error-free implementations utilizing Competitive Programming Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of Competitive Programming Core Principles Part 3A."
+  ],
+  "tags": [
+    "competitive",
+    "programming",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

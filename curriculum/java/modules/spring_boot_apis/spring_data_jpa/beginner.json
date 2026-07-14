@@ -1,0 +1,45 @@
+{
+  "motivation": "Map SQL queries to entity model classes.",
+  "whyExists": "HTTP enables any client (browser, mobile app, IoT device) to communicate with any server, regardless of programming language or platform. REST APIs are the universal language for web services — Twitter, GitHub, Stripe, Google Maps — all expose REST APIs. Every web developer must understand HTTP to build web apps, consume third-party APIs, debug network issues, and design scalable backend services.",
+  "realWorldAnalogy": "Imagine you're ordering food at a restaurant. You (the client/browser) look at the menu and tell the waiter (the HTTP request) what you want. The waiter goes to the kitchen (the server) and brings back your food (the HTTP response).\n\nGET = \"Can I see the menu?\" (read something)\nPOST = \"I'd like to order this dish\" (create something)\nDELETE = \"Cancel my order\" (delete something)\n\nThe \"status code\" is like the waiter telling you: \"200 = Here's your order!\", \"404 = Sorry, we don't have that dish\", \"500 = The kitchen is on fire.\"",
+  "simpleExplanation": "To learn Spring Data JPA from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Spring Data JPA defines how values bind, operations evaluate, and stack structures are clean.",
+  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Spring Data JPA] ──► [Memory Address] ──► [Console Output]\n```",
+  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the java syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "desc": "Allocate memory segment and load bindings."
+    },
+    {
+      "step": 2,
+      "desc": "Process instruction registers."
+    },
+    {
+      "step": 3,
+      "desc": "Pop current stack frame."
+    }
+  ],
+  "memoryDiagram": {
+    "type": "variables",
+    "theme": "dark",
+    "slots": [
+      {
+        "address": "0x7fff01",
+        "name": "spring_data_jpa_ref",
+        "value": "0x7fff08"
+      },
+      {
+        "address": "0x7fff08",
+        "name": "spring_data_jpa_val",
+        "value": "100"
+      }
+    ]
+  },
+  "examples": [
+    {
+      "title": "Basic Syntax Pattern",
+      "code": "console.log(\"Running Spring Data JPA...\");",
+      "explanation": "This output statement verifies execution."
+    }
+  ]
+}

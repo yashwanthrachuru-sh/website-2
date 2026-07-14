@@ -1,0 +1,7 @@
+{
+  "id": "java_java_jvm_setup",
+  "name": "Java JVM & Setup",
+  "description": "Understand compilation and JVM memory layout.",
+  "orderIndex": 1,
+  "xpReward": 200
+}

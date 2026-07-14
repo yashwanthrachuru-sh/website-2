@@ -1,0 +1,29 @@
+{
+  "id": "react_react_developer_core_principles_part_3a",
+  "title": "React Developer Core Principles Part 3A",
+  "technology": "React Developer",
+  "module": "React Developer Control Flow & Boolean Logic Branching",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: React Developer Variables & Core Data Layouts"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of React Developer Core Principles Part 3A.",
+    "Write error-free implementations utilizing React Developer Core Principles Part 3A.",
+    "Debug and optimize performance characteristics of React Developer Core Principles Part 3A."
+  ],
+  "tags": [
+    "react",
+    "developer",
+    "core",
+    "principles",
+    "part",
+    "3a"
+  ]
+}

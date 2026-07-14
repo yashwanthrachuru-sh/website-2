@@ -1,0 +1,25 @@
+{
+  "id": "python_set_operations",
+  "title": "Set Operations",
+  "technology": "Python",
+  "module": "Dictionaries & Sets",
+  "estimatedTime": 120,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [
+    "Mastery of previous module: Lists & Tuples"
+  ],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Explain the core operational logic of Set Operations.",
+    "Write error-free implementations utilizing Set Operations.",
+    "Debug and optimize performance characteristics of Set Operations."
+  ],
+  "tags": [
+    "set",
+    "operations"
+  ]
+}
