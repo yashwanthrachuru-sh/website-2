@@ -228,14 +228,54 @@ exports.getRoadmapById = async (req, res) => {
         if (lessonProgMap[l.id]) doneCount++;
       });
 
-      enrichedModules = modules.map((m, idx) => ({
-        ...m,
-        lessons: lessonGroup[m.id] || [],
-        status: progMap[m.id]?.completed ? 'completed' : idx === 0 ? 'unlocked' : (progMap[modules[idx-1]?.id]?.completed ? 'unlocked' : 'locked'),
-        completed: !!(progMap[m.id]?.completed),
-        quiz_score: progMap[m.id]?.quiz_score || 0,
-        challenge_done: !!(progMap[m.id]?.challenge_done),
-      }));
+      // Set status on lessons within each module
+      modules.forEach((m, mIdx) => {
+        const moduleLessons = lessonGroup[m.id] || [];
+        const isModuleUnlocked = mIdx === 0 || !!(progMap[modules[mIdx - 1]?.id]?.completed);
+        
+        let prevLessonCompleted = true; // Within the module, first lesson is unlocked if module is unlocked
+        
+        moduleLessons.forEach((l) => {
+          let levelLocked = false;
+          if (m.level === 'intermediate' && !beginnerAssessmentPassed) {
+            levelLocked = true;
+          }
+          if (m.level === 'expert' && !intermediateAssessmentPassed) {
+            levelLocked = true;
+          }
+          
+          if (!isModuleUnlocked || levelLocked) {
+            l.status = 'locked';
+          } else if (l.completed) {
+            l.status = 'completed';
+          } else if (prevLessonCompleted) {
+            l.status = 'current';
+            prevLessonCompleted = false; // Only one active lesson at a time
+          } else {
+            l.status = 'locked';
+          }
+          l.locked = (l.status === 'locked');
+          
+          prevLessonCompleted = l.completed;
+        });
+      });
+
+      enrichedModules = modules.map((m, idx) => {
+        const moduleLessons = lessonGroup[m.id] || [];
+        const doneLessonsCount = moduleLessons.filter(l => l.completed).length;
+        const totalLessonsCount = moduleLessons.length;
+        const progressVal = totalLessonsCount > 0 ? Math.round((doneLessonsCount / totalLessonsCount) * 100) : 0;
+
+        return {
+          ...m,
+          lessons: moduleLessons,
+          status: progMap[m.id]?.completed ? 'completed' : idx === 0 ? 'unlocked' : (progMap[modules[idx-1]?.id]?.completed ? 'unlocked' : 'locked'),
+          completed: !!(progMap[m.id]?.completed),
+          progress: progressVal, // calculated as completedLessons / totalLessons
+          quiz_score: progMap[m.id]?.quiz_score || 0,
+          challenge_done: !!(progMap[m.id]?.challenge_done),
+        };
+      });
 
       // Flatten lessons across the whole roadmap in sequence
       modules.forEach(m => {
@@ -247,31 +287,11 @@ exports.getRoadmapById = async (req, res) => {
             module_id: m.id,
             module_title: m.title,
             level: m.level,
-            completed: !!lessonProgMap[l.id]
+            completed: l.completed,
+            status: l.status, // Preserve computed status
+            locked: l.locked
           });
         });
-      });
-
-      // Apply locking and sequencing rules
-      let prevCompleted = true; // First lesson is unlocked
-      flatLessons.forEach((l, idx) => {
-        let levelLocked = false;
-        if (l.level === 'intermediate' && !beginnerAssessmentPassed) {
-          levelLocked = true;
-        }
-        if (l.level === 'expert' && !intermediateAssessmentPassed) {
-          levelLocked = true;
-        }
-
-        if (l.completed) {
-          l.status = 'completed';
-        } else if (prevCompleted && !levelLocked) {
-          l.status = 'current';
-          prevCompleted = false; // Prevents all following incomplete lessons from unlocking
-        } else {
-          l.status = 'locked';
-        }
-        prevCompleted = l.completed;
       });
 
       // Group into level categories
@@ -477,6 +497,7 @@ exports.submitModuleQuiz = async (req, res) => {
       `, [req.user.id, mid, mod?.roadmap_id || '', score, score]);
     }
 
+    clearRoadmapCache();
     res.json({ success: true, score, correct, total: quizzes.length, results });
   } catch (err) {
     console.error('submitModuleQuiz error:', err);
@@ -535,6 +556,7 @@ exports.completeModule = async (req, res) => {
       }
     }
 
+    clearRoadmapCache();
     res.json({
       success: true,
       xp_awarded: xp,
@@ -839,6 +861,68 @@ exports.getUserCertificates = async (req, res) => {
   }
 };
 
+async function syncLessonQuizzes(lessonId, lesson) {
+  // Check existing quizzes in DB
+  const [quizzes] = await db.query(`SELECT * FROM lesson_quizzes WHERE lesson_id = ?`, [lessonId]);
+  
+  let isGeneric = false;
+  if (quizzes.length === 0) {
+    isGeneric = true;
+  } else {
+    for (const q of quizzes) {
+      const qText = q.question || '';
+      if (
+        qText.includes("What is the primary concept behind") ||
+        qText.includes("Which of the following is considered a best practice for") ||
+        qText.includes("What common mistake happens with") ||
+        qText.includes("always runs in linear time.") ||
+        qText.includes("How does the runtime stack handle calls to") ||
+        qText.includes("What is the primary architectural goal of")
+      ) {
+        isGeneric = true;
+        break;
+      }
+    }
+  }
+
+  if (isGeneric) {
+    console.log(`[syncLessonQuizzes] Lesson ${lessonId} has generic or empty quizzes. Regenerating unique quizzes...`);
+    // Ensure lesson is enriched to get generated quiz questions
+    contentEngine.enrichLesson(lesson);
+    const uniqueQuizzes = lesson.quiz?.mcqs || [];
+    
+    if (uniqueQuizzes.length > 0) {
+      await db.query(`DELETE FROM lesson_quizzes WHERE lesson_id = ?`, [lessonId]);
+      for (let i = 0; i < uniqueQuizzes.length; i++) {
+        const uq = uniqueQuizzes[i];
+        const optA = uq.options[0] || 'Option A';
+        const optB = uq.options[1] || 'Option B';
+        const optC = uq.options[2] || 'Option C';
+        const optD = uq.options[3] || 'Option D';
+        
+        await db.query(`
+          INSERT INTO lesson_quizzes (module_id, lesson_id, question, option_a, option_b, option_c, option_d, correct_option, explanation, order_index)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `, [
+          lesson.module_id,
+          lessonId,
+          uq.question,
+          optA,
+          optB,
+          optC,
+          optD,
+          uq.answer,
+          uq.explanation || '',
+          i + 1
+        ]);
+      }
+      console.log(`[syncLessonQuizzes] Saved ${uniqueQuizzes.length} unique quizzes to DB for Lesson ${lessonId}`);
+      return true;
+    }
+  }
+  return false;
+}
+
 // ── GET /api/lessons/:id ─────────────────────────────────────
 exports.getLessonDetail = async (req, res) => {
   try {
@@ -888,6 +972,9 @@ exports.getLessonDetail = async (req, res) => {
     // Ensures every field the frontend expects is present (never null/undefined).
     contentEngine.enrichLesson(lesson);
 
+    // Sync/regenerate quizzes if they are generic or empty in database
+    await syncLessonQuizzes(lid, lesson);
+
     // Fetch related content
     const [videos] = await db.query(`SELECT * FROM lesson_videos WHERE lesson_id = ?`, [lid]);
     const [resources] = await db.query(`SELECT * FROM lesson_resources WHERE lesson_id = ?`, [lid]);
@@ -903,24 +990,146 @@ exports.getLessonDetail = async (req, res) => {
         : `✅ **Correct Answer: ${q.correct_option || 'See above'}**\n\nThis question tests your understanding of **${lesson.title}**. Review the lesson content to reinforce the correct answer and understand why the other options are incorrect.`
     }));
 
-    // Adjacent lessons
-    const [[prevLesson]] = await db.query(
-      `SELECT id, title FROM module_lessons WHERE module_id = ? AND order_index < ? ORDER BY order_index DESC LIMIT 1`,
-      [lesson.module_id, lesson.order_index]
+    // Adjacent lessons across entire roadmap
+    const [rmModules] = await db.query(
+      `SELECT id, title FROM roadmap_modules WHERE roadmap_id = ? ORDER BY order_index ASC`,
+      [lesson.roadmap_id]
     );
-    const [[nextLesson]] = await db.query(
-      `SELECT id, title FROM module_lessons WHERE module_id = ? AND order_index > ? ORDER BY order_index ASC LIMIT 1`,
-      [lesson.module_id, lesson.order_index]
-    );
+    const rmModuleIds = rmModules.map(m => m.id);
+    let prevLesson = null;
+    let nextLesson = null;
+    if (rmModuleIds.length > 0) {
+      const [lessonsList] = await db.query(`
+        SELECT ml.id, ml.title, ml.module_id, rm.title as module_title
+        FROM module_lessons ml
+        JOIN roadmap_modules rm ON ml.module_id = rm.id
+        WHERE ml.module_id IN (${rmModuleIds.join(',')})
+        ORDER BY rm.order_index ASC, ml.order_index ASC
+      `);
+      const curIdx = lessonsList.findIndex(l => l.id === parseInt(lid));
+      if (curIdx !== -1) {
+        if (curIdx > 0) prevLesson = lessonsList[curIdx - 1];
+        if (curIdx < lessonsList.length - 1) nextLesson = lessonsList[curIdx + 1];
+      }
+    }
 
-    // User progress
+    // User progress & lock status
     let completed = false;
+    let locked = false;
     if (req.user) {
+      const userId = req.user.id;
       const [[prog]] = await db.query(
         `SELECT completed FROM lesson_progress WHERE user_id = ? AND lesson_id = ?`,
-        [req.user.id, lid]
+        [userId, lid]
       );
       completed = !!prog?.completed;
+
+      // Compute lock status using the exact sequencing logic
+      try {
+        const roadmapId = lesson.roadmap_id;
+        const [modules] = await db.query(
+          `SELECT id, level FROM roadmap_modules WHERE roadmap_id = ? ORDER BY order_index ASC`,
+          [roadmapId]
+        );
+
+        // Assign levels to modules
+        const totalModules = modules.length;
+        modules.forEach((m, idx) => {
+          const levelIdx = Math.floor((idx / totalModules) * 3);
+          m.level = levelIdx === 0 ? 'beginner' : levelIdx === 1 ? 'intermediate' : 'expert';
+        });
+
+        const [progList] = await db.query(
+          `SELECT module_id, completed FROM module_progress WHERE user_id = ? AND roadmap_id = ?`,
+          [userId, roadmapId]
+        );
+        const progMap = {};
+        progList.forEach(p => {
+          progMap[p.module_id] = { completed: !!p.completed };
+        });
+
+        const [lprog] = await db.query(`
+          SELECT lp.lesson_id, lp.completed
+          FROM lesson_progress lp
+          JOIN module_lessons ml ON lp.lesson_id = ml.id
+          JOIN roadmap_modules rm ON ml.module_id = rm.id
+          WHERE lp.user_id = ? AND rm.roadmap_id = ?
+        `, [userId, roadmapId]);
+        const lessonProgMap = {};
+        lprog.forEach(lp => {
+          lessonProgMap[lp.lesson_id] = !!lp.completed;
+        });
+
+        const [beginnerAssessAttempts] = await db.query(
+          `SELECT passed FROM level_assessments WHERE user_id = ? AND roadmap_id = ? AND level = 'beginner'`,
+          [userId, roadmapId]
+        );
+        const beginnerAssessmentPassed = beginnerAssessAttempts.some(a => a.passed === 1);
+
+        const [intermediateAssessAttempts] = await db.query(
+          `SELECT passed FROM level_assessments WHERE user_id = ? AND roadmap_id = ? AND level = 'intermediate'`,
+          [userId, roadmapId]
+        );
+        const intermediateAssessmentPassed = intermediateAssessAttempts.some(a => a.passed === 1);
+
+        const mids = modules.map(m => m.id);
+        if (mids.length > 0) {
+          const [allLessons] = await db.query(`
+            SELECT id, module_id FROM module_lessons
+            WHERE module_id IN (${mids.join(',')})
+            ORDER BY order_index ASC
+          `);
+
+          const lessonGroup = {};
+          allLessons.forEach(l => {
+            if (!lessonGroup[l.module_id]) lessonGroup[l.module_id] = [];
+            lessonGroup[l.module_id].push({
+              ...l,
+              completed: !!lessonProgMap[l.id]
+            });
+          });
+
+          let targetStatus = 'locked';
+          modules.forEach((m, mIdx) => {
+            const moduleLessons = lessonGroup[m.id] || [];
+            const isModuleUnlocked = mIdx === 0 || !!(progMap[modules[mIdx - 1]?.id]?.completed);
+            
+            let prevLessonCompleted = true;
+            
+            moduleLessons.forEach((l) => {
+              let levelLocked = false;
+              if (m.level === 'intermediate' && !beginnerAssessmentPassed) {
+                levelLocked = true;
+              }
+              if (m.level === 'expert' && !intermediateAssessmentPassed) {
+                levelLocked = true;
+              }
+              
+              let status = 'locked';
+              if (!isModuleUnlocked || levelLocked) {
+                status = 'locked';
+              } else if (l.completed) {
+                status = 'completed';
+              } else if (prevLessonCompleted) {
+                status = 'current';
+                prevLessonCompleted = false;
+              } else {
+                status = 'locked';
+              }
+              
+              if (l.id === parseInt(lid)) {
+                targetStatus = status;
+              }
+              
+              prevLessonCompleted = l.completed;
+            });
+          });
+
+          locked = (targetStatus === 'locked');
+        }
+      } catch (err) {
+        console.error('[getLessonDetail] Lock calculation error:', err);
+      }
     }
 
     res.json({
@@ -933,7 +1142,8 @@ exports.getLessonDetail = async (req, res) => {
       projects,
       prev_lesson: prevLesson || null,
       next_lesson: nextLesson || null,
-      completed
+      completed,
+      locked
     });
   } catch (err) {
     console.error('getLessonDetail error:', err);
@@ -1031,12 +1241,22 @@ exports.completeLesson = async (req, res) => {
       moduleCompleted = true;
     }
 
+    // Invalidate roadmap caches
+    clearRoadmapCache();
+
+    // Query updated user XP and Level
+    const [[updatedUser]] = await db.query(
+      `SELECT xp, level FROM users WHERE id = ?`, [req.user.id]
+    );
+
     res.json({
       success: true,
       xp_awarded: 100,
       module_completed: moduleCompleted,
       lessons_done: doneLessons.cnt,
-      lessons_total: totalLessons.cnt
+      lessons_total: totalLessons.cnt,
+      user_xp: updatedUser ? updatedUser.xp : 0,
+      user_level: updatedUser ? updatedUser.level : 1
     });
   } catch (err) {
     console.error('completeLesson error:', err);
@@ -1251,6 +1471,7 @@ exports.submitRoadmapExam = async (req, res) => {
       WHERE user_id = ? AND type = 'final' AND target_id = ?
     `, [req.user.id, roadmapId]);
 
+    clearRoadmapCache();
     res.json({ success: true, score, correct, total, passed, xp_awarded: passed ? 1000 : 0, certificate, results });
   } catch (err) {
     console.error('submitRoadmapExam error:', err);
@@ -1303,6 +1524,17 @@ function shuffleArray(arr) {
 exports.getLessonTopicQuiz = async (req, res) => {
   try {
     const lid = req.params.id;
+
+    const [[lesson]] = await db.query(
+      `SELECT ml.*, rm.title AS module_title, rm.roadmap_id
+       FROM module_lessons ml
+       JOIN roadmap_modules rm ON ml.module_id = rm.id
+       WHERE ml.id = ?`, [lid]
+    );
+
+    if (lesson) {
+      await syncLessonQuizzes(lid, lesson);
+    }
 
     // First try lesson_id-based lookup, fallback to module_id
     let [quizzes] = await db.query(
@@ -1562,6 +1794,7 @@ exports.submitLevelAssessment = async (req, res) => {
     // Update streak
     await updateLearningStreak(req.user.id);
 
+    clearRoadmapCache();
     res.json({ success: true, score, correct, total, passed, results, xp_awarded: passed ? (levelNorm === 'beginner' ? 300 : levelNorm === 'intermediate' ? 500 : 700) : 0 });
   } catch (err) {
     console.error('submitLevelAssessment error:', err);

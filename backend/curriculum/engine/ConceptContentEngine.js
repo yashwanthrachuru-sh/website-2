@@ -214,57 +214,384 @@ function generatePractice(title, moduleName, langNorm) {
   };
 }
 
-function generateQuiz(title, moduleName, langNorm) {
+function generateQuiz(title, moduleName, langNorm, components = {}) {
+  const t = title || 'Concept';
   const mcqs = [];
-  const questionsList = [
-    {
-      q: `What is the primary architectural purpose of ${title} in software systems?`,
-      o: [
-        `To encapsulate modular logic and structure data flow.`,
-        `To replace general compiler instructions completely.`,
-        `To run processes asynchronously on separate hardware blocks.`,
-        `To delete unused object references automatically.`
-      ],
-      a: "A",
-      exp: `Option A is correct because ${title} organizes and encapsulates execution structures for predictability.`
-    },
-    {
-      q: `Which time complexity is typically associated with optimized implementations of ${title}?`,
-      o: [
-        `O(1) constant time complexity.`,
-        `O(N^2) quadratic scaling.`,
-        `O(N!) factorial overhead.`,
-        `O(2^N) exponential complexity.`
-      ],
-      a: "A",
-      exp: `Optimized concepts execute inside structured scopes leading to constant O(1) performance characteristics.`
-    },
-    {
-      q: `How does scope safety improve when utilizing ${title} properly?`,
-      o: [
-        `It localizes references and prevents global namespace pollution.`,
-        `It bypasses authentication layers in Web interfaces.`,
-        `It increases RAM usage to speed up instruction decoding.`,
-        `It prevents variable names from being lowercase.`
-      ],
-      a: "A",
-      exp: `Proper scoping isolates internal variables from outside interference, preventing leakage.`
-    }
-  ];
 
-  for (let i = 1; i <= 12; i++) {
-    const template = questionsList[(i - 1) % questionsList.length];
-    mcqs.push({
+  const b = components.beginner || {};
+  const im = components.intermediate || {};
+  const ex = components.expert || {};
+  const p = components.practice || {};
+  const iv = components.interview || {};
+  const cs = components.cheatsheet || {};
+  const rv = components.revision || {};
+
+  function makeQuestion(q, correctAnswer, distractors, exp, difficulty, id) {
+    const options = [correctAnswer, ...distractors];
+    const indices = [0, 1, 2, 3];
+    // Seedless deterministic shuffle based on title/id
+    const seed = t.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) + (id ? Number(id.replace(/\D/g, '')) || 0 : 0);
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = (seed + i) % (i + 1);
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    
+    const shuffled = [];
+    let answerChar = 'A';
+    indices.forEach((originalIdx, shuffledIdx) => {
+      shuffled.push(options[originalIdx]);
+      if (originalIdx === 0) {
+        answerChar = String.fromCharCode(65 + shuffledIdx);
+      }
+    });
+
+    return {
+      id: id,
+      question: q,
+      options: shuffled,
+      answer: answerChar,
+      explanation: exp,
+      difficulty: difficulty
+    };
+  }
+
+  const titleLower = t.toLowerCase();
+  
+  if (titleLower.includes('variable') || titleLower.includes('identifier') || titleLower.includes('declaring')) {
+    mcqs.push(makeQuestion(
+      `In programming, what is the primary role of a variable in hardware memory?`,
+      `To map a user-defined name to a physical RAM location to hold data.`,
+      [`To duplicate compiler files across folders.`, `To delete hardware cache registers.`, `To support static page layout configurations.`],
+      `Variables assign a reference label to physical RAM slots so values can be stored, updated, and retrieved easily.`,
+      `easy`, `q_1`
+    ));
+    mcqs.push(makeQuestion(
+      `Which of the following is considered a best practice for naming variables?`,
+      `Using clear, self-documenting names like student_marks or studentMarks.`,
+      [`Using single-letter names like x, y, z for all data values.`, `Starting variable names with numbers like 1stStudent.`, `Using long obscure codes like usr_dat_rec_val.`],
+      `Descriptive naming makes code readable and easy to maintain for other developers.`,
+      `medium`, `q_2`
+    ));
+    mcqs.push(makeQuestion(
+      `What runtime error typically occurs if a program attempts to read an undeclared variable?`,
+      `ReferenceError or NameError.`,
+      [`SyntaxError.`, `TypeError.`, `DivisionByZeroError.`],
+      `If the runtime engine does not find the symbol name in the active scopes, it throws a ReferenceError or NameError.`,
+      `medium`, `q_3`
+    ));
+    mcqs.push(makeQuestion(
+      `In JavaScript, how do declarations with let/const differ from var regarding scoping?`,
+      `let and const are block-scoped, whereas var is function-scoped.`,
+      [`let is globally scoped while var is restricted to single lines.`, `const is stored in CPU registers, and var is stored on disk.`, `There is no scope difference between them.`],
+      `Block scope locks let/const variables inside curly braces {}, preventing scope leakage common with var.`,
+      `hard`, `q_4`
+    ));
+    mcqs.push(makeQuestion(
+      `When analyzing variable allocations in a high-performance system, what is a key memory trade-off?`,
+      `Minimizing scope lifetime to allow the garbage collector to reclaim heap space early.`,
+      [`Naming variables in uppercase to make execution faster.`, `Declaring all variables in the global namespace.`, `Writing every variable value directly to external text files.`],
+      `Keeping scopes small ensures variable references are cleared from stack frames and heap early, reducing memory footprint.`,
+      `hard`, `q_5`
+    ));
+  } else if (titleLower.includes('const') || titleLower.includes('constant')) {
+    mcqs.push(makeQuestion(
+      `What is the primary architectural purpose of a constant (const) binding?`,
+      `To declare values that should remain read-only and immutable throughout the execution.`,
+      [`To speed up compiler calculations by 50%.`, `To permit duplicate declarations in the same scope.`, `To clear memory registers automatically.`],
+      `Constants protect variables from being accidentally reassigned elsewhere in your code.`,
+      `easy`, `q_1`
+    ));
+    mcqs.push(makeQuestion(
+      `What happens if you attempt to reassign a constant variable in JavaScript?`,
+      `It immediately throws a TypeError.`,
+      [`The compiler ignores it and uses the old value.`, `The computer resets to clear heap buffers.`, `It updates the value anyway.`],
+      `Reassigning a const binding raises 'TypeError: Assignment to constant variable'.`,
+      `medium`, `q_2`
+    ));
+    mcqs.push(makeQuestion(
+      `Which constant variable name follows the widely accepted naming convention?`,
+      `MAX_USER_LIMIT`,
+      [`maxUserLimit`, `Max_User_Limit`, `max_user_limit`],
+      `Uppercase words separated by underscores is the standard convention for constant parameters.`,
+      `medium`, `q_3`
+    ));
+    mcqs.push(makeQuestion(
+      `Does declaring an object as const in JavaScript make its nested properties immutable?`,
+      `No, const only locks the variable reference; nested properties can still be modified.`,
+      [`Yes, it completely freezes the object and all its sub-objects.`, `No, objects cannot be declared as const.`, `Yes, but only for numeric fields.`],
+      `To freeze an object's properties in JavaScript, you must use Object.freeze(). const only prevents reassignment of the object reference itself.`,
+      `hard`, `q_4`
+    ));
+    mcqs.push(makeQuestion(
+      `Why do compilers optimize constant declarations better than variables?`,
+      `Because their values are fixed, enabling constant folding optimizations during compilation.`,
+      [`Because constants bypass system garbage collection entirely.`, `Because constants are automatically multi-threaded.`, `Because constants do not use heap memory.`],
+      `Compilers replace constant references with their actual values at compile time, eliminating lookup overhead.`,
+      `hard`, `q_5`
+    ));
+  } else if (titleLower.includes('loop') || titleLower.includes('for') || titleLower.includes('while') || titleLower.includes('iteration')) {
+    mcqs.push(makeQuestion(
+      `What problem is solved by using loop control structures?`,
+      `Eliminating code duplication when repeating identical actions.`,
+      [`Reclaiming stack frame allocations early.`, `Converting string datatypes to numbers.`, `Handling database locking protocols.`],
+      `Loops allow blocks of instructions to repeat continuously while conditions match, keeping source code DRY (Don't Repeat Yourself).`,
+      `easy`, `q_1`
+    ));
+    mcqs.push(makeQuestion(
+      `What condition causes a program to enter an infinite loop?`,
+      `The exit condition remains true or is never updated to false.`,
+      [`The index starts at number one instead of zero.`, `The loop is declared as a while loop instead of a for loop.`, `The loop iterates more than 100 times.`],
+      `If loop boundaries are set incorrectly such that the exit condition is never satisfied, execution runs indefinitely, freezing the thread.`,
+      `medium`, `q_2`
+    ));
+    mcqs.push(makeQuestion(
+      `When should a for loop be preferred over a while loop?`,
+      `When the number of loop iterations is predetermined or known beforehand.`,
+      [`When checking database connections for activity.`, `When dealing with multi-threaded execution pools.`, `When accessing global variables.`],
+      `For loops are ideal for counting ranges or iterating over collections of fixed size.`,
+      `medium`, `q_3`
+    ));
+    mcqs.push(makeQuestion(
+      `What is an off-by-one error (OBOE) in loop index boundaries?`,
+      `An index mistake that iterates one time too many or one time too few, often causing index out of bounds.`,
+      [`An error where the loop runs on a separate thread pool.`, `A type error caused by comparing numbers with strings.`, `A compiler warning regarding global variable hoisting.`],
+      `OBOE typically occurs when setting limits to <= instead of < (or vice versa), causing loop limits to exceed index limits.`,
+      `hard`, `q_4`
+    ));
+    mcqs.push(makeQuestion(
+      `What is the time complexity of two nested loops where each iterates N times?`,
+      `O(N^2) quadratic time.`,
+      [`O(N) linear time.`, `O(2^N) exponential time.`, `O(log N) logarithmic time.`],
+      `Nesting one loop inside another causes the inner loop to run N times for each outer loop step, leading to N * N operations.`,
+      `hard`, `q_5`
+    ));
+  } else if (titleLower.includes('array') || titleLower.includes('list')) {
+    mcqs.push(makeQuestion(
+      `Which index refers to the first element in a zero-indexed array structure?`,
+      `0`,
+      [`1`, `-1`, `10`],
+      `Zero-indexed array slots map index indices straight to byte offsets in memory. Index 0 references the start block.`,
+      `easy`, `q_1`
+    ));
+    mcqs.push(makeQuestion(
+      `How are elements of a standard array stored physically in hardware memory?`,
+      `In a contiguous, sequential block of address spaces.`,
+      [`In random locations connected by pointers.`, `Directly inside CPU registers.`, `In external database cache rows.`],
+      `Arrays require sequential memory slots, enabling O(1) constant-time element lookup via offsets.`,
+      `medium`, `2`
+    ));
+    mcqs.push(makeQuestion(
+      `What property is used in JavaScript to fetch the current number of elements in an array?`,
+      `.length`,
+      [`.size`, `.count()`, `.sizeof()`],
+      `The .length property returns the total elements active in the array.`,
+      `medium`, `q_3`
+    ));
+    mcqs.push(makeQuestion(
+      `What is the time complexity of inserting an element at index 0 of an array of size N?`,
+      `O(N) linear time, because subsequent elements must be shifted in memory.`,
+      [`O(1) constant time, since index 0 is accessed directly.`, `O(log N) logarithmic time.`, `O(N^2) quadratic time.`],
+      `Adding elements at index 0 requires shifting all N existing elements to the next address slot, incurring linear overhead.`,
+      `hard`, `q_4`
+    ));
+    mcqs.push(makeQuestion(
+      `What is the main drawback of standard arrays compared to linked lists?`,
+      `Fixed memory sizing and expensive element insertion/deletion.`,
+      [`Slow random access lookups.`, `Poor usage of CPU caches.`, `Inability to store primitive datatypes.`],
+      `Arrays have contiguous constraints, making allocations rigid and insertions/deletions slow due to index shifts.`,
+      `hard`, `q_5`
+    ));
+  } else if (titleLower.includes('function') || titleLower.includes('method') || titleLower.includes('closure')) {
+    mcqs.push(makeQuestion(
+      `What is the primary software engineering goal of writing functions?`,
+      `To encapsulate reusable logic blocks and improve modularity.`,
+      [`To force the garbage collector to run on every line.`, `To make compiler files compile faster.`, `To override CPU hardware architecture constraints.`],
+      `Functions group statement blocks into a single named block, ensuring DRY principles and code reuse.`,
+      `easy`, `q_1`
+    ));
+    mcqs.push(makeQuestion(
+      `What happens to local variables declared inside a function when the function call completes?`,
+      `They are popped off the thread stack frame and cleaned from memory.`,
+      [`They are converted to global constant values.`, `They remain in heap storage permanently.`, `They are printed to database log records.`],
+      `Local scope bindings reside inside stack frames, which are automatically deallocated when functions return.`,
+      `medium`, `q_2`
+    ));
+    mcqs.push(makeQuestion(
+      `What is a base case in recursive function implementations?`,
+      `A condition check that stops further recursion, preventing stack overflow.`,
+      [`The main class entry point configuration.`, `The first line that allocates thread registers.`, `The exception catch block.`],
+      `Without a base case, recursive functions push stack frames endlessly, causing stack overflow crashes.`,
+      `medium`, `q_3`
+    ));
+    mcqs.push(makeQuestion(
+      `What is a closure in programming?`,
+      `A function that retains access to its lexical scope variables even when executed outside its original scope.`,
+      [`A method that terminates the compiler execution loop.`, `A private class initializer.`, `A function that accepts only numeric values.`],
+      `Closures combine function blocks with references to their enclosing lexical environments.`,
+      `hard`, `q_4`
+    ));
+    mcqs.push(makeQuestion(
+      `How does the stack frame manage arguments and local variables during a nested function call?`,
+      `It pushes a new stack frame containing local variables and return addresses for each call.`,
+      [`It dumps all local values straight into physical CPU caches.`, `It allocates static files in the project folder.`, `It bypasses memory systems entirely.`],
+      `Each nested call creates a fresh stack record, isolating parameters and maintaining return execution paths.`,
+      `hard`, `q_5`
+    ));
+  } else if (titleLower.includes('if') || titleLower.includes('condition') || titleLower.includes('branch') || titleLower.includes('boolean')) {
+    mcqs.push(makeQuestion(
+      `What is the primary function of conditional if-else statements?`,
+      `To branch code execution pathways based on Boolean logical checks.`,
+      [`To loop identical instructions continuously.`, `To declare read-only constant bindings.`, `To clean unused heap variables.`],
+      `Conditionals guide thread steps to run different paths depending on logic gates.`,
+      `easy`, `q_1`
+    ));
+    mcqs.push(makeQuestion(
+      `What is short-circuit evaluation in logical AND (&&) operations?`,
+      `Evaluation stops early if the first operand is false, since the outcome is guaranteed false.`,
+      [`The script files compile early on warnings.`, `The CPU thread locks on infinite loops.`, `The values are cast to hex codes.`],
+      `Logical AND requires all values to be true. If the first check fails, subsequent expressions are skipped.`,
+      `medium`, `q_2`
+    ));
+    mcqs.push(makeQuestion(
+      `Which comparison operator checks both value and type equality in JavaScript?`,
+      `===`,
+      [`==`, `=`, `!=`],
+      `Strict equality (===) prevents type coercion bugs during comparison checks.`,
+      `medium`, `q_3`
+    ));
+    mcqs.push(makeQuestion(
+      `What is a common pitfall in nested if statement structures?`,
+      `Readability problems and scope confusion (spaghetti logic).`,
+      [`Under-allocating memory stack blocks.`, `Bypassing the compiler garbage collection routines.`, `Requiring static constant keywords.`],
+      `Deep logic nesting is hard to parse and debug, so refactoring using guard clauses is recommended.`,
+      `hard`, `q_4`
+    ));
+    mcqs.push(makeQuestion(
+      `How does CPU branch prediction optimize condition statements?`,
+      `By speculating on conditional directions to pre-fill instruction pipeline logs.`,
+      [`By executing both paths in parallel threads.`, `By converting conditionals into constant ranges.`, `By deleting branch options.`],
+      `Processors guess branch outcomes to avoid pipeline stalls. Mispredictions cause latency resets.`,
+      `hard`, `q_5`
+    ));
+  } else if (titleLower.includes('sql') || titleLower.includes('select') || titleLower.includes('join') || titleLower.includes('query')) {
+    mcqs.push(makeQuestion(
+      `Which SQL clause is responsible for selecting and filtering database rows?`,
+      `WHERE`,
+      [`SELECT`, `FROM`, `ORDER BY`],
+      `The WHERE clause filters dataset records based on specific logical conditions.`,
+      `easy`, `q_1`
+    ));
+    mcqs.push(makeQuestion(
+      `What is the result of executing an INNER JOIN between two tables?`,
+      `It returns only rows that have matching values in both tables.`,
+      [`It returns all rows from both tables regardless of matches.`, `It copies table structures into cache buffers.`, `It raises a Cartesian key exception.`],
+      `INNER JOIN matches primary/foreign keys to merge related records, skipping unmatched lines.`,
+      `medium`, `q_2`
+    ));
+    mcqs.push(makeQuestion(
+      `How does a LEFT OUTER JOIN handle unmatched rows in the right table?`,
+      `It returns all rows from the left table, displaying NULL for missing right columns.`,
+      [`It ignores left rows that lack right matches.`, `It throws a foreign key violation error.`, `It populates missing columns with zeroes.`],
+      `LEFT JOIN preserves all left table records, filling missing right table values with NULL.`,
+      `medium`, `q_3`
+    ));
+    mcqs.push(makeQuestion(
+      `What is a SQL Cartesian product (Cross Join) bug and when does it happen?`,
+      `When JOIN conditions are missing, causing every row of table A to combine with every row of table B.`,
+      [`When database index keys become fragmented.`, `When SELECT statements return zero results.`, `When columns have incorrect datatypes.`],
+      `Omitting joining constraints yields A * B total rows, which wastes memory and processing time.`,
+      `hard`, `q_4`
+    ));
+    mcqs.push(makeQuestion(
+      `How do database indexes improve SELECT query performance?`,
+      `By providing quick lookup trees to locate records without scanning entire tables.`,
+      [`By sorting table records physically on disk on every save.`, `By encrypting user credential columns.`, `By clearing transaction buffers.`],
+      `Indexes act like books index sections, permitting rapid B-Tree lookups instead of slow O(N) full table scans.`,
+      `hard`, `q_5`
+    ));
+  } else {
+    const probItSolves = b.problemItSolves || b.whyExists || 'Managing logical structure and organization.';
+    const analogy = b.realWorldAnalogy || b.simpleExplanation || 'A systematic flow of execution.';
+    const internalWorks = im.internalImplementation || im.deeperExplanation || 'A structured routing pattern.';
+    const mistakesDesc = (im.debuggingWalkthrough && im.debuggingWalkthrough.bugDescription) || 'Invalid scope or boundary references.';
+    const ivQuest = (iv.questions && iv.questions[0] && iv.questions[0].question) || `Explain the mechanism of ${t}.`;
+    const ivAns = (iv.questions && iv.questions[0] && iv.questions[0].answer) || 'It separates concerns and organizes statements.';
+
+    mcqs.push(makeQuestion(
+      `Based on the curriculum for "${t}", which description best represents the primary problem it solves?`,
+      `It addresses: "${probItSolves.substring(0, 100)}...".`,
+      [
+        `It bypasses hardware registers to run straight on local browser graphics units.`,
+        `It forces all data inputs to map directly to external database file formats.`,
+        `It clears the operating system background caches periodically.`
+      ],
+      `The lesson material indicates that this concept helps resolve specific scoping or logical layout issues in development.`,
+      `easy`, `q_1`
+    ));
+
+    mcqs.push(makeQuestion(
+      `Which of the following is the most accurate analogy or explanation for "${t}"?`,
+      `"${analogy.substring(0, 100)}...".`,
+      [
+        `A static styling rule used purely for user interface card layouts.`,
+        `A local networking socket that fetches external source libraries.`,
+        `A compiler macro that disables memory allocation operations.`
+      ],
+      `This analogy helps conceptualize how data references are grouped and accessed.`,
+      `medium`, `q_2`
+    ));
+
+    mcqs.push(makeQuestion(
+      `Regarding the internal workings or deep details of "${t}", which statement is correct?`,
+      `"${internalWorks.substring(0, 100)}...".`,
+      [
+        `It generates a thread pool of 50 asynchronous background actions.`,
+        `It requires storing variable names inside root hardware storage slots.`,
+        `It acts as a private syntax validator that turns off language checks.`
+      ],
+      `The implementation details in the lesson specify this operational pattern.`,
+      `medium`, `q_3`
+    ));
+
+    mcqs.push(makeQuestion(
+      `Which mistake is most common when implementing or working with "${t}"?`,
+      `Scope issues or reference errors: "${mistakesDesc.substring(0, 100)}...".`,
+      [
+        `Declaring constants with lowercase variable letters.`,
+        `Using external text editors to run compiler scripts.`,
+        `Adding description text inside code comment headers.`
+      ],
+      `Common pitfalls involve scoping conflicts and incorrect reference logic.`,
+      `hard`, `q_4`
+    ));
+
+    mcqs.push(makeQuestion(
+      `Interview Prep: ${ivQuest.substring(0, 80)}`,
+      `${ivAns.substring(0, 120)}...`,
+      [
+        `It is deprecated because it requires GPU-scheduling support.`,
+        `It has no practical utility in real-world application pipelines.`,
+        `It is only used to format web page navigation labels.`
+      ],
+      `This verifies a deep engineering grasp of architectural trade-offs.`,
+      `hard`, `q_5`
+    ));
+  }
+
+  const finalMcqs = [];
+  for (let i = 1; i <= 5; i++) {
+    finalMcqs.push(mcqs[i - 1]);
+  }
+  for (let i = 6; i <= 12; i++) {
+    const template = mcqs[(i - 1) % 5];
+    finalMcqs.push({
+      ...template,
       id: `q_${i}`,
-      question: `${template.q} (Version ${i})`,
-      options: template.o,
-      answer: template.a,
-      explanation: template.exp,
-      difficulty: i <= 4 ? "easy" : i <= 8 ? "medium" : "hard"
+      question: `${template.question} (Level check ${i})`
     });
   }
 
-  return { mcqs };
+  return { mcqs: finalMcqs };
 }
 
 function generateCheatsheet(title, moduleName, langNorm) {
@@ -412,8 +739,26 @@ function getConceptContent(title, moduleName, lang, roadmapId) {
   if (!practice.easy || !practice.easy.problem) {
     practice = { ...generatePractice(title, moduleName, langNorm), ...practice };
   }
-  if (!quiz.mcqs || quiz.mcqs.length === 0) {
-    quiz = { ...generateQuiz(title, moduleName, langNorm), ...quiz };
+  let quizIsGeneric = false;
+  if (quiz && quiz.mcqs) {
+    for (const q of quiz.mcqs) {
+      const qText = q.question || '';
+      const optB = q.options && q.options[1] || '';
+      if (
+        qText.toLowerCase().includes("which of the following is true about") ||
+        qText.includes("GPUs with zero CPU usage") ||
+        optB.includes("GPUs with zero CPU") ||
+        qText.includes("network connections to execute") ||
+        qText.includes("local scope rules")
+      ) {
+        quizIsGeneric = true;
+        break;
+      }
+    }
+  }
+
+  if (!quiz.mcqs || quiz.mcqs.length === 0 || quizIsGeneric) {
+    quiz = generateQuiz(title, moduleName, langNorm, { beginner, intermediate, expert, practice, cheatsheet, interview, revision });
   }
   if (!cheatsheet.sections || cheatsheet.sections.length === 0) {
     cheatsheet = { ...generateCheatsheet(title, moduleName, langNorm), ...cheatsheet };
@@ -500,7 +845,7 @@ ${q.explanation}
     summary: revision.summary || '',
     key_takeaways: revision.summary || '',
     related_topics: lesson.nextLessons ? lesson.nextLessons.join('\n') : '',
-    next_learning_path: lesson.nextLessons ? lesson.nextLessons[0] : '',
+    next_learning_path: (lesson.nextLessons && lesson.nextLessons[0]) || '',
 
     memoryDiagram: beginner.memoryDiagram ? JSON.stringify(beginner.memoryDiagram) : null,
     executionStepper: beginner.stepByStepExecution ? JSON.stringify(beginner.stepByStepExecution.map(s => ({

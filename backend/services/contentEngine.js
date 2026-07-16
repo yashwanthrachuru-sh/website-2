@@ -74,6 +74,311 @@ async function generateFullLessonContent(metadata, lang = 'javascript') {
  * This function handles API payloads and attaches cheatsheets, quizzes,
  * practices, videos, resources, and interview questions.
  */
+/**
+ * Safe Array conversion with warning logger
+ */
+function safeArray(val, fieldName, context = '') {
+  if (Array.isArray(val)) {
+    return val;
+  }
+  if (val !== undefined && val !== null) {
+    console.warn(`[ContentEngine Warning] In ${context}, expected array for '${fieldName}', but got: ${typeof val}. Falling back to empty array.`);
+  }
+  return [];
+}
+
+/**
+ * Safe Object conversion with warning logger
+ */
+function safeObject(val, fieldName, context = '') {
+  if (val && typeof val === 'object' && !Array.isArray(val)) {
+    return val;
+  }
+  if (val !== undefined && val !== null) {
+    console.warn(`[ContentEngine Warning] In ${context}, expected object for '${fieldName}', but got: ${typeof val}. Falling back to empty object.`);
+  }
+  return {};
+}
+
+function normalizeBeginner(rawBeginner, context = '') {
+  const b = safeObject(rawBeginner, 'beginner', context);
+  const examplesRaw = b.examples || b.example;
+  const examplesList = safeArray(examplesRaw, 'beginner.examples', context);
+  
+  return {
+    motivation: b.motivation || '',
+    whyExists: b.whyExists || b.why_exists || '',
+    simpleExplanation: b.simpleExplanation || b.explanation || '',
+    syntaxExplanation: b.syntaxExplanation || b.syntax_breakdown || '',
+    visualDiagram: b.visualDiagram || b.visual_flow || '',
+    realWorldAnalogy: b.realWorldAnalogy || b.real_world_analogies || '',
+    examples: examplesList.map(e => ({
+      code: e.code || '',
+      explanation: e.explanation || e.desc || ''
+    })),
+    stepByStepExecution: safeArray(b.stepByStepExecution || b.stepByStep, 'beginner.stepByStepExecution', context).map(s => ({
+      step: Number(s.step) || 0,
+      desc: s.desc || s.explanation || ''
+    })),
+    memoryDiagram: b.memoryDiagram ? {
+      stack: safeArray(b.memoryDiagram.stack, 'beginner.memoryDiagram.stack', context).map(item => ({
+        address: item.address || '',
+        label: item.label || '',
+        value: item.value || ''
+      })),
+      heap: safeArray(b.memoryDiagram.heap, 'beginner.memoryDiagram.heap', context).map(item => ({
+        address: item.address || '',
+        label: item.label || '',
+        value: item.value || ''
+      }))
+    } : { stack: [], heap: [] }
+  };
+}
+
+function normalizeIntermediate(rawIntermediate, context = '') {
+  const im = safeObject(rawIntermediate, 'intermediate', context);
+  const examplesRaw = im.examples || im.example;
+  const examplesList = safeArray(examplesRaw, 'intermediate.examples', context);
+
+  return {
+    deeperExplanation: im.deeperExplanation || im.detailed_concept || '',
+    internalImplementation: im.internalImplementation || im.internal_working || '',
+    examples: examplesList.map(e => ({
+      code: e.code || '',
+      explanation: e.explanation || e.desc || ''
+    })),
+    performanceConsiderations: {
+      timeComplexity: im.performanceConsiderations?.timeComplexity || im.performance?.timeComplexity || '',
+      spaceComplexity: im.performanceConsiderations?.spaceComplexity || im.performance?.spaceComplexity || ''
+    },
+    debuggingWalkthrough: {
+      bugDescription: im.debuggingWalkthrough?.bugDescription || im.debugging?.bugDescription || '',
+      incorrectCode: im.debuggingWalkthrough?.incorrectCode || im.debugging?.incorrectCode || im.debugging?.wrong || '',
+      correctCode: im.debuggingWalkthrough?.correctCode || im.debugging?.correctCode || im.debugging?.right || ''
+    },
+    bestPractices: safeArray(im.bestPractices || im.best_practices, 'intermediate.bestPractices', context).map(bp => String(bp))
+  };
+}
+
+function normalizeExpert(rawExpert, context = '') {
+  const ex = safeObject(rawExpert, 'expert', context);
+  const examplesRaw = ex.examples || ex.example;
+  const examplesList = safeArray(examplesRaw, 'expert.examples', context);
+
+  return {
+    examples: examplesList.map(e => ({
+      code: e.code || '',
+      explanation: e.explanation || e.desc || ''
+    }))
+  };
+}
+
+function normalizePractice(rawPractice, context = '') {
+  const p = safeObject(rawPractice, 'practice', context);
+
+  const normalizePracticeItem = (item, defaultTitle, fieldName) => {
+    if (!item) return null;
+    const it = safeObject(item, `practice.${fieldName}`, context);
+    
+    let hintsList = [];
+    if (it.hints) {
+      hintsList = safeArray(it.hints, `practice.${fieldName}.hints`, context);
+    } else if (it.hint) {
+      hintsList = [it.hint];
+    }
+
+    return {
+      title: it.title || defaultTitle,
+      description: it.description || it.problem || '',
+      problem: it.problem || it.description || '',
+      starterCode: it.starterCode || it.code || '',
+      expectedOutput: it.expectedOutput || '',
+      solution: it.solution || '',
+      hints: hintsList.map(h => String(h))
+    };
+  };
+
+  return {
+    easy: normalizePracticeItem(p.easy, 'Easy Challenge', 'easy'),
+    medium: normalizePracticeItem(p.medium, 'Medium Challenge', 'medium'),
+    hard: normalizePracticeItem(p.hard, 'Hard Challenge', 'hard'),
+    debugging: normalizePracticeItem(p.debugging, 'Debugging Exercise', 'debugging')
+  };
+}
+
+function normalizeQuiz(rawQuiz, context = '') {
+  const q = safeObject(rawQuiz, 'quiz', context);
+  const mcqsList = safeArray(q.mcqs, 'quiz.mcqs', context);
+
+  return {
+    mcqs: mcqsList.map(item => ({
+      id: item.id || '',
+      question: item.question || '',
+      options: safeArray(item.options, 'quiz.mcqs[].options', context).map(opt => String(opt)),
+      answer: item.answer || '',
+      explanation: item.explanation || '',
+      difficulty: item.difficulty || 'medium'
+    }))
+  };
+}
+
+function normalizeCheatsheet(rawCheatsheet, context = '') {
+  const cs = safeObject(rawCheatsheet, 'cheatsheet', context);
+  const sectionsList = cs.sections;
+
+  const normalizedSections = [];
+  if (Array.isArray(sectionsList)) {
+    sectionsList.forEach((sec, idx) => {
+      const entries = safeArray(sec.entries, `cheatsheet.sections[${idx}].entries`, context).map(ent => ({
+        syntax: ent.syntax || '',
+        example: ent.example || '',
+        description: ent.description || '',
+        commonMistake: ent.commonMistake || ent.mistake || ''
+      }));
+      normalizedSections.push({
+        heading: sec.heading || 'Syntax Guide',
+        entries
+      });
+    });
+  } else {
+    if (cs.syntax || cs.quickExamples || cs.quickRevision) {
+      const syntaxStr = cs.syntax || 'Syntax Reference';
+      const exampleStr = cs.quickExamples || 'Code Examples';
+      normalizedSections.push({
+        heading: 'General Syntax Reference',
+        entries: [
+          {
+            syntax: typeof syntaxStr === 'string' ? (syntaxStr.split('\n')[0] || '// Syntax') : '// Syntax',
+            example: typeof exampleStr === 'string' ? exampleStr : 'Example snippet',
+            description: cs.quickRevision || 'Quick Reference Guide',
+            commonMistake: Array.isArray(cs.commonErrors) && cs.commonErrors[0] ? cs.commonErrors[0].description : ''
+          }
+        ]
+      });
+    }
+  }
+
+  return {
+    printNote: cs.printNote || 'Print this cheat sheet or use the search bar.',
+    sections: normalizedSections
+  };
+}
+
+function normalizeProject(rawProject, context = '') {
+  const pr = safeObject(rawProject, 'project', context);
+  const goals = pr.learningGoals || pr.objectives;
+  const learningGoals = safeArray(goals, 'project.learningGoals', context).map(g => String(g));
+
+  return {
+    title: pr.title || 'Mini Project',
+    tagline: pr.tagline || 'Module Practical Project',
+    description: pr.description || '',
+    learningGoals: learningGoals,
+    requirements: safeArray(pr.requirements, 'project.requirements', context).map(r => String(r)),
+    starterCode: pr.starterCode || '',
+    solution: pr.solution || '',
+    solutionExpl: pr.solutionExpl || '',
+    expectedOutput: pr.expectedOutput || '',
+    extensions: safeArray(pr.extensions, 'project.extensions', context).map(ext => String(ext))
+  };
+}
+
+function normalizeResources(rawResources, context = '') {
+  let rawLinks = [];
+  if (Array.isArray(rawResources)) {
+    rawLinks = rawResources;
+  } else if (rawResources && Array.isArray(rawResources.links)) {
+    rawLinks = rawResources.links;
+  } else if (rawResources && typeof rawResources === 'object') {
+    Object.keys(rawResources).forEach(key => {
+      if (typeof rawResources[key] === 'string') {
+        rawLinks.push({
+          type: 'reference',
+          title: key.replace(/_/g, ' '),
+          url: rawResources[key]
+        });
+      }
+    });
+  } else if (rawResources !== undefined && rawResources !== null) {
+    console.warn(`[ContentEngine Warning] In ${context}, expected array/object for 'resources', but got: ${typeof rawResources}.`);
+  }
+
+  return {
+    links: rawLinks.map(link => ({
+      type: link.type || 'reference',
+      title: link.title || 'Resource Link',
+      url: link.url || ''
+    }))
+  };
+}
+
+function normalizeVideos(rawVideos, context = '') {
+  let vids = [];
+  if (Array.isArray(rawVideos)) {
+    vids = rawVideos;
+  } else if (rawVideos && Array.isArray(rawVideos.items)) {
+    vids = rawVideos.items;
+  } else if (rawVideos !== undefined && rawVideos !== null) {
+    console.warn(`[ContentEngine Warning] In ${context}, expected array for 'videos', but got: ${typeof rawVideos}.`);
+  }
+
+  return vids.map(v => {
+    const video_id = v.video_id || v.videoId || 'rfscVS0vtbw';
+    return {
+      title: v.title || 'Introduction Video',
+      url: v.url || `https://www.youtube.com/watch?v=${video_id}`,
+      video_id: video_id,
+      thumbnail: v.thumbnail || `https://img.youtube.com/vi/${video_id}/maxresdefault.jpg`,
+      channel: v.channel || 'EduNet Learning',
+      duration: v.duration || '5m',
+      description: v.description || 'Educational concept tutorial'
+    };
+  });
+}
+
+function normalizeInterview(rawInterview, context = '') {
+  const iv = safeObject(rawInterview, 'interview', context);
+  const questionsList = safeArray(iv.questions, 'interview.questions', context);
+
+  return {
+    questions: questionsList.map(q => ({
+      question: q.question || '',
+      answer: q.fullAnswer || q.answer || q.shortAnswer || '',
+      level: q.level || q.difficulty || 'beginner'
+    }))
+  };
+}
+
+function normalizeRevision(rawRevision, context = '') {
+  const rv = safeObject(rawRevision, 'revision', context);
+  const takeaways = rv.keyTakeaways || rv.key_takeaways;
+
+  return {
+    summary: rv.summary || '',
+    oneLineSummary: rv.oneLineSummary || rv.summary || '',
+    keyTakeaways: safeArray(takeaways, 'revision.keyTakeaways', context).map(t => String(t)),
+    memoryTricks: safeArray(rv.memoryTricks, 'revision.memoryTricks', context).map(t => ({
+      concept: t.concept || '',
+      trick: t.trick || ''
+    })),
+    commonErrors: safeArray(rv.commonErrors, 'revision.commonErrors', context).map(e => {
+      if (e && typeof e === 'object') {
+        return {
+          error: e.error || '',
+          cause: e.cause || '',
+          fix: e.fix || ''
+        };
+      }
+      return String(e);
+    }),
+    preInterviewChecklist: safeArray(rv.preInterviewChecklist, 'revision.preInterviewChecklist', context).map(c => String(c)),
+    nextTopics: safeArray(rv.nextTopics, 'revision.nextTopics', context).map(t => ({
+      title: t.title || '',
+      whyNext: t.whyNext || ''
+    }))
+  };
+}
+
 function enrichLesson(lesson) {
   if (!lesson) return lesson;
 
@@ -81,6 +386,7 @@ function enrichLesson(lesson) {
   const moduleName = lesson.module_title || '';
   const lang = (lesson.language || 'javascript').toLowerCase();
   const roadmapId = lesson.roadmap_id || 'python';
+  const context = `Lesson "${title}" (Module: "${moduleName}", Language: "${lang}", Roadmap: "${roadmapId}")`;
 
   let resolved = conceptEngine.getConceptContent(title, moduleName, lang, roadmapId);
   if (!resolved) {
@@ -103,141 +409,25 @@ function enrichLesson(lesson) {
 
   lesson.structured_content = s;
 
-  lesson.beginner = raw.beginner || {};
-  lesson.intermediate = raw.intermediate || {};
-  lesson.expert = raw.expert || {};
-  
-  const p = raw.practice || {};
-  const normalizePracticeItem = (item, defaultTitle) => {
-    if (!item) return null;
-    return {
-      title: item.title || defaultTitle,
-      description: item.description || item.problem || '',
-      problem: item.problem || item.description || '',
-      starterCode: item.starterCode || item.code || '',
-      expectedOutput: item.expectedOutput || '',
-      solution: item.solution || '',
-      hints: Array.isArray(item.hints) ? item.hints : (item.hint ? [item.hint] : [])
-    };
-  };
+  // Use the modular normalization layer
+  lesson.beginner = normalizeBeginner(raw.beginner, context);
+  lesson.intermediate = normalizeIntermediate(raw.intermediate, context);
+  lesson.expert = normalizeExpert(raw.expert, context);
+  lesson.practice = normalizePractice(raw.practice, context);
+  lesson.quiz = normalizeQuiz(raw.quiz, context);
+  lesson.cheatsheet = normalizeCheatsheet(raw.cheatsheet, context);
+  lesson.project = normalizeProject(raw.project, context);
+  lesson.resources = normalizeResources(raw.resources, context);
+  lesson.videos = normalizeVideos(raw.videos, context);
+  lesson.interview = normalizeInterview(raw.interview, context);
+  lesson.revision = normalizeRevision(raw.revision, context);
 
-  lesson.practice = {
-    easy: normalizePracticeItem(p.easy, 'Easy Challenge'),
-    medium: normalizePracticeItem(p.medium, 'Medium Challenge'),
-    hard: normalizePracticeItem(p.hard, 'Hard Challenge'),
-    debugging: normalizePracticeItem(p.debugging, 'Debugging Exercise'),
-    coding: s.coding_practice,
-    mcqs: s.mcqs,
-    projects: s.project_ideas
-  };
+  // Attach legacy variables if any code expects them
+  lesson.practice.coding = s.coding_practice;
+  lesson.practice.mcqs = s.mcqs;
+  lesson.practice.projects = s.project_ideas;
 
-  lesson.quiz = raw.quiz || { mcqs: [] };
-  if (!Array.isArray(lesson.quiz.mcqs)) lesson.quiz.mcqs = [];
-
-  const cs = raw.cheatsheet || {};
-  const normalizedSections = [];
-  if (Array.isArray(cs.sections)) {
-    cs.sections.forEach(sec => {
-      const entries = (sec.entries || []).map(ent => ({
-        syntax: ent.syntax || '',
-        example: ent.example || '',
-        description: ent.description || '',
-        commonMistake: ent.commonMistake || ent.mistake || ''
-      }));
-      normalizedSections.push({
-        heading: sec.heading || 'Syntax Guide',
-        entries
-      });
-    });
-  } else {
-    const syntaxStr = cs.syntax || 'Syntax Reference';
-    const exampleStr = cs.quickExamples || 'Code Examples';
-    normalizedSections.push({
-      heading: 'General Syntax Reference',
-      entries: [
-        {
-          syntax: typeof syntaxStr === 'string' ? (syntaxStr.split('\n')[0] || '// Syntax') : '// Syntax',
-          example: typeof exampleStr === 'string' ? exampleStr : 'Example snippet',
-          description: cs.quickRevision || 'Quick Reference Guide',
-          commonMistake: Array.isArray(cs.commonErrors) && cs.commonErrors[0] ? cs.commonErrors[0].description : ''
-        }
-      ]
-    });
-  }
-  lesson.cheatsheet = {
-    printNote: cs.printNote || 'Print this cheat sheet or use the search bar.',
-    sections: normalizedSections
-  };
-
-  const pr = raw.project || {};
-  lesson.project = {
-    title: pr.title || 'Mini Project',
-    tagline: pr.tagline || 'Module Practical Project',
-    description: pr.description || '',
-    learningGoals: pr.learningGoals || pr.objectives || [],
-    requirements: pr.requirements || [],
-    starterCode: pr.starterCode || '',
-    solution: pr.solution || '',
-    solutionExpl: pr.solutionExpl || '',
-    expectedOutput: pr.expectedOutput || '',
-    extensions: pr.extensions || []
-  };
-
-  const res = raw.resources || {};
-  let links = [];
-  if (Array.isArray(res)) {
-    links = res;
-  } else if (Array.isArray(res.links)) {
-    links = res.links;
-  } else {
-    Object.keys(res).forEach(key => {
-      if (typeof res[key] === 'string') {
-        links.push({
-          type: 'reference',
-          title: key.replace(/_/g, ' '),
-          url: res[key]
-        });
-      }
-    });
-  }
-  lesson.resources = links;
-
-  const vids = Array.isArray(raw.videos) ? raw.videos : [];
-  const normalizedVideos = vids.map(v => {
-    const video_id = v.video_id || v.videoId || 'rfscVS0vtbw';
-    return {
-      title: v.title || 'Introduction Video',
-      url: v.url || `https://www.youtube.com/watch?v=${video_id}`,
-      video_id: video_id,
-      thumbnail: v.thumbnail || `https://img.youtube.com/vi/${video_id}/maxresdefault.jpg`,
-      channel: v.channel || 'EduNet Learning',
-      duration: v.duration || '5m',
-      description: v.description || 'Educational concept tutorial'
-    };
-  });
-  lesson.videos = normalizedVideos;
-
-  const iv = raw.interview || {};
-  const normalizedQuestions = (iv.questions || []).map(q => ({
-    question: q.question || '',
-    answer: q.fullAnswer || q.answer || q.shortAnswer || '',
-    level: q.level || q.difficulty || 'beginner'
-  }));
-  lesson.interview = {
-    questions: normalizedQuestions
-  };
-
-  const rv = raw.revision || {};
-  lesson.revision = {
-    summary: rv.summary || '',
-    oneLineSummary: rv.oneLineSummary || rv.summary || '',
-    keyTakeaways: rv.keyTakeaways || rv.key_takeaways || [],
-    memoryTricks: rv.memoryTricks || [],
-    preInterviewChecklist: rv.preInterviewChecklist || [],
-    commonErrors: rv.commonErrors || [],
-    nextTopics: rv.nextTopics || []
-  };
-
+  // Build legacy fields
   lesson.learning_sections = [
     { title: "Definition", content: s.definition },
     { title: "Why it is important", content: s.importance },
@@ -255,7 +445,7 @@ function enrichLesson(lesson) {
     { title: "Explanation", content: s.line_by_line }
   ];
 
-  lesson.interview_questions = normalizedQuestions.map(q => ({
+  lesson.interview_questions = lesson.interview.questions.map(q => ({
     title: q.question,
     content: q.answer
   }));
@@ -324,5 +514,16 @@ module.exports = {
   parseStructuredContent,
   LESSON_SECTIONS,
   enrichTool,
-  generate
+  generate,
+  normalizeBeginner,
+  normalizeIntermediate,
+  normalizeExpert,
+  normalizePractice,
+  normalizeQuiz,
+  normalizeCheatsheet,
+  normalizeProject,
+  normalizeResources,
+  normalizeVideos,
+  normalizeInterview,
+  normalizeRevision
 };
