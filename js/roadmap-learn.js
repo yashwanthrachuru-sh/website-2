@@ -57,6 +57,170 @@ function initStepperState() {
 }
 
 let explanationMode    = 'detailed'; // detailed, beginner, advanced
+
+// ── Tab & Stage Progression State ──────────────────────────────
+let completedStages = {};
+
+function getNavigationStages(ui) {
+  const stages = [
+    { id: 'overview', label: 'Overview' },
+    { id: 'learn', label: 'Learning Notes' },
+    { id: 'examples', label: 'Examples' },
+    { id: 'visualization', label: 'Visualization' },
+    { id: 'practice', label: 'Practice' },
+    { id: 'quiz', label: 'Topic Quiz' }
+  ];
+
+  if (ui.project && (ui.project.title || ui.project.description)) {
+    stages.push({ id: 'project', label: 'Mini Project' });
+  }
+
+  stages.push(
+    { id: 'cheatsheet', label: 'Cheat Sheet' },
+    { id: 'interview', label: 'Interview Questions' },
+    { id: 'revision', label: 'Revision Notes' },
+    { id: 'assessment', label: 'Final Assessment' },
+    { id: 'complete', label: 'Completion' }
+  );
+
+  return stages;
+}
+
+function initCompletedStages(ui) {
+  completedStages = { 'overview': true };
+  if (ui.completed) {
+    const stages = getNavigationStages(ui);
+    stages.forEach(s => {
+      completedStages[s.id] = true;
+    });
+  }
+}
+
+function isTabUnlocked(tabId, stages) {
+  if (currentLessonUI?.completed) return true;
+  if (tabId === 'overview') return true;
+  
+  const idx = stages.findIndex(s => s.id === tabId);
+  if (idx === -1) return false;
+  
+  for (let i = 0; i < idx; i++) {
+    if (!completedStages[stages[i].id]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function renderTabHeaders() {
+  const tabsContainer = document.getElementById('learnTabs');
+  if (!tabsContainer || !currentLessonUI) return;
+  tabsContainer.innerHTML = '';
+  const stages = getNavigationStages(currentLessonUI);
+  stages.forEach((stage) => {
+    const btn = document.createElement('button');
+    btn.className = 'learn-tab';
+    btn.dataset.tab = stage.id;
+    btn.textContent = stage.label;
+
+    const unlocked = isTabUnlocked(stage.id, stages);
+    if (!unlocked) {
+      btn.classList.add('locked');
+    }
+
+    btn.addEventListener('click', () => {
+      if (!isTabUnlocked(stage.id, stages)) {
+        showToast('Please complete preceding stages to unlock this section.', 'warning');
+        return;
+      }
+      switchTab(stage.id);
+    });
+    tabsContainer.appendChild(btn);
+  });
+
+  // Always unlocked Notes tab at the end
+  const notesBtn = document.createElement('button');
+  notesBtn.className = 'learn-tab';
+  notesBtn.dataset.tab = 'notes';
+  notesBtn.textContent = 'Notes';
+  notesBtn.addEventListener('click', () => switchTab('notes'));
+  tabsContainer.appendChild(notesBtn);
+
+  // Sync active class
+  const activeTabId = getActiveTabId();
+  if (activeTabId) {
+    document.querySelectorAll('.learn-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.tab === activeTabId);
+    });
+  }
+}
+
+function getActiveTabId() {
+  const activeTabEl = document.querySelector('.learn-tab.active');
+  return activeTabEl ? activeTabEl.dataset.tab : null;
+}
+
+function navigateToNextTab(currentTabId, nextTabId) {
+  completedStages[currentTabId] = true;
+  renderTabHeaders();
+  switchTab(nextTabId);
+}
+
+function getStageNavigation(stageId, stages) {
+  const idx = stages.findIndex(s => s.id === stageId);
+  if (idx === -1) return { prev: null, next: null };
+  const prev = idx > 0 ? stages[idx - 1].id : null;
+  const next = idx < stages.length - 1 ? stages[idx + 1].id : null;
+  return { prev, next };
+}
+
+function renderNavigationButtons(currentTabId) {
+  const ui = window.currentLessonUI;
+  if (!ui) return '';
+  const stages = getNavigationStages(ui);
+  const { prev, next } = getStageNavigation(currentTabId, stages);
+  
+  let prevBtnHtml = '';
+  if (prev) {
+    let prevLabel = 'Back';
+    if (prev === 'overview') prevLabel = 'Back to Overview';
+    else if (prev === 'learn') prevLabel = 'Back to Learning Notes';
+    else if (prev === 'examples') prevLabel = 'Back to Examples';
+    else if (prev === 'visualization') prevLabel = 'Back to Visualization';
+    else if (prev === 'practice') prevLabel = 'Back to Practice';
+    else if (prev === 'quiz') prevLabel = 'Back to Topic Quiz';
+    else if (prev === 'project') prevLabel = 'Back to Mini Project';
+    else if (prev === 'cheatsheet') prevLabel = 'Back to Cheat Sheet';
+    else if (prev === 'interview') prevLabel = 'Back to Interview Questions';
+    else if (prev === 'revision') prevLabel = 'Back to Revision Notes';
+    
+    prevBtnHtml = `<button class="btn btn-secondary" onclick="switchTab('${prev}')">← ${prevLabel}</button>`;
+  }
+  
+  let nextBtnHtml = '';
+  if (next) {
+    let nextLabel = 'Continue';
+    if (next === 'learn') nextLabel = 'Continue to Learning Notes';
+    else if (next === 'examples') nextLabel = 'Continue to Examples';
+    else if (next === 'visualization') nextLabel = 'Continue to Visualization';
+    else if (next === 'practice') nextLabel = 'Continue to Practice';
+    else if (next === 'quiz') nextLabel = 'Continue to Topic Quiz';
+    else if (next === 'project') nextLabel = 'Continue to Mini Project';
+    else if (next === 'cheatsheet') nextLabel = 'Continue to Cheat Sheet';
+    else if (next === 'interview') nextLabel = 'Continue to Interview Prep';
+    else if (next === 'revision') nextLabel = 'Continue to Revision Notes';
+    else if (next === 'assessment') nextLabel = 'Continue to Final Assessment';
+    
+    nextBtnHtml = `<button class="btn btn-primary" onclick="navigateToNextTab('${currentTabId}', '${next}')">${nextLabel} →</button>`;
+  }
+  
+  return `
+    <div class="step-nav-footer" style="display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2.5rem;">
+      <div>${prevBtnHtml}</div>
+      <div>${nextBtnHtml}</div>
+    </div>
+  `;
+}
+
 let checkpointCorrectCount = 0;
 let checkpointTotalCount = 0;
 let stepperCompleted = false;
@@ -249,7 +413,7 @@ function renderSidebar() {
             showToast('This lesson is locked! Complete preceding topics to unlock.', 'warning');
             return;
           }
-          openLesson(parseInt(liEl.dataset.lid));
+          openLesson(parseInt(liEl.dataset.lid), true);
         });
       });
 
@@ -337,7 +501,7 @@ function startCertificationExam() {
 }
 
 // ── Open Lesson ────────────────────────────────────────────────
-async function openLesson(lessonId) {
+async function openLesson(lessonId, showToastIfLocked = false) {
   if (currentLessonId === lessonId && currentLessonData) return;
   currentLessonId = lessonId;
   quizAnswers = {};
@@ -370,6 +534,19 @@ async function openLesson(lessonId) {
   try {
     const data = await apiFetch('/api/lessons/' + lessonId);
     if (!data.success) throw new Error(data.message);
+    
+    if (data.locked) {
+      if (showToastIfLocked) {
+        showToast('This lesson is locked! Complete preceding topics to unlock.', 'warning');
+      }
+      const lessonsList = getAllLessons();
+      const first = lessonsList.find(l => !l.completed && !l.locked) || lessonsList.find(l => !l.locked) || lessonsList[0];
+      if (first && first.id !== lessonId) {
+        openLesson(first.id, false);
+      }
+      return;
+    }
+
     currentLessonData = data;
     renderLessonContent(data);
   } catch (err) {
@@ -1688,10 +1865,13 @@ function renderFinalAssessment(ui) {
 
   if (!mcqs.length) {
     container.innerHTML = `
-      <p style="color:var(--mist);">Final assessment questions coming soon.</p>
-      <div class="step-nav-footer">
-        <button class="btn btn-secondary" onclick="goToStepIndex(9)">← Back</button>
-        <button class="btn btn-primary" onclick="goToStepIndex(11)">Continue →</button>
+      <div class="journey-card" style="border-left: 4px solid var(--border);">
+        <h2>📝 Final Assessment MCQ</h2>
+        <p style="color:var(--mist);margin-top:1rem;">No final assessment questions are required or available for this basic topic.</p>
+        <div class="step-nav-footer" style="display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2.5rem;">
+          <button class="btn btn-secondary" onclick="switchTab('revision')">← Back to Revision Notes</button>
+          <button class="btn btn-primary" onclick="navigateToNextTab('assessment', 'complete')">Continue to Completion →</button>
+        </div>
       </div>
     `;
     return;
@@ -1724,7 +1904,11 @@ function renderFinalAssessment(ui) {
     });
 
     const pct = Math.round((correctCount / total) * 100);
-    const color = pct >= 80 ? 'var(--emerald)' : pct >= 60 ? '#fbbf24' : '#ef4444';
+    const color = pct >= 70 ? 'var(--emerald)' : '#ef4444';
+
+    if (pct >= 70) {
+      completedStages['assessment'] = true;
+    }
 
     container.innerHTML = `
       <div style="text-align:center;padding:2rem 1rem;">
@@ -1732,12 +1916,16 @@ function renderFinalAssessment(ui) {
         <h2 style="color:${color};font-size:24px;margin-bottom:0.5rem;">Assessment Complete: ${pct}%</h2>
         <p style="font-size:14.5px;color:var(--mist);max-width:500px;margin:0 auto 1.5rem;">
           You answered <strong>${correctCount}</strong> out of <strong>${total}</strong> questions correctly.
-          ${pct >= 70 ? '🎉 Excellent! You have verified your mastery of this module.' : '⚠️ Take a moment to review the cheatsheet and mistakes before retrying.'}
+          ${pct >= 70 ? '🎉 Excellent! You have verified your mastery of this module.' : '⚠️ Score below 70%. Take a moment to review the cheatsheet and mistakes before retrying.'}
         </p>
 
         <div style="display:flex;gap:0.75rem;justify-content:center;">
           <button class="btn btn-secondary" id="retry-assessment-btn">🔄 Retry Assessment</button>
-          <button class="btn btn-primary" onclick="goToStepIndex(11)">Continue to Cheat Sheet →</button>
+          ${pct >= 70 ? `
+            <button class="btn btn-primary" onclick="navigateToNextTab('assessment', 'complete')">Continue to Completion →</button>
+          ` : `
+            <button class="btn btn-primary" onclick="switchTab('revision')">← Review Revision Notes</button>
+          `}
         </div>
       </div>
     `;
@@ -1848,7 +2036,9 @@ function renderFinalAssessment(ui) {
         if (window[stateQuizAnswersKey][qi] === String(item.answer).toUpperCase()) score++;
       });
       const pct = Math.round((score / total) * 100);
-      if (pct >= 60) addXP(100);
+      if (pct >= 70) {
+        completedStages['assessment'] = true;
+      }
       renderFinalAssessment(ui);
     } else {
       window[stateActiveQuestionKey]++;
@@ -3107,6 +3297,19 @@ async function completeLesson() {
     lessonProgressMap[currentLessonId] = true;
     showToast(`+${data.xp_awarded} XP earned! 🎉`, 'success');
 
+    // Sync updated XP and level locally to window session
+    const s = window.EduNetAPI.getSession();
+    if (s && data.user_xp !== undefined && data.user_level !== undefined) {
+      s.xp = data.user_xp;
+      s.level = data.user_level;
+      localStorage.setItem('edunet_session', JSON.stringify(s));
+      localStorage.setItem('edunet_xp_' + s.username, String(data.user_xp));
+      const xpEl = document.getElementById('sidebarXP');
+      if (xpEl) xpEl.textContent = `${data.user_xp} XP`;
+      const lvlEl = document.getElementById('sidebarLevel');
+      if (lvlEl) lvlEl.textContent = `Level ${data.user_level}`;
+    }
+
     // Update completion banner
     document.getElementById('completionBanner').classList.add('show');
 
@@ -3115,13 +3318,9 @@ async function completeLesson() {
     renderSidebar();
     updateProgressUI();
 
-    // Auto navigate to next lesson after short delay
-    if (currentLessonData?.next_lesson) {
-      setTimeout(() => {
-        showToast('Moving to next lesson...', 'info');
-        setTimeout(() => openLesson(currentLessonData.next_lesson.id), 2000);
-      }, 3000);
-    }
+    // Mark completion stage completed and switch tab
+    completedStages['complete'] = true;
+    switchTab('complete');
   } catch (err) {
     showToast('Error: ' + err.message, 'error');
   }
@@ -4080,6 +4279,186 @@ window.copyCode = function(btn) {
     setTimeout(() => btn.textContent = 'Copy', 2000);
   });
 };
+
+function getModuleProgressForLesson(lessonId) {
+  if (!currentRoadmap) return { done: 0, total: 0 };
+  for (const m of currentRoadmap.modules) {
+    const hasLesson = m.lessons.some(l => l.id === lessonId);
+    if (hasLesson) {
+      const done = m.lessons.filter(l => lessonProgressMap[l.id]).length;
+      const total = m.lessons.length;
+      return { done, total, moduleTitle: m.title };
+    }
+  }
+  return { done: 0, total: 0 };
+}
+
+function getNextAssessmentAction() {
+  if (!currentRoadmap) return null;
+  
+  if (currentRoadmap.beginner_assessment && !currentRoadmap.beginner_assessment.passed && !currentRoadmap.beginner_assessment.locked) {
+    return { level: 'beginner', label: 'Take Beginner Level Assessment →', action: () => startLevelAssessment('beginner') };
+  }
+  if (currentRoadmap.intermediate_assessment && !currentRoadmap.intermediate_assessment.passed && !currentRoadmap.intermediate_assessment.locked) {
+    return { level: 'intermediate', label: 'Take Intermediate Level Assessment →', action: () => startLevelAssessment('intermediate') };
+  }
+  if (currentRoadmap.expert_assessment && !currentRoadmap.expert_assessment.passed && !currentRoadmap.expert_assessment.locked) {
+    return { level: 'expert', label: 'Take Expert Level Assessment →', action: () => startLevelAssessment('expert') };
+  }
+  if (currentRoadmap.certification_exam && !currentRoadmap.certification_exam.passed && !currentRoadmap.certification_exam.locked) {
+    return { level: 'final', label: 'Take Certification Exam →', action: () => startCertificationExam() };
+  }
+  return null;
+}
+
+let completionSaving = false;
+
+async function renderCompletionScreen(ui) {
+  const container = document.getElementById('completionContainer');
+  if (!container) return;
+
+  // 1. If lesson is NOT marked complete in local progress, POST to backend to complete it
+  if (!lessonProgressMap[ui.id] && !completionSaving) {
+    completionSaving = true;
+    container.innerHTML = `
+      <div class="journey-card" style="border-left: 4px solid var(--accent); text-align: center; padding: 4rem 1.5rem;">
+        <div class="loading-spinner" style="margin:0 auto 1.5rem; width: 40px; height: 40px; border: 4px solid rgba(99,102,241,0.1); border-left-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        <h3 style="color: var(--text); font-size: 18px; margin-bottom: 0.5rem;">Saving Progress</h3>
+        <p style="color: var(--mist); font-size: 13.5px;">Completing lesson and awarding XP in the backend...</p>
+      </div>
+    `;
+
+    try {
+      const data = await apiFetch(`/api/lessons/${ui.id}/complete`, { method: 'POST' });
+      if (data.success) {
+        lessonProgressMap[ui.id] = true;
+        
+        // Sync user session XP and Level locally
+        const s = window.EduNetAPI.getSession();
+        if (s && data.user_xp !== undefined && data.user_level !== undefined) {
+          s.xp = data.user_xp;
+          s.level = data.user_level;
+          localStorage.setItem('edunet_session', JSON.stringify(s));
+          localStorage.setItem('edunet_xp_' + s.username, String(data.user_xp));
+          const xpEl = document.getElementById('sidebarXP');
+          if (xpEl) xpEl.textContent = `${data.user_xp} XP`;
+          const lvlEl = document.getElementById('sidebarLevel');
+          if (lvlEl) lvlEl.textContent = `Level ${data.user_level}`;
+        }
+
+        completedStages['complete'] = true;
+        showToast('Lesson marked complete! +100 XP Earned 🎉', 'success');
+
+        // Force refresh roadmap data to update sidebar states & unlock next lesson/module
+        await loadRoadmap();
+        renderSidebar();
+        updateProgressUI();
+      } else {
+        throw new Error(data.message || 'Unknown backend error');
+      }
+    } catch (err) {
+      showToast('Error saving progress: ' + err.message, 'error');
+      container.innerHTML = `
+        <div class="journey-card" style="border-left: 4px solid var(--rose); text-align: center; padding: 3rem 1.5rem;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+          <h3 style="color: var(--rose); font-size: 18px; margin-bottom: 0.5rem;">Failed to save progress</h3>
+          <p style="color: var(--mist); font-size: 13.5px; margin-bottom: 1.5rem;">${escapeHtml(err.message)}</p>
+          <button class="btn btn-primary" onclick="completionSaving = false; renderCompletionScreen(window.currentLessonUI)">🔄 Retry Saving Progress</button>
+        </div>
+      `;
+      completionSaving = false;
+      return;
+    }
+    completionSaving = false;
+  }
+
+  // 2. Render Redesigned Completion Page
+  const moduleProg = getModuleProgressForLesson(ui.id);
+  const nextL = ui.nextLesson;
+  let nextLDetails = null;
+
+  if (nextL) {
+    try {
+      const nextData = await apiFetch('/api/lessons/' + nextL.id);
+      if (nextData && nextData.success && nextData.lesson) {
+        nextLDetails = window.LessonAdapter.normalize(nextData);
+      }
+    } catch (err) {
+      console.error('Error fetching next lesson details:', err);
+    }
+  }
+
+  const nextAssessmentAction = getNextAssessmentAction();
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--emerald); text-align: center; padding: 3rem 1.5rem;">
+      <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+      <h2 style="color: var(--emerald); font-size: 26px; margin-bottom: 0.5rem; font-weight: 800;">Lesson Completed</h2>
+      <div class="premium-callout" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 0.75rem 1.5rem; display: inline-block; margin-bottom: 2rem;">
+        <strong style="color: var(--emerald); font-size: 16px;">+100 XP Earned</strong>
+      </div>
+
+      <div style="max-width: 500px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div>
+          <div style="font-size: 12px; color: var(--mist-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Lesson Progress</div>
+          <div style="font-family: var(--font-mono); color: var(--emerald); font-size: 15px; letter-spacing: 1px;">████████████ 100%</div>
+        </div>
+
+        <div>
+          <div style="font-size: 12px; color: var(--mist-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Module Progress</div>
+          <div style="font-size: 13.5px; color: var(--frost); font-weight: 600; margin-bottom: 0.3rem;">${moduleProg.done} / ${moduleProg.total} Topics Completed</div>
+          <div class="progress-bar" style="height: 6px; background: var(--abyss-2); border-radius: 99px; overflow: hidden;">
+            <div class="progress-fill" style="width: ${((moduleProg.done / moduleProg.total) * 100)}%; background: var(--accent); height: 100%; border-radius: 99px;"></div>
+          </div>
+        </div>
+
+        ${nextL && !nextL.locked ? `
+          <div style="background: var(--abyss-2); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-top: 1rem;">
+            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Next Lesson</div>
+            <h3 style="margin: 0 0 0.75rem 0; font-size: 1.15rem; color: var(--text); font-weight: 700;">${escapeHtml(nextLDetails?.title?.split('— Lesson')[1]?.replace(/^\s*\d+:\s*/, '') || nextLDetails?.title || nextL.title)}</h3>
+            
+            <div style="display: flex; gap: 1.5rem; font-size: 12.5px; color: var(--mist);">
+              <div>⏱️ <strong>Estimated Time:</strong> ~${nextLDetails?.estimatedTime || 30} mins</div>
+              <div>📊 <strong>Difficulty:</strong> ${escapeHtml(nextLDetails?.difficulty || 'Beginner')}</div>
+            </div>
+          </div>
+        ` : `
+          <div style="background: rgba(16, 185, 129, 0.04); border: 1px dashed rgba(16, 185, 129, 0.2); border-radius: 10px; padding: 1.25rem; text-align: center; margin-top: 1rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">🏆</div>
+            <h3 style="margin: 0 0 0.4rem 0; font-size: 1.15rem; color: var(--emerald); font-weight: 700;">Module Completed!</h3>
+            <p style="color: var(--mist); font-size: 13px; margin: 0; line-height: 1.6;">
+              You have completed all lessons in this module. Take the Level Assessment or proceed to the next module.
+            </p>
+          </div>
+        `}
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap;">
+        ${nextL && !nextL.locked ? `
+          <button class="btn btn-primary" id="btn-continue-next-lesson" style="padding: 0.75rem 2rem;">Continue to Next Lesson →</button>
+        ` : nextAssessmentAction ? `
+          <button class="btn btn-primary" id="btn-take-assessment" style="padding: 0.75rem 2rem; background: var(--accent); border-color: var(--accent);">${escapeHtml(nextAssessmentAction.label)}</button>
+        ` : ''}
+        <button class="btn btn-secondary" id="btn-back-to-roadmap" style="padding: 0.75rem 2.5rem;">Back to Roadmap</button>
+      </div>
+    </div>
+  `;
+
+  // Bind buttons
+  document.getElementById('btn-continue-next-lesson')?.addEventListener('click', () => {
+    openLesson(nextL.id, false); // no locked warning toast on auto navigation
+  });
+
+  document.getElementById('btn-take-assessment')?.addEventListener('click', () => {
+    if (nextAssessmentAction) {
+      nextAssessmentAction.action();
+    }
+  });
+
+  document.getElementById('btn-back-to-roadmap')?.addEventListener('click', () => {
+    window.location.href = 'roadmaps.html';
+  });
+}
 
 // ── Start ───────────────────────────────────────────────────────
 init();

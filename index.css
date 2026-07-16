@@ -1921,4 +1921,44 @@ tr:hover td { background: var(--surface); }
   font-size: 1.35rem;
 }
 
+/* ── Prevent Code Block Container Overflow & Layout Breaks ────────────────── */
+pre {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  word-break: normal !important;
+}
+
+pre code {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  word-break: normal !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+}
+
+.copy-btn {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  z-index: 10 !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 11px !important;
+  background: rgba(6, 8, 17, 0.75) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: background 0.15s, border-color 0.15s !important;
+}
+
+.copy-btn:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
 

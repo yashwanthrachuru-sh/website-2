@@ -183,6 +183,7 @@ window.LessonAdapter = (function () {
       prevLesson : lesson._prevLesson || null,
       nextLesson : lesson._nextLesson || null,
       completed  : !!lesson._completed,
+      locked     : !!lesson._locked,
     };
   }
 
@@ -291,6 +292,7 @@ window.LessonAdapter = (function () {
       prevLesson  : lesson._prevLesson || null,
       nextLesson  : lesson._nextLesson || null,
       completed   : !!lesson._completed,
+      locked      : !!lesson._locked,
     };
   }
 
@@ -320,6 +322,7 @@ window.LessonAdapter = (function () {
     lesson._prevLesson = apiResponse.prev_lesson || null;
     lesson._nextLesson = apiResponse.next_lesson || null;
     lesson._completed  = !!apiResponse.completed;
+    lesson._locked     = !!apiResponse.locked;
 
     const version = detectVersion(lesson);
     return version === 'v2' ? normalizeV2(lesson) : normalizeLegacy(lesson);
@@ -337,7 +340,7 @@ window.LessonAdapter = (function () {
       project: { title: '', requirements: [], starterCode: '' },
       interview: { questions: [] },
       revision: { summary: '', keyTakeaways: [], memoryTricks: [], preInterviewChecklist: [], commonErrors: [] },
-      videos: [], resources: [], prevLesson: null, nextLesson: null, completed: false,
+      videos: [], resources: [], prevLesson: null, nextLesson: null, completed: false, locked: false,
     };
   }
 
