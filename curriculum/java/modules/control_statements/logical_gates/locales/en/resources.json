@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Java Official Documentation",
+      "url": "https://docs.example.com/java/logical gates",
+      "type": "documentation",
+      "description": "Official reference for Logical Gates in Java"
+    }
+  ],
+  "books": [
+    {
+      "title": "Java: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Logical Gates in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Java Community Forum",
+      "url": "https://community.example.com/java",
+      "description": "Discuss Logical Gates with other developers"
+    }
+  ]
+}

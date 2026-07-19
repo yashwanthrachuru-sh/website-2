@@ -1,0 +1,26 @@
+{
+  "title": "Project: Loan Decision Engine",
+  "tagline": "Build a rule-based loan approval system using conditionals.",
+  "description": "Create a program that evaluates loan applications using credit score, income, debt ratio, and employment status — applying business rules through conditionals.",
+  "requirements": [
+    "Define at least 4 input criteria with ranges",
+    "Implement decision rules using if/elif/else",
+    "Handle all edge cases",
+    "Return a clear decision with explanation",
+    "Include 3+ test cases"
+  ],
+  "learningGoals": [
+    "Master complex conditional chains",
+    "Practice handling interdependent conditions",
+    "Build real-world business logic"
+  ],
+  "starterCode": "function evaluateLoan(credit, income, debt, employed) {\n  const reasons = [];\n  // Your rules here\n}",
+  "solution": "function evaluateLoan(credit, income, debt, emp) {\n  const r = [];\n  if (credit < 600) r.push(\"Low credit\");\n  if (income < 25000) r.push(\"Low income\");\n  if (debt > 0.43) r.push(\"High DTI\");\n  if (!emp) r.push(\"Unemployed\");\n  if (!r.length) return {approved: true, reason: \"Approved\"};\n  return {approved: false, reason: \"Denied: \" + r.join(\"; \")};\n}",
+  "expectedOutput": "Your application produces the expected output.",
+  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "extensions": [
+    "Add tiered interest rates",
+    "Build a web interface",
+    "Add weighted scoring"
+  ]
+}

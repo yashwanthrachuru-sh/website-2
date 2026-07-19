@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "TypeScript Official Documentation",
+      "url": "https://docs.example.com/typescript/typescript interfaces",
+      "type": "documentation",
+      "description": "Official reference for TypeScript Interfaces in TypeScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "TypeScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers TypeScript Interfaces in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "TypeScript Community Forum",
+      "url": "https://community.example.com/typescript",
+      "description": "Discuss TypeScript Interfaces with other developers"
+    }
+  ]
+}

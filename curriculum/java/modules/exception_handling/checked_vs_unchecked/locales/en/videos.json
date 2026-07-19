@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Checked vs Unchecked — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Checked vs Unchecked for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Checked vs Unchecked Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Checked vs Unchecked patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

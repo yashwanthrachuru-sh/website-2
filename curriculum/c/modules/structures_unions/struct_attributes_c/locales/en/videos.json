@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Struct Attributes C — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Struct Attributes C for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Struct Attributes C Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Struct Attributes C patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

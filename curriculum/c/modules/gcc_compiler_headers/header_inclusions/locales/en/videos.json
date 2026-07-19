@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Header Inclusions — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Header Inclusions for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Header Inclusions Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Header Inclusions patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

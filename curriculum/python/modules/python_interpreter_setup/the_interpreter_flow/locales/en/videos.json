@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "The Interpreter Flow — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to The Interpreter Flow for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced The Interpreter Flow Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production The Interpreter Flow patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

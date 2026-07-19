@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Python Official Documentation",
+      "url": "https://docs.example.com/python/dynamic typing in python",
+      "type": "documentation",
+      "description": "Official reference for Dynamic Typing in Python in Python"
+    }
+  ],
+  "books": [
+    {
+      "title": "Python: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Dynamic Typing in Python in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Python Community Forum",
+      "url": "https://community.example.com/python",
+      "description": "Discuss Dynamic Typing in Python with other developers"
+    }
+  ]
+}

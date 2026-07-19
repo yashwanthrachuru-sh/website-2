@@ -1,0 +1,45 @@
+{
+  "overview": "At the expert level, this concept requires understanding typescript runtime internals and production optimization strategies.",
+  "industryContext": "In production TypeScript systems, this pattern is implemented with attention to performance, security, and maintainability.",
+  "examples": [],
+  "codeReviewChecklist": [
+    "Does the implementation handle all error cases?",
+    "Is the code readable and maintainable?",
+    "Are there performance concerns?",
+    "Is the approach appropriate for the scale?"
+  ],
+  "testingPatterns": {
+    "unitTests": "Test individual components in isolation",
+    "integrationTests": "Test with actual dependencies",
+    "propertyBasedTests": "Test with random inputs",
+    "benchmarkTests": "Measure performance under load"
+  },
+  "refactoringGuide": {
+    "smell": "Implementation is too complex or tightly coupled",
+    "solution": "Break into smaller, focused functions",
+    "steps": [
+      "Identify responsibilities",
+      "Separate concerns",
+      "Extract reusable parts",
+      "Verify behavior"
+    ]
+  },
+  "securityConsiderations": [
+    "Validate all inputs",
+    "Avoid exposing internal state",
+    "Log without leaking sensitive data"
+  ],
+  "scalability": {
+    "considerations": "Design for statelessness to enable horizontal scaling.",
+    "recommendations": [
+      "Implement caching",
+      "Use connection pooling",
+      "Monitor performance metrics"
+    ]
+  },
+  "complexityAnalysis": {
+    "timeComplexity": "Varies by implementation",
+    "spaceComplexity": "Varies by implementation",
+    "notes": "Analyze specific implementation for accurate complexity bounds"
+  }
+}

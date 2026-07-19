@@ -1,0 +1,35 @@
+{
+  "title": "Node.js Developer Core Principles Part 3A — Quick Reference",
+  "sections": [
+    {
+      "title": "Core Syntax",
+      "content": "// Node.js Developer Core Principles Part 3A\n// See lesson examples"
+    },
+    {
+      "title": "Key Concepts",
+      "content": [
+        "Concept overview",
+        "Basic usage",
+        "Advanced patterns"
+      ]
+    },
+    {
+      "title": "Common Patterns",
+      "content": [
+        "Basic pattern",
+        "Error handling pattern",
+        "Optimization pattern"
+      ]
+    },
+    {
+      "title": "Do's and Don'ts",
+      "content": [
+        "✓ Learn the concept",
+        "✓ Test edge cases",
+        "✓ Follow idioms",
+        "✗ Copy blindly",
+        "✗ Skip error handling"
+      ]
+    }
+  ]
+}

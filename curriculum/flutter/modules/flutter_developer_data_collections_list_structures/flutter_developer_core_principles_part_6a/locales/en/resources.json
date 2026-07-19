@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Flutter Developer Official Documentation",
+      "url": "https://docs.example.com/flutter developer/flutter developer core principles part 6a",
+      "type": "documentation",
+      "description": "Official reference for Flutter Developer Core Principles Part 6A in Flutter Developer"
+    }
+  ],
+  "books": [
+    {
+      "title": "Flutter Developer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Flutter Developer Core Principles Part 6A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Flutter Developer Community Forum",
+      "url": "https://community.example.com/flutter developer",
+      "description": "Discuss Flutter Developer Core Principles Part 6A with other developers"
+    }
+  ]
+}

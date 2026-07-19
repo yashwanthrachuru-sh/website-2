@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Short Circuit Evaluator — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Short Circuit Evaluator for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Short Circuit Evaluator Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Short Circuit Evaluator patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

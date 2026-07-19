@@ -1,0 +1,55 @@
+{
+  "overview": "Expert-level function usage involves closures, decorators, currying, memoization, and designing function APIs that are intuitive and hard to misuse.",
+  "industryContext": "Production systems use functions as the primary unit of abstraction. API design, middleware pipelines, and event handlers all rely on well-designed function interfaces.",
+  "examples": [
+    {
+      "title": "Decorator Pattern (Python) / HOF (JS)",
+      "code": "function timer(fn) {\n  return function(...args) {\n    const start = Date.now();\n    const result = fn(...args);\n    console.log(`${fn.name} took ${Date.now() - start}ms`);\n    return result;\n  };\n}\n\nconst slowFunction = timer(() => {\n  const start = Date.now();\n  while(Date.now() - start < 1000);\n  return \"Done\";\n});\n\nslowFunction();",
+      "explanation": "A decorator/HOF wraps a function to add behavior (logging, timing, auth) without modifying the original function. This is the Decorator pattern.",
+      "language": "javascript"
+    }
+  ],
+  "codeReviewChecklist": [
+    "Does the function do one thing?",
+    "Is the name descriptive?",
+    "Are there side effects?",
+    "Are edge cases handled?",
+    "Is it testable?",
+    "Are parameters validated?"
+  ],
+  "testingPatterns": {
+    "unitTests": "Test each function independently",
+    "integrationTests": "Verify functions work together",
+    "propertyBasedTests": "Test invariants across random inputs",
+    "benchmarkTests": "Measure function performance"
+  },
+  "refactoringGuide": {
+    "smell": "Function is too long (50+ lines) or does too many things",
+    "solution": "Extract each responsibility into its own function",
+    "steps": [
+      "Identify distinct operations in the function",
+      "Extract each into a named function",
+      "Compose the original function from the new ones",
+      "Test the refactored version"
+    ]
+  },
+  "securityConsiderations": [
+    "Validate all function inputs",
+    "Avoid eval() with user input",
+    "Be careful with recursive functions (stack overflow DoS)",
+    "Do not expose sensitive data in error messages"
+  ],
+  "scalability": {
+    "considerations": "Functions are naturally scalable — they encapsulate behavior. In distributed systems, functions map well to microservices and serverless (FaaS) architectures.",
+    "recommendations": [
+      "Design stateless functions for horizontal scaling",
+      "Use pure functions where possible",
+      "Monitor function performance and error rates"
+    ]
+  },
+  "complexityAnalysis": {
+    "timeComplexity": "O(1) function call overhead; body complexity adds separately",
+    "spaceComplexity": "O(1) per stack frame",
+    "notes": "Deep recursion adds O(n) stack space"
+  }
+}

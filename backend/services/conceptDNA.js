@@ -320,18 +320,6 @@ const DNA_REGISTRY = {
       'Pointer arithmetic and dereferencing arrays'
     ]
   },
-  'Recursion': {
-    concept: 'Recursion',
-    category: 'Variables & Memory',
-    difficulty: 'Advanced',
-    purpose: 'Solve problems by making a function call itself with smaller inputs.',
-    problemSolved: 'Writing complex, deeply nested loop trees to scan hierarchical directories or trees.',
-    realLifeAnalogy: 'Standing between two mirrors. You see infinite copies of yourself reflecting smaller and smaller.',
-    computerView: 'Each recursive call pushes a new frame onto the runtime Call Stack. A base case condition stops recursion and pops frames back.',
-    usedIn: ['File folder scanners', 'DOM tree traversal', 'JSON parse engines'],
-    commonMistakes: [
-      { wrong: 'def count(n):\n  return count(n-1)', reason: 'Forgetting a base case condition runs recursive calls infinitely, filling the call stack and causing a Stack Overflow.' }
-    ],
     bestPractices: [
       'Always write and test the base case condition first before writing recursive logic.',
       'Prefer standard iteration loops if call stacks risk exceeding limits.'
@@ -340,7 +328,365 @@ const DNA_REGISTRY = {
       'Base cases vs recursive cases',
       'Stack overflow reasons and call limits'
     ]
+  },
+  'Strings': {
+    concept: 'Strings',
+    category: 'Data Structures',
+    difficulty: 'Beginner',
+    purpose: 'Store and manipulate collections of characters.',
+    problemSolved: 'Handling raw user text, filenames, configuration keys, or network socket payloads without character sequences structures.',
+    realLifeAnalogy: 'A beaded necklace. Each bead is a character, and the thread holds them in a specific sequential order.',
+    computerView: 'Strings are stored in memory as contiguous character byte arrays. In some runtimes (like Java), strings are immutable and pooled to save space.',
+    usedIn: ['Search bars', 'URL routing paths', 'JSON configuration parsers'],
+    commonMistakes: [
+      { wrong: 'str[0] = "A" // in JS/Python', reason: 'Strings are immutable in JS/Python. Attempting direct modification fails silently or throws TypeErrors.' }
+    ],
+    bestPractices: [
+      'Use StringBuilder/join() when concatenating strings inside loops to avoid intermediate memory copies.',
+      'Use strict comparisons (===) for text equality evaluations.'
+    ],
+    interviewTopics: [
+      'String mutability and Constant Pools',
+      'Substring search algorithms (KMP, Rabin-Karp)'
+    ]
+  },
+  'Linked Lists': {
+    concept: 'Linked Lists',
+    category: 'Data Structures',
+    difficulty: 'Intermediate',
+    purpose: 'Store list elements dynamically using node addresses and links.',
+    problemSolved: 'Array sizing rigidity and expensive O(N) element shifts on middle additions or deletions.',
+    realLifeAnalogy: 'A scavenger hunt map. Each location has a clue detailing the memory location of the next clue.',
+    computerView: 'Nodes are scattered in memory (Heap). A node object holds a value field and a pointer field referencing the next node address.',
+    usedIn: ['Browser hist (Forward/Back buttons)', 'Music playlist managers', 'OS task queues'],
+    commonMistakes: [
+      { wrong: 'curr = head\nwhile curr:\n  // missing curr = curr.next', reason: 'Forgetting to increment the node reference cursor causes an infinite traversal loop.' }
+    ],
+    bestPractices: [
+      'Always check for empty head list pointers (NullPointer guards) before traversing.',
+      'Use dummy head nodes to simplify insertion and deletion corner cases.'
+    ],
+    interviewTopics: [
+      'Singly vs Doubly Linked list structures',
+      'Runner technique (Fast & Slow pointer checks)'
+    ]
+  },
+  'Stacks': {
+    concept: 'Stacks',
+    category: 'Data Structures',
+    difficulty: 'Beginner',
+    purpose: 'Store items under Last-In, First-Out (LIFO) access rules.',
+    problemSolved: 'Reverting states or walking back logic tracks (like Undo history) without LIFO data bounds.',
+    realLifeAnalogy: 'A stack of dinner plates. You place new plates on top, and can only retrieve plates from the top.',
+    computerView: 'Allocates sequential memory or linked nodes. The Stack Pointer (SP) points to the top index, moving on push/pop operations.',
+    usedIn: ['Compiler call stacks', 'Undo (Ctrl+Z) histories', 'Parentheses syntax validators'],
+    commonMistakes: [
+      { wrong: 'val = stack.pop() // on empty stack', reason: 'Popping from empty stacks triggers stack underflow exceptions.' }
+    ],
+    bestPractices: [
+      'Verify that stack size exceeds zero before executing pop operations.',
+      'Limit recursion depth to avoid compile call stack overflows.'
+    ],
+    interviewTopics: [
+      'LIFO execution protocols',
+      'Implementing stack objects using dynamic arrays vs linked nodes'
+    ]
+  },
+  'Queues': {
+    concept: 'Queues',
+    category: 'Data Structures',
+    difficulty: 'Beginner',
+    purpose: 'Store items under First-In, First-Out (FIFO) access rules.',
+    problemSolved: 'Processing shared system requests (like print jobs) out of order, violating fair wait-times.',
+    realLifeAnalogy: 'A line of customers waiting at a checkout. The customer at the front is served first.',
+    computerView: 'Maintains index trackers for front and rear boundary coordinates. Circular buffers reuse indices to prevent space wastage.',
+    usedIn: ['Printer job buffers', 'Asynchronous queue handlers', 'Web traffic load balance queues'],
+    commonMistakes: [
+      { wrong: 'queue[rear] = val // without checking size', reason: 'Inserting into full static queue buffers causes queue overflow exceptions.' }
+    ],
+    bestPractices: [
+      'Use circular array configurations to optimize index reuse during enqueue/dequeue operations.',
+      'Implement concurrency locks when queues are accessed across threads.'
+    ],
+    interviewTopics: [
+      'FIFO queue mechanics',
+      'Circular arrays queues vs double-ended queues (Deques)'
+    ]
+  },
+  'Trees': {
+    concept: 'Trees',
+    category: 'Data Structures',
+    difficulty: 'Intermediate',
+    purpose: 'Store hierarchical data values using node relationships.',
+    problemSolved: 'Representing organic nested relationships (like filesystem directories) inside flat linear lists.',
+    realLifeAnalogy: 'A corporate organization chart. The CEO is at the root, leading down to directors, managers, and employees.',
+    computerView: 'Nodes reside on the heap, holding arrays or lists of pointers referencing child node addresses.',
+    usedIn: ['File Explorer folder directories', 'DOM node trees', 'XML/HTML parsers'],
+    commonMistakes: [
+      { wrong: 'root.left.val // when root.left is null', reason: 'Failing to assert node pointer existence before querying properties raises null pointer exceptions.' }
+    ],
+    bestPractices: [
+      'Write recursive traversals (preorder, inorder, postorder) to navigate levels cleanly.',
+      'Maintain balance metrics to keep lookup operations fast.'
+    ],
+    interviewTopics: [
+      'Binary trees vs generic N-ary trees',
+      'Time complexity of balanced vs skewed trees'
+    ]
+  },
+  'Binary Search Trees': {
+    concept: 'Binary Search Trees',
+    category: 'Data Structures',
+    difficulty: 'Intermediate',
+    purpose: 'Maintain sorted node structures enabling logarithmic search times.',
+    problemSolved: 'Linear search O(N) overhead on unsorted collections and expensive array insertions.',
+    realLifeAnalogy: 'A phonebook split method. To find "John", you open the middle, determine if "John" is before or after, and discard the other half.',
+    computerView: 'A tree where every node satisfies: Left child value < Node value < Right child value. Permits O(log N) lookups.',
+    usedIn: ['Database index files', 'Symbol tables in compilers', 'Dynamic sorted sets'],
+    commonMistakes: [
+      { wrong: 'insert(val) // without balancing', reason: 'Inserting sorted inputs yields a skewed tree (linked list equivalent), degrading lookup times to linear O(N).' }
+    ],
+    bestPractices: [
+      'Use self-balancing variants (like AVL or Red-Black trees) in high-throughput database systems.',
+      'Verify that traversals return in-order sorted elements.'
+    ],
+    interviewTopics: [
+      'BST search, insertion, and deletion algorithms',
+      'Self-balancing tree mechanics (rotations)'
+    ]
+  },
+  'Heaps': {
+    concept: 'Heaps',
+    category: 'Data Structures',
+    difficulty: 'Intermediate',
+    purpose: 'Retrieve the maximum or minimum element in constant O(1) time.',
+    problemSolved: 'Finding the highest-priority item in sorting arrays dynamically, which incurs linear O(N) search overhead.',
+    realLifeAnalogy: 'An emergency room triage. Incoming patients are scored by severity, and the most critical patient is treated next.',
+    computerView: 'A complete binary tree mapped compact into a flat array. Parent-child indexes match formulas: Left = 2i + 1, Right = 2i + 2.',
+    usedIn: ['Priority queues', 'Heapsort algorithm', 'OS scheduler queues'],
+    commonMistakes: [
+      { wrong: 'heap[0] = val // without heapifying', reason: 'Direct index mutations break heap balance constraints. Elements must bubble up/down.' }
+    ],
+    bestPractices: [
+      'Utilize array structures for heaps to save pointer memory overhead.',
+      'Implement heapify-down on deletion to restore balance values.'
+    ],
+    interviewTopics: [
+      'Min-heap vs Max-heap structures',
+      'Time complexity of heapify operations (O(log N))'
+    ]
+  },
+  'Graphs': {
+    concept: 'Graphs',
+    category: 'Data Structures',
+    difficulty: 'Advanced',
+    purpose: 'Represent network relations between vertices and edges.',
+    problemSolved: 'Modeling multi-relational maps (like route networks or friendships) using rigid grid designs.',
+    realLifeAnalogy: 'A train route map. Cities are vertices (nodes) and track lanes are edges connecting them.',
+    computerView: 'Represented using Adjacency Lists (array of linked lists) or Adjacency Matrices (2D arrays matching boolean connections).',
+    usedIn: ['Google Maps routing', 'Facebook friend networks', 'Recommender engines'],
+    commonMistakes: [
+      { wrong: 'dfs(node) // without tracking visited nodes', reason: 'Traversing cyclic graphs without tracking visited list nodes triggers infinite loops and stack overflows.' }
+    ],
+    bestPractices: [
+      'Use visited boolean sets to avoid evaluating nodes repeatedly.',
+      'Prefer adjacency lists for sparse graphs to save memory space.'
+    ],
+    interviewTopics: [
+      'BFS (queue-based) vs DFS (stack-based) traversals',
+      'Adjacency List vs Adjacency Matrix space profiles'
+    ]
+  },
+  'Hash Tables': {
+    concept: 'Hash Tables',
+    category: 'Data Structures',
+    difficulty: 'Intermediate',
+    purpose: 'Store key-value pairs enabling constant O(1) lookup speeds.',
+    problemSolved: 'Scanning arrays sequentially O(N) to match keys against attributes.',
+    realLifeAnalogy: 'A library layout. Books are stored in aisles matching genres; you calculate the aisle coordinate from the category name.',
+    computerView: 'Uses a hash function to map keys to array index coordinates. Collisions are handled using chaining (linked lists) or open addressing.',
+    usedIn: ['Database caches', 'Compiler symbol lookups', 'Browser cookie storage maps'],
+    commonMistakes: [
+      { wrong: 'hash = key % size // when size is even', reason: 'Using weak hash functions or non-prime array sizes leads to high collision clusters.' }
+    ],
+    bestPractices: [
+      'Ensure hash tables resize (rehash) when the load factor exceeds 0.7.',
+      'Use prime numbers for hash table sizes to distribute index mappings evenly.'
+    ],
+    interviewTopics: [
+      'Hash collisions resolution techniques (Chaining vs Open Addressing)',
+      'Time complexity degradation from O(1) to O(N) on collisions'
+    ]
+  },
+  'Sorting Algorithms': {
+    concept: 'Sorting Algorithms',
+    category: 'Algorithms',
+    difficulty: 'Intermediate',
+    purpose: 'Arrange elements in chronological or numerical order.',
+    problemSolved: 'Searching through unsorted arrays, which requires O(N) sequential search scans instead of O(log N) binary search checks.',
+    realLifeAnalogy: 'Organizing a deck of playing cards from smallest to largest value in your hand.',
+    computerView: 'Manipulates array elements in-place or via divide-and-conquer recurse trees, swapping coordinates to match comparisons.',
+    usedIn: ['Database index creation', 'Google Search result sorting', 'E-commerce filters'],
+    commonMistakes: [
+      { wrong: 'sort() // on mixed data types', reason: 'Comparing mismatched data types raises type errors or inconsistent sort distributions.' }
+    ],
+    bestPractices: [
+      'Use Quick Sort for general in-memory sorting; use Merge Sort when stability is required.',
+      'Avoid quadratic O(N^2) sorting algorithms (like Bubble Sort) on large datasets.'
+    ],
+    interviewTopics: [
+      'Time and Space complexities of Quick, Merge, and Heap Sort',
+      'Stable vs Unstable sorting algorithms definition'
+    ]
+  },
+  'Searching Algorithms': {
+    concept: 'Searching Algorithms',
+    category: 'Algorithms',
+    difficulty: 'Beginner',
+    purpose: 'Locate target values inside arrays or collections.',
+    problemSolved: 'Scanning massive files without indexed search patterns, locking processor threads.',
+    realLifeAnalogy: 'Looking for a word in a dictionary. Instead of reading page 1, 2, 3 sequentially, you split open matching letter bounds.',
+    computerView: 'Compares index values. Linear Search scans index 0 to N; Binary Search halves the sorted search bounds on each step.',
+    usedIn: ['Database record checks', 'Find command (Ctrl+F) utilities', 'Inventory scanning systems'],
+    commonMistakes: [
+      { wrong: 'binarySearch(arr, val) // on unsorted array', reason: 'Binary search fails to return correct index matches if the input array is not sorted.' }
+    ],
+    bestPractices: [
+      'Only apply binary search checks on sorted arrays.',
+      'Avoid linear searching when values can be pre-indexed into hash maps.'
+    ],
+    interviewTopics: [
+      'Binary Search space halving logic O(log N)',
+      'Sequential Linear Search O(N) performance bounds'
+    ]
+  },
+  'Backtracking': {
+    concept: 'Backtracking',
+    category: 'Algorithms',
+    difficulty: 'Advanced',
+    purpose: 'Explore all options by building solutions and backing up on dead ends.',
+    problemSolved: 'Writing nested loops to solve combinatorics problems where the depth is unknown.',
+    realLifeAnalogy: 'Navigating a garden maze. When you hit a hedge (dead end), you walk back to the last fork and try another path.',
+    computerView: 'Recursively checks states. When checks fail constraint assertions, the routine restores state variables (backtracks) and alters call steps.',
+    usedIn: ['Sudoku solver scripts', 'N-Queens puzzle checkers', 'Regex matching engines'],
+    commonMistakes: [
+      { wrong: 'solve(state) // without undoing state changes', reason: 'Failing to restore state parameters before returning corrupts subsequent recursion branches.' }
+    ],
+    bestPractices: [
+      'Implement early pruning checks to skip branches that cannot lead to valid outcomes.',
+      'Pass states via reference to prevent memory copying overhead.'
+    ],
+    interviewTopics: [
+      'State-space tree traversal checks',
+      'Pruning algorithms and backtracking recursion stack tracing'
+    ]
+  },
+  'Dynamic Programming': {
+    concept: 'Dynamic Programming',
+    category: 'Algorithms',
+    difficulty: 'Advanced',
+    purpose: 'Solve complex problems by combining solutions to overlapping subproblems.',
+    problemSolved: 'Recursion trees that compute identical parameters repeatedly (like Fibonacci), degrading performance to exponential O(2^N).',
+    realLifeAnalogy: 'Writing down 1+1+1+1 = 4. If you add another "+1", you do not re-count from 1; you recall 4 and add 1.',
+    computerView: 'Caches subproblem solutions in a table (Memoization for Top-Down recursion, Tabulation for Bottom-Up iteration), reducing steps to O(N).',
+    usedIn: ['Diff comparison checkers (git diff)', 'Text autocomplete editors', 'Resource allocation engines'],
+    commonMistakes: [
+      { wrong: 'fib(n) // without table check', reason: 'Omitting table checks executes redundant calculations, losing all optimization benefits.' }
+    ],
+    bestPractices: [
+      'Identify the state transition equation and base boundary criteria first.',
+      'Optimize space complexity by only caching variables required for subsequent steps.'
+    ],
+    interviewTopics: [
+      'Top-Down Memoization vs Bottom-Up Tabulation loops',
+      'Overlapping subproblems and optimal substructure metrics'
+    ]
+  },
+  'Sliding Window': {
+    concept: 'Sliding Window',
+    category: 'Algorithms',
+    difficulty: 'Intermediate',
+    purpose: 'Optimize nested loop operations on arrays by shifting subarray bounds.',
+    problemSolved: 'Calculating subarray sums using nested loops O(K * N), which recalculates overlapping index regions.',
+    realLifeAnalogy: 'A dynamic camera lens framing items in a moving conveyor belt. To see the next set, you shift the camera right without restarting.',
+    computerView: 'Maintains left and right index coordinates, adjusting indices to expand or contract window sizes as bounds iterate.',
+    usedIn: ['Network traffic congestion controllers', 'Video streaming buffer trackers', 'Longest substring search algorithms'],
+    commonMistakes: [
+      { wrong: 'sum += arr[right]; sum -= arr[left++] // out of order', reason: 'Updating index counters before modifying sum values causes boundary reference errors.' }
+    ],
+    bestPractices: [
+      'Update window variables (like sum or count) before incrementing coordinate pointer indexes.',
+      'Use sliding windows to optimize quadratic calculations to linear O(N) time.'
+    ],
+    interviewTopics: [
+      'Fixed-size vs variable-size sliding window bounds',
+      'Converting O(N^2) array algorithms to linear O(N) time'
+    ]
+  },
+  'Two Pointer': {
+    concept: 'Two Pointer',
+    category: 'Algorithms',
+    difficulty: 'Beginner',
+    purpose: 'Iterate array coordinates from different indices concurrently.',
+    problemSolved: 'Scanning arrays using nested loops O(N^2) to search for target sums or reversals.',
+    realLifeAnalogy: 'Two readers checking a list. One starts from the top, the other from the bottom, reading until their eyes meet.',
+    computerView: 'Declares two index integer counters (typically left = 0, right = length - 1) and shifts them inwards based on comparison checks.',
+    usedIn: ['Array reversing operations', 'Palindrome checking algorithms', 'Container water-trapping math'],
+    commonMistakes: [
+      { wrong: 'while left <= right:\n  left++\n  right--', reason: 'Mismatched increment updates can cause pointers to cross unchecked, skipping target items.' }
+    ],
+    bestPractices: [
+      'Ensure pointer increment steps are strictly governed by conditional assertions to prevent infinite loops.',
+      'Use two pointers to solve sorting or array summation tasks in linear O(N) steps.'
+    ],
+    interviewTopics: [
+      'Converging pointers (opposite ends) vs relative tracking pointers (same direction)',
+      'Solving pair sum problems in O(N) time'
+    ]
+  },
+  'Binary Search': {
+    concept: 'Binary Search',
+    category: 'Algorithms',
+    difficulty: 'Beginner',
+    purpose: 'Search sorted lists by halving the check region iteratively.',
+    problemSolved: 'Checking lists using linear scans O(N), which becomes unacceptably slow on massive databases.',
+    realLifeAnalogy: 'Looking up a name in a massive dictionary by repeatedly splitting the pages in the middle.',
+    computerView: 'Compares middle indices: mid = low + (high - low)/2. If value matches, returns index; else halves boundaries to left/right bounds.',
+    usedIn: ['Git bisect command', 'Database index lookups', 'Standard library searching utilities'],
+    commonMistakes: [
+      { wrong: 'mid = (low + high) / 2', reason: 'Adding low + high can exceed maximum integer bounds in languages like Java/C++, causing overflow bugs. Use low + (high - low)/2.' }
+    ],
+    bestPractices: [
+      'Always verify that input collections are sorted before executing binary search checks.',
+      'Calculate midpoints safely to prevent integer boundaries overflow errors.'
+    ],
+    interviewTopics: [
+      'Halving search space logarithmic complexities O(log N)',
+      'Avoiding integer overflows when calculating midpoints'
+    ]
+  },
+  'Greedy Algorithms': {
+    concept: 'Greedy Algorithms',
+    category: 'Algorithms',
+    difficulty: 'Intermediate',
+    purpose: 'Build optimal solutions by making local optimal choices at each step.',
+    problemSolved: 'Evaluating millions of paths using recursive checks (NP-Hard), which requires hours of compute time.',
+    realLifeAnalogy: 'Making change for money. To change $36, you choose the largest bill first ($20), then ($10), then ($5), then ($1).',
+    computerView: 'Sorts inputs according to weights or criteria, and iterates through candidates selecting items that satisfy criteria immediately.',
+    usedIn: ['Dijkstra shortest path router', 'Huffman coding file compression', 'Activity selection schedules'],
+    commonMistakes: [
+      { wrong: 'greedyChange(coins, amount) // on non-canonical systems', reason: 'Greedy choice can fail to yield global optimal solutions if system bounds are not canonical (e.g. coin denominations 1, 3, 4 for change 6).' }
+    ],
+    bestPractices: [
+      'Only apply greedy methods if the problem satisfies optimal substructure and greedy-choice properties.',
+      'Sort candidate items beforehand to streamline selection loops.'
+    ],
+    interviewTopics: [
+      'Greedy choice property vs optimal substructures',
+      'Proving greedy algorithms correctness (Matroids)'
+    ]
   }
+};
 };
 
 /**

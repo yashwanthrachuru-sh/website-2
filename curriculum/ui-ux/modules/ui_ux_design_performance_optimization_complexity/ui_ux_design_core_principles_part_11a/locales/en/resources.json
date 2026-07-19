@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "UI/UX Design Official Documentation",
+      "url": "https://docs.example.com/ui/ux design/ui/ux design core principles part 11a",
+      "type": "documentation",
+      "description": "Official reference for UI/UX Design Core Principles Part 11A in UI/UX Design"
+    }
+  ],
+  "books": [
+    {
+      "title": "UI/UX Design: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers UI/UX Design Core Principles Part 11A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "UI/UX Design Community Forum",
+      "url": "https://community.example.com/ui/ux design",
+      "description": "Discuss UI/UX Design Core Principles Part 11A with other developers"
+    }
+  ]
+}

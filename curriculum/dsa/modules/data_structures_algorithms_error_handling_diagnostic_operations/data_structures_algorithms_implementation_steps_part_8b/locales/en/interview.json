@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Explain Data Structures & Algorithms Implementation Steps Part 8B to a junior developer.",
+      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
+      "followUp": "What mistakes do developers make with this?"
+    },
+    {
+      "question": "Performance implications of data structures & algorithms implementation steps part 8b?",
+      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
+      "followUp": "How would you benchmark it?"
+    },
+    {
+      "question": "Real-world scenario for data structures & algorithms implementation steps part 8b?",
+      "answer": "Use Data Structures & Algorithms Implementation Steps Part 8B when you encounter the programming problem it addresses.",
+      "followUp": "What alternatives exist?"
+    }
+  ]
+}

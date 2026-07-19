@@ -1,0 +1,37 @@
+{
+  "title": "Artificial Intelligence Troubleshooting Part 5C — Quick Reference",
+  "sections": [
+    {
+      "title": "Core Syntax",
+      "content": "if condition:\n    action()\nelif other:\n    other_action()\nelse:\n    default()\n\nvalue = a if cond else b"
+    },
+    {
+      "title": "Key Concepts",
+      "content": [
+        "Condition: boolean expression",
+        "Branch: code path selected by condition",
+        "Chaining: elif/else if for multiple conditions",
+        "Nesting: conditions inside conditions"
+      ]
+    },
+    {
+      "title": "Common Patterns",
+      "content": [
+        "Guard clause: return early on invalid input",
+        "Lookup table: replace long if/else with a map",
+        "Strategy pattern: replace conditionals with polymorphism"
+      ]
+    },
+    {
+      "title": "Do's and Don'ts",
+      "content": [
+        "✓ Use === over == in JS",
+        "✓ Handle the else case explicitly",
+        "✓ Keep conditions simple",
+        "✗ Use = for comparison",
+        "✗ Nest deeper than 3 levels",
+        "✗ Forget falsy values (0, \"\", null)"
+      ]
+    }
+  ]
+}

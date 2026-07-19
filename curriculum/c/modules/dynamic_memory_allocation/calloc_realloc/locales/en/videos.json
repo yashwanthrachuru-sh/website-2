@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Calloc & Realloc — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Calloc & Realloc for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Calloc & Realloc Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Calloc & Realloc patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

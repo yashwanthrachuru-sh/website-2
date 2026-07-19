@@ -7,25 +7,12 @@
 const https = require('https');
 const path = require('path');
 const validator = require('./validator');
+const { LESSON_SECTIONS } = require('../curriculum/engine/LessonGenerator');
 
 const STRUCTURED_OPEN  = '<!--EDUNET_STRUCTURED_V1-->';
 const STRUCTURED_CLOSE = '<!--/EDUNET_STRUCTURED_V1-->';
 const SECTION_OPEN  = (name) => `<!--SECTION:${name}-->`;
 const SECTION_CLOSE = (name) => `<!--/SECTION:${name}-->`;
-
-const LESSON_SECTIONS = [
-  'definition', 'why_exists', 'importance', 'learning_objectives',
-  'beginner_explanation', 'detailed_concept', 'internal_working',
-  'syntax_breakdown', 'visual_flow', 'real_world_analogies',
-  'beginner_example', 'intermediate_example', 'advanced_example',
-  'production_example', 'line_by_line', 'common_mistakes',
-  'best_practices', 'performance', 'interview_questions',
-  'faqs', 'mcqs', 'coding_practice', 'debugging_exercises',
-  'project_ideas', 'summary', 'key_takeaways', 'related_topics',
-  'next_learning_path',
-  // v6.1 Structured Visual Elements
-  'memoryDiagram', 'executionStepper', 'checkpointQuestions', 'gradualCode'
-];
 
 // Load modular handcrafted builders
 const assemblePythonIntroduction = require('./lessonAssembler/python/pythonIntroduction');

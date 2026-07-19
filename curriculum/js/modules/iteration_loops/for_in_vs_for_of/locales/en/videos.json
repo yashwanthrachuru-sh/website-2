@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "For In vs For Of — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to For In vs For Of for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced For In vs For Of Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production For In vs For Of patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "For Loops — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to For Loops for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced For Loops Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production For Loops patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

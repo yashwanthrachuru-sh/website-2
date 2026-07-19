@@ -1,130 +1,56 @@
 {
-  "curiosityQuestion": "You open an app and type your name. It says 'Hello, Alice!' The app remembered your name. How? Where did it store it? The answer is a **variable**.",
-
-  "whatIsAVariable": "A variable is a labelled storage slot in your computer's memory. It has two things:\n\n1. A **name** — what you call it in code (e.g., `score`, `username`).\n2. A **value** — what is stored in that slot (e.g., `95`, `\"Alice\"`).\n\nWhen your program runs, it asks the computer: *\"Reserve some memory and remember this value under this name.\"*",
-
-  "programmingWithoutVariables": "Before variables existed in programming languages, programmers worked directly with memory addresses. Instead of writing:\n\n```\nscore = 95\n```\n\nThey wrote something like:\n\n```\nMOV [0x3F2A], 95   ; store 95 at memory address 0x3F2A\nADD [0x3F2A], 5    ; add 5 to the value at 0x3F2A\n```\n\nEvery time you needed `score`, you had to remember its exact memory address. If you used the wrong address, the program crashed or corrupted data. Variables were invented so humans could use meaningful names instead of numbers. Python takes this further — you don't even need to say what type the value is.",
-
-  "problemItSolves": "Imagine writing a game that tracks a player's health. Without variables:\n- Every time you needed the health value, you'd have to hardcode the number.\n- You could never update it — when the player takes damage, you'd have to rewrite the entire program.\n- If health appears in 50 places in your code, you'd have to change all 50 manually.\n\nWith a variable:\n```python\nhealth = 100\nhealth -= 20   # player took damage\nprint(health)  # 80\n```\n\nOne variable. Readable everywhere. Updated in one line.",
-
-  "whereVariablesAreUsed": "Every real application uses variables constantly:\n\n- **Instagram**: `username`, `follower_count`, `is_verified`, `last_active`\n- **Online banking**: `account_balance`, `transaction_amount`, `account_holder_name`\n- **Video games**: `player_health`, `enemy_speed`, `score`, `level`\n- **Weather apps**: `temperature`, `humidity`, `city_name`, `feels_like_temp`\n- **Ride-hailing apps**: `driver_name`, `current_lat`, `current_lng`, `fare_estimate`\n\nEvery value that can change during a program's life lives in a variable.",
-
-  "whyExists": "Programs need to **remember** things. When Python executes line 1 and moves to line 2, it has no memory unless you stored that value somewhere. A variable is Python's mechanism for saying: *'Remember this value — I will need it again.'*",
-
-  "realWorldAnalogy": "Think of a variable like a **labelled whiteboard**.\n\n- The **label** is the variable name (`score`).\n- The **value on the whiteboard** is what it holds (`95`).\n- You can **erase and rewrite** the value any time — the label stays.\n- Other people in the room (other parts of your program) can **read the whiteboard** using the label.\n\nPython's memory works exactly this way. The operating system gives Python a chunk of RAM. Python uses it like a room full of labelled whiteboards.",
-
-  "simpleExplanation": "A variable in Python is a **name that points to a value in memory**.\n\nYou create one by writing:\n```\nname = value\n```\n\nPython does three things automatically:\n1. Creates the value in memory\n2. Figures out its type (number, text, True/False, etc.)\n3. Links the name to that memory location\n\nYou never have to say 'this is a number' or 'this is text'. Python's automatic type detection is called **dynamic typing**.",
-
-  "syntaxExplanation": "```python\n  score  =  95\n    ↑    ↑   ↑\n    │    │   └─ Value: the data to store\n    │    └───── = is the assignment operator (NOT 'equals')\n    └─────────── Name: what you call this slot\n```\n\n**The name rules:**\n- Must start with a letter (`a–z`, `A–Z`) or underscore (`_`)\n- Can contain letters, digits (`0–9`), and underscores\n- Cannot contain spaces or special characters (`-`, `!`, `@`, etc.)\n- Cannot be a Python keyword (`if`, `for`, `while`, `class`, `def`, `return`, etc.)\n- **Case-sensitive**: `Score` and `score` are completely different variables\n\n**The `=` sign:**\nThis is NOT the mathematical equals sign. It means: *'Store the right-hand value under the left-hand name.'* Think of it as an arrow pointing left: `score ← 95`.",
-
+  "curiosityQuestion": "Have you ever wondered how programmers approach variables effectively?",
+  "whyExists": "Variables is a fundamental concept that exists because programmers needed a standardized way to handle a common programming task.",
+  "problemItSolves": "Before Variables became standard, developers wrote custom solutions for every project. Variables provides a proven approach that works across projects.",
+  "withoutVariables": "Without Variables, developers would need to invent custom solutions repeatedly, leading to inconsistent and error-prone code.",
+  "whereUsed": "Variables is used throughout Python — from simple scripts to enterprise applications.",
+  "realWorldAnalogy": "Learning Variables is like learning a new tool. At first it seems unfamiliar, but with practice it becomes an essential part of your toolkit.",
+  "simpleExplanation": "Variables is a technique in Python that helps you accomplish a specific programming task. It follows a clear pattern with setup, operation, and result.",
+  "syntaxExplanation": "# Variables pattern in Python\nresult = perform_operation(input_data)\nprint(result)",
   "examples": [
     {
-      "title": "Your first three variables",
-      "code": "# Creating three variables — one for each type\nscore = 95           # an integer (whole number)\nname = \"Alice\"       # a string (text)\nis_passing = True    # a boolean (True or False)\n\n# Reading them back\nprint(score)         # Output: 95\nprint(name)          # Output: Alice\nprint(is_passing)    # Output: True",
-      "lineByLine": [
-        "Line 1: Python creates an integer object with value 95. The name 'score' now points to it.",
-        "Line 2: Python creates a string object with value 'Alice'. The name 'name' points to it.",
-        "Line 3: Python finds the built-in True value. The name 'is_passing' points to it.",
-        "Line 5: Python looks up 'score', finds 95, and print() displays it.",
-        "Line 6: Python looks up 'name', finds 'Alice', print() displays it.",
-        "Line 7: Python looks up 'is_passing', finds True, print() displays it."
-      ],
-      "explanation": "Every variable stores a different type of data. You do not need to declare the type — Python detects it automatically from what you wrote on the right side of `=`.",
-      "expectedOutput": "95\nAlice\nTrue"
-    },
-    {
-      "title": "Updating a variable (reassignment)",
-      "code": "score = 95\nprint(\"Before:\", score)  # Before: 95\n\n# Player retakes the exam — update the score\nscore = 72\nprint(\"After: \", score)  # After:  72\n\n# You can even change the type (Python allows this)\nscore = \"pending review\"\nprint(\"Now:\",   score)  # Now: pending review",
-      "lineByLine": [
-        "Line 1: score is created and points to 95.",
-        "Line 2: Python prints 'Before: 95'.",
-        "Line 5: Python creates a new integer object 72. score now points to 72. The old 95 is freed from memory if nothing else uses it.",
-        "Line 9: Python creates a string object. score now points to it. This is dynamic typing — the same name can hold different types."
-      ],
-      "explanation": "You can change what a variable holds any time. The name stays the same; the value it points to changes. Python also allows the type to change — something most other languages do not allow.",
-      "expectedOutput": "Before: 95\nAfter:  72\nNow: pending review"
-    },
-    {
-      "title": "Using variables in calculations",
-      "code": "# A simple shopping cart\nprice = 49.99\nquantity = 3\ndiscount = 0.10   # 10% off\n\ntotal = price * quantity\nsavings = total * discount\nfinal_price = total - savings\n\nprint(f\"Items: {quantity}\")\nprint(f\"Total before discount: ${total:.2f}\")\nprint(f\"You saved: ${savings:.2f}\")\nprint(f\"You pay: ${final_price:.2f}\")",
-      "lineByLine": [
-        "Lines 2-5: Four variables store the cart data.",
-        "Line 7: Python reads price and quantity, multiplies them (149.97), stores in 'total'.",
-        "Line 8: Python reads total and discount, multiplies (14.997), stores in 'savings'.",
-        "Line 9: Python reads total and savings, subtracts, stores in 'final_price'.",
-        "Lines 11-14: f-strings read each variable and embed its value in the output text."
-      ],
-      "explanation": "Variables let you store intermediate results and use them across multiple calculations. This is far better than writing one enormous math expression, because each step has a readable name.",
-      "expectedOutput": "Items: 3\nTotal before discount: $149.97\nYou saved: $15.00\nYou pay: $134.97"
+      "title": "Getting Started with Variables",
+      "code": "print(\"Learning Variables\")",
+      "explanation": "Basic introduction to Variables.",
+      "language": "python"
     }
   ],
-
-  "visualDiagram": "```\nYour Python program                 Computer RAM\n─────────────────────────────       ──────────────────────────────────────────\nscore = 95                    →     Address 0x7f1a: [  95  ] ← integer\nname  = \"Alice\"               →     Address 0x7f2b: [ Alice ] ← string\nis_passing = True             →     Address 0x10d:  [ True  ] ← boolean (shared)\n─────────────────────────────       ──────────────────────────────────────────\n\nWhen you write score in your code:\n  Python → looks up 'score' in its name table → finds address 0x7f1a → reads 95\n```",
-
-  "memoryDiagram": {
-    "type": "variables",
-    "theme": "variables",
-    "title": "RAM — Variable Storage",
-    "description": "Each variable is a named pointer to a memory location. Python manages the actual addresses for you.",
-    "rows": [
-      { "name": "score",       "type": "int",   "value": "95",            "address": "0x7f1a", "note": "integer, 28 bytes" },
-      { "name": "name",        "type": "str",   "value": "\"Alice\"",       "address": "0x7f2b", "note": "string, 54 bytes" },
-      { "name": "is_passing",  "type": "bool",  "value": "True",          "address": "0x10d",  "note": "singleton, shared" },
-      { "name": "final_price", "type": "float", "value": "134.97",        "address": "0x7f3c", "note": "float, 24 bytes" }
-    ]
-  },
-
+  "visualDiagram": "```mermaid\nflowchart LR\n    subgraph Memory\n        A[Variable Name] --> B[Memory Address]\n        B --> C[Stored Value]\n    end\n    D[Assignment] --> A\n    E[Read Operation] --> A\n```",
   "stepByStepExecution": [
-    { "step": 1, "line": "score = 95",        "desc": "Python reads '95' — recognises it as an integer literal. Allocates memory for a new int object. Stores the name 'score' and its memory address in the local namespace dictionary." },
-    { "step": 2, "line": "name = \"Alice\"",   "desc": "Python reads '\"Alice\"' — recognises it as a string (text in quotes). Creates a string object in memory. Adds 'name' → memory address to the namespace." },
-    { "step": 3, "line": "is_passing = True", "desc": "Python reads 'True' — this is a built-in boolean singleton. No new object created. 'is_passing' points to the shared True object that Python pre-creates at startup." },
-    { "step": 4, "line": "print(score)",       "desc": "Python sees 'score' inside print(). It searches the namespace, finds the entry for 'score', follows the pointer to the integer object 95, and passes it to print(), which displays '95'." },
-    { "step": 5, "line": "score = 72",         "desc": "Python creates a NEW integer object 72. The name 'score' is updated to point at this new object. The old 95 object loses one reference. Python's garbage collector will free it when nothing else refers to it." }
-  ],
-
-  "namingRules": [
-    { "rule": "Start with a letter or underscore",  "good": "score, _hidden, user_name", "bad": "1score, 2fast, 99problems",     "why": "Python's parser cannot tell '1score' from the number '1' followed by a name 'score'." },
-    { "rule": "Letters, digits, underscores only",  "good": "user_age, item2, MAX_SIZE", "bad": "user-age, item#2, user name",    "why": "Hyphens are the subtraction operator. Spaces split into separate tokens. # starts a comment." },
-    { "rule": "Not a Python keyword",               "good": "my_class, for_loop, define","bad": "class, for, while, if, return",  "why": "Keywords have special meaning to Python. Using them as names causes SyntaxError." },
-    { "rule": "Case-sensitive",                     "good": "name, Name, NAME (all different!)","bad": "Assuming Name and name are the same","why": "Python distinguishes uppercase and lowercase letters at all positions." },
-    { "rule": "Descriptive (PEP 8 style)",          "good": "user_age, account_balance", "bad": "ua, ab, x1, temp123",           "why": "Descriptive names make code self-documenting. Six months later, 'ua' tells you nothing." }
-  ],
-
-  "commonMistakes": [
     {
-      "mistake": "Starting a name with a digit",
-      "wrong": "1score = 95",
-      "error": "SyntaxError: invalid decimal literal",
-      "right": "score1 = 95",
-      "why": "Python's parser reads '1' as a number token, then hits 'score' and is confused. Variable names can contain digits but must not START with one."
+      "step": 1,
+      "action": "Understand the problem",
+      "explanation": "Identify what needs to be accomplished."
     },
     {
-      "mistake": "Using a space in a name",
-      "wrong": "final score = 100",
-      "error": "SyntaxError: invalid syntax",
-      "right": "final_score = 100",
-      "why": "Python reads 'final' as a name and 'score' as another name. Two names side by side with no operator is not valid syntax. Use underscore to join words."
+      "step": 2,
+      "action": "Choose the approach",
+      "explanation": "Variables provides the pattern to follow."
     },
     {
-      "mistake": "Using a reserved keyword",
-      "wrong": "class = 'Mathematics'",
-      "error": "SyntaxError: invalid syntax",
-      "right": "subject = 'Mathematics'",
-      "why": "'class' is a Python keyword for defining classes. You cannot use it as a variable name. Python raises SyntaxError immediately."
+      "step": 3,
+      "action": "Implement",
+      "explanation": "Write code following the pattern."
     },
     {
-      "mistake": "Confusing = (assign) with == (compare)",
-      "wrong": "if score = 95:\n    print('Pass')",
-      "error": "SyntaxError: invalid syntax",
-      "right": "if score == 95:\n    print('Pass')",
-      "why": "= stores a value. == asks a question: 'are these equal?' Inside if/while/for, you always compare with ==."
-    },
-    {
-      "mistake": "Reading a variable before creating it",
-      "wrong": "print(username)   # username was never assigned",
-      "error": "NameError: name 'username' is not defined",
-      "right": "username = 'Alice'\nprint(username)",
-      "why": "Python only knows about variables that have been assigned. Reading a name that does not exist raises NameError. Always assign before you use."
+      "step": 4,
+      "action": "Test",
+      "explanation": "Verify with normal cases and edge cases."
     }
+  ],
+  "memoryDiagram": {
+    "stack": "[Stack]\n  Local variables and call context",
+    "heap": "[Heap]\n  Dynamic data structures"
+  },
+  "namingRules": [
+    "Use snake_case for variables and functions",
+    "Use PascalCase for classes",
+    "Use UPPER_SNAKE_CASE for constants",
+    "Use lowercase for module names"
+  ],
+  "commonMistakes": [
+    "Jumping into implementation without understanding the concept",
+    "Not handling edge cases",
+    "Overcomplicating the solution"
   ]
 }

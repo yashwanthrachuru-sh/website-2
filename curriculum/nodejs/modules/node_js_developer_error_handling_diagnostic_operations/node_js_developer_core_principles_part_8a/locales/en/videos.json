@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Node.js Developer Core Principles Part 8A — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Node.js Developer Core Principles Part 8A for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Node.js Developer Core Principles Part 8A Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Node.js Developer Core Principles Part 8A patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

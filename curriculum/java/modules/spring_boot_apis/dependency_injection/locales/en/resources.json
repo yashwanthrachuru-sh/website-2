@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Java Official Documentation",
+      "url": "https://docs.example.com/java/dependency injection",
+      "type": "documentation",
+      "description": "Official reference for Dependency Injection in Java"
+    }
+  ],
+  "books": [
+    {
+      "title": "Java: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Dependency Injection in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Java Community Forum",
+      "url": "https://community.example.com/java",
+      "description": "Discuss Dependency Injection with other developers"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Project: React Developer Implementation Steps Part 1B Application",
+  "tagline": "Apply react developer implementation steps part 1b in a practical project.",
+  "description": "Build an application demonstrating React Developer Implementation Steps Part 1B.",
+  "requirements": [
+    "Implement core functionality",
+    "Handle errors",
+    "Write tests",
+    "Document the solution"
+  ],
+  "learningGoals": [
+    "Apply the concept practically",
+    "Build a portfolio project"
+  ],
+  "starterCode": "// Project Starter\n// Implement your solution here\n\nfunction main() {\n  \n}\n\nmain();",
+  "solution": "// Project Starter\n// Implement your solution here\n\nfunction main() {\n  \n}\n\nmain();",
+  "expectedOutput": "Your application produces the expected output.",
+  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "extensions": [
+    "Add features",
+    "Optimize",
+    "Build a UI"
+  ]
+}

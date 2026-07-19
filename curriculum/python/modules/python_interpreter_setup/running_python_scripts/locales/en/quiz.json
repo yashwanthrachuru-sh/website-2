@@ -1,0 +1,78 @@
+{
+  "mcqs": [
+    {
+      "id": "q1",
+      "question": "What does the python interpreter do?",
+      "options": [
+        "Converts source code to machine code and executes it",
+        "Compiles to a standalone executable",
+        "Executes raw text directly",
+        "Uploads code to a remote server"
+      ],
+      "answer": 0,
+      "explanation": "The interpreter reads source code, compiles to bytecode, and executes it on a virtual machine."
+    },
+    {
+      "id": "q2",
+      "question": "What is an advantage of interpreted languages like python?",
+      "options": [
+        "Faster execution than compiled languages",
+        "Easier development with immediate feedback",
+        "No programmer control over memory",
+        "Guaranteed security"
+      ],
+      "answer": 1,
+      "explanation": "Interpreted languages provide rapid feedback — you can test code immediately without a separate compilation step."
+    },
+    {
+      "id": "q3",
+      "question": "What happens on a syntax error?",
+      "options": [
+        "The interpreter auto-fixes it",
+        "It skips the line and continues",
+        "It stops and reports a traceback",
+        "It shows a warning only"
+      ],
+      "answer": 2,
+      "explanation": "The interpreter stops at the first syntax error and displays a traceback."
+    },
+    {
+      "id": "q4",
+      "question": "Which mode runs code one line at a time?",
+      "options": [
+        "Script mode",
+        "REPL mode",
+        "Compiled mode",
+        "Batch mode"
+      ],
+      "answer": 1,
+      "explanation": "REPL (Read-Eval-Print-Loop) lets you type and execute code one line at a time."
+    },
+    {
+      "id": "q5",
+      "question": "Why might a script work on one machine but fail on another?",
+      "options": [
+        "Interpreters are identical everywhere",
+        "Different versions, missing deps, or OS differences",
+        "Scripts are platform-independent",
+        "The interpreter auto-adapts"
+      ],
+      "answer": 1,
+      "explanation": "Differences in versions, installed packages, and OS can cause different behavior across machines."
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp1",
+      "question": "True or False: The python interpreter executes code without any intermediate representation.",
+      "answer": false,
+      "explanation": "It compiles to bytecode before execution."
+    },
+    {
+      "id": "cp2",
+      "question": "True or False: Virtual environments isolate project dependencies.",
+      "answer": true,
+      "explanation": "They create isolated spaces for each project's dependencies."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "oneLineSummary": "Pick and Omit is a fundamental programming concept every developer should understand.",
+  "summary": "This lesson covered what Pick and Omit is, why it exists, how to use it, common mistakes, and best practices.",
+  "keyTakeaways": [
+    "Pick and Omit solves a specific programming problem",
+    "Handle edge cases",
+    "Follow language idioms",
+    "Test thoroughly"
+  ],
+  "memoryTricks": [
+    "Think of pick and omit as a tool in your toolbox"
+  ],
+  "preInterviewChecklist": [
+    "Can you explain Pick and Omit in one sentence?",
+    "Can you write a basic implementation?",
+    "Do you know the pitfalls?"
+  ],
+  "commonErrors": [
+    "Not understanding the problem",
+    "Overcomplicating",
+    "Ignoring edge cases",
+    "Skipping tests"
+  ],
+  "mindMap": {
+    "central": "Pick and Omit",
+    "branches": [
+      "Definition",
+      "Usage",
+      "Advanced",
+      "Pitfalls",
+      "Best Practices"
+    ]
+  },
+  "nextTopics": [
+    "Advanced pick and omit",
+    "Testing pick and omit",
+    "Performance optimization"
+  ],
+  "estimatedLearningTime": {
+    "review": 10,
+    "practice": 25,
+    "master": 40
+  }
+}

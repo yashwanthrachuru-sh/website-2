@@ -1,0 +1,54 @@
+{
+  "overview": "Expert-level conditionals involve branch prediction optimization, control flow integrity, and writing branching code that is both secure and verifiable. Modern compilers optimize via jump tables and loop unrolling.",
+  "industryContext": "In high-frequency trading, developers arrange conditions so the CPU's branch predictor guesses correctly most of the time. In safety-critical systems, conditionals must be proven to cover all possible states.",
+  "examples": [
+    {
+      "title": "Branch Prediction Optimized",
+      "code": "// Most common case first\nif (user.role === 'viewer') grantRead();\nelse if (user.role === 'editor') grantEdit();\nelse grantFull();",
+      "explanation": "Modern CPUs predict which branch will be taken. If correct, execution continues at full speed. If wrong, the pipeline flushes — a costly operation.",
+      "language": "javascript"
+    }
+  ],
+  "codeReviewChecklist": [
+    "Does every if have an else?",
+    "Are all enum/union values handled?",
+    "Is branch order optimized for the common case?",
+    "Are there always-true or always-false conditions?"
+  ],
+  "testingPatterns": {
+    "unitTests": "Test every branch in isolation",
+    "integrationTests": "Verify combinations work together",
+    "propertyBasedTests": "Generate random inputs to find missed branches",
+    "benchmarkTests": "Measure branch prediction accuracy"
+  },
+  "refactoringGuide": {
+    "smell": "Function with 4+ levels of nested if/else",
+    "solution": "Extract into functions, use guard clauses, or replace with polymorphism",
+    "steps": [
+      "Identify the outermost condition",
+      "Extract nested blocks into functions",
+      "Use early returns to flatten",
+      "Consider a lookup table or strategy pattern"
+    ]
+  },
+  "securityConsiderations": [
+    "Never use eval() with user input",
+    "Be careful of timing side channels in security checks",
+    "Ensure auth checks run before sensitive branches",
+    "Avoid revealing internal state through error messages"
+  ],
+  "scalability": {
+    "considerations": "Large if/else chains become maintenance nightmares. Consider rules engines or decision trees for complex branching.",
+    "recommendations": [
+      "Extract business rules into config files",
+      "Use Strategy pattern",
+      "Log which branches are taken in production",
+      "Monitor branch coverage"
+    ]
+  },
+  "complexityAnalysis": {
+    "timeComplexity": "O(1) per condition check",
+    "spaceComplexity": "O(1)",
+    "notes": "Cyclomatic complexity increases with each branch — keep it under 10 per function"
+  }
+}

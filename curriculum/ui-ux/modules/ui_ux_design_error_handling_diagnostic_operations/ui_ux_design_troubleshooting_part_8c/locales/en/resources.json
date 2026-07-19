@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "UI/UX Design Official Documentation",
+      "url": "https://docs.example.com/ui/ux design/ui/ux design troubleshooting part 8c",
+      "type": "documentation",
+      "description": "Official reference for UI/UX Design Troubleshooting Part 8C in UI/UX Design"
+    }
+  ],
+  "books": [
+    {
+      "title": "UI/UX Design: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers UI/UX Design Troubleshooting Part 8C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "UI/UX Design Community Forum",
+      "url": "https://community.example.com/ui/ux design",
+      "description": "Discuss UI/UX Design Troubleshooting Part 8C with other developers"
+    }
+  ]
+}

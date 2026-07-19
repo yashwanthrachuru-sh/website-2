@@ -1,0 +1,49 @@
+{
+  "oneLineSummary": "Functions are reusable, named blocks of code that take inputs, process them, and return outputs — the fundamental unit of program organization.",
+  "summary": "This lesson covered function definition, parameters, return values, scope, lambda/arrow functions, recursion, and best practices for writing clean, testable functions.",
+  "keyTakeaways": [
+    "Functions encapsulate reusable logic",
+    "Parameters receive inputs; return sends output",
+    "Local variables are scoped to the function",
+    "Pure functions are easier to test and debug",
+    "Functions are first-class citizens"
+  ],
+  "memoryTricks": [
+    "Think of a function as a vending machine: input (money/selection) -> process -> output (snack)"
+  ],
+  "preInterviewChecklist": [
+    "Can you explain the difference between parameters and arguments?",
+    "Can you write a recursive function?",
+    "Do you understand closures?"
+  ],
+  "commonErrors": [
+    "Missing return",
+    "Modifying global/input state",
+    "Using mutable default arguments",
+    "Stack overflow from infinite recursion"
+  ],
+  "mindMap": {
+    "central": "Functions",
+    "branches": [
+      "Definition",
+      "Parameters",
+      "Return",
+      "Scope",
+      "Recursion",
+      "Lambda",
+      "Higher-Order",
+      "Closures"
+    ]
+  },
+  "nextTopics": [
+    "Closures and decorators",
+    "Function composition",
+    "Monads and functional programming",
+    "Concurrency with async functions"
+  ],
+  "estimatedLearningTime": {
+    "review": 10,
+    "practice": 25,
+    "master": 40
+  }
+}

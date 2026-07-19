@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Python Official Documentation",
+      "url": "https://docs.example.com/python/running python scripts",
+      "type": "documentation",
+      "description": "Official reference for Running Python Scripts in Python"
+    }
+  ],
+  "books": [
+    {
+      "title": "Python: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Running Python Scripts in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Python Community Forum",
+      "url": "https://community.example.com/python",
+      "description": "Discuss Running Python Scripts with other developers"
+    }
+  ]
+}

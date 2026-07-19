@@ -24,7 +24,6 @@ router.get('/:id/quizzes',    roadmapController.getLessonQuizzes);
 
 // Lesson progress
 router.post('/:id/progress',  verifyToken,   roadmapController.completeLesson);
-router.post('/:id/complete',  verifyToken,   roadmapController.completeLesson);
 
 // Lesson notes
 router.post('/:id/notes',     verifyToken,   roadmapController.saveLessonNote);

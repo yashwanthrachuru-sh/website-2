@@ -7,7 +7,11 @@
 const fs = require('fs');
 const path = require('path');
 
+const premiumCurriculum = require('../../services/premiumCurriculum');
+const offlineGen = require('../../services/offlineGenerators');
 const CURRICULUM_DIR = path.resolve(__dirname, '..', '..', '..', 'curriculum');
+
+const compiledCache = {};
 
 // Standard slug helper
 function getSlug(text) {
@@ -685,6 +689,11 @@ function generateRevision(title, moduleName, langNorm) {
 }
 
 function getConceptContent(title, moduleName, lang, roadmapId) {
+  const cacheKey = `${getSlug(roadmapId)}:${getSlug(moduleName)}:${getSlug(title)}:${lang}`;
+  if (compiledCache[cacheKey]) {
+    return compiledCache[cacheKey];
+  }
+
   const folder = findLessonFolder(title, moduleName, roadmapId);
   const locale = lang && lang.length === 2 ? lang : 'en';
   const langNorm = (lang || 'javascript').toLowerCase();
@@ -715,6 +724,7 @@ function getConceptContent(title, moduleName, lang, roadmapId) {
     }
   }
 
+  // Load components statically if they exist
   let beginner     = (folder ? loadComponent(folder, 'beginner.json',     locale) : {}) || {};
   let intermediate = (folder ? loadComponent(folder, 'intermediate.json', locale) : {}) || {};
   let expert       = (folder ? loadComponent(folder, 'expert.json',       locale) : {}) || {};
@@ -727,30 +737,139 @@ function getConceptContent(title, moduleName, lang, roadmapId) {
   let interview    = (folder ? loadComponent(folder, 'interview.json',    locale) : {}) || {};
   let revision     = (folder ? loadComponent(folder, 'revision.json',     locale) : {}) || {};
 
-  if (!beginner.motivation || !beginner.simpleExplanation) {
-    beginner = { ...generateBeginner(title, moduleName, langNorm), ...beginner };
+  const isTemplate = (str) => {
+    if (!str || typeof str !== 'string') return true;
+    const s = str.toLowerCase();
+    return s.includes('from first principles') || 
+           s.includes('acts as a named workspace or rule') || 
+           s.includes('principles part') ||
+           s.includes('core principles') ||
+           s.includes('troubleshooting part') ||
+           s.includes('implementation steps part') ||
+           s.includes('running data structures & algorithms') ||
+           s.includes('running web development') ||
+           s.includes('running competitive');
+  };
+
+  // Enrich with premium static templates dynamically
+  const dna = premiumCurriculum.getDynamicConceptDNA(title, langNorm);
+
+  if (!beginner.motivation || isTemplate(beginner.motivation)) beginner.motivation = dna.motivation;
+  if (!beginner.whyExists || isTemplate(beginner.whyExists)) beginner.whyExists = dna.whyExists;
+  if (!beginner.realWorldAnalogy || isTemplate(beginner.realWorldAnalogy)) beginner.realWorldAnalogy = dna.analogy;
+  if (!beginner.simpleExplanation || isTemplate(beginner.simpleExplanation)) {
+    beginner.simpleExplanation = `At its core, **${title}** defines a structured logic pattern. In this lesson, we will cover how this operates under the hood, standard implementation rules, and real-world optimizations.`;
   }
-  if (!intermediate.deeperExplanation || !intermediate.internalImplementation) {
-    intermediate = { ...generateIntermediate(title, moduleName, langNorm), ...intermediate };
+  if (!beginner.syntaxExplanation || isTemplate(beginner.syntaxExplanation)) {
+    beginner.syntaxExplanation = `To initialize this inside your projects, declare scoping variables and structure statements to match standard design patterns.`;
   }
+  if (!beginner.visualDiagram || isTemplate(beginner.visualDiagram)) {
+    beginner.visualDiagram = `[Start] ──► [Process Scope: ${title}] ──► [Evaluate Outputs] ──► [Complete]`;
+  }
+
+  if (!beginner.examples || beginner.examples.length === 0 || isTemplate(beginner.examples[0]?.code)) {
+    beginner.examples = [{
+      title: 'Beginner Implementation',
+      code: dna.examples[langNorm]?.code || dna.examples['js']?.code || '// Code',
+      explanation: dna.examples[langNorm]?.explanation || 'Basic pattern overview.'
+    }];
+  }
+
+  if (!beginner.stepByStepExecution || beginner.stepByStepExecution.length === 0 || isTemplate(beginner.stepByStepExecution[0]?.desc)) {
+    beginner.stepByStepExecution = dna.stepByStep.map((s, i) => ({ step: i + 1, desc: s.desc }));
+  }
+
+  if (!beginner.memoryDiagram) {
+    beginner.memoryDiagram = {
+      type: 'variables',
+      theme: 'dark',
+      slots: [
+        { address: '0x7fff10', label: `${getSlug(title)}_ptr`, value: '0x7fff18' },
+        { address: '0x7fff18', label: `${getSlug(title)}_val`, value: '100' }
+      ]
+    };
+  }
+
+  if (!intermediate.deeperExplanation) intermediate.deeperExplanation = `Scaling complex application systems requires utilizing **${title}** as a fundamental builder. This section explores internal allocation bounds and scoping behaviors.`;
+  if (!intermediate.internalImplementation) intermediate.internalImplementation = `The execution runtime optimizes memory addresses mapping for ${title} records by placing static structures inside the Heap frame.`;
+  if (!intermediate.examples || intermediate.examples.length === 0) {
+    intermediate.examples = [{
+      title: 'Intermediate Optimization Pattern',
+      code: dna.examples[langNorm]?.code || '// Code',
+      explanation: 'Optimized control block demonstrating boundary controls.'
+    }];
+  }
+  if (!intermediate.performanceConsiderations) {
+    intermediate.performanceConsiderations = {
+      timeComplexity: dna.examples[langNorm]?.time || 'O(1)',
+      spaceComplexity: dna.examples[langNorm]?.space || 'O(1)'
+    };
+  }
+  if (!intermediate.bestPractices || intermediate.bestPractices.length === 0) {
+    intermediate.bestPractices = [
+      'Document boundary cases clearly inside configuration parameters.',
+      'Prefer localized block constants to limit scope pollution.'
+    ];
+  }
+  if (!intermediate.debuggingWalkthrough) {
+    intermediate.debuggingWalkthrough = {
+      bugDescription: 'Scope references evaluation failure when calling uninitialized indices.',
+      incorrectCode: `// Mismatched scopes\nlet data;\nprocess(data);`,
+      correctCode: `// Verified execution\nlet data = 100;\nprocess(data);`
+    };
+  }
+
+  if (!expert.overview) expert.overview = `Production deployment architectures leverage **${title}** inside asynchronous loops to balance thread workloads.`;
   if (!expert.examples || expert.examples.length === 0) {
-    expert = { ...generateExpert(title, moduleName, langNorm), ...expert };
+    expert.examples = [{
+      title: 'Expert Decoupled Architecture',
+      code: dna.examples[langNorm]?.code || '// Code',
+      explanation: 'Production-ready framework showing thread decoupling.'
+    }];
   }
+
   if (!practice.easy || !practice.easy.problem) {
-    practice = { ...generatePractice(title, moduleName, langNorm), ...practice };
+    practice.easy = {
+      title: 'Beginner Exercise',
+      problem: `Write a simple function verifying that variables initialization works for **${title}** statements.`,
+      starterCode: dna.examples[langNorm]?.code.split('\n').slice(0, 3).join('\n') || '// Starter',
+      expectedOutput: 'Success',
+      solution: dna.examples[langNorm]?.code || '// Solution',
+      hints: ['Verify matching scoping brackets.']
+    };
   }
+  if (!practice.medium || !practice.medium.problem) {
+    practice.medium = {
+      title: 'Intermediate Challenge',
+      problem: `Implement basic validation checks for inputs before applying **${title}** processing rules.`,
+      starterCode: dna.examples[langNorm]?.code || '// Starter',
+      expectedOutput: 'Success',
+      solution: dna.examples[langNorm]?.code || '// Solution'
+    };
+  }
+  if (!practice.hard || !practice.hard.problem) {
+    practice.hard = {
+      title: 'Advanced System Optimization',
+      problem: `Optimize intermediate implementations of **${title}** to process bulk datasets within strict time thresholds.`,
+      starterCode: dna.examples[langNorm]?.code || '// Starter',
+      expectedOutput: 'Success',
+      solution: dna.examples[langNorm]?.code || '// Solution'
+    };
+  }
+  if (!practice.debugging || !practice.debugging.problem) {
+    practice.debugging = {
+      title: 'Bug Hunting Challenge',
+      problem: 'Find and fix scoping syntax mismatch errors in the provided starter snippet.',
+      starterCode: `// Buggy code\nfunction run() {\n  let ref;\n  console.log(ref.value);\n}`,
+      solution: `// Solved code\nfunction run() {\n  let ref = { value: "Active" };\n  console.log(ref.value);\n}`
+    };
+  }
+
   let quizIsGeneric = false;
   if (quiz && quiz.mcqs) {
     for (const q of quiz.mcqs) {
       const qText = q.question || '';
-      const optB = q.options && q.options[1] || '';
-      if (
-        qText.toLowerCase().includes("which of the following is true about") ||
-        qText.includes("GPUs with zero CPU usage") ||
-        optB.includes("GPUs with zero CPU") ||
-        qText.includes("network connections to execute") ||
-        qText.includes("local scope rules")
-      ) {
+      if (qText.toLowerCase().includes("which of the following is true about") || qText.includes("GPUs with zero CPU")) {
         quizIsGeneric = true;
         break;
       }
@@ -760,24 +879,91 @@ function getConceptContent(title, moduleName, lang, roadmapId) {
   if (!quiz.mcqs || quiz.mcqs.length === 0 || quizIsGeneric) {
     quiz = generateQuiz(title, moduleName, langNorm, { beginner, intermediate, expert, practice, cheatsheet, interview, revision });
   }
+
   if (!cheatsheet.sections || cheatsheet.sections.length === 0) {
-    cheatsheet = { ...generateCheatsheet(title, moduleName, langNorm), ...cheatsheet };
+    cheatsheet = generateCheatsheet(title, moduleName, langNorm);
   }
+
   if (!project.title || !project.description) {
-    project = { ...generateProject(title, moduleName, langNorm), ...project };
+    project = {
+      title: `${title} Management System`,
+      tagline: 'Practical Module Project Application',
+      description: `Build a modular, structured codebase processing **${title}** rules, incorporating validation pipelines and testing metrics.`,
+      learningGoals: [
+        'Organize file configurations matching production criteria.',
+        'Implement robust error checking logic doors.',
+        'Optimize memory footprints during high-scale evaluations.'
+      ],
+      requirements: [
+        'Include detailed instruction comments explaining execution logic.',
+        'Support standard inputs format handling.',
+        'Compile clean code output with zero syntax notices.'
+      ],
+      starterCode: dna.examples[langNorm]?.code || '// Starter code',
+      solution: dna.examples[langNorm]?.code || '// Solution code',
+      expectedOutput: 'Processed inputs successfully.',
+      solutionExplanation: 'Integrates validation and array structures sequentially.',
+      extensions: ['Support asynchronous operations.', 'Build a CLI menu dashboard.']
+    };
   }
+
   if (!interview.questions || interview.questions.length === 0) {
-    interview = { ...generateInterview(title, moduleName, langNorm), ...interview };
+    interview = {
+      questions: [
+        {
+          question: `What is the core role of ${title} in standard architectures?`,
+          answer: `**${title}** serves to organize execution pathways and isolate code logics. This ensures modularity, clean memory scoping, and maintainability.`,
+          level: 'beginner',
+          category: 'Conceptual'
+        },
+        {
+          question: `Describe the time and space complexity characteristics of ${title}.`,
+          answer: `Typically runs in O(N) or O(1) complexity depending on lookup constraints. Space complexity scales with elements count in heap frames.`,
+          level: 'intermediate',
+          category: 'Complexity'
+        },
+        {
+          question: `How does standard multi-threading affect variables safety in ${title}?`,
+          answer: `Concurrent mutation of states inside threads triggers lock hazards. Developers protect frames using sync locks or immutability blocks.`,
+          level: 'advanced',
+          category: 'Concurrency'
+        }
+      ]
+    };
   }
+
   if (!revision.summary || !revision.keyTakeaways) {
-    revision = { ...generateRevision(title, moduleName, langNorm), ...revision };
+    revision = {
+      summary: `In this lesson, we mastered **${title}** core operations, syntax conventions, and execution steps.`,
+      oneLineSummary: `Mastered ${title} syntax and optimizations.`,
+      keyTakeaways: [
+        `Variables inside ${title} adhere to scoping limitations.`,
+        `Always perform input validation early to avoid logical crashes.`,
+        `Complexity profiles should be traced during compile checks.`
+      ],
+      memoryTricks: [
+        { concept: title, trick: `Remember it like labeling storage compartments inside your database.` }
+      ],
+      commonErrors: [
+        { error: 'ReferenceError', cause: 'Reading undeclared labels.', fix: 'Verify bindings initialization before access.' }
+      ],
+      preInterviewChecklist: [
+        `Understand structural syntax patterns.`,
+        `Trace execution flows and performance metrics.`
+      ],
+      nextTopics: [
+        { title: 'Data Structures Part B', whyNext: 'Extends scoping patterns to dynamic lists.' }
+      ]
+    };
   }
+
   if (!lesson.title) {
     lesson.title = title;
-    lesson.learningObjectives = [`Understand core concepts of ${title}`, `Implement simple example operations`, `Verify logical correctness`];
+    lesson.learningObjectives = [`Master core rules of ${title}`, `Implement sample syntax loops`, `Analyze runtime complexities`];
     lesson.nextLessons = [];
   }
 
+  // Double-check collections are arrays to avoid runtime mapping checks
   if (!Array.isArray(beginner.examples)) beginner.examples = [];
   if (!Array.isArray(intermediate.examples)) intermediate.examples = [];
   if (!Array.isArray(expert.examples)) expert.examples = [];
@@ -817,7 +1003,82 @@ ${(q.options || []).map((o, oidx) => `- ${String.fromCharCode(65 + oidx)}) ${o}`
 ${q.explanation}
 </details>`).join('\n\n');
 
+  // Build generator context
+  const ctx = {
+    lesson: { title: title, language: langNorm, id: order },
+    module: { title: moduleName, language: langNorm },
+    roadmap: { title: roadmapId || 'Software Engineering', id: roadmapId },
+    userContext: { xp: 500, rank: 'Beginner', completedLessons: [] }
+  };
+  const fullQuiz = offlineGen.generateQuizResponse(ctx);
+  const fullProjects = offlineGen.generateProjectsResponse(ctx);
+
+  // Build the unified 6-stage premium layout
+  const stages = {
+    overview: {
+      objectives: lesson.learningObjectives || [`Master ${title} patterns`],
+      prerequisites: lesson.prerequisites || [],
+      estimatedTime: lesson.estimatedTime || '30 mins',
+      difficulty: level,
+      whyLearnThis: beginner.motivation,
+      careerRelevance: `Crucial SDE role core concept. Frequently queried in technical screenings at Apple, Google, Microsoft, and Amazon.`
+    },
+    learn: {
+      theory: beginner.simpleExplanation,
+      visualExplanation: beginner.visualDiagram,
+      realWorldAnalogy: beginner.realWorldAnalogy,
+      stepByStepWalkthrough: lineByLineText,
+      internalWorking: intermediate.internalImplementation,
+      complexityAnalysis: `**Time Complexity:** ${intermediate.performanceConsiderations?.timeComplexity || 'O(1)'}\n\n**Space Complexity:** ${intermediate.performanceConsiderations?.spaceComplexity || 'O(1)'}`,
+      commonMistakes: commonMistakesText,
+      bestPractices: bestPracticesText,
+      importantNotes: `Ensure clean parameter mappings and bounds safety when deploying systems.`
+    },
+    codelab: {
+      multilingual: dna.examples, // JS, Python, Java, C++ code samples
+      stepByStep: stepByStepList,
+      memoryDiagram: beginner.memoryDiagram
+    },
+    practicelab: {
+      easy: practice.easy,
+      medium: practice.medium,
+      hard: practice.hard,
+      debugging: practice.debugging,
+      quiz: fullQuiz.mcqs,
+      fullQuiz: fullQuiz
+    },
+    interviewprep: {
+      questions: interview.questions,
+      cheatsheet: cheatsheet,
+      revision: revision
+    },
+    projectassessment: {
+      project: project,
+      projects: fullProjects,
+      assessment: {
+        title: 'Module Final Assessment',
+        questions: fullQuiz.mcqs.map((q, idx) => ({
+          ...q,
+          id: `aq_${idx + 1}`
+        }))
+      }
+    }
+  };
+
+  // Enforce strict LessonValidator assertions
+  const isOverviewValid = !!(stages.overview.whyLearnThis && stages.overview.whyLearnThis.length > 10);
+  const isLearnValid = !!(stages.learn.theory && stages.learn.realWorldAnalogy && stages.learn.realWorldAnalogy.length > 10);
+  const isCodeLabValid = !!(stages.codelab.multilingual.js && stages.codelab.multilingual.python && stages.codelab.multilingual.cpp && stages.codelab.multilingual.java);
+  const isPracticeValid = !!(stages.practicelab.easy && stages.practicelab.quiz && stages.practicelab.quiz.length >= 5);
+  const isInterviewValid = !!(stages.interviewprep.questions && stages.interviewprep.questions.length >= 3);
+  const isProjectValid = !!(stages.projectassessment.project && stages.projectassessment.project.title);
+
+  if (!isOverviewValid || !isLearnValid || !isCodeLabValid || !isPracticeValid || !isInterviewValid || !isProjectValid) {
+    throw new Error(`Lesson "${title}" failed premium validation checklist validation. Gaps detected in core stages.`);
+  }
+
   const content = {
+    // Keep backward-compatible definition for page loading routing
     definition: `### Motivation\n${beginner.motivation || ''}\n\n### Why it exists\n${beginner.whyExists || ''}\n\n### Explanation\n${beginner.simpleExplanation || ''}`,
     why_exists: beginner.whyExists || '',
     importance: beginner.motivation || '',
@@ -864,12 +1125,15 @@ ${q.explanation}
       { step: 2, code: intermediate.examples[0]?.code || '', explanation: intermediate.examples[0]?.explanation || '' }
     ]) : null,
 
+    // Expose the 6 premium stages object
+    stages,
     raw: {
-      lesson, beginner, intermediate, expert, practice, quiz, cheatsheet, project, resources, videos, interview, revision
+      lesson, beginner, intermediate, expert, practice, quiz, cheatsheet, project, resources, videos, interview, revision,
+      multilingual: dna.examples
     }
   };
 
-  return {
+  const compiled = {
     category: getSlug(title),
     schemaVersion: '2.0',
     lessonMeta: {
@@ -881,6 +1145,10 @@ ${q.explanation}
     },
     content
   };
+
+  // Save to compiler cache
+  compiledCache[cacheKey] = compiled;
+  return compiled;
 }
 
 function fence(lang, code) {

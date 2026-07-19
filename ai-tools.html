@@ -72,33 +72,34 @@
     </div>
 <div class="dash-content">
       <div style="margin-bottom:1.75rem;">
-        <div class="eyebrow">AI Tool Directory</div>
+        <div class="eyebrow">Internal AI Suite</div>
         <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.35rem;">AI Tools</h2>
-        <p style="color:var(--mist);font-size:14px;">100+ curated AI tools organized by category with ratings, features and launch links.</p>
+        <p style="color:var(--mist);font-size:14px;">12 AI-powered tools built directly into EduNet — no external redirects. Every tool uses your learning context for personalized responses.</p>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
         <div class="filter-row" id="toolFilterRow">
-          <button class="filter-btn active" data-cat="all">All</button>
-          <button class="filter-btn" data-cat="Coding">Coding AI</button>
-          <button class="filter-btn" data-cat="Research">Research AI</button>
-          <button class="filter-btn" data-cat="Productivity">Productivity</button>
-          <button class="filter-btn" data-cat="Writing">Writing AI</button>
-          <button class="filter-btn" data-cat="Image">Image AI</button>
-          <button class="filter-btn" data-cat="Video">Video AI</button>
-          <button class="filter-btn" data-cat="Interview">Interview AI</button>
-          <button class="filter-btn" data-cat="Resume">Resume AI</button>
+          <!-- Rendered by ai-tools.js -->
         </div>
         <div class="search-bar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <input type="text" id="toolSearchBar" placeholder="Search tools...">
+          <input type="text" id="toolSearchBar" placeholder="Search AI tools...">
         </div>
       </div>
       <div class="cards-grid" id="toolsGrid"></div>
-      <!-- Tool Detail Modal -->
-      <div class="search-modal" id="toolModal" style="align-items:center;padding-top:0;">
-        <div class="search-modal-box" style="max-width:580px;" id="toolModalBox">
-          <div id="toolModalContent"></div>
-        </div>
+
+      <!-- AI Tool Chat Modal -->
+      <div id="toolChatModal" style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.6);
+        backdrop-filter:blur(4px);
+        z-index:9999;
+        align-items:center;
+        justify-content:center;
+        padding:1rem;
+      ">
+        <!-- Content rendered by ai-tools.js openTool() -->
       </div>
     </div>
 </div>

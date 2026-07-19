@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "TypeScript Official Documentation",
+      "url": "https://docs.example.com/typescript/path mapping configs",
+      "type": "documentation",
+      "description": "Official reference for Path Mapping Configs in TypeScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "TypeScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Path Mapping Configs in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "TypeScript Community Forum",
+      "url": "https://community.example.com/typescript",
+      "description": "Discuss Path Mapping Configs with other developers"
+    }
+  ]
+}

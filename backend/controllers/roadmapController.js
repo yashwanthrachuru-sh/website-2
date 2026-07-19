@@ -1140,6 +1140,7 @@ exports.getLessonDetail = async (req, res) => {
       exercises,
       quizzes: enrichedQuizzes,
       projects,
+      stages: lesson.stages || {},
       prev_lesson: prevLesson || null,
       next_lesson: nextLesson || null,
       completed,
@@ -1198,11 +1199,19 @@ exports.completeLesson = async (req, res) => {
     const lid = req.params.id;
 
     const [[lesson]] = await db.query(
-      `SELECT ml.module_id, rm.roadmap_id FROM module_lessons ml
+      `SELECT ml.module_id, ml.order_index, rm.roadmap_id FROM module_lessons ml
        JOIN roadmap_modules rm ON ml.module_id = rm.id
        WHERE ml.id = ?`, [lid]
     );
     if (!lesson) return res.status(404).json({ success: false, message: 'Lesson not found' });
+
+    // Check if lesson was already completed
+    const [[alreadyCompleted]] = await db.query(
+      `SELECT completed FROM lesson_progress WHERE user_id = ? AND lesson_id = ?`,
+      [req.user.id, lid]
+    );
+
+    const isFirstTime = !alreadyCompleted || !alreadyCompleted.completed;
 
     // Mark lesson complete
     await db.query(`
@@ -1211,14 +1220,23 @@ exports.completeLesson = async (req, res) => {
       ON DUPLICATE KEY UPDATE completed = 1
     `, [req.user.id, lid]);
 
-    // Award XP
-    await db.query(
-      `UPDATE users SET xp = xp + 100, level = FLOOR((xp + 100) / 500) + 1 WHERE id = ?`,
-      [req.user.id]
-    );
+    if (isFirstTime) {
+      // Record in xp_ledger
+      await db.query(`
+        INSERT INTO xp_ledger (user_id, source, amount)
+        VALUES (?, ?, 100)
+        ON DUPLICATE KEY UPDATE amount = 100
+      `, [req.user.id, `lesson_${lid}_complete`]);
 
-    // Update streak
-    await updateLearningStreak(req.user.id);
+      // Award XP
+      await db.query(
+        `UPDATE users SET xp = xp + 100, level = FLOOR((xp + 100) / 500) + 1 WHERE id = ?`,
+        [req.user.id]
+      );
+
+      // Update streak
+      await updateLearningStreak(req.user.id);
+    }
 
     // Check if all lessons of this module are completed
     const [[totalLessons]] = await db.query(
@@ -1249,12 +1267,78 @@ exports.completeLesson = async (req, res) => {
       `SELECT xp, level FROM users WHERE id = ?`, [req.user.id]
     );
 
+    // ── Find next lesson across the entire roadmap ───────────────
+    const [allModules] = await db.query(
+      `SELECT id, order_index FROM roadmap_modules WHERE roadmap_id = ? ORDER BY order_index ASC`,
+      [lesson.roadmap_id]
+    );
+    const modIds = allModules.map(m => m.id);
+    let nextLesson = null;
+
+    if (modIds.length > 0) {
+      const placeholders = modIds.map(() => '?').join(',');
+      const [allLessons] = await db.query(`
+        SELECT ml.id, ml.title, ml.module_id, rm.title AS module_title,
+               rm.order_index AS mod_order, ml.order_index AS les_order
+        FROM module_lessons ml
+        JOIN roadmap_modules rm ON ml.module_id = rm.id
+        WHERE ml.module_id IN (${placeholders})
+        ORDER BY rm.order_index ASC, ml.order_index ASC
+      `, modIds);
+
+      const curIdx = allLessons.findIndex(l => l.id === parseInt(lid));
+      if (curIdx !== -1 && curIdx < allLessons.length - 1) {
+        const candidate = allLessons[curIdx + 1];
+        const candidateModIdx = allModules.findIndex(m => m.id === candidate.module_id);
+        let candidateLocked = false;
+
+        if (candidateModIdx > 0) {
+          const prevMod = allModules[candidateModIdx - 1];
+          const [[prevModProg]] = await db.query(
+            `SELECT completed FROM module_progress WHERE user_id = ? AND module_id = ?`,
+            [req.user.id, prevMod.id]
+          );
+          if (!prevModProg || !prevModProg.completed) candidateLocked = true;
+        }
+
+        nextLesson = {
+          id: candidate.id,
+          title: candidate.title,
+          module_title: candidate.module_title,
+          locked: candidateLocked
+        };
+      }
+    }
+
+    // Roadmap-level progress for dashboard display
+    const [[totalRoadmapLessons]] = await db.query(`
+      SELECT COUNT(*) AS cnt FROM module_lessons ml
+      JOIN roadmap_modules rm ON ml.module_id = rm.id
+      WHERE rm.roadmap_id = ?`, [lesson.roadmap_id]);
+
+    const [[doneRoadmapLessons]] = await db.query(`
+      SELECT COUNT(*) AS cnt FROM lesson_progress lp
+      JOIN module_lessons ml ON lp.lesson_id = ml.id
+      JOIN roadmap_modules rm ON ml.module_id = rm.id
+      WHERE lp.user_id = ? AND rm.roadmap_id = ? AND lp.completed = 1`,
+      [req.user.id, lesson.roadmap_id]);
+
+    const roadmapProgressPct = totalRoadmapLessons.cnt > 0
+      ? Math.round((doneRoadmapLessons.cnt / totalRoadmapLessons.cnt) * 100)
+      : 0;
+    const modulePct = totalLessons.cnt > 0
+      ? Math.round((doneLessons.cnt / totalLessons.cnt) * 100)
+      : 100;
+
     res.json({
       success: true,
-      xp_awarded: 100,
+      xp_awarded: isFirstTime ? 100 : 0,
       module_completed: moduleCompleted,
       lessons_done: doneLessons.cnt,
       lessons_total: totalLessons.cnt,
+      module_progress_pct: modulePct,
+      roadmap_progress_pct: roadmapProgressPct,
+      next_lesson: nextLesson,
       user_xp: updatedUser ? updatedUser.xp : 0,
       user_level: updatedUser ? updatedUser.level : 1
     });

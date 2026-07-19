@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Java Official Documentation",
+      "url": "https://docs.example.com/java/if else branching",
+      "type": "documentation",
+      "description": "Official reference for If Else Branching in Java"
+    }
+  ],
+  "books": [
+    {
+      "title": "Java: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers If Else Branching in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Java Community Forum",
+      "url": "https://community.example.com/java",
+      "description": "Discuss If Else Branching with other developers"
+    }
+  ]
+}

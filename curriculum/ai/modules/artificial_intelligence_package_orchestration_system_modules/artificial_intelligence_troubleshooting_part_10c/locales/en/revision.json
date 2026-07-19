@@ -1,0 +1,47 @@
+{
+  "oneLineSummary": "Conditional statements let programs make decisions by choosing different paths based on boolean conditions.",
+  "summary": "We covered how if/else statements allow programs to branch based on conditions: evaluation, selection, chaining, logical operators, and common pitfalls like = vs ==.",
+  "keyTakeaways": [
+    "Conditions evaluate to True/False and determine which branch runs",
+    "Only one branch in if/elif/else executes",
+    "Use logical operators (and/or/not) to combine conditions",
+    "Always consider the else case"
+  ],
+  "memoryTricks": [
+    "Think of a fork in the road — the condition determines your path",
+    "Remember: = is assignment (set), == is comparison (check)"
+  ],
+  "preInterviewChecklist": [
+    "Can you write a leap year checker from memory?",
+    "Do you understand short-circuit evaluation?",
+    "Can you explain = vs ==?"
+  ],
+  "commonErrors": [
+    "Using = instead of ==",
+    "Floating-point == comparisons",
+    "Missing else cases",
+    "Dead code from always-true/false conditions"
+  ],
+  "mindMap": {
+    "central": "Conditionals",
+    "branches": [
+      "If/Else",
+      "Chained Conditions",
+      "Logical Operators",
+      "Comparison",
+      "Ternary",
+      "Switch/Match",
+      "Branch Prediction"
+    ]
+  },
+  "nextTopics": [
+    "Switch statements and pattern matching",
+    "Polymorphism as alternative to conditionals",
+    "Branch prediction and CPU architecture"
+  ],
+  "estimatedLearningTime": {
+    "review": 10,
+    "practice": 25,
+    "master": 40
+  }
+}

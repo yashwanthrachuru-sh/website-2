@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Recursion Stack — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Recursion Stack for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Recursion Stack Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Recursion Stack patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "JavaScript Official Documentation",
+      "url": "https://docs.example.com/javascript/short circuit evaluator",
+      "type": "documentation",
+      "description": "Official reference for Short Circuit Evaluator in JavaScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "JavaScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Short Circuit Evaluator in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "JavaScript Community Forum",
+      "url": "https://community.example.com/javascript",
+      "description": "Discuss Short Circuit Evaluator with other developers"
+    }
+  ]
+}

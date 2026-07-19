@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "JavaScript Official Documentation",
+      "url": "https://docs.example.com/javascript/promise all concurrency",
+      "type": "documentation",
+      "description": "Official reference for Promise All Concurrency in JavaScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "JavaScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Promise All Concurrency in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "JavaScript Community Forum",
+      "url": "https://community.example.com/javascript",
+      "description": "Discuss Promise All Concurrency with other developers"
+    }
+  ]
+}

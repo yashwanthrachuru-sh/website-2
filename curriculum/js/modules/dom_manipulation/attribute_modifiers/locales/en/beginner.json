@@ -1,0 +1,57 @@
+{
+  "curiosityQuestion": "What if your program could make decisions on its own, choosing different actions based on the situation?",
+  "whyExists": "Programs need to react differently to different situations. A login system must grant access to legitimate users and deny intruders. Conditional statements give programs this decision-making ability.",
+  "problemItSolves": "Without conditionals, every program would follow the exact same sequence every time, making software useless for scenarios requiring adaptive behavior based on input or state.",
+  "withoutVariables": "Imagine a traffic light that only shows green, regardless of traffic conditions. That is programming without conditionals — no ability to adapt to different situations.",
+  "whereUsed": "Conditionals are everywhere: form validation, access control, game logic, data processing pipelines, and virtually every piece of software ever written.",
+  "realWorldAnalogy": "Think of if/else like a traffic intersection. The light (condition) determines which path traffic takes. Green means go straight, red means stop, turn signals mean turn. The same intersection handles multiple scenarios by checking conditions.",
+  "simpleExplanation": "An if/else statement checks a condition — true or false. If true, one block runs. If false, another (the else) can run. This lets your program make binary decisions.",
+  "syntaxExplanation": "if (condition) {\n  action();\n} else if (otherCondition) {\n  otherAction();\n} else {\n  defaultAction();\n}",
+  "examples": [
+    {
+      "title": "If/Else Statement",
+      "code": "const age = 18;\nif (age >= 18) {\n  console.log(\"You can vote\");\n} else {\n  console.log(\"Too young to vote\");\n}",
+      "explanation": "The condition is evaluated first. If true, the first block executes. If false, the else block runs. Only one block ever executes.",
+      "language": "javascript"
+    }
+  ],
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start] --> B{Condition?}\n    B -->|True| C[Execute If-Block]\n    B -->|False| D[Execute Else-Block]\n    C --> E[Continue]\n    D --> E\n    E --> F[End]\n```",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "action": "Evaluate the condition",
+      "explanation": "The boolean expression is evaluated to True or False."
+    },
+    {
+      "step": 2,
+      "action": "Choose the branch",
+      "explanation": "If true: run the {} block. If false: skip to else if or else."
+    },
+    {
+      "step": 3,
+      "action": "Execute the selected block",
+      "explanation": "Only the matching branch executes — others are skipped."
+    },
+    {
+      "step": 4,
+      "action": "Continue after the conditional",
+      "explanation": "Execution continues with the next statement after the structure."
+    }
+  ],
+  "memoryDiagram": {
+    "stack": "[Stack]\n  Local variables and call context",
+    "heap": "[Heap]\n  Dynamic data structures"
+  },
+  "namingRules": [
+    "Use camelCase for variables and functions",
+    "Use PascalCase for classes and components",
+    "Use UPPER_SNAKE_CASE for constants",
+    "Use kebab-case for file names"
+  ],
+  "commonMistakes": [
+    "Using = (assignment) instead of == (comparison) in conditions",
+    "Forgetting the colon (Python) or curly braces (JS/Java)",
+    "Not handling all possible cases (missing else)",
+    "Overcomplicating with deeply nested if/else when a switch or lookup table would be cleaner"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "C++ Official Documentation",
+      "url": "https://docs.example.com/c++/c++ core principles part 11a",
+      "type": "documentation",
+      "description": "Official reference for C++ Core Principles Part 11A in C++"
+    }
+  ],
+  "books": [
+    {
+      "title": "C++: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers C++ Core Principles Part 11A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "C++ Community Forum",
+      "url": "https://community.example.com/c++",
+      "description": "Discuss C++ Core Principles Part 11A with other developers"
+    }
+  ]
+}

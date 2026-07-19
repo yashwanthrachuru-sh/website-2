@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Kubernetes Orchestration Official Documentation",
+      "url": "https://docs.example.com/kubernetes orchestration/kubernetes orchestration core principles part 9a",
+      "type": "documentation",
+      "description": "Official reference for Kubernetes Orchestration Core Principles Part 9A in Kubernetes Orchestration"
+    }
+  ],
+  "books": [
+    {
+      "title": "Kubernetes Orchestration: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Kubernetes Orchestration Core Principles Part 9A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Kubernetes Orchestration Community Forum",
+      "url": "https://community.example.com/kubernetes orchestration",
+      "description": "Discuss Kubernetes Orchestration Core Principles Part 9A with other developers"
+    }
+  ]
+}

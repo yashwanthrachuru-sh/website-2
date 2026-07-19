@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Java Official Documentation",
+      "url": "https://docs.example.com/java/concurrency synchronize",
+      "type": "documentation",
+      "description": "Official reference for Concurrency Synchronize in Java"
+    }
+  ],
+  "books": [
+    {
+      "title": "Java: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Concurrency Synchronize in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Java Community Forum",
+      "url": "https://community.example.com/java",
+      "description": "Discuss Concurrency Synchronize with other developers"
+    }
+  ]
+}

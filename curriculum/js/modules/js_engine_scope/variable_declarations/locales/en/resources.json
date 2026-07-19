@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "JavaScript Official Documentation",
+      "url": "https://docs.example.com/javascript/variable declarations",
+      "type": "documentation",
+      "description": "Official reference for Variable Declarations in JavaScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "JavaScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Variable Declarations in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "JavaScript Community Forum",
+      "url": "https://community.example.com/javascript",
+      "description": "Discuss Variable Declarations with other developers"
+    }
+  ]
+}

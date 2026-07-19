@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "GCP Cloud Engineer Official Documentation",
+      "url": "https://docs.example.com/gcp cloud engineer/gcp cloud engineer core principles part 9a",
+      "type": "documentation",
+      "description": "Official reference for GCP Cloud Engineer Core Principles Part 9A in GCP Cloud Engineer"
+    }
+  ],
+  "books": [
+    {
+      "title": "GCP Cloud Engineer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers GCP Cloud Engineer Core Principles Part 9A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "GCP Cloud Engineer Community Forum",
+      "url": "https://community.example.com/gcp cloud engineer",
+      "description": "Discuss GCP Cloud Engineer Core Principles Part 9A with other developers"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "C Programming Official Documentation",
+      "url": "https://docs.example.com/c programming/for counter loop",
+      "type": "documentation",
+      "description": "Official reference for For Counter Loop in C Programming"
+    }
+  ],
+  "books": [
+    {
+      "title": "C Programming: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers For Counter Loop in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "C Programming Community Forum",
+      "url": "https://community.example.com/c programming",
+      "description": "Discuss For Counter Loop with other developers"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "AI Engineer Official Documentation",
+      "url": "https://docs.example.com/ai engineer/ai engineer implementation steps part 11b",
+      "type": "documentation",
+      "description": "Official reference for AI Engineer Implementation Steps Part 11B in AI Engineer"
+    }
+  ],
+  "books": [
+    {
+      "title": "AI Engineer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers AI Engineer Implementation Steps Part 11B in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "AI Engineer Community Forum",
+      "url": "https://community.example.com/ai engineer",
+      "description": "Discuss AI Engineer Implementation Steps Part 11B with other developers"
+    }
+  ]
+}

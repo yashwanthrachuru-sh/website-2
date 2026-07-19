@@ -7,6 +7,16 @@
 
 const { apiFetch, getToken, getSession, clearSession, showToast, getXP, addXP } = window.EduNetAPI;
 
+function getRankTitle(xp) {
+  if (xp < 1000) return '🌱 Beginner';
+  if (xp < 2500) return '🚀 Explorer';
+  if (xp < 5000) return '⚡ Challenger';
+  if (xp < 7500) return '💎 Achiever';
+  if (xp < 10000) return '🏆 Elite';
+  if (xp < 15000) return '👑 Master';
+  return '🔥 Grandmaster';
+}
+
 let dashboardDataPromise = null;
 function fetchDashboardData(force = false) {
   if (force || !dashboardDataPromise) {
@@ -85,7 +95,7 @@ async function loadDashboard() {
     setEl('metricLessons', d.lessons_done || 0);
     setEl('metricModules', d.modules_done || 0);
     setEl('metricCerts',   d.certificates || 0);
-    setEl('metricRank',    d.leaderboard_rank ? '#' + d.leaderboard_rank : '#—');
+    setEl('metricRank',    getRankTitle(d.xp || 0));
     setEl('metricBranch',  session.branch || 'SDE');
 
     // Update Portfolio Strength UI

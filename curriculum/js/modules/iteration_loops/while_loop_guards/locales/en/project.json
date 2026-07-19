@@ -1,0 +1,27 @@
+{
+  "title": "Project: Data Analysis Toolkit",
+  "tagline": "Build statistical analysis functions using loops.",
+  "description": "Create functions for mean, median, mode, standard deviation, and filtering — all using loops.",
+  "requirements": [
+    "Calculate mean with a sum loop",
+    "Calculate median with sort+index",
+    "Calculate mode with frequency dict",
+    "Filter values above threshold",
+    "Handle empty and single-element lists"
+  ],
+  "learningGoals": [
+    "Master loop patterns",
+    "Process collections",
+    "Build reusable functions"
+  ],
+  "starterCode": "function mean(data) {}\nfunction median(data) {}\nfunction mode(data) {}\n\nconst numbers = [2, 4, 6, 8, 10, 4, 6, 6];\nconsole.log(mean(numbers), median(numbers), mode(numbers));",
+  "solution": "const mean = d => d.length ? d.reduce((a,b)=>a+b,0)/d.length : null;\nconst median = d => { if(!d.length) return null; const s=[...d].sort((a,b)=>a-b), m=Math.floor(s.length/2); return s.length%2 ? s[m] : (s[m-1]+s[m])/2; };\nconst mode = d => { if(!d.length) return null; const f={}; d.forEach(x=>f[x]=(f[x]||0)+1); const mc=Math.max(...Object.values(f)); return Object.keys(f).filter(k=>f[k]==mc).map(Number); };",
+  "expectedOutput": "Your application produces the expected output.",
+  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "extensions": [
+    "Add percentile",
+    "Weighted mean",
+    "Moving average",
+    "Chart visualization"
+  ]
+}

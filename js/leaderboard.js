@@ -61,6 +61,16 @@ function renderLeaderboard() {
 // Try loading from API
 let leaderboardData = [...DEMO_USERS];
 
+function getRankTitle(xp) {
+  if (xp < 1000) return '🌱 Beginner';
+  if (xp < 2500) return '🚀 Explorer';
+  if (xp < 5000) return '⚡ Challenger';
+  if (xp < 7500) return '💎 Achiever';
+  if (xp < 10000) return '🏆 Elite';
+  if (xp < 15000) return '👑 Master';
+  return '🔥 Grandmaster';
+}
+
 async function initLeaderboard() {
   try {
     const d = await apiFetch('/api/user/leaderboard');
@@ -124,7 +134,7 @@ async function initLeaderboard() {
       </td>
       <td><span class="badge badge-muted">${u.branch}</span></td>
       <td style="font-family:var(--font-mono);color:var(--accent);font-weight:700;">${u.xp.toLocaleString()}</td>
-      <td><span class="badge badge-blue">Lv ${level}</span></td>
+      <td><span class="badge badge-blue" style="margin-right:6px;">Lv ${level}</span><span class="badge badge-muted">${getRankTitle(u.xp)}</span></td>
       <td>${(u.badges || []).join(' ')}</td>
     `;
     tbody.appendChild(row);

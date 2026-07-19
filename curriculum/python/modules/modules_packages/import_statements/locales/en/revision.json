@@ -1,0 +1,44 @@
+{
+  "oneLineSummary": "Import Statements is a fundamental programming concept every developer should understand.",
+  "summary": "This lesson covered what Import Statements is, why it exists, how to use it, common mistakes, and best practices.",
+  "keyTakeaways": [
+    "Import Statements solves a specific programming problem",
+    "Handle edge cases",
+    "Follow language idioms",
+    "Test thoroughly"
+  ],
+  "memoryTricks": [
+    "Think of import statements as a tool in your toolbox"
+  ],
+  "preInterviewChecklist": [
+    "Can you explain Import Statements in one sentence?",
+    "Can you write a basic implementation?",
+    "Do you know the pitfalls?"
+  ],
+  "commonErrors": [
+    "Not understanding the problem",
+    "Overcomplicating",
+    "Ignoring edge cases",
+    "Skipping tests"
+  ],
+  "mindMap": {
+    "central": "Import Statements",
+    "branches": [
+      "Definition",
+      "Usage",
+      "Advanced",
+      "Pitfalls",
+      "Best Practices"
+    ]
+  },
+  "nextTopics": [
+    "Advanced import statements",
+    "Testing import statements",
+    "Performance optimization"
+  ],
+  "estimatedLearningTime": {
+    "review": 10,
+    "practice": 25,
+    "master": 40
+  }
+}

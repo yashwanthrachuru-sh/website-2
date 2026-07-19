@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Competitive Programming Official Documentation",
+      "url": "https://docs.example.com/competitive programming/competitive programming core principles part 6a",
+      "type": "documentation",
+      "description": "Official reference for Competitive Programming Core Principles Part 6A in Competitive Programming"
+    }
+  ],
+  "books": [
+    {
+      "title": "Competitive Programming: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Competitive Programming Core Principles Part 6A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Competitive Programming Community Forum",
+      "url": "https://community.example.com/competitive programming",
+      "description": "Discuss Competitive Programming Core Principles Part 6A with other developers"
+    }
+  ]
+}

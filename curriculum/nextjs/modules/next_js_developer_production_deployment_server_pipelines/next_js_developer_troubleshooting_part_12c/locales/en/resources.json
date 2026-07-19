@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Next.js Developer Official Documentation",
+      "url": "https://docs.example.com/next.js developer/next.js developer troubleshooting part 12c",
+      "type": "documentation",
+      "description": "Official reference for Next.js Developer Troubleshooting Part 12C in Next.js Developer"
+    }
+  ],
+  "books": [
+    {
+      "title": "Next.js Developer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Next.js Developer Troubleshooting Part 12C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Next.js Developer Community Forum",
+      "url": "https://community.example.com/next.js developer",
+      "description": "Discuss Next.js Developer Troubleshooting Part 12C with other developers"
+    }
+  ]
+}

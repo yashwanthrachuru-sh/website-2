@@ -58,17 +58,103 @@ function renderInterviewGrid(cat = 'all') {
           <span class="badge badge-muted">${item.type}</span>
           <span class="badge badge-muted">${item.cat}</span>
         </div>
+        <button class="btn btn-icon btn-tts" data-tts="${item.id}" style="width:28px;height:28px;font-size:14px;background:none;border:1px solid var(--border);border-radius:6px;cursor:pointer;" title="Listen to question">🔊</button>
       </div>
       <h3 style="font-size:14.5px;margin-bottom:.5rem;">${item.title}</h3>
       <p style="font-size:12.5px;color:var(--mist);line-height:1.6;">${item.q.slice(0, 100)}${item.q.length > 100 ? '...' : ''}</p>
       <button class="btn btn-secondary btn-sm" style="margin-top:1rem;" data-qid="${item.id}">View &amp; Practice →</button>
     `;
     card.querySelector('button').addEventListener('click', () => openFlashcard(item));
+    card.querySelector('.btn-tts')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      speakText(item.q);
+    });
     grid.appendChild(card);
   });
 }
 
 let revealed = false;
+function speakText(text) {
+  if (!window.speechSynthesis) {
+    showToast('Text-to-speech is not supported in this browser.', 'warning');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.9;
+  utterance.pitch = 1.0;
+  window.speechSynthesis.speak(utterance);
+}
+
+function startVoiceInput(textareaId) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    showToast('Speech recognition is not supported in this browser. Try Chrome.', 'warning');
+    return;
+  }
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.continuous = false;
+
+  showToast('🎙️ Listening... Speak your answer now.', 'info', 3000);
+  const ta = document.getElementById(textareaId);
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    if (ta) {
+      ta.value = transcript;
+      ta.dispatchEvent(new Event('input'));
+    }
+    showToast('✓ Speech captured!', 'success');
+  };
+
+  recognition.onerror = (event) => {
+    showToast('Speech recognition error: ' + event.error, 'error');
+  };
+
+  recognition.start();
+}
+
+async function getFeedbackForAnswer(question, userAnswer) {
+  if (!userAnswer || userAnswer.trim().length < 3) {
+    showToast('Please write or speak an answer first.', 'warning');
+    return;
+  }
+  const feedbackEl = document.getElementById('feedbackResult');
+  if (feedbackEl) {
+    feedbackEl.innerHTML = '<span style="color:var(--mist-dim);">Analyzing your answer...</span>';
+    feedbackEl.style.display = 'block';
+  }
+  try {
+    const data = await apiFetch('/api/interview/feedback', {
+      method: 'POST',
+      body: JSON.stringify({ question, userAnswer })
+    });
+    if (data.success) {
+      if (feedbackEl) {
+        feedbackEl.innerHTML = `
+          <div style="background:rgba(99,102,241,0.06);border:1px solid var(--border);border-radius:var(--r-sm);padding:1rem;">
+            <div style="font-size:11px;color:var(--accent);text-transform:uppercase;font-family:var(--font-mono);margin-bottom:.5rem;">🤖 AI Feedback</div>
+            <p style="font-size:13px;color:var(--mist);line-height:1.6;">${escapeHtml(data.feedback)}</p>
+            <div style="display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap;">
+              <span class="badge badge-muted">${data.metrics.wordCount} words</span>
+              ${data.metrics.hasComplexityAnalysis ? '<span class="badge badge-green">✓ Complexity</span>' : '<span class="badge" style="background:rgba(244,63,94,0.1);color:var(--rose);">✗ No Complexity</span>'}
+              ${data.metrics.hasStructure ? '<span class="badge badge-green">✓ Structured</span>' : '<span class="badge" style="background:rgba(244,63,94,0.1);color:var(--rose);">✗ Needs Structure</span>'}
+            </div>
+          </div>`;
+      }
+    } else {
+      throw new Error(data.message || 'Feedback failed');
+    }
+  } catch (err) {
+    if (feedbackEl) {
+      feedbackEl.innerHTML = `<div style="color:var(--rose);font-size:13px;">Feedback unavailable: ${escapeHtml(err.message)}</div>`;
+    }
+    showToast('Could not get AI feedback: ' + err.message, 'error');
+  }
+}
+
 function openFlashcard(item) {
   revealed = false;
   const modal = document.getElementById('flashcardModal');
@@ -76,7 +162,10 @@ function openFlashcard(item) {
   box.innerHTML = `
     <div class="drawer-header">
       <div>
-        <h3 style="font-size:15px;">${item.title}</h3>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <h3 style="font-size:15px;margin:0;">${item.title}</h3>
+          <button onclick="speakText('${escapeAttr(item.q)}')" style="background:none;border:1px solid var(--border);border-radius:6px;cursor:pointer;font-size:14px;padding:2px 6px;" title="Listen to question">🔊</button>
+        </div>
         <div style="display:flex;gap:.4rem;margin-top:.25rem;">
           <span class="badge ${CARD_COLORS[item.difficulty]}">${item.difficulty}</span>
           <span class="badge badge-muted">${item.cat}</span>
@@ -93,6 +182,15 @@ function openFlashcard(item) {
         <div style="font-size:11px;color:var(--amber);text-transform:uppercase;font-family:var(--font-mono);margin-bottom:.4rem;">💡 Hint</div>
         <p style="font-size:13px;color:var(--mist);">${item.hint}</p>
       </div>` : ''}
+      <div style="margin-bottom:1rem;">
+        <label style="font-size:11px;color:var(--mist-dim);text-transform:uppercase;font-family:var(--font-mono);margin-bottom:.4rem;display:block;">✍️ Your Answer</label>
+        <textarea id="userAnswerArea" rows="4" placeholder="Type your answer here, or click 🎙️ to speak..." style="width:100%;background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-sm);padding:.75rem;color:var(--text);font-size:13px;font-family:inherit;resize:vertical;outline:none;"></textarea>
+        <div style="display:flex;gap:.5rem;margin-top:.5rem;">
+          <button onclick="startVoiceInput('userAnswerArea')" class="btn btn-secondary btn-sm" style="font-size:11.5px;">🎙️ Speak Answer</button>
+          <button onclick="getFeedbackForAnswer('${escapeAttr(item.q)}', document.getElementById('userAnswerArea').value)" class="btn btn-primary btn-sm" style="font-size:11.5px;">🤖 Get Feedback</button>
+        </div>
+      </div>
+      <div id="feedbackResult" style="display:none;margin-bottom:1rem;"></div>
       <div id="answerSection" style="display:none;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:var(--r-sm);padding:1.25rem;margin-bottom:1.25rem;">
         <div style="font-size:11px;color:var(--emerald);text-transform:uppercase;font-family:var(--font-mono);margin-bottom:.5rem;">✓ Answer</div>
         <p style="font-size:13px;color:var(--mist);line-height:1.7;white-space:pre-line;">${item.answer}</p>
@@ -110,6 +208,14 @@ function openFlashcard(item) {
   });
   modal.classList.add('open');
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+}
+
+// ── Helper Functions ────────────────────────────────────────────
+function escapeHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+function escapeAttr(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#039;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
 // Filter buttons

@@ -1,0 +1,26 @@
+{
+  "title": "Project: Python Environment Diagnostics Tool",
+  "tagline": "Build a comprehensive system information tool.",
+  "description": "Create a CLI tool that displays detailed information about the python environment: version, installed packages, system info, and environment variables.",
+  "requirements": [
+    "Display interpreter version and path",
+    "List installed packages with versions",
+    "Show system info (OS, CPU, memory)",
+    "Display key environment variables",
+    "Handle errors gracefully"
+  ],
+  "learningGoals": [
+    "Understand the runtime environment",
+    "Practice working with system modules",
+    "Build a practical diagnostic tool"
+  ],
+  "starterCode": "#!/usr/bin/env python3\nimport sys, os, platform\n\ndef main():\n    print(\"=\"*60)\n    print(\"  Environment Diagnostics\")\n    print(\"=\"*60)\n\nif __name__ == \"__main__\":\n    main()",
+  "solution": "#!/usr/bin/env python3\nimport sys, os, platform\n\ndef main():\n    print(\"=\"*60)\n    print(\"  Python Environment Diagnostics\")\n    print(\"=\"*60)\n    print(f\"\\nInterpreter: {sys.version}\")\n    print(f\"Path: {sys.executable}\")\n    print(f\"OS: {platform.system()} {platform.release()}\")\n    print(f\"CPU Cores: {os.cpu_count()}\")\n    for key in ['PATH','HOME','USER']:\n        if key in os.environ:\n            print(f\"{key}={os.environ[key][:80]}...\")\n    print(\"\\n\" + \"=\"*60)",
+  "expectedOutput": "Your application produces the expected output.",
+  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "extensions": [
+    "Add JSON output format",
+    "Include network information",
+    "Generate a shareable report URL"
+  ]
+}

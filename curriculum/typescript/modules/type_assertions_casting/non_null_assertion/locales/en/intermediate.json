@@ -1,0 +1,43 @@
+{
+  "deeperExplanation": "Non-Null Assertion becomes more powerful when combined with other TypeScript concepts. In production, it interacts with error handling, validation, and optimization.",
+  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
+  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
+  "internalImplementation": "The typescript runtime handles this efficiently behind the scenes.",
+  "examples": [
+    {
+      "title": "Getting Started with Non-Null Assertion",
+      "code": "console.log(\"Learning Non-Null Assertion\");",
+      "explanation": "Basic introduction to Non-Null Assertion.",
+      "language": "typescript"
+    }
+  ],
+  "bestPractices": [
+    "Validate inputs",
+    "Handle edge cases",
+    "Write tests",
+    "Document behavior"
+  ],
+  "debuggingWalkthrough": {
+    "scenario": "A non-null assertion implementation behaves unexpectedly.",
+    "steps": [
+      "Reproduce with minimal test",
+      "Check inputs",
+      "Verify logic",
+      "Test boundaries"
+    ]
+  },
+  "edgeCases": [
+    "Empty input",
+    "Null values",
+    "Large datasets",
+    "Unexpected types"
+  ],
+  "performanceNotes": {
+    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
+    "bigO": {
+      "best": "O(1)",
+      "average": "O(n)",
+      "worst": "O(n^2)"
+    }
+  }
+}

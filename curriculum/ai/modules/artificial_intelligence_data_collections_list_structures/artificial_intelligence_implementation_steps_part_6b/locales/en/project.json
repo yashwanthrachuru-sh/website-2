@@ -1,0 +1,26 @@
+{
+  "title": "Project: Loan Decision Engine",
+  "tagline": "Build a rule-based loan approval system using conditionals.",
+  "description": "Create a program that evaluates loan applications using credit score, income, debt ratio, and employment status — applying business rules through conditionals.",
+  "requirements": [
+    "Define at least 4 input criteria with ranges",
+    "Implement decision rules using if/elif/else",
+    "Handle all edge cases",
+    "Return a clear decision with explanation",
+    "Include 3+ test cases"
+  ],
+  "learningGoals": [
+    "Master complex conditional chains",
+    "Practice handling interdependent conditions",
+    "Build real-world business logic"
+  ],
+  "starterCode": "def evaluate_loan(credit_score, income, debt_ratio, employed):\n    reasons = []\n    # Your rules here\n    pass",
+  "solution": "def evaluate_loan(credit, income, debt, emp):\n    reasons = []\n    if credit < 600: reasons.append(\"Low credit\")\n    if income < 25000: reasons.append(\"Low income\")\n    if debt > 0.43: reasons.append(\"High DTI\")\n    if not emp: reasons.append(\"Unemployed\")\n    if not reasons: return (True, \"Approved\")\n    return (False, f\"Denied: {'; '.join(reasons)}\")",
+  "expectedOutput": "Your application produces the expected output.",
+  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "extensions": [
+    "Add tiered interest rates",
+    "Build a web interface",
+    "Add weighted scoring"
+  ]
+}

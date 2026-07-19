@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "JavaScript Official Documentation",
+      "url": "https://docs.example.com/javascript/response validations",
+      "type": "documentation",
+      "description": "Official reference for Response Validations in JavaScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "JavaScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Response Validations in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "JavaScript Community Forum",
+      "url": "https://community.example.com/javascript",
+      "description": "Discuss Response Validations with other developers"
+    }
+  ]
+}

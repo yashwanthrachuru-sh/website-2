@@ -1,0 +1,45 @@
+{
+  "deeperExplanation": "Beyond simple true/false, conditionals can be chained (elif/else if), nested, and combined with logical operators (and/or/not). Every conditional creates a branch in the control flow graph — understanding this helps you reason about possible code paths.",
+  "mutabilityExplained": "Variables in conditions are read-only during evaluation. The code inside each branch can freely modify variables, which is how conditionals control program state.",
+  "noneValue": "In most languages, None/null/undefined are falsy. Be explicit when checking for them, as 0, empty strings, and empty collections are also falsy.",
+  "internalImplementation": "Compilers convert if/else into conditional jump instructions. The CPU evaluates the condition, sets a flag, and conditionally jumps to different addresses. This makes conditionals extremely fast.",
+  "examples": [
+    {
+      "title": "Chained Conditions",
+      "code": "const score = 85;\nlet grade;\nif (score >= 90) grade = 'A';\nelse if (score >= 80) grade = 'B';\nelse if (score >= 70) grade = 'C';\nelse grade = 'F';\nconsole.log(`Grade: ${grade}`);",
+      "explanation": "Multiple elif/else if blocks check a series of conditions in order. The first match wins — this is more efficient than independent if statements.",
+      "language": "c"
+    }
+  ],
+  "bestPractices": [
+    "Handle the most specific cases first, general cases last",
+    "Avoid deep nesting — extract conditions into named functions",
+    "Use switch/pattern matching for single-value comparisons",
+    "Always consider the else/default case",
+    "Prefer positive conditions for clarity"
+  ],
+  "debuggingWalkthrough": {
+    "scenario": "A function returns wrong results for certain inputs because a condition misses edge cases.",
+    "steps": [
+      "List all possible inputs and expected outputs",
+      "Check if any input falls through all conditions",
+      "Verify the order of conditions",
+      "Test boundary values: 0, negative, empty, null",
+      "Use a debugger to step through each branch"
+    ]
+  },
+  "edgeCases": [
+    "Floating-point comparisons — never use exact equality",
+    "Short-circuit evaluation in logical operators",
+    "Falsy values: 0, \"\", null, undefined, NaN",
+    "Integer overflow affecting comparisons"
+  ],
+  "performanceNotes": {
+    "notes": "Branch prediction makes conditionals fast, but mispredicted branches cause pipeline stalls. Arrange conditions by frequency for optimal performance.",
+    "bigO": {
+      "best": "O(1)",
+      "average": "O(1)",
+      "worst": "O(n)"
+    }
+  }
+}

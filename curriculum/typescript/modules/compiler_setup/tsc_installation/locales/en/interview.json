@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Explain compiled vs interpreted languages. Where does typescript fit?",
+      "answer": "Compiled languages (C, Rust) produce machine code ahead of time. Interpreted languages use a runtime that reads and executes code on the fly. Typescript is compiled to bytecode, then interpreted by a VM — a hybrid approach giving portability and development speed.",
+      "followUp": "How does JIT compilation blur this line?"
+    },
+    {
+      "question": "What is the GIL in Python and how does it affect concurrency?",
+      "answer": "The GIL prevents multiple native threads from executing Python bytecode simultaneously, simplifying memory management but limiting CPU-bound multi-threading. For CPU-bound work, use multiprocessing or C extensions.",
+      "followUp": "How does Node.js handle concurrency without a GIL?"
+    },
+    {
+      "question": "How do virtual environments solve dependency conflicts?",
+      "answer": "They create isolated directories with their own interpreter and packages, so different projects can use different dependency versions without conflict.",
+      "followUp": "How would you design a CI/CD pipeline for consistent environments?"
+    }
+  ]
+}

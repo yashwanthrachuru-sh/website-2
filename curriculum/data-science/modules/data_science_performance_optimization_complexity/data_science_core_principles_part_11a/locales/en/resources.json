@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Data Science Official Documentation",
+      "url": "https://docs.example.com/data science/data science core principles part 11a",
+      "type": "documentation",
+      "description": "Official reference for Data Science Core Principles Part 11A in Data Science"
+    }
+  ],
+  "books": [
+    {
+      "title": "Data Science: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Data Science Core Principles Part 11A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Data Science Community Forum",
+      "url": "https://community.example.com/data science",
+      "description": "Discuss Data Science Core Principles Part 11A with other developers"
+    }
+  ]
+}

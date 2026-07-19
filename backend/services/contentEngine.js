@@ -18,10 +18,15 @@ const SECTION_CLOSE = (name) => `<!--/SECTION:${name}-->`;
 const LESSON_SECTIONS = lessonGenerator.LESSON_SECTIONS;
 
 /**
- * Always returns true since all files are loaded statically from the curriculum folder.
+ * Checks whether the lesson has substantive curriculum content.
+ * Looks for the EDUNET_STRUCTURED_V1 markers and at least 3 populated sections.
  */
 function isContentComplete(learningNotes) {
-  return true;
+  if (!learningNotes || typeof learningNotes !== 'string') return false;
+  if (!learningNotes.includes('<!--EDUNET_STRUCTURED_V1-->')) return false;
+  if (!learningNotes.includes('<!--/EDUNET_STRUCTURED_V1-->')) return false;
+  const sectionCount = (learningNotes.match(/<!--SECTION:/g) || []).length;
+  return sectionCount >= 3;
 }
 
 /**
@@ -408,6 +413,8 @@ function enrichLesson(lesson) {
   lesson.roadmap       = resolved.lessonMeta?.roadmap || roadmapId;
 
   lesson.structured_content = s;
+  lesson.raw = raw;
+  lesson.stages = s.stages;
 
   // Use the modular normalization layer
   lesson.beginner = normalizeBeginner(raw.beginner, context);

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Python Official Documentation",
+      "url": "https://docs.example.com/python/virtual environments",
+      "type": "documentation",
+      "description": "Official reference for Virtual Environments in Python"
+    }
+  ],
+  "books": [
+    {
+      "title": "Python: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Virtual Environments in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Python Community Forum",
+      "url": "https://community.example.com/python",
+      "description": "Discuss Virtual Environments with other developers"
+    }
+  ]
+}

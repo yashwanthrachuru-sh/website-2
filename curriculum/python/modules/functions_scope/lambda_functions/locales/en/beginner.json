@@ -1,0 +1,62 @@
+{
+  "curiosityQuestion": "What if you could package a sequence of instructions into a reusable box, name it, and use it anywhere — like a mini-program inside your program?",
+  "whyExists": "Functions are the fundamental unit of code organization. They let you define a reusable operation once, give it a name, and call it from anywhere. Without them, every program would be one massive, unreadable block of code.",
+  "problemItSolves": "Without functions, you copy-paste the same logic everywhere. Changing that logic means finding and updating every copy — a maintenance nightmare. Functions give you a single place to define behavior and reuse it.",
+  "withoutVariables": "Imagine a library where every book contains the full text of every other book it references — massive, redundant, impossible to maintain. Functions are the \"call number\" that lets you reference knowledge without repeating it.",
+  "whereUsed": "Functions are the building blocks of every program. From simple helpers to complex APIs, every significant software system is composed of functions calling functions.",
+  "realWorldAnalogy": "A lambda function is like a sticky note — a quick, disposable function for a single purpose. You write it, use it (often as an argument to another function), and move on.",
+  "simpleExplanation": "A function is a named block of reusable code. Define it with \"def\", give it a name, add parameters (optional), write the body, and return a result. Call it by its name with arguments.",
+  "syntaxExplanation": "def function_name(param1, param2):\n    \"\"\"Docstring explaining purpose\"\"\"\n    result = do_something(param1, param2)\n    return result\n\n# Call it\noutput = function_name(arg1, arg2)",
+  "examples": [
+    {
+      "title": "Lambda Function",
+      "code": "# Lambda: a one-line anonymous function\nsquare = lambda x: x ** 2\nprint(square(5))  # 25\n\n# Used directly in higher-order functions\nnumbers = [1, 2, 3, 4]\ndoubled = list(map(lambda x: x * 2, numbers))\nprint(doubled)  # [2, 4, 6, 8]",
+      "explanation": "A lambda/arrow function is a concise, anonymous function defined in a single expression. It is most useful as a callback or when passed to higher-order functions like map/filter.",
+      "language": "python"
+    }
+  ],
+  "visualDiagram": "```mermaid\nflowchart LR\n    A[Call Function] --> B[Pass Arguments]\n    B --> C[Execute Body]\n    C --> D[Return Result]\n    D --> E[Caller Resumes]\n```",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "action": "Define the function",
+      "explanation": "Use def/function keyword, name it, list parameters in parentheses."
+    },
+    {
+      "step": 2,
+      "action": "Write the body",
+      "explanation": "Indented block of code that performs the function's task."
+    },
+    {
+      "step": 3,
+      "action": "Return a value",
+      "explanation": "Implicit return of the expression."
+    },
+    {
+      "step": 4,
+      "action": "Call the function",
+      "explanation": "Use the function name followed by parentheses with arguments."
+    },
+    {
+      "step": 5,
+      "action": "Use the result",
+      "explanation": "Capture the return value in a variable or use it directly."
+    }
+  ],
+  "memoryDiagram": {
+    "stack": "[Stack]\n  Local variables and call context",
+    "heap": "[Heap]\n  Dynamic data structures"
+  },
+  "namingRules": [
+    "Use snake_case for variables and functions",
+    "Use PascalCase for classes",
+    "Use UPPER_SNAKE_CASE for constants",
+    "Use lowercase for module names"
+  ],
+  "commonMistakes": [
+    "Forgetting to return a value (returns None/undefined)",
+    "Modifying global variables inside functions (side effects)",
+    "Using mutable default arguments in Python",
+    "Overcomplicating — a function should do one thing"
+  ]
+}

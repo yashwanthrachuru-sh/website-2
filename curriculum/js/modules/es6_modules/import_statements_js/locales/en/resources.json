@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "JavaScript Official Documentation",
+      "url": "https://docs.example.com/javascript/import statements js",
+      "type": "documentation",
+      "description": "Official reference for Import Statements JS in JavaScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "JavaScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Import Statements JS in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "JavaScript Community Forum",
+      "url": "https://community.example.com/javascript",
+      "description": "Discuss Import Statements JS with other developers"
+    }
+  ]
+}

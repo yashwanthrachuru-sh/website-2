@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Malloc Allocations — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Malloc Allocations for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Malloc Allocations Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Malloc Allocations patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

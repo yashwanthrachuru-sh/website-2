@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Android Developer Official Documentation",
+      "url": "https://docs.example.com/android developer/android developer troubleshooting part 6c",
+      "type": "documentation",
+      "description": "Official reference for Android Developer Troubleshooting Part 6C in Android Developer"
+    }
+  ],
+  "books": [
+    {
+      "title": "Android Developer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Android Developer Troubleshooting Part 6C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Android Developer Community Forum",
+      "url": "https://community.example.com/android developer",
+      "description": "Discuss Android Developer Troubleshooting Part 6C with other developers"
+    }
+  ]
+}

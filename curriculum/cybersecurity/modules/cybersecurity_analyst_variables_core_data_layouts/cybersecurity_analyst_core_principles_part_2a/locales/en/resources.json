@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Cybersecurity Analyst Official Documentation",
+      "url": "https://docs.example.com/cybersecurity analyst/cybersecurity analyst core principles part 2a",
+      "type": "documentation",
+      "description": "Official reference for Cybersecurity Analyst Core Principles Part 2A in Cybersecurity Analyst"
+    }
+  ],
+  "books": [
+    {
+      "title": "Cybersecurity Analyst: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Cybersecurity Analyst Core Principles Part 2A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Cybersecurity Analyst Community Forum",
+      "url": "https://community.example.com/cybersecurity analyst",
+      "description": "Discuss Cybersecurity Analyst Core Principles Part 2A with other developers"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Python Official Documentation",
+      "url": "https://docs.example.com/python/raising exceptions",
+      "type": "documentation",
+      "description": "Official reference for Raising Exceptions in Python"
+    }
+  ],
+  "books": [
+    {
+      "title": "Python: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Raising Exceptions in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Python Community Forum",
+      "url": "https://community.example.com/python",
+      "description": "Discuss Raising Exceptions with other developers"
+    }
+  ]
+}

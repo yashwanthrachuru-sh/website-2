@@ -1,0 +1,45 @@
+{
+  "easy": {
+    "title": "Temperature Converter",
+    "description": "Write a function that converts Celsius to Fahrenheit.",
+    "starterCode": "function celsiusToFahrenheit(c) {\n  \n}\n\nconsole.log(celsiusToFahrenheit(0));\nconsole.log(celsiusToFahrenheit(100));",
+    "solution": "function celsiusToFahrenheit(c) {\n  return (c * 9/5) + 32;\n}",
+    "hints": [
+      "Formula: multiply by 9/5, add 32",
+      "Test with freezing (0°C = 32°F) and boiling (100°C = 212°F)"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "String Utilities",
+    "description": "Write functions: reverse a string, check palindrome, count vowels.",
+    "starterCode": "function reverse(s) {}\nfunction isPalindrome(s) {}\nfunction countVowels(s) {}\n\nconsole.log(reverse(\"hello\"));\nconsole.log(isPalindrome(\"racecar\"));\nconsole.log(countVowels(\"hello\"));",
+    "solution": "const reverse = s => s.split('').reverse().join('');\nconst isPalindrome = s => s === s.split('').reverse().join('');\nconst countVowels = s => (s.match(/[aeiou]/gi) || []).length;",
+    "hints": [
+      "String slicing/array methods can help",
+      "A palindrome reads the same forward and backward"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "Function Pipeline",
+    "description": "Create a compose/pipeline function that chains multiple functions together, passing each result to the next.",
+    "starterCode": "function compose(...funcs) {\n  \n}\n\nconst double = x => x * 2;\nconst addOne = x => x + 1;\n\nconst pipeline = compose(double, addOne);\nconsole.log(pipeline(5));  // 12",
+    "solution": "function compose(...funcs) {\n  return arg => funcs.reduceRight((result, fn) => fn(result), arg);\n}",
+    "hints": [
+      "Functions execute from right to left in compose",
+      "Each function receives the previous result"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the Function",
+    "description": "The following java code has bugs. Find and fix them.",
+    "buggyCode": "function add(x, y) {\n  const sum = x + y;\n}\n\nfunction main() {\n  const result = add(3, 4);\n  console.log(result * 2);\n}",
+    "fixedCode": "function add(x, y) {\n  return x + y;\n}\n\nfunction main() {\n  const result = add(3, 4);\n  console.log(result * 2);  // 14\n}",
+    "bugs": [
+      "Missing return statement — function returns None/undefined",
+      "Arithmetic on None/undefined causes NaN/TypeError"
+    ]
+  }
+}

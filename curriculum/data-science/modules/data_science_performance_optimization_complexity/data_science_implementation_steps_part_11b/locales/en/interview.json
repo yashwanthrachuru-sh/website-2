@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Explain Data Science Implementation Steps Part 11B to a junior developer.",
+      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
+      "followUp": "What mistakes do developers make with this?"
+    },
+    {
+      "question": "Performance implications of data science implementation steps part 11b?",
+      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
+      "followUp": "How would you benchmark it?"
+    },
+    {
+      "question": "Real-world scenario for data science implementation steps part 11b?",
+      "answer": "Use Data Science Implementation Steps Part 11B when you encounter the programming problem it addresses.",
+      "followUp": "What alternatives exist?"
+    }
+  ]
+}

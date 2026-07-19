@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "React Developer Implementation Steps Part 10B — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to React Developer Implementation Steps Part 10B for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced React Developer Implementation Steps Part 10B Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production React Developer Implementation Steps Part 10B patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

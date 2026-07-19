@@ -175,10 +175,10 @@ window.initPageShell = function (activeNavId) {
             // Navigate properly based on item type
             if (item.type === 'roadmap') {
               window.location.href = `roadmaps.html?id=${item.id}`;
-            } else if (item.type === 'module') {
-              window.location.href = `roadmaps.html`; // goes to roadmaps list/learn
+            } else             if (item.type === 'module') {
+              window.location.href = `roadmap-learn.html?rm=${item.roadmap_id || item.rm || ''}`;
             } else if (item.type === 'lesson') {
-              window.location.href = `roadmaps.html`; // goes to roadmaps
+              window.location.href = `roadmap-learn.html?rm=${item.roadmap_id || item.rm || ''}&l=${item.id}`;
             } else {
               window.location.href = item.link || 'user.html';
             }

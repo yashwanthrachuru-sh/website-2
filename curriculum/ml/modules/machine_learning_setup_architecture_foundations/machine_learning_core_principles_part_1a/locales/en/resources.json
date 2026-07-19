@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Machine Learning Official Documentation",
+      "url": "https://docs.example.com/machine learning/machine learning core principles part 1a",
+      "type": "documentation",
+      "description": "Official reference for Machine Learning Core Principles Part 1A in Machine Learning"
+    }
+  ],
+  "books": [
+    {
+      "title": "Machine Learning: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Machine Learning Core Principles Part 1A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Machine Learning Community Forum",
+      "url": "https://community.example.com/machine learning",
+      "description": "Discuss Machine Learning Core Principles Part 1A with other developers"
+    }
+  ]
+}

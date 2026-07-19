@@ -1,0 +1,46 @@
+{
+  "easy": {
+    "title": "Hello, Environment",
+    "description": "Write a typescript script that prints your name, the date, and the typescript version.",
+    "starterCode": "const name = \"Your Name\";\nconst today = new Date();\nconst version = process.version;\nconsole.log(`Name: ${name}`);\nconsole.log(`Date: ${today}`);\nconsole.log(`Version: ${version}`);",
+    "solution": "const name = \"Your Name\";\nconst today = new Date();\nconst v = process.version;\nconsole.log(`Name: ${name}`);\nconsole.log(`Date: ${today}`);\nconsole.log(`Version: ${v}`);",
+    "hints": [
+      "Look up how to get the current date",
+      "Find the module that gives version info"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "Environment Inspector",
+    "description": "List all environment variables, the working directory, and the typescript executable path.",
+    "starterCode": "for (const [key, value] of Object.entries(process.env)) {\n  console.log(`${key}=${value}`);\n}\nconsole.log(`\\nCWD: ${process.cwd()}`);\nconsole.log(`EXE: ${process.execPath}`);",
+    "solution": "for (const [k, v] of Object.entries(process.env))\n  console.log(`${k}=${v}`);\nconsole.log(`\\nCWD: ${process.cwd()}`);\nconsole.log(`EXE: ${process.execPath}`);",
+    "hints": [
+      "Environment variables are stored in a dictionary-like object",
+      "The current directory may differ from the script location"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "Mini REPL",
+    "description": "Build a minimal interactive REPL with error handling.",
+    "starterCode": "function repl() {\n  const rl = require('readline').createInterface({input: process.stdin, output: process.stdout});\n  const prompt = () => rl.question('>>> ', input => {\n    try { console.log(eval(input)); } catch(e) { console.log('Error:', e.message); }\n    prompt();\n  });\n  prompt();\n}",
+    "solution": "function repl() {\n  const rl = require('readline').createInterface({input: process.stdin, output: process.stdout});\n  const prompt = () => rl.question('>>> ', i => {\n    if (i==='exit'||i==='quit') return rl.close();\n    try { const r = eval(i); if (r !== undefined) console.log(r); } catch(e) { console.log('Error:', e.message); }\n    prompt();\n  });\n  prompt();\n}",
+    "hints": [
+      "Use eval() to execute code strings",
+      "Handle KeyboardInterrupt gracefully",
+      "The readline module helps create interactive programs"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the Typescript Setup",
+    "description": "The following typescript code has setup-related bugs. Find and fix them.",
+    "buggyCode": "console.log(process.cwd);\nconsole.log(\"Version: \" + process.version());\nconst now = Date.now;\nconsole.log(\"Time: \" + now);",
+    "fixedCode": "console.log(process.cwd());\nconsole.log(\"Version: \" + process.version);\nconst now = Date.now();\nconsole.log(\"Time: \" + now);",
+    "bugs": [
+      "Missing parentheses on function calls",
+      "Wrong concatenation of non-string types"
+    ]
+  }
+}

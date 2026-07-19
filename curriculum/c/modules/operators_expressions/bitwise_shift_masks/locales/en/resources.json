@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "C Programming Official Documentation",
+      "url": "https://docs.example.com/c programming/bitwise shift masks",
+      "type": "documentation",
+      "description": "Official reference for Bitwise Shift Masks in C Programming"
+    }
+  ],
+  "books": [
+    {
+      "title": "C Programming: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Bitwise Shift Masks in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "C Programming Community Forum",
+      "url": "https://community.example.com/c programming",
+      "description": "Discuss Bitwise Shift Masks with other developers"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Java Official Documentation",
+      "url": "https://docs.example.com/java/threadpool executor",
+      "type": "documentation",
+      "description": "Official reference for ThreadPool Executor in Java"
+    }
+  ],
+  "books": [
+    {
+      "title": "Java: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers ThreadPool Executor in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Java Community Forum",
+      "url": "https://community.example.com/java",
+      "description": "Discuss ThreadPool Executor with other developers"
+    }
+  ]
+}

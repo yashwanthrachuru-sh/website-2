@@ -1,28 +1,18 @@
 {
-  "videos": [
+  "recommendations": [
     {
-      "title": "Python Variables for Beginners — Corey Schafer",
-      "url": "https://www.youtube.com/watch?v=cQT33yu9pY8",
-      "channel": "Corey Schafer",
-      "duration": "18:48",
-      "level": "beginner",
-      "description": "Clear, structured walkthrough of Python variables, types, and naming conventions — one of the most-watched Python tutorials."
+      "title": "Variables — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Variables for beginners",
+      "difficulty": "beginner"
     },
     {
-      "title": "How Python Variables Work (Memory Model Explained)",
-      "url": "https://www.youtube.com/watch?v=_AEJHKGk9ns",
-      "channel": "mCoding",
-      "duration": "12:31",
-      "level": "intermediate",
-      "description": "Explains the CPython name → object model, reference counting, id(), and the difference between mutable and immutable objects."
-    },
-    {
-      "title": "Python Scoping & Closures (LEGB Rule)",
-      "url": "https://www.youtube.com/watch?v=MX68Gh_G4Zw",
-      "channel": "Tech With Tim",
-      "duration": "22:04",
-      "level": "intermediate",
-      "description": "Deep dive into Python scoping with practical examples of local, enclosing, global, and built-in namespaces."
+      "title": "Advanced Variables Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Variables patterns",
+      "difficulty": "advanced"
     }
   ]
 }

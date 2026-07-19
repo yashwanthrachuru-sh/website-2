@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Void and Never — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Void and Never for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Void and Never Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Void and Never patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

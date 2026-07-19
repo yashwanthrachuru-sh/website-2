@@ -1,0 +1,44 @@
+{
+  "oneLineSummary": "REST Controllers is a fundamental programming concept every developer should understand.",
+  "summary": "This lesson covered what REST Controllers is, why it exists, how to use it, common mistakes, and best practices.",
+  "keyTakeaways": [
+    "REST Controllers solves a specific programming problem",
+    "Handle edge cases",
+    "Follow language idioms",
+    "Test thoroughly"
+  ],
+  "memoryTricks": [
+    "Think of rest controllers as a tool in your toolbox"
+  ],
+  "preInterviewChecklist": [
+    "Can you explain REST Controllers in one sentence?",
+    "Can you write a basic implementation?",
+    "Do you know the pitfalls?"
+  ],
+  "commonErrors": [
+    "Not understanding the problem",
+    "Overcomplicating",
+    "Ignoring edge cases",
+    "Skipping tests"
+  ],
+  "mindMap": {
+    "central": "REST Controllers",
+    "branches": [
+      "Definition",
+      "Usage",
+      "Advanced",
+      "Pitfalls",
+      "Best Practices"
+    ]
+  },
+  "nextTopics": [
+    "Advanced rest controllers",
+    "Testing rest controllers",
+    "Performance optimization"
+  ],
+  "estimatedLearningTime": {
+    "review": 10,
+    "practice": 25,
+    "master": 40
+  }
+}

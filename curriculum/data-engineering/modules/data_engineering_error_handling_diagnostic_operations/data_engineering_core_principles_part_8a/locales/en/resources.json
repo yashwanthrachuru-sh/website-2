@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Data Engineering Official Documentation",
+      "url": "https://docs.example.com/data engineering/data engineering core principles part 8a",
+      "type": "documentation",
+      "description": "Official reference for Data Engineering Core Principles Part 8A in Data Engineering"
+    }
+  ],
+  "books": [
+    {
+      "title": "Data Engineering: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Data Engineering Core Principles Part 8A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Data Engineering Community Forum",
+      "url": "https://community.example.com/data engineering",
+      "description": "Discuss Data Engineering Core Principles Part 8A with other developers"
+    }
+  ]
+}

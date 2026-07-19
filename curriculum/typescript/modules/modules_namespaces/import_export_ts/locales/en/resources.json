@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "TypeScript Official Documentation",
+      "url": "https://docs.example.com/typescript/import export ts",
+      "type": "documentation",
+      "description": "Official reference for Import Export TS in TypeScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "TypeScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Import Export TS in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "TypeScript Community Forum",
+      "url": "https://community.example.com/typescript",
+      "description": "Discuss Import Export TS with other developers"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Android Developer Official Documentation",
+      "url": "https://docs.example.com/android developer/android developer core principles part 3a",
+      "type": "documentation",
+      "description": "Official reference for Android Developer Core Principles Part 3A in Android Developer"
+    }
+  ],
+  "books": [
+    {
+      "title": "Android Developer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Android Developer Core Principles Part 3A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Android Developer Community Forum",
+      "url": "https://community.example.com/android developer",
+      "description": "Discuss Android Developer Core Principles Part 3A with other developers"
+    }
+  ]
+}

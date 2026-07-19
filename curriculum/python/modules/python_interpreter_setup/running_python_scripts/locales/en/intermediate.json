@@ -1,0 +1,43 @@
+{
+  "deeperExplanation": "This concept goes deeper when you consider how it interacts with other parts of your python program.",
+  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
+  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
+  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "examples": [
+    {
+      "title": "Your First Python Program",
+      "code": "print(\"Hello, World!\")\n\nname = input(\"Enter your name: \")\nprint(f\"Welcome, {name}!\")",
+      "explanation": "This program demonstrates output, input, and string interpolation. The interpreter executes each line sequentially.",
+      "language": "python"
+    }
+  ],
+  "bestPractices": [
+    "Validate inputs before processing",
+    "Handle edge cases explicitly",
+    "Write tests for both success and failure paths",
+    "Document expected behavior"
+  ],
+  "debuggingWalkthrough": {
+    "scenario": "A common bug occurs when edge cases are not handled properly.",
+    "steps": [
+      "Reproduce the issue",
+      "Check input values",
+      "Verify assumptions",
+      "Test boundary conditions"
+    ]
+  },
+  "edgeCases": [
+    "Empty input",
+    "Maximum values",
+    "Unexpected types",
+    "Resource exhaustion"
+  ],
+  "performanceNotes": {
+    "notes": "Performance depends on the specific implementation. Profile to identify bottlenecks.",
+    "bigO": {
+      "best": "O(1)",
+      "average": "O(n)",
+      "worst": "O(n^2)"
+    }
+  }
+}

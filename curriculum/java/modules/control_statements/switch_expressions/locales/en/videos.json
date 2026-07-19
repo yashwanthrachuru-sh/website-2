@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Switch Expressions — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Switch Expressions for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Switch Expressions Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Switch Expressions patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

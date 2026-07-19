@@ -1,0 +1,26 @@
+{
+  "title": "Project: Function Library Toolkit",
+  "tagline": "Build a collection of reusable utility functions.",
+  "description": "Create a library of utility functions: array operations, string helpers, math utilities, and a compose function — all following best practices.",
+  "requirements": [
+    "Implement 10+ utility functions",
+    "Each function does one thing",
+    "Include docstrings/comments",
+    "Handle edge cases",
+    "Export as a module"
+  ],
+  "learningGoals": [
+    "Master function design",
+    "Practice pure functions",
+    "Build a reusable module"
+  ],
+  "starterCode": "// utils.js - Utility Function Library\n\nfunction clamp(value, low, high) {\n  // Clamp value between low and high\n}\n\nfunction chunk(arr, size) {\n  // Split array into chunks\n}\n\nfunction unique(arr) {\n  // Remove duplicates\n}\n\n// Add 7 more functions...",
+  "solution": "// Project Starter\n// Implement your solution here\n\nfunction main() {\n  \n}\n\nmain();",
+  "expectedOutput": "Your application produces the expected output.",
+  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "extensions": [
+    "Add TypeScript type annotations",
+    "Write unit tests",
+    "Publish as a package"
+  ]
+}

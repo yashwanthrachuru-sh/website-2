@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "TypeScript Official Documentation",
+      "url": "https://docs.example.com/typescript/partial and required",
+      "type": "documentation",
+      "description": "Official reference for Partial and Required in TypeScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "TypeScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Partial and Required in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "TypeScript Community Forum",
+      "url": "https://community.example.com/typescript",
+      "description": "Discuss Partial and Required with other developers"
+    }
+  ]
+}

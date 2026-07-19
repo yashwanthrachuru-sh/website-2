@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Artificial Intelligence Official Documentation",
+      "url": "https://docs.example.com/artificial intelligence/artificial intelligence core principles part 3a",
+      "type": "documentation",
+      "description": "Official reference for Artificial Intelligence Core Principles Part 3A in Artificial Intelligence"
+    }
+  ],
+  "books": [
+    {
+      "title": "Artificial Intelligence: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Artificial Intelligence Core Principles Part 3A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Artificial Intelligence Community Forum",
+      "url": "https://community.example.com/artificial intelligence",
+      "description": "Discuss Artificial Intelligence Core Principles Part 3A with other developers"
+    }
+  ]
+}

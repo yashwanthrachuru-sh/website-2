@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "AWS Cloud Architect Official Documentation",
+      "url": "https://docs.example.com/aws cloud architect/aws cloud architect core principles part 1a",
+      "type": "documentation",
+      "description": "Official reference for AWS Cloud Architect Core Principles Part 1A in AWS Cloud Architect"
+    }
+  ],
+  "books": [
+    {
+      "title": "AWS Cloud Architect: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers AWS Cloud Architect Core Principles Part 1A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "AWS Cloud Architect Community Forum",
+      "url": "https://community.example.com/aws cloud architect",
+      "description": "Discuss AWS Cloud Architect Core Principles Part 1A with other developers"
+    }
+  ]
+}

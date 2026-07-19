@@ -1,0 +1,52 @@
+{
+  "overview": "Expert loop usage involves vectorization, loop unrolling, parallel streams, and replacing loops with higher-order functions (map/filter/reduce).",
+  "industryContext": "In data processing, loops are the primary bottleneck. Companies use loop tiling (cache efficiency), unrolling (reducing branch overhead), and parallel streams (multi-core) for throughput.",
+  "examples": [
+    {
+      "title": "Functional Alternative",
+      "code": "// Instead of loop\nconst result = data.filter(x => x % 2 === 0).map(x => x * 2);",
+      "explanation": "Higher-order functions express intent more clearly than loops and are often optimized internally.",
+      "language": "javascript"
+    }
+  ],
+  "codeReviewChecklist": [
+    "Could this loop be replaced with map/filter?",
+    "Is iteration order independent? (parallelizable?)",
+    "Are there loop-carried dependencies?",
+    "Could a different data structure eliminate the loop?"
+  ],
+  "testingPatterns": {
+    "unitTests": "Test with empty, single, multi-element",
+    "integrationTests": "Verify with actual data sources",
+    "propertyBasedTests": "Test iteration-order independence",
+    "benchmarkTests": "Compare loop vs functional alternatives"
+  },
+  "refactoringGuide": {
+    "smell": "Complex loop with conditionals and state mutations",
+    "solution": "Extract body into pure function, use map/filter/reduce",
+    "steps": [
+      "Identify what the loop produces",
+      "Extract per-element operation into function",
+      "Replace for with comprehension/pipeline",
+      "Verify identical output"
+    ]
+  },
+  "securityConsiderations": [
+    "Validate all inputs",
+    "Avoid exposing internal state",
+    "Log without leaking sensitive data"
+  ],
+  "scalability": {
+    "considerations": "Large loops can be parallelized using multiprocessing or worker threads. Measure before optimizing.",
+    "recommendations": [
+      "Profile before optimizing loops",
+      "Chunked processing for large data",
+      "Parallel for CPU-bound independent iterations"
+    ]
+  },
+  "complexityAnalysis": {
+    "timeComplexity": "O(n) single, O(n*m) nested",
+    "spaceComplexity": "O(1) basic, O(n) accumulating",
+    "notes": "Nested levels multiply complexity"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Singly Linked List C — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Singly Linked List C for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Singly Linked List C Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Singly Linked List C patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

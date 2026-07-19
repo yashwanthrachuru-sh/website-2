@@ -179,6 +179,9 @@ window.LessonAdapter = (function () {
       videos    : arr(lesson._videos),
       resources : arr(lesson._resources),
 
+      // ── Stages ─────────────────────────────────────────────────
+      stages    : obj(lesson.stages),
+
       // ── Navigation ─────────────────────────────────────────────
       prevLesson : lesson._prevLesson || null,
       nextLesson : lesson._nextLesson || null,
@@ -289,6 +292,11 @@ window.LessonAdapter = (function () {
       revision    : { summary: str(sc.summary), keyTakeaways: [], memoryTricks: [], preInterviewChecklist: [], commonErrors: [] },
       videos      : arr(lesson._videos),
       resources   : arr(lesson._resources),
+
+      // ── Stages ─────────────────────────────────────────────────
+      stages      : obj(lesson.stages),
+
+      // ── Navigation ─────────────────────────────────────────────
       prevLesson  : lesson._prevLesson || null,
       nextLesson  : lesson._nextLesson || null,
       completed   : !!lesson._completed,
@@ -319,6 +327,7 @@ window.LessonAdapter = (function () {
     lesson._resources = arr(apiResponse.resources);
     lesson._quizzes   = arr(apiResponse.quizzes);
     lesson._exercises = arr(apiResponse.exercises);
+    lesson.stages     = apiResponse.stages || lesson.stages || {};
     lesson._prevLesson = apiResponse.prev_lesson || null;
     lesson._nextLesson = apiResponse.next_lesson || null;
     lesson._completed  = !!apiResponse.completed;

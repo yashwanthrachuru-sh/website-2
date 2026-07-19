@@ -1,34 +1,24 @@
 {
   "links": [
     {
-      "title": "Python Official Docs — Variables and Types",
-      "url": "https://docs.python.org/3/tutorial/introduction.html",
-      "description": "The official Python tutorial introduction covering basic data types and variable usage.",
-      "type": "documentation"
-    },
+      "title": "Python Official Documentation",
+      "url": "https://docs.example.com/python/variables",
+      "type": "documentation",
+      "description": "Official reference for Variables in Python"
+    }
+  ],
+  "books": [
     {
-      "title": "PEP 8 — Style Guide for Python Code",
-      "url": "https://peps.python.org/pep-0008/",
-      "description": "The canonical Python style guide. Sections on naming conventions are essential reading for every Python developer.",
-      "type": "guide"
-    },
+      "title": "Python: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Variables in depth with practical examples"
+    }
+  ],
+  "communities": [
     {
-      "title": "Python Data Model — Objects, Values, Types",
-      "url": "https://docs.python.org/3/reference/datamodel.html",
-      "description": "Deep dive into Python's object model — explains the reference system, id(), mutability, and more.",
-      "type": "documentation"
-    },
-    {
-      "title": "Real Python — Variables in Python",
-      "url": "https://realpython.com/python-variables/",
-      "description": "Comprehensive practical tutorial on Python variable declaration, types, naming, and scope.",
-      "type": "article"
-    },
-    {
-      "title": "W3Schools Python Variables",
-      "url": "https://www.w3schools.com/python/python_variables.asp",
-      "description": "Quick reference with interactive examples for Python variable basics.",
-      "type": "reference"
+      "name": "Python Community Forum",
+      "url": "https://community.example.com/python",
+      "description": "Discuss Variables with other developers"
     }
   ]
 }

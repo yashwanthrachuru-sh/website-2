@@ -1,0 +1,46 @@
+{
+  "easy": {
+    "title": "Hello, Environment",
+    "description": "Write a python script that prints your name, the date, and the python version.",
+    "starterCode": "import sys\nfrom datetime import date\n\nname = \"Your Name\"\ntoday = date.today()\nversion = sys.version\nprint(f\"Name: {name}\")\nprint(f\"Date: {today}\")\nprint(f\"Version: {version}\")",
+    "solution": "import sys\nfrom datetime import date\nname = \"Your Name\"\ntoday = date.today()\nv = sys.version\nprint(f\"Name: {name}\")\nprint(f\"Date: {today}\")\nprint(f\"Version: {v}\")",
+    "hints": [
+      "Look up how to get the current date",
+      "Find the module that gives version info"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "Environment Inspector",
+    "description": "List all environment variables, the working directory, and the python executable path.",
+    "starterCode": "import os\nimport sys\n\nfor key, value in os.environ.items():\n    print(f\"{key}={value}\")\nprint(f\"\\nCWD: {os.getcwd()}\")\nprint(f\"EXE: {sys.executable}\")",
+    "solution": "import os, sys\nfor k, v in os.environ.items():\n    print(f\"{k}={v}\")\nprint(f\"\\nCWD: {os.getcwd()}\")\nprint(f\"EXE: {sys.executable}\")",
+    "hints": [
+      "Environment variables are stored in a dictionary-like object",
+      "The current directory may differ from the script location"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "Mini REPL",
+    "description": "Build a minimal interactive REPL with error handling.",
+    "starterCode": "def repl():\n    while True:\n        try:\n            code = input(\">>> \")\n            result = eval(code)\n            if result: print(result)\n        except Exception as e:\n            print(f\"Error: {e}\")",
+    "solution": "def repl():\n    while True:\n        try:\n            code = input(\">>> \")\n            if code in ('exit','quit'): break\n            result = eval(code)\n            if result is not None: print(result)\n        except KeyboardInterrupt: break\n        except Exception as e: print(f\"Error: {e}\")",
+    "hints": [
+      "Use eval() to execute code strings",
+      "Handle KeyboardInterrupt gracefully",
+      "The readline module helps create interactive programs"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the Python Setup",
+    "description": "The following python code has setup-related bugs. Find and fix them.",
+    "buggyCode": "import os, sys, datetime\nprint(os.getcwd)\nprint(\"Version: \" + sys.version_info)\ncurrent_time = datetime.datetime.now\nprint(\"Time: \" + current_time)",
+    "fixedCode": "import os, sys, datetime\nprint(os.getcwd())\nprint(f\"Version: {sys.version_info.major}.{sys.version_info.minor}\")\nnow = datetime.datetime.now()\nprint(f\"Time: {now}\")",
+    "bugs": [
+      "Missing parentheses on function calls",
+      "Wrong concatenation of non-string types"
+    ]
+  }
+}

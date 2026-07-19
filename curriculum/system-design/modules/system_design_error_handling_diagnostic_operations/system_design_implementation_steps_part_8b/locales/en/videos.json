@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "System Design Implementation Steps Part 8B — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to System Design Implementation Steps Part 8B for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced System Design Implementation Steps Part 8B Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production System Design Implementation Steps Part 8B patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

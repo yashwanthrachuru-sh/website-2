@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "C Programming Official Documentation",
+      "url": "https://docs.example.com/c programming/struct attributes c",
+      "type": "documentation",
+      "description": "Official reference for Struct Attributes C in C Programming"
+    }
+  ],
+  "books": [
+    {
+      "title": "C Programming: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Struct Attributes C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "C Programming Community Forum",
+      "url": "https://community.example.com/c programming",
+      "description": "Discuss Struct Attributes C with other developers"
+    }
+  ]
+}

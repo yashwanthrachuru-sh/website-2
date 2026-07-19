@@ -1,0 +1,48 @@
+{
+  "easy": {
+    "title": "Sum to N",
+    "description": "Write a loop that sums all numbers from 1 to N.",
+    "starterCode": "function sumTo(n) {\n  let total = 0;\n  // Your loop\n  return total;\n}\n\nconsole.log(sumTo(10));",
+    "solution": "function sumTo(n) {\n  let total = 0;\n  for (let i = 1; i <= n; i++) total += i;\n  return total;\n}",
+    "hints": [
+      "Start total at 0",
+      "Add each number one at a time"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "Find Primes",
+    "description": "Find all prime numbers up to N using nested loops.",
+    "starterCode": "function findPrimes(n) {\n  const primes = [];\n  // Your nested loop\n  return primes;\n}\n\nconsole.log(findPrimes(20));",
+    "solution": "function findPrimes(n) {\n  const primes = [];\n  for (let num = 2; num <= n; num++) {\n    let isPrime = true;\n    for (let d = 2; d <= Math.sqrt(num); d++) {\n      if (num % d === 0) { isPrime = false; break; }\n    }\n    if (isPrime) primes.push(num);\n  }\n  return primes;\n}",
+    "hints": [
+      "Outer loop checks each number",
+      "Inner loop tests divisors up to sqrt(n)",
+      "Use break when you find a divisor"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "Flatten Nested Array",
+    "description": "Write a function that flattens a nested array (any depth) using loops and recursion.",
+    "starterCode": "function flatten(arr) {\n  \n}\n\nconsole.log(flatten([1, [2, [3, 4]], 5]));",
+    "solution": "function flatten(arr) {\n  const result = [];\n  for (const item of arr) {\n    if (Array.isArray(item)) result.push(...flatten(item));\n    else result.push(item);\n  }\n  return result;\n}",
+    "hints": [
+      "Check if each element is a list",
+      "Recursively flatten sublists",
+      "Extend result with flattened sublist"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the Loop",
+    "description": "The following javascript code has bugs. Find and fix them.",
+    "buggyCode": "let total = 0;\nfor (let i = 0; i <= 10; i++); {\n  if (i % 2 = 0) total =+ i;\n}\nconsole.log(total);",
+    "fixedCode": "let total = 0;\nfor (let i = 0; i <= 10; i++) {\n  if (i % 2 === 0) total += i;\n}\nconsole.log(total);",
+    "bugs": [
+      "Assignment = instead of comparison ==",
+      "=+ instead of +=",
+      "Semicolon after for() creates empty loop body"
+    ]
+  }
+}

@@ -26,8 +26,19 @@ async function loadProfile() {
     if (avEl) avEl.textContent = initials;
     const nameEl = document.getElementById('profileName');
     if (nameEl) nameEl.textContent = name;
+    
+    function getRankTitle(xpVal) {
+      if (xpVal < 1000) return '🌱 Beginner';
+      if (xpVal < 2500) return '🚀 Explorer';
+      if (xpVal < 5000) return '⚡ Challenger';
+      if (xpVal < 7500) return '💎 Achiever';
+      if (xpVal < 10000) return '🏆 Elite';
+      if (xpVal < 15000) return '👑 Master';
+      return '🔥 Grandmaster';
+    }
+
     const branchEl = document.getElementById('profileBranch');
-    if (branchEl) branchEl.textContent = (u.branch || 'SDE') + ' Track';
+    if (branchEl) branchEl.textContent = (u.branch || 'SDE') + ' Track • ' + getRankTitle(xp);
     const roleEl = document.getElementById('profileRole');
     if (roleEl) roleEl.textContent = u.role || 'user';
 

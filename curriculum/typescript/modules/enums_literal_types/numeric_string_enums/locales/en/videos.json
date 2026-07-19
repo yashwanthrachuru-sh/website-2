@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Numeric String Enums — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Numeric String Enums for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Numeric String Enums Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Numeric String Enums patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

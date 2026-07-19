@@ -1,0 +1,46 @@
+{
+  "easy": {
+    "title": "AI Engineer Core Principles Part 12A — Basic Practice",
+    "description": "Write a basic ai engineer core principles part 12a implementation.",
+    "starterCode": "def basic_ai_engineer_core_principles_part___a():\n    pass",
+    "solution": "def basic():\n    return \"done\"",
+    "hints": [
+      "Start simple",
+      "Test with sample inputs"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "AI Engineer Core Principles Part 12A — Intermediate",
+    "description": "Extend your implementation with error handling.",
+    "starterCode": "def improved():\n    pass",
+    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "hints": [
+      "Consider edge cases",
+      "Add proper error handling"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "AI Engineer Core Principles Part 12A — Expert Challenge",
+    "description": "Build a production-quality implementation with optimizations.",
+    "starterCode": "def solution():\n    # Your code here\n    pass",
+    "solution": "def solution():\n    # Your code here\n    pass",
+    "hints": [
+      "Think about performance",
+      "Consider concurrent access",
+      "Profile your solution"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the AI Engineer Core Principles Part 12A",
+    "description": "The following python code has bugs. Find and fix them.",
+    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
+    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "bugs": [
+      "Division by zero",
+      "No error handling"
+    ]
+  }
+}

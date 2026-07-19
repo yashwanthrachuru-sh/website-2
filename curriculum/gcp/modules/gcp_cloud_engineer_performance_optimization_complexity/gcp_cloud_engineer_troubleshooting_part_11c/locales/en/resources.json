@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "GCP Cloud Engineer Official Documentation",
+      "url": "https://docs.example.com/gcp cloud engineer/gcp cloud engineer troubleshooting part 11c",
+      "type": "documentation",
+      "description": "Official reference for GCP Cloud Engineer Troubleshooting Part 11C in GCP Cloud Engineer"
+    }
+  ],
+  "books": [
+    {
+      "title": "GCP Cloud Engineer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers GCP Cloud Engineer Troubleshooting Part 11C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "GCP Cloud Engineer Community Forum",
+      "url": "https://community.example.com/gcp cloud engineer",
+      "description": "Discuss GCP Cloud Engineer Troubleshooting Part 11C with other developers"
+    }
+  ]
+}

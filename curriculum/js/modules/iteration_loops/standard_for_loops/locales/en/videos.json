@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Standard For Loops — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Standard For Loops for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Standard For Loops Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Standard For Loops patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

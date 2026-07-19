@@ -1,0 +1,55 @@
+{
+  "curiosityQuestion": "Have you ever wondered how programmers approach recursive call frames effectively?",
+  "whyExists": "Recursive Call Frames is a fundamental concept that exists because programmers needed a standardized way to handle a common programming task.",
+  "problemItSolves": "Before Recursive Call Frames became standard, developers wrote custom solutions for every project. Recursive Call Frames provides a proven approach that works across projects.",
+  "withoutVariables": "Without Recursive Call Frames, developers would need to invent custom solutions repeatedly, leading to inconsistent and error-prone code.",
+  "whereUsed": "Recursive Call Frames is used throughout C Programming — from simple scripts to enterprise applications.",
+  "realWorldAnalogy": "Learning Recursive Call Frames is like learning a new tool. At first it seems unfamiliar, but with practice it becomes an essential part of your toolkit.",
+  "simpleExplanation": "Recursive Call Frames is a technique in C Programming that helps you accomplish a specific programming task. It follows a clear pattern with setup, operation, and result.",
+  "syntaxExplanation": "// Recursive Call Frames pattern\nconst result = performOperation(inputData);\nconsole.log(result);",
+  "examples": [
+    {
+      "title": "Getting Started with Recursive Call Frames",
+      "code": "console.log(\"Learning Recursive Call Frames\");",
+      "explanation": "Basic introduction to Recursive Call Frames.",
+      "language": "c"
+    }
+  ],
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[factorial(n)] --> B{n <= 1?}\n    B -->|Yes| C[Return 1]\n    B -->|No| D[Return n * factorial(n-1)]\n    D --> A\n```",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "action": "Understand the problem",
+      "explanation": "Identify what needs to be accomplished."
+    },
+    {
+      "step": 2,
+      "action": "Choose the approach",
+      "explanation": "Recursive Call Frames provides the pattern to follow."
+    },
+    {
+      "step": 3,
+      "action": "Implement",
+      "explanation": "Write code following the pattern."
+    },
+    {
+      "step": 4,
+      "action": "Test",
+      "explanation": "Verify with normal cases and edge cases."
+    }
+  ],
+  "memoryDiagram": {
+    "stack": "[Stack]\n  Local variables and call context",
+    "heap": "[Heap]\n  Dynamic data structures"
+  },
+  "namingRules": [
+    "Use snake_case for functions and variables",
+    "Use UPPER_SNAKE_CASE for macros",
+    "Use PascalCase for typedefs"
+  ],
+  "commonMistakes": [
+    "Jumping into implementation without understanding the concept",
+    "Not handling edge cases",
+    "Overcomplicating the solution"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "oneLineSummary": "Spring Data JPA is a fundamental programming concept every developer should understand.",
+  "summary": "This lesson covered what Spring Data JPA is, why it exists, how to use it, common mistakes, and best practices.",
+  "keyTakeaways": [
+    "Spring Data JPA solves a specific programming problem",
+    "Handle edge cases",
+    "Follow language idioms",
+    "Test thoroughly"
+  ],
+  "memoryTricks": [
+    "Think of spring data jpa as a tool in your toolbox"
+  ],
+  "preInterviewChecklist": [
+    "Can you explain Spring Data JPA in one sentence?",
+    "Can you write a basic implementation?",
+    "Do you know the pitfalls?"
+  ],
+  "commonErrors": [
+    "Not understanding the problem",
+    "Overcomplicating",
+    "Ignoring edge cases",
+    "Skipping tests"
+  ],
+  "mindMap": {
+    "central": "Spring Data JPA",
+    "branches": [
+      "Definition",
+      "Usage",
+      "Advanced",
+      "Pitfalls",
+      "Best Practices"
+    ]
+  },
+  "nextTopics": [
+    "Advanced spring data jpa",
+    "Testing spring data jpa",
+    "Performance optimization"
+  ],
+  "estimatedLearningTime": {
+    "review": 10,
+    "practice": 25,
+    "master": 40
+  }
+}

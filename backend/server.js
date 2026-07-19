@@ -71,6 +71,7 @@ app.use(helmet({
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc:  ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "cdnjs.cloudflare.com"],
+      scriptSrcAttr: ["'unsafe-inline'"],
       styleSrc:   ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
       fontSrc:    ["'self'", "fonts.gstatic.com", "fonts.googleapis.com"],
       imgSrc:     ["'self'", "data:", "blob:", "images.unsplash.com", "img.youtube.com", "*.vercel.app"],
@@ -207,6 +208,147 @@ app.use('/api/coach',        coachRoutes);
 app.use('/api/challenges',   challengeRoutes);
 app.use('/api/resume',       resumeRoutes);
 app.use('/api/github',       githubRoutes);
+
+// ============================================================
+// INTERVIEW PREP ROUTES
+// ============================================================
+
+// GET /api/interview/questions — Return 10 real DSA interview questions
+app.get('/api/interview/questions', (req, res) => {
+  const questions = [
+    {
+      id: 'q1',
+      title: 'Two Sum',
+      difficulty: 'Easy',
+      category: 'Arrays',
+      question: 'Given an array of integers nums and an integer target, return indices of the two numbers that add up to target. You may assume that each input has exactly one solution.',
+      sampleAnswer: 'Use a HashMap to store each element and its index as you iterate. For each element, check if (target - element) exists in the map. If yes, return the current index and the stored index. Time: O(n), Space: O(n).'
+    },
+    {
+      id: 'q2',
+      title: 'Reverse a Linked List',
+      difficulty: 'Easy',
+      category: 'Linked Lists',
+      question: 'Given the head of a singly linked list, reverse the list and return its head.',
+      sampleAnswer: 'Use three pointers: prev (initially null), curr (head), and next. Iterate: save curr.next in next, set curr.next = prev, move prev = curr, move curr = next. Continue until curr is null. Return prev as the new head. Time: O(n), Space: O(1).'
+    },
+    {
+      id: 'q3',
+      title: 'Valid Parentheses',
+      difficulty: 'Easy',
+      category: 'Stacks',
+      question: 'Given a string s containing just the characters "(", ")", "{", "}", "[", "]", determine if the input string is valid. A string is valid if brackets close in the correct order.',
+      sampleAnswer: 'Use a stack. Iterate through characters: if opening bracket ( (, {, [ ), push onto stack. If closing bracket, check if stack top matches (pop if matches, return false otherwise). After iteration, return true if stack is empty. Time: O(n), Space: O(n).'
+    },
+    {
+      id: 'q4',
+      title: 'Maximum Subarray (Kadane\'s Algorithm)',
+      difficulty: 'Medium',
+      category: 'Arrays',
+      question: 'Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.',
+      sampleAnswer: 'Use Kadane\'s Algorithm: maintain maxEndingHere and maxSoFar. For each element, set maxEndingHere = max(nums[i], maxEndingHere + nums[i]), then maxSoFar = max(maxSoFar, maxEndingHere). Time: O(n), Space: O(1).'
+    },
+    {
+      id: 'q5',
+      title: 'Merge Two Sorted Lists',
+      difficulty: 'Easy',
+      category: 'Linked Lists',
+      question: 'You are given the heads of two sorted linked lists list1 and list2. Merge them into one sorted linked list and return its head.',
+      sampleAnswer: 'Use a dummy node approach. Compare nodes from both lists and attach the smaller one. Continue until one list is exhausted, then attach the remainder. Return dummy.next. Time: O(m+n), Space: O(1).'
+    },
+    {
+      id: 'q6',
+      title: 'Binary Tree Level Order Traversal',
+      difficulty: 'Medium',
+      category: 'Trees',
+      question: 'Given the root of a binary tree, return the level order traversal of its nodes\' values (left to right, level by level).',
+      sampleAnswer: 'Use a queue. Start with root in queue. While queue is not empty, process all nodes at current level (size = queue.length), add their values to current level list, enqueue left and right children. Add level list to result. Time: O(n), Space: O(n).'
+    },
+    {
+      id: 'q7',
+      title: 'LRU Cache',
+      difficulty: 'Hard',
+      category: 'Design',
+      question: 'Design a data structure that follows the constraints of a Least Recently Used (LRU) cache. Implement get() and put() in O(1) average time.',
+      sampleAnswer: 'Use a HashMap (for O(1) lookup) combined with a doubly linked list (for O(1) removal/insertion). Most Recently Used items go to head, Least Recently Used are at tail. On get: move accessed node to head. On put: if at capacity, remove tail node before inserting new node at head.'
+    },
+    {
+      id: 'q8',
+      title: 'Find All Duplicates in Array',
+      difficulty: 'Medium',
+      category: 'Arrays',
+      question: 'Given an integer array of length n where all values are in range [1, n], some elements appear twice. Find all elements that appear twice without using extra space.',
+      sampleAnswer: 'Use the array itself as a hash map. For each element, use its value as an index, negate the value at that index. If the value at that index is already negative, the element is a duplicate. Time: O(n), Space: O(1) besides output array.'
+    },
+    {
+      id: 'q9',
+      title: 'Longest Substring Without Repeating Characters',
+      difficulty: 'Medium',
+      category: 'Strings',
+      question: 'Given a string s, find the length of the longest substring without repeating characters.',
+      sampleAnswer: 'Use sliding window with two pointers and a HashMap (or Set). Expand right pointer, adding characters. If duplicate found, move left pointer to skip past the previous occurrence. Track max window length. Time: O(n), Space: O(min(m, n)) where m is charset size.'
+    },
+    {
+      id: 'q10',
+      title: 'Serialize and Deserialize Binary Tree',
+      difficulty: 'Hard',
+      category: 'Trees',
+      question: 'Design an algorithm to serialize a binary tree into a string and deserialize that string back into the tree.',
+      sampleAnswer: 'Use preorder traversal with a sentinel (e.g., "null") for null nodes. Serialize: recursively build string using "," as delimiter. Deserialize: split string into array, use a pointer/index to build tree recursively, consuming values in preorder order. Time: O(n) for both operations.'
+    }
+  ];
+  res.json({ success: true, questions });
+});
+
+// POST /api/interview/feedback — Mock AI feedback on user's answer
+app.post('/api/interview/feedback', (req, res) => {
+  const { question, userAnswer } = req.body;
+  if (!question || !userAnswer) {
+    return res.status(400).json({ success: false, message: 'Question and userAnswer are required.' });
+  }
+
+  const wordCount = userAnswer.trim().split(/\s+/).filter(Boolean).length;
+  let feedback = '';
+
+  if (wordCount < 10) {
+    feedback = 'Your answer is too brief. Expand your response with a step-by-step explanation, including time and space complexity analysis. Aim for at least 30-50 words.';
+  } else if (wordCount < 30) {
+    feedback = 'Good start! Your answer has some structure but could be more detailed. Consider including: 1) The approach/algorithm name, 2) Step-by-step explanation, 3) Time and space complexity analysis, 4) Edge cases and how to handle them.';
+  } else {
+    const complexityTerms = /O\(|time|space|complexity|O\(1\)|O\(n\)|O\(log n\)|O\(n²\)/i;
+    const structureTerms = /first|then|next|step|approach|algorithm|iterate|traverse|recursive|iterative/i;
+    const hasComplexity = complexityTerms.test(userAnswer);
+    const hasStructure = structureTerms.test(userAnswer);
+
+    if (hasComplexity && hasStructure) {
+      feedback = 'Excellent answer! Your response is well-structured with clear step-by-step reasoning and complexity analysis. This demonstrates the depth expected at FAANG-level interviews. Consider also discussing alternative approaches and their tradeoffs.';
+    } else if (hasStructure) {
+      feedback = 'Good structured answer! You explained the approach clearly. To improve, add time and space complexity analysis (Big O notation) and discuss edge cases. Interviewers expect complexity analysis for every solution.';
+    } else if (hasComplexity) {
+      feedback = 'Good analysis of complexity, but your answer needs more structure. Walk through the algorithm step by step, explaining the data structures used and the reasoning behind each decision.';
+    } else {
+      feedback = 'Your answer covers the basics but lacks structure and complexity analysis. For better interview performance: 1) Name the approach/algorithm, 2) Explain step by step with pseudocode, 3) Provide time & space complexity, 4) Discuss edge cases.';
+    }
+
+    if (wordCount >= 80) {
+      feedback += ' Excellent length — comprehensive answers like this stand out in interviews.';
+    }
+  }
+
+  // Simulate slight delay for realism
+  setTimeout(() => {
+    res.json({
+      success: true,
+      feedback,
+      metrics: {
+        wordCount,
+        hasComplexityAnalysis: /O\(|complexity/i.test(userAnswer),
+        hasStructure: /first|then|next|step|approach|algorithm/i.test(userAnswer),
+        hasCodeExample: /function|class|def |int |var |let |const/i.test(userAnswer)
+      }
+    });
+  }, 500);
+});
 
 // ============================================================
 // CATCH-ALL ROUTES

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "CSS Official Documentation",
+      "url": "https://docs.example.com/css/css troubleshooting part 11c",
+      "type": "documentation",
+      "description": "Official reference for CSS Troubleshooting Part 11C in CSS"
+    }
+  ],
+  "books": [
+    {
+      "title": "CSS: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers CSS Troubleshooting Part 11C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "CSS Community Forum",
+      "url": "https://community.example.com/css",
+      "description": "Discuss CSS Troubleshooting Part 11C with other developers"
+    }
+  ]
+}

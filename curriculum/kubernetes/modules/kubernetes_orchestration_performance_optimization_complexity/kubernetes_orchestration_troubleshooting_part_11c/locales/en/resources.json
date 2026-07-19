@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Kubernetes Orchestration Official Documentation",
+      "url": "https://docs.example.com/kubernetes orchestration/kubernetes orchestration troubleshooting part 11c",
+      "type": "documentation",
+      "description": "Official reference for Kubernetes Orchestration Troubleshooting Part 11C in Kubernetes Orchestration"
+    }
+  ],
+  "books": [
+    {
+      "title": "Kubernetes Orchestration: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Kubernetes Orchestration Troubleshooting Part 11C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Kubernetes Orchestration Community Forum",
+      "url": "https://community.example.com/kubernetes orchestration",
+      "description": "Discuss Kubernetes Orchestration Troubleshooting Part 11C with other developers"
+    }
+  ]
+}

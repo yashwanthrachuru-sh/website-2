@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Python Official Documentation",
+      "url": "https://docs.example.com/python/numeric data types",
+      "type": "documentation",
+      "description": "Official reference for Numeric Data Types in Python"
+    }
+  ],
+  "books": [
+    {
+      "title": "Python: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Numeric Data Types in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Python Community Forum",
+      "url": "https://community.example.com/python",
+      "description": "Discuss Numeric Data Types with other developers"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "CSS Official Documentation",
+      "url": "https://docs.example.com/css/css core principles part 7a",
+      "type": "documentation",
+      "description": "Official reference for CSS Core Principles Part 7A in CSS"
+    }
+  ],
+  "books": [
+    {
+      "title": "CSS: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers CSS Core Principles Part 7A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "CSS Community Forum",
+      "url": "https://community.example.com/css",
+      "description": "Discuss CSS Core Principles Part 7A with other developers"
+    }
+  ]
+}

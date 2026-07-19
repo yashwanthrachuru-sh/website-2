@@ -1,0 +1,45 @@
+{
+  "easy": {
+    "title": "Temperature Converter",
+    "description": "Write a function that converts Celsius to Fahrenheit.",
+    "starterCode": "def celsius_to_fahrenheit(c):\n    pass\n\nprint(celsius_to_fahrenheit(0))\nprint(celsius_to_fahrenheit(100))",
+    "solution": "def celsius_to_fahrenheit(c):\n    return (c * 9/5) + 32",
+    "hints": [
+      "Formula: multiply by 9/5, add 32",
+      "Test with freezing (0°C = 32°F) and boiling (100°C = 212°F)"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "String Utilities",
+    "description": "Write functions: reverse a string, check palindrome, count vowels.",
+    "starterCode": "def reverse(s): pass\ndef is_palindrome(s): pass\ndef count_vowels(s): pass\n\nprint(reverse(\"hello\"))\nprint(is_palindrome(\"racecar\"))\nprint(count_vowels(\"hello\"))",
+    "solution": "def reverse(s): return s[::-1]\ndef is_palindrome(s): return s == s[::-1]\ndef count_vowels(s): return sum(1 for c in s.lower() if c in 'aeiou')",
+    "hints": [
+      "String slicing/array methods can help",
+      "A palindrome reads the same forward and backward"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "Function Pipeline",
+    "description": "Create a compose/pipeline function that chains multiple functions together, passing each result to the next.",
+    "starterCode": "def compose(*funcs):\n    pass\n\n# compose(f, g)(x) = f(g(x))\ndef double(x): return x * 2\ndef add_one(x): return x + 1\n\npipeline = compose(double, add_one)\nprint(pipeline(5))  # 12",
+    "solution": "def compose(*funcs):\n    def composed(arg):\n        result = arg\n        for func in reversed(funcs):\n            result = func(result)\n        return result\n    return composed",
+    "hints": [
+      "Functions execute from right to left in compose",
+      "Each function receives the previous result"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the Function",
+    "description": "The following python code has bugs. Find and fix them.",
+    "buggyCode": "def add(x, y):\n    sum = x + y\ndef main():\n    result = add(3, 4)\n    print(result * 2)",
+    "fixedCode": "def add(x, y):\n    return x + y\n\ndef main():\n    result = add(3, 4)\n    print(result * 2)  # 14",
+    "bugs": [
+      "Missing return statement — function returns None/undefined",
+      "Arithmetic on None/undefined causes NaN/TypeError"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "SQL & Databases Troubleshooting Part 12C — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to SQL & Databases Troubleshooting Part 12C for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced SQL & Databases Troubleshooting Part 12C Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production SQL & Databases Troubleshooting Part 12C patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

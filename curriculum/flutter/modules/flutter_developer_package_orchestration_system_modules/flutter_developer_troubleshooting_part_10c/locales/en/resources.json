@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "Flutter Developer Official Documentation",
+      "url": "https://docs.example.com/flutter developer/flutter developer troubleshooting part 10c",
+      "type": "documentation",
+      "description": "Official reference for Flutter Developer Troubleshooting Part 10C in Flutter Developer"
+    }
+  ],
+  "books": [
+    {
+      "title": "Flutter Developer: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Flutter Developer Troubleshooting Part 10C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "Flutter Developer Community Forum",
+      "url": "https://community.example.com/flutter developer",
+      "description": "Discuss Flutter Developer Troubleshooting Part 10C with other developers"
+    }
+  ]
+}

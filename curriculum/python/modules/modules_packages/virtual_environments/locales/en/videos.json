@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Virtual Environments — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Virtual Environments for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Virtual Environments Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Virtual Environments patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

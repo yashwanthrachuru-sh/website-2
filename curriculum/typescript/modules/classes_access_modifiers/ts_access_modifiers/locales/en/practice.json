@@ -1,0 +1,46 @@
+{
+  "easy": {
+    "title": "Number Classification",
+    "description": "Write a function that returns \"positive\", \"negative\", or \"zero\".",
+    "starterCode": "function classify(n) {\n  \n}\n\nconsole.log(classify(5));\nconsole.log(classify(-3));\nconsole.log(classify(0));",
+    "solution": "function classify(n) {\n  if (n > 0) return \"positive\";\n  else if (n < 0) return \"negative\";\n  else return \"zero\";\n}",
+    "hints": [
+      "What three relationships can a number have with zero?",
+      "Handle the zero case explicitly"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "Leap Year Detector",
+    "description": "Return true if a year is a leap year (divisible by 4, except centuries not divisible by 400).",
+    "starterCode": "function isLeap(year) {\n  \n}\n\nconsole.log(isLeap(2024));\nconsole.log(isLeap(1900));\nconsole.log(isLeap(2000));",
+    "solution": "function isLeap(year) {\n  if (year % 400 === 0) return true;\n  else if (year % 100 === 0) return false;\n  else if (year % 4 === 0) return true;\n  else return false;\n}",
+    "hints": [
+      "Check the most restrictive rule first (400)",
+      "The order of conditions matters"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "Date Validator",
+    "description": "Validate a date (day, month, year) — check month range, days per month, and leap year February.",
+    "starterCode": "function solution() {\n  // Your code here\n}",
+    "solution": "function isLeap(y) { return y%400===0 || (y%100!==0 && y%4===0); }\nfunction validate(d, m, y) {\n  if (m<1||m>12||y<1) return false;\n  const dim = [31,isLeap(y)?29:28,31,30,31,30,31,31,30,31,30,31];\n  return d>=1 && d<=dim[m-1];\n}",
+    "hints": [
+      "Store days per month in an array",
+      "Reuse your leap year function",
+      "Validate month and year before day"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the Conditions",
+    "description": "The following typescript code has bugs. Find and fix them.",
+    "buggyCode": "function discount(price, isMember) {\n  if (isMember = true) return price * 0.8;\n  if (price > 100) return price * 0.9;\n  return price;\n}",
+    "fixedCode": "function discount(price, isMember) {\n  if (isMember) return price * 0.8;\n  else if (price > 100) return price * 0.9;\n  return price;\n}",
+    "bugs": [
+      "Assignment (=) instead of comparison (==) — always true",
+      "Missing elif — both conditions can apply, giving double discount"
+    ]
+  }
+}

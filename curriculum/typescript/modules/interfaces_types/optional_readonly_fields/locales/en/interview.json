@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Explain Optional Readonly Fields to a junior developer.",
+      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
+      "followUp": "What mistakes do developers make with this?"
+    },
+    {
+      "question": "Performance implications of optional readonly fields?",
+      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
+      "followUp": "How would you benchmark it?"
+    },
+    {
+      "question": "Real-world scenario for optional readonly fields?",
+      "answer": "Use Optional Readonly Fields when you encounter the programming problem it addresses.",
+      "followUp": "What alternatives exist?"
+    }
+  ]
+}

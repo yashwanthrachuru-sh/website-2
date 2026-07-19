@@ -1,110 +1,43 @@
 {
-  "deeperExplanation": "In Python, a variable is not a box that holds a value. It is a **name that points to an object**. This is a critical distinction that every Python developer must understand.\n\nConsider two languages side by side:\n\n**Java (statically typed — box model):**\n```java\nint score = 95;   // 'score' is a typed box. Only integers fit.\nscore = \"hello\"; // COMPILE ERROR — wrong type\n```\n\n**Python (dynamically typed — label model):**\n```python\nscore = 95       # 'score' is a label. It points to the integer 95.\nscore = \"hello\"  # Perfectly fine — the label now points to a string.\n```\n\nIn Java, the type is attached to the variable (the box). In Python, the type is attached to the **object** (the value). The variable name is just a label that can be moved to point at any object.\n\nThis is why `type(x)` returns the type of the current object, not some fixed type of the name `x`.",
-
-  "mutabilityExplained": "Python objects are either **mutable** (can be changed after creation) or **immutable** (cannot be changed — a new object must be created instead).\n\n**Immutable types:** `int`, `float`, `str`, `bool`, `tuple`\n**Mutable types:** `list`, `dict`, `set`, custom class instances\n\nThis matters enormously for variables:\n\n```python\n# Immutable: reassignment creates a NEW object\nx = 10\nprint(id(x))   # some address, e.g. 140234\nx += 1         # x now points to a NEW object: 11\nprint(id(x))   # DIFFERENT address — 10 still exists elsewhere\n\n# Mutable: mutation changes the EXISTING object\nscores = [90, 85]\nprint(id(scores))  # some address, e.g. 140888\nscores.append(92)  # scores STILL points to the same list\nprint(id(scores))  # SAME address — the list itself changed\n```\n\n**Why this matters:**\nWhen you pass a mutable object to a function, the function can modify the original. When you pass an immutable object, the function cannot affect the caller's copy.",
-
-  "noneValue": "Python has a special value called `None` — it represents 'nothing' or 'no value yet'. It is not zero. It is not an empty string. It is the absence of a value.\n\n```python\nresult = None           # 'result' exists but holds nothing meaningful yet\nprint(result)           # None\nprint(type(result))     # <class 'NoneType'>\nprint(result is None)   # True — always use 'is', not '==' for None\n\n# Real use case: a function that may or may not return something\ndef find_user(user_id):\n    if user_id == 1:\n        return \"Alice\"\n    return None   # user not found\n\nuser = find_user(99)\nif user is None:\n    print(\"User not found\")\n```\n\nAlways check for `None` using `is None` or `is not None` — not `== None`. This is because `==` calls `__eq__()`, which can be overridden by custom classes. `is` checks memory identity and always works.",
-
-  "internalImplementation": "Every Python object in CPython (the standard interpreter) is a C struct called `PyObject`. It contains:\n\n1. **ob_refcnt** — a reference count: how many names currently point to this object\n2. **ob_type** — a pointer to the type (int, str, list, etc.)\n3. **ob_val** — the actual data\n\n```\nWhen you write: score = 95\n\n  Python creates a PyLongObject:\n  ┌──────────────┬──────────────┬──────────────┐\n  │ ob_refcnt=1  │ ob_type=int  │ ob_val=95    │\n  └──────────────┴──────────────┴──────────────┘\n  And adds to the namespace: {'score': <address of above>}\n\nWhen you write: score = 72\n\n  Python creates a NEW PyLongObject:\n  ┌──────────────┬──────────────┬──────────────┐\n  │ ob_refcnt=1  │ ob_type=int  │ ob_val=72    │\n  └──────────────┴──────────────┴──────────────┘\n  Updates namespace: {'score': <address of new object>}\n  The old object (95)'s refcnt drops to 0 → garbage collected\n```\n\n**Small integer cache:** CPython pre-creates integer objects for -5 through 256 at startup. So `a = 5; b = 5; a is b` returns `True` — both point to the same cached object. For numbers outside this range, new objects are created each time.",
-
+  "deeperExplanation": "Variables becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
+  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
+  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
+  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
   "examples": [
     {
-      "title": "Mutable vs Immutable — the shared reference trap",
-      "code": "# --- IMMUTABLE (int) ---\na = 100\nb = a           # b points to the SAME object as a\nprint(a is b)   # True\n\na += 1          # a now points to a NEW object (101)\nprint(a)        # 101\nprint(b)        # 100 — b still points to the original object\nprint(a is b)   # False — different objects now\n\nprint(\"--- MUTABLE (list) ---\")\nx = [1, 2, 3]\ny = x           # y points to the SAME list object\nprint(x is y)   # True\n\nx.append(4)     # mutates the shared object\nprint(x)        # [1, 2, 3, 4]\nprint(y)        # [1, 2, 3, 4] — y sees the change!\nprint(x is y)   # True — still the same object",
-      "explanation": "With immutables (int, str, float), 'changing' a variable creates a NEW object and updates the pointer. The other variable is unaffected. With mutables (list, dict), 'changing' the object mutates the shared data — both variables see the update. This is one of the most common sources of bugs in Python.",
-      "expectedOutput": "True\n101\n100\nFalse\n--- MUTABLE (list) ---\nTrue\n[1, 2, 3, 4]\n[1, 2, 3, 4]\nTrue"
-    },
-    {
-      "title": "Making a true copy of a mutable object",
-      "code": "original = [10, 20, 30]\n\n# Shallow copy — works for simple lists\ncopy1 = original[:]        # slice syntax\ncopy2 = original.copy()    # explicit copy method\ncopy3 = list(original)     # type constructor copy\n\noriginal.append(40)\nprint(original)  # [10, 20, 30, 40]\nprint(copy1)     # [10, 20, 30] — not affected\nprint(copy2)     # [10, 20, 30] — not affected\nprint(copy3)     # [10, 20, 30] — not affected",
-      "explanation": "When you need an independent copy of a list, use slicing, .copy(), or list(). The shallow copy creates a new list object with the same element references. For lists of mutable objects (nested lists, dicts), use copy.deepcopy() for a fully independent copy.",
-      "expectedOutput": "[10, 20, 30, 40]\n[10, 20, 30]\n[10, 20, 30]\n[10, 20, 30]"
-    },
-    {
-      "title": "Type annotations — adding clarity without restrictions",
-      "code": "# Python 3.5+ supports optional type hints\n# They document intent — they do NOT enforce types at runtime\n\nname: str = \"Alice\"\nage: int = 25\nbalance: float = 1234.56\nis_active: bool = True\nscores: list[int] = [90, 85, 92]   # Python 3.9+\n\n# These still work (annotations don't enforce)\nname = 42   # No runtime error, but your IDE/linter will warn you\n\nprint(name, age, balance, is_active)",
-      "explanation": "Type annotations (`:` after the name) are documentation hints for developers and static analysis tools (mypy, pyright, your IDE). They do NOT enforce types at runtime — Python is still dynamically typed. But annotating your code makes it self-documenting and catches type errors during development.",
-      "expectedOutput": "42 25 1234.56 True"
-    },
-    {
-      "title": "Augmented assignment — what actually happens",
-      "code": "# With IMMUTABLE types — creates a new object\nx = 10\nprint(id(x))    # e.g., 140234\nx += 5          # equivalent to: x = x + 5\nprint(id(x))    # DIFFERENT id — x points to a new int object 15\nprint(x)        # 15\n\n# With MUTABLE types — may modify in-place\nmy_list = [1, 2, 3]\nprint(id(my_list))     # e.g., 140888\nmy_list += [4, 5]      # for lists, += calls __iadd__ (in-place extend)\nprint(id(my_list))     # SAME id — the list was extended in place\nprint(my_list)         # [1, 2, 3, 4, 5]",
-      "explanation": "Augmented assignment (+= -= *= etc.) behaves differently for mutable and immutable types. For immutables, it creates a new object. For mutables, it calls the in-place method (__iadd__, __isub__, etc.) which modifies the existing object. This means a list += operation does NOT create a new list — it extends the original.",
-      "expectedOutput": "15\n[1, 2, 3, 4, 5]"
+      "title": "Getting Started with Variables",
+      "code": "print(\"Learning Variables\")",
+      "explanation": "Basic introduction to Variables.",
+      "language": "python"
     }
   ],
-
   "bestPractices": [
-    {
-      "rule": "Use lowercase_with_underscores",
-      "good": "user_email, account_balance, total_items",
-      "bad": "userEmail, accountBalance, totalItems",
-      "why": "PEP 8 — Python's official style guide — mandates snake_case for variables. camelCase is for other languages. Consistent style makes your code readable to every Python developer."
-    },
-    {
-      "rule": "Use UPPER_SNAKE_CASE for constants",
-      "good": "MAX_RETRY_COUNT = 3\nDEFAULT_TIMEOUT = 30\nAPI_BASE_URL = 'https://...'",
-      "bad": "maxRetryCount = 3",
-      "why": "Constants should visually stand out from variables. UPPER_CASE tells every reader 'this value should not change during the program run'."
-    },
-    {
-      "rule": "Never shadow built-in names",
-      "good": "user_list = []\nuser_id_str = str(user_id)",
-      "bad": "list = []\nstr = 'hello'",
-      "why": "If you name a variable 'list', you replace Python's built-in list() function for the rest of that scope. Code that calls list() will fail with TypeError. Built-ins to avoid: list, dict, set, str, int, float, bool, type, id, print, input, open, range, zip, map, filter."
-    },
-    {
-      "rule": "Prefer 'is None' over '== None'",
-      "good": "if user is None:",
-      "bad": "if user == None:",
-      "why": "'==' calls __eq__() which custom objects can override to return True even when the object is not None. 'is' checks memory identity — it is guaranteed."
-    },
-    {
-      "rule": "Give variables intention-revealing names",
-      "good": "elapsed_seconds = time.time() - start_time\nretry_count = 0\nmax_connections_per_host = 10",
-      "bad": "t = time.time() - s\nrc = 0\nn = 10",
-      "why": "Good names eliminate the need for comments. 'elapsed_seconds' tells you unit, purpose, and type. 't' tells you nothing."
-    },
-    {
-      "rule": "Do not reuse variable names for different purposes",
-      "good": "user_input = input()\nparsed_number = int(user_input)",
-      "bad": "data = input()\ndata = int(data)   # now data means something different",
-      "why": "Reusing names for different values makes debugging extremely hard. When you set a breakpoint and inspect 'data', which meaning does it have at that line?"
-    }
+    "Validate inputs",
+    "Handle edge cases",
+    "Write tests",
+    "Document behavior"
   ],
-
   "debuggingWalkthrough": {
-    "bugDescription": "UnboundLocalError — Python thinks a variable is local before it is assigned",
-    "scenario": "This is one of the most confusing errors for Python beginners. The program worked fine, then you added one line — and now it crashes.",
-    "incorrectCode": "total = 100\n\ndef apply_discount():\n    print(total)       # ← CRASH: UnboundLocalError\n    total = total * 0.9\n\napply_discount()",
-    "errorMessage": "UnboundLocalError: local variable 'total' referenced before assignment",
-    "whyItHappens": "Python scans the function body BEFORE executing it. It sees 'total = ...' on line 5, so it decides 'total is a local variable'. When line 4 tries to print(total), Python looks for the local 'total' — which has not been assigned yet. This errors even though a global 'total' exists.",
-    "correctCode": "total = 100\n\ndef apply_discount():\n    global total        # ← tell Python: use the global 'total'\n    print(total)        # 100\n    total = total * 0.9\n\napply_discount()\nprint(total)            # 90.0",
-    "betterCode": "# Even better: pass values as arguments, avoid global\ndef apply_discount(amount):\n    return amount * 0.9\n\ntotal = 100\ntotal = apply_discount(total)\nprint(total)  # 90.0",
-    "explanation": "The real fix is to avoid global variables. Pass data as function arguments and return the result. Global state makes functions hard to test, hard to reason about, and leads to subtle bugs in larger programs."
+    "scenario": "A variables implementation behaves unexpectedly.",
+    "steps": [
+      "Reproduce with minimal test",
+      "Check inputs",
+      "Verify logic",
+      "Test boundaries"
+    ]
   },
-
   "edgeCases": [
-    {
-      "case": "Python's small integer cache",
-      "code": "a = 256\nb = 256\nprint(a is b)   # True — same cached object\n\nc = 257\nd = 257\nprint(c is d)   # False — different objects (outside cache range)",
-      "explanation": "CPython pre-creates integer objects for -5 to 256. Within this range, all names pointing to the same value share one object. Outside this range, each assignment creates a new object. Never rely on 'is' for value comparison with integers — always use '=='."
-    },
-    {
-      "case": "String interning",
-      "code": "a = 'hello'\nb = 'hello'\nprint(a is b)   # True — Python may intern short simple strings\n\nc = 'hello world'\nd = 'hello world'\nprint(c is d)   # May be True or False — implementation-dependent",
-      "explanation": "Python may share string objects when the string looks like an identifier (no spaces, short). This is called 'interning'. Never rely on 'is' for string comparison — always use '=='."
-    },
-    {
-      "case": "None is a singleton",
-      "code": "x = None\ny = None\nprint(x is y)   # Always True — None is a singleton\nprint(x is None)# The idiomatic check",
-      "explanation": "There is exactly ONE None object in any Python program. All None assignments point to the same object. This makes 'is None' both correct and O(1)."
-    }
+    "Empty input",
+    "Null values",
+    "Large datasets",
+    "Unexpected types"
   ],
-
-  "performanceConsiderations": {
-    "timeComplexity": "O(1) — variable lookup uses a hash table (Python's dict), giving constant-time average access regardless of how many variables you have.",
-    "spaceComplexity": "O(1) per variable — the name entry in the namespace dict is a pointer (8 bytes on 64-bit systems). The object size depends on the type: int ~28 bytes, float ~24 bytes, empty list ~56 bytes.",
-    "notes": "Accessing a local variable is faster than accessing a global in CPython. The bytecode instruction LOAD_FAST (local) takes ~1 clock cycle less than LOAD_GLOBAL. In tight loops with millions of iterations, this can matter. Python developers sometimes use 'local = global_function' at the top of a hot loop for speed."
+  "performanceNotes": {
+    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
+    "bigO": {
+      "best": "O(1)",
+      "average": "O(n)",
+      "worst": "O(n^2)"
+    }
   }
 }

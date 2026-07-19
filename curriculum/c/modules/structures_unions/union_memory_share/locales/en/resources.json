@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "C Programming Official Documentation",
+      "url": "https://docs.example.com/c programming/union memory share",
+      "type": "documentation",
+      "description": "Official reference for Union Memory Share in C Programming"
+    }
+  ],
+  "books": [
+    {
+      "title": "C Programming: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Union Memory Share in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "C Programming Community Forum",
+      "url": "https://community.example.com/c programming",
+      "description": "Discuss Union Memory Share with other developers"
+    }
+  ]
+}

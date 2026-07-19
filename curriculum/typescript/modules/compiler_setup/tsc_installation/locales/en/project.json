@@ -1,0 +1,26 @@
+{
+  "title": "Project: Typescript Environment Diagnostics Tool",
+  "tagline": "Build a comprehensive system information tool.",
+  "description": "Create a CLI tool that displays detailed information about the typescript environment: version, installed packages, system info, and environment variables.",
+  "requirements": [
+    "Display interpreter version and path",
+    "List installed packages with versions",
+    "Show system info (OS, CPU, memory)",
+    "Display key environment variables",
+    "Handle errors gracefully"
+  ],
+  "learningGoals": [
+    "Understand the runtime environment",
+    "Practice working with system modules",
+    "Build a practical diagnostic tool"
+  ],
+  "starterCode": "#!/usr/bin/env node\nconst os = require('os');\nconst process = require('process');\n\nfunction main() {\n  console.log('='.repeat(60));\n  console.log('  Environment Diagnostics');\n  console.log('='.repeat(60));\n}\n\nmain();",
+  "solution": "#!/usr/bin/env node\nconst os = require('os');\nconst process = require('process');\n\nfunction main() {\n  console.log('='.repeat(60));\n  console.log('  Node.js Environment Diagnostics');\n  console.log('='.repeat(60));\n  console.log(`\\nRuntime: ${process.version}`);\n  console.log(`Path: ${process.execPath}`);\n  console.log(`OS: ${os.type()} ${os.release()}`);\n  console.log(`CPU Cores: ${os.cpus().length}`);\n  ['PATH','HOME','USER'].forEach(k => {\n    if (process.env[k]) console.log(`${k}=${process.env[k].substring(0,80)}...`);\n  });\n  console.log('\\n' + '='.repeat(60));\n}\n\nmain();",
+  "expectedOutput": "Your application produces the expected output.",
+  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "extensions": [
+    "Add JSON output format",
+    "Include network information",
+    "Generate a shareable report URL"
+  ]
+}

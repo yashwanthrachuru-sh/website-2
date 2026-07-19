@@ -1,0 +1,45 @@
+{
+  "deeperExplanation": "Loops are more than repetition — understanding iterator protocols, generators, and lazy evaluation enables efficient data processing. Loops can be nested, creating multi-dimensional iteration for matrices and grids.",
+  "mutabilityExplained": "The loop variable is typically read-only within the body. The collection being iterated should not be modified during iteration.",
+  "noneValue": "An empty iterable means the loop body never executes — this is valid. Your code should handle it gracefully.",
+  "internalImplementation": "The for loop uses an iterator protocol: get iterator from collection, call next() repeatedly until exhausted. Understanding this lets you create custom iterable objects.",
+  "examples": [
+    {
+      "title": "Nested Loop — Matrix",
+      "code": "for i in range(3):\n    for j in range(3):\n        print(i, j)",
+      "explanation": "The outer loop iterates rows, the inner iterates columns. Total iterations = rows × columns.",
+      "language": "python"
+    }
+  ],
+  "bestPractices": [
+    "Prefer for over while for known collections",
+    "Use break/continue for flow control",
+    "Keep loop bodies short",
+    "Avoid modifying collections during iteration",
+    "Consider map/filter/reduce as alternatives"
+  ],
+  "debuggingWalkthrough": {
+    "scenario": "A loop processes a list but skips items.",
+    "steps": [
+      "Check if modifying the list inside the loop",
+      "Verify the loop variable updates correctly",
+      "Check for off-by-one errors",
+      "Print the loop variable each iteration",
+      "Test with 3 items to isolate the bug"
+    ]
+  },
+  "edgeCases": [
+    "Empty collection",
+    "Single-element collection",
+    "Very large collection (memory/performance)",
+    "Collection modified during iteration"
+  ],
+  "performanceNotes": {
+    "notes": "Loops are highly optimized, but nested loops multiply complexity. Keep bodies short and avoid deep nesting.",
+    "bigO": {
+      "best": "O(1)",
+      "average": "O(n)",
+      "worst": "O(n^m) for m nested"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Recursive Call Frames — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Recursive Call Frames for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Recursive Call Frames Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Recursive Call Frames patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

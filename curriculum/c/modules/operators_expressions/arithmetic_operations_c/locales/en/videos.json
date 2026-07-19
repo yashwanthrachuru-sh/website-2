@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Arithmetic Operations C — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Arithmetic Operations C for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Arithmetic Operations C Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Arithmetic Operations C patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

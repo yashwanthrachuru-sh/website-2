@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "HTML Official Documentation",
+      "url": "https://docs.example.com/html/html troubleshooting part 3c",
+      "type": "documentation",
+      "description": "Official reference for HTML Troubleshooting Part 3C in HTML"
+    }
+  ],
+  "books": [
+    {
+      "title": "HTML: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers HTML Troubleshooting Part 3C in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "HTML Community Forum",
+      "url": "https://community.example.com/html",
+      "description": "Discuss HTML Troubleshooting Part 3C with other developers"
+    }
+  ]
+}

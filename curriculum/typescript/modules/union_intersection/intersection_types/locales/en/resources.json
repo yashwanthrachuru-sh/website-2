@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "TypeScript Official Documentation",
+      "url": "https://docs.example.com/typescript/intersection types",
+      "type": "documentation",
+      "description": "Official reference for Intersection Types in TypeScript"
+    }
+  ],
+  "books": [
+    {
+      "title": "TypeScript: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Intersection Types in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "TypeScript Community Forum",
+      "url": "https://community.example.com/typescript",
+      "description": "Discuss Intersection Types with other developers"
+    }
+  ]
+}

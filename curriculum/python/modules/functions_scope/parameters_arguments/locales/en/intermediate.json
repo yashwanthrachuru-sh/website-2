@@ -1,0 +1,46 @@
+{
+  "deeperExplanation": "Functions are first-class citizens in python. They can be assigned to variables, passed as arguments, returned from other functions, and stored in data structures. This enables powerful patterns: callbacks, closures, decorators, and higher-order functions.",
+  "mutabilityExplained": "Parameters are passed by assignment (Python) or by value (primitives) / reference (objects in JS). Mutable objects passed to a function can be modified inside, affecting the caller's copy.",
+  "noneValue": "A function without an explicit return statement returns None (Python) or undefined (JS). Always ensure your function has a clear return path.",
+  "internalImplementation": "Python creates a new stack frame for each function call, storing parameters and local variables. When the function returns, the frame is popped. Recursive functions create multiple frames — too many cause stack overflow.",
+  "examples": [
+    {
+      "title": "Function with Default Parameters",
+      "code": "def power(base, exponent=2):\n    return base ** exponent\n\nprint(power(5))     # 25 (default exponent 2)\nprint(power(5, 3))  # 125 (exponent 3)",
+      "explanation": "Default parameters make functions flexible — they work with fewer arguments by providing sensible defaults.",
+      "language": "python"
+    }
+  ],
+  "bestPractices": [
+    "One function, one responsibility",
+    "Use descriptive names (verb + noun)",
+    "Keep functions short (under 20 lines)",
+    "Avoid side effects — prefer pure functions",
+    "Document with docstrings/comments",
+    "Return early for edge cases (guard clauses)"
+  ],
+  "debuggingWalkthrough": {
+    "scenario": "A function returns the wrong value for certain inputs.",
+    "steps": [
+      "Check return statements in all branches",
+      "Verify parameters are what you expect",
+      "Print intermediate values",
+      "Test with the simplest possible input",
+      "Check for unintended side effects"
+    ]
+  },
+  "edgeCases": [
+    "No arguments vs default parameters",
+    "Too many/few arguments (error)",
+    "Mutable default arguments (Python gotcha)",
+    "Recursive functions without base case (stack overflow)"
+  ],
+  "performanceNotes": {
+    "notes": "Function calls have overhead (stack frame creation). For performance-critical code, inline or use lambda where appropriate. Modern engines optimize frequently-called functions (JIT).",
+    "bigO": {
+      "best": "O(1)",
+      "average": "O(1)",
+      "worst": "O(1) — but the function body adds its own complexity"
+    }
+  }
+}

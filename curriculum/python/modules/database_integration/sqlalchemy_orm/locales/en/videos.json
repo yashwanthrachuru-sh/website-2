@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "SQLAlchemy ORM — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to SQLAlchemy ORM for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced SQLAlchemy ORM Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production SQLAlchemy ORM patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "C Programming Official Documentation",
+      "url": "https://docs.example.com/c programming/switch case routing",
+      "type": "documentation",
+      "description": "Official reference for Switch Case Routing in C Programming"
+    }
+  ],
+  "books": [
+    {
+      "title": "C Programming: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers Switch Case Routing in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "C Programming Community Forum",
+      "url": "https://community.example.com/c programming",
+      "description": "Discuss Switch Case Routing with other developers"
+    }
+  ]
+}

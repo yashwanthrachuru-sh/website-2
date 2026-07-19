@@ -1,0 +1,44 @@
+{
+  "oneLineSummary": "C++ Core Principles Part 12A is a fundamental programming concept every developer should understand.",
+  "summary": "This lesson covered what C++ Core Principles Part 12A is, why it exists, how to use it, common mistakes, and best practices.",
+  "keyTakeaways": [
+    "C++ Core Principles Part 12A solves a specific programming problem",
+    "Handle edge cases",
+    "Follow language idioms",
+    "Test thoroughly"
+  ],
+  "memoryTricks": [
+    "Think of c++ core principles part 12a as a tool in your toolbox"
+  ],
+  "preInterviewChecklist": [
+    "Can you explain C++ Core Principles Part 12A in one sentence?",
+    "Can you write a basic implementation?",
+    "Do you know the pitfalls?"
+  ],
+  "commonErrors": [
+    "Not understanding the problem",
+    "Overcomplicating",
+    "Ignoring edge cases",
+    "Skipping tests"
+  ],
+  "mindMap": {
+    "central": "C++ Core Principles Part 12A",
+    "branches": [
+      "Definition",
+      "Usage",
+      "Advanced",
+      "Pitfalls",
+      "Best Practices"
+    ]
+  },
+  "nextTopics": [
+    "Advanced c++ core principles part 12a",
+    "Testing c++ core principles part 12a",
+    "Performance optimization"
+  ],
+  "estimatedLearningTime": {
+    "review": 10,
+    "practice": 25,
+    "master": 40
+  }
+}

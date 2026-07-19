@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Object Literals — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Object Literals for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Object Literals Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Object Literals patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

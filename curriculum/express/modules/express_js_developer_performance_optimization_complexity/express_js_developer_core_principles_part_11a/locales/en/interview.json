@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Explain Express.js Developer Core Principles Part 11A to a junior developer.",
+      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
+      "followUp": "What mistakes do developers make with this?"
+    },
+    {
+      "question": "Performance implications of express.js developer core principles part 11a?",
+      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
+      "followUp": "How would you benchmark it?"
+    },
+    {
+      "question": "Real-world scenario for express.js developer core principles part 11a?",
+      "answer": "Use Express.js Developer Core Principles Part 11A when you encounter the programming problem it addresses.",
+      "followUp": "What alternatives exist?"
+    }
+  ]
+}

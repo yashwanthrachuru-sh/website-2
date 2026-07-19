@@ -1,0 +1,36 @@
+{
+  "title": "While Loops — Quick Reference",
+  "sections": [
+    {
+      "title": "Core Syntax",
+      "content": "for item in coll:\n    process(item)\n\nfor i, val in enumerate(coll):\n    print(i, val)\n\nwhile cond:\n    do()\n    update()"
+    },
+    {
+      "title": "Key Concepts",
+      "content": [
+        "Iteration: one pass through loop body",
+        "Iterator: object that yields items one by one",
+        "Loop variable: changes each iteration"
+      ]
+    },
+    {
+      "title": "Common Patterns",
+      "content": [
+        "Enumerate: for i, val in enumerate(arr)",
+        "Two pointers: while left < right",
+        "Reverse: for i in range(n-1, -1, -1)"
+      ]
+    },
+    {
+      "title": "Do's and Don'ts",
+      "content": [
+        "✓ Keep bodies short",
+        "✓ Use break for early exit",
+        "✓ Handle empty collections",
+        "✗ Modify collection while iterating",
+        "✗ Use while when for is clearer",
+        "✗ Forget to update while condition"
+      ]
+    }
+  ]
+}

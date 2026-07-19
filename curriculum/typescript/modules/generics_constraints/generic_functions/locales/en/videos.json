@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Generic Functions — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Generic Functions for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Generic Functions Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Generic Functions patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

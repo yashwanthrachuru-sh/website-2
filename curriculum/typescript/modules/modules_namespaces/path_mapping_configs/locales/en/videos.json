@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Path Mapping Configs — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Path Mapping Configs for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Path Mapping Configs Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Path Mapping Configs patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

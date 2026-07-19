@@ -1,0 +1,46 @@
+{
+  "easy": {
+    "title": "UI/UX Design Implementation Steps Part 1B — Basic Practice",
+    "description": "Write a basic ui/ux design implementation steps part 1b implementation.",
+    "starterCode": "function basicUIUXDesignImplementationStepsPartB() {\n  \n}",
+    "solution": "function basic() {\n  return \"done\";\n}",
+    "hints": [
+      "Start simple",
+      "Test with sample inputs"
+    ],
+    "difficulty": "easy"
+  },
+  "medium": {
+    "title": "UI/UX Design Implementation Steps Part 1B — Intermediate",
+    "description": "Extend your implementation with error handling.",
+    "starterCode": "function improved() {\n  \n}",
+    "solution": "function improved() {\n  try { return \"done\"; } catch(e) { return \"Error: \" + e; }\n}",
+    "hints": [
+      "Consider edge cases",
+      "Add proper error handling"
+    ],
+    "difficulty": "medium"
+  },
+  "hard": {
+    "title": "UI/UX Design Implementation Steps Part 1B — Expert Challenge",
+    "description": "Build a production-quality implementation with optimizations.",
+    "starterCode": "function solution() {\n  // Your code here\n}",
+    "solution": "function solution() {\n  // Your code here\n}",
+    "hints": [
+      "Think about performance",
+      "Consider concurrent access",
+      "Profile your solution"
+    ],
+    "difficulty": "hard"
+  },
+  "debugging": {
+    "title": "Debug the UI/UX Design Implementation Steps Part 1B",
+    "description": "The following javascript code has bugs. Find and fix them.",
+    "buggyCode": "function broken(x) {\n  return x / 0;  // bug\n}",
+    "fixedCode": "function fixed(x) {\n  if (x === 0) return 0;\n  return x / 1;\n}",
+    "bugs": [
+      "Division by zero",
+      "No error handling"
+    ]
+  }
+}

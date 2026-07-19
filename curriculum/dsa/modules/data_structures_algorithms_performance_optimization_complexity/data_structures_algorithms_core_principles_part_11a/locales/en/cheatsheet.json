@@ -1,0 +1,35 @@
+{
+  "title": "Data Structures & Algorithms Core Principles Part 11A — Quick Reference",
+  "sections": [
+    {
+      "title": "Core Syntax",
+      "content": "// Data Structures & Algorithms Core Principles Part 11A\n// See lesson examples"
+    },
+    {
+      "title": "Key Concepts",
+      "content": [
+        "Concept overview",
+        "Basic usage",
+        "Advanced patterns"
+      ]
+    },
+    {
+      "title": "Common Patterns",
+      "content": [
+        "Basic pattern",
+        "Error handling pattern",
+        "Optimization pattern"
+      ]
+    },
+    {
+      "title": "Do's and Don'ts",
+      "content": [
+        "✓ Learn the concept",
+        "✓ Test edge cases",
+        "✓ Follow idioms",
+        "✗ Copy blindly",
+        "✗ Skip error handling"
+      ]
+    }
+  ]
+}

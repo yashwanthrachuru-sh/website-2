@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "System Design Official Documentation",
+      "url": "https://docs.example.com/system design/system design core principles part 8a",
+      "type": "documentation",
+      "description": "Official reference for System Design Core Principles Part 8A in System Design"
+    }
+  ],
+  "books": [
+    {
+      "title": "System Design: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers System Design Core Principles Part 8A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "System Design Community Forum",
+      "url": "https://community.example.com/system design",
+      "description": "Discuss System Design Core Principles Part 8A with other developers"
+    }
+  ]
+}

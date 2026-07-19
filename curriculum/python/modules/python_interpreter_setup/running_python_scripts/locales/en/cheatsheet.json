@@ -1,0 +1,37 @@
+{
+  "title": "Running Python Scripts — Quick Reference",
+  "sections": [
+    {
+      "title": "Core Syntax",
+      "content": "python script.py        # Run a script\npython -m module_name   # Run as module\npython -c \"code\"        # Inline code\npython -i script.py     # Run then interactive"
+    },
+    {
+      "title": "Key Concepts",
+      "content": [
+        "Interpreter: reads and executes code",
+        "Bytecode: compiled intermediate representation",
+        "REPL: interactive testing mode",
+        "Module: reusable code file",
+        "Virtual Environment: isolated dependencies"
+      ]
+    },
+    {
+      "title": "Common Patterns",
+      "content": [
+        "Pattern 1: basic usage",
+        "Pattern 2: with error handling"
+      ]
+    },
+    {
+      "title": "Do's and Don'ts",
+      "content": [
+        "✓ Use virtual environments",
+        "✓ Pin dependency versions",
+        "✓ Test on the same version as production",
+        "✗ Run untrusted code without sandboxing",
+        "✗ Ignore deprecation warnings",
+        "✗ Assume all platforms are identical"
+      ]
+    }
+  ]
+}

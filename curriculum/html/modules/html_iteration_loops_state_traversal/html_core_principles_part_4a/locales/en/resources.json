@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "HTML Official Documentation",
+      "url": "https://docs.example.com/html/html core principles part 4a",
+      "type": "documentation",
+      "description": "Official reference for HTML Core Principles Part 4A in HTML"
+    }
+  ],
+  "books": [
+    {
+      "title": "HTML: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers HTML Core Principles Part 4A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "HTML Community Forum",
+      "url": "https://community.example.com/html",
+      "description": "Discuss HTML Core Principles Part 4A with other developers"
+    }
+  ]
+}

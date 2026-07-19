@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    {
+      "title": "Parameters & Arguments — Beginner's Tutorial",
+      "platform": "YouTube",
+      "duration": "15-20 minutes",
+      "description": "A gentle introduction to Parameters & Arguments for beginners",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "Advanced Parameters & Arguments Patterns",
+      "platform": "YouTube",
+      "duration": "25-30 minutes",
+      "description": "Deep dive into production Parameters & Arguments patterns",
+      "difficulty": "advanced"
+    }
+  ]
+}

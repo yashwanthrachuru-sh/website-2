@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "Explain Operator Precedence Rules to a junior developer.",
+      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
+      "followUp": "What mistakes do developers make with this?"
+    },
+    {
+      "question": "Performance implications of operator precedence rules?",
+      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
+      "followUp": "How would you benchmark it?"
+    },
+    {
+      "question": "Real-world scenario for operator precedence rules?",
+      "answer": "Use Operator Precedence Rules when you encounter the programming problem it addresses.",
+      "followUp": "What alternatives exist?"
+    }
+  ]
+}

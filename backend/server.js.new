@@ -1,0 +1,669 @@
+// ============================================================
+// server.js — EduNet Express Application Entry Point
+// ============================================================
+// v2: Added helmet, global rate limiting, analytics & AI routes,
+//     removed duplicate /api/codelabs mount, tightened CORS.
+// ============================================================
+
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
+
+// ── Environment Variables Validation ──────────────────────────
+const requiredEnvVars = ['JWT_SECRET'];
+const missingEnvVars = requiredEnvVars.filter(name => !process.env[name]);
+if (missingEnvVars.length > 0) {
+  console.error(`❌  CRITICAL ERROR: Missing required environment variables: ${missingEnvVars.join(', ')}`);
+  console.error('    Please configure them in your environment or backend/.env file.');
+  process.exit(1);
+}
+if (!process.env.DATABASE_URL && (!process.env.DB_HOST || !process.env.DB_USER)) {
+  console.warn('⚠️  WARNING: Neither DATABASE_URL nor DB_HOST/DB_USER are configured. Database connections may fail.');
+}
+
+const express     = require('express');
+const cors        = require('cors');
+const path        = require('path');
+const helmet      = require('helmet');
+const rateLimit   = require('express-rate-limit');
+
+// ── Database pool ─────────────────────────────────────────────
+const db = require('./config/db');
+
+// Run portfolio database migrations on boot
+require('./config/migrate_portfolio').migrate().catch(err => {
+  console.error('Portfolio migration failed on startup:', err.message);
+});
+require('./config/migrate_phase1').migrate().catch(err => {
+  console.error('Phase 1 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase2').migrate().catch(err => {
+  console.error('Phase 2 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase3').migrate().catch(err => {
+  console.error('Phase 3 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase4').migrate().catch(err => {
+  console.error('Phase 4 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase5').migrate().catch(err => {
+  console.error('Phase 5 migration failed on startup:', err.message);
+});
+require('./config/migrate_roadmap_system').migrate().catch(err => {
+  console.error('Roadmap System migration failed on startup:', err.message);
+});
+
+const app  = express();
+const PORT = process.env.PORT || 5000;
+
+// ── Trust Proxy ───────────────────────────────────────────────
+// Render (and most cloud hosts) route traffic through a reverse
+// proxy. Without this, req.ip always returns the proxy IP,
+// breaking per-IP rate limiting and req.protocol detection.
+app.set('trust proxy', 1);
+
+
+// ============================================================
+// SECURITY MIDDLEWARE
+// ============================================================
+
+// Helmet — sets secure HTTP headers (XSS protection, frame options, etc.) with structured CSP
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc:  ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "cdnjs.cloudflare.com"],
+      scriptSrcAttr: ["'unsafe-inline'"],
+      styleSrc:   ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
+      fontSrc:    ["'self'", "fonts.gstatic.com", "fonts.googleapis.com"],
+      imgSrc:     ["'self'", "data:", "blob:", "images.unsplash.com", "img.youtube.com", "*.vercel.app"],
+      frameSrc:   ["'self'", "www.youtube.com", "youtube.com"],
+      connectSrc: ["'self'", "https://edunet-yx17.onrender.com", "https://api.github.com"]
+    }
+  },
+  crossOriginEmbedderPolicy: false // Required for YouTube iframing to work
+}));
+
+// Global rate limiter — 150 requests per 15 minutes per IP
+// (health check and static files are excluded automatically via Express static)
+const globalLimiter = rateLimit({
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'), // 15 min default
+  max:      parseInt(process.env.RATE_LIMIT_MAX        || '150'),   // 150 req/window
+  standardHeaders: true,
+  legacyHeaders:   false,
+  message: { success: false, message: 'Too many requests. Please slow down and try again later.' },
+  skip: (req) => {
+    // Skip rate limiting for health check and static file serving
+    return req.path === '/api/health' || !req.path.startsWith('/api/');
+  }
+});
+app.use(globalLimiter);
+
+// Stricter limiter for AI endpoints (10 req/minute per IP)
+const aiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 20,
+  message: { success: false, message: 'AI mentor rate limit reached. Please wait a moment.' }
+});
+
+// ============================================================
+// CORS
+// ============================================================
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    const isLocalhost = origin.indexOf('://localhost') !== -1 || origin.indexOf('://127.0.0.1') !== -1;
+    const isVercelPreview = origin.endsWith('.vercel.app');
+
+    const allowedOrigins = (process.env.FRONTEND_ORIGIN || '')
+      .split(',')
+      .map(o => o.trim())
+      .filter(Boolean);
+
+    if (isLocalhost || allowedOrigins.includes(origin) || isVercelPreview) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  methods:            ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders:     ['Content-Type', 'Authorization'],
+  credentials:        true
+}));
+
+// ============================================================
+// BODY PARSERS
+// ============================================================
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
+
+// Disable Express fingerprinting header
+app.disable('x-powered-by');
+
+// Mount XSS Input HTML Sanitizer middleware
+const { sanitizeInput } = require('./middleware/sanitizeMiddleware');
+app.use(sanitizeInput);
+
+// ============================================================
+// STATIC FRONTEND FILES
+// ============================================================
+const FRONTEND_ROOT = path.join(__dirname, '..');
+app.use(express.static(FRONTEND_ROOT));
+
+// ============================================================
+// API ROUTES
+// ============================================================
+
+// Health check — no rate limiting, no auth
+app.get('/api/health', async (req, res) => {
+  try {
+    await db.query('SELECT 1');
+    res.json({ success: true, database: 'connected', version: '2.0' });
+  } catch (err) {
+    res.status(503).json({ success: false, database: 'disconnected' });
+  }
+});
+
+===============
+// v2: Added helmet, global rate limiting, analytics & AI routes,
+//     removed duplicate /api/codelabs mount, tightened CORS.
+// ============================================================
+
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
+
+// ── Environment Variables Validation ──────────────────────────
+const requiredEnvVars = ['JWT_SECRET'];
+const missingEnvVars = requiredEnvVars.filter(name => !process.env[name]);
+if (missingEnvVars.length > 0) {
+  console.error(`❌  CRITICAL ERROR: Missing required environment variables: ${missingEnvVars.join(', ')}`);
+  console.error('    Please configure them in your environment or backend/.env file.');
+  process.exit(1);
+}
+if (!process.env.DATABASE_URL && (!process.env.DB_HOST || !process.env.DB_USER)) {
+  console.warn('⚠️  WARNING: Neither DATABASE_URL nor DB_HOST/DB_USER are configured. Database connections may fail.');
+}
+
+const express     = require('express');
+const cors        = require('cors');
+const path        = require('path');
+const helmet      = require('helmet');
+const rateLimit   = require('express-rate-limit');
+
+// ── Database pool ─────────────────────────────────────────────
+const db = require('./config/db');
+
+// Run portfolio database migrations on boot
+require('./config/migrate_portfolio').migrate().catch(err => {
+  console.error('Portfolio migration failed on startup:', err.message);
+});
+require('./config/migrate_phase1').migrate().catch(err => {
+  console.error('Phase 1 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase2').migrate().catch(err => {
+  console.error('Phase 2 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase3').migrate().catch(err => {
+  console.error('Phase 3 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase4').migrate().catch(err => {
+  console.error('Phase 4 migration failed on startup:', err.message);
+});
+require('./config/migrate_phase5').migrate().catch(err => {
+  console.error('Phase 5 migration failed on startup:', err.message);
+});
+require('./config/migrate_roadmap_system').migrate().catch(err => {
+  console.error('Roadmap System migration failed on startup:', err.message);
+});
+
+const app  = express();
+const PORT = process.env.PORT || 5000;
+
+// ── Trust Proxy ───────────────────────────────────────────────
+// Render (and most cloud hosts) route traffic through a reverse
+// proxy. Without this, req.ip always returns the proxy IP,
+// breaking per-IP rate limiting and req.protocol detection.
+app.set('trust proxy', 1);
+
+
+// ============================================================
+// SECURITY MIDDLEWARE
+// ============================================================
+
+// Helmet — sets secure HTTP headers (XSS protection, frame options, etc.) with structured CSP
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc:  ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net", "cdnjs.cloudflare.com"],
+      scriptSrcAttr: ["'unsafe-inline'"],
+      styleSrc:   ["'self'", "'unsafe-inline'", "fonts.googleapis.com"],
+      fontSrc:    ["'self'", "fonts.gstatic.com", "fonts.googleapis.com"],
+      imgSrc:     ["'self'", "data:", "blob:", "images.unsplash.com", "img.youtube.com", "*.vercel.app"],
+      frameSrc:   ["'self'", "www.youtube.com", "youtube.com"],
+      connectSrc: ["'self'", "https://edunet-yx17.onrender.com", "https://api.github.com"]
+    }
+  },
+  crossOriginEmbedderPolicy: false // Required for YouTube iframing to work
+}));
+
+// Global rate limiter — 150 requests per 15 minutes per IP
+// (health check and static files are excluded automatically via Express static)
+const globalLimiter = rateLimit({
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'), // 15 min default
+  max:      parseInt(process.env.RATE_LIMIT_MAX        || '150'),   // 150 req/window
+  standardHeaders: true,
+  legacyHeaders:   false,
+  message: { success: false, message: 'Too many requests. Please slow down and try again later.' },
+  skip: (req) => {
+    // Skip rate limiting for health check and static file serving
+    return req.path === '/api/health' || !req.path.startsWith('/api/');
+  }
+});
+app.use(globalLimiter);
+
+// Stricter limiter for AI endpoints (10 req/minute per IP)
+const aiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 20,
+  message: { success: false, message: 'AI mentor rate limit reached. Please wait a moment.' }
+});
+
+// ============================================================
+// CORS
+// ============================================================
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    const isLocalhost = origin.indexOf('://localhost') !== -1 || origin.indexOf('://127.0.0.1') !== -1;
+    const isVercelPreview = origin.endsWith('.vercel.app');
+
+    const allowedOrigins = (process.env.FRONTEND_ORIGIN || '')
+      .split(',')
+      .map(o => o.trim())
+      .filter(Boolean);
+
+    if (isLocalhost || allowedOrigins.includes(origin) || isVercelPreview) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  methods:            ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders:     ['Content-Type', 'Authorization'],
+  credentials:        true
+}));
+
+// ============================================================
+// BODY PARSERS
+// ============================================================
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
+
+// Disable Express fingerprinting header
+app.disable('x-powered-by');
+
+// Mount XSS Input HTML Sanitizer middleware
+const { sanitizeInput } = require('./middleware/sanitizeMiddleware');
+app.use(sanitizeInput);
+
+// ============================================================
+// STATIC FRONTEND FILES
+// ============================================================
+const FRONTEND_ROOT = path.join(__dirname, '..');
+app.use(express.static(FRONTEND_ROOT));
+
+// ============================================================
+// API ROUTES
+// ============================================================
+
+// Health check — no rate limiting, no auth
+app.get('/api/health', async (req, res) => {
+  try {
+    await db.query('SELECT 1');
+    res.json({ success: true, database: 'connected', version: '2.0' });
+  } catch (err) {
+    res.status(503).json({ success: false, database: 'disconnected' });
+  }
+});
+
+// ============================================================
+      "Switch Statement: Evaluates an expression and executes code based on matching case labels. Works with int, char, enum (Java 5+), String (Java 7+). Requires break to prevent fall-through (though fall-through can be intentional). The default case handles unmatched values. Modern languages offer enhanced switches: Java 14+ switch expressions (-> with no fall-through), C# 8+ switch expressions with pattern matching. Performance: switch can be compiled to a jump table (O(1)) vs if-else chain (O(n)). Best for 3+ branches on a single variable.",
+      "Ternary Operator (Conditional Expression): Shorthand for if-else that returns a value: condition ? valueIfTrue : valueIfFalse. Java, C, C++, JavaScript, Python (with different syntax: value_if_true if condition else value_if_false). Nested ternaries are hard to read — avoid more than one level. The ternary must always have both branches (it's an expression, not a statement). Common interview question: 'Rewrite this if-else as a ternary'.",
+      "Short-Circuit Evaluation: In && (AND), if the left operand is false, the right operand is NOT evaluated. In || (OR), if the left operand is true, the right operand is NOT evaluated. This prevents null pointer exceptions: if (obj != null && obj.value > 0). It also enables lazy initialization patterns. The non-short-circuit operators (& and |) evaluate both sides always — used for bitwise operations, not logical. Python uses 'and' and 'or' keywords with the same short-circuit behavior.",
+      "De Morgan's Laws: NOT (A AND B) = (NOT A) OR (NOT B) and NOT (A OR B) = (NOT A) AND (NOT B). These laws are essential for simplifying complex conditions. For example: if (!(x >= 0 && x < arr.length)) can be rewritten as if (x < 0 || x >= arr.length) which is more readable. Apply De Morgan's laws to make conditions more intuitive and reduce bugs.",
+      "Truthiness and Falsy Values: In JavaScript and Python, non-boolean values can be coerced to booleans in conditional contexts. JavaScript falsy values: false, 0, '' (empty string), null, undefined, NaN. Everything else is truthy. Python falsy: False, 0, 0.0, '' , [], (), {}, None. This enables concise checks like if (!str) for empty strings, but can cause bugs when 0 is a valid value. Use strict equality (=== in JS, == in Python but be careful) to avoid coercion surprises.",
+      "Pattern Matching (Modern Languages): Modern languages offer sophisticated pattern matching beyond traditional if/switch. Rust: match expressions with exhaustive pattern coverage. Scala: pattern matching with case classes. Kotlin: when expressions. Python 3.10+: match-case with structural pattern matching. C# 8+/9+: switch expressions with property patterns, positional patterns, and relational patterns. These constructs reduce boilerplate and make impossible states impossible to represent."
+    ],
+    "codeExamples": {
+      "javascript": "// Control Flow & Boolean Logic Examples\n\n// 1. if-else with guard clauses\nfunction processUser(user) {\n  if (!user) return 'No user provided';  // Guard clause\n  if (!user.name) return 'User has no name';  // Guard clause\n  if (user.age < 0 || user.age > 150) return 'Invalid age';\n  \n  // Main logic\n  return `Processing ${user.name}, age ${user.age}`;\n}\n\n// 2. Switch statement\nfunction getDayName(num) {\n  switch (num) {\n    case 1: return 'Monday';\n    case 2: return 'Tuesday';\n    case 3: return 'Wednesday';\n    case 4: return 'Thursday';\n    case 5: return 'Friday';\n    case 6: return 'Saturday';\n    case 7: return 'Sunday';\n    default: return 'Invalid day number';\n  }\n}\n\n// 3. Ternary operator\nconst age = 20;\nconst status = age >= 18 ? 'Adult' : 'Minor';\nconsole.log('Ternary:', status);\n\n// 4. Short-circuit evaluation\nconst name = null;\nconst displayName = name || 'Guest';  // Short-circuit ||\nconsole.log('Short-circuit OR:', displayName);  // 'Guest'\n\nconst user = { email: 'alice@example.com' };\nconst hasEmail = user && user.email;  // Short-circuit &&\nconsole.log('Short-circuit AND:', hasEmail);\n\n// 5. De Morgan's Laws Example\nfunction isValidIndex(arr, i) {\n  // Original: if (!(i >= 0 && i < arr.length))\n  // Simplified via De Morgan: if (i < 0 || i >= arr.length)\n  if (i < 0 || i >= arr.length) {\n    return false;\n  }\n  return true;\n}\n\n// 6. Practical: Binary Search Tree Insert Decision\nfunction bstInsert(root, value) {\n  if (!root) {\n    return { val: value, left: null, right: null };\n  }\n  \n  // Control flow based on comparison\n  if (value < root.val) {\n    root.left = bstInsert(root.left, value);\n  } else if (value > root.val) {\n    root.right = bstInsert(root.right, value);\n  }\n  // If equal, do nothing (no duplicates)\n  return root;\n}\n\n// 7. Truthiness pitfalls\nfunction processCount(count) {\n  // BAD: if (count) fails when count is 0\n  // GOOD:\n  if (count === undefined || count === null) {\n    return 'Count not provided';\n  }\n  return `Count is ${Math.abs(count)}`;\n}\n\nconsole.log(processUser({ name: 'Alice', age: 25 }));\nconsole.log('Day 3:', getDayName(3));\nconsole.log('Valid index:', isValidIndex([1,2,3], 5));\nconsole.log('Count 0:', processCount(0));\nconsole.log('Count null:', processCount(null));",
+      "python": "# Control Flow & Boolean Logic in Python\n\n# 1. if-elif-else with Pythonic style\ndef grade_score(score):\n    \"\"\"Return letter grade based on numeric score.\"\"\"\n    if not isinstance(score, (int, float)):\n        return \"Invalid input\"\n    if score < 0 or score > 100:\n        return \"Score out of range\"\n    \n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    elif score >= 70:\n        return 'C'\n    elif score >= 60:\n        return 'D'\n    else:\n        return 'F'\n\n# 2. Python 3.10+ match-case (structural pattern matching)\ndef process_command(command):\n    match command.split():\n        case ['quit']:\n            return \"Exiting...\"\n        case ['hello', name]:\n            return f\"Hello, {name}!\"\n        case ['add', x, y]:\n            try:\n                return float(x) + float(y)\n            except ValueError:\n                return \"Invalid numbers\"\n        case _:\n            return \"Unknown command\"\n\n# 3. Ternary (conditional expression) in Python\nage = 20\nstatus = \"Adult\" if age >= 18 else \"Minor\"\nprint(f\"Ternary: {status}\")\n\n# 4. Short-circuit evaluation\nname = None\ndisplay_name = name or \"Guest\"  # Short-circuit OR\nprint(f\"Short-circuit OR: {display_name}\")\n\n# 5. Falsy values in Python\nfalsy_values = [False, 0, 0.0, '', [], (), {}, None]\nfor val in falsy_values:\n    if val:\n        print(f\"  {type(val).__name__}: {repr(val)} is TRUTHY\")\n    else:\n        print(f\"  {type(val).__name__}: {repr(val)} is FALSY\")\n\n# 6. De Morgan's Laws\ndef is_in_range(value, lower, upper):\n    # Original: if not (lower <= value <= upper):\n    # De Morgan: if value < lower or value > upper:\n    if value < lower or value > upper:\n        return False\n    return True\n\n# 7. Practical: Traversing a binary tree with control flow\nclass TreeNode:\n    def __init__(self, val):\n        self.val = val\n        self.left = None\n        self.right = None\n\ndef inorder_traversal(root):\n    \"\"\"Inorder traversal using control flow.\"\"\"\n    result = []\n    \n    def traverse(node):\n        if node is None:  # Base case\n            return\n        traverse(node.left)  # Recurse left\n        result.append(node.val)  # Process current\n        traverse(node.right)  # Recurse right\n    \n    traverse(root)\n    return result\n\n# Test\nprint(f\"\\nGrade 85: {grade_score(85)}\")\nprint(f\"Command: {process_command('hello Alice')}\")\nprint(f\"In range: {is_in_range(5, 1, 10)}\")\n\n# Build a small BST\nroot = TreeNode(10)\nroot.left = TreeNode(5)\nroot.right = TreeNode(15)\nroot.left.left = TreeNode(2)\nroot.left.right = TreeNode(7)\nprint(f\"Inorder traversal: {inorder_traversal(root)}\")",
+      "java": "// Control Flow & Boolean Logic in Java\npublic class ControlFlowDemo {\n    \n    // 1. if-else with guard clauses\n    static String processUser(String name, Integer age) {\n        if (name == null || name.isEmpty()) {\n            return \"Name is required\";\n        }\n        if (age == null || age < 0 || age > 150) {\n            return \"Invalid age\";\n        }\n        return String.format(\"Processing %s, age %d\", name, age);\n    }\n    \n    // 2. Switch statement\n    static String getQuarter(int month) {\n        switch (month) {\n            case 1: case 2: case 3:\n                return \"Q1\";\n            case 4: case 5: case 6:\n                return \"Q2\";\n            case 7: case 8: case 9:\n                return \"Q3\";\n            case 10: case 11: case 12:\n                return \"Q4\";\n            default:\n                return \"Invalid month\";\n        }\n    }\n    \n    // Java 14+ switch expression\n    static String getQuarterModern(int month) {\n        return switch (month) {\n            case 1, 2, 3 -> \"Q1\";\n            case 4, 5, 6 -> \"Q2\";\n            case 7, 8, 9 -> \"Q3\";\n            case 10, 11, 12 -> \"Q4\";\n            default -> \"Invalid\";\n        };\n    }\n    \n    // 3. Ternary operator\n    static String checkAge(int age) {\n        return age >= 18 ? \"Adult\" : \"Minor\";\n    }\n    \n    // 4. Short-circuit evaluation prevents NPE\n    static String getDisplayName(String name) {\n        // Short-circuit: if name is null, doesn't evaluate isEmpty()\n        return (name != null && !name.isEmpty()) ? name : \"Guest\";\n    }\n    \n    // 5. De Morgan's Laws example\n    static boolean isValidIndex(int[] arr, int i) {\n        // Original: if (!(i >= 0 && i < arr.length))\n        // Simplified: if (i < 0 || i >= arr.length)\n        return !(i < 0 || i >= arr.length);\n    }\n    \n    // 6. Pattern matching with if and instanceof (Java 16+)\n    static String describe(Object obj) {\n        if (obj instanceof String s && !s.isEmpty()) {\n            return \"String of length \" + s.length();\n        } else if (obj instanceof Integer i && i > 0) {\n            return \"Positive integer: \" + i;\n        } else if (obj instanceof Integer i) {\n            return \"Non-positive integer: \" + i;\n        }\n        return \"Unknown type\";\n    }\n    \n    // 7. Practical: BST search with control flow\n    static class TreeNode {\n        int val;\n        TreeNode left, right;\n        TreeNode(int v) { this.val = v; }\n    }\n    \n    static TreeNode searchBST(TreeNode root, int target) {\n        if (root == null) return null;\n        if (root.val == target) return root;\n        if (target < root.val) return searchBST(root.left, target);\n        return searchBST(root.right, target);\n    }\n    \n    public static void main(String[] args) {\n        System.out.println(processUser(\"Alice\", 25));\n        System.out.println(\"Month 5: \" + getQuarter(5));\n        System.out.println(\"Ternary: \" + checkAge(20));\n        System.out.println(\"Display name: \" + getDisplayName(null));\n        \n        int[] arr = {1, 2, 3};\n        System.out.println(\"Valid index 1: \" + isValidIndex(arr, 1));\n        System.out.println(\"Valid index 5: \" + isValidIndex(arr, 5));\n        \n        System.out.println(\"\\\"hello\\\": \" + describe(\"hello\"));\n        System.out.println(\"42: \" + describe(42));\n        \n        // BST\n        TreeNode root = new TreeNode(10);\n        root.left = new TreeNode(5);\n        root.right = new TreeNode(15);\n        root.left.left = new TreeNode(2);\n        root.left.right = new TreeNode(7);\n        \n        TreeNode found = searchBST(root, 7);\n        System.out.println(\"BST search 7: \" + (found != null ? found.val : \"null\"));\n        System.out.println(\"BST search 99: \" + (searchBST(root, 99) != null ? \"found\" : \"null\"));\n    }\n}"
+    },
+    "quiz": [
+      {"question": "What is short-circuit evaluation?", "options": ["Both operands are always evaluated", "The second operand is only evaluated if needed based on the first operand's value", "The expression is executed in a separate thread", "Only the first operand is evaluated in all cases"], "correct": 1},
+      {"question": "Which of the following is NOT a falsy value in JavaScript?", "options": ["0", "'' (empty string)", "'false' (string containing the word false)", "null"], "correct": 2},
+      {"question": "According to De Morgan's Laws, !(A && B) is equivalent to:", "options": ["!A && !B", "!A || !B", "A || B", "!(A || B)"], "correct": 1},
+      {"question": "What advantage does a switch statement have over multiple if-else statements?", "options": ["Switch can handle any type of condition", "Switch can be compiled into a jump table for O(1) branching", "Switch doesn't need break statements", "Switch is always faster in interpreted languages"], "correct": 1},
+      {"question": "In Java, what happens when you forget a break in a switch case?", "options": ["Compilation error", "Runtime exception", "Fall-through: execution continues to the next case", "The default case is executed instead"], "correct": 2}
+    ]
+  },
+
+  "dsa-iteration-loops": {
+    "id": "dsa-iteration-loops",
+    "title": "Data Structures & Algorithms Iteration loops & State Traversal",
+    "introduction": "Iteration is the repeated execution of a block of code. It is one of the two fundamental approaches to repetition in programming (the other being recursion). The three classic loop constructs — for, while, and do-while — provide different mechanisms for controlling repetition. The for loop is best when the number of iterations is known in advance. The while loop is ideal when iteration depends on a condition that changes during execution. The do-while loop guarantees at least one execution. Iterators are objects that enable traversal through a collection while abstracting the underlying data structure. Recursion is a technique where a function calls itself to solve smaller instances of the same problem. Choosing between iteration and recursion involves tradeoffs: iterative solutions are generally more memory-efficient (no call stack overhead), while recursive solutions are often more elegant for naturally recursive problems (tree/graph traversal, divide-and-conquer). Understanding these mechanisms deeply is fundamental to every DSA implementation — from simple array summation to complex graph traversal algorithms like DFS and BFS.",
+    "whyImportant": "Iteration and recursion are at the heart of every algorithm. Sorting algorithms need nested loops. Tree/graph algorithms rely on stack/queue-based traversal. Dynamic programming uses iteration over table indices. In interviews, candidates must choose between iterative and recursive approaches — each with its own advantages. The 'Fibonacci' problem is the classic recursion vs iteration debate. LeetCode's 'Binary Tree Inorder Traversal' expects both iterative (using explicit stack) and recursive solutions. System design interviews consider loop efficiency: O(n) iteration over a million records is fast; O(n²) is not. Understanding loop invariants — conditions that remain true before and after each iteration — is crucial for proving algorithm correctness. Mastery of iterators enables writing generic algorithms that work across different collection types.",
+    "keyConcepts": [
+      "For Loop: The most structured loop — combines initialization, condition, and increment/decrement in one line. for (int i = 0; i < n; i++) is the canonical form. The initialization runs once; the condition is checked before each iteration; the update runs after each iteration. All three parts are optional (for(;;) creates an infinite loop). Common variations: decrementing (i--), stepping by 2 (i += 2), multiple counters (for i, j). Enhanced for-each (for (int x : arr)) simplifies collection iteration but hides the index.",
+      "While Loop: Checks the condition before each iteration. Best when the number of iterations is unknown. while (condition) { body }. Classic use: reading until end of file, waiting for a network response, or traversing a linked list until null. Risk of infinite loop if condition never becomes false. Always ensure loop variables are updated toward the termination condition.",
+      "Do-While Loop: Checks the condition AFTER each iteration, guaranteeing at least one execution. Less common than for/while, but essential for menu-driven programs, retry logic, and sentinel-controlled loops. Syntax: do { body } while (condition); Note the semicolon at the end — easy to miss.",
+      "Iterators: Objects that provide sequential access to elements of a collection. Iterator pattern defines hasNext() and next() methods (Java), or __iter__ and __next__ (Python). Advantages: uniform interface for all collections, supports removal during iteration (Java's Iterator.remove()), lazy evaluation for large datasets. The for-each loop (Java) or for...of (JavaScript) uses iterators internally. Python generators are a powerful form of iterator that maintain state between calls.",
+      "Recursion: A function that calls itself. Every recursive function must have: base case (stops recursion) and recursive case (calls itself with modified parameters). Classic examples: factorial, Fibonacci, tree traversal. The call stack stores each recursive call's state (local variables, return address). Pros: elegant code for naturally recursive problems. Cons: stack overflow for deep recursion, overhead of function calls. Tail recursion (where the recursive call is the last operation) can be optimized by the compiler to use constant stack space (tail call optimization).",
+      "Recursion vs Iteration Tradeoffs: Recursion: cleaner code for divide-and-conquer, tree/graph algorithms; O(n) stack space; risk of stack overflow for n > 1000-10000. Iteration: constant extra space (O(1) or O(n) for explicit stack); more complex code for nested structures; no overflow risk. Any recursive algorithm can be converted to iterative using an explicit stack (though the code is often more complex). Decision guide: use recursion for branching structures (trees, graphs, backtracking); use iteration for linear structures (arrays, linked lists).",
+      "Loop Invariants: A condition that is true before and after each loop iteration. Used to prove algorithm correctness. Example: in selection sort, after i iterations, the first i elements are sorted and are the i smallest elements in the array. Verifying the loop invariant at initialization, maintenance, and termination provides a rigorous proof of correctness. Interviewers often ask about loop invariants for binary search and sorting algorithms."
+    ],
+    "codeExamples": {
+      "javascript": "// Iteration, Loops, and Recursion in JavaScript\n\n// 1. For loop — iterate array with index\nfunction sumArray(arr) {\n  let sum = 0;\n  for (let i = 0; i < arr.length; i++) {\n    sum += arr[i];\n  }\n  return sum;\n}\n\n// 2. For-of loop (uses iterator protocol)\nfunction sumArrayIter(arr) {\n  let sum = 0;\n  for (const val of arr) {\n    sum += val;\n  }\n  return sum;\n}\n\n// 3. While loop — linked list traversal\nclass ListNode {\n  constructor(val) {\n    this.val = val;\n    this.next = null;\n  }\n}\n\nfunction linkedListToArray(head) {\n  const result = [];\n  let curr = head;\n  while (curr !== null) {   // Traverse until null\n    result.push(curr.val);\n    curr = curr.next;\n  }\n  return result;\n}\n\n// 4. Do-while — menu processing\nfunction processCommands(commands) {\n  let i = 0;\n  do {\n    console.log(`Processing: ${commands[i]}`);\n    i++;\n  } while (i < commands.length);\n}\n\n// 5. Recursion — factorial\nfunction factorial(n) {\n  if (n <= 1) return 1;  // Base case\n  return n * factorial(n - 1);  // Recursive case\n}\n\n// 6. Recursion — tree traversal\nclass TreeNode {\n  constructor(val) {\n    this.val = val;\n    this.left = null;\n    this.right = null;\n  }\n}\n\nfunction inorderTraversal(root) {\n  const result = [];\n  \n  function traverse(node) {\n    if (!node) return;\n    traverse(node.left);\n    result.push(node.val);\n    traverse(node.right);\n  }\n  \n  traverse(root);\n  return result;\n}\n\n// 7. Iterative vs Recursive comparison\n// Recursive Fibonacci (O(2^n) — BAD!)\nfunction fibRecursive(n) {\n  if (n <= 1) return n;\n  return fibRecursive(n - 1) + fibRecursive(n - 2);\n}\n\n// Iterative Fibonacci (O(n) — GOOD!)\nfunction fibIterative(n) {\n  if (n <= 1) return n;\n  let a = 0, b = 1;\n  for (let i = 2; i <= n; i++) {\n    [a, b] = [b, a + b];\n  }\n  return b;\n}\n\n// 8. Manual iterator — custom range\nfunction createRange(start, end) {\n  let current = start;\n  return {\n    next() {\n      if (current <= end) {\n        return { value: current++, done: false };\n      }\n      return { done: true };\n    }\n  };\n}\n\n// Test\nconsole.log('Sum array:', sumArray([1, 2, 3, 4, 5]));\n\nconst list = new ListNode(1);\nlist.next = new ListNode(2);\nlist.next.next = new ListNode(3);\nconsole.log('Linked list to array:', linkedListToArray(list));\n\nconsole.log('Factorial(5):', factorial(5));\nconsole.log('Fib recursive(10):', fibRecursive(10));\nconsole.log('Fib iterative(10):', fibIterative(10));\n\nconst iter = createRange(1, 5);\nlet result = iter.next();\nwhile (!result.done) {\n  console.log('Range value:', result.value);\n  result = iter.next();\n}",
+      "python": "# Iteration, Loops, and Recursion in Python\n\n# 1. For loop — iteration over range\ndef sum_range(n):\n    total = 0\n    for i in range(n):\n        total += i\n    return total\n\n# 2. For loop — iteration over iterable\ndef find_max(arr):\n    if not arr:\n        return None\n    max_val = arr[0]\n    for x in arr:\n        if x > max_val:\n            max_val = x\n    return max_val\n\n# 3. While loop — linked list traversal\nclass ListNode:\n    def __init__(self, val):\n        self.val = val\n        self.next = None\n\ndef list_to_array(head):\n    result = []\n    current = head\n    while current is not None:\n        result.append(current.val)\n        current = current.next\n    return result\n\n# 4. Enumerate — get both index and value\ndef find_index_of(arr, target):\n    for i, val in enumerate(arr):\n        if val == target:\n            return i\n    return -1\n\n# 5. Recursion — factorial\ndef factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\n# 6. Recursion — tree traversal\nclass TreeNode:\n    def __init__(self, val):\n        self.val = val\n        self.left = None\n        self.right = None\n\ndef inorder_traversal(root):\n    if root is None:\n        return []\n    return (inorder_traversal(root.left) +\n            [root.val] +\n            inorder_traversal(root.right))\n\n# 7. Iterative vs Recursive\n# Recursive binary search\ndef binary_search_recursive(arr, target, left, right):\n    if left > right:\n        return -1\n    mid = left + (right - left) // 2\n    if arr[mid] == target:\n        return mid\n    elif arr[mid] < target:\n        return binary_search_recursive(arr, target, mid + 1, right)\n    else:\n        return binary_search_recursive(arr, target, left, mid - 1)\n\n# Iterative binary search\ndef binary_search_iterative(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\n# 8. Python generator (lazy iterator)\ndef fibonacci_generator(n):\n    a, b = 0, 1\n    for _ in range(n):\n        yield a\n        a, b = b, a + b\n\n# Test\nprint(f\"Sum range(10): {sum_range(10)}\")\nprint(f\"Find max: {find_max([3, 7, 2, 9, 5])}\")\nprint(f\"Factorial 5: {factorial(5)}\")\n\n# Linked list test\nhead = ListNode(1)\nhead.next = ListNode(2)\nhead.next.next = ListNode(3)\nprint(f\"List to array: {list_to_array(head)}\")\n\n# Binary search\narr = [2, 5, 8, 12, 19, 23, 38]\nprint(f\"Binary search recursive: {binary_search_recursive(arr, 23, 0, len(arr)-1)}\")\nprint(f\"Binary search iterative: {binary_search_iterative(arr, 23)}\")\n\n# Fibonacci generator\nprint(f\"Fibonacci generator: {list(fibonacci_generator(10))}\")",
+      "java": "// Iteration, Loops, and Recursion in Java\nimport java.util.*;\n\npublic class IterationDemo {\n    \n    static class ListNode {\n        int val;\n        ListNode next;\n        ListNode(int v) { this.val = v; }\n    }\n    \n    static class TreeNode {\n        int val;\n        TreeNode left, right;\n        TreeNode(int v) { this.val = v; }\n    }\n    \n    // 1. For loop — sum array\n    static int sumArray(int[] arr) {\n        int sum = 0;\n        for (int i = 0; i < arr.length; i++) {\n            sum += arr[i];\n        }\n        return sum;\n    }\n    \n    // 2. Enhanced for-each\n    static int maxElement(int[] arr) {\n        int max = Integer.MIN_VALUE;\n        for (int x : arr) {\n            if (x > max) max = x;\n        }\n        return max;\n    }\n    \n    // 3. While loop — linked list traversal\n    static List<Integer> listToArray(ListNode head) {\n        List<Integer> result = new ArrayList<>();\n        ListNode curr = head;\n        while (curr != null) {\n            result.add(curr.val);\n            curr = curr.next;\n        }\n        return result;\n    }\n    \n    // 4. Iterator pattern\n    static <T> List<T> collectAll(Iterator<T> it) {\n        List<T> result = new ArrayList<>();\n        while (it.hasNext()) {\n            result.add(it.next());\n        }\n        return result;\n    }\n    \n    // 5. Recursion — factorial\n    static int factorial(int n) {\n        if (n <= 1) return 1;\n        return n * factorial(n - 1);\n    }\n    \n    // 6. Recursion — binary tree inorder\n    static List<Integer> inorderTraversal(TreeNode root) {\n        List<Integer> result = new ArrayList<>();\n        inorderHelper(root, result);\n        return result;\n    }\n    \n    private static void inorderHelper(TreeNode node, List<Integer> result) {\n        if (node == null) return;\n        inorderHelper(node.left, result);\n        result.add(node.val);\n        inorderHelper(node.right, result);\n    }\n    \n    // 7. Iterative tree traversal (using explicit stack)\n    static List<Integer> inorderIterative(TreeNode root) {\n        List<Integer> result = new ArrayList<>();\n        Stack<TreeNode> stack = new Stack<>();\n        TreeNode curr = root;\n        \n        while (curr != null || !stack.isEmpty()) {\n            while (curr != null) {\n                stack.push(curr);\n                curr = curr.left;\n            }\n            curr = stack.pop();\n            result.add(curr.val);\n            curr = curr.right;\n        }\n        return result;\n    }\n    \n    // 8. Recursive vs Iterative comparison\n    static int fibonacciRecursive(int n) {\n        if (n <= 1) return n;\n        return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);\n    }\n    \n    static int fibonacciIterative(int n) {\n        if (n <= 1) return n;\n        int a = 0, b = 1;\n        for (int i = 2; i <= n; i++) {\n            int temp = b;\n            b = a + b;\n            a = temp;\n        }\n        return b;\n    }\n    \n    public static void main(String[] args) {\n        int[] arr = {1, 2, 3, 4, 5};\n        System.out.println(\"Sum: \" + sumArray(arr));\n        System.out.println(\"Max: \" + maxElement(arr));\n        System.out.println(\"Factorial 5: \" + factorial(5));\n        \n        ListNode head = new ListNode(1);\n        head.next = new ListNode(2);\n        head.next.next = new ListNode(3);\n        System.out.println(\"Linked list: \" + listToArray(head));\n        \n        // Tree\n        TreeNode root = new TreeNode(4);\n        root.left = new TreeNode(2);\n        root.right = new TreeNode(6);\n        root.left.left = new TreeNode(1);\n        root.left.right = new TreeNode(3);\n        root.right.left = new TreeNode(5);\n        root.right.right = new TreeNode(7);\n        \n        System.out.println(\"Inorder recursive: \" + inorderTraversal(root));\n        System.out.println(\"Inorder iterative: \" + inorderIterative(root));\n        \n        System.out.println(\"Fib recursive(10): \" + fibonacciRecursive(10));\n        System.out.println(\"Fib iterative(10): \" + fibonacciIterative(10));\n        \n        // Iterator test\n        List<String> list = Arrays.asList(\"a\", \"b\", \"c\");\n        System.out.println(\"Iterator collect: \" + collectAll(list.iterator()));\n    }\n}"
+    },
+    "quiz": [
+      {"question": "Which loop construct guarantees at least one execution of the loop body?", "options": ["for", "while", "do-while", "for-each"], "correct": 2},
+      {"question": "What is a loop invariant?", "options": ["A condition that causes the loop to exit", "A condition that remains true before and after each iteration", "A variable that never changes inside the loop", "The number of times the loop runs"], "correct": 1},
+      {"question": "Why might recursion be preferred over iteration for tree traversal?", "options": ["Recursion is always faster", "Recursive code mirrors the natural recursive structure of trees", "Recursion uses less memory", "Iteration cannot traverse trees"], "correct": 1},
+      {"question": "What is tail call optimization (TCO)?", "options": ["Calling a function at the end of the program", "When a recursive call is the last operation in a function, the compiler can optimize it to use constant stack space", "Optimizing the last line of every function", "Making the last call in a loop use JIT compilation"], "correct": 1},
+      {"question": "What is the time complexity of naive recursive Fibonacci without memoization?", "options": ["O(n)", "O(n log n)", "O(2^n)", "O(n²)"], "correct": 2}
+    ]
+  }
+};
+
+app.get('/api/lessons/topic/:topic', (req, res) => {
+  const topic = req.params.topic.toLowerCase();
+  const data = LESSON_TOPICS[topic];
+  if (data) {
+    res.json(data);
+  } else {
+    res.status(404).json({ success: false, message: 'Topic not found.' });
+  }
+});
+
+// ── Import Routes ────────────────────────────────────────────
+const authRoutes        = require('./routes/authRoutes');
+const userRoutes        = require('./routes/userRoutes');
+const progressRoutes    = require('./routes/progressRoutes');
+const toolsRoutes       = require('./routes/toolsRoutes');
+const adminRoutes       = require('./routes/adminRoutes');
+const codeRoutes        = require('./routes/codeRoutes');
+const videoRoutes       = require('./routes/videoRoutes');
+const roadmapRoutes     = require('./routes/roadmapRoutes');
+const quizRoutes        = require('./routes/quizRoutes');
+const profileRoutes     = require('./routes/profileRoutes');
+const moduleRoutes      = require('./routes/moduleRoutes');
+const bookmarkRoutes    = require('./routes/bookmarkRoutes');
+const certificateRoutes = require('./routes/certificateRoutes');
+const lessonRoutes      = require('./routes/lessonRoutes');
+const analyticsRoutes   = require('./routes/analyticsRoutes');
+const aiRoutes          = require('./routes/aiRoutes');
+const achievementRoutes = require('./routes/achievementRoutes');
+const portfolioRoutes   = require('./routes/portfolioRoutes');
+const coachRoutes       = require('./routes/coachRoutes');
+const challengeRoutes   = require('./routes/challengeRoutes');
+const resumeRoutes      = require('./routes/resumeRoutes');
+const githubRoutes      = require('./routes/githubRoutes');
+
+// ── Mount Routes ─────────────────────────────────────────────
+app.use('/api/auth',         authRoutes);
+app.use('/api/user',         userRoutes);
+app.use('/api/progress',     progressRoutes);
+app.use('/api/tools',        toolsRoutes);
+app.use('/api/admin',        adminRoutes);
+app.use('/api/code',         codeRoutes);       // Only /api/code — removed duplicate /api/codelabs
+app.use('/api/videos',       videoRoutes);
+app.use('/api/roadmaps',     roadmapRoutes);
+app.use('/api/quizzes',      quizRoutes);
+app.use('/api/profile',      profileRoutes);
+app.use('/api/modules',      moduleRoutes);
+app.use('/api/bookmarks',    bookmarkRoutes);
+app.use('/api/certificates', certificateRoutes);
+app.use('/api/lessons',      lessonRoutes);
+app.use('/api/analytics',    analyticsRoutes);
+app.use('/api/ai',           aiLimiter, aiRoutes); // AI gets its own stricter limiter
+app.use('/api/achievements', achievementRoutes);
+app.use('/api/portfolio',    portfolioRoutes);
+app.use('/api/coach',        coachRoutes);
+app.use('/api/challenges',   challengeRoutes);
+app.use('/api/resume',       resumeRoutes);
+app.use('/api/github',       githubRoutes);
+
+// ============================================================
+// INTERVIEW PREP ROUTES
+// ============================================================
+
+// GET /api/interview/questions — Return 10 real DSA interview questions
+app.get('/api/interview/questions', (req, res) => {
+  const questions = [
+    {
+      id: 'q1',
+      title: 'Two Sum',
+      difficulty: 'Easy',
+      category: 'Arrays',
+      question: 'Given an array of integers nums and an integer target, return indices of the two numbers that add up to target. You may assume that each input has exactly one solution.',
+      sampleAnswer: 'Use a HashMap to store each element and its index as you iterate. For each element, check if (target - element) exists in the map. If yes, return the current index and the stored index. Time: O(n), Space: O(n).'
+    },
+    {
+      id: 'q2',
+      title: 'Reverse a Linked List',
+      difficulty: 'Easy',
+      category: 'Linked Lists',
+      question: 'Given the head of a singly linked list, reverse the list and return its head.',
+      sampleAnswer: 'Use three pointers: prev (initially null), curr (head), and next. Iterate: save curr.next in next, set curr.next = prev, move prev = curr, move curr = next. Continue until curr is null. Return prev as the new head. Time: O(n), Space: O(1).'
+    },
+    {
+      id: 'q3',
+      title: 'Valid Parentheses',
+      difficulty: 'Easy',
+      category: 'Stacks',
+      question: 'Given a string s containing just the characters "(", ")", "{", "}", "[", "]", determine if the input string is valid. A string is valid if brackets close in the correct order.',
+      sampleAnswer: 'Use a stack. Iterate through characters: if opening bracket ( (, {, [ ), push onto stack. If closing bracket, check if stack top matches (pop if matches, return false otherwise). After iteration, return true if stack is empty. Time: O(n), Space: O(n).'
+    },
+    {
+      id: 'q4',
+      title: 'Maximum Subarray (Kadane\'s Algorithm)',
+      difficulty: 'Medium',
+      category: 'Arrays',
+      question: 'Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.',
+      sampleAnswer: 'Use Kadane\'s Algorithm: maintain maxEndingHere and maxSoFar. For each element, set maxEndingHere = max(nums[i], maxEndingHere + nums[i]), then maxSoFar = max(maxSoFar, maxEndingHere). Time: O(n), Space: O(1).'
+    },
+    {
+      id: 'q5',
+      title: 'Merge Two Sorted Lists',
+      difficulty: 'Easy',
+      category: 'Linked Lists',
+      question: 'You are given the heads of two sorted linked lists list1 and list2. Merge them into one sorted linked list and return its head.',
+      sampleAnswer: 'Use a dummy node approach. Compare nodes from both lists and attach the smaller one. Continue until one list is exhausted, then attach the remainder. Return dummy.next. Time: O(m+n), Space: O(1).'
+    },
+    {
+      id: 'q6',
+      title: 'Binary Tree Level Order Traversal',
+      difficulty: 'Medium',
+      category: 'Trees',
+      question: 'Given the root of a binary tree, return the level order traversal of its nodes\' values (left to right, level by level).',
+      sampleAnswer: 'Use a queue. Start with root in queue. While queue is not empty, process all nodes at current level (size = queue.length), add their values to current level list, enqueue left and right children. Add level list to result. Time: O(n), Space: O(n).'
+    },
+    {
+      id: 'q7',
+      title: 'LRU Cache',
+      difficulty: 'Hard',
+      category: 'Design',
+      question: 'Design a data structure that follows the constraints of a Least Recently Used (LRU) cache. Implement get() and put() in O(1) average time.',
+      sampleAnswer: 'Use a HashMap (for O(1) lookup) combined with a doubly linked list (for O(1) removal/insertion). Most Recently Used items go to head, Least Recently Used are at tail. On get: move accessed node to head. On put: if at capacity, remove tail node before inserting new node at head.'
+    },
+    {
+      id: 'q8',
+      title: 'Find All Duplicates in Array',
+      difficulty: 'Medium',
+      category: 'Arrays',
+      question: 'Given an integer array of length n where all values are in range [1, n], some elements appear twice. Find all elements that appear twice without using extra space.',
+      sampleAnswer: 'Use the array itself as a hash map. For each element, use its value as an index, negate the value at that index. If the value at that index is already negative, the element is a duplicate. Time: O(n), Space: O(1) besides output array.'
+    },
+    {
+      id: 'q9',
+      title: 'Longest Substring Without Repeating Characters',
+      difficulty: 'Medium',
+      category: 'Strings',
+      question: 'Given a string s, find the length of the longest substring without repeating characters.',
+      sampleAnswer: 'Use sliding window with two pointers and a HashMap (or Set). Expand right pointer, adding characters. If duplicate found, move left pointer to skip past the previous occurrence. Track max window length. Time: O(n), Space: O(min(m, n)) where m is charset size.'
+    },
+    {
+      id: 'q10',
+      title: 'Serialize and Deserialize Binary Tree',
+      difficulty: 'Hard',
+      category: 'Trees',
+      question: 'Design an algorithm to serialize a binary tree into a string and deserialize that string back into the tree.',
+      sampleAnswer: 'Use preorder traversal with a sentinel (e.g., "null") for null nodes. Serialize: recursively build string using "," as delimiter. Deserialize: split string into array, use a pointer/index to build tree recursively, consuming values in preorder order. Time: O(n) for both operations.'
+    }
+  ];
+  res.json({ success: true, questions });
+});
+
+// POST /api/interview/feedback — Mock AI feedback on user's answer
+app.post('/api/interview/feedback', (req, res) => {
+  const { question, userAnswer } = req.body;
+  if (!question || !userAnswer) {
+    return res.status(400).json({ success: false, message: 'Question and userAnswer are required.' });
+  }
+
+  const wordCount = userAnswer.trim().split(/\s+/).filter(Boolean).length;
+  let feedback = '';
+
+  if (wordCount < 10) {
+    feedback = 'Your answer is too brief. Expand your response with a step-by-step explanation, including time and space complexity analysis. Aim for at least 30-50 words.';
+  } else if (wordCount < 30) {
+    feedback = 'Good start! Your answer has some structure but could be more detailed. Consider including: 1) The approach/algorithm name, 2) Step-by-step explanation, 3) Time and space complexity analysis, 4) Edge cases and how to handle them.';
+  } else {
+    const complexityTerms = /O\(|time|space|complexity|O\(1\)|O\(n\)|O\(log n\)|O\(n²\)/i;
+    const structureTerms = /first|then|next|step|approach|algorithm|iterate|traverse|recursive|iterative/i;
+    const hasComplexity = complexityTerms.test(userAnswer);
+    const hasStructure = structureTerms.test(userAnswer);
+
+    if (hasComplexity && hasStructure) {
+      feedback = 'Excellent answer! Your response is well-structured with clear step-by-step reasoning and complexity analysis. This demonstrates the depth expected at FAANG-level interviews. Consider also discussing alternative approaches and their tradeoffs.';
+    } else if (hasStructure) {
+      feedback = 'Good structured answer! You explained the approach clearly. To improve, add time and space complexity analysis (Big O notation) and discuss edge cases. Interviewers expect complexity analysis for every solution.';
+    } else if (hasComplexity) {
+      feedback = 'Good analysis of complexity, but your answer needs more structure. Walk through the algorithm step by step, explaining the data structures used and the reasoning behind each decision.';
+    } else {
+      feedback = 'Your answer covers the basics but lacks structure and complexity analysis. For better interview performance: 1) Name the approach/algorithm, 2) Explain step by step with pseudocode, 3) Provide time & space complexity, 4) Discuss edge cases.';
+    }
+
+    if (wordCount >= 80) {
+      feedback += ' Excellent length — comprehensive answers like this stand out in interviews.';
+    }
+  }
+
+  // Simulate slight delay for realism
+  setTimeout(() => {
+    res.json({
+      success: true,
+      feedback,
+      metrics: {
+        wordCount,
+        hasComplexityAnalysis: /O\(|complexity/i.test(userAnswer),
+        hasStructure: /first|then|next|step|approach|algorithm/i.test(userAnswer),
+        hasCodeExample: /function|class|def |int |var |let |const/i.test(userAnswer)
+      }
+    });
+  }, 500);
+});
+
+// ============================================================
+// CATCH-ALL ROUTES
+// ============================================================
+
+// API 404 handler — must come after all /api/* mounts
+app.get('/api/*', (req, res) => {
+  res.status(404).json({ success: false, message: 'API endpoint not found.' });
+});
+
+// SPA portfolio routing fallbacks — must come before general catch-all
+app.get('/profile/portfolio', (req, res) => {
+  res.sendFile(path.join(FRONTEND_ROOT, 'portfolio.html'));
+});
+app.get('/portfolio/:username', (req, res) => {
+  res.sendFile(path.join(FRONTEND_ROOT, 'portfolio.html'));
+});
+
+// SPA catch-all — serve index.html for any non-API GET
+app.get('*', (req, res) => {
+  res.sendFile(path.join(FRONTEND_ROOT, 'index.html'));
+});
+
+// ============================================================
+// GLOBAL ERROR HANDLER
+// ============================================================
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  // Don't leak internal error details in production
+  const isDev = process.env.NODE_ENV !== 'production';
+  console.error('❌  Unhandled error:', err.stack || err.message);
+  res.status(err.status || 500).json({
+    success: false,
+    message: isDev ? (err.message || 'Internal server error.') : 'Internal server error.'
+  });
+});
+
+// ============================================================
+// START SERVER
+// ============================================================
+const server = app.listen(PORT, () => {
+  console.log('');
+  console.log('╔════════════════════════════════════════════╗');
+  console.log('║       EduNet API Server — v2.0 Running    ║');
+  console.log(`║   http://localhost:${PORT}                   ║`);
+  console.log(`║   Environment: ${process.env.NODE_ENV || 'development'}                 ║`);
+  console.log('║   Security: Helmet ✓  Rate Limit ✓        ║');
+  console.log('║   Routes: Analytics ✓  AI Mentor ✓        ║');
+  console.log('╚════════════════════════════════════════════╝');
+  console.log('');
+});
+
+// ── Graceful Shutdown Handler ──────────────────────────────
+const dbPool = require('./config/db');
+
+function gracefulShutdown() {
+  console.log('⏳ Received shutdown signal (SIGTERM/SIGINT). Closing HTTP server...');
+  server.close(() => {
+    console.log('✅ HTTP server closed. Closing database connections...');
+    dbPool.end().then(() => {
+      console.log('✅ Database connection pool closed. Exiting process.');
+      process.exit(0);
+    }).catch((err) => {
+      console.error('❌ Error during database pool close:', err.message);
+      process.exit(1);
+    });
+  });
+
+  // Force exit after 10 seconds if shutdown hangs
+  setTimeout(() => {
+    console.error('⚠️ Force exiting process after 10s timeout.');
+    process.exit(1);
+  }, 10000);
+}
+
+process.on('SIGTERM', gracefulShutdown);
+process.on('SIGINT', gracefulShutdown);
+
+// ── Unhandled Rejection / Exception Guards ─────────────────────
+// Prevents a single unhandled async error from crashing Render.
+// Logs the error and keeps the process alive in production.
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('⚠️  Unhandled Promise Rejection at:', promise, 'reason:', reason);
+  // In development, crash fast to surface bugs quickly
+  if (process.env.NODE_ENV !== 'production') {
+    process.exit(1);
+  }
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('💥  Uncaught Exception:', err.stack || err.message);
+  // Always exit on uncaughtException — the process state is undefined after this
+  process.exit(1);
+});
+
+module.exports = app;

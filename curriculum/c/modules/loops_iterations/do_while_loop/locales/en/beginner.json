@@ -1,0 +1,61 @@
+{
+  "curiosityQuestion": "What if you had to write the same instruction a thousand times — would you copy-paste or teach the computer to repeat?",
+  "whyExists": "Repetition is at computing's heart. Processing 10,000 records, sending notifications to every user, or summing millions of numbers would be impossible if each step had to be written individually. Loops define the work once and repeat it efficiently.",
+  "problemItSolves": "Without loops, you copy-paste code for every item — impractical for large datasets and impossible when repetition count is unknown at compile time.",
+  "withoutVariables": "Imagine an assembly line worker who has to be told every single step for every single item. Loops are the automation that lets the line run without constant instruction.",
+  "whereUsed": "Every program with collections, data processing, batch operations, or repeated calculations uses loops. They are fundamental to computing.",
+  "realWorldAnalogy": "A loop is like a factory conveyor belt. Items come down the line one by one. Each goes through the same stations (loop body). The belt keeps moving as long as there are items (condition is true).",
+  "simpleExplanation": "A for loop repeats code a set number of times or over a collection. A while loop runs while a condition is true. Each pass is an iteration.",
+  "syntaxExplanation": "for (let i = 0; i < n; i++) { process(i); }\n\nwhile (condition) {\n  doSomething();\n  updateCondition();\n}",
+  "examples": [
+    {
+      "title": "While Loop",
+      "code": "let count = 0;\nwhile (count < 5) {\n  console.log(count);\n  count++;\n}",
+      "explanation": "The loop body runs once per iteration. In a for loop, the counter updates automatically. In a while loop, you must update the condition to avoid infinite loops.",
+      "language": "c"
+    }
+  ],
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start] --> B[Initialize Counter]\n    B --> C{Condition True?}\n    C -->|Yes| D[Execute Loop Body]\n    D --> E[Update Counter]\n    E --> C\n    C -->|No| F[Exit Loop]\n```",
+  "stepByStepExecution": [
+    {
+      "step": 1,
+      "action": "Initialize",
+      "explanation": "Set up the condition variable."
+    },
+    {
+      "step": 2,
+      "action": "Check condition",
+      "explanation": "If true, enter the body. If false, exit the loop."
+    },
+    {
+      "step": 3,
+      "action": "Execute body",
+      "explanation": "Run the statements inside the loop."
+    },
+    {
+      "step": 4,
+      "action": "Update",
+      "explanation": "Modify the condition variable."
+    },
+    {
+      "step": 5,
+      "action": "Repeat from step 2",
+      "explanation": "Continue until the condition is false."
+    }
+  ],
+  "memoryDiagram": {
+    "stack": "[Stack]\n  Local variables and call context",
+    "heap": "[Heap]\n  Dynamic data structures"
+  },
+  "namingRules": [
+    "Use snake_case for functions and variables",
+    "Use UPPER_SNAKE_CASE for macros",
+    "Use PascalCase for typedefs"
+  ],
+  "commonMistakes": [
+    "Infinite loops — forgetting to update the condition",
+    "Off-by-one errors (<= vs <)",
+    "Modifying the collection while iterating",
+    "Using the loop variable after the loop ends"
+  ]
+}

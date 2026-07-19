@@ -62,28 +62,15 @@ let explanationMode    = 'detailed'; // detailed, beginner, advanced
 let completedStages = {};
 
 function getNavigationStages(ui) {
-  const stages = [
+  return [
     { id: 'overview', label: 'Overview' },
-    { id: 'learn', label: 'Learning Notes' },
-    { id: 'examples', label: 'Examples' },
-    { id: 'visualization', label: 'Visualization' },
-    { id: 'practice', label: 'Practice' },
-    { id: 'quiz', label: 'Topic Quiz' }
-  ];
-
-  if (ui.project && (ui.project.title || ui.project.description)) {
-    stages.push({ id: 'project', label: 'Mini Project' });
-  }
-
-  stages.push(
-    { id: 'cheatsheet', label: 'Cheat Sheet' },
-    { id: 'interview', label: 'Interview Questions' },
-    { id: 'revision', label: 'Revision Notes' },
-    { id: 'assessment', label: 'Final Assessment' },
+    { id: 'learn', label: 'Learn & Theory' },
+    { id: 'codelab', label: 'Interactive Code Lab' },
+    { id: 'practice', label: 'Practice Lab' },
+    { id: 'interview', label: 'Interview Prep' },
+    { id: 'project', label: 'Project & Assessment' },
     { id: 'complete', label: 'Completion' }
-  );
-
-  return stages;
+  ];
 }
 
 function initCompletedStages(ui) {
@@ -98,7 +85,7 @@ function initCompletedStages(ui) {
 
 function isTabUnlocked(tabId, stages) {
   if (currentLessonUI?.completed) return true;
-  if (tabId === 'overview') return true;
+  if (tabId === 'overview' || tabId === 'notes') return true;
   
   const idx = stages.findIndex(s => s.id === tabId);
   if (idx === -1) return false;
@@ -182,34 +169,16 @@ function renderNavigationButtons(currentTabId) {
   let prevBtnHtml = '';
   if (prev) {
     let prevLabel = 'Back';
-    if (prev === 'overview') prevLabel = 'Back to Overview';
-    else if (prev === 'learn') prevLabel = 'Back to Learning Notes';
-    else if (prev === 'examples') prevLabel = 'Back to Examples';
-    else if (prev === 'visualization') prevLabel = 'Back to Visualization';
-    else if (prev === 'practice') prevLabel = 'Back to Practice';
-    else if (prev === 'quiz') prevLabel = 'Back to Topic Quiz';
-    else if (prev === 'project') prevLabel = 'Back to Mini Project';
-    else if (prev === 'cheatsheet') prevLabel = 'Back to Cheat Sheet';
-    else if (prev === 'interview') prevLabel = 'Back to Interview Questions';
-    else if (prev === 'revision') prevLabel = 'Back to Revision Notes';
-    
+    const s = stages.find(x => x.id === prev);
+    if (s) prevLabel = 'Back to ' + s.label;
     prevBtnHtml = `<button class="btn btn-secondary" onclick="switchTab('${prev}')">← ${prevLabel}</button>`;
   }
   
   let nextBtnHtml = '';
   if (next) {
     let nextLabel = 'Continue';
-    if (next === 'learn') nextLabel = 'Continue to Learning Notes';
-    else if (next === 'examples') nextLabel = 'Continue to Examples';
-    else if (next === 'visualization') nextLabel = 'Continue to Visualization';
-    else if (next === 'practice') nextLabel = 'Continue to Practice';
-    else if (next === 'quiz') nextLabel = 'Continue to Topic Quiz';
-    else if (next === 'project') nextLabel = 'Continue to Mini Project';
-    else if (next === 'cheatsheet') nextLabel = 'Continue to Cheat Sheet';
-    else if (next === 'interview') nextLabel = 'Continue to Interview Prep';
-    else if (next === 'revision') nextLabel = 'Continue to Revision Notes';
-    else if (next === 'assessment') nextLabel = 'Continue to Final Assessment';
-    
+    const s = stages.find(x => x.id === next);
+    if (s) nextLabel = 'Continue to ' + s.label;
     nextBtnHtml = `<button class="btn btn-primary" onclick="navigateToNextTab('${currentTabId}', '${next}')">${nextLabel} →</button>`;
   }
   
@@ -304,192 +273,62 @@ function renderSidebar() {
   const list = document.getElementById('moduleList');
   list.innerHTML = '';
 
-  if (!currentRoadmap) return;
+  if (!currentRoadmap || !currentRoadmap.modules) return;
 
-  const levels = [
-    { key: 'beginner', title: 'Beginner', lessons: currentRoadmap.beginner || [], progress: currentRoadmap.beginner_progress || 0, assessment: currentRoadmap.beginner_assessment },
-    { key: 'intermediate', title: 'Intermediate', lessons: currentRoadmap.intermediate || [], progress: currentRoadmap.intermediate_progress || 0, assessment: currentRoadmap.intermediate_assessment },
-    { key: 'expert', title: 'Expert', lessons: currentRoadmap.expert || [], progress: currentRoadmap.expert_progress || 0, assessment: currentRoadmap.expert_assessment }
-  ];
+  currentRoadmap.modules.forEach((mod, idx) => {
+    const item = document.createElement('div');
+    item.className = `accordion-item`;
+    item.id = `mod-accordion-${mod.id}`;
 
-  levels.forEach(lvl => {
-    const levelSec = document.createElement('div');
-    levelSec.className = 'level-section';
-    levelSec.id = `level-sec-${lvl.key}`;
+    const doneCount = mod.lessons.filter(l => lessonProgressMap[l.id]).length;
+    const totalCount = mod.lessons.length;
+    const allDone = doneCount === totalCount && totalCount > 0;
 
-    const hasActiveLesson = lvl.lessons.some(l => l.id === currentLessonId);
-    const isCurrentLevel = lvl.lessons.some(l => l.status === 'current');
-    if (hasActiveLesson || isCurrentLevel || (lvl.key === 'beginner' && !currentLessonId)) {
-      levelSec.classList.add('open');
+    const hasActive = mod.lessons.some(l => l.id === currentLessonId);
+    if (hasActive) {
+      item.classList.add('open');
     }
 
-    levelSec.innerHTML = `
-      <div class="level-header">
-        <span class="level-header-title">${lvl.title}</span>
-        <div class="level-header-progress">
-          <div class="level-header-progress-fill" style="width: ${lvl.progress}%"></div>
-        </div>
-        <span class="level-header-percentage">${lvl.progress}%</span>
-        <span class="level-header-icon">▼</span>
+    item.innerHTML = `
+      <div class="accordion-header">
+        <span class="accordion-header-title">
+          ${allDone ? '<span style="color:var(--emerald);margin-right:4px;">✓</span>' : ''}
+          ${mod.order_index || (idx + 1)}. ${mod.title}
+        </span>
+        <span class="accordion-header-icon">▼</span>
       </div>
-      <div class="level-body">
-        <div class="level-modules-container"></div>
+      <div class="accordion-body">
+        <div style="padding:0.25rem 0 0.5rem 1rem; font-size:11px; color:var(--mist-dim);">
+          ${doneCount} / ${totalCount} lessons complete
+        </div>
+        <div class="lesson-list">
+          ${mod.lessons.map(les => `
+            <div class="lesson-list-item ${les.id === currentLessonId ? 'active' : ''} ${lessonProgressMap[les.id] ? 'completed' : ''}" data-lid="${les.id}">
+              <span class="lesson-list-item-icon">${lessonProgressMap[les.id] ? '✓' : '📄'}</span>
+              <span style="flex:1;">${les.title.split('— Lesson')[1]?.replace(/^\s*\d+:\s*/, '') || les.title}</span>
+            </div>
+          `).join('')}
+        </div>
       </div>
     `;
 
-    levelSec.querySelector('.level-header').addEventListener('click', () => {
-      levelSec.classList.toggle('open');
+    // Click handler for toggle header
+    item.querySelector('.accordion-header').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
     });
 
-    const modulesContainer = levelSec.querySelector('.level-modules-container');
-
-    const groups = [];
-    const map = {};
-    lvl.lessons.forEach(l => {
-      if (!map[l.module_id]) {
-        map[l.module_id] = {
-          id: l.module_id,
-          module_title: l.module_title || l.moduleTitle || '',
-          lessons: []
-        };
-        groups.push(map[l.module_id]);
-      }
-      map[l.module_id].lessons.push(l);
+    // Lesson click handlers
+    item.querySelectorAll('.lesson-list-item').forEach(liEl => {
+      liEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLesson(parseInt(liEl.dataset.lid));
+      });
     });
 
-    groups.forEach((mod) => {
-      const item = document.createElement('div');
-      item.className = `accordion-item`;
-      item.id = `mod-accordion-${mod.id}`;
-
-      const doneCount = mod.lessons.filter(l => lessonProgressMap[l.id]).length;
-      const totalCount = mod.lessons.length;
-      const allDone = doneCount === totalCount && totalCount > 0;
-
-      const hasActive = mod.lessons.some(l => l.id === currentLessonId);
-      if (hasActive) {
-        item.classList.add('open');
-      }
-
-      item.innerHTML = `
-        <div class="accordion-header">
-          <span class="accordion-header-title">
-            ${allDone ? '<span style="color:var(--emerald);margin-right:4px;">✓</span>' : ''}
-            ${mod.module_title}
-          </span>
-          <span class="accordion-header-icon">▼</span>
-        </div>
-        <div class="accordion-body">
-          <div style="padding:0.25rem 0 0.5rem 1rem; font-size:11px; color:var(--mist-dim);">
-            ${doneCount} / ${totalCount} lessons complete
-          </div>
-          <div class="lesson-list">
-            ${mod.lessons.map(les => {
-              let icon = '📄';
-              if (les.status === 'completed') icon = '✓';
-              else if (les.status === 'locked') icon = '🔒';
-              else if (les.status === 'current') icon = '▶';
-
-              return `
-                <div class="lesson-list-item ${les.id === currentLessonId ? 'active' : ''} ${les.status === 'completed' ? 'completed' : ''} ${les.status === 'locked' ? 'locked' : ''}" data-lid="${les.id}" data-status="${les.status}">
-                  <span class="lesson-list-item-icon">${icon}</span>
-                  <span style="flex:1;">${les.title.split('— Lesson')[1]?.replace(/^\s*\d+:\s*/, '') || les.title}</span>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      `;
-
-      item.querySelector('.accordion-header').addEventListener('click', () => {
-        item.classList.toggle('open');
-      });
-
-      item.querySelectorAll('.lesson-list-item').forEach(liEl => {
-        liEl.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const status = liEl.dataset.status;
-          if (status === 'locked') {
-            showToast('This lesson is locked! Complete preceding topics to unlock.', 'warning');
-            return;
-          }
-          openLesson(parseInt(liEl.dataset.lid), true);
-        });
-      });
-
-      modulesContainer.appendChild(item);
-    });
-
-    if (lvl.assessment) {
-      const assessItem = document.createElement('div');
-      const isLocked = lvl.assessment.locked;
-      const isPassed = lvl.assessment.passed;
-
-      assessItem.className = `level-assessment-item ${isLocked ? 'locked' : ''} ${isPassed ? 'completed' : ''}`;
-
-      let label = `▶ Take ${lvl.title} Assessment`;
-      let icon = '🏆';
-      if (isLocked) {
-        label = `🔒 ${lvl.title} Assessment (Locked)`;
-        icon = '🔒';
-      } else if (isPassed) {
-        label = `✓ ${lvl.title} Assessment Passed`;
-        icon = '✓';
-      }
-
-      assessItem.innerHTML = `
-        <span class="lesson-list-item-icon">${icon}</span>
-        <span>${label}</span>
-      `;
-
-      assessItem.addEventListener('click', () => {
-        if (isLocked) {
-          showToast(`Finish all ${lvl.title} lessons to unlock the assessment!`, 'warning');
-          return;
-        }
-        startLevelAssessment(lvl.key);
-      });
-
-      modulesContainer.appendChild(assessItem);
-    }
-
-    list.appendChild(levelSec);
+    list.appendChild(item);
   });
-
-  if (currentRoadmap.certification_exam) {
-    const certExam = currentRoadmap.certification_exam;
-    const isLocked = certExam.locked;
-    const isPassed = certExam.passed;
-
-    const certItem = document.createElement('div');
-    certItem.className = `certification-exam-item ${isLocked ? 'locked' : ''} ${isPassed ? 'completed' : ''}`;
-    certItem.style.margin = '1rem 0';
-
-    let label = `🎓 Take Certification Exam`;
-    let icon = '🥇';
-    if (isLocked) {
-      label = `🔒 Certification Exam (Locked)`;
-      icon = '🔒';
-    } else if (isPassed) {
-      label = `🏆 Certificate Earned!`;
-      icon = '🎓';
-    }
-
-    certItem.innerHTML = `
-      <span class="lesson-list-item-icon">${icon}</span>
-      <span>${label}</span>
-    `;
-
-    certItem.addEventListener('click', () => {
-      if (isLocked) {
-        showToast('Complete all level assessments to unlock the Certification Exam!', 'warning');
-        return;
-      }
-      startCertificationExam();
-    });
-
-    list.appendChild(certItem);
-  }
 }
 
 function startLevelAssessment(level) {
@@ -584,54 +423,19 @@ function renderLessonContent(data) {
   }
   document.getElementById('completionBanner').classList.toggle('show', !!ui.completed);
 
-  // ── 4. Dynamically populate the tabs container ───────────────
-  const tabsContainer = document.getElementById('learnTabs');
-  if (tabsContainer) {
-    tabsContainer.innerHTML = '';
-    const tabs = [
-      { id: 'overview', label: 'Overview' },
-      { id: 'learn', label: 'Learning Notes' },
-      { id: 'examples', label: 'Examples' },
-      { id: 'visualization', label: 'Visualization' },
-      { id: 'practice', label: 'Practice' },
-      { id: 'quiz', label: 'Topic Quiz' },
-      { id: 'project', label: 'Mini Project' },
-      { id: 'cheatsheet', label: 'Cheat Sheet' },
-      { id: 'interview', label: 'Interview Questions' },
-      { id: 'notes', label: 'Notes' }
-    ];
-    tabs.forEach(t => {
-      // Conditional project tab showing
-      if (t.id === 'project' && (!ui.project || (!ui.project.title && !ui.project.description))) return;
-      
-      const btn = document.createElement('button');
-      btn.className = 'learn-tab';
-      btn.dataset.tab = t.id;
-      btn.textContent = t.label;
-      btn.addEventListener('click', () => {
-        switchTab(t.id);
-      });
-      tabsContainer.appendChild(btn);
-    });
-  }
-
-  // Expose currentLessonUI to window for DevTools inspection
+  // ── 4. Expose UI and init completed stages ───────────────────
   window.currentLessonUI = ui;
+  initCompletedStages(ui);
+  renderTabHeaders();
 
-  // ── 5. Route to correct pathway ──
-  const stepper = document.getElementById('courseStepper');
-  if (stepper) stepper.style.display = 'none'; // Hide old visual stepper
-  
-  // Pre-render all containers
-  renderOverviewStep(ui);
-  renderLearnContainer(ui);
-  renderExamplesContainer(ui);
-  renderVisualizationContainer(ui);
-  renderPracticeContainer(ui);
-  renderProjectPage(ui);
-  renderCheatSheet(ui);
-  renderInterview(ui);
-  
+  // ── 5. Render All Tab Contents ──────────────────────────────
+  renderOverviewTab(ui);
+  renderLearnTheoryTab(ui);
+  renderCodelabTab(ui);
+  renderPracticeLabTab(ui);
+  renderInterviewPrepTab(ui);
+  renderProjectAssessmentTab(ui);
+
   switchTab('overview');
 
   // ── 6. Right panel resources & videos ─────────────────────────
@@ -4095,44 +3899,11 @@ function updateProgressUI() {
   const tbProgBar = document.getElementById('tbProgressBar');
   if (tbProgBar) tbProgBar.style.width = pct + '%';
 
-  // Level-specific progress bars for sidebar header
-  const begLessons = lessons.filter(l => (l.level || '').toLowerCase() === 'beginner');
-  const intLessons = lessons.filter(l => (l.level || '').toLowerCase() === 'intermediate');
-  const expLessons = lessons.filter(l => (l.level || '').toLowerCase() === 'expert');
-
-  const getPct = (list) => {
-    const tot = list.length;
-    const completed = list.filter(l => lessonProgressMap[l.id]).length;
-    return tot > 0 ? Math.round((completed / tot) * 100) : 0;
-  };
-
-  const begPct = getPct(begLessons);
-  const intPct = getPct(intLessons);
-  const expPct = getPct(expLessons);
-
-  const progContainer = document.getElementById('sbProgressContainer');
-  if (progContainer) {
-    progContainer.innerHTML = `
-      <div style="font-size:11px; color:var(--mist); display:flex; flex-direction:column; gap:2px; margin-bottom: 2px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span>🌟 Beginner</span><span>${begPct}%</span>
-        </div>
-        <div class="progress-bar" style="height:4px;"><div class="progress-fill" style="width:${begPct}%; background:var(--accent);"></div></div>
-      </div>
-      <div style="font-size:11px; color:var(--mist); display:flex; flex-direction:column; gap:2px; margin-bottom: 2px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span>⚙️ Intermediate</span><span>${intPct}%</span>
-        </div>
-        <div class="progress-bar" style="height:4px;"><div class="progress-fill" style="width:${intPct}%; background:#fbbf24;"></div></div>
-      </div>
-      <div style="font-size:11px; color:var(--mist); display:flex; flex-direction:column; gap:2px;">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span>🚀 Expert</span><span>${expPct}%</span>
-        </div>
-        <div class="progress-bar" style="height:4px;"><div class="progress-fill" style="width:${expPct}%; background:#ef4444;"></div></div>
-      </div>
-    `;
-  }
+  // Sidebar progress
+  const sbFill = document.getElementById('sbProgressFill');
+  if (sbFill) sbFill.style.width = pct + '%';
+  const sbText = document.getElementById('sbProgressText');
+  if (sbText) sbText.textContent = `${done} / ${total} complete`;
 
   // Ring right panel
   const circumference = 150.8;
@@ -4184,11 +3955,523 @@ function updateProgressUI() {
 
 // ── Tab Switching ──────────────────────────────────────────────
 function switchTab(tabId) {
-  document.querySelectorAll('.learn-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabId));
-  document.querySelectorAll('.tab-panel').forEach(p => p.style.display = p.id === `tab-${tabId}` ? 'block' : 'none');
-  if (tabId === 'quiz' && currentLessonId) {
-    loadTopicQuiz(currentLessonId);
+  // Hide all tab panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+  
+  // Show target panel
+  const targetId = tabId === 'codelab' ? 'tab-codelab' : `tab-${tabId}`;
+  const el = document.getElementById(targetId);
+  if (el) el.style.display = 'block';
+
+  // Toggle active class on tab buttons
+  document.querySelectorAll('.learn-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === tabId);
+  });
+  
+  // Specific tab loading logic
+  if (tabId === 'complete' && window.currentLessonUI) {
+    renderCompletionScreen(window.currentLessonUI);
   }
+  
+  // Reset window scroll to top
+  const mainContent = document.getElementById('learnContent');
+  if (mainContent) mainContent.scrollTop = 0;
+  window.scrollTo({ top: 0 });
+}
+
+// ── 8-Stage Renderers ──────────────────────────────────────────
+
+function renderOverviewTab(ui) {
+  const container = document.getElementById('tab-overview');
+  if (!container) return;
+  const data = ui.stages?.overview || {};
+  const objectives = Array.isArray(data.objectives || ui.learningObjectives) ? (data.objectives || ui.learningObjectives) : [];
+  const prerequisites = Array.isArray(data.prerequisites || ui.prerequisites) ? (data.prerequisites || ui.prerequisites) : [];
+  
+  const objList = objectives.length ? objectives.map(o => `<li>• ${escapeHtml(o)}</li>`).join('') : '<li>• Master concept syntax and logic</li>';
+  const preList = prerequisites.length ? prerequisites.map(p => `<li>• ${escapeHtml(p)}</li>`).join('') : '<li>• None</li>';
+  
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent); padding: 2rem;">
+      <h2 style="margin-top:0;">📋 Overview & Preparation</h2>
+      <div style="display:flex; gap:0.5rem; margin-bottom:1.5rem;">
+        <span class="badge badge-blue">⏱️ ~${data.estimatedTime || '30 mins'}</span>
+        <span class="badge badge-amber">${escapeHtml(data.difficulty || ui.difficulty || 'Beginner')}</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.01); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-bottom:1.5rem;">
+        <h4 style="margin:0 0 0.5rem 0; color:var(--accent); font-size:14px; font-weight:700;">🎯 Motivation / Why Learn This?</h4>
+        <p style="font-size:13.5px; color:var(--text); line-height:1.6; margin:0;">${markdownToHtml(data.whyLearnThis || ui.beginner?.whyExists || '')}</p>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-bottom:1.5rem;">
+        <div style="background:var(--abyss-2); border:1px solid var(--border); padding:1.25rem; border-radius:8px;">
+          <h4 style="margin:0 0 0.75rem 0; font-size:14px; color:var(--frost); font-weight:700;">🚀 Learning Objectives</h4>
+          <ul style="list-style:none; padding:0; margin:0; font-size:13px; color:var(--mist); line-height:1.7;">
+            ${objList}
+          </ul>
+        </div>
+        <div style="background:var(--abyss-2); border:1px solid var(--border); padding:1.25rem; border-radius:8px;">
+          <h4 style="margin:0 0 0.75rem 0; font-size:14px; color:var(--frost); font-weight:700;">⛓️ Prerequisites</h4>
+          <ul style="list-style:none; padding:0; margin:0; font-size:13px; color:var(--mist); line-height:1.7;">
+            ${preList}
+          </ul>
+        </div>
+      </div>
+      ${data.careerRelevance ? `
+      <div style="background:rgba(99,102,241,0.02); border-left:4px solid var(--accent); border-radius:4px; padding:1rem; border:1px solid var(--border); border-left-width:4px;">
+        <h4 style="margin:0 0 0.25rem 0; font-size:13.5px; color:var(--accent); font-weight:700;">💼 Career Relevance</h4>
+        <p style="font-size:12.5px; color:var(--mist); line-height:1.6; margin:0;">${escapeHtml(data.careerRelevance)}</p>
+      </div>` : ''}
+      ${renderNavigationButtons('overview')}
+    </div>
+  `;
+}
+
+function renderLearnTheoryTab(ui) {
+  const container = document.getElementById('tab-learn');
+  if (!container) return;
+  const data = ui.stages?.learn || {};
+  
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent); padding: 2rem;">
+      <h2 style="margin-top:0;">📖 Learn & Theory</h2>
+      
+      <div style="font-size:15px; line-height:1.75; color:var(--text); margin-bottom:1.75rem;">
+        ${markdownToHtml(data.theory || ui.beginner?.simpleExplanation || '')}
+      </div>
+
+      ${data.realWorldAnalogy ? `
+      <div style="background:rgba(99,102,241,0.05); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-bottom:1.75rem; border-left:4px solid var(--accent);">
+        <h4 style="margin:0 0 0.5rem 0; color:var(--accent); font-size:14px; font-weight:700;">🎯 Real-world Analogy</h4>
+        <p style="font-size:13.5px; color:var(--mist); line-height:1.6; margin:0;">${markdownToHtml(data.realWorldAnalogy)}</p>
+      </div>` : ''}
+
+      ${data.stepByStepWalkthrough ? `
+      <div style="background:var(--abyss-2); border:1px solid var(--border); padding:1.25rem; border-radius:8px; margin-bottom:2rem;">
+        <h4 style="margin:0 0 0.75rem 0; font-size:14px; color:var(--frost); font-weight:700;">👣 Step-by-Step Walkthrough</h4>
+        <div style="font-size:13.5px; color:var(--mist); line-height:1.8;">
+          ${markdownToHtml(data.stepByStepWalkthrough)}
+        </div>
+      </div>` : ''}
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-bottom:1.5rem;">
+        ${data.complexityAnalysis ? `
+        <div style="background:var(--abyss-2); border:1px solid var(--border); padding:1.25rem; border-radius:8px;">
+          <h4 style="margin:0 0 0.75rem 0; font-size:14px; color:var(--frost); font-weight:700;">⚡ Complexity Analysis</h4>
+          <div style="font-size:13px; color:var(--mist); line-height:1.7;">
+            ${markdownToHtml(data.complexityAnalysis)}
+          </div>
+        </div>` : ''}
+        
+        ${data.bestPractices ? `
+        <div style="background:var(--abyss-2); border:1px solid var(--border); padding:1.25rem; border-radius:8px;">
+          <h4 style="margin:0 0 0.75rem 0; font-size:14px; color:var(--frost); font-weight:700;">✅ Best Practices</h4>
+          <div style="font-size:13px; color:var(--mist); line-height:1.7;">
+            ${markdownToHtml(data.bestPractices)}
+          </div>
+        </div>` : ''}
+      </div>
+
+      ${data.commonMistakes ? `
+      <div style="background:rgba(244,63,94,0.02); border:1px solid rgba(244,63,94,0.1); border-left:4px solid var(--rose); border-radius:4px; padding:1.25rem; margin-bottom:1.5rem;">
+        <h4 style="margin:0 0 0.5rem 0; font-size:14px; color:var(--rose); font-weight:700;">⚠️ Common Mistakes</h4>
+        <div style="font-size:13px; color:var(--mist); line-height:1.6;">
+          ${markdownToHtml(data.commonMistakes)}
+        </div>
+      </div>` : ''}
+
+      ${renderNavigationButtons('learn')}
+    </div>
+  `;
+}
+
+function renderCodelabTab(ui) {
+  renderExamplesContainer(ui);
+  renderVisualizationContainer(ui);
+  
+  // Inject navigation footer at bottom of examplesContainer
+  const c = document.getElementById('examplesContainer');
+  if (c) {
+    const existing = c.querySelector('.step-nav-footer');
+    if (existing) existing.remove();
+    c.innerHTML += renderNavigationButtons('codelab');
+  }
+}
+
+function renderPracticeLabTab(ui) {
+  const container = document.getElementById('tab-practice');
+  if (!container) return;
+
+  const p = ui.practice || {};
+  let html = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent); padding: 2rem;">
+      <h2 style="margin-top:0;">💪 Practice Exercises</h2>
+      <p style="font-size:13px;color:var(--mist);margin-bottom:1.5rem;">Complete these coding exercises and challenges to solidify your understanding.</p>
+  `;
+
+  const categories = [
+    { key: 'easy', title: 'Easy Challenge', badge: 'badge-blue' },
+    { key: 'medium', title: 'Medium Challenge', badge: 'badge-amber' },
+    { key: 'hard', title: 'Hard Challenge', badge: 'badge-red' },
+    { key: 'debugging', title: 'Debugging Exercise', badge: 'badge-purple' }
+  ];
+
+  let hasExercises = false;
+  categories.forEach(cat => {
+    const ex = p[cat.key];
+    if (!ex) return;
+
+    const title = ex.title || cat.title;
+    const desc = ex.description || ex.problem || '';
+    if (!title && !desc) return;
+    hasExercises = true;
+
+    html += `
+      <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+          <h3 style="margin:0;font-size:14.5px;">${escapeHtml(title)}</h3>
+          <span class="badge ${cat.badge}">${cat.title}</span>
+        </div>
+        <div style="font-size:13px;color:var(--mist);margin-bottom:1rem;">${markdownToHtml(desc)}</div>
+        ${ex.starterCode || ex.code ? `
+          <div style="margin-bottom:1rem;">
+            <strong>Starter Code:</strong>
+            <pre style="position:relative;margin-top:0.4rem;"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>${escapeHtml(ex.starterCode || ex.code)}</code></pre>
+          </div>
+        ` : ''}
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <button class="btn btn-primary btn-sm" onclick="openPracticeInLab('${cat.key}')">Solve in Coding Lab</button>
+          ${ex.hint || (ex.hints && ex.hints[0]) ? `<button class="btn btn-secondary btn-sm" onclick="showPracticeHint('${cat.key}', '${escapeAttr(ex.hint || ex.hints[0])}')">View Hint</button>` : ''}
+        </div>
+      </div>
+    `;
+  });
+
+  if (!hasExercises) {
+    html += '<p style="color:var(--mist);font-size:13px;margin-bottom:1.5rem;">No practice exercises defined for this lesson.</p>';
+  }
+
+  // Divider
+  html += `
+    <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0;">
+    <h2 style="margin-top:0;">🧠 Lesson Quiz</h2>
+    <p style="font-size:13px;color:var(--mist);margin-bottom:1.5rem;">Test your logic and understanding of this concept.</p>
+    <div id="inlineQuizContainer"></div>
+    <div id="inlineQuizActions" style="margin-top:1.5rem;margin-bottom:2rem;">
+      <button class="btn btn-primary" id="submitInlineQuizBtn">Submit Lesson Quiz</button>
+      <div id="inlineQuizScore" style="display:none;margin-top:1rem;padding:1rem;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);"></div>
+    </div>
+    
+    ${renderNavigationButtons('practice')}
+    </div>
+  `;
+
+  container.innerHTML = html;
+
+  // Now render the quiz questions
+  const quizzes = ui.quiz?.mcqs || ui.quizzes || [];
+  renderInlineQuizQuestions(quizzes);
+}
+
+function renderInlineQuizQuestions(quizzes) {
+  const container = document.getElementById('inlineQuizContainer');
+  const actions = document.getElementById('inlineQuizActions');
+  quizAnswers = {};
+  quizSubmitted = false;
+
+  if (!container) return;
+
+  if (!quizzes || !quizzes.length) {
+    container.innerHTML = '<p style="color:var(--mist);">Quiz coming soon.</p>';
+    if (actions) actions.style.display = 'none';
+    return;
+  }
+
+  if (actions) {
+    actions.style.display = 'block';
+    const scoreEl = document.getElementById('inlineQuizScore');
+    if (scoreEl) scoreEl.style.display = 'none';
+    const sBtn = document.getElementById('submitInlineQuizBtn');
+    if (sBtn) {
+      sBtn.style.display = 'inline-flex';
+      sBtn.textContent = 'Submit Lesson Quiz';
+      sBtn.disabled = false;
+    }
+  }
+
+  container.innerHTML = '';
+
+  quizzes.forEach((q, qi) => {
+    const letters = ['A', 'B', 'C', 'D'];
+    const options = [q.option_a, q.option_b, q.option_c, q.option_d];
+    const card = document.createElement('div');
+    card.className = 'quiz-question';
+    card.style.marginBottom = '2rem';
+    card.innerHTML = `
+      <div class="quiz-q-text" style="font-weight:600;font-size:14.5px;margin-bottom:1rem;"><span style="color:var(--accent);font-family:var(--font-mono);margin-right:.4rem;">Q${qi+1}.</span>${q.question}</div>
+      <div class="quiz-options" id="quiz-opts-${q.id}" style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1rem;">
+        ${options.map((opt, i) => {
+          if (!opt) return '';
+          return `
+            <div class="quiz-option" data-qid="${q.id}" data-letter="${letters[i]}" style="padding:0.75rem 1rem;background:var(--abyss);border:1px solid var(--border);border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:0.75rem;transition:all 0.2s;font-size:13.5px;">
+              <div class="quiz-letter" style="background:var(--surface);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:1px solid var(--border);color:var(--mist);">${letters[i]}</div>
+              <div>${opt}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+      <div class="quiz-explanation" id="quiz-exp-${q.id}" style="font-size:13px;color:var(--mist);background:var(--abyss-2);padding:0.75rem 1rem;border-radius:8px;border-left:3px solid var(--accent);display:none;margin-top:0.5rem;">${q.explanation || ''}</div>
+    `;
+
+    card.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.addEventListener('click', function () {
+        if (quizSubmitted) return;
+        const qid = this.dataset.qid;
+        const letter = this.dataset.letter;
+        quizAnswers[qid] = letter;
+        card.querySelectorAll('.quiz-option').forEach(o => {
+          o.classList.remove('selected');
+          o.style.borderColor = 'var(--border)';
+          o.style.background = 'var(--abyss)';
+        });
+        this.classList.add('selected');
+        this.style.borderColor = 'var(--accent)';
+        this.style.background = 'rgba(99,102,241,0.08)';
+      });
+    });
+    container.appendChild(card);
+  });
+
+  const sBtn = document.getElementById('submitInlineQuizBtn');
+  if (sBtn) {
+    sBtn.onclick = submitInlineQuiz;
+  }
+}
+
+async function submitInlineQuiz() {
+  const btn = document.getElementById('submitInlineQuizBtn');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  try {
+    const data = await apiFetch(`/api/lessons/${window.currentLessonUI.id}/quiz/submit`, {
+      method: 'POST',
+      body: JSON.stringify({ answers: quizAnswers }),
+    });
+
+    if (!data.success) throw new Error(data.message);
+
+    quizSubmitted = true;
+
+    // Show correct/wrong
+    data.results.forEach(r => {
+      const opts = document.querySelectorAll(`[data-qid="${r.id}"]`);
+      opts.forEach(opt => {
+        const letter = opt.dataset.letter;
+        if (letter === r.correct_option) {
+          opt.style.borderColor = 'var(--emerald)';
+          opt.style.background = 'rgba(16,185,129,0.12)';
+          opt.style.color = 'var(--emerald)';
+        } else if (letter === quizAnswers[r.id] && !r.correct) {
+          opt.style.borderColor = '#ef4444';
+          opt.style.background = 'rgba(239,68,68,0.12)';
+          opt.style.color = '#ef4444';
+        }
+      });
+      const expEl = document.getElementById(`quiz-exp-${r.id}`);
+      if (expEl) expEl.style.display = 'block';
+    });
+
+    const scoreEl = document.getElementById('inlineQuizScore');
+    const pct = data.score;
+    const color = pct >= 80 ? 'var(--emerald)' : pct >= 60 ? '#fbbf24' : '#ef4444';
+    scoreEl.style.display = 'block';
+    scoreEl.innerHTML = `
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:2rem;font-weight:800;color:${color};">${pct}%</div>
+        <div>
+          <div style="font-weight:600;color:${color};">${pct >= 70 ? 'Passed!' : 'Try again'}</div>
+          <div style="font-size:12.5px;color:var(--mist);">${data.correct} of ${data.total} correct</div>
+        </div>
+      </div>
+    `;
+
+    btn.style.display = 'none';
+
+    completedStages['practice'] = true;
+    renderTabHeaders();
+    updateProgressUI();
+
+  } catch (err) {
+    showToast('Error submitting quiz: ' + err.message, 'error');
+    btn.textContent = 'Submit Lesson Quiz';
+    btn.disabled = false;
+  }
+}
+
+function renderInterviewPrepTab(ui) {
+  const container = document.getElementById('tab-interview');
+  if (!container) return;
+  const data = ui.stages?.interviewprep || {};
+  
+  let qHtml = '';
+  const qs = Array.isArray(data.questions || ui.interview?.questions) ? (data.questions || ui.interview?.questions) : [];
+  if (qs.length) {
+    qs.forEach((q, i) => {
+      qHtml += `
+        <div style="background:var(--abyss-2); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1rem;">
+          <h4 style="margin:0 0 0.5rem 0; font-size:14px; color:var(--accent); font-weight:700;">Q${i+1}: ${escapeHtml(q.question)}</h4>
+          <details style="margin-top:0.5rem;">
+            <summary style="cursor:pointer; color:var(--frost); font-size:13px; font-weight:600; outline:none; user-select:none;">🔑 Show Scenario Answer</summary>
+            <div style="margin-top:0.75rem; font-size:13.5px; color:var(--mist); line-height:1.6; border-top:1px dashed var(--border); padding-top:0.75rem;">
+              ${markdownToHtml(q.answer)}
+            </div>
+          </details>
+        </div>
+      `;
+    });
+  } else {
+    qHtml = '<p style="color:var(--mist); font-size:13px;">No interview questions defined for this lesson.</p>';
+  }
+
+  let csHtml = '';
+  const cs = data.cheatsheet || ui.cheatsheet || {};
+  const csSections = Array.isArray(cs.sections) ? cs.sections : [];
+  if (csSections.length) {
+    csSections.forEach(sec => {
+      csHtml += `
+        <div style="margin-bottom:1.25rem;">
+          <h4 style="margin:0 0 0.4rem 0; font-size:13.5px; color:var(--frost); font-weight:700;">📌 ${escapeHtml(sec.title)}</h4>
+          <div style="font-size:13px; color:var(--mist); line-height:1.6;">
+            ${markdownToHtml(sec.content)}
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  let revHtml = '';
+  const rev = data.revision || ui.revision || {};
+  if (rev.summary || rev.keyTakeaways) {
+    const takeaways = Array.isArray(rev.keyTakeaways) ? rev.keyTakeaways : [];
+    const tricks = Array.isArray(rev.memoryTricks) ? rev.memoryTricks : [];
+    
+    revHtml = `
+      <div style="display:flex; flex-direction:column; gap:1.25rem;">
+        ${rev.summary ? `<div><strong style="color:var(--frost); font-size:13px;">Summary:</strong> <div style="font-size:13px; color:var(--mist); line-height:1.6; margin-top:0.25rem;">${markdownToHtml(rev.summary)}</div></div>` : ''}
+        ${takeaways.length ? `<div><strong style="color:var(--frost); font-size:13px;">Key Takeaways:</strong> <div style="font-size:13px; color:var(--mist); line-height:1.6; margin-top:0.25rem;">${markdownToHtml(takeaways.map(k => `• ${k}`).join('\n'))}</div></div>` : ''}
+        ${tricks.length ? `<div><strong style="color:var(--frost); font-size:13px;">Memory Tricks:</strong> <div style="font-size:13px; color:var(--mist); line-height:1.6; margin-top:0.25rem;">${markdownToHtml(tricks.map(t => `• ${t}`).join('\n'))}</div></div>` : ''}
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent); padding: 2rem;">
+      <h2 style="margin-top:0;">🧠 Interview Preparation</h2>
+      <p style="font-size:13px;color:var(--mist);margin-bottom:1.5rem;">Review mock scenarios, revision summaries, and cheat sheets to prepare for engineering calls.</p>
+      
+      <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:2rem; margin-bottom:2rem;">
+        <div>
+          <h3 style="margin-top:0; font-size:15px; border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-bottom:1rem;">Scenario Questions</h3>
+          ${qHtml}
+        </div>
+        <div>
+          ${csHtml ? `
+            <h3 style="margin-top:0; font-size:15px; border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-bottom:1rem;">Cheat Sheet</h3>
+            <div style="background:var(--abyss-2); border:1px solid var(--border); border-radius:8px; padding:1.25rem; margin-bottom:1.5rem;">
+              ${csHtml}
+            </div>
+          ` : ''}
+          ${revHtml ? `
+            <h3 style="margin-top:0; font-size:15px; border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-bottom:1rem;">Revision Sheet</h3>
+            <div style="background:var(--abyss-2); border:1px solid var(--border); border-radius:8px; padding:1.25rem;">
+              ${revHtml}
+            </div>
+          ` : ''}
+        </div>
+      </div>
+      
+      ${renderNavigationButtons('interview')}
+    </div>
+  `;
+}
+
+function renderProjectAssessmentTab(ui) {
+  const container = document.getElementById('tab-project');
+  if (!container) return;
+  const data = ui.stages?.projectassessment || {};
+  const proj = data.project || ui.project || {};
+  
+  let projHtml = '';
+  if (proj.title || proj.description) {
+    const goals = Array.isArray(proj.learningGoals) ? proj.learningGoals : [];
+    const requirements = Array.isArray(proj.requirements) ? proj.requirements : [];
+    
+    projHtml = `
+      <div style="background:var(--abyss-2); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin-bottom:2rem; border-left:4px solid var(--accent);">
+        <h3 style="margin:0 0 0.5rem 0; font-size:16px; color:var(--text);">${escapeHtml(proj.title)}</h3>
+        ${proj.tagline ? `<div style="font-size:13px; color:var(--accent); font-style:italic; margin-bottom:1rem;">${escapeHtml(proj.tagline)}</div>` : ''}
+        <div style="font-size:13.5px; color:var(--mist); line-height:1.6; margin-bottom:1.5rem;">${markdownToHtml(proj.description)}</div>
+        
+        ${goals.length ? `
+          <div style="margin-bottom:1.25rem;">
+            <strong style="color:var(--frost); font-size:13px; display:block; margin-bottom:0.4rem;">🎯 Learning Goals</strong>
+            <div style="font-size:13px; color:var(--mist); line-height:1.6;">${markdownToHtml(goals.map(g => `• ${g}`).join('\n'))}</div>
+          </div>
+        ` : ''}
+
+        ${requirements.length ? `
+          <div style="margin-bottom:1.25rem;">
+            <strong style="color:var(--frost); font-size:13px; display:block; margin-bottom:0.4rem;">📋 Technical Requirements</strong>
+            <div style="font-size:13px; color:var(--mist); line-height:1.6;">${markdownToHtml(requirements.map(r => `• ${r}`).join('\n'))}</div>
+          </div>
+        ` : ''}
+
+        ${proj.starterCode ? `
+          <div style="margin-bottom:1.25rem;">
+            <strong style="color:var(--frost); font-size:13px; display:block; margin-bottom:0.4rem;">💻 Starter Code</strong>
+            <pre style="position:relative;"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>${escapeHtml(proj.starterCode)}</code></pre>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  } else {
+    projHtml = '<p style="color:var(--mist); font-size:13px;">No mini-project defined for this lesson.</p>';
+  }
+
+  const assessment = data.assessment || {};
+  const hasAssessment = assessment.questions && assessment.questions.length > 0;
+  
+  let assessHtml = '';
+  if (hasAssessment || true) {
+    assessHtml = `
+      <div style="background:var(--abyss-2); border:1px solid var(--border); border-radius:10px; padding:1.5rem; text-align:center;">
+        <div style="font-size:2.5rem; margin-bottom:0.75rem;">🏆</div>
+        <h3 style="margin:0 0 0.5rem 0; font-size:16px;">Module Level Assessment</h3>
+        <p style="font-size:13px; color:var(--mist); line-height:1.6; max-width:500px; margin:0 auto 1.5rem;">Take the final assessment exam for this module level to verify your competency and progress towards certification.</p>
+        <button class="btn btn-primary" onclick="startLevelAssessment('${ui.level || 'beginner'}')">Take Module Assessment</button>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent); padding: 2rem;">
+      <h2 style="margin-top:0;">🛠️ Project & Assessment</h2>
+      <p style="font-size:13px;color:var(--mist);margin-bottom:1.5rem;">Complete the mini-project specifications and take the level assessments to verify your skills.</p>
+      
+      <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:2rem; margin-bottom:2rem;">
+        <div>
+          <h3 style="margin-top:0; font-size:15px; border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-bottom:1rem;">Mini Project</h3>
+          ${projHtml}
+        </div>
+        <div>
+          <h3 style="margin-top:0; font-size:15px; border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-bottom:1rem;">Assessment</h3>
+          ${assessHtml}
+        </div>
+      </div>
+      
+      ${renderNavigationButtons('project')}
+    </div>
+  `;
 }
 
 document.querySelectorAll('.learn-tab').forEach(btn => {

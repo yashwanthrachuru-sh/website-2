@@ -1,0 +1,24 @@
+{
+  "links": [
+    {
+      "title": "SQL & Databases Official Documentation",
+      "url": "https://docs.example.com/sql & databases/sql & databases core principles part 1a",
+      "type": "documentation",
+      "description": "Official reference for SQL & Databases Core Principles Part 1A in SQL & Databases"
+    }
+  ],
+  "books": [
+    {
+      "title": "SQL & Databases: The Comprehensive Guide",
+      "author": "Industry Expert",
+      "description": "Covers SQL & Databases Core Principles Part 1A in depth with practical examples"
+    }
+  ],
+  "communities": [
+    {
+      "name": "SQL & Databases Community Forum",
+      "url": "https://community.example.com/sql & databases",
+      "description": "Discuss SQL & Databases Core Principles Part 1A with other developers"
+    }
+  ]
+}
