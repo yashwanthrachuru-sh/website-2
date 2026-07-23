@@ -818,40 +818,6 @@ function renderLearnStep(ui) {
     }, 50);
   }
 }
-        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
-          <strong style="font-size:14px;color:var(--frost);">🎯 Learning Objectives:</strong>
-          <ul style="margin:0.5rem 0 0 1.25rem;font-size:13.5px;color:var(--mist);line-height:1.7;">
-            ${objList}
-          </ul>
-        </div>
-        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
-          <strong style="font-size:14px;color:var(--frost);">⏱️ Module Details:</strong>
-          <div style="font-size:13.5px;color:var(--mist);margin-top:0.5rem;line-height:1.8;">
-            <div>• <strong>Duration:</strong> ~${ui.estimatedTime || 30} minutes</div>
-            <div>• <strong>Difficulty:</strong> ${escapeHtml(ui.difficulty || 'Beginner')}</div>
-            <div>• <strong>XP Reward:</strong> ⭐ ${ui.xpReward || 100} XP</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);margin-bottom:1.5rem;">
-        <strong style="font-size:14px;color:var(--frost);">🛠️ What You Will Build:</strong>
-        <div style="font-size:13.5px;color:var(--mist);margin-top:0.4rem;line-height:1.7;">
-          ${buildSummary}
-        </div>
-      </div>
-
-      <div style="margin-bottom:1.5rem;">
-        <strong style="font-size:14px;color:var(--frost);">🗺️ Guided Learning Stepper Checklist:</strong>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:0.6rem;margin-top:0.75rem;">
-          ${checklistHtml}
-        </div>
-      </div>
-
-      ${renderNavigationButtons('overview')}
-    </div>
-  `;
-}
 
 // ── Step 2: Why Learn? ─────────────────────────────────────────
 function renderWhyStep(ui) {
