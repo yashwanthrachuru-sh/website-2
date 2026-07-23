@@ -12,22 +12,23 @@ require('dotenv').config();
 
 // Create the connection pool using environment variables or a connection string
 const poolConfig = {
-  host:               process.env.DB_HOST || 'localhost',
-  port:               parseInt(process.env.DB_PORT, 10) || 3306,
-  user:               process.env.DB_USER || 'root',
-  password:           process.env.DB_PASSWORD,
-  database:           process.env.DB_NAME || 'edunet',
+  host: process.env.DB_HOST || 'localhost',
+  port: parseInt(process.env.DB_PORT, 10) || 3306,
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME || 'edunet',
   waitForConnections: true,   // Queue queries if all connections are busy
-  connectionLimit:    10,     // Maximum simultaneous connections
-  queueLimit:         0,      // Unlimited queue (0 = no limit)
-  timezone:           '+00:00', // Store timestamps in UTC
-  connectTimeout:     10000,  // 10 seconds connection timeout
-  enableKeepAlive:    true,   // Keep TCP connection alive
+  connectionLimit: 10,     // Maximum simultaneous connections
+  queueLimit: 0,      // Unlimited queue (0 = no limit)
+  timezone: '+00:00', // Store timestamps in UTC
+  connectTimeout: 10000,  // 10 seconds connection timeout
+  enableKeepAlive: true,   // Keep TCP connection alive
   keepAliveInitialDelay: 10000 // Initial delay before keep-alive pings
 };
 
-const pool = mysql.createPool(process.env.DATABASE_URL || poolConfig);
-
+const pool = process.env.DATABASE_URL
+  ? mysql.createPool(process.env.DATABASE_URL)
+  : mysql.createPool(poolConfig);
 // ── Test the connection on startup ──────────────────────────
 // This immediately grabs one connection from the pool,
 // runs a ping, and releases it. If MySQL isn't running or
