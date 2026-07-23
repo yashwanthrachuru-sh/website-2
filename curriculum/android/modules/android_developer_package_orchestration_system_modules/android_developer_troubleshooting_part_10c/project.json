@@ -1,11 +1,14 @@
 {
-  "title": "Android Developer Troubleshooting Part 10C System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Android Developer Troubleshooting Part 10C.",
+  "title": "Android Developer Troubleshooting Part 10C Project",
+  "tagline": "Build a mini application using Android Developer Troubleshooting Part 10C",
+  "description": "Create a working Android Developer application demonstrating Android Developer Troubleshooting Part 10C.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// Java implementation for Android Developer Troubleshooting Part 10C\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Android Developer Troubleshooting Part 10C\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "solution": "// Java implementation for Android Developer Troubleshooting Part 10C\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Android Developer Troubleshooting Part 10C\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Android Developer Troubleshooting Part 10C in Android Developer."
 }

@@ -3,24 +3,22 @@
   "title": "Network GET Requests",
   "technology": "JavaScript",
   "module": "Fetch API integration",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Async Await Syntax"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Network GET Requests.",
-    "Write error-free implementations utilizing Network GET Requests.",
-    "Debug and optimize performance characteristics of Network GET Requests."
+    "Understand Network GET Requests from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Network GET Requests",
+    "Debug edge cases and answer interview questions about Network GET Requests"
   ],
   "tags": [
-    "network",
-    "get",
-    "requests"
+    "network_get_requests",
+    "js",
+    "fetch_api_integration"
   ]
 }

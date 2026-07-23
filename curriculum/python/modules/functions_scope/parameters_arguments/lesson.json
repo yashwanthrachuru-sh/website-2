@@ -3,24 +3,22 @@
   "title": "Parameters & Arguments",
   "technology": "Python",
   "module": "Functions & Scope",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Loops & Iteration"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Parameters & Arguments.",
-    "Write error-free implementations utilizing Parameters & Arguments.",
-    "Debug and optimize performance characteristics of Parameters & Arguments."
+    "Understand Parameters & Arguments from zero to advanced level",
+    "Write clean, production-grade Python code for Parameters & Arguments",
+    "Debug edge cases and answer interview questions about Parameters & Arguments"
   ],
   "tags": [
-    "parameters",
-    "&",
-    "arguments"
+    "parameters_arguments",
+    "python",
+    "functions_scope"
   ]
 }

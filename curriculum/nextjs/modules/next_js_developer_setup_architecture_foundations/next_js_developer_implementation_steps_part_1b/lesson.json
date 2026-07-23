@@ -3,27 +3,22 @@
   "title": "Next.js Developer Implementation Steps Part 1B",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing Next.js Developer Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of Next.js Developer Implementation Steps Part 1B."
+    "Understand Next.js Developer Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about Next.js Developer Implementation Steps Part 1B"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "next_js_developer_implementation_steps_part_1b",
+    "nextjs",
+    "next_js_developer_setup_architecture_foundations"
   ]
 }

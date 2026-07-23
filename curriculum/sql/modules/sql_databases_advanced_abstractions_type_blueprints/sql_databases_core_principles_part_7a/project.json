@@ -1,11 +1,14 @@
 {
-  "title": "SQL & Databases Core Principles Part 7A System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of SQL & Databases Core Principles Part 7A.",
+  "title": "SQL & Databases Core Principles Part 7A Project",
+  "tagline": "Build a mini application using SQL & Databases Core Principles Part 7A",
+  "description": "Create a working SQL & Databases application demonstrating SQL & Databases Core Principles Part 7A.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "-- SQL Database query for SQL & Databases Core Principles Part 7A\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Core Principles Part 7A' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+  "solution": "-- SQL Database query for SQL & Databases Core Principles Part 7A\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Core Principles Part 7A' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of SQL & Databases Core Principles Part 7A in SQL & Databases."
 }

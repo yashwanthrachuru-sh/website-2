@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between PUT and PATCH?",
-      "answer": "PUT replaces the entire resource. If your user has {name, email, age} and you PUT {name: \"Alice\"}, the result is {name: \"Alice\"} — email and age are gone. PATCH updates only the specified fields. PATCH {name: \"Alice\"} → {name: \"Alice\", email: \"old@example.com\", age: 30} — other fields preserved. Use PUT when you always send the complete resource; use PATCH for partial updates (more common in practice).",
+      "question": "Explain Network GET Requests and its primary use case in JavaScript.",
+      "answer": "Network GET Requests provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common mistakes developers make with Network GET Requests?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What makes an API \"RESTful\"?",
-      "answer": "REST has 6 constraints: (1) Client-Server separation — client and server evolve independently. (2) Stateless — each request contains all information needed; server stores no session. (3) Cacheable — responses indicate whether they can be cached. (4) Uniform Interface — standard HTTP methods and URL patterns. (5) Layered System — client doesn't know if it's talking to a proxy, load balancer, or origin server. (6) Code on Demand (optional) — server can send executable code (JavaScript). Most APIs that call themselves \"REST\" only partially implement these constraints.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What is the difference between authentication and authorization?",
-      "answer": "Authentication: verifying IDENTITY — \"who are you?\" (login, JWT, OAuth). Authorization: verifying PERMISSIONS — \"what are you allowed to do?\" (RBAC, ACL). Example: You authenticate with your GitHub credentials (you are @alice). Then GitHub authorizes: you can push to your repos (admin), read public repos (read), but cannot push to other users' private repos (access denied). HTTP status codes: 401 Unauthorized = not authenticated. 403 Forbidden = authenticated but not authorized.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Network GET Requests queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Network GET Requests queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Network GET Requests queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Network GET Requests queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Network GET Requests queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Network GET Requests queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Network GET Requests queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the JavaScript runtime optimize Network GET Requests under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

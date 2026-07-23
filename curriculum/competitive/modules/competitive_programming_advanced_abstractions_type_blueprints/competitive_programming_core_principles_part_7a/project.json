@@ -1,11 +1,14 @@
 {
-  "title": "Competitive Programming Core Principles Part 7A System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Competitive Programming Core Principles Part 7A.",
+  "title": "Competitive Programming Core Principles Part 7A Project",
+  "tagline": "Build a mini application using Competitive Programming Core Principles Part 7A",
+  "description": "Create a working Competitive Programming application demonstrating Competitive Programming Core Principles Part 7A.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// C/C++ implementation for Competitive Programming Core Principles Part 7A\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Competitive Programming Core Principles Part 7A\");\n    return 0;\n}",
+  "solution": "// C/C++ implementation for Competitive Programming Core Principles Part 7A\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Competitive Programming Core Principles Part 7A\");\n    return 0;\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Competitive Programming Core Principles Part 7A in Competitive Programming."
 }

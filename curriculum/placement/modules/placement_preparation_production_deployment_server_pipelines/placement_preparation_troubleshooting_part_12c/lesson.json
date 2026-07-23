@@ -3,26 +3,22 @@
   "title": "Placement Preparation Troubleshooting Part 12C",
   "technology": "Placement Preparation",
   "module": "Placement Preparation Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Placement Preparation Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Placement Preparation Troubleshooting Part 12C.",
-    "Write error-free implementations utilizing Placement Preparation Troubleshooting Part 12C.",
-    "Debug and optimize performance characteristics of Placement Preparation Troubleshooting Part 12C."
+    "Understand Placement Preparation Troubleshooting Part 12C from zero to advanced level",
+    "Write clean, production-grade Placement Preparation code for Placement Preparation Troubleshooting Part 12C",
+    "Debug edge cases and answer interview questions about Placement Preparation Troubleshooting Part 12C"
   ],
   "tags": [
+    "placement_preparation_troubleshooting_part_12c",
     "placement",
-    "preparation",
-    "troubleshooting",
-    "part",
-    "12c"
+    "placement_preparation_production_deployment_server_pipelines"
   ]
 }

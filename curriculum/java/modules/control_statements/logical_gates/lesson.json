@@ -3,23 +3,22 @@
   "title": "Logical Gates",
   "technology": "Java",
   "module": "Control Statements",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Types & Operators"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Logical Gates.",
-    "Write error-free implementations utilizing Logical Gates.",
-    "Debug and optimize performance characteristics of Logical Gates."
+    "Understand Logical Gates from zero to advanced level",
+    "Write clean, production-grade Java code for Logical Gates",
+    "Debug edge cases and answer interview questions about Logical Gates"
   ],
   "tags": [
-    "logical",
-    "gates"
+    "logical_gates",
+    "java",
+    "control_statements"
   ]
 }

@@ -1,46 +1,42 @@
 {
   "easy": {
-    "problem": "Implement a basic routine demonstrating the startup code syntax for Placement Preparation Troubleshooting Part 11C.",
-    "starterCode": "// Write your code here\n",
-    "hints": [
-      "Review the syntax rules in the beginner notes.",
-      "Check name spelling."
-    ],
+    "title": "Easy: Placement Preparation Troubleshooting Part 11C Basics",
+    "problem": "Write a simple program demonstrating Placement Preparation Troubleshooting Part 11C.",
+    "starterCode": "// C/C++ implementation for Placement Preparation Troubleshooting Part 11C",
+    "solution": "// C/C++ implementation for Placement Preparation Troubleshooting Part 11C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Placement Preparation Troubleshooting Part 11C\");\n    return 0;\n}",
     "expectedOutput": "Success",
-    "solution": "// Solution goes here\n",
-    "explanation": "Verifies basic execution."
+    "hints": [
+      "Check basic syntax"
+    ]
   },
   "medium": {
-    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
-    "starterCode": "function process(val) {\n}",
+    "title": "Medium: Placement Preparation Troubleshooting Part 11C Logic",
+    "problem": "Implement a function using Placement Preparation Troubleshooting Part 11C to transform input data.",
+    "starterCode": "// C/C++ implementation for Placement Preparation Troubleshooting Part 11C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Placement Preparation Troubleshooting Part 11C\");\n    return 0;\n}",
+    "solution": "// C/C++ implementation for Placement Preparation Troubleshooting Part 11C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Placement Preparation Troubleshooting Part 11C\");\n    return 0;\n}",
+    "expectedOutput": "Processed",
     "hints": [
-      "Use conditional statements to inspect values.",
-      "Throw ValueError or Error."
-    ],
-    "expectedOutput": "Error raised",
-    "solution": "function process(val) {\n    if (val < 0) throw new Error('Negative value');\n    return val;\n}",
-    "explanation": "Ensures input validation constraints are met."
+      "Check edge cases"
+    ]
   },
   "hard": {
-    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
-    "starterCode": "const cache = new Map();\nfunction lookup(key) {\n}",
+    "title": "Hard: Placement Preparation Troubleshooting Part 11C System",
+    "problem": "Build an optimized module applying Placement Preparation Troubleshooting Part 11C principles.",
+    "starterCode": "// C/C++ implementation for Placement Preparation Troubleshooting Part 11C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Placement Preparation Troubleshooting Part 11C\");\n    return 0;\n}",
+    "solution": "// C/C++ implementation for Placement Preparation Troubleshooting Part 11C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Placement Preparation Troubleshooting Part 11C\");\n    return 0;\n}",
+    "expectedOutput": "Optimized Output",
     "hints": [
-      "Use a dictionary or Map.",
-      "Store results after the first query."
-    ],
-    "expectedOutput": "Cached output retrieved",
-    "solution": "const cache = new Map();\nfunction lookup(key, calculator) {\n    if (!cache.has(key)) cache.set(key, calculator(key));\n    return cache.get(key);\n}",
-    "explanation": "Implements high-performance memoization caching."
+      "Focus on efficiency"
+    ]
   },
   "debugging": {
-    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
-    "starterCode": "const recordData = 100;\nconsole.log(recordDatas);",
+    "title": "Debugging: Fix Placement Preparation Troubleshooting Part 11C Bug",
+    "problem": "Identify and fix errors in the provided snippet.",
+    "starterCode": "// Fix bug here\n// C/C++ implementation for Placement Preparation Troubleshooting Part 11C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Placement Preparation Troubleshooting Part 11C\");\n    return 0;\n}",
+    "solution": "// C/C++ implementation for Placement Preparation Troubleshooting Part 11C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Placement Preparation Troubleshooting Part 11C\");\n    return 0;\n}",
+    "expectedOutput": "Fixed Output",
     "hints": [
-      "Inspect variable identifiers.",
-      "Match call names exactly."
-    ],
-    "expectedOutput": "100",
-    "solution": "const recordData = 100;\nconsole.log(recordData);",
-    "explanation": "Aligns identifiers within namespace bindings."
+      "Review error message"
+    ]
   }
 }

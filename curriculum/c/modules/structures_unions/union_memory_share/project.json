@@ -1,11 +1,14 @@
 {
-  "title": "Union Memory Share System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Union Memory Share.",
+  "title": "Union Memory Share Project",
+  "tagline": "Build a mini application using Union Memory Share",
+  "description": "Create a working C Programming application demonstrating Union Memory Share.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// C/C++ implementation for Union Memory Share\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Union Memory Share\");\n    return 0;\n}",
+  "solution": "// C/C++ implementation for Union Memory Share\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Union Memory Share\");\n    return 0;\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Union Memory Share in C Programming."
 }

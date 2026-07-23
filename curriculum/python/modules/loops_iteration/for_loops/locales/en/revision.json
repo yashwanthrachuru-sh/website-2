@@ -1,48 +1,30 @@
 {
-  "oneLineSummary": "Loops automate repetition — they run code multiple times, either a fixed count (for) or while a condition holds (while).",
-  "summary": "This lesson covered for and while loops, break/continue, nested loops, and best practices to avoid infinite loops and off-by-one errors.",
+  "summary": "`for` loops iterate over any sequence/iterable object. Use `enumerate()` for index+item, `zip()` for parallel sequences.",
+  "oneLineSummary": "for loops iterate sequentially over items in any iterable object.",
   "keyTakeaways": [
-    "Loops repeat based on a condition or collection",
-    "For = known count, While = condition-based",
-    "Break exits; Continue skips iteration",
-    "Off-by-one is the most common loop bug",
-    "Consider map/filter/reduce as alternatives"
+    "range(start, stop) excludes stop.",
+    "Never mutate list size during iteration."
   ],
   "memoryTricks": [
-    "Think of for as \"for each item\" and while as \"while this is true, keep going\""
-  ],
-  "preInterviewChecklist": [
-    "Can you explain break vs continue?",
-    "Can you write nested loops for a multiplication table?",
-    "Can you fix off-by-one errors?"
+    {
+      "concept": "for loop",
+      "trick": "FOR each item IN list, DO action."
+    }
   ],
   "commonErrors": [
-    "Infinite loops",
-    "Off-by-one",
-    "Modifying collections during iteration",
-    "Nested loop performance"
+    {
+      "error": "IndexError",
+      "cause": "Manual index looping `range(len(lst))` out of bounds",
+      "fix": "Iterate directly over elements `for item in lst`"
+    }
   ],
-  "mindMap": {
-    "central": "Loops",
-    "branches": [
-      "For",
-      "While",
-      "Nested",
-      "Break/Continue",
-      "Iterators",
-      "Functional Alternatives",
-      "Performance"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain Iterator Protocol (__iter__, __next__)"
+  ],
   "nextTopics": [
-    "Generators and lazy evaluation",
-    "Parallel iteration",
-    "Stream processing",
-    "Loop optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Loop Control Statements",
+      "whyNext": "Learn break, continue, and pass to control loop behavior."
+    }
+  ]
 }

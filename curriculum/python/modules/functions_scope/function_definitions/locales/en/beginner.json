@@ -1,62 +1,45 @@
 {
-  "curiosityQuestion": "What if you could package a sequence of instructions into a reusable box, name it, and use it anywhere — like a mini-program inside your program?",
-  "whyExists": "Functions are the fundamental unit of code organization. They let you define a reusable operation once, give it a name, and call it from anywhere. Without them, every program would be one massive, unreadable block of code.",
-  "problemItSolves": "Without functions, you copy-paste the same logic everywhere. Changing that logic means finding and updating every copy — a maintenance nightmare. Functions give you a single place to define behavior and reuse it.",
-  "withoutVariables": "Imagine a library where every book contains the full text of every other book it references — massive, redundant, impossible to maintain. Functions are the \"call number\" that lets you reference knowledge without repeating it.",
-  "whereUsed": "Functions are the building blocks of every program. From simple helpers to complex APIs, every significant software system is composed of functions calling functions.",
-  "realWorldAnalogy": "A function is like a vending machine. You press a button (call the function), it takes inputs (money/selection), performs a process, and returns a result (snack). The internal mechanism is hidden from you — you only need to know what input to give and what output to expect.",
-  "simpleExplanation": "A function is a named block of reusable code. Define it with \"def\", give it a name, add parameters (optional), write the body, and return a result. Call it by its name with arguments.",
-  "syntaxExplanation": "def function_name(param1, param2):\n    \"\"\"Docstring explaining purpose\"\"\"\n    result = do_something(param1, param2)\n    return result\n\n# Call it\noutput = function_name(arg1, arg2)",
+  "whyExists": "As programs grow, writing repetitive code in one long sequence becomes unmanageable. Functions allow you to group reusable statements into a named block. You define a function once using `def`, and can execute (call) it anywhere in your program as many times as needed.",
+  "curiosityQuestion": "What does a Python function return if you don't write an explicit `return` statement?",
+  "problemItSolves": "Promotes code reuse (DRY principle: Don't Repeat Yourself), improves readability, and makes testing and debugging isolated components easy.",
+  "realWorldAnalogy": "A function is like a button on a blender labelled 'Smoothie': whenever you press that button (call the function), the blender performs a predefined series of actions (crush ice, blend fruit) and hands you the resulting drink (returns a value).",
+  "simpleExplanation": "In Python:\n- Define using `def function_name():` followed by an indented body.\n- Call using `function_name()`.\n- Use `return value` to send data back to the caller. If omitted, Python implicitly returns `None`.",
+  "syntaxExplanation": "def greet():\n    print('Hello, EduNet!')\n\n# Call the function:\ngreet()  # Prints: Hello, EduNet!",
   "examples": [
     {
-      "title": "Function Definition and Call",
-      "code": "def greet(name):\n    return f\"Hello, {name}! Welcome to Python.\"\n\nmessage = greet(\"Alice\")\nprint(message)  # Hello, Alice! Welcome to Python.",
-      "explanation": "The function encapsulates a specific behavior. It takes inputs (parameters), processes them, and returns a result. This makes the code reusable, testable, and understandable.",
+      "title": "Defining & Returning Values",
+      "code": "def add_numbers(a, b):\n    result = a + b\n    return result\n\nsum_val = add_numbers(10, 5)\nprint('Sum:', sum_val)  # Sum: 15",
+      "explanation": "`add_numbers` accepts two inputs (`a` and `b`), adds them, and `return` sends 15 back to `sum_val`.",
       "language": "python"
     }
   ],
-  "visualDiagram": "```mermaid\nflowchart LR\n    A[Call Function] --> B[Pass Arguments]\n    B --> C[Execute Body]\n    C --> D[Return Result]\n    D --> E[Caller Resumes]\n```",
+  "visualDiagram": "```mermaid\nflowchart LR\n    Inputs[\"Arguments: (10, 5)\"] --> Func[\"def add_numbers(a, b)\"]\n    Func --> Process[\"a + b = 15\"]\n    Process --> Output[\"Return: 15\"]\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "action": "Define the function",
-      "explanation": "Use def/function keyword, name it, list parameters in parentheses."
+      "action": "Call `add_numbers(10, 5)`",
+      "explanation": "Create new stack frame for `add_numbers`."
     },
     {
       "step": 2,
-      "action": "Write the body",
-      "explanation": "Indented block of code that performs the function's task."
+      "action": "Execute `result = a + b`",
+      "explanation": "10 + 5 = 15 stored in local variable `result`."
     },
     {
       "step": 3,
-      "action": "Return a value",
-      "explanation": "Use return to send a result back to the caller."
-    },
-    {
-      "step": 4,
-      "action": "Call the function",
-      "explanation": "Use the function name followed by parentheses with arguments."
-    },
-    {
-      "step": 5,
-      "action": "Use the result",
-      "explanation": "Capture the return value in a variable or use it directly."
+      "action": "Execute `return result`",
+      "explanation": "Destroy stack frame and return 15 to caller."
     }
   ],
   "memoryDiagram": {
-    "stack": "[Stack]\n  Local variables and call context",
-    "heap": "[Heap]\n  Dynamic data structures"
+    "stack": "[Call Stack Frame]\n  add_numbers(a=10, b=5) -> returns 15 -> frame popped",
+    "heap": "N/A"
   },
   "namingRules": [
-    "Use snake_case for variables and functions",
-    "Use PascalCase for classes",
-    "Use UPPER_SNAKE_CASE for constants",
-    "Use lowercase for module names"
+    "Use lower_case_with_underscores (snake_case) for function names, starting with a verb (e.g. `calculate_total`)."
   ],
   "commonMistakes": [
-    "Forgetting to return a value (returns None/undefined)",
-    "Modifying global variables inside functions (side effects)",
-    "Using mutable default arguments in Python",
-    "Overcomplicating — a function should do one thing"
+    "Forgetting to call the function with parentheses `()`: printing `greet` displays the function object `<function greet at ...>`, not its output.",
+    "Expecting print() inside a function to return a value to a variable."
   ]
 }

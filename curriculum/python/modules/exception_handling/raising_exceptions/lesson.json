@@ -3,23 +3,22 @@
   "title": "Raising Exceptions",
   "technology": "Python",
   "module": "Exception Handling",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Modules & Packages"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Raising Exceptions.",
-    "Write error-free implementations utilizing Raising Exceptions.",
-    "Debug and optimize performance characteristics of Raising Exceptions."
+    "Understand Raising Exceptions from zero to advanced level",
+    "Write clean, production-grade Python code for Raising Exceptions",
+    "Debug edge cases and answer interview questions about Raising Exceptions"
   ],
   "tags": [
-    "raising",
-    "exceptions"
+    "raising_exceptions",
+    "python",
+    "exception_handling"
   ]
 }

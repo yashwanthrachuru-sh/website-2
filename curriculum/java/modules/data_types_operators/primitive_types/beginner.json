@@ -1,45 +1,59 @@
 {
-  "motivation": "Configure stack storage sizing using int, double, boolean.",
-  "whyExists": "Variables are the mechanism by which a program maintains **state** — it remembers values as computation progresses. Without variables, every computation would have to complete in a single expression, making reusable logic impossible. Variables also allow programs to work with **external data** (user input, database records, API responses) that is unknown until runtime. In production systems, variables manage request parameters, configuration settings, in-memory caches, and session data that flow through thousands of concurrent operations per second.",
-  "realWorldAnalogy": "Imagine you are working in a warehouse. Instead of tossing boxes around randomly, you place them into labeled shelves. When a package arrives, you look up its shelf label to update the stock index. Similarly, **Primitive Types** acts as a named workspace or rule that coordinates statements, keeping variables safe and ensuring operations execute only when matching conditions are met.",
-  "simpleExplanation": "To learn Primitive Types from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Primitive Types defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Primitive Types] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the java syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how Primitive Types works under the hood in Java?",
+  "whyExists": "Primitive Types is a core building block in Java. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of Primitive Types like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, Primitive Types provides a clear, standardized way to execute logic in Java. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for Primitive Types:\n\n```java\n// Java implementation for Primitive Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Primitive Types\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// Java implementation for Primitive Types",
+      "desc": "Initialize and configure Primitive Types parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "public class Main {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "}",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "primitive_types_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "primitive_types_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running Primitive Types...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic Primitive Types Example",
+      "code": "// Java implementation for Primitive Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Primitive Types\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+      "explanation": "Demonstrates basic usage of Primitive Types in Java."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in Primitive Types",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// Java implementation for Primitive Types",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

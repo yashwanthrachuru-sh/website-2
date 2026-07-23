@@ -3,27 +3,22 @@
   "title": "Data Science Core Principles Part 10A",
   "technology": "Data Science",
   "module": "Data Science Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Science File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Core Principles Part 10A.",
-    "Write error-free implementations utilizing Data Science Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of Data Science Core Principles Part 10A."
+    "Understand Data Science Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about Data Science Core Principles Part 10A"
   ],
   "tags": [
-    "data",
-    "science",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "data_science_core_principles_part_10a",
+    "data-science",
+    "data_science_package_orchestration_system_modules"
   ]
 }

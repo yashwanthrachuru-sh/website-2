@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Raising Exceptions — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Raising Exceptions for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Raising Exceptions Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Raising Exceptions patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Raising Exceptions Tutorial",
+    "video_id": "1HbgT2kHkh8",
+    "url": "https://www.youtube.com/watch?v=1HbgT2kHkh8",
+    "channel": "Corey Schafer",
+    "duration": "8m",
+    "description": "How to raise exceptions and handle exception chaining."
+  }
+]

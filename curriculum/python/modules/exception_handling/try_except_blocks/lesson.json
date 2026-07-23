@@ -3,24 +3,22 @@
   "title": "Try Except Blocks",
   "technology": "Python",
   "module": "Exception Handling",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Modules & Packages"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Try Except Blocks.",
-    "Write error-free implementations utilizing Try Except Blocks.",
-    "Debug and optimize performance characteristics of Try Except Blocks."
+    "Understand Try Except Blocks from zero to advanced level",
+    "Write clean, production-grade Python code for Try Except Blocks",
+    "Debug edge cases and answer interview questions about Try Except Blocks"
   ],
   "tags": [
-    "try",
-    "except",
-    "blocks"
+    "try_except_blocks",
+    "python",
+    "exception_handling"
   ]
 }

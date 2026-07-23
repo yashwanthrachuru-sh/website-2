@@ -1,46 +1,42 @@
 {
   "easy": {
-    "problem": "Implement a basic routine demonstrating the startup code syntax for SQL & Databases Implementation Steps Part 9B.",
-    "starterCode": "// Write your code here\n",
-    "hints": [
-      "Review the syntax rules in the beginner notes.",
-      "Check name spelling."
-    ],
+    "title": "Easy: SQL & Databases Implementation Steps Part 9B Basics",
+    "problem": "Write a simple program demonstrating SQL & Databases Implementation Steps Part 9B.",
+    "starterCode": "-- SQL Database query for SQL & Databases Implementation Steps Part 9B",
+    "solution": "-- SQL Database query for SQL & Databases Implementation Steps Part 9B\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Implementation Steps Part 9B' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
     "expectedOutput": "Success",
-    "solution": "// Solution goes here\n",
-    "explanation": "Verifies basic execution."
+    "hints": [
+      "Check basic syntax"
+    ]
   },
   "medium": {
-    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
-    "starterCode": "function process(val) {\n}",
+    "title": "Medium: SQL & Databases Implementation Steps Part 9B Logic",
+    "problem": "Implement a function using SQL & Databases Implementation Steps Part 9B to transform input data.",
+    "starterCode": "-- SQL Database query for SQL & Databases Implementation Steps Part 9B\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Implementation Steps Part 9B' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+    "solution": "-- SQL Database query for SQL & Databases Implementation Steps Part 9B\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Implementation Steps Part 9B' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+    "expectedOutput": "Processed",
     "hints": [
-      "Use conditional statements to inspect values.",
-      "Throw ValueError or Error."
-    ],
-    "expectedOutput": "Error raised",
-    "solution": "function process(val) {\n    if (val < 0) throw new Error('Negative value');\n    return val;\n}",
-    "explanation": "Ensures input validation constraints are met."
+      "Check edge cases"
+    ]
   },
   "hard": {
-    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
-    "starterCode": "const cache = new Map();\nfunction lookup(key) {\n}",
+    "title": "Hard: SQL & Databases Implementation Steps Part 9B System",
+    "problem": "Build an optimized module applying SQL & Databases Implementation Steps Part 9B principles.",
+    "starterCode": "-- SQL Database query for SQL & Databases Implementation Steps Part 9B\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Implementation Steps Part 9B' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+    "solution": "-- SQL Database query for SQL & Databases Implementation Steps Part 9B\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Implementation Steps Part 9B' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+    "expectedOutput": "Optimized Output",
     "hints": [
-      "Use a dictionary or Map.",
-      "Store results after the first query."
-    ],
-    "expectedOutput": "Cached output retrieved",
-    "solution": "const cache = new Map();\nfunction lookup(key, calculator) {\n    if (!cache.has(key)) cache.set(key, calculator(key));\n    return cache.get(key);\n}",
-    "explanation": "Implements high-performance memoization caching."
+      "Focus on efficiency"
+    ]
   },
   "debugging": {
-    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
-    "starterCode": "const recordData = 100;\nconsole.log(recordDatas);",
+    "title": "Debugging: Fix SQL & Databases Implementation Steps Part 9B Bug",
+    "problem": "Identify and fix errors in the provided snippet.",
+    "starterCode": "// Fix bug here\n-- SQL Database query for SQL & Databases Implementation Steps Part 9B\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Implementation Steps Part 9B' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+    "solution": "-- SQL Database query for SQL & Databases Implementation Steps Part 9B\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Implementation Steps Part 9B' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+    "expectedOutput": "Fixed Output",
     "hints": [
-      "Inspect variable identifiers.",
-      "Match call names exactly."
-    ],
-    "expectedOutput": "100",
-    "solution": "const recordData = 100;\nconsole.log(recordData);",
-    "explanation": "Aligns identifiers within namespace bindings."
+      "Review error message"
+    ]
   }
 }

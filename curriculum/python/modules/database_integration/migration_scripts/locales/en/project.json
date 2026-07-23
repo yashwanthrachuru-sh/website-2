@@ -1,24 +1,18 @@
 {
-  "title": "Project: Migration Scripts Application",
-  "tagline": "Apply migration scripts in a practical project.",
-  "description": "Build an application demonstrating Migration Scripts.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "Schema Version Inspector",
+  "tagline": "Database migration audit tool",
+  "description": "Build a database inspector querying `alembic_version` to verify environment schema sync.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Verifying database schema versions"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Query alembic_version table"
+  ],
+  "starterCode": "def get_current_revision(conn): pass",
+  "solution": "import sqlite3\ndef get_current_revision(conn):\n    try:\n        cur = conn.cursor()\n        cur.execute('SELECT version_num FROM alembic_version')\n        row = cur.fetchone()\n        return row[0] if row else None\n    except Exception:\n        return None",
+  "solutionExpl": "Queries alembic_version table to retrieve active migration revision hash.",
+  "expectedOutput": "'a1b2c3d4'",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Check against target head version"
   ]
 }

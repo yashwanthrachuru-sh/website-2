@@ -1,31 +1,14 @@
 {
-  "officialDocs": "https://docs.microsoft.com/en-us/ OR https://docs.python.org/3/",
-  "books": [
+  "links": [
     {
-      "title": "Clean Code",
-      "author": "Robert C. Martin"
+      "type": "official_doc",
+      "title": "Oracle Java Documentation",
+      "url": "https://docs.oracle.com/en/java/"
     },
     {
-      "title": "Design Patterns",
-      "author": "Gang of Four"
+      "type": "official_doc",
+      "title": "Java SE API Specification",
+      "url": "https://docs.oracle.com/en/java/javase/17/docs/api/"
     }
-  ],
-  "articles": [
-    {
-      "title": "Understanding Polymorphic Methods Internals",
-      "url": "https://medium.com"
-    }
-  ],
-  "references": [
-    "MDN Web Docs",
-    "Stack Overflow Guide"
-  ],
-  "externalTools": [
-    "Visual Studio Code",
-    "Git"
-  ],
-  "practiceWebsites": [
-    "LeetCode",
-    "HackerRank"
   ]
 }

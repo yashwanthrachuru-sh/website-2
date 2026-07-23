@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Classes & Instances becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Class attributes belong to the Class itself and are shared by all instances. Instance attributes belong to a specific instance (`self.attr`). Lookups search the instance `__dict__` first, then the class `__dict__`.",
+  "internalImplementation": "CPython stores instance attributes in a dictionary `instance.__dict__`.",
   "examples": [
     {
-      "title": "Getting Started with Classes & Instances",
-      "code": "print(\"Learning Classes & Instances\")",
-      "explanation": "Basic introduction to Classes & Instances.",
-      "language": "python"
+      "code": "class Dog:\n    species = 'Canis familiaris' # Class attribute\n    def __init__(self, name):\n        self.name = name          # Instance attribute\n\nd1 = Dog('Buddy')\nprint(d1.species) # Canis familiaris",
+      "explanation": "Class attribute shared across all Dog instances."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A classes & instances implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Attribute lookup O(1) average.",
+    "spaceComplexity": "Use `__slots__` to eliminate instance `__dict__` memory overhead for millions of small instances."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Forgetting self when accessing instance attributes.",
+    "incorrectCode": "def greet(self): print(username)",
+    "correctCode": "def greet(self): print(self.username)"
+  },
+  "bestPractices": [
+    "Use PascalCase for classes.",
+    "Use `__slots__` for lightweight memory-critical objects."
+  ]
 }

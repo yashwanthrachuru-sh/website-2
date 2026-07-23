@@ -3,27 +3,22 @@
   "title": "Data Science Core Principles Part 11A",
   "technology": "Data Science",
   "module": "Data Science Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Science Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Core Principles Part 11A.",
-    "Write error-free implementations utilizing Data Science Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of Data Science Core Principles Part 11A."
+    "Understand Data Science Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about Data Science Core Principles Part 11A"
   ],
   "tags": [
-    "data",
-    "science",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "data_science_core_principles_part_11a",
+    "data-science",
+    "data_science_performance_optimization_complexity"
   ]
 }

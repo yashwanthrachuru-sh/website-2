@@ -1,34 +1,14 @@
 {
-  "title": "List Comprehensions — Quick Reference",
+  "printNote": "List Comprehension Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# List Comprehensions\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Comprehension Syntax",
+      "entries": [
+        {
+          "syntax": "[x**2 for x in nums if x > 0]",
+          "example": "[x for x in range(5)]",
+          "description": "Concise list creation"
+        }
       ]
     }
   ]

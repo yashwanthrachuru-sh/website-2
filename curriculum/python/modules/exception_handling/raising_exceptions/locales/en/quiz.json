@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Raising Exceptions?",
+      "question": "How do you re-raise the currently active exception inside an except block?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "raise",
+        "raise active",
+        "re-raise",
+        "throw"
       ],
       "answer": 0,
-      "explanation": "Raising Exceptions is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Raising Exceptions exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "A bare `raise` statement re-raises the current active exception.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Raising Exceptions is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Raising Exceptions improves code quality.",
+      "question": "True or False: `raise NewError() from old_error` preserves the original traceback.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Explicit chaining sets `__cause__`."
     }
   ]
 }

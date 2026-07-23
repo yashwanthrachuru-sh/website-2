@@ -3,26 +3,22 @@
   "title": "Cybersecurity Analyst Troubleshooting Part 10C",
   "technology": "Cybersecurity Analyst",
   "module": "Cybersecurity Analyst Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Cybersecurity Analyst File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Cybersecurity Analyst Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Cybersecurity Analyst Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Cybersecurity Analyst Troubleshooting Part 10C."
+    "Understand Cybersecurity Analyst Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Cybersecurity Analyst code for Cybersecurity Analyst Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Cybersecurity Analyst Troubleshooting Part 10C"
   ],
   "tags": [
+    "cybersecurity_analyst_troubleshooting_part_10c",
     "cybersecurity",
-    "analyst",
-    "troubleshooting",
-    "part",
-    "10c"
+    "cybersecurity_analyst_package_orchestration_system_modules"
   ]
 }

@@ -3,27 +3,22 @@
   "title": "AWS Cloud Architect Troubleshooting Part 4C",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Troubleshooting Part 4C.",
-    "Write error-free implementations utilizing AWS Cloud Architect Troubleshooting Part 4C.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Troubleshooting Part 4C."
+    "Understand AWS Cloud Architect Troubleshooting Part 4C from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Troubleshooting Part 4C",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Troubleshooting Part 4C"
   ],
   "tags": [
+    "aws_cloud_architect_troubleshooting_part_4c",
     "aws",
-    "cloud",
-    "architect",
-    "troubleshooting",
-    "part",
-    "4c"
+    "aws_cloud_architect_iteration_loops_state_traversal"
   ]
 }

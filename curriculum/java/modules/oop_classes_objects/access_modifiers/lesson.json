@@ -3,23 +3,22 @@
   "title": "Access Modifiers",
   "technology": "Java",
   "module": "OOP Classes & Objects",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Arrays & String Pool"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Access Modifiers.",
-    "Write error-free implementations utilizing Access Modifiers.",
-    "Debug and optimize performance characteristics of Access Modifiers."
+    "Understand Access Modifiers from zero to advanced level",
+    "Write clean, production-grade Java code for Access Modifiers",
+    "Debug edge cases and answer interview questions about Access Modifiers"
   ],
   "tags": [
-    "access",
-    "modifiers"
+    "access_modifiers",
+    "java",
+    "oop_classes_objects"
   ]
 }

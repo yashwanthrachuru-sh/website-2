@@ -1,45 +1,59 @@
 {
-  "motivation": "Define variables that hold varying type classes.",
-  "whyExists": "Without **Union Types**, modern software engineering would be extremely tedious. Developers would have to manually configure physical memory slots, write repetitive loop patterns, or establish unsafe socket connections for basic data operations. This concept exists to remove boilerplate redundancy, guarantee code safety limits, and offer a standard method for developers to manage application states.",
-  "realWorldAnalogy": "Imagine you are working in a warehouse. Instead of tossing boxes around randomly, you place them into labeled shelves. When a package arrives, you look up its shelf label to update the stock index. Similarly, **Union Types** acts as a named workspace or rule that coordinates statements, keeping variables safe and ensuring operations execute only when matching conditions are met.",
-  "simpleExplanation": "To learn Union Types from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Union Types defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Union Types] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the typescript syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how Union Types works under the hood in TypeScript?",
+  "whyExists": "Union Types is a core building block in TypeScript. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of Union Types like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, Union Types provides a clear, standardized way to execute logic in TypeScript. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for Union Types:\n\n```typescript\n// TypeScript implementation for Union Types\ninterface UnionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processUnionTypes(item: UnionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processUnionTypes({ id: 1, title: 'Union Types', status: 'active' }));\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// TypeScript implementation for Union Types",
+      "desc": "Initialize and configure Union Types parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "interface UnionTypesPayload {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "console.log(processUnionTypes({ id: 1, title: 'Union Types', status: 'active' }));",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "union_types_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "union_types_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running Union Types...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic Union Types Example",
+      "code": "// TypeScript implementation for Union Types\ninterface UnionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processUnionTypes(item: UnionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processUnionTypes({ id: 1, title: 'Union Types', status: 'active' }));",
+      "explanation": "Demonstrates basic usage of Union Types in TypeScript."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in Union Types",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// TypeScript implementation for Union Types",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

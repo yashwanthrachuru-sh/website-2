@@ -3,27 +3,22 @@
   "title": "Docker Containers Implementation Steps Part 6B",
   "technology": "Docker Containers",
   "module": "Docker Containers Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Docker Containers Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Implementation Steps Part 6B.",
-    "Write error-free implementations utilizing Docker Containers Implementation Steps Part 6B.",
-    "Debug and optimize performance characteristics of Docker Containers Implementation Steps Part 6B."
+    "Understand Docker Containers Implementation Steps Part 6B from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Implementation Steps Part 6B",
+    "Debug edge cases and answer interview questions about Docker Containers Implementation Steps Part 6B"
   ],
   "tags": [
+    "docker_containers_implementation_steps_part_6b",
     "docker",
-    "containers",
-    "implementation",
-    "steps",
-    "part",
-    "6b"
+    "docker_containers_data_collections_list_structures"
   ]
 }

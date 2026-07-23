@@ -1,26 +1,32 @@
 {
-  "title": "Project: Python Environment Diagnostics Tool",
-  "tagline": "Build a comprehensive system information tool.",
-  "description": "Create a CLI tool that displays detailed information about the python environment: version, installed packages, system info, and environment variables.",
-  "requirements": [
-    "Display interpreter version and path",
-    "List installed packages with versions",
-    "Show system info (OS, CPU, memory)",
-    "Display key environment variables",
-    "Handle errors gracefully"
-  ],
+  "title": "Python Environment Setup — Mini Project",
+  "tagline": "Build a Python Environment Audit Tool",
+  "description": "Create a command-line tool called 'env_check.py' that audits a Python environment and generates a human-readable health report. This is the kind of utility script real development teams use to onboard new developers or diagnose CI environment failures.",
   "learningGoals": [
-    "Understand the runtime environment",
-    "Practice working with system modules",
-    "Build a practical diagnostic tool"
+    "Use the sys module to inspect the Python runtime",
+    "Use try/except to handle missing dependencies gracefully",
+    "Format output clearly for a command-line audience",
+    "Think about what information a developer actually needs to diagnose their environment"
   ],
-  "starterCode": "#!/usr/bin/env python3\nimport sys, os, platform\n\ndef main():\n    print(\"=\"*60)\n    print(\"  Environment Diagnostics\")\n    print(\"=\"*60)\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "#!/usr/bin/env python3\nimport sys, os, platform\n\ndef main():\n    print(\"=\"*60)\n    print(\"  Python Environment Diagnostics\")\n    print(\"=\"*60)\n    print(f\"\\nInterpreter: {sys.version}\")\n    print(f\"Path: {sys.executable}\")\n    print(f\"OS: {platform.system()} {platform.release()}\")\n    print(f\"CPU Cores: {os.cpu_count()}\")\n    for key in ['PATH','HOME','USER']:\n        if key in os.environ:\n            print(f\"{key}={os.environ[key][:80]}...\")\n    print(\"\\n\" + \"=\"*60)",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Print the Python version (major.minor.micro format)",
+    "Print the Python executable path",
+    "Print the platform (sys.platform)",
+    "Check for pip availability",
+    "Check for these common libraries: json, os, sys, pathlib (standard library) and try to import: requests, flask (third-party — expected to potentially fail)",
+    "For each check: print ✓ if available, ✗ if missing",
+    "At the end: print a summary count of how many checks passed vs failed",
+    "If any third-party library is missing, print the correct pip install command to fix it"
+  ],
+  "starterCode": "import sys\n\n# ── Environment Audit Tool ──\nprint('=' * 50)\nprint('PYTHON ENVIRONMENT HEALTH CHECK')\nprint('=' * 50)\n\n# TODO: Print Python version\n\n# TODO: Print executable path\n\n# TODO: Print platform\n\nprint()\nprint('Standard Library:')\n# TODO: Check json, os, sys, pathlib\n\nprint()\nprint('Third-party Libraries:')\n# TODO: Check requests, flask with try/except\n# TODO: If missing, print the install command\n\nprint()\n# TODO: Print summary\n",
+  "solution": "import sys\n\nprint('=' * 50)\nprint('PYTHON ENVIRONMENT HEALTH CHECK')\nprint('=' * 50)\nprint(f'Python:     {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}')\nprint(f'Executable: {sys.executable}')\nprint(f'Platform:   {sys.platform}')\n\npassed = 0\nfailed = 0\n\ndef check(module_name, is_stdlib=True):\n    global passed, failed\n    try:\n        __import__(module_name)\n        print(f'  ✓ {module_name}')\n        passed += 1\n    except ImportError:\n        print(f'  ✗ {module_name}', end='')\n        if not is_stdlib:\n            print(f'  →  pip install {module_name}', end='')\n        print()\n        failed += 1\n\nprint()\nprint('Standard Library:')\nfor mod in ['json', 'os', 'sys', 'pathlib']:\n    check(mod, is_stdlib=True)\n\nprint()\nprint('Third-party Libraries:')\nfor mod in ['requests', 'flask']:\n    check(mod, is_stdlib=False)\n\nprint()\nprint(f'Summary: {passed} passed, {failed} failed')\nif failed == 0:\n    print('Environment is ready!')\nelse:\n    print('Install missing packages and re-run this check.')",
+  "solutionExpl": "The solution uses a helper function 'check()' that imports a module by name using __import__() (the dynamic import equivalent of the import statement) and updates the pass/fail counters. The 'global' keyword lets the inner function modify variables defined in the outer scope. The is_stdlib flag controls whether to print the pip install hint for missing packages.",
+  "expectedOutput": "==================================================\nPYTHON ENVIRONMENT HEALTH CHECK\n==================================================\nPython:     3.12.0\nExecutable: /usr/local/bin/python3\nPlatform:   darwin\n\nStandard Library:\n  ✓ json\n  ✓ os\n  ✓ sys\n  ✓ pathlib\n\nThird-party Libraries:\n  ✓ requests\n  ✗ flask  →  pip install flask\n\nSummary: 5 passed, 1 failed\nInstall missing packages and re-run this check.",
   "extensions": [
-    "Add JSON output format",
-    "Include network information",
-    "Generate a shareable report URL"
+    "Add a check for the Python version being 3.8 or higher — print a warning if it's too old",
+    "Read a list of required packages from a requirements.txt file and check each one",
+    "Add color output using ANSI escape codes (green for ✓, red for ✗) without any third-party library",
+    "Output the report as JSON instead of plain text (using the json module from the standard library)",
+    "Accept a --fix flag that automatically runs pip install for all missing third-party packages"
   ]
 }

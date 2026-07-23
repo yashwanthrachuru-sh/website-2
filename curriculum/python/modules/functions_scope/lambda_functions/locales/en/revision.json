@@ -1,49 +1,31 @@
 {
-  "oneLineSummary": "Functions are reusable, named blocks of code that take inputs, process them, and return outputs — the fundamental unit of program organization.",
-  "summary": "This lesson covered function definition, parameters, return values, scope, lambda/arrow functions, recursion, and best practices for writing clean, testable functions.",
+  "summary": "Lambda functions are single-expression anonymous functions written `lambda args: expr`. Ideal for short keys in `sorted()`, `min()`, `max()`.",
+  "oneLineSummary": "Lambda functions are single-expression anonymous inline functions.",
   "keyTakeaways": [
-    "Functions encapsulate reusable logic",
-    "Parameters receive inputs; return sends output",
-    "Local variables are scoped to the function",
-    "Pure functions are easier to test and debug",
-    "Functions are first-class citizens"
+    "No return statement allowed.",
+    "Useful as sorting keys.",
+    "Watch out for late-binding in loops."
   ],
   "memoryTricks": [
-    "Think of a function as a vending machine: input (money/selection) -> process -> output (snack)"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain the difference between parameters and arguments?",
-    "Can you write a recursive function?",
-    "Do you understand closures?"
+    {
+      "concept": "Lambda",
+      "trick": "Lambda = One-Line Function on the fly."
+    }
   ],
   "commonErrors": [
-    "Missing return",
-    "Modifying global/input state",
-    "Using mutable default arguments",
-    "Stack overflow from infinite recursion"
+    {
+      "error": "SyntaxError using return in lambda",
+      "cause": "Including return keyword",
+      "fix": "Remove return keyword — expression evaluates automatically"
+    }
   ],
-  "mindMap": {
-    "central": "Functions",
-    "branches": [
-      "Definition",
-      "Parameters",
-      "Return",
-      "Scope",
-      "Recursion",
-      "Lambda",
-      "Higher-Order",
-      "Closures"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain late binding in lambda loops"
+  ],
   "nextTopics": [
-    "Closures and decorators",
-    "Function composition",
-    "Monads and functional programming",
-    "Concurrency with async functions"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Data Structures: Lists & Tuples",
+      "whyNext": "Explore Python's foundational data collections."
+    }
+  ]
 }

@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "type": "official_doc",
+      "title": "Official Python Documentation",
+      "url": "https://docs.python.org/3/"
+    },
+    {
+      "type": "official_doc",
+      "title": "Python Language Reference",
+      "url": "https://docs.python.org/3/reference/"
+    },
+    {
+      "type": "official_doc",
+      "title": "Python Standard Library",
+      "url": "https://docs.python.org/3/library/"
+    }
+  ]
+}

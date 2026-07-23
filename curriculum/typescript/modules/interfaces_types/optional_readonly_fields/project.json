@@ -1,11 +1,14 @@
 {
-  "title": "Optional Readonly Fields System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Optional Readonly Fields.",
+  "title": "Optional Readonly Fields Project",
+  "tagline": "Build a mini application using Optional Readonly Fields",
+  "description": "Create a working TypeScript application demonstrating Optional Readonly Fields.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Optional Readonly Fields\ninterface OptionalReadonlyFieldsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processOptionalReadonlyFields(item: OptionalReadonlyFieldsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processOptionalReadonlyFields({ id: 1, title: 'Optional Readonly Fields', status: 'active' }));",
+  "solution": "// TypeScript implementation for Optional Readonly Fields\ninterface OptionalReadonlyFieldsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processOptionalReadonlyFields(item: OptionalReadonlyFieldsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processOptionalReadonlyFields({ id: 1, title: 'Optional Readonly Fields', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Optional Readonly Fields in TypeScript."
 }

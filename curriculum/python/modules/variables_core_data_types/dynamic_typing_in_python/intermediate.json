@@ -1,26 +1,72 @@
 {
-  "deeperExplanation": "Building on top of basic syntax, intermediate-level application of Dynamic Typing in Python requires mapping scope boundaries, validating dynamic data types, and ensuring that variable transformations don't create reference memory leaks.",
-  "internalImplementation": "When the compiler compiles Dynamic Typing in Python, it registers local descriptors in the namespace symbol table. Scope bounds are tracked via frame pointers, releasing heap references when the parent frame terminates.",
-  "bestPractices": [
-    "Keep scope parameters local rather than global.",
-    "Profile heavy performance paths to reduce garbage collection cycles.",
-    "Use type annotations where supported."
-  ],
-  "performanceConsiderations": {
-    "timeComplexity": "O(1) average lookup, O(N) linear iteration over collection sets.",
-    "spaceComplexity": "O(1) auxiliary frame stack memory, O(N) dynamic heap growth."
-  },
+  "deeperExplanation": "In Python, dynamic typing is implemented through **PyObject** — every value in Python is a C struct that contains:\n1. `ob_refcnt` — reference count (how many names point to this object)\n2. `ob_type` — a pointer to the type object (e.g., `&PyInt_Type`)\n3. The actual data\n\nWhen you write `x = 10`, Python allocates a `PyLongObject` on the heap. The name `x` is stored in the current scope's namespace dictionary (`__dict__`) as a key mapping to that object's memory address.\n\nWhen you write `x = 'hello'`, the namespace dict entry for `'x'` is updated to point to the new string object. The integer object's `ob_refcnt` drops by 1. If it reaches 0, the garbage collector frees it immediately (CPython uses reference counting, not a tracing GC).\n\nThis is why dynamic typing has a small overhead: every attribute access goes through a dictionary lookup, and every operation must check the type before dispatching to the correct implementation.",
+  "mutabilityExplained": "Dynamic typing and mutability are separate concepts that beginners often confuse:\n\n- **Dynamic typing** = a variable can reference any type at any time\n- **Mutability** = whether the object itself can be changed after creation\n\n```python\n# Dynamic typing — reassigning the variable\nx = [1, 2, 3]    # x points to a list\nx = 'hello'      # x now points to a string (reassignment)\n\n# Mutability — changing the object in-place\nmy_list = [1, 2, 3]\nmy_list.append(4)     # Mutates the SAME list object — no reassignment\nmy_list[0] = 99       # Also mutation\nprint(my_list)        # [99, 2, 3, 4]\n\nmy_str = 'hello'\n# my_str[0] = 'H'    # TypeError! Strings are immutable\nmy_str = 'Hello'      # This is reassignment, not mutation\n```\n\nImmutable types: `int`, `float`, `str`, `tuple`, `bool`, `frozenset`\nMutable types: `list`, `dict`, `set`, custom objects",
+  "noneValue": "**None** is Python's null value — a singleton object of type `NoneType`. There is only one `None` object in all of Python.\n\n```python\nresult = None                 # Explicitly setting to None\nprint(type(None))             # <class 'NoneType'>\nprint(result is None)         # True — use 'is', not ==\nprint(result == None)         # True (but 'is' is preferred by PEP 8)\n\n# Functions without a return statement return None\ndef greet(name):\n    print(f'Hello, {name}!')\n    # No return statement\n\noutput = greet('Alice')       # Prints: Hello, Alice!\nprint(output)                 # None\nprint(output is None)         # True\n\n# None in conditionals\nuser = None\nif user is None:\n    print('No user logged in')\n\n# Common gotcha: checking if a list is empty vs None\nmy_list = []\nif not my_list:               # True — empty list is falsy\n    print('List is empty')\nif my_list is None:           # False — it's a list, not None\n    print('This never prints')\n```\n\n**Rule**: Always use `is None` and `is not None` to check for None, never `== None`. This is because `__eq__` can be overridden by custom classes.",
+  "internalImplementation": "CPython (the standard Python interpreter) stores all variables in **namespace dictionaries**:\n\n- Local variables: in the function's frame object (`frame.f_locals`)\n- Global variables: in the module's `__dict__`\n- Built-ins: in `builtins.__dict__`\n\n```python\nx = 42\nname = 'Alice'\n\n# These are the same variable lookup chain Python uses\nimport sys\nframe = sys._getframe()  # Current execution frame\nprint(frame.f_locals)   # {'x': 42, 'name': 'Alice', 'frame': <frame>}\n\n# id() returns the memory address of the object\nprint(id(x))            # e.g., 140234567890\nprint(id(name))         # Different address\n\n# Small integers (-5 to 256) are cached by CPython\na = 100\nb = 100\nprint(a is b)           # True! Same object — CPython reuses it\n\nc = 1000\nd = 1000\nprint(c is d)           # Usually False! New object each time\n```\n\nThis caching is a CPython implementation detail — don't rely on it in production code. Always use `==` for value comparison, `is` only for None/True/False/singleton checks.",
   "examples": [
     {
-      "title": "Realistic Module Handler",
-      "code": "def run():\n    print(\"Processing Dynamic Typing in Python...\")\nrun()",
-      "explanation": "Wraps execution inside a callable routine."
+      "title": "Duck Typing — Type-Flexible Functions",
+      "code": "# Python embraces 'duck typing': if it walks like a duck and quacks like a duck, it's a duck.\n# Functions don't need type declarations — they work with any type that supports the operations used.\n\ndef double(value):\n    return value * 2\n\nprint(double(5))        # 10      (int * 2)\nprint(double(3.14))     # 6.28   (float * 2)\nprint(double('hello'))  # 'hellohello' (str * 2 = repetition)\nprint(double([1, 2]))   # [1, 2, 1, 2] (list * 2 = repetition)\n\n# The function works because * is defined for all these types\n# This is duck typing: we don't check what type 'value' is,\n# we just call the operation and trust it works",
+      "explanation": "Duck typing is the natural consequence of dynamic typing. The `double()` function works for int, float, str, and list without a single type check. This is idiomatic Python. The alternative — checking `isinstance(value, int)` before proceeding — is considered unpythonic unless you specifically need to reject certain types."
+    },
+    {
+      "title": "Type Hints — Optional Static Typing",
+      "code": "# Python 3.5+ supports type hints (PEP 484)\n# Hints are OPTIONAL and NOT enforced at runtime — they're documentation\n\ndef greet(name: str) -> str:\n    return f'Hello, {name}!'\n\ndef add(a: int, b: int) -> int:\n    return a + b\n\n# Type hints don't stop wrong types at runtime!\nresult = add('oops', 3)  # No error from Python — returns 'oops3'\nprint(result)            # 'oops3'\n\n# Use mypy (static type checker) to catch type errors during development:\n# $ mypy script.py  ->  error: Argument 1 to 'add' has incompatible type 'str'; expected 'int'\n\n# Modern syntax for complex hints\nfrom typing import Optional, Union, List\n\ndef process(data: Union[str, int, None]) -> Optional[str]:\n    if data is None:\n        return None\n    return str(data).upper()",
+      "explanation": "Type hints give Python the benefits of documentation and IDE autocomplete without sacrificing runtime flexibility. Production Python codebases increasingly use type hints + mypy/pyright for static analysis. However, they are never enforced at runtime by the interpreter itself."
+    }
+  ],
+  "bestPractices": [
+    {
+      "rule": "Use isinstance() for type checking, never type() == SomeType",
+      "good": "if isinstance(data, (list, tuple)):",
+      "bad": "if type(data) == list:",
+      "why": "isinstance() respects inheritance. type() == fails for subclasses. isinstance() also accepts a tuple of types as the second argument."
+    },
+    {
+      "rule": "Use type hints in function signatures for production code",
+      "good": "def process(user_id: int, name: str) -> dict:",
+      "bad": "def process(user_id, name):",
+      "why": "Type hints serve as machine-readable documentation. IDEs use them for autocomplete and error highlighting. mypy uses them for static analysis."
+    },
+    {
+      "rule": "Avoid using the same variable name for different types in the same function",
+      "good": "user_id = get_id()\nuser_name = get_name()",
+      "bad": "data = get_id()\ndata = get_name()  # Reuse confuses readers",
+      "why": "Even though Python allows it, reusing a variable name for different types makes code harder to reason about and introduces bugs when refactoring."
+    },
+    {
+      "rule": "Use is/is not for None checks, == for value equality",
+      "good": "if result is None:",
+      "bad": "if result == None:",
+      "why": "Technically both work for None, but is is guaranteed correct. Custom objects can override __eq__ to make == None return True unexpectedly."
+    }
+  ],
+  "edgeCases": [
+    {
+      "case": "bool is a subclass of int — True == 1 and False == 0",
+      "code": "print(True + True)      # 2\nprint(True * 5)         # 5\nprint(False + 10)       # 10\nprint(isinstance(True, int))  # True\nprint(1 == True)        # True\nprint(0 == False)       # True",
+      "explanation": "This is by design, not a bug. Booleans in Python are integers. Historically, `bool` was added later as a subclass of `int`. This means True and False can be used in arithmetic, which can be useful (`sum([True, True, False, True])` counts the number of True values) but also surprising."
+    },
+    {
+      "case": "Integer identity vs equality for large numbers",
+      "code": "# CPython caches small integers (-5 to 256)\na, b = 100, 100\nprint(a is b)     # True — same object (cached)\n\nc, d = 1000, 1000\nprint(c is d)     # False in most Python implementations — different objects\nprint(c == d)     # True — same value, different objects",
+      "explanation": "CPython optimizes memory by caching frequently-used small integers. Using `is` for integer comparison can give misleading results for numbers outside the cache range. Always use `==` for value comparison."
+    },
+    {
+      "case": "None, 0, '', [], {} are all falsy but not None",
+      "code": "# These are all falsy in a boolean context:\nfor val in [None, 0, '', [], {}, 0.0, False, set()]:\n    print(f'{repr(val):15} is None: {val is None}, bool: {bool(val)}')\n\n# Output:\n# None            is None: True,  bool: False\n# 0               is None: False, bool: False\n# ''              is None: False, bool: False\n# []              is None: False, bool: False",
+      "explanation": "A common bug is checking `if not result:` when you specifically need `if result is None:`. An empty list or 0 is falsy but is not None — they carry meaningful information (the list exists but is empty)."
     }
   ],
   "debuggingWalkthrough": {
-    "bugDescription": "Scope visibility errors or undefined variable references occur when calling values outside local blocks.",
-    "incorrectCode": "// Incorrect identifier spelling\nconst dynamic_typing_in_python_val = 50;\nconsole.log(dynamic_typing_in_python_vals);",
-    "correctCode": "// Corrected spelling reference\nconst dynamic_typing_in_python_val = 50;\nconsole.log(dynamic_typing_in_python_val);",
-    "fixExplanation": "Align the calling variable name exactly with its declared identifier inside the namespace."
+    "bugDescription": "TypeError from accidentally concatenating a number and string",
+    "scenario": "A student writes a greeting function but gets a TypeError when the user's age is passed as an integer.",
+    "incorrectCode": "def print_user_info(name, age):\n    message = 'User: ' + name + ', Age: ' + age\n    print(message)\n\nprint_user_info('Alice', 30)  # TypeError!",
+    "errorMessage": "TypeError: can only concatenate str (not 'int') to str",
+    "correctCode": "# Option 1: Explicit conversion\ndef print_user_info(name, age):\n    message = 'User: ' + name + ', Age: ' + str(age)\n    print(message)\n\n# Option 2: f-strings (most Pythonic)\ndef print_user_info(name, age):\n    print(f'User: {name}, Age: {age}')\n\nprint_user_info('Alice', 30)  # User: Alice, Age: 30",
+    "whyItHappens": "Python's `+` operator on strings is concatenation, not addition. When one operand is `str` and the other is `int`, Python raises a TypeError because it won't silently convert — unlike JavaScript, which would produce '...Age: 30' by auto-converting. The f-string approach is the most readable and efficient solution."
+  },
+  "performanceConsiderations": {
+    "notes": "Dynamic typing has a measurable overhead compared to statically-typed languages. Each attribute access requires a dictionary lookup (O(1) but with constant overhead). Each operation (like `+`) requires the interpreter to check the object's type before dispatching to the correct C function. For CPU-intensive numeric work, tools like NumPy (which bypasses dynamic typing for arrays), Cython (which allows static type annotations that compile to C), or PyPy (JIT compiler) significantly reduce this overhead."
   }
 }

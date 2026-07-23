@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Inheritance — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Inheritance for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Inheritance Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Inheritance patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python OOP Tutorial 4: Inheritance - Creating Subclasses",
+    "video_id": "RSl87lqOXDE",
+    "url": "https://www.youtube.com/watch?v=RSl87lqOXDE",
+    "channel": "Corey Schafer",
+    "duration": "18m",
+    "description": "Complete guide to inheritance and super() in Python."
+  }
+]

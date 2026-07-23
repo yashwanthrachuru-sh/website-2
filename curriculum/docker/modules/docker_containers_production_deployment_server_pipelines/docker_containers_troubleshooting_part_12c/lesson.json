@@ -3,26 +3,22 @@
   "title": "Docker Containers Troubleshooting Part 12C",
   "technology": "Docker Containers",
   "module": "Docker Containers Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Docker Containers Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Troubleshooting Part 12C.",
-    "Write error-free implementations utilizing Docker Containers Troubleshooting Part 12C.",
-    "Debug and optimize performance characteristics of Docker Containers Troubleshooting Part 12C."
+    "Understand Docker Containers Troubleshooting Part 12C from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Troubleshooting Part 12C",
+    "Debug edge cases and answer interview questions about Docker Containers Troubleshooting Part 12C"
   ],
   "tags": [
+    "docker_containers_troubleshooting_part_12c",
     "docker",
-    "containers",
-    "troubleshooting",
-    "part",
-    "12c"
+    "docker_containers_production_deployment_server_pipelines"
   ]
 }

@@ -1,45 +1,24 @@
 {
-  "deeperExplanation": "Beyond simple true/false, conditionals can be chained (elif/else if), nested, and combined with logical operators (and/or/not). Every conditional creates a branch in the control flow graph — understanding this helps you reason about possible code paths.",
-  "mutabilityExplained": "Variables in conditions are read-only during evaluation. The code inside each branch can freely modify variables, which is how conditionals control program state.",
-  "noneValue": "In most languages, None/null/undefined are falsy. Be explicit when checking for them, as 0, empty strings, and empty collections are also falsy.",
-  "internalImplementation": "Compilers convert if/else into conditional jump instructions. The CPU evaluates the condition, sets a flag, and conditionally jumps to different addresses. This makes conditionals extremely fast.",
+  "deeperExplanation": "Python evaluates conditional expressions using short-circuit logic: `A and B` stops immediately if `A` is falsy (without evaluating `B`). `A or B` stops immediately if `A` is truthy. This enables safe property checks like `if ptr is not None and ptr.value > 0:` without throwing NullPointer/AttributeError.",
+  "internalImplementation": "CPython compiles `if` statements into `POP_JUMP_IF_FALSE` and `JUMP_FORWARD` bytecode instructions, jumping over non-matching blocks efficiently.",
   "examples": [
     {
-      "title": "Chained Conditions",
-      "code": "score = 85\nif score >= 90:\n    grade = 'A'\nelif score >= 80:\n    grade = 'B'\nelif score >= 70:\n    grade = 'C'\nelse:\n    grade = 'F'\nprint(f\"Grade: {grade}\")",
-      "explanation": "Multiple elif/else if blocks check a series of conditions in order. The first match wins — this is more efficient than independent if statements.",
-      "language": "python"
+      "code": "# Short-Circuit Evaluation Guard Pattern\ndef process_user(user):\n    if user is not None and user.get('is_active', False):\n        print(f\"Processing active user: {user['name']}\")\n    else:\n        print('No valid active user')",
+      "explanation": "If `user` is `None`, the `and` operator short-circuits immediately. `user.get()` is never called, preventing an AttributeError."
     }
   ],
-  "bestPractices": [
-    "Handle the most specific cases first, general cases last",
-    "Avoid deep nesting — extract conditions into named functions",
-    "Use switch/pattern matching for single-value comparisons",
-    "Always consider the else/default case",
-    "Prefer positive conditions for clarity"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A function returns wrong results for certain inputs because a condition misses edge cases.",
-    "steps": [
-      "List all possible inputs and expected outputs",
-      "Check if any input falls through all conditions",
-      "Verify the order of conditions",
-      "Test boundary values: 0, negative, empty, null",
-      "Use a debugger to step through each branch"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Evaluating conditional branches is O(1). Arrange most frequent or computationally cheap conditions first to optimize short-circuiting.",
+    "spaceComplexity": "O(1) memory."
   },
-  "edgeCases": [
-    "Floating-point comparisons — never use exact equality",
-    "Short-circuit evaluation in logical operators",
-    "Falsy values: 0, \"\", null, undefined, NaN",
-    "Integer overflow affecting comparisons"
-  ],
-  "performanceNotes": {
-    "notes": "Branch prediction makes conditionals fast, but mispredicted branches cause pipeline stalls. Arrange conditions by frequency for optimal performance.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(1)",
-      "worst": "O(n)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Accidentally using independent `if` statements instead of `elif`, causing multiple branches to trigger.",
+    "incorrectCode": "score = 95\nif score >= 80:\n    print('Pass')\nif score >= 90:\n    print('Honors')",
+    "correctCode": "score = 95\nif score >= 90:\n    print('Honors')\nelif score >= 80:\n    print('Pass')"
+  },
+  "bestPractices": [
+    "Place most specific/restrictive conditions first in `elif` chains.",
+    "Use short-circuiting for guard clauses.",
+    "Avoid redundant checks like `if is_valid == True:` — write `if is_valid:`."
+  ]
 }

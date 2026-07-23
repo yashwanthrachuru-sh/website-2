@@ -3,27 +3,22 @@
   "title": "GCP Cloud Engineer Troubleshooting Part 2C",
   "technology": "GCP Cloud Engineer",
   "module": "GCP Cloud Engineer Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: GCP Cloud Engineer Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of GCP Cloud Engineer Troubleshooting Part 2C.",
-    "Write error-free implementations utilizing GCP Cloud Engineer Troubleshooting Part 2C.",
-    "Debug and optimize performance characteristics of GCP Cloud Engineer Troubleshooting Part 2C."
+    "Understand GCP Cloud Engineer Troubleshooting Part 2C from zero to advanced level",
+    "Write clean, production-grade GCP Cloud Engineer code for GCP Cloud Engineer Troubleshooting Part 2C",
+    "Debug edge cases and answer interview questions about GCP Cloud Engineer Troubleshooting Part 2C"
   ],
   "tags": [
+    "gcp_cloud_engineer_troubleshooting_part_2c",
     "gcp",
-    "cloud",
-    "engineer",
-    "troubleshooting",
-    "part",
-    "2c"
+    "gcp_cloud_engineer_variables_core_data_layouts"
   ]
 }

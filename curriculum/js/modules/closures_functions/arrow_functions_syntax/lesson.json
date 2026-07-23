@@ -3,24 +3,22 @@
   "title": "Arrow Functions Syntax",
   "technology": "JavaScript",
   "module": "Closures & Functions",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Iteration & Loops"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Arrow Functions Syntax.",
-    "Write error-free implementations utilizing Arrow Functions Syntax.",
-    "Debug and optimize performance characteristics of Arrow Functions Syntax."
+    "Understand Arrow Functions Syntax from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Arrow Functions Syntax",
+    "Debug edge cases and answer interview questions about Arrow Functions Syntax"
   ],
   "tags": [
-    "arrow",
-    "functions",
-    "syntax"
+    "arrow_functions_syntax",
+    "js",
+    "closures_functions"
   ]
 }

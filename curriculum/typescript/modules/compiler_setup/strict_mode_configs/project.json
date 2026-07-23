@@ -1,11 +1,14 @@
 {
-  "title": "Strict Mode Configs System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Strict Mode Configs.",
+  "title": "Strict Mode Configs Project",
+  "tagline": "Build a mini application using Strict Mode Configs",
+  "description": "Create a working TypeScript application demonstrating Strict Mode Configs.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Strict Mode Configs\ninterface StrictModeConfigsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processStrictModeConfigs(item: StrictModeConfigsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processStrictModeConfigs({ id: 1, title: 'Strict Mode Configs', status: 'active' }));",
+  "solution": "// TypeScript implementation for Strict Mode Configs\ninterface StrictModeConfigsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processStrictModeConfigs(item: StrictModeConfigsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processStrictModeConfigs({ id: 1, title: 'Strict Mode Configs', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Strict Mode Configs in TypeScript."
 }

@@ -1,23 +1,14 @@
 {
-  "summary": "You have completed this lesson! You studied how If Else Conditions allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Master If Else Conditions for building robust JavaScript software.",
+  "summary": "Key concepts covered: If Else Conditions syntax, execution flow, best practices, and interview questions.",
+  "keyTakeaways": [
+    "Understand core syntax of If Else Conditions",
+    "Follow style guidelines",
+    "Write automated tests"
   ],
-  "keySyntax": [
-    "// javascript syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
-    {
-      "front": "What is the primary role of If Else Conditions?",
-      "back": "To manage states, loop checks, or object definitions."
-    },
-    {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
-    }
+  "preInterviewChecklist": [
+    "Define If Else Conditions",
+    "Provide code example",
+    "Explain time/space complexity"
   ]
 }

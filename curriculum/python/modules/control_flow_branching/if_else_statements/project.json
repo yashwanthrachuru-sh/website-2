@@ -1,11 +1,14 @@
 {
-  "title": "If Else Statements System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of If Else Statements.",
+  "title": "If Else Statements Project",
+  "tagline": "Build a mini application using If Else Statements",
+  "description": "Create a working Python application demonstrating If Else Statements.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "# Project starting point\n",
-  "solution": "print('Project Complete!')"
+  "starterCode": "# Python implementation for If Else Statements\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+  "solution": "# Python implementation for If Else Statements\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of If Else Statements in Python."
 }

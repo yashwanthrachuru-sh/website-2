@@ -3,26 +3,22 @@
   "title": "Kubernetes Orchestration Troubleshooting Part 4C",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 4C.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 4C.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 4C."
+    "Understand Kubernetes Orchestration Troubleshooting Part 4C from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Troubleshooting Part 4C",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Troubleshooting Part 4C"
   ],
   "tags": [
+    "kubernetes_orchestration_troubleshooting_part_4c",
     "kubernetes",
-    "orchestration",
-    "troubleshooting",
-    "part",
-    "4c"
+    "kubernetes_orchestration_iteration_loops_state_traversal"
   ]
 }

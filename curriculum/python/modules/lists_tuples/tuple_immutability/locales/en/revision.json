@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Tuple Immutability is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Tuple Immutability is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Tuples are immutable sequences created with `()`. Require trailing comma for 1-element tuples `(x,)`. Usable as dict keys if hashable.",
+  "oneLineSummary": "Tuples are immutable fixed-size sequences ideal for records and dict keys.",
   "keyTakeaways": [
-    "Tuple Immutability solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Immutability protects data integrity.",
+    "(x,) creates single element tuple.",
+    "Unpacking syntax `x, y = point`."
   ],
   "memoryTricks": [
-    "Think of tuple immutability as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Tuple Immutability in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Tuples",
+      "trick": "Tuple = Fixed Lockbox. Once shut, you can't swap what's inside."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "TypeError: 'tuple' object does not support item assignment",
+      "cause": "Trying to modify tuple index",
+      "fix": "Construct a new tuple instead"
+    }
   ],
-  "mindMap": {
-    "central": "Tuple Immutability",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain why single-element tuple needs comma"
+  ],
   "nextTopics": [
-    "Advanced tuple immutability",
-    "Testing tuple immutability",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "List Comprehensions",
+      "whyNext": "Learn concise syntax for constructing lists."
+    }
+  ]
 }

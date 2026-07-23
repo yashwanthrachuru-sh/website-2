@@ -1,34 +1,14 @@
 {
-  "title": "Inheritance — Quick Reference",
+  "printNote": "Inheritance Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Inheritance\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Inheritance Syntax",
+      "entries": [
+        {
+          "syntax": "class Child(Parent):\n    def __init__(self):\n        super().__init__()",
+          "example": "super().__init__()",
+          "description": "Parent constructor delegation"
+        }
       ]
     }
   ]

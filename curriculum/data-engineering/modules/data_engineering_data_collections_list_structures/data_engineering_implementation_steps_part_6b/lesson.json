@@ -3,27 +3,22 @@
   "title": "Data Engineering Implementation Steps Part 6B",
   "technology": "Data Engineering",
   "module": "Data Engineering Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Implementation Steps Part 6B.",
-    "Write error-free implementations utilizing Data Engineering Implementation Steps Part 6B.",
-    "Debug and optimize performance characteristics of Data Engineering Implementation Steps Part 6B."
+    "Understand Data Engineering Implementation Steps Part 6B from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Implementation Steps Part 6B",
+    "Debug edge cases and answer interview questions about Data Engineering Implementation Steps Part 6B"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "implementation",
-    "steps",
-    "part",
-    "6b"
+    "data_engineering_implementation_steps_part_6b",
+    "data-engineering",
+    "data_engineering_data_collections_list_structures"
   ]
 }

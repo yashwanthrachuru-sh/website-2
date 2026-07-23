@@ -3,27 +3,22 @@
   "title": "Full Stack Development Troubleshooting Part 10C",
   "technology": "Full Stack Development",
   "module": "Full Stack Development Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Full Stack Development File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Full Stack Development Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Full Stack Development Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Full Stack Development Troubleshooting Part 10C."
+    "Understand Full Stack Development Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Full Stack Development code for Full Stack Development Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Full Stack Development Troubleshooting Part 10C"
   ],
   "tags": [
-    "full",
-    "stack",
-    "development",
-    "troubleshooting",
-    "part",
-    "10c"
+    "full_stack_development_troubleshooting_part_10c",
+    "full-stack",
+    "full_stack_development_package_orchestration_system_modules"
   ]
 }

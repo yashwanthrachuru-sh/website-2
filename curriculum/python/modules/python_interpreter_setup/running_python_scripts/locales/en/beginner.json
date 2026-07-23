@@ -1,63 +1,73 @@
 {
-  "curiosityQuestion": "Every program depends on a hidden layer of infrastructure — what if the tools you use daily are more powerful than you realize?",
-  "whyExists": "Before you write a single line of code, your computer needs to understand and execute it. The python interpreter bridges human-readable code and machine instructions, managing memory and providing the runtime environment your programs depend on.",
-  "problemItSolves": "In early computing, every program had to be written in raw binary. Python lets humans write natural, readable syntax, and the interpreter handles the complex translation to machine instructions automatically.",
-  "withoutVariables": "Imagine needing to speak fluent French just to order coffee in Paris. That is what programming was like before interpreters — you had to speak the computer's language (binary) natively.",
-  "whereUsed": "Python interpreters are used everywhere: from small scripts on Raspberry Pis to massive server farms at Google, Netflix, and Spotify handling billions of requests daily.",
-  "realWorldAnalogy": "Think of the python interpreter like a translator at the United Nations. A diplomat speaks in English (your code), the translator converts it to French (machine code), and the delegate acts on it. Without the translator, you would need to speak French fluently.",
-  "simpleExplanation": "Python is an environment that reads your code line by line, checks for errors, and executes it. The interpreter manages variables, memory, and program flow so you can focus on solving problems instead of managing hardware details.",
-  "syntaxExplanation": "Python code is written in .py files. Comments start with #, functions use 'def', and blocks are indented with spaces. Statements execute in order from top to bottom.",
+  "whyExists": "Once Python is installed, you need a way to give it instructions. You could type commands one at a time in the REPL — but for anything beyond a single line, you need to write code in a file and tell Python to execute the whole file. That's what a Python script is: a plain text file ending in .py that Python reads and runs from top to bottom.",
+  "curiosityQuestion": "If Python can run code typed interactively, why do we need scripts at all?",
+  "problemItSolves": "Scripts solve the problem of repeatability. Instead of retyping 50 lines every time, you save them in a file once and run it as many times as you need with 'python3 script.py'. Scripts can also be shared, version-controlled, scheduled, and deployed — none of which is possible with interactive REPL sessions.",
+  "realWorldAnalogy": "A Python script is like a printed recipe. You write the recipe once (the script), and anyone (including you tomorrow) can follow it step by step. The REPL is like cooking by memory — fine for a quick experiment, impossible to share or repeat exactly.",
+  "simpleExplanation": "Here is the entire workflow:\n\n1. You create a file called 'hello.py' using any text editor\n2. You write Python code inside it (e.g., print('Hello, World!'))\n3. You open a terminal, navigate to the folder containing hello.py\n4. You type: python3 hello.py\n5. Python reads the file from line 1 to the last line and executes each statement in order\n6. Output appears in your terminal\n\nThat's it. There is no 'compile' step. Python reads and executes your file directly.",
+  "syntaxExplanation": "# Create a file called hello.py with this content:\nprint('Hello, World!')\nprint('My name is Python!')\n\n# Then run it from your terminal:\n# $ python3 hello.py\n# Hello, World!\n# My name is Python!\n\n# The file extension .py is the convention — it tells editors and tools 'this is Python'",
   "examples": [
     {
-      "title": "Your First Python Program",
-      "code": "print(\"Hello, World!\")\n\nname = input(\"Enter your name: \")\nprint(f\"Welcome, {name}!\")",
-      "explanation": "This program demonstrates output, input, and string interpolation. The interpreter executes each line sequentially.",
+      "title": "Your First Script: hello.py",
+      "code": "# File: hello.py\n# Save this in any folder, then run: python3 hello.py\n\nprint('Hello, World!')\nprint('Python is executing this file line by line.')\nprint('This is line 3.')\n\n# Output:\n# Hello, World!\n# Python is executing this file line by line.\n# This is line 3.",
+      "explanation": "Python reads hello.py from the top and executes each print() call in order. Comments (lines starting with #) are ignored — they exist for humans reading the code, not for Python. The file name 'hello.py' is a convention; Python doesn't care what you name it as long as it ends in .py.",
+      "language": "python"
+    },
+    {
+      "title": "Using Command-Line Arguments",
+      "code": "# File: greet.py\nimport sys\n\n# sys.argv is a list of arguments passed on the command line\n# sys.argv[0] is always the script name itself\n# sys.argv[1] onwards are the arguments you pass\n\nif len(sys.argv) > 1:\n    name = sys.argv[1]\n    print(f'Hello, {name}!')\nelse:\n    print('Usage: python3 greet.py <your_name>')\n    print('Example: python3 greet.py Alice')\n\n# Run as:\n# $ python3 greet.py Alice\n# Hello, Alice!\n\n# $ python3 greet.py\n# Usage: python3 greet.py <your_name>",
+      "explanation": "sys.argv is a list where the first element (index 0) is always the script filename, and any additional words you type after the filename become elements [1], [2], etc. This is how real command-line tools work — grep, git, and ls all use this exact mechanism.",
+      "language": "python"
+    },
+    {
+      "title": "The __name__ == '__main__' Pattern",
+      "code": "# File: math_utils.py\n\ndef add(a, b):\n    return a + b\n\ndef multiply(a, b):\n    return a * b\n\n# This block ONLY runs when you execute this file directly:\n# $ python3 math_utils.py\n# It does NOT run when another file imports this module\n\nif __name__ == '__main__':\n    print('Testing math_utils:')\n    print(f'add(3, 4) = {add(3, 4)}')       # 7\n    print(f'multiply(3, 4) = {multiply(3, 4)}')  # 12",
+      "explanation": "When Python runs a script directly, it sets the special variable __name__ to the string '__main__'. When another file imports this file as a module, __name__ is set to the file's name instead ('math_utils'). The 'if __name__ == \"__main__\":' guard lets you write code that only runs when the file is executed directly — not when it's imported. Every professional Python file uses this pattern.",
       "language": "python"
     }
   ],
-  "visualDiagram": "```mermaid\nflowchart TD\n    A[Input] --> B[Process]\n    B --> C[Output]\n```",
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[You type: python3 hello.py] --> B[OS finds python3 in PATH]\n    B --> C[Python interpreter opens hello.py]\n    C --> D[Python reads Line 1]\n    D --> E{Is it valid Python?}\n    E -->|Yes| F[Execute the statement]\n    E -->|No| G[SyntaxError: stop and report]\n    F --> H{More lines?}\n    H -->|Yes| D\n    H -->|No| I[Script complete — exit]\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "action": "Write source code",
-      "explanation": "Create a .py file with your program instructions."
+      "action": "Create a .py file",
+      "explanation": "Open any text editor (VS Code, Notepad, nano, vim) and save a file with a .py extension. The .py extension is a convention — it signals to editors and tools that this is a Python file."
     },
     {
       "step": 2,
-      "action": "Run the interpreter",
-      "explanation": "The python environment reads your file."
+      "action": "Write Python code",
+      "explanation": "Type valid Python statements. Each statement on its own line. Python executes them top to bottom."
     },
     {
       "step": 3,
-      "action": "Compile to bytecode",
-      "explanation": "python converts your code to an intermediate representation the VM can process."
+      "action": "Open a terminal in the right directory",
+      "explanation": "Use 'cd' to navigate to the folder where your .py file is saved, or right-click the folder in VS Code and select 'Open Integrated Terminal'."
     },
     {
       "step": 4,
-      "action": "Execute instructions",
-      "explanation": "The VM runs your code line by line, managing memory and variables."
+      "action": "Run with: python3 filename.py",
+      "explanation": "Type 'python3' followed by your filename. Python reads and executes the file from top to bottom. The output appears in your terminal."
     },
     {
       "step": 5,
-      "action": "Output results",
-      "explanation": "Results are printed to the console or returned to the caller."
+      "action": "Read any error messages",
+      "explanation": "If Python encounters an error, it stops and prints a traceback showing which line caused the problem and what type of error it was. Read from the bottom of the traceback up — the last line is the actual error."
     }
   ],
   "memoryDiagram": {
-    "stack": "[Call Stack]\n  Main program frame\n  Local variables...",
-    "heap": "[Heap]\n  Runtime objects\n  Dynamic allocations",
-    "interpreter": "[Interpreter Pipeline]\n  Source -> Lexer -> Parser -> Compiler -> VM -> Output"
+    "stack": "[Terminal Process]\n  argv[0] = 'hello.py'\n  argv[1..n] = command-line arguments",
+    "heap": "[Python Interpreter Memory]\n  __name__ = '__main__'\n  Module globals = {}\n  Each statement executed in sequence"
   },
   "namingRules": [
-    "Use snake_case for variables and functions",
-    "Use PascalCase for classes",
-    "Use UPPER_SNAKE_CASE for constants",
-    "Use lowercase for module names"
+    "Use lowercase_with_underscores for Python filenames (snake_case): hello_world.py, math_utils.py",
+    "Avoid spaces and special characters in filenames — 'my script.py' causes command-line parsing issues",
+    "Don't name your file after built-in Python modules: never create math.py, random.py, or os.py — these shadow the real standard library modules",
+    "The .py extension is required for Python to treat the file as importable; it's optional but expected for scripts"
   ],
   "commonMistakes": [
-    "Forgetting to save the file before running it",
-    "Using the wrong command (python vs python3)",
-    "Not having the correct interpreter version installed",
-    "Misunderstanding indentation in Python"
+    "Naming your script 'math.py', 'random.py', or 'os.py' — this shadows the standard library module with the same name, causing confusing ImportErrors",
+    "Running 'python3 hello.py' from the wrong directory — if your terminal is in /home/user but hello.py is in /home/user/projects/, Python can't find it. Always check your working directory with 'pwd'",
+    "Not using 'if __name__ == __main__:' — code at the module level runs every time the file is imported, not just when run directly. This causes unexpected side effects.",
+    "Forgetting the file extension: running 'python3 hello' instead of 'python3 hello.py' — Python won't find the file without the .py extension",
+    "Mixing tabs and spaces for indentation — Python 3 raises a TabError. Always use spaces only (4 spaces per indent level is the PEP 8 standard)"
   ]
 }

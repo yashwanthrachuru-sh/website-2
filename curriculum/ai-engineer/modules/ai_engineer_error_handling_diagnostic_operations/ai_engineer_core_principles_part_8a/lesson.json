@@ -3,27 +3,22 @@
   "title": "AI Engineer Core Principles Part 8A",
   "technology": "AI Engineer",
   "module": "AI Engineer Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AI Engineer Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AI Engineer Core Principles Part 8A.",
-    "Write error-free implementations utilizing AI Engineer Core Principles Part 8A.",
-    "Debug and optimize performance characteristics of AI Engineer Core Principles Part 8A."
+    "Understand AI Engineer Core Principles Part 8A from zero to advanced level",
+    "Write clean, production-grade AI Engineer code for AI Engineer Core Principles Part 8A",
+    "Debug edge cases and answer interview questions about AI Engineer Core Principles Part 8A"
   ],
   "tags": [
-    "ai",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "8a"
+    "ai_engineer_core_principles_part_8a",
+    "ai-engineer",
+    "ai_engineer_error_handling_diagnostic_operations"
   ]
 }

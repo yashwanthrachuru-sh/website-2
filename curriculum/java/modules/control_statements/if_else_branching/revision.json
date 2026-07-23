@@ -1,23 +1,14 @@
 {
-  "summary": "You have completed this lesson! You studied how If Else Branching allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Master If Else Branching for building robust Java software.",
+  "summary": "Key concepts covered: If Else Branching syntax, execution flow, best practices, and interview questions.",
+  "keyTakeaways": [
+    "Understand core syntax of If Else Branching",
+    "Follow style guidelines",
+    "Write automated tests"
   ],
-  "keySyntax": [
-    "// java syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
-    {
-      "front": "What is the primary role of If Else Branching?",
-      "back": "To manage states, loop checks, or object definitions."
-    },
-    {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
-    }
+  "preInterviewChecklist": [
+    "Define If Else Branching",
+    "Provide code example",
+    "Explain time/space complexity"
   ]
 }

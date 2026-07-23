@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/function definitions",
-      "type": "documentation",
-      "description": "Official reference for Function Definitions in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Function Definitions in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Function Definitions with other developers"
+      "type": "official",
+      "title": "Python Defining Functions",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
     }
   ]
 }

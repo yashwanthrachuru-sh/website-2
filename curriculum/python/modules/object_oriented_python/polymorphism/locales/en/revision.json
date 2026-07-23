@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Polymorphism is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Polymorphism is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Polymorphism enables uniform method calls (`obj.render()`) across different classes. Enforce contracts using `abc.ABC` and `@abstractmethod`.",
+  "oneLineSummary": "Polymorphism allows different objects to respond to identical method interfaces.",
   "keyTakeaways": [
-    "Polymorphism solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Polymorphism powers Duck Typing.",
+    "ABC enforces method contracts.",
+    "@abstractmethod prevents instantiation if missing."
   ],
   "memoryTricks": [
-    "Think of polymorphism as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Polymorphism in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Polymorphism",
+      "trick": "Poly = Many; Morph = Shapes. Same button, different reaction per shape."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "TypeError: Can't instantiate abstract class",
+      "cause": "Subclass failed to override @abstractmethod",
+      "fix": "Implement all abstract methods in subclass"
+    }
   ],
-  "mindMap": {
-    "central": "Polymorphism",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Demonstrate ABC and @abstractmethod"
+  ],
   "nextTopics": [
-    "Advanced polymorphism",
-    "Testing polymorphism",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Database Integration",
+      "whyNext": "Persist Python data models to SQL databases."
+    }
+  ]
 }

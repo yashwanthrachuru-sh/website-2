@@ -3,23 +3,22 @@
   "title": "Reading Files",
   "technology": "Python",
   "module": "File Handling & I/O",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Dictionaries & Sets"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Reading Files.",
-    "Write error-free implementations utilizing Reading Files.",
-    "Debug and optimize performance characteristics of Reading Files."
+    "Understand Reading Files from zero to advanced level",
+    "Write clean, production-grade Python code for Reading Files",
+    "Debug edge cases and answer interview questions about Reading Files"
   ],
   "tags": [
-    "reading",
-    "files"
+    "reading_files",
+    "python",
+    "file_handling_i_o"
   ]
 }

@@ -3,27 +3,22 @@
   "title": "AI Engineer Core Principles Part 4A",
   "technology": "AI Engineer",
   "module": "AI Engineer Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AI Engineer Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AI Engineer Core Principles Part 4A.",
-    "Write error-free implementations utilizing AI Engineer Core Principles Part 4A.",
-    "Debug and optimize performance characteristics of AI Engineer Core Principles Part 4A."
+    "Understand AI Engineer Core Principles Part 4A from zero to advanced level",
+    "Write clean, production-grade AI Engineer code for AI Engineer Core Principles Part 4A",
+    "Debug edge cases and answer interview questions about AI Engineer Core Principles Part 4A"
   ],
   "tags": [
-    "ai",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "4a"
+    "ai_engineer_core_principles_part_4a",
+    "ai-engineer",
+    "ai_engineer_iteration_loops_state_traversal"
   ]
 }

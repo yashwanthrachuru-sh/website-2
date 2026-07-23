@@ -3,26 +3,22 @@
   "title": "Docker Containers Troubleshooting Part 9C",
   "technology": "Docker Containers",
   "module": "Docker Containers File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Docker Containers Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Troubleshooting Part 9C.",
-    "Write error-free implementations utilizing Docker Containers Troubleshooting Part 9C.",
-    "Debug and optimize performance characteristics of Docker Containers Troubleshooting Part 9C."
+    "Understand Docker Containers Troubleshooting Part 9C from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Troubleshooting Part 9C",
+    "Debug edge cases and answer interview questions about Docker Containers Troubleshooting Part 9C"
   ],
   "tags": [
+    "docker_containers_troubleshooting_part_9c",
     "docker",
-    "containers",
-    "troubleshooting",
-    "part",
-    "9c"
+    "docker_containers_file_integration_stream_buffers"
   ]
 }

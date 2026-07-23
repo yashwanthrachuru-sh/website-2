@@ -3,27 +3,22 @@
   "title": "Flutter Developer Core Principles Part 4A",
   "technology": "Flutter Developer",
   "module": "Flutter Developer Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Flutter Developer Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Flutter Developer Core Principles Part 4A.",
-    "Write error-free implementations utilizing Flutter Developer Core Principles Part 4A.",
-    "Debug and optimize performance characteristics of Flutter Developer Core Principles Part 4A."
+    "Understand Flutter Developer Core Principles Part 4A from zero to advanced level",
+    "Write clean, production-grade Flutter Developer code for Flutter Developer Core Principles Part 4A",
+    "Debug edge cases and answer interview questions about Flutter Developer Core Principles Part 4A"
   ],
   "tags": [
+    "flutter_developer_core_principles_part_4a",
     "flutter",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "4a"
+    "flutter_developer_iteration_loops_state_traversal"
   ]
 }

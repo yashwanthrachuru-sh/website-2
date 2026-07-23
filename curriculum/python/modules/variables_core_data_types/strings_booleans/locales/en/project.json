@@ -1,24 +1,23 @@
 {
-  "title": "Project: Strings & Booleans Application",
-  "tagline": "Apply strings & booleans in a practical project.",
-  "description": "Build an application demonstrating Strings & Booleans.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "Student Information Form Validator",
+  "tagline": "Real-world string & boolean validation suite",
+  "description": "Build a robust user input validator for student registration forms (name, email, age, phone).",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Master string slice/strip/formatting methods",
+    "Evaluate complex boolean conditions",
+    "Return structured validation reports"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Validate email contains @ and domain",
+    "Validate phone number contains exactly 10 digits",
+    "Format student names to Title Case"
+  ],
+  "starterCode": "def validate_student(data):\n    pass",
+  "solution": "def validate_student(data):\n    errors = []\n    name = data.get('name', '').strip().title()\n    email = data.get('email', '').strip().lower()\n    phone = ''.join(c for c in data.get('phone', '') if c.isdigit())\n    \n    if not name or len(name) < 2:\n        errors.append('Invalid name')\n    if '@' not in email or '.' not in email.split('@')[-1]:\n        errors.append('Invalid email address')\n    if len(phone) != 10:\n        errors.append('Phone number must be 10 digits')\n        \n    return {\n        'valid': len(errors) == 0,\n        'errors': errors,\n        'formatted': {'name': name, 'email': email, 'phone': phone}\n    }",
+  "solutionExpl": "Strips whitespace, converts name to title case, filters digits for phone validation, and verifies email domain structure.",
+  "expectedOutput": "{'valid': True, 'errors': [], 'formatted': {'name': 'John Doe', ...}}",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Add regex-based email verification",
+    "Export validation log to JSON format"
   ]
 }

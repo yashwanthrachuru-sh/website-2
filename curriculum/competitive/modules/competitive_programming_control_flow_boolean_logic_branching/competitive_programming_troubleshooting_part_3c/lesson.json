@@ -3,26 +3,22 @@
   "title": "Competitive Programming Troubleshooting Part 3C",
   "technology": "Competitive Programming",
   "module": "Competitive Programming Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Competitive Programming Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Competitive Programming Troubleshooting Part 3C.",
-    "Write error-free implementations utilizing Competitive Programming Troubleshooting Part 3C.",
-    "Debug and optimize performance characteristics of Competitive Programming Troubleshooting Part 3C."
+    "Understand Competitive Programming Troubleshooting Part 3C from zero to advanced level",
+    "Write clean, production-grade Competitive Programming code for Competitive Programming Troubleshooting Part 3C",
+    "Debug edge cases and answer interview questions about Competitive Programming Troubleshooting Part 3C"
   ],
   "tags": [
+    "competitive_programming_troubleshooting_part_3c",
     "competitive",
-    "programming",
-    "troubleshooting",
-    "part",
-    "3c"
+    "competitive_programming_control_flow_boolean_logic_branching"
   ]
 }

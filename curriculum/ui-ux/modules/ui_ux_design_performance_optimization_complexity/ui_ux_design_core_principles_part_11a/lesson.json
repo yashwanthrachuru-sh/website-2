@@ -3,27 +3,22 @@
   "title": "UI/UX Design Core Principles Part 11A",
   "technology": "UI/UX Design",
   "module": "UI/UX Design Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: UI/UX Design Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of UI/UX Design Core Principles Part 11A.",
-    "Write error-free implementations utilizing UI/UX Design Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 11A."
+    "Understand UI/UX Design Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade UI/UX Design code for UI/UX Design Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about UI/UX Design Core Principles Part 11A"
   ],
   "tags": [
-    "ui/ux",
-    "design",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "ui_ux_design_core_principles_part_11a",
+    "ui-ux",
+    "ui_ux_design_performance_optimization_complexity"
   ]
 }

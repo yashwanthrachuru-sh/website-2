@@ -1,23 +1,14 @@
 {
-  "summary": "You have completed this lesson! You studied how Key Value Pairs allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Master Key Value Pairs for building robust Python software.",
+  "summary": "Key concepts covered: Key Value Pairs syntax, execution flow, best practices, and interview questions.",
+  "keyTakeaways": [
+    "Understand core syntax of Key Value Pairs",
+    "Follow style guidelines",
+    "Write automated tests"
   ],
-  "keySyntax": [
-    "// python syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
-    {
-      "front": "What is the primary role of Key Value Pairs?",
-      "back": "To manage states, loop checks, or object definitions."
-    },
-    {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
-    }
+  "preInterviewChecklist": [
+    "Define Key Value Pairs",
+    "Provide code example",
+    "Explain time/space complexity"
   ]
 }

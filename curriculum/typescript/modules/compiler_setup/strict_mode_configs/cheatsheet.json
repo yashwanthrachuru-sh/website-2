@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```typescript\n// Declaring and executing Strict Mode Configs\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Strict Mode Configs Cheat Sheet",
+  "printNote": "Quick reference for Strict Mode Configs in TypeScript.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// TypeScript implementation for Strict Mode Configs",
+          "example": "// TypeScript implementation for Strict Mode Configs\ninterface StrictModeConfigsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processStrictModeConfigs(item: StrictModeConfigsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processStrictModeConfigs({ id: 1, title: 'Strict Mode Configs', status: 'active' }));",
+          "description": "Basic syntax for Strict Mode Configs",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Raising Exceptions — Basic Practice",
-    "description": "Write a basic raising exceptions implementation.",
-    "starterCode": "def basic_raising_exceptions():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Positive Number Validator",
+    "description": "Write `check_pos(n)` raising `ValueError` if n <= 0.",
+    "starterCode": "def check_pos(n):\n    pass",
+    "expectedOutput": "10",
+    "solution": "def check_pos(n):\n    if n <= 0: raise ValueError('Must be positive')\n    return n",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "if n <= 0: raise ValueError(...)"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Raising Exceptions — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Type-Strict Concatenator",
+    "description": "Write `concat(s1, s2)` raising `TypeError` if either is not str.",
+    "starterCode": "def concat(s1, s2):\n    pass",
+    "expectedOutput": "'ab'",
+    "solution": "def concat(s1, s2):\n    if not isinstance(s1, str) or not isinstance(s2, str):\n        raise TypeError('Both arguments must be strings')\n    return s1 + s2",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Check isinstance(x, str)"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Raising Exceptions — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Chain Exception Handler",
+    "description": "Catch KeyError when accessing dict and raise RuntimeError from it.",
+    "starterCode": "def get_req(d, k):\n    pass",
+    "expectedOutput": "RuntimeError",
+    "solution": "def get_req(d, k):\n    try: return d[k]\n    except KeyError as e: raise RuntimeError(f'Missing key {k}') from e",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Use raise ... from e"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Raising Exceptions",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Re-raise Syntax",
+    "description": "Fix re-raise statement.",
+    "buggyCode": "except ValueError as e: raise e",
+    "fixedCode": "except ValueError: raise",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Use bare `raise` to re-raise active exception preserving traceback."
     ]
   }
 }

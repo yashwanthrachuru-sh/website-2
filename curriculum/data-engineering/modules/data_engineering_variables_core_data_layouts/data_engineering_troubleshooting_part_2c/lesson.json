@@ -3,26 +3,22 @@
   "title": "Data Engineering Troubleshooting Part 2C",
   "technology": "Data Engineering",
   "module": "Data Engineering Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Troubleshooting Part 2C.",
-    "Write error-free implementations utilizing Data Engineering Troubleshooting Part 2C.",
-    "Debug and optimize performance characteristics of Data Engineering Troubleshooting Part 2C."
+    "Understand Data Engineering Troubleshooting Part 2C from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Troubleshooting Part 2C",
+    "Debug edge cases and answer interview questions about Data Engineering Troubleshooting Part 2C"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "troubleshooting",
-    "part",
-    "2c"
+    "data_engineering_troubleshooting_part_2c",
+    "data-engineering",
+    "data_engineering_variables_core_data_layouts"
   ]
 }

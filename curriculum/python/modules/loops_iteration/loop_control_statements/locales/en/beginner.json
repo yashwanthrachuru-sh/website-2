@@ -1,62 +1,40 @@
 {
-  "curiosityQuestion": "What if you had to write the same instruction a thousand times — would you copy-paste or teach the computer to repeat?",
-  "whyExists": "Repetition is at computing's heart. Processing 10,000 records, sending notifications to every user, or summing millions of numbers would be impossible if each step had to be written individually. Loops define the work once and repeat it efficiently.",
-  "problemItSolves": "Without loops, you copy-paste code for every item — impractical for large datasets and impossible when repetition count is unknown at compile time.",
-  "withoutVariables": "Imagine an assembly line worker who has to be told every single step for every single item. Loops are the automation that lets the line run without constant instruction.",
-  "whereUsed": "Every program with collections, data processing, batch operations, or repeated calculations uses loops. They are fundamental to computing.",
-  "realWorldAnalogy": "A loop is like a factory conveyor belt. Items come down the line one by one. Each goes through the same stations (loop body). The belt keeps moving as long as there are items (condition is true).",
-  "simpleExplanation": "A for loop iterates over a sequence (list, range, string). A while loop runs as long as a condition is true. Each repetition is called an iteration.",
-  "syntaxExplanation": "for item in collection:\n    process(item)\n\nwhile condition:\n    do_something()\n    update_condition()",
+  "whyExists": "Standard loops iterate through every element sequentially. However, real applications frequently need to exit a loop early when a match is found (`break`), skip processing certain unwanted items (`continue`), or define a syntactically required empty block placeholder (`pass`).",
+  "curiosityQuestion": "What is the difference between `pass` and `continue` inside a loop?",
+  "problemItSolves": "Allows fine-grained control over loop execution and early termination.",
+  "realWorldAnalogy": "- `break`: Searching for your lost keys in a box; once found, STOP searching completely.\n- `continue`: Sorting fruit; if an apple is rotten, SKIP it and move to the next apple.\n- `pass`: A 'Under Construction' sign on a door — holds the space without taking action.",
+  "simpleExplanation": "- `break`: Immediately exits the loop.\n- `continue`: Skips the rest of the current iteration and jumps to the next iteration.\n- `pass`: Does nothing (a null operation used as a code placeholder).",
+  "syntaxExplanation": "for i in range(5):\n    if i == 2:\n        continue  # Skip 2\n    if i == 4:\n        break     # Exit loop\n    print(i)",
   "examples": [
     {
-      "title": "For Loop",
-      "code": "# Sum numbers 1 to 5\ntotal = 0\nfor i in range(1, 6):\n    total += i\nprint(total)  # 15",
-      "explanation": "The loop body runs once per iteration. In a for loop, the counter updates automatically. In a while loop, you must update the condition to avoid infinite loops.",
+      "title": "Break and Continue Demo",
+      "code": "for num in range(1, 6):\n    if num == 3:\n        continue  # Skips 3\n    if num == 5:\n        break     # Stops at 5\n    print(num)    # Output: 1, 2, 4",
+      "explanation": "3 is skipped by `continue`. When `num` hits 5, `break` terminates the loop.",
       "language": "python"
     }
   ],
-  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start] --> B[Initialize Counter]\n    B --> C{Condition True?}\n    C -->|Yes| D[Execute Loop Body]\n    D --> E[Update Counter]\n    E --> C\n    C -->|No| F[Exit Loop]\n```",
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[Loop Iteration] --> B{Check Control Statement}\n    B -- break --> C[Exit Loop Immediately]\n    B -- continue --> D[Skip Rest & Go To Next Iteration]\n    B -- pass --> E[Execute Remaining Block Normally]\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "action": "Initialize",
-      "explanation": "Set the loop counter start value."
+      "action": "num = 3: Hit `continue`",
+      "explanation": "Skip print(3), jump to num = 4."
     },
     {
       "step": 2,
-      "action": "Check condition",
-      "explanation": "If true, enter the body. If false, exit the loop."
-    },
-    {
-      "step": 3,
-      "action": "Execute body",
-      "explanation": "Run the statements inside the loop."
-    },
-    {
-      "step": 4,
-      "action": "Update",
-      "explanation": "Increment the counter."
-    },
-    {
-      "step": 5,
-      "action": "Repeat from step 2",
-      "explanation": "Continue until the condition is false."
+      "action": "num = 5: Hit `break`",
+      "explanation": "Terminate loop immediately."
     }
   ],
   "memoryDiagram": {
-    "stack": "[Stack]\n  Local variables and call context",
-    "heap": "[Heap]\n  Dynamic data structures"
+    "stack": "Jumps execution pointer out of or to start of loop block",
+    "heap": "N/A"
   },
   "namingRules": [
-    "Use snake_case for variables and functions",
-    "Use PascalCase for classes",
-    "Use UPPER_SNAKE_CASE for constants",
-    "Use lowercase for module names"
+    "Use break/continue intentionally to simplify loop logic."
   ],
   "commonMistakes": [
-    "Infinite loops — forgetting to update the condition",
-    "Off-by-one errors (<= vs <)",
-    "Modifying the collection while iterating",
-    "Using the loop variable after the loop ends"
+    "Thinking `pass` skips to the next iteration (that is `continue`!). `pass` does nothing.",
+    "Using `break` in nested loops expecting it to exit ALL loops (it only exits the innermost loop)."
   ]
 }

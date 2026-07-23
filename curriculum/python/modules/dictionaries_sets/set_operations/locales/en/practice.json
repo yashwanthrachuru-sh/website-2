@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Set Operations — Basic Practice",
-    "description": "Write a basic set operations implementation.",
-    "starterCode": "def basic_set_operations():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Deduplicate & Sort",
+    "description": "Return sorted list of unique elements from input list.",
+    "starterCode": "def unique_sorted(lst):\n    pass",
+    "expectedOutput": "[1, 2, 3]",
+    "solution": "def unique_sorted(lst):\n    return sorted(set(lst))",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Combine set() and sorted()"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Set Operations — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Common & Unique Tags",
+    "description": "Given two lists of tags, return tuple `(common_set, total_unique_set)`.",
+    "starterCode": "def process_tags(tags1, tags2):\n    pass",
+    "expectedOutput": "({'b'}, {'a', 'b', 'c'})",
+    "solution": "def process_tags(tags1, tags2):\n    s1, s2 = set(tags1), set(tags2)\n    return (s1 & s2, s1 | s2)",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Use & for intersection and | for union"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Set Operations — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Find Missing and Duplicate Number",
+    "description": "Given array of 1..N with one missing and one duplicate, find both using sets.",
+    "starterCode": "def find_error_nums(nums):\n    pass",
+    "expectedOutput": "(2, 3)",
+    "solution": "def find_error_nums(nums):\n    n = len(nums)\n    expected_set = set(range(1, n + 1))\n    actual_set = set()\n    duplicate = -1\n    for x in nums:\n        if x in actual_set:\n            duplicate = x\n        actual_set.add(x)\n    missing = list(expected_set - actual_set)[0]\n    return (duplicate, missing)",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Use set difference to find missing element"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Set Operations",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Empty Set Bug",
+    "description": "Fix AttributeError on empty set initialization.",
+    "buggyCode": "my_set = {}\nmy_set.add('item')",
+    "fixedCode": "my_set = set()\nmy_set.add('item')",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "`{}` creates dict, not set. Change initialization to `set()`."
     ]
   }
 }

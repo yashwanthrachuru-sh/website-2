@@ -3,23 +3,22 @@
   "title": "Interface Rules",
   "technology": "Java",
   "module": "Interfaces & Inheritance",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: OOP Classes & Objects"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Interface Rules.",
-    "Write error-free implementations utilizing Interface Rules.",
-    "Debug and optimize performance characteristics of Interface Rules."
+    "Understand Interface Rules from zero to advanced level",
+    "Write clean, production-grade Java code for Interface Rules",
+    "Debug edge cases and answer interview questions about Interface Rules"
   ],
   "tags": [
-    "interface",
-    "rules"
+    "interface_rules",
+    "java",
+    "interfaces_inheritance"
   ]
 }

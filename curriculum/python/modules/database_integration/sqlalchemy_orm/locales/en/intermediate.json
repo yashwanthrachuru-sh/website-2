@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "SQLAlchemy ORM becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "SQLAlchemy uses the Unit of Work pattern: the `Session` tracks all added, updated, and deleted model objects in memory and flushes changes in a single optimized SQL transaction upon `commit()`.",
+  "internalImplementation": "Session maintains Identity Map ensuring 1 object instance per DB primary key.",
   "examples": [
     {
-      "title": "Getting Started with SQLAlchemy ORM",
-      "code": "print(\"Learning SQLAlchemy ORM\")",
-      "explanation": "Basic introduction to SQLAlchemy ORM.",
-      "language": "python"
+      "code": "with Session(engine) as session:\n    u = session.get(User, 1)\n    u.name = 'Alice Updated' # Automatically tracked!\n    session.commit()",
+      "explanation": "Unit of Work automatically detects attribute changes on commit."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A sqlalchemy orm implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "N+1 query problem can occur if relationships are lazy-loaded. Use `joinedload()` to solve N+1.",
+    "spaceComplexity": "O(N) session identity map cache."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "N+1 query performance bottleneck when accessing relationships in loops.",
+    "incorrectCode": "# Executes 1 query for users + N queries for orders!\nfor u in session.scalars(select(User)): print(u.orders)",
+    "correctCode": "# Executes 1 JOIN query!\nfrom sqlalchemy.orm import joinedload\nstmt = select(User).options(joinedload(User.orders))\nfor u in session.scalars(stmt): print(u.orders)"
+  },
+  "bestPractices": [
+    "Use `joinedload()` to prevent N+1 query bugs.",
+    "Use `select()` syntax for SQLAlchemy 2.0."
+  ]
 }

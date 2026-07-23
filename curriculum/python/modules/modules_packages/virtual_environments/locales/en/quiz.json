@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Virtual Environments?",
+      "question": "What command creates a virtual environment named `.venv`?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "python3 -m venv .venv",
+        "pip create .venv",
+        "python venv create",
+        "virtualenv start"
       ],
       "answer": 0,
-      "explanation": "Virtual Environments is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Virtual Environments exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "The built-in venv module command is `python3 -m venv .venv`.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Virtual Environments is only for experts.",
+      "question": "True or False: You should commit the `.venv` directory to Git.",
       "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Virtual Environments improves code quality.",
-      "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "False. Never commit `.venv` to Git. Commit `requirements.txt` instead."
     }
   ]
 }

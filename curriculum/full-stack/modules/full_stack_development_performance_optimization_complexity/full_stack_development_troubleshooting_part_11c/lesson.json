@@ -3,27 +3,22 @@
   "title": "Full Stack Development Troubleshooting Part 11C",
   "technology": "Full Stack Development",
   "module": "Full Stack Development Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Full Stack Development Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Full Stack Development Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Full Stack Development Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Full Stack Development Troubleshooting Part 11C."
+    "Understand Full Stack Development Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Full Stack Development code for Full Stack Development Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Full Stack Development Troubleshooting Part 11C"
   ],
   "tags": [
-    "full",
-    "stack",
-    "development",
-    "troubleshooting",
-    "part",
-    "11c"
+    "full_stack_development_troubleshooting_part_11c",
+    "full-stack",
+    "full_stack_development_performance_optimization_complexity"
   ]
 }

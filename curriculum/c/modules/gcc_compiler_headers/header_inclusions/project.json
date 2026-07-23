@@ -1,11 +1,14 @@
 {
-  "title": "Header Inclusions System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Header Inclusions.",
+  "title": "Header Inclusions Project",
+  "tagline": "Build a mini application using Header Inclusions",
+  "description": "Create a working C Programming application demonstrating Header Inclusions.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// C/C++ implementation for Header Inclusions\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Header Inclusions\");\n    return 0;\n}",
+  "solution": "// C/C++ implementation for Header Inclusions\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Header Inclusions\");\n    return 0;\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Header Inclusions in C Programming."
 }

@@ -3,23 +3,22 @@
   "title": "Generic Functions",
   "technology": "TypeScript",
   "module": "Generics Constraints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Functions & Overloads"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Generic Functions.",
-    "Write error-free implementations utilizing Generic Functions.",
-    "Debug and optimize performance characteristics of Generic Functions."
+    "Understand Generic Functions from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Generic Functions",
+    "Debug edge cases and answer interview questions about Generic Functions"
   ],
   "tags": [
-    "generic",
-    "functions"
+    "generic_functions",
+    "typescript",
+    "generics_constraints"
   ]
 }

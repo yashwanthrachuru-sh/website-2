@@ -3,27 +3,22 @@
   "title": "Frontend Development Core Principles Part 12A",
   "technology": "Frontend Development",
   "module": "Frontend Development Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Frontend Development Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Frontend Development Core Principles Part 12A.",
-    "Write error-free implementations utilizing Frontend Development Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of Frontend Development Core Principles Part 12A."
+    "Understand Frontend Development Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade Frontend Development code for Frontend Development Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about Frontend Development Core Principles Part 12A"
   ],
   "tags": [
+    "frontend_development_core_principles_part_12a",
     "frontend",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "frontend_development_production_deployment_server_pipelines"
   ]
 }

@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```typescript\n// Declaring and executing Casting with As\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Casting with As Cheat Sheet",
+  "printNote": "Quick reference for Casting with As in TypeScript.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// TypeScript implementation for Casting with As",
+          "example": "// TypeScript implementation for Casting with As\ninterface CastingwithAsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processCastingwithAs(item: CastingwithAsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processCastingwithAs({ id: 1, title: 'Casting with As', status: 'active' }));",
+          "description": "Basic syntax for Casting with As",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

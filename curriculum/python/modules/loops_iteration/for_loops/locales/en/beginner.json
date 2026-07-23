@@ -1,62 +1,45 @@
 {
-  "curiosityQuestion": "What if you had to write the same instruction a thousand times — would you copy-paste or teach the computer to repeat?",
-  "whyExists": "Repetition is at computing's heart. Processing 10,000 records, sending notifications to every user, or summing millions of numbers would be impossible if each step had to be written individually. Loops define the work once and repeat it efficiently.",
-  "problemItSolves": "Without loops, you copy-paste code for every item — impractical for large datasets and impossible when repetition count is unknown at compile time.",
-  "withoutVariables": "Imagine an assembly line worker who has to be told every single step for every single item. Loops are the automation that lets the line run without constant instruction.",
-  "whereUsed": "Every program with collections, data processing, batch operations, or repeated calculations uses loops. They are fundamental to computing.",
-  "realWorldAnalogy": "A loop is like a factory conveyor belt. Items come down the line one by one. Each goes through the same stations (loop body). The belt keeps moving as long as there are items (condition is true).",
-  "simpleExplanation": "A for loop iterates over a sequence (list, range, string). A while loop runs as long as a condition is true. Each repetition is called an iteration.",
-  "syntaxExplanation": "for item in collection:\n    process(item)\n\nwhile condition:\n    do_something()\n    update_condition()",
+  "whyExists": "Iterating over collections of data (lists of items, characters in text, rows in a table) is one of the most common programming tasks. Python's `for` loop is an iterator-based loop that automatically retrieves each item from a sequence one by one, eliminating manual index tracking.",
+  "curiosityQuestion": "How does Python iterate over lists without needing an index counter like `i = 0; i < len(array); i++`?",
+  "problemItSolves": "Automates sequence iteration cleanly and safely without index-out-of-bound errors.",
+  "realWorldAnalogy": "A `for` loop is like an assembly line worker dealing with a box of parts: take item 1, inspect it; take item 2, inspect it; repeat until the box is empty.",
+  "simpleExplanation": "Syntax:\n`for item in iterable:`\n    `print(item)`\nPython automatically manages advancing to the next item until all elements are processed.",
+  "syntaxExplanation": "fruits = ['apple', 'banana', 'cherry']\nfor fruit in fruits:\n    print(fruit)\n\n# Using range():\nfor i in range(3):\n    print(i)  # Prints 0, 1, 2",
   "examples": [
     {
-      "title": "For Loop",
-      "code": "# Sum numbers 1 to 5\ntotal = 0\nfor i in range(1, 6):\n    total += i\nprint(total)  # 15",
-      "explanation": "The loop body runs once per iteration. In a for loop, the counter updates automatically. In a while loop, you must update the condition to avoid infinite loops.",
+      "title": "Iterating Over List & Range",
+      "code": "names = ['Alice', 'Bob', 'Charlie']\nfor name in names:\n    print(f'Hello, {name}!')\n\nfor i in range(1, 4):\n    print('Step', i)",
+      "explanation": "`for name in names` yields each string. `range(1, 4)` generates numbers 1, 2, 3.",
       "language": "python"
     }
   ],
-  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start] --> B[Initialize Counter]\n    B --> C{Condition True?}\n    C -->|Yes| D[Execute Loop Body]\n    D --> E[Update Counter]\n    E --> C\n    C -->|No| F[Exit Loop]\n```",
+  "visualDiagram": "```mermaid\nflowchart LR\n    Seq[\"['apple', 'banana']\"] --> Item1[\"1st iter: item = 'apple'\"]\n    Item1 --> Item2[\"2nd iter: item = 'banana'\"]\n    Item2 --> End[Loop Finish]\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "action": "Initialize",
-      "explanation": "Set the loop counter start value."
+      "action": "Obtain iterator from `names`",
+      "explanation": "Calls `iter(names)` behind the scenes."
     },
     {
       "step": 2,
-      "action": "Check condition",
-      "explanation": "If true, enter the body. If false, exit the loop."
+      "action": "Fetch next item",
+      "explanation": "Retrieves 'Alice' and executes block."
     },
     {
       "step": 3,
-      "action": "Execute body",
-      "explanation": "Run the statements inside the loop."
-    },
-    {
-      "step": 4,
-      "action": "Update",
-      "explanation": "Increment the counter."
-    },
-    {
-      "step": 5,
-      "action": "Repeat from step 2",
-      "explanation": "Continue until the condition is false."
+      "action": "Repeat until `StopIteration`",
+      "explanation": "Exits cleanly when items are exhausted."
     }
   ],
   "memoryDiagram": {
-    "stack": "[Stack]\n  Local variables and call context",
-    "heap": "[Heap]\n  Dynamic data structures"
+    "stack": "[Iterator Pointer]\n  Points to current collection index automatically",
+    "heap": "N/A"
   },
   "namingRules": [
-    "Use snake_case for variables and functions",
-    "Use PascalCase for classes",
-    "Use UPPER_SNAKE_CASE for constants",
-    "Use lowercase for module names"
+    "Use singular item names for plural collections (`for user in users:`)."
   ],
   "commonMistakes": [
-    "Infinite loops — forgetting to update the condition",
-    "Off-by-one errors (<= vs <)",
-    "Modifying the collection while iterating",
-    "Using the loop variable after the loop ends"
+    "Modifying the list size while iterating over it (causes skipped elements).",
+    "Expecting `range(1, 5)` to include 5 (stop index is exclusive)."
   ]
 }

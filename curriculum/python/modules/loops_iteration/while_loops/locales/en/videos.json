@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "While Loops — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to While Loops for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced While Loops Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production While Loops patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python While Loops Tutorial",
+    "video_id": "dHANJ4l6fwA",
+    "url": "https://www.youtube.com/watch?v=dHANJ4l6fwA",
+    "channel": "Programming with Mosh",
+    "duration": "9m",
+    "description": "Mastering while loops and condition checks in Python."
+  }
+]

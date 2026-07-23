@@ -3,23 +3,22 @@
   "title": "Function Overloads",
   "technology": "TypeScript",
   "module": "Functions & Overloads",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Classes & Access Modifiers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Function Overloads.",
-    "Write error-free implementations utilizing Function Overloads.",
-    "Debug and optimize performance characteristics of Function Overloads."
+    "Understand Function Overloads from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Function Overloads",
+    "Debug edge cases and answer interview questions about Function Overloads"
   ],
   "tags": [
-    "function",
-    "overloads"
+    "function_overloads",
+    "typescript",
+    "functions_overloads"
   ]
 }

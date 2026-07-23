@@ -3,24 +3,22 @@
   "title": "Any vs Unknown",
   "technology": "TypeScript",
   "module": "Basic Types Annotation",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Compiler & Setup"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Any vs Unknown.",
-    "Write error-free implementations utilizing Any vs Unknown.",
-    "Debug and optimize performance characteristics of Any vs Unknown."
+    "Understand Any vs Unknown from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Any vs Unknown",
+    "Debug edge cases and answer interview questions about Any vs Unknown"
   ],
   "tags": [
-    "any",
-    "vs",
-    "unknown"
+    "any_vs_unknown",
+    "typescript",
+    "basic_types_annotation"
   ]
 }

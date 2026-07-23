@@ -3,26 +3,22 @@
   "title": "Backend Development Troubleshooting Part 1C",
   "technology": "Backend Development",
   "module": "Backend Development Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Backend Development Troubleshooting Part 1C.",
-    "Write error-free implementations utilizing Backend Development Troubleshooting Part 1C.",
-    "Debug and optimize performance characteristics of Backend Development Troubleshooting Part 1C."
+    "Understand Backend Development Troubleshooting Part 1C from zero to advanced level",
+    "Write clean, production-grade Backend Development code for Backend Development Troubleshooting Part 1C",
+    "Debug edge cases and answer interview questions about Backend Development Troubleshooting Part 1C"
   ],
   "tags": [
+    "backend_development_troubleshooting_part_1c",
     "backend",
-    "development",
-    "troubleshooting",
-    "part",
-    "1c"
+    "backend_development_setup_architecture_foundations"
   ]
 }

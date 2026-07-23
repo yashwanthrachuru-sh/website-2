@@ -1,48 +1,30 @@
 {
-  "oneLineSummary": "Loops automate repetition — they run code multiple times, either a fixed count (for) or while a condition holds (while).",
-  "summary": "This lesson covered for and while loops, break/continue, nested loops, and best practices to avoid infinite loops and off-by-one errors.",
+  "summary": "`while` loops repeat while a condition is True. Ensure counter variable changes to avoid infinite loops.",
+  "oneLineSummary": "while loops repeat execution as long as a condition evaluates to True.",
   "keyTakeaways": [
-    "Loops repeat based on a condition or collection",
-    "For = known count, While = condition-based",
-    "Break exits; Continue skips iteration",
-    "Off-by-one is the most common loop bug",
-    "Consider map/filter/reduce as alternatives"
+    "Condition checked before every iteration.",
+    "while-else executes if no break occurs."
   ],
   "memoryTricks": [
-    "Think of for as \"for each item\" and while as \"while this is true, keep going\""
-  ],
-  "preInterviewChecklist": [
-    "Can you explain break vs continue?",
-    "Can you write nested loops for a multiplication table?",
-    "Can you fix off-by-one errors?"
+    {
+      "concept": "while loop",
+      "trick": "Think of a security guard checking passes WHILE people enter."
+    }
   ],
   "commonErrors": [
-    "Infinite loops",
-    "Off-by-one",
-    "Modifying collections during iteration",
-    "Nested loop performance"
+    {
+      "error": "Infinite Loop",
+      "cause": "Missing variable update",
+      "fix": "Ensure loop condition updates inside block"
+    }
   ],
-  "mindMap": {
-    "central": "Loops",
-    "branches": [
-      "For",
-      "While",
-      "Nested",
-      "Break/Continue",
-      "Iterators",
-      "Functional Alternatives",
-      "Performance"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain while-else behavior"
+  ],
   "nextTopics": [
-    "Generators and lazy evaluation",
-    "Parallel iteration",
-    "Stream processing",
-    "Loop optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "for Loops",
+      "whyNext": "Learn sequence iteration using for loops."
+    }
+  ]
 }

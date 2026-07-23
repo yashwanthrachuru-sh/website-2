@@ -1,45 +1,59 @@
 {
-  "motivation": "Steer programs based on condition checks.",
-  "whyExists": "Without conditionals, every program would execute identically regardless of input. Conditionals enable **business logic**: charge a different tax rate based on country, show different UI based on user role, retry a network request only if it failed, validate form input before sending. Every meaningful program contains conditional logic — it is the foundation of decision-making in software.",
-  "realWorldAnalogy": "Imagine you're playing a video game. If you have enough coins, the door opens. If you don't, it stays locked. That's a conditional!\n\nIn programming: **if** something is true → do this. **else** → do that.\n\nExample: if your age is over 18, you can vote. Otherwise, you cannot. The computer checks the condition (age > 18) and picks the right path.",
-  "simpleExplanation": "To learn If Else Branching from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. If Else Branching defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: If Else Branching] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the java syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how If Else Branching works under the hood in Java?",
+  "whyExists": "If Else Branching is a core building block in Java. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of If Else Branching like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, If Else Branching provides a clear, standardized way to execute logic in Java. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for If Else Branching:\n\n```java\n// Java implementation for If Else Branching\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: If Else Branching\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// Java implementation for If Else Branching",
+      "desc": "Initialize and configure If Else Branching parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "public class Main {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "}",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "if_else_branching_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "if_else_branching_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running If Else Branching...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic If Else Branching Example",
+      "code": "// Java implementation for If Else Branching\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: If Else Branching\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+      "explanation": "Demonstrates basic usage of If Else Branching in Java."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in If Else Branching",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// Java implementation for If Else Branching",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

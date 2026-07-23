@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Reading Files?",
+      "question": "What is the memory-efficient way to read a 5GB text file in Python?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "Iterate over file object `for line in f:`",
+        "Use `f.read()`",
+        "Use `f.readlines()`",
+        "Use `json.load(f)`"
       ],
       "answer": 0,
-      "explanation": "Reading Files is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Reading Files exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "Iterating over `f` streams lines one by one without loading entire file to RAM.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Reading Files is only for experts.",
+      "question": "True or False: `open()` defaults to UTF-8 encoding on all operating systems.",
       "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Reading Files improves code quality.",
-      "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "False. On Windows it defaults to locale encoding (CP1252). Always specify `encoding='utf-8'`."
     }
   ]
 }

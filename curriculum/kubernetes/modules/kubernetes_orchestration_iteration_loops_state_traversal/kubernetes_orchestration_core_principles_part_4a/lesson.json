@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Core Principles Part 4A",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Core Principles Part 4A.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Core Principles Part 4A.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Core Principles Part 4A."
+    "Understand Kubernetes Orchestration Core Principles Part 4A from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Core Principles Part 4A",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Core Principles Part 4A"
   ],
   "tags": [
+    "kubernetes_orchestration_core_principles_part_4a",
     "kubernetes",
-    "orchestration",
-    "core",
-    "principles",
-    "part",
-    "4a"
+    "kubernetes_orchestration_iteration_loops_state_traversal"
   ]
 }

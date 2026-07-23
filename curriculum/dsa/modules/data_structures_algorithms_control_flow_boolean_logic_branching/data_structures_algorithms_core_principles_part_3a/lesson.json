@@ -3,29 +3,22 @@
   "title": "Data Structures & Algorithms Core Principles Part 3A",
   "technology": "Data Structures & Algorithms",
   "module": "Data Structures & Algorithms Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Structures & Algorithms Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Structures & Algorithms Core Principles Part 3A.",
-    "Write error-free implementations utilizing Data Structures & Algorithms Core Principles Part 3A.",
-    "Debug and optimize performance characteristics of Data Structures & Algorithms Core Principles Part 3A."
+    "Understand Data Structures & Algorithms Core Principles Part 3A from zero to advanced level",
+    "Write clean, production-grade Data Structures & Algorithms code for Data Structures & Algorithms Core Principles Part 3A",
+    "Debug edge cases and answer interview questions about Data Structures & Algorithms Core Principles Part 3A"
   ],
   "tags": [
-    "data",
-    "structures",
-    "&",
-    "algorithms",
-    "core",
-    "principles",
-    "part",
-    "3a"
+    "data_structures_algorithms_core_principles_part_3a",
+    "dsa",
+    "data_structures_algorithms_control_flow_boolean_logic_branching"
   ]
 }

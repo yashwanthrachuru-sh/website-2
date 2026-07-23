@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Classes & Instances is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Classes & Instances is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Classes define blueprints with `class`. `__init__(self)` initializes instance attributes. `self` points to the calling instance.",
+  "oneLineSummary": "Classes bundle state and behavior into reusable instance blueprints.",
   "keyTakeaways": [
-    "Classes & Instances solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "PascalCase for class names.",
+    "self points to current instance.",
+    "__init__ is constructor."
   ],
   "memoryTricks": [
-    "Think of classes & instances as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Classes & Instances in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Class vs Instance",
+      "trick": "Class = Cookie Cutter; Instance = The Cookie."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "TypeError: method() takes 0 positional arguments but 1 was given",
+      "cause": "Forgot self parameter in def method_name()",
+      "fix": "Add self as first parameter"
+    }
   ],
-  "mindMap": {
-    "central": "Classes & Instances",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain self and __init__"
+  ],
   "nextTopics": [
-    "Advanced classes & instances",
-    "Testing classes & instances",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Inheritance",
+      "whyNext": "Learn code reuse using child and parent classes."
+    }
+  ]
 }

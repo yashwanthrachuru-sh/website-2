@@ -3,26 +3,22 @@
   "title": "Web Development Troubleshooting Part 6C",
   "technology": "Web Development",
   "module": "Web Development Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Web Development Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Web Development Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing Web Development Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of Web Development Troubleshooting Part 6C."
+    "Understand Web Development Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade Web Development code for Web Development Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about Web Development Troubleshooting Part 6C"
   ],
   "tags": [
-    "web",
-    "development",
-    "troubleshooting",
-    "part",
-    "6c"
+    "web_development_troubleshooting_part_6c",
+    "webdev",
+    "web_development_data_collections_list_structures"
   ]
 }

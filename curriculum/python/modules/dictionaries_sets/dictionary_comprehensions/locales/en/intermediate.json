@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Dictionary Comprehensions becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Dictionary comprehensions create a new dictionary in a single bytecode execution pass. Duplicate keys during iteration overwrite previous entries without throwing errors.",
+  "internalImplementation": "CPython uses the `MAP_ADD` bytecode instruction inside dictionary comprehension frames.",
   "examples": [
     {
-      "title": "Getting Started with Dictionary Comprehensions",
-      "code": "print(\"Learning Dictionary Comprehensions\")",
-      "explanation": "Basic introduction to Dictionary Comprehensions.",
-      "language": "python"
+      "code": "# Inverting a Dictionary with Dict Comprehension\noriginal = {'a': 1, 'b': 2, 'c': 3}\ninverted = {v: k for k, v in original.items()}\nprint(inverted)  # {1: 'a', 2: 'b', 3: 'c'}",
+      "explanation": "Swaps keys and values into a new inverted dictionary structure."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A dictionary comprehensions implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "O(N) iteration time.",
+    "spaceComplexity": "O(N) memory allocation."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Accidentally creating a set instead of a dict due to missing colon.",
+    "incorrectCode": "s = {x for x in range(3)}  # Set: {0, 1, 2}",
+    "correctCode": "d = {x: x*2 for x in range(3)}  # Dict: {0: 0, 1: 2, 2: 4}"
+  },
+  "bestPractices": [
+    "Use dict comprehensions for filtering or transforming existing dictionary records.",
+    "Be mindful of key collision when inverting dictionaries with duplicate values."
+  ]
 }

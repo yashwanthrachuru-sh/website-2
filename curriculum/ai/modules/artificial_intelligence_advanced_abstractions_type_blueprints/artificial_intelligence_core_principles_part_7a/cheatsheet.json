@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```python\n// Declaring and executing Artificial Intelligence Core Principles Part 7A\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Artificial Intelligence Core Principles Part 7A Cheat Sheet",
+  "printNote": "Quick reference for Artificial Intelligence Core Principles Part 7A in Artificial Intelligence.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "# Python implementation for Artificial Intelligence Core Principles Part 7A",
+          "example": "# Python implementation for Artificial Intelligence Core Principles Part 7A\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+          "description": "Basic syntax for Artificial Intelligence Core Principles Part 7A",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

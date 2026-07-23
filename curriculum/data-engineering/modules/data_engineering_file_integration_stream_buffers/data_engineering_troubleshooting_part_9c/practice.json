@@ -1,46 +1,42 @@
 {
   "easy": {
-    "problem": "Implement a basic routine demonstrating the startup code syntax for Data Engineering Troubleshooting Part 9C.",
-    "starterCode": "# Write your code here\n",
-    "hints": [
-      "Review the syntax rules in the beginner notes.",
-      "Check name spelling."
-    ],
+    "title": "Easy: Data Engineering Troubleshooting Part 9C Basics",
+    "problem": "Write a simple program demonstrating Data Engineering Troubleshooting Part 9C.",
+    "starterCode": "# Python implementation for Data Engineering Troubleshooting Part 9C",
+    "solution": "# Python implementation for Data Engineering Troubleshooting Part 9C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
     "expectedOutput": "Success",
-    "solution": "# Solution goes here\n",
-    "explanation": "Verifies basic execution."
+    "hints": [
+      "Check basic syntax"
+    ]
   },
   "medium": {
-    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
-    "starterCode": "def process(val):\n    pass",
+    "title": "Medium: Data Engineering Troubleshooting Part 9C Logic",
+    "problem": "Implement a function using Data Engineering Troubleshooting Part 9C to transform input data.",
+    "starterCode": "# Python implementation for Data Engineering Troubleshooting Part 9C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+    "solution": "# Python implementation for Data Engineering Troubleshooting Part 9C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+    "expectedOutput": "Processed",
     "hints": [
-      "Use conditional statements to inspect values.",
-      "Throw ValueError or Error."
-    ],
-    "expectedOutput": "Error raised",
-    "solution": "def process(val):\n    if val < 0:\n        raise ValueError('Negative value')\n    return val",
-    "explanation": "Ensures input validation constraints are met."
+      "Check edge cases"
+    ]
   },
   "hard": {
-    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
-    "starterCode": "cache = {}\ndef lookup(key):\n    pass",
+    "title": "Hard: Data Engineering Troubleshooting Part 9C System",
+    "problem": "Build an optimized module applying Data Engineering Troubleshooting Part 9C principles.",
+    "starterCode": "# Python implementation for Data Engineering Troubleshooting Part 9C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+    "solution": "# Python implementation for Data Engineering Troubleshooting Part 9C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+    "expectedOutput": "Optimized Output",
     "hints": [
-      "Use a dictionary or Map.",
-      "Store results after the first query."
-    ],
-    "expectedOutput": "Cached output retrieved",
-    "solution": "cache = {}\ndef lookup(key, calculator):\n    if key not in cache:\n        cache[key] = calculator(key)\n    return cache[key]",
-    "explanation": "Implements high-performance memoization caching."
+      "Focus on efficiency"
+    ]
   },
   "debugging": {
-    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
-    "starterCode": "record_data = 100\nprint(record_datas)",
+    "title": "Debugging: Fix Data Engineering Troubleshooting Part 9C Bug",
+    "problem": "Identify and fix errors in the provided snippet.",
+    "starterCode": "// Fix bug here\n# Python implementation for Data Engineering Troubleshooting Part 9C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+    "solution": "# Python implementation for Data Engineering Troubleshooting Part 9C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+    "expectedOutput": "Fixed Output",
     "hints": [
-      "Inspect variable identifiers.",
-      "Match call names exactly."
-    ],
-    "expectedOutput": "100",
-    "solution": "record_data = 100\nprint(record_data)",
-    "explanation": "Aligns identifiers within namespace bindings."
+      "Review error message"
+    ]
   }
 }

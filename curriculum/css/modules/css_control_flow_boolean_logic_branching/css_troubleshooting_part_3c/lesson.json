@@ -3,25 +3,22 @@
   "title": "CSS Troubleshooting Part 3C",
   "technology": "CSS",
   "module": "CSS Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Troubleshooting Part 3C.",
-    "Write error-free implementations utilizing CSS Troubleshooting Part 3C.",
-    "Debug and optimize performance characteristics of CSS Troubleshooting Part 3C."
+    "Understand CSS Troubleshooting Part 3C from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Troubleshooting Part 3C",
+    "Debug edge cases and answer interview questions about CSS Troubleshooting Part 3C"
   ],
   "tags": [
+    "css_troubleshooting_part_3c",
     "css",
-    "troubleshooting",
-    "part",
-    "3c"
+    "css_control_flow_boolean_logic_branching"
   ]
 }

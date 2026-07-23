@@ -3,24 +3,22 @@
   "title": "Struct Attributes C",
   "technology": "C Programming",
   "module": "Structures Unions",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Pointers Dereferencing"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Struct Attributes C.",
-    "Write error-free implementations utilizing Struct Attributes C.",
-    "Debug and optimize performance characteristics of Struct Attributes C."
+    "Understand Struct Attributes C from zero to advanced level",
+    "Write clean, production-grade C Programming code for Struct Attributes C",
+    "Debug edge cases and answer interview questions about Struct Attributes C"
   ],
   "tags": [
-    "struct",
-    "attributes",
-    "c"
+    "struct_attributes_c",
+    "c",
+    "structures_unions"
   ]
 }

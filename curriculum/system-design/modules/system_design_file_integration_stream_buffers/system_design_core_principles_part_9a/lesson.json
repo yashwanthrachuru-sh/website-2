@@ -3,27 +3,22 @@
   "title": "System Design Core Principles Part 9A",
   "technology": "System Design",
   "module": "System Design File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: System Design Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of System Design Core Principles Part 9A.",
-    "Write error-free implementations utilizing System Design Core Principles Part 9A.",
-    "Debug and optimize performance characteristics of System Design Core Principles Part 9A."
+    "Understand System Design Core Principles Part 9A from zero to advanced level",
+    "Write clean, production-grade System Design code for System Design Core Principles Part 9A",
+    "Debug edge cases and answer interview questions about System Design Core Principles Part 9A"
   ],
   "tags": [
-    "system",
-    "design",
-    "core",
-    "principles",
-    "part",
-    "9a"
+    "system_design_core_principles_part_9a",
+    "system-design",
+    "system_design_file_integration_stream_buffers"
   ]
 }

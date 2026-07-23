@@ -1,44 +1,34 @@
 {
-  "oneLineSummary": "Strings & Booleans is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Strings & Booleans is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Strings (`str`) are immutable sequences of Unicode characters. Booleans (`bool`) are a subclass of `int` taking `True` or `False`. Empty collections are falsy.",
+  "oneLineSummary": "Strings are immutable Unicode sequences; booleans are binary truth flags inheriting from int.",
   "keyTakeaways": [
-    "Strings & Booleans solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Strings cannot be modified in-place.",
+    "Use `''.join(list)` for efficient loop concatenation.",
+    "Empty strings, 0, `None`, and `[]` are falsy.",
+    "`bool` inherits from `int` (`True == 1`)."
   ],
   "memoryTricks": [
-    "Think of strings & booleans as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Strings & Booleans in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Immutability",
+      "trick": "Think of strings like frozen ice blocks — to reshape them, you must melt and freeze a new block."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "TypeError on item assignment",
+      "cause": "Trying to modify string index directly",
+      "fix": "Create a new string using slicing or list join"
+    }
   ],
-  "mindMap": {
-    "central": "Strings & Booleans",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain string immutability",
+    "Demonstrate join vs +",
+    "Explain truthiness in Python"
+  ],
   "nextTopics": [
-    "Advanced strings & booleans",
-    "Testing strings & booleans",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Control Flow & Branching",
+      "whyNext": "Use booleans to control program execution flow with if-else statements."
+    }
+  ]
 }

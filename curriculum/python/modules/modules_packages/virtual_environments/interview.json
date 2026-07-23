@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between named exports and default exports in ES modules?",
-      "answer": "Named exports: a module can have multiple named exports (export const foo = ...; export function bar() {}). Imported with exact name in braces: import { foo, bar } from \"./module\". Can be renamed on import: import { foo as baz }. Default export: one per module (export default class App). Imported without braces: import App from \"./App\". Can be imported with any name. Best practice: use named exports for utilities (easy to tree-shake, refactor-safe); use default exports for React components (convention).",
+      "question": "Explain Virtual Environments and its primary use case in Python.",
+      "answer": "Virtual Environments provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common mistakes developers make with Virtual Environments?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What is circular dependency? How do you fix it?",
-      "answer": "A circular dependency occurs when Module A imports Module B which imports Module A. This creates infinite loading cycles. Symptoms: undefined imports, unexpected behavior. Fixes: (1) Extract shared code into a third module that both import from. (2) Move the import inside the function that needs it (lazy evaluation). (3) Restructure to remove the cycle — often the cycle indicates modules with mixed responsibilities.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What is tree shaking?",
-      "answer": "Tree shaking is a build optimization where the bundler (Webpack, Rollup, Vite) statically analyzes ES module imports and removes unused exports from the final bundle. It works because ES module imports are static — the bundler knows at build time exactly which exports are used. CommonJS require() is dynamic (require(condition ? \"a\" : \"b\")) so it can't be tree-shaken. This is one reason to prefer ESM over CommonJS for libraries.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Virtual Environments queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Virtual Environments queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Virtual Environments queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Virtual Environments queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Virtual Environments queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Virtual Environments queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Virtual Environments queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Python runtime optimize Virtual Environments under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

@@ -3,24 +3,22 @@
   "title": "Pick and Omit",
   "technology": "TypeScript",
   "module": "Utility Types Mapping",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Modules Namespaces"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Pick and Omit.",
-    "Write error-free implementations utilizing Pick and Omit.",
-    "Debug and optimize performance characteristics of Pick and Omit."
+    "Understand Pick and Omit from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Pick and Omit",
+    "Debug edge cases and answer interview questions about Pick and Omit"
   ],
   "tags": [
-    "pick",
-    "and",
-    "omit"
+    "pick_and_omit",
+    "typescript",
+    "utility_types_mapping"
   ]
 }

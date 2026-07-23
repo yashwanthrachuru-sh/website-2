@@ -3,24 +3,22 @@
   "title": "String Library Functions",
   "technology": "C Programming",
   "module": "Arrays String Termination",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Functions Recursion"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of String Library Functions.",
-    "Write error-free implementations utilizing String Library Functions.",
-    "Debug and optimize performance characteristics of String Library Functions."
+    "Understand String Library Functions from zero to advanced level",
+    "Write clean, production-grade C Programming code for String Library Functions",
+    "Debug edge cases and answer interview questions about String Library Functions"
   ],
   "tags": [
-    "string",
-    "library",
-    "functions"
+    "string_library_functions",
+    "c",
+    "arrays_string_termination"
   ]
 }

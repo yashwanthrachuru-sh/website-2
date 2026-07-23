@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Core Principles Part 11A",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Core Principles Part 11A.",
-    "Write error-free implementations utilizing AWS Cloud Architect Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Core Principles Part 11A."
+    "Understand AWS Cloud Architect Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Core Principles Part 11A"
   ],
   "tags": [
+    "aws_cloud_architect_core_principles_part_11a",
     "aws",
-    "cloud",
-    "architect",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "aws_cloud_architect_performance_optimization_complexity"
   ]
 }

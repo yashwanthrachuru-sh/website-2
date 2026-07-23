@@ -3,27 +3,22 @@
   "title": "Artificial Intelligence Core Principles Part 1A",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Core Principles Part 1A.",
-    "Write error-free implementations utilizing Artificial Intelligence Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Core Principles Part 1A."
+    "Understand Artificial Intelligence Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Core Principles Part 1A"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "artificial_intelligence_core_principles_part_1a",
+    "ai",
+    "artificial_intelligence_setup_architecture_foundations"
   ]
 }

@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between map(), filter(), and reduce()?",
-      "answer": "map(fn): Applies fn to each element and returns a NEW array of the same length. filter(fn): Returns a NEW array containing only elements where fn returns true. reduce(fn, initial): Applies fn(accumulator, currentValue) to fold the array into a single value — the most powerful but hardest to read. All three are non-mutating (pure). Together they form functional data pipelines: filter → map → reduce.",
+      "question": "Explain List Comprehensions and its primary use case in Python.",
+      "answer": "List Comprehensions provides a structured mechanism to handle core application logic cleanly.",
       "difficulty": "Beginner"
     },
     {
-      "question": "What is the time complexity of common array operations?",
-      "answer": "push/pop (end): O(1). unshift/shift (front): O(n) — all elements must shift. access by index: O(1). indexOf/find: O(n) — linear scan. slice: O(k) where k = slice length. sort: O(n log n). splice (insert/remove middle): O(n). For frequent front insertions, use a deque (Python collections.deque) or linked list.",
+      "question": "What are common mistakes developers make with List Comprehensions?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "How does JavaScript spread (...) differ from Object.assign for arrays?",
-      "answer": "Spread creates a shallow copy: [...arr] creates a new array with the same element references. Object.assign({}, obj) is similar for objects. Spread is now preferred for arrays and objects. Both are shallow — nested objects/arrays are still shared. For deep copying, use JSON.parse(JSON.stringify(obj)) (limited to JSON-serializable types) or the structuredClone() API (modern browsers/Node 17+).",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency List Comprehensions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency List Comprehensions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency List Comprehensions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency List Comprehensions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency List Comprehensions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency List Comprehensions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency List Comprehensions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Python runtime optimize List Comprehensions under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

@@ -1,22 +1,17 @@
 {
-  "syntax": "## Exception Handling Cheat Sheet\n\n- try → risky code\n- catch → handle specific errors\n- finally → cleanup (always runs)\n- Custom exceptions extend base Error class\n- Re-throw errors you don't know how to handle",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Try Catch Catch Cheat Sheet",
+  "printNote": "Quick reference for Try Catch Catch in Java.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// Java implementation for Try Catch Catch",
+          "example": "// Java implementation for Try Catch Catch\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Try Catch Catch\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+          "description": "Basic syntax for Try Catch Catch",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

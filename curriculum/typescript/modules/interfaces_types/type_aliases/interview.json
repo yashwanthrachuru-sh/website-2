@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between interface and type in TypeScript?",
-      "answer": "Both define object shapes. Key differences: (1) Interfaces can be extended/merged — declare the same interface twice and they merge (useful for augmenting library types). Types cannot be reopened. (2) Types can represent anything: union types (string | number), intersection types (&), mapped types, conditional types. Interfaces only describe object shapes. Convention: use interface for object types and public APIs (supports extension), use type for unions, intersections, primitives, and complex type operations.",
+      "question": "Explain Type Aliases and its primary use case in TypeScript.",
+      "answer": "Type Aliases provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common mistakes developers make with Type Aliases?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What is the \"unknown\" type and how is it different from \"any\"?",
-      "answer": "any disables TypeScript's type checking — you can call any method on it, assign it anywhere, TypeScript won't complain. It defeats the purpose of TypeScript. unknown is type-safe: you can assign anything to unknown, but you cannot use it until you narrow its type (with typeof, instanceof, or a type guard). unknown is the type-safe alternative to any for handling values of unknown origin (API responses, error objects). Always prefer unknown over any when you don't know the type.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are generics in TypeScript?",
-      "answer": "Generics allow you to write code that works with multiple types while preserving type information. Like a template: function first<T>(arr: T[]): T | undefined returns the same type as what's in the array. Without generics: first(arr) returns any (loses type info). With generics: first([\"a\",\"b\"]) returns string. Use generics for: data structures (Stack<T>, Queue<T>), API response wrappers (APIResponse<T>), utility functions that should work on any type while preserving type safety.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Type Aliases queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Type Aliases queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Type Aliases queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Type Aliases queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Type Aliases queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Type Aliases queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Type Aliases queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the TypeScript runtime optimize Type Aliases under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

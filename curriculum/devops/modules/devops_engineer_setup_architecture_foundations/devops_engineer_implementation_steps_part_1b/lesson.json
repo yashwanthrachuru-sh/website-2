@@ -3,27 +3,22 @@
   "title": "DevOps Engineer Implementation Steps Part 1B",
   "technology": "DevOps Engineer",
   "module": "DevOps Engineer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of DevOps Engineer Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing DevOps Engineer Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of DevOps Engineer Implementation Steps Part 1B."
+    "Understand DevOps Engineer Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade DevOps Engineer code for DevOps Engineer Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about DevOps Engineer Implementation Steps Part 1B"
   ],
   "tags": [
+    "devops_engineer_implementation_steps_part_1b",
     "devops",
-    "engineer",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "devops_engineer_setup_architecture_foundations"
   ]
 }

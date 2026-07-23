@@ -3,27 +3,22 @@
   "title": "Data Science Core Principles Part 4A",
   "technology": "Data Science",
   "module": "Data Science Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Science Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Core Principles Part 4A.",
-    "Write error-free implementations utilizing Data Science Core Principles Part 4A.",
-    "Debug and optimize performance characteristics of Data Science Core Principles Part 4A."
+    "Understand Data Science Core Principles Part 4A from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Core Principles Part 4A",
+    "Debug edge cases and answer interview questions about Data Science Core Principles Part 4A"
   ],
   "tags": [
-    "data",
-    "science",
-    "core",
-    "principles",
-    "part",
-    "4a"
+    "data_science_core_principles_part_4a",
+    "data-science",
+    "data_science_iteration_loops_state_traversal"
   ]
 }

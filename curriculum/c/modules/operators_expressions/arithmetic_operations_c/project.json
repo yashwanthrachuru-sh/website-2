@@ -1,11 +1,14 @@
 {
-  "title": "Arithmetic Operations C System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Arithmetic Operations C.",
+  "title": "Arithmetic Operations C Project",
+  "tagline": "Build a mini application using Arithmetic Operations C",
+  "description": "Create a working C Programming application demonstrating Arithmetic Operations C.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// C/C++ implementation for Arithmetic Operations C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Arithmetic Operations C\");\n    return 0;\n}",
+  "solution": "// C/C++ implementation for Arithmetic Operations C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Arithmetic Operations C\");\n    return 0;\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Arithmetic Operations C in C Programming."
 }

@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "List Comprehensions — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to List Comprehensions for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced List Comprehensions Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production List Comprehensions patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python List Comprehensions Tutorial",
+    "video_id": "3dt4OGnU5sM",
+    "url": "https://www.youtube.com/watch?v=3dt4OGnU5sM",
+    "channel": "Corey Schafer",
+    "duration": "14m",
+    "description": "Mastering list comprehensions, map, filter, and generator expressions."
+  }
+]

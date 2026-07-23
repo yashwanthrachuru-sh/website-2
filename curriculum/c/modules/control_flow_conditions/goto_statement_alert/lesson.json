@@ -3,24 +3,22 @@
   "title": "Goto Statement Alert",
   "technology": "C Programming",
   "module": "Control Flow Conditions",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Operators Expressions"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Goto Statement Alert.",
-    "Write error-free implementations utilizing Goto Statement Alert.",
-    "Debug and optimize performance characteristics of Goto Statement Alert."
+    "Understand Goto Statement Alert from zero to advanced level",
+    "Write clean, production-grade C Programming code for Goto Statement Alert",
+    "Debug edge cases and answer interview questions about Goto Statement Alert"
   ],
   "tags": [
-    "goto",
-    "statement",
-    "alert"
+    "goto_statement_alert",
+    "c",
+    "control_flow_conditions"
   ]
 }

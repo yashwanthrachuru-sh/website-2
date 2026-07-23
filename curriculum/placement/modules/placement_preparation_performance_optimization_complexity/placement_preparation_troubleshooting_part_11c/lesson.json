@@ -3,26 +3,22 @@
   "title": "Placement Preparation Troubleshooting Part 11C",
   "technology": "Placement Preparation",
   "module": "Placement Preparation Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Placement Preparation Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Placement Preparation Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Placement Preparation Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Placement Preparation Troubleshooting Part 11C."
+    "Understand Placement Preparation Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Placement Preparation code for Placement Preparation Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Placement Preparation Troubleshooting Part 11C"
   ],
   "tags": [
+    "placement_preparation_troubleshooting_part_11c",
     "placement",
-    "preparation",
-    "troubleshooting",
-    "part",
-    "11c"
+    "placement_preparation_performance_optimization_complexity"
   ]
 }

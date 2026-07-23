@@ -3,28 +3,22 @@
   "title": "GCP Cloud Engineer Core Principles Part 6A",
   "technology": "GCP Cloud Engineer",
   "module": "GCP Cloud Engineer Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: GCP Cloud Engineer Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of GCP Cloud Engineer Core Principles Part 6A.",
-    "Write error-free implementations utilizing GCP Cloud Engineer Core Principles Part 6A.",
-    "Debug and optimize performance characteristics of GCP Cloud Engineer Core Principles Part 6A."
+    "Understand GCP Cloud Engineer Core Principles Part 6A from zero to advanced level",
+    "Write clean, production-grade GCP Cloud Engineer code for GCP Cloud Engineer Core Principles Part 6A",
+    "Debug edge cases and answer interview questions about GCP Cloud Engineer Core Principles Part 6A"
   ],
   "tags": [
+    "gcp_cloud_engineer_core_principles_part_6a",
     "gcp",
-    "cloud",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "6a"
+    "gcp_cloud_engineer_data_collections_list_structures"
   ]
 }

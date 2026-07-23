@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is a closure? Give a practical use case.",
-      "answer": "A closure is a function that retains access to variables from its enclosing scope even after that scope has finished executing. Practical uses: (1) Creating factory functions that customize behavior (createMultiplier(5) returns a function that multiplies by 5). (2) Implementing private variables (the enclosing scope variable is inaccessible from outside). (3) Memoization caches. (4) Event handlers that remember state.",
+      "question": "Explain Lambda Functions and its primary use case in Python.",
+      "answer": "Lambda Functions provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common mistakes developers make with Lambda Functions?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What is the difference between call-by-value and call-by-reference?",
-      "answer": "Call-by-value passes a copy of the value — modifications inside the function do not affect the original. Call-by-reference passes the original memory location — modifications DO affect the original. Python uses \"call-by-object-reference\" (sometimes called \"call-by-sharing\"): immutable objects (int, str) effectively behave as by-value, mutable objects (list, dict) effectively behave as by-reference.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What is a pure function? Why are they preferred?",
-      "answer": "A pure function (1) always returns the same output for the same input, and (2) has no side effects (does not modify external state, perform I/O, or depend on mutable state). Benefits: easy to test (no setup/teardown), easy to reason about, safe to parallelize (no shared state), and safe to memoize (cache results). React components, Redux reducers, and mathematical utilities are examples.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What is recursion? When should you avoid it?",
-      "answer": "Recursion is when a function calls itself. It naturally solves problems with self-similar structure (trees, factorials, directory traversal, parsing). Avoid recursion when: (1) The depth is unbounded (risk of stack overflow), (2) There is no memoization and results are recomputed (exponential time), or (3) An iterative solution is equally clear. Python's default recursion limit is 1000 frames; Java defaults to ~500-1000 depending on frame size.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Lambda Functions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Lambda Functions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Lambda Functions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Lambda Functions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Lambda Functions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Lambda Functions queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Python runtime optimize Lambda Functions under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

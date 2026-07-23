@@ -1,8 +1,11 @@
 [
   {
-    "title": "Intro to Express.js Developer Core Principles Part 2A",
-    "channel": "freeCodeCamp",
-    "videoId": "PkZNo7MFNFg",
-    "duration": "15m"
+    "title": "Learn Express.js Developer Core Principles Part 2A in Express.js Developer",
+    "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+    "video_id": "rfscVS0vtbw",
+    "thumbnail": "https://img.youtube.com/vi/rfscVS0vtbw/maxresdefault.jpg",
+    "channel": "EduNet Learning",
+    "duration": "5m",
+    "description": "Educational video tutorial covering Express.js Developer Core Principles Part 2A in Express.js Developer."
   }
 ]

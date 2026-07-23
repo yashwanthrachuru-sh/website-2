@@ -3,24 +3,22 @@
   "title": "Queue Implementation C",
   "technology": "C Programming",
   "module": "Dynamic Data Structures C",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: File I/O Descriptors"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Queue Implementation C.",
-    "Write error-free implementations utilizing Queue Implementation C.",
-    "Debug and optimize performance characteristics of Queue Implementation C."
+    "Understand Queue Implementation C from zero to advanced level",
+    "Write clean, production-grade C Programming code for Queue Implementation C",
+    "Debug edge cases and answer interview questions about Queue Implementation C"
   ],
   "tags": [
-    "queue",
-    "implementation",
-    "c"
+    "queue_implementation_c",
+    "c",
+    "dynamic_data_structures_c"
   ]
 }

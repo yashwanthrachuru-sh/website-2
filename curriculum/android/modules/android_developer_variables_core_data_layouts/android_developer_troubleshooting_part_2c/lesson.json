@@ -3,26 +3,22 @@
   "title": "Android Developer Troubleshooting Part 2C",
   "technology": "Android Developer",
   "module": "Android Developer Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Android Developer Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Android Developer Troubleshooting Part 2C.",
-    "Write error-free implementations utilizing Android Developer Troubleshooting Part 2C.",
-    "Debug and optimize performance characteristics of Android Developer Troubleshooting Part 2C."
+    "Understand Android Developer Troubleshooting Part 2C from zero to advanced level",
+    "Write clean, production-grade Android Developer code for Android Developer Troubleshooting Part 2C",
+    "Debug edge cases and answer interview questions about Android Developer Troubleshooting Part 2C"
   ],
   "tags": [
+    "android_developer_troubleshooting_part_2c",
     "android",
-    "developer",
-    "troubleshooting",
-    "part",
-    "2c"
+    "android_developer_variables_core_data_layouts"
   ]
 }

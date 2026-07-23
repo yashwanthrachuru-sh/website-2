@@ -1,24 +1,18 @@
 {
-  "title": "Project: Context Managers Application",
-  "tagline": "Apply context managers in a practical project.",
-  "description": "Build an application demonstrating Context Managers.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "Lockfile Guard Context Manager",
+  "tagline": "Concurrency lockfile manager",
+  "description": "Build a file lock context manager creating lockfile on enter and removing it on exit.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Resource cleanup guarantees"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Create lockfile on enter, remove on exit"
+  ],
+  "starterCode": "import os\nclass FileLock:\n    def __init__(self, lock_path): self.lp = lock_path",
+  "solution": "import os\nclass FileLock:\n    def __init__(self, lock_path):\n        self.lp = lock_path\n    def __enter__(self):\n        if os.path.exists(self.lp):\n            raise RuntimeError('Locked')\n        open(self.lp, 'w').close()\n        return self\n    def __exit__(self, *args):\n        if os.path.exists(self.lp):\n            os.remove(self.lp)",
+  "solutionExpl": "Creates lockfile on enter and guarantees deletion on exit.",
+  "expectedOutput": "True",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Add timeout retry for lock acquisition"
   ]
 }

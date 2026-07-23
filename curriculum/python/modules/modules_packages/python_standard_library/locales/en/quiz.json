@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Python Standard Library?",
+      "question": "Which module is recommended for object-oriented path handling in modern Python?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "pathlib",
+        "os.path",
+        "syspath",
+        "filepath"
       ],
       "answer": 0,
-      "explanation": "Python Standard Library is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Python Standard Library exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "pathlib is the modern OO path library introduced in Python 3.4.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Python Standard Library is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Python Standard Library improves code quality.",
+      "question": "True or False: Creating a local file named `json.py` will break `import json`.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Local file shadows stdlib module."
     }
   ]
 }

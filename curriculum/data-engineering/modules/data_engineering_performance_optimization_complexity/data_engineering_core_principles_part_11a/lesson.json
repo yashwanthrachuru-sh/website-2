@@ -3,27 +3,22 @@
   "title": "Data Engineering Core Principles Part 11A",
   "technology": "Data Engineering",
   "module": "Data Engineering Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Core Principles Part 11A.",
-    "Write error-free implementations utilizing Data Engineering Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of Data Engineering Core Principles Part 11A."
+    "Understand Data Engineering Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about Data Engineering Core Principles Part 11A"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "data_engineering_core_principles_part_11a",
+    "data-engineering",
+    "data_engineering_performance_optimization_complexity"
   ]
 }

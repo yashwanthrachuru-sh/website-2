@@ -1,31 +1,14 @@
 {
-  "officialDocs": "https://docs.microsoft.com/en-us/ OR https://docs.python.org/3/",
-  "books": [
+  "links": [
     {
-      "title": "Clean Code",
-      "author": "Robert C. Martin"
+      "type": "official_doc",
+      "title": "cppreference.com C/C++ Reference",
+      "url": "https://en.cppreference.com/"
     },
     {
-      "title": "Design Patterns",
-      "author": "Gang of Four"
+      "type": "official_doc",
+      "title": "ISO C++ Standard",
+      "url": "https://isocpp.org/"
     }
-  ],
-  "articles": [
-    {
-      "title": "Understanding Bitwise Shift Masks Internals",
-      "url": "https://medium.com"
-    }
-  ],
-  "references": [
-    "MDN Web Docs",
-    "Stack Overflow Guide"
-  ],
-  "externalTools": [
-    "Visual Studio Code",
-    "Git"
-  ],
-  "practiceWebsites": [
-    "LeetCode",
-    "HackerRank"
   ]
 }

@@ -1,26 +1,21 @@
 {
-  "title": "Project: Loan Decision Engine",
-  "tagline": "Build a rule-based loan approval system using conditionals.",
-  "description": "Create a program that evaluates loan applications using credit score, income, debt ratio, and employment status — applying business rules through conditionals.",
-  "requirements": [
-    "Define at least 4 input criteria with ranges",
-    "Implement decision rules using if/elif/else",
-    "Handle all edge cases",
-    "Return a clear decision with explanation",
-    "Include 3+ test cases"
-  ],
+  "title": "ATM Withdrawal Simulator",
+  "tagline": "Decision-tree financial transaction engine",
+  "description": "Simulate an ATM cash withdrawal enforcing account balance, daily limit, and bill denomination constraints.",
   "learningGoals": [
-    "Master complex conditional chains",
-    "Practice handling interdependent conditions",
-    "Build real-world business logic"
+    "Nested conditional validation",
+    "Clear user messaging per failure mode"
   ],
-  "starterCode": "def evaluate_loan(credit_score, income, debt_ratio, employed):\n    reasons = []\n    # Your rules here\n    pass",
-  "solution": "def evaluate_loan(credit, income, debt, emp):\n    reasons = []\n    if credit < 600: reasons.append(\"Low credit\")\n    if income < 25000: reasons.append(\"Low income\")\n    if debt > 0.43: reasons.append(\"High DTI\")\n    if not emp: reasons.append(\"Unemployed\")\n    if not reasons: return (True, \"Approved\")\n    return (False, f\"Denied: {'; '.join(reasons)}\")",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Check account balance",
+    "Check daily withdrawal limit ($500)",
+    "Verify amount is a multiple of $20"
+  ],
+  "starterCode": "def withdraw(balance, daily_spent, amount):\n    pass",
+  "solution": "def withdraw(balance, daily_spent, amount):\n    if amount <= 0:\n        return (False, 'Amount must be positive')\n    if amount % 20 != 0:\n        return (False, 'Amount must be a multiple of $20')\n    if amount > balance:\n        return (False, 'Insufficient funds')\n    if daily_spent + amount > 500:\n        return (False, 'Exceeds daily withdrawal limit of $500')\n    return (True, f'Successfully withdrew ${amount}')",
+  "solutionExpl": "Applies guard conditions sequentially, returning descriptive error tuples on failure.",
+  "expectedOutput": "(True, 'Successfully withdrew $60')",
   "extensions": [
-    "Add tiered interest rates",
-    "Build a web interface",
-    "Add weighted scoring"
+    "Add PIN verification attempts check"
   ]
 }

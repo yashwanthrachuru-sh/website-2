@@ -3,23 +3,22 @@
   "title": "Promise Chains",
   "technology": "JavaScript",
   "module": "Promises & Chains",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Async Callbacks"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Promise Chains.",
-    "Write error-free implementations utilizing Promise Chains.",
-    "Debug and optimize performance characteristics of Promise Chains."
+    "Understand Promise Chains from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Promise Chains",
+    "Debug edge cases and answer interview questions about Promise Chains"
   ],
   "tags": [
-    "promise",
-    "chains"
+    "promise_chains",
+    "js",
+    "promises_chains"
   ]
 }

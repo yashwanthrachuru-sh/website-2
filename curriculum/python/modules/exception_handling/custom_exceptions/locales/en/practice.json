@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Custom Exceptions — Basic Practice",
-    "description": "Write a basic custom exceptions implementation.",
-    "starterCode": "def basic_custom_exceptions():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Create NegativeValueError",
+    "description": "Define `NegativeValueError(Exception)` and raise it if val < 0.",
+    "starterCode": "# Define exception and test function",
+    "expectedOutput": "Caught",
+    "solution": "class NegativeValueError(Exception): pass\ndef check(v):\n    if v < 0: raise NegativeValueError('Negative!')",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "class NegativeValueError(Exception): pass"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Custom Exceptions — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Custom Error with Error Code",
+    "description": "Create `APIError(Exception)` storing `code` and `message`.",
+    "starterCode": "class APIError(Exception):\n    pass",
+    "expectedOutput": "404",
+    "solution": "class APIError(Exception):\n    def __init__(self, msg, code):\n        super().__init__(msg)\n        self.code = code",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Call super().__init__(msg)"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Custom Exceptions — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Application Exception Hierarchy",
+    "description": "Create `AppError` base, `AuthError` and `PermissionError` children.",
+    "starterCode": "# Define hierarchy",
+    "expectedOutput": "True",
+    "solution": "class AppError(Exception): pass\nclass AuthError(AppError): pass\nclass PermissionError(AppError): pass",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Inherit children from AppError"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Custom Exceptions",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix BaseException Inheritance",
+    "description": "Fix inheritance from BaseException.",
+    "buggyCode": "class CustomErr(BaseException): pass",
+    "fixedCode": "class CustomErr(Exception): pass",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Inherit from `Exception`, not `BaseException`."
     ]
   }
 }

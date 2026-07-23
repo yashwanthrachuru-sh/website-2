@@ -3,26 +3,22 @@
   "title": "Data Science Troubleshooting Part 10C",
   "technology": "Data Science",
   "module": "Data Science Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Science File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Data Science Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Data Science Troubleshooting Part 10C."
+    "Understand Data Science Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Data Science Troubleshooting Part 10C"
   ],
   "tags": [
-    "data",
-    "science",
-    "troubleshooting",
-    "part",
-    "10c"
+    "data_science_troubleshooting_part_10c",
+    "data-science",
+    "data_science_package_orchestration_system_modules"
   ]
 }

@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Migration Scripts — Basic Practice",
-    "description": "Write a basic migration scripts implementation.",
-    "starterCode": "def basic_migration_scripts():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Check Alembic Table Name",
+    "description": "Return default Alembic version table string.",
+    "starterCode": "def get_ver_table(): pass",
+    "expectedOutput": "'alembic_version'",
+    "solution": "def get_ver_table(): return 'alembic_version'",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "'alembic_version'"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Migration Scripts — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Write Manual Upgrade Code",
+    "description": "Write `upgrade()` adding column 'email' String(100) to 'users'.",
+    "starterCode": "def upgrade(): pass",
+    "expectedOutput": "True",
+    "solution": "from alembic import op\nimport sqlalchemy as sa\ndef upgrade():\n    op.add_column('users', sa.Column('email', sa.String(100)))\n    return True",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "op.add_column('users', sa.Column(...))"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Migration Scripts — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Migration History Validator",
+    "description": "Verify list of revision IDs has unique parent-child hash links.",
+    "starterCode": "def validate_history(revisions): pass",
+    "expectedOutput": "True",
+    "solution": "def validate_history(revisions):\n    rev_set = set(r['id'] for r in revisions)\n    for r in revisions:\n        if r['down_revision'] and r['down_revision'] not in rev_set:\n            return False\n    return True",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Check down_revision exists in rev_set"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Migration Scripts",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Missing Downgrade",
+    "description": "Add missing drop column in downgrade().",
+    "buggyCode": "def downgrade(): pass",
+    "fixedCode": "def downgrade():\n    op.drop_column('users', 'email')",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Missing drop_column in downgrade()."
     ]
   }
 }

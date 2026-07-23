@@ -3,27 +3,22 @@
   "title": "Cybersecurity Analyst Core Principles Part 12A",
   "technology": "Cybersecurity Analyst",
   "module": "Cybersecurity Analyst Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Cybersecurity Analyst Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Cybersecurity Analyst Core Principles Part 12A.",
-    "Write error-free implementations utilizing Cybersecurity Analyst Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of Cybersecurity Analyst Core Principles Part 12A."
+    "Understand Cybersecurity Analyst Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade Cybersecurity Analyst code for Cybersecurity Analyst Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about Cybersecurity Analyst Core Principles Part 12A"
   ],
   "tags": [
+    "cybersecurity_analyst_core_principles_part_12a",
     "cybersecurity",
-    "analyst",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "cybersecurity_analyst_production_deployment_server_pipelines"
   ]
 }

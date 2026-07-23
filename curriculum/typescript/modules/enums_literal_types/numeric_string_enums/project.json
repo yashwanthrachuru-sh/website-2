@@ -1,11 +1,14 @@
 {
-  "title": "Numeric String Enums System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Numeric String Enums.",
+  "title": "Numeric String Enums Project",
+  "tagline": "Build a mini application using Numeric String Enums",
+  "description": "Create a working TypeScript application demonstrating Numeric String Enums.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Numeric String Enums\ninterface NumericStringEnumsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processNumericStringEnums(item: NumericStringEnumsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processNumericStringEnums({ id: 1, title: 'Numeric String Enums', status: 'active' }));",
+  "solution": "// TypeScript implementation for Numeric String Enums\ninterface NumericStringEnumsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processNumericStringEnums(item: NumericStringEnumsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processNumericStringEnums({ id: 1, title: 'Numeric String Enums', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Numeric String Enums in TypeScript."
 }

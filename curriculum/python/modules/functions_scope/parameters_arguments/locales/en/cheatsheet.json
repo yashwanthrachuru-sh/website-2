@@ -1,36 +1,14 @@
 {
-  "title": "Parameters & Arguments — Quick Reference",
+  "printNote": "Parameters & Arguments Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "def name(params):\n    \"\"\"docstring\"\"\"\n    body\n    return value\n\n# Lambda\nf = lambda x: x ** 2"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Parameter: input variable in definition",
-        "Argument: actual value passed when calling",
-        "Return: output value sent back",
-        "Scope: where a variable is accessible"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Guard clause: return early for edge cases",
-        "Default parameters: sensible defaults",
-        "*args/**kwargs (Python) or ...rest (JS): variable arguments"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ One function, one job",
-        "✓ Pure functions when possible",
-        "✓ Descriptive names",
-        "✗ Side effects without clear naming",
-        "✗ Long functions (50+ lines)",
-        "✗ Modifying input parameters"
+      "heading": "Flex Signatures",
+      "entries": [
+        {
+          "syntax": "def f(*args, **kwargs):",
+          "example": "f(1, 2, a=3)",
+          "description": "*args -> tuple, **kwargs -> dict"
+        }
       ]
     }
   ]

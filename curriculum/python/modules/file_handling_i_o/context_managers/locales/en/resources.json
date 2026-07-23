@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/context managers",
-      "type": "documentation",
-      "description": "Official reference for Context Managers in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Context Managers in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Context Managers with other developers"
+      "type": "official",
+      "title": "Python contextlib",
+      "url": "https://docs.python.org/3/library/contextlib.html"
     }
   ]
 }

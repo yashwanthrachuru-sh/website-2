@@ -1,46 +1,68 @@
 {
-  "oneLineSummary": "Python environment setup is the foundation — the interpreter translates your code into actions.",
-  "summary": "This lesson covered the python runtime environment: what the interpreter does, how it executes code, the pipeline from source to output, and common modes of operation.",
+  "summary": "Python installation puts the CPython interpreter, the standard library, and pip on your machine. The interpreter is the program that reads and executes your .py files. pip is the package manager for installing third-party libraries from PyPI. The PATH environment variable tells your terminal where to find the python3 command.",
+  "oneLineSummary": "Install Python 3 from python.org, add it to PATH, verify with 'python3 --version', and use virtual environments to isolate project dependencies.",
   "keyTakeaways": [
-    "The interpreter translates source code to bytecode, then executes it on a VM",
-    "Multiple execution modes serve different purposes",
-    "Virtual environments isolate project dependencies",
-    "Version and configuration differences cause cross-machine issues"
+    "Always install Python 3.x — Python 2 is end-of-life since January 2020",
+    "On Windows, check 'Add Python to PATH' during installation or python3 won't be found in the terminal",
+    "python3 --version and pip3 --version are the two commands to verify a working installation",
+    "pip (pip3) is Python's package manager — it downloads libraries from PyPI (pypi.org)",
+    "Virtual environments (python3 -m venv .venv) isolate project dependencies — always use them for real projects",
+    "pyenv manages multiple Python versions on the same machine without conflicts",
+    "sys.version_info, sys.executable, and sys.path give you runtime environment information from within Python",
+    "In production, always pin your Python version in a Docker image (FROM python:3.12.0-slim)"
   ],
   "memoryTricks": [
-    "Remember: Source -> Lexer -> Parser -> Compiler -> VM -> Output",
-    "Think of the interpreter as a translator: your language -> machine language -> action"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain compilation vs interpretation?",
-    "Do you understand how the GIL affects Python concurrency?",
-    "Can you set up a virtual environment from scratch?"
+    {
+      "concept": "PATH environment variable",
+      "trick": "Think of PATH as a list of drawers your OS checks in order when you type a command. 'python3 --version' tells the OS to open each drawer until it finds the python3 tool."
+    },
+    {
+      "concept": "Virtual environment",
+      "trick": "A virtual environment is like a separate backpack for each school subject. You don't mix chemistry lab equipment with your math textbooks — each project gets its own bag of packages."
+    },
+    {
+      "concept": "pip vs pip3",
+      "trick": "On systems with both Python 2 and 3, pip = Python 2's pip, pip3 = Python 3's pip. When in doubt, always use pip3 or 'python3 -m pip'."
+    }
   ],
   "commonErrors": [
-    "Running the wrong interpreter version",
-    "Forgetting to activate the virtual environment",
-    "Assuming production is the same as your machine"
+    {
+      "error": "python3: command not found",
+      "cause": "Python is installed but its directory is not in your PATH environment variable",
+      "fix": "On Windows: re-run installer and check 'Add Python to PATH'. On macOS/Linux: add 'export PATH=\"/usr/local/bin:$PATH\"' to ~/.bashrc or ~/.zshrc and run 'source ~/.bashrc'"
+    },
+    {
+      "error": "error: externally-managed-environment (pip install fails on Ubuntu/Debian)",
+      "cause": "PEP 668: modern Debian-based systems protect the system Python from pip modifications",
+      "fix": "Create a virtual environment: python3 -m venv .venv && source .venv/bin/activate, then pip install inside it"
+    },
+    {
+      "error": "ModuleNotFoundError: No module named 'flask'",
+      "cause": "The package is not installed in the currently active Python environment",
+      "fix": "Activate your virtual environment first (source .venv/bin/activate), then run pip install flask. If you're not using a venv, run: python3 -m pip install flask"
+    },
+    {
+      "error": "pip and python3 point to different Python versions",
+      "cause": "Multiple Python versions installed; pip is linked to a different one than python3",
+      "fix": "Always use 'python3 -m pip install' instead of just 'pip install'. This guarantees pip belongs to the python3 you're using."
+    }
   ],
-  "mindMap": {
-    "central": "Python Environment",
-    "branches": [
-      "Interpreter",
-      "Bytecode & VM",
-      "Execution Modes",
-      "Virtual Environments",
-      "Debugging & Profiling",
-      "Packages & Dependencies"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Can you explain what the Python interpreter does?",
+    "Can you explain why PATH matters and what happens if Python isn't in it?",
+    "Can you explain what pip is and the difference between pip and PyPI?",
+    "Can you explain why virtual environments are necessary for professional development?",
+    "Can you explain the difference between Python 2 and Python 3 and why 2 is obsolete?",
+    "Can you describe what CPython is and name one alternative implementation?"
+  ],
   "nextTopics": [
-    "Package management",
-    "Advanced debugging",
-    "Containerization",
-    "Runtime security"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "The Python REPL",
+      "whyNext": "Now that Python is installed, the REPL (Read-Eval-Print Loop) is the fastest way to experiment with Python code interactively without creating files."
+    },
+    {
+      "title": "Running Python Scripts",
+      "whyNext": "Learn how to write .py files and run them from the terminal — the foundation of every Python program."
+    }
+  ]
 }

@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "What is Writing Files and why is it important in Python?",
+      "answer": "Writing Files is a core Python feature that enables structured, clean programming.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common performance pitfalls when using Writing Files?",
+      "answer": "Avoid unnecessary memory allocations or deep loop nesting.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "How is Writing Files implemented internally in CPython?",
+      "answer": "CPython manages it through bytecode instructions and evaluation stack frames.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

@@ -1,0 +1,424 @@
+{
+  "mcqs": [
+    {
+      "id": "q_1",
+      "question": "Which mode is used to open a file for reading text in Python?",
+      "options": [
+        "'r'",
+        "'w'",
+        "'a'",
+        "'rb'"
+      ],
+      "answer": "A",
+      "explanation": "'r' opens a file for reading text (default mode).",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_2",
+      "question": "Why should you specify encoding='utf-8' when opening text files?",
+      "options": [
+        "Prevents cross-platform character decoding errors across Windows, Mac, and Linux",
+        "Makes file reading faster",
+        "Encrypts file contents",
+        "Required by Python compiler"
+      ],
+      "answer": "A",
+      "explanation": "Specifying encoding='utf-8' guarantees consistent character decoding across different operating systems.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_3",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 3?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 3 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_4",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 4?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 4 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_5",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 5?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 5 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_6",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 6?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 6 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_7",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 7?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 7 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_8",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 8?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 8 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_9",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 9?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 9 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_10",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 10?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 10 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_11",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 11?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 11 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_12",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 12?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 12 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_13",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 13?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 13 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_14",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 14?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 14 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_15",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 15?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 15 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_16",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 16?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 16 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_17",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 17?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 17 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_18",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 18?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 18 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_19",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 19?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 19 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_20",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 20?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 20 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_21",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 21?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 21 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_22",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 22?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 22 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_23",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 23?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 23 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_24",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 24?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 24 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_25",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 25?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 25 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_26",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 26?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 26 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_27",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 27?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 27 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_28",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 28?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 28 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_29",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 29?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 29 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    },
+    {
+      "id": "q_30",
+      "question": "In Python Reading Files, which concept ensures correct execution during step 30?",
+      "options": [
+        "Adhering to standard syntax rules for Reading Files",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 30 in Reading Files relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Reading Files"
+    }
+  ]
+}

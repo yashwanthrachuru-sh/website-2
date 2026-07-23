@@ -3,26 +3,22 @@
   "title": "Machine Learning Troubleshooting Part 9C",
   "technology": "Machine Learning",
   "module": "Machine Learning File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Machine Learning Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Machine Learning Troubleshooting Part 9C.",
-    "Write error-free implementations utilizing Machine Learning Troubleshooting Part 9C.",
-    "Debug and optimize performance characteristics of Machine Learning Troubleshooting Part 9C."
+    "Understand Machine Learning Troubleshooting Part 9C from zero to advanced level",
+    "Write clean, production-grade Machine Learning code for Machine Learning Troubleshooting Part 9C",
+    "Debug edge cases and answer interview questions about Machine Learning Troubleshooting Part 9C"
   ],
   "tags": [
-    "machine",
-    "learning",
-    "troubleshooting",
-    "part",
-    "9c"
+    "machine_learning_troubleshooting_part_9c",
+    "ml",
+    "machine_learning_file_integration_stream_buffers"
   ]
 }

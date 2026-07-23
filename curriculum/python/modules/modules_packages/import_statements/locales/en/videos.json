@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Import Statements — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Import Statements for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Import Statements Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Import Statements patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Imports and Sys Path",
+    "video_id": "CqvZ3vGoGs0",
+    "url": "https://www.youtube.com/watch?v=CqvZ3vGoGs0",
+    "channel": "Corey Schafer",
+    "duration": "15m",
+    "description": "How Python imports modules and manages sys.path."
+  }
+]

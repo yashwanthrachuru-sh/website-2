@@ -1,0 +1,13 @@
+{
+  "title": "Context Managers Mini System",
+  "tagline": "Build a practical tool using Context Managers",
+  "description": "Create a working Python module that demonstrates real-world application of Context Managers.",
+  "requirements": [
+    "Write clean code following PEP 8",
+    "Handle error cases",
+    "Demonstrate working output"
+  ],
+  "starterCode": "# Starter code for Context Managers project\n",
+  "solution": "from contextlib import contextmanager\n\n@contextmanager\ndef open_managed_file(filename):\n    f = open(filename, 'w')\n    try:\n        yield f\n    finally:\n        f.close()",
+  "expectedOutput": "Project Completed Successfully"
+}

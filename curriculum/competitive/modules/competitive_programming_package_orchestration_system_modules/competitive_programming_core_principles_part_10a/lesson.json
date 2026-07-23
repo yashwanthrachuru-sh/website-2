@@ -3,27 +3,22 @@
   "title": "Competitive Programming Core Principles Part 10A",
   "technology": "Competitive Programming",
   "module": "Competitive Programming Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Competitive Programming File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Competitive Programming Core Principles Part 10A.",
-    "Write error-free implementations utilizing Competitive Programming Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of Competitive Programming Core Principles Part 10A."
+    "Understand Competitive Programming Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade Competitive Programming code for Competitive Programming Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about Competitive Programming Core Principles Part 10A"
   ],
   "tags": [
+    "competitive_programming_core_principles_part_10a",
     "competitive",
-    "programming",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "competitive_programming_package_orchestration_system_modules"
   ]
 }

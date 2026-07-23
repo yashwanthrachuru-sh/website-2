@@ -3,26 +3,22 @@
   "title": "Backend Development Troubleshooting Part 11C",
   "technology": "Backend Development",
   "module": "Backend Development Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Backend Development Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Backend Development Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Backend Development Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Backend Development Troubleshooting Part 11C."
+    "Understand Backend Development Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Backend Development code for Backend Development Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Backend Development Troubleshooting Part 11C"
   ],
   "tags": [
+    "backend_development_troubleshooting_part_11c",
     "backend",
-    "development",
-    "troubleshooting",
-    "part",
-    "11c"
+    "backend_development_performance_optimization_complexity"
   ]
 }

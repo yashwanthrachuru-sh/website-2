@@ -3,23 +3,22 @@
   "title": "Event Delegation",
   "technology": "JavaScript",
   "module": "Event Handling",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: DOM Manipulation"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Event Delegation.",
-    "Write error-free implementations utilizing Event Delegation.",
-    "Debug and optimize performance characteristics of Event Delegation."
+    "Understand Event Delegation from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Event Delegation",
+    "Debug edge cases and answer interview questions about Event Delegation"
   ],
   "tags": [
-    "event",
-    "delegation"
+    "event_delegation",
+    "js",
+    "event_handling"
   ]
 }

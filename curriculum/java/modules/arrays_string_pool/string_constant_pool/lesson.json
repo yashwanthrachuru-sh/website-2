@@ -3,24 +3,22 @@
   "title": "String Constant Pool",
   "technology": "Java",
   "module": "Arrays & String Pool",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Methods & Signatures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of String Constant Pool.",
-    "Write error-free implementations utilizing String Constant Pool.",
-    "Debug and optimize performance characteristics of String Constant Pool."
+    "Understand String Constant Pool from zero to advanced level",
+    "Write clean, production-grade Java code for String Constant Pool",
+    "Debug edge cases and answer interview questions about String Constant Pool"
   ],
   "tags": [
-    "string",
-    "constant",
-    "pool"
+    "string_constant_pool",
+    "java",
+    "arrays_string_pool"
   ]
 }

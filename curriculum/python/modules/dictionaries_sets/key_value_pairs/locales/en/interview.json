@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain Key Value Pairs to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of key value pairs?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for key value pairs?",
-      "answer": "Use Key Value Pairs when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "How does Python dictionary collision resolution work?",
+      "answer": "CPython uses open addressing with pseudo-random probing. When `hash(key) % capacity` hits an occupied slot with a different key, Python calculates secondary probe indices until an empty slot or matching key is found.",
+      "level": "advanced"
     }
   ]
 }

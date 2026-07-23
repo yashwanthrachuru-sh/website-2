@@ -3,27 +3,22 @@
   "title": "Cybersecurity Analyst Core Principles Part 6A",
   "technology": "Cybersecurity Analyst",
   "module": "Cybersecurity Analyst Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Cybersecurity Analyst Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Cybersecurity Analyst Core Principles Part 6A.",
-    "Write error-free implementations utilizing Cybersecurity Analyst Core Principles Part 6A.",
-    "Debug and optimize performance characteristics of Cybersecurity Analyst Core Principles Part 6A."
+    "Understand Cybersecurity Analyst Core Principles Part 6A from zero to advanced level",
+    "Write clean, production-grade Cybersecurity Analyst code for Cybersecurity Analyst Core Principles Part 6A",
+    "Debug edge cases and answer interview questions about Cybersecurity Analyst Core Principles Part 6A"
   ],
   "tags": [
+    "cybersecurity_analyst_core_principles_part_6a",
     "cybersecurity",
-    "analyst",
-    "core",
-    "principles",
-    "part",
-    "6a"
+    "cybersecurity_analyst_data_collections_list_structures"
   ]
 }

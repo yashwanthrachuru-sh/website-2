@@ -3,27 +3,22 @@
   "title": "Docker Containers Core Principles Part 1A",
   "technology": "Docker Containers",
   "module": "Docker Containers Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Core Principles Part 1A.",
-    "Write error-free implementations utilizing Docker Containers Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Docker Containers Core Principles Part 1A."
+    "Understand Docker Containers Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Docker Containers Core Principles Part 1A"
   ],
   "tags": [
+    "docker_containers_core_principles_part_1a",
     "docker",
-    "containers",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "docker_containers_setup_architecture_foundations"
   ]
 }

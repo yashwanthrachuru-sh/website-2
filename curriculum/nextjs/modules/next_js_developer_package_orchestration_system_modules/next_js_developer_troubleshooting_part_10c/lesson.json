@@ -3,26 +3,22 @@
   "title": "Next.js Developer Troubleshooting Part 10C",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Next.js Developer File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 10C."
+    "Understand Next.js Developer Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Next.js Developer Troubleshooting Part 10C"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "troubleshooting",
-    "part",
-    "10c"
+    "next_js_developer_troubleshooting_part_10c",
+    "nextjs",
+    "next_js_developer_package_orchestration_system_modules"
   ]
 }

@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "How does the compiler handle variables or instructions for Express.js Developer Troubleshooting Part 1C in memory?",
-      "answer": "It creates registers in symbol lookups, mapping names to stack stack offsets or heap addresses.",
+      "question": "Explain Express.js Developer Troubleshooting Part 1C and its primary use case in Express.js Developer.",
+      "answer": "Express.js Developer Troubleshooting Part 1C provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common mistakes developers make with Express.js Developer Troubleshooting Part 1C?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Express.js Developer Troubleshooting Part 1C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Express.js Developer runtime optimize Express.js Developer Troubleshooting Part 1C under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

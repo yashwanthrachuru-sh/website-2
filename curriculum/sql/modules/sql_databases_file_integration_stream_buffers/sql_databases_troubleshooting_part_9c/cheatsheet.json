@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```sql\n// Declaring and executing SQL & Databases Troubleshooting Part 9C\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "SQL & Databases Troubleshooting Part 9C Cheat Sheet",
+  "printNote": "Quick reference for SQL & Databases Troubleshooting Part 9C in SQL & Databases.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "-- SQL Database query for SQL & Databases Troubleshooting Part 9C",
+          "example": "-- SQL Database query for SQL & Databases Troubleshooting Part 9C\nSELECT id, title, category, created_at\nFROM application_records\nWHERE category = 'SQL & Databases Troubleshooting Part 9C' AND is_active = 1\nORDER BY created_at DESC\nLIMIT 10;",
+          "description": "Basic syntax for SQL & Databases Troubleshooting Part 9C",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

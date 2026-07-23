@@ -3,26 +3,22 @@
   "title": "DevOps Engineer Troubleshooting Part 11C",
   "technology": "DevOps Engineer",
   "module": "DevOps Engineer Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: DevOps Engineer Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of DevOps Engineer Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing DevOps Engineer Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of DevOps Engineer Troubleshooting Part 11C."
+    "Understand DevOps Engineer Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade DevOps Engineer code for DevOps Engineer Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about DevOps Engineer Troubleshooting Part 11C"
   ],
   "tags": [
+    "devops_engineer_troubleshooting_part_11c",
     "devops",
-    "engineer",
-    "troubleshooting",
-    "part",
-    "11c"
+    "devops_engineer_performance_optimization_complexity"
   ]
 }

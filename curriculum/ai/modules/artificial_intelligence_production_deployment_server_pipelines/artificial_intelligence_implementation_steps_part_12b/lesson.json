@@ -3,27 +3,22 @@
   "title": "Artificial Intelligence Implementation Steps Part 12B",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Implementation Steps Part 12B.",
-    "Write error-free implementations utilizing Artificial Intelligence Implementation Steps Part 12B.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Implementation Steps Part 12B."
+    "Understand Artificial Intelligence Implementation Steps Part 12B from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Implementation Steps Part 12B",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Implementation Steps Part 12B"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "implementation",
-    "steps",
-    "part",
-    "12b"
+    "artificial_intelligence_implementation_steps_part_12b",
+    "ai",
+    "artificial_intelligence_production_deployment_server_pipelines"
   ]
 }

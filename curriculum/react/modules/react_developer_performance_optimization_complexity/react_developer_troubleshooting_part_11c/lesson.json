@@ -3,26 +3,22 @@
   "title": "React Developer Troubleshooting Part 11C",
   "technology": "React Developer",
   "module": "React Developer Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: React Developer Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of React Developer Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing React Developer Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of React Developer Troubleshooting Part 11C."
+    "Understand React Developer Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade React Developer code for React Developer Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about React Developer Troubleshooting Part 11C"
   ],
   "tags": [
+    "react_developer_troubleshooting_part_11c",
     "react",
-    "developer",
-    "troubleshooting",
-    "part",
-    "11c"
+    "react_developer_performance_optimization_complexity"
   ]
 }

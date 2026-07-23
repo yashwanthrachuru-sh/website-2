@@ -3,23 +3,22 @@
   "title": "Typedef Aliasing",
   "technology": "C Programming",
   "module": "Structures Unions",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Pointers Dereferencing"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Typedef Aliasing.",
-    "Write error-free implementations utilizing Typedef Aliasing.",
-    "Debug and optimize performance characteristics of Typedef Aliasing."
+    "Understand Typedef Aliasing from zero to advanced level",
+    "Write clean, production-grade C Programming code for Typedef Aliasing",
+    "Debug edge cases and answer interview questions about Typedef Aliasing"
   ],
   "tags": [
-    "typedef",
-    "aliasing"
+    "typedef_aliasing",
+    "c",
+    "structures_unions"
   ]
 }

@@ -3,23 +3,22 @@
   "title": "Method Overloading",
   "technology": "Java",
   "module": "Methods & Signatures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Loops & Iteration"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Method Overloading.",
-    "Write error-free implementations utilizing Method Overloading.",
-    "Debug and optimize performance characteristics of Method Overloading."
+    "Understand Method Overloading from zero to advanced level",
+    "Write clean, production-grade Java code for Method Overloading",
+    "Debug edge cases and answer interview questions about Method Overloading"
   ],
   "tags": [
-    "method",
-    "overloading"
+    "method_overloading",
+    "java",
+    "methods_signatures"
   ]
 }

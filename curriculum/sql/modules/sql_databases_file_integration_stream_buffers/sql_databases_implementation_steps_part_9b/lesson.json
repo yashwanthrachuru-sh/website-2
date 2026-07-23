@@ -3,28 +3,22 @@
   "title": "SQL & Databases Implementation Steps Part 9B",
   "technology": "SQL & Databases",
   "module": "SQL & Databases File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: SQL & Databases Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of SQL & Databases Implementation Steps Part 9B.",
-    "Write error-free implementations utilizing SQL & Databases Implementation Steps Part 9B.",
-    "Debug and optimize performance characteristics of SQL & Databases Implementation Steps Part 9B."
+    "Understand SQL & Databases Implementation Steps Part 9B from zero to advanced level",
+    "Write clean, production-grade SQL & Databases code for SQL & Databases Implementation Steps Part 9B",
+    "Debug edge cases and answer interview questions about SQL & Databases Implementation Steps Part 9B"
   ],
   "tags": [
+    "sql_databases_implementation_steps_part_9b",
     "sql",
-    "&",
-    "databases",
-    "implementation",
-    "steps",
-    "part",
-    "9b"
+    "sql_databases_file_integration_stream_buffers"
   ]
 }

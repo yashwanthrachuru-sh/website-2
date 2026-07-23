@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "Explain the four pillars of OOP with examples.",
-      "answer": "Encapsulation: Bundle data and methods in a class; restrict direct field access (private in Java, _ convention in Python). Inheritance: A SavingsAccount extends BankAccount, inheriting balance management while adding interest functionality. Polymorphism: A Payment class reference can hold a CreditCardPayment or PayPalPayment — calling .process() invokes the correct subclass method. Abstraction: An abstract Shape class defines .area() without implementation; Circle and Rectangle provide concrete implementations.",
+      "question": "Explain Class Blueprints and its primary use case in Java.",
+      "answer": "Class Blueprints provides a structured mechanism to handle core application logic cleanly.",
       "difficulty": "Beginner"
     },
     {
-      "question": "What is the difference between a class and an object?",
-      "answer": "A class is a blueprint (template). An object is a specific instance of that blueprint with its own state. The BankAccount class defines the structure; new BankAccount(\"Alice\", ...) creates a specific instance with Alice's data. Many instances can be created from one class, each with independent state but shared method definitions (on the prototype/class).",
-      "difficulty": "Beginner"
-    },
-    {
-      "question": "What is the Liskov Substitution Principle?",
-      "answer": "LSP states that objects of a subclass must be usable wherever their parent class is expected, without breaking the program's correctness. If a function accepts a Shape, it must work correctly with Circle, Rectangle, and Triangle. Violating LSP: overriding a method to throw an exception or remove behavior the parent guaranteed. LSP is the \"L\" in SOLID principles.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "When should you use composition over inheritance?",
-      "answer": "Prefer composition when: (1) The relationship is \"has-a\" not \"is-a\" (a Car has-a Engine, not extends Engine). (2) You need flexibility to swap implementations at runtime. (3) You need behavior from multiple sources (Java doesn't allow multiple inheritance). (4) The hierarchy would become too deep and fragile. Composition is more flexible; inheritance is better for true specialization where the Liskov Substitution Principle clearly holds.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Class Blueprints queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "What are common mistakes developers make with Class Blueprints?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What are the performance characteristics of high-frequency Class Blueprints queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Class Blueprints queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Class Blueprints queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Class Blueprints queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Class Blueprints queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Java runtime optimize Class Blueprints under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

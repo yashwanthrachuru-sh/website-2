@@ -1,18 +1,11 @@
-{
-  "recommendations": [
-    {
-      "title": "Python Installation — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Python Installation for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Python Installation Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Python Installation patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "How to Install Python on Windows, macOS and Linux",
+    "video_id": "YYXdXT2l-Gg",
+    "url": "https://www.youtube.com/watch?v=YYXdXT2l-Gg",
+    "thumbnail": "https://img.youtube.com/vi/YYXdXT2l-Gg/maxresdefault.jpg",
+    "channel": "Programming with Mosh",
+    "duration": "4m",
+    "description": "Step-by-step Python installation walkthrough covering Windows, macOS, and Linux with PATH setup verification."
+  }
+]

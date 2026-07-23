@@ -3,27 +3,22 @@
   "title": "Competitive Programming Core Principles Part 7A",
   "technology": "Competitive Programming",
   "module": "Competitive Programming Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Competitive Programming Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Competitive Programming Core Principles Part 7A.",
-    "Write error-free implementations utilizing Competitive Programming Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of Competitive Programming Core Principles Part 7A."
+    "Understand Competitive Programming Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade Competitive Programming code for Competitive Programming Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about Competitive Programming Core Principles Part 7A"
   ],
   "tags": [
+    "competitive_programming_core_principles_part_7a",
     "competitive",
-    "programming",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "competitive_programming_advanced_abstractions_type_blueprints"
   ]
 }

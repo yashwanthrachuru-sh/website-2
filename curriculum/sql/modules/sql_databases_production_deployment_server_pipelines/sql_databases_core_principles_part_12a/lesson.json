@@ -3,28 +3,22 @@
   "title": "SQL & Databases Core Principles Part 12A",
   "technology": "SQL & Databases",
   "module": "SQL & Databases Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: SQL & Databases Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of SQL & Databases Core Principles Part 12A.",
-    "Write error-free implementations utilizing SQL & Databases Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of SQL & Databases Core Principles Part 12A."
+    "Understand SQL & Databases Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade SQL & Databases code for SQL & Databases Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about SQL & Databases Core Principles Part 12A"
   ],
   "tags": [
+    "sql_databases_core_principles_part_12a",
     "sql",
-    "&",
-    "databases",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "sql_databases_production_deployment_server_pipelines"
   ]
 }

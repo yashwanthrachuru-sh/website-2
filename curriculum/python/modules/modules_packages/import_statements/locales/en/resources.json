@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/import statements",
-      "type": "documentation",
-      "description": "Official reference for Import Statements in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Import Statements in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Import Statements with other developers"
+      "type": "official",
+      "title": "Python Import System",
+      "url": "https://docs.python.org/3/reference/import.html"
     }
   ]
 }

@@ -3,24 +3,22 @@
   "title": "Promise All Concurrency",
   "technology": "JavaScript",
   "module": "Promises & Chains",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Async Callbacks"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Promise All Concurrency.",
-    "Write error-free implementations utilizing Promise All Concurrency.",
-    "Debug and optimize performance characteristics of Promise All Concurrency."
+    "Understand Promise All Concurrency from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Promise All Concurrency",
+    "Debug edge cases and answer interview questions about Promise All Concurrency"
   ],
   "tags": [
-    "promise",
-    "all",
-    "concurrency"
+    "promise_all_concurrency",
+    "js",
+    "promises_chains"
   ]
 }

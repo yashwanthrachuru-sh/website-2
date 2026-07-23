@@ -63,14 +63,14 @@ function findLessonFolder(title, moduleName, roadmapId) {
 }
 
 /**
- * Resolves a curriculum component file path, checking locales/<lang>/ first
- * then falling back to the concept folder root (backward-compatible).
+ * Resolves a curriculum component file path, checking rootPath first,
+ * then falling back to locales/<lang>/ (backward-compatible).
  */
 function resolveComponentPath(folder, filename, lang = 'en') {
-  const localePath = path.join(folder, 'locales', lang, filename);
-  if (fs.existsSync(localePath)) return localePath;
   const rootPath = path.join(folder, filename);
   if (fs.existsSync(rootPath)) return rootPath;
+  const localePath = path.join(folder, 'locales', lang, filename);
+  if (fs.existsSync(localePath)) return localePath;
   return null; // caller decides how to handle missing
 }
 
@@ -1114,12 +1114,29 @@ ${q.explanation}
       code: beginner.examples && beginner.examples[0] ? beginner.examples[0].code.split('\n')[s.step - 1] || '// Step' : '// Step',
       explanation: s.desc
     }))) : null,
-    checkpointQuestions: quiz.mcqs ? JSON.stringify(quiz.mcqs.slice(0, 3).map(q => ({
-      question: q.question,
-      options: q.options,
-      correct: q.answer.charCodeAt(0) - 65,
-      explanation: q.explanation
-    }))) : null,
+    checkpointQuestions: quiz.mcqs ? JSON.stringify(quiz.mcqs.slice(0, 3).map(q => {
+      let correctIdx = 0;
+      if (typeof q.answer === 'number') {
+        correctIdx = q.answer;
+      } else if (typeof q.answer === 'string') {
+        if (q.answer.length === 1) {
+          const code = q.answer.toUpperCase().charCodeAt(0);
+          if (code >= 65 && code <= 90) {
+            correctIdx = code - 65;
+          } else {
+            correctIdx = parseInt(q.answer) || 0;
+          }
+        } else {
+          correctIdx = parseInt(q.answer) || 0;
+        }
+      }
+      return {
+        question: q.question,
+        options: q.options,
+        correct: correctIdx,
+        explanation: q.explanation
+      };
+    })) : null,
     gradualCode: beginner.examples && intermediate.examples ? JSON.stringify([
       { step: 1, code: beginner.examples[0]?.code || '', explanation: beginner.examples[0]?.explanation || '' },
       { step: 2, code: intermediate.examples[0]?.code || '', explanation: intermediate.examples[0]?.explanation || '' }

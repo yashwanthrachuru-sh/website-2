@@ -3,26 +3,22 @@
   "title": "Web Development Troubleshooting Part 10C",
   "technology": "Web Development",
   "module": "Web Development Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Web Development File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Web Development Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Web Development Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Web Development Troubleshooting Part 10C."
+    "Understand Web Development Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Web Development code for Web Development Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Web Development Troubleshooting Part 10C"
   ],
   "tags": [
-    "web",
-    "development",
-    "troubleshooting",
-    "part",
-    "10c"
+    "web_development_troubleshooting_part_10c",
+    "webdev",
+    "web_development_package_orchestration_system_modules"
   ]
 }

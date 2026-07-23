@@ -1,34 +1,14 @@
 {
-  "title": "Polymorphism — Quick Reference",
+  "printNote": "Polymorphism Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Polymorphism\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "ABC Interface",
+      "entries": [
+        {
+          "syntax": "class Base(ABC):\n    @abstractmethod\n    def run(self): pass",
+          "example": "class Child(Base): def run(self): pass",
+          "description": "Enforced interface contract"
+        }
       ]
     }
   ]

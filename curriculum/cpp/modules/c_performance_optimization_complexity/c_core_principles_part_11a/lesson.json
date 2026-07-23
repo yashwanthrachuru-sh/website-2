@@ -3,26 +3,22 @@
   "title": "C++ Core Principles Part 11A",
   "technology": "C++",
   "module": "C++ Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: C++ Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of C++ Core Principles Part 11A.",
-    "Write error-free implementations utilizing C++ Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of C++ Core Principles Part 11A."
+    "Understand C++ Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade C++ code for C++ Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about C++ Core Principles Part 11A"
   ],
   "tags": [
-    "c++",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "c_core_principles_part_11a",
+    "cpp",
+    "c_performance_optimization_complexity"
   ]
 }

@@ -3,23 +3,22 @@
   "title": "Dictionary Comprehensions",
   "technology": "Python",
   "module": "Dictionaries & Sets",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Lists & Tuples"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Dictionary Comprehensions.",
-    "Write error-free implementations utilizing Dictionary Comprehensions.",
-    "Debug and optimize performance characteristics of Dictionary Comprehensions."
+    "Understand Dictionary Comprehensions from zero to advanced level",
+    "Write clean, production-grade Python code for Dictionary Comprehensions",
+    "Debug edge cases and answer interview questions about Dictionary Comprehensions"
   ],
   "tags": [
-    "dictionary",
-    "comprehensions"
+    "dictionary_comprehensions",
+    "python",
+    "dictionaries_sets"
   ]
 }

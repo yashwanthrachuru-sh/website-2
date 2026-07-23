@@ -3,27 +3,22 @@
   "title": "Flutter Developer Implementation Steps Part 6B",
   "technology": "Flutter Developer",
   "module": "Flutter Developer Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Flutter Developer Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Flutter Developer Implementation Steps Part 6B.",
-    "Write error-free implementations utilizing Flutter Developer Implementation Steps Part 6B.",
-    "Debug and optimize performance characteristics of Flutter Developer Implementation Steps Part 6B."
+    "Understand Flutter Developer Implementation Steps Part 6B from zero to advanced level",
+    "Write clean, production-grade Flutter Developer code for Flutter Developer Implementation Steps Part 6B",
+    "Debug edge cases and answer interview questions about Flutter Developer Implementation Steps Part 6B"
   ],
   "tags": [
+    "flutter_developer_implementation_steps_part_6b",
     "flutter",
-    "developer",
-    "implementation",
-    "steps",
-    "part",
-    "6b"
+    "flutter_developer_data_collections_list_structures"
   ]
 }

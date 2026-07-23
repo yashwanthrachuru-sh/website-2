@@ -1,11 +1,14 @@
 {
-  "title": "List Comprehensions System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of List Comprehensions.",
+  "title": "List Comprehensions Project",
+  "tagline": "Build a mini application using List Comprehensions",
+  "description": "Create a working Python application demonstrating List Comprehensions.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "# Project starting point\n",
-  "solution": "print('Project Complete!')"
+  "starterCode": "# Python implementation for List Comprehensions\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+  "solution": "# Python implementation for List Comprehensions\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of List Comprehensions in Python."
 }

@@ -3,28 +3,22 @@
   "title": "Azure Cloud Engineer Core Principles Part 10A",
   "technology": "Azure Cloud Engineer",
   "module": "Azure Cloud Engineer Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Azure Cloud Engineer File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Azure Cloud Engineer Core Principles Part 10A.",
-    "Write error-free implementations utilizing Azure Cloud Engineer Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of Azure Cloud Engineer Core Principles Part 10A."
+    "Understand Azure Cloud Engineer Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade Azure Cloud Engineer code for Azure Cloud Engineer Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about Azure Cloud Engineer Core Principles Part 10A"
   ],
   "tags": [
+    "azure_cloud_engineer_core_principles_part_10a",
     "azure",
-    "cloud",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "azure_cloud_engineer_package_orchestration_system_modules"
   ]
 }

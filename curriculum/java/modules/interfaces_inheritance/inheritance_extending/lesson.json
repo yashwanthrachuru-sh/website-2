@@ -3,23 +3,22 @@
   "title": "Inheritance extending",
   "technology": "Java",
   "module": "Interfaces & Inheritance",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: OOP Classes & Objects"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Inheritance extending.",
-    "Write error-free implementations utilizing Inheritance extending.",
-    "Debug and optimize performance characteristics of Inheritance extending."
+    "Understand Inheritance extending from zero to advanced level",
+    "Write clean, production-grade Java code for Inheritance extending",
+    "Debug edge cases and answer interview questions about Inheritance extending"
   ],
   "tags": [
-    "inheritance",
-    "extending"
+    "inheritance_extending",
+    "java",
+    "interfaces_inheritance"
   ]
 }

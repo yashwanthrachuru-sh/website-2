@@ -3,25 +3,22 @@
   "title": "Error Catching try catch",
   "technology": "JavaScript",
   "module": "Async Await Syntax",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Promises & Chains"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Error Catching try catch.",
-    "Write error-free implementations utilizing Error Catching try catch.",
-    "Debug and optimize performance characteristics of Error Catching try catch."
+    "Understand Error Catching try catch from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Error Catching try catch",
+    "Debug edge cases and answer interview questions about Error Catching try catch"
   ],
   "tags": [
-    "error",
-    "catching",
-    "try",
-    "catch"
+    "error_catching_try_catch",
+    "js",
+    "async_await_syntax"
   ]
 }

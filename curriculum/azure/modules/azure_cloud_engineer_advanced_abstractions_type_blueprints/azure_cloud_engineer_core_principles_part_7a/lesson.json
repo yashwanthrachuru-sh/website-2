@@ -3,28 +3,22 @@
   "title": "Azure Cloud Engineer Core Principles Part 7A",
   "technology": "Azure Cloud Engineer",
   "module": "Azure Cloud Engineer Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Azure Cloud Engineer Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Azure Cloud Engineer Core Principles Part 7A.",
-    "Write error-free implementations utilizing Azure Cloud Engineer Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of Azure Cloud Engineer Core Principles Part 7A."
+    "Understand Azure Cloud Engineer Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade Azure Cloud Engineer code for Azure Cloud Engineer Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about Azure Cloud Engineer Core Principles Part 7A"
   ],
   "tags": [
+    "azure_cloud_engineer_core_principles_part_7a",
     "azure",
-    "cloud",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "azure_cloud_engineer_advanced_abstractions_type_blueprints"
   ]
 }

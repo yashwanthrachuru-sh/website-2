@@ -1,34 +1,14 @@
 {
-  "title": "Custom Exceptions — Quick Reference",
+  "printNote": "Custom Exception Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Custom Exceptions\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Custom Exception Syntax",
+      "entries": [
+        {
+          "syntax": "class CustomError(Exception):\n    pass",
+          "example": "class UserNotFoundError(Exception): pass",
+          "description": "Domain-specific exception class"
+        }
       ]
     }
   ]

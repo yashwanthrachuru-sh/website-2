@@ -3,24 +3,22 @@
   "title": "Standard For Loops",
   "technology": "JavaScript",
   "module": "Iteration & Loops",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Logic & Conditionals"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Standard For Loops.",
-    "Write error-free implementations utilizing Standard For Loops.",
-    "Debug and optimize performance characteristics of Standard For Loops."
+    "Understand Standard For Loops from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Standard For Loops",
+    "Debug edge cases and answer interview questions about Standard For Loops"
   ],
   "tags": [
-    "standard",
-    "for",
-    "loops"
+    "standard_for_loops",
+    "js",
+    "iteration_loops"
   ]
 }

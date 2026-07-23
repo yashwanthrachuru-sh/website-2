@@ -3,26 +3,22 @@
   "title": "Docker Containers Troubleshooting Part 5C",
   "technology": "Docker Containers",
   "module": "Docker Containers Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Docker Containers Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Troubleshooting Part 5C.",
-    "Write error-free implementations utilizing Docker Containers Troubleshooting Part 5C.",
-    "Debug and optimize performance characteristics of Docker Containers Troubleshooting Part 5C."
+    "Understand Docker Containers Troubleshooting Part 5C from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Troubleshooting Part 5C",
+    "Debug edge cases and answer interview questions about Docker Containers Troubleshooting Part 5C"
   ],
   "tags": [
+    "docker_containers_troubleshooting_part_5c",
     "docker",
-    "containers",
-    "troubleshooting",
-    "part",
-    "5c"
+    "docker_containers_modular_functions_signature_scopes"
   ]
 }

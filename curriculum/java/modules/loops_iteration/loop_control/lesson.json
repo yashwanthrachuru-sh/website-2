@@ -3,23 +3,22 @@
   "title": "Loop Control",
   "technology": "Java",
   "module": "Loops & Iteration",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Control Statements"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Loop Control.",
-    "Write error-free implementations utilizing Loop Control.",
-    "Debug and optimize performance characteristics of Loop Control."
+    "Understand Loop Control from zero to advanced level",
+    "Write clean, production-grade Java code for Loop Control",
+    "Debug edge cases and answer interview questions about Loop Control"
   ],
   "tags": [
-    "loop",
-    "control"
+    "loop_control",
+    "java",
+    "loops_iteration"
   ]
 }

@@ -1,22 +1,17 @@
 {
-  "syntax": "## React Cheat Sheet\n\n### Component (Functional)\n```jsx\nfunction Button({ text, onClick, disabled = false }) {\n  return (\n    <button onClick={onClick} disabled={disabled}\n      className=\"btn\">\n      {text}\n    </button>\n  );\n}\n```\n\n### State — useState\n```jsx\nconst [count, setCount] = useState(0);\nsetCount(count + 1);        // update\nsetCount(prev => prev + 1); // safer with closures\n```\n\n### Side Effects — useEffect\n```jsx\n// Runs after every render\nuseEffect(() => { ... });\n// Runs once on mount\nuseEffect(() => { ... }, []);\n// Runs when userId changes\nuseEffect(() => { fetchUser(userId); }, [userId]);\n// Cleanup (subscription, timer, event listener)\nuseEffect(() => {\n  const id = setInterval(tick, 1000);\n  return () => clearInterval(id); // cleanup\n}, []);\n```\n\n### Context — shared state\n```jsx\nconst ThemeContext = createContext('light');\n// Provider\n<ThemeContext.Provider value=\"dark\">\n  <App />\n</ThemeContext.Provider>\n// Consumer\nconst theme = useContext(ThemeContext);\n```\n\n### Common Patterns\n- **Conditional render**: `{isLoggedIn && <Dashboard />}`\n- **List render**: `{items.map(i => <Item key={i.id} {...i} />)}`\n- **Lifting state**: Move state to nearest common ancestor\n- **Controlled input**: `<input value={val} onChange={e => setVal(e.target.value)} />`",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Goto Statement Alert Cheat Sheet",
+  "printNote": "Quick reference for Goto Statement Alert in C Programming.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// C/C++ implementation for Goto Statement Alert",
+          "example": "// C/C++ implementation for Goto Statement Alert\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Goto Statement Alert\");\n    return 0;\n}",
+          "description": "Basic syntax for Goto Statement Alert",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

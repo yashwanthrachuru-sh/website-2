@@ -1,31 +1,19 @@
 {
-  "officialDocs": "https://docs.microsoft.com/en-us/ OR https://docs.python.org/3/",
-  "books": [
+  "links": [
     {
-      "title": "Clean Code",
-      "author": "Robert C. Martin"
+      "title": "Official Python Documentation — Data Model",
+      "url": "https://docs.python.org/3/reference/datamodel.html",
+      "type": "official_docs"
     },
     {
-      "title": "Design Patterns",
-      "author": "Gang of Four"
-    }
-  ],
-  "articles": [
+      "title": "PEP 484 — Type Hints Specification",
+      "url": "https://peps.python.org/pep-0484/",
+      "type": "specification"
+    },
     {
-      "title": "Understanding Dynamic Typing in Python Internals",
-      "url": "https://medium.com"
+      "title": "Real Python — Python Type Checking Guide",
+      "url": "https://realpython.com/python-type-checking/",
+      "type": "tutorial"
     }
-  ],
-  "references": [
-    "MDN Web Docs",
-    "Stack Overflow Guide"
-  ],
-  "externalTools": [
-    "Visual Studio Code",
-    "Git"
-  ],
-  "practiceWebsites": [
-    "LeetCode",
-    "HackerRank"
   ]
 }

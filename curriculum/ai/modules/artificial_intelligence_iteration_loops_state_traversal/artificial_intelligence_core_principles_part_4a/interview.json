@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between for...of and for...in in JavaScript?",
-      "answer": "for...of iterates over the VALUES of any iterable (array items, string characters, Map entries, Set values). for...in iterates over the ENUMERABLE PROPERTY KEYS of an object (including inherited ones). Use for...of for arrays and collections; use for...in for plain objects when you need keys. Never use for...in on arrays — the order is not guaranteed and it picks up prototype properties.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What is the time complexity of a nested loop?",
-      "answer": "A single loop over n items is O(n). A nested loop (loop inside a loop, both over n items) is O(n²). Three nested loops = O(n³). Recognizing this helps identify performance bottlenecks — an O(n²) algorithm on 1,000 items performs 1,000,000 operations; on 1,000,000 items it performs 10¹² operations (unusable). Always consider whether nested loops can be replaced with hash maps for O(n) lookups.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "When would you use a while loop instead of a for loop?",
-      "answer": "Use while when the number of iterations is unknown at the start: waiting for a network response, reading a file until EOF, retrying until success, implementing a game loop, or converging to a mathematical result. Use for when you know the collection or range in advance. If you find yourself writing for(let i = 0; ...) with complex conditions, consider refactoring to while for clarity.",
+      "question": "Explain Artificial Intelligence Core Principles Part 4A and its primary use case in Artificial Intelligence.",
+      "answer": "Artificial Intelligence Core Principles Part 4A provides a structured mechanism to handle core application logic cleanly.",
       "difficulty": "Beginner"
     },
     {
-      "question": "What is an infinite loop? Give an example of an intentional one.",
-      "answer": "An infinite loop runs forever because its condition never becomes false. Unintentional infinite loops are bugs. Intentional ones are used in: web servers (while(true) { accept_connection(); }), event loops (the JavaScript engine's loop), game loops, OS kernel loops. The loop is exited via break, system signal, or exception. In Python: while True: ... is the standard pattern for servers and CLI programs.",
-      "difficulty": "Beginner"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Artificial Intelligence Core Principles Part 4A queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "What are common mistakes developers make with Artificial Intelligence Core Principles Part 4A?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What are the performance characteristics of high-frequency Artificial Intelligence Core Principles Part 4A queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Artificial Intelligence Core Principles Part 4A queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Artificial Intelligence Core Principles Part 4A queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Artificial Intelligence Core Principles Part 4A queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Artificial Intelligence Core Principles Part 4A queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Artificial Intelligence runtime optimize Artificial Intelligence Core Principles Part 4A under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

@@ -3,24 +3,22 @@
   "title": "Path Mapping Configs",
   "technology": "TypeScript",
   "module": "Modules Namespaces",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Type Assertions Casting"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Path Mapping Configs.",
-    "Write error-free implementations utilizing Path Mapping Configs.",
-    "Debug and optimize performance characteristics of Path Mapping Configs."
+    "Understand Path Mapping Configs from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Path Mapping Configs",
+    "Debug edge cases and answer interview questions about Path Mapping Configs"
   ],
   "tags": [
-    "path",
-    "mapping",
-    "configs"
+    "path_mapping_configs",
+    "typescript",
+    "modules_namespaces"
   ]
 }

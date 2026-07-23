@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Custom Exceptions becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Custom exceptions can carry extra attributes (e.g., error codes, payload state, timestamps) by overriding `__init__()`.",
+  "internalImplementation": "Custom exceptions inherit standard tuple `args` behavior from `BaseException`.",
   "examples": [
     {
-      "title": "Getting Started with Custom Exceptions",
-      "code": "print(\"Learning Custom Exceptions\")",
-      "explanation": "Basic introduction to Custom Exceptions.",
-      "language": "python"
+      "code": "class ValidationError(Exception):\n    def __init__(self, message, field):\n        super().__init__(message)\n        self.field = field\n\ntry:\n    raise ValidationError('Email invalid', field='email')\nexcept ValidationError as e:\n    print(f'Field error on {e.field}: {e}')",
+      "explanation": "Attaches `field` attribute to exception instance."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A custom exceptions implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "O(1) class instantiation.",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Inheriting from BaseException by mistake.",
+    "incorrectCode": "class MyError(BaseException): pass",
+    "correctCode": "class MyError(Exception): pass"
+  },
+  "bestPractices": [
+    "Inherit from `Exception` (not `BaseException`).",
+    "Define a base `AppException` for your package."
+  ]
 }

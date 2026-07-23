@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/sqlite integration",
-      "type": "documentation",
-      "description": "Official reference for SQLite Integration in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers SQLite Integration in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss SQLite Integration with other developers"
+      "type": "official",
+      "title": "Python sqlite3 Module",
+      "url": "https://docs.python.org/3/library/sqlite3.html"
     }
   ]
 }

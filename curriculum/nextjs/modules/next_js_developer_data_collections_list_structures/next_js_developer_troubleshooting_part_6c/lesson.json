@@ -3,26 +3,22 @@
   "title": "Next.js Developer Troubleshooting Part 6C",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Next.js Developer Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 6C."
+    "Understand Next.js Developer Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about Next.js Developer Troubleshooting Part 6C"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "troubleshooting",
-    "part",
-    "6c"
+    "next_js_developer_troubleshooting_part_6c",
+    "nextjs",
+    "next_js_developer_data_collections_list_structures"
   ]
 }

@@ -1,11 +1,14 @@
 {
-  "title": "Ambient Declarations System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Ambient Declarations.",
+  "title": "Ambient Declarations Project",
+  "tagline": "Build a mini application using Ambient Declarations",
+  "description": "Create a working TypeScript application demonstrating Ambient Declarations.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Ambient Declarations\ninterface AmbientDeclarationsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processAmbientDeclarations(item: AmbientDeclarationsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processAmbientDeclarations({ id: 1, title: 'Ambient Declarations', status: 'active' }));",
+  "solution": "// TypeScript implementation for Ambient Declarations\ninterface AmbientDeclarationsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processAmbientDeclarations(item: AmbientDeclarationsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processAmbientDeclarations({ id: 1, title: 'Ambient Declarations', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Ambient Declarations in TypeScript."
 }

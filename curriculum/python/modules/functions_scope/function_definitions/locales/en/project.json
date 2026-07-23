@@ -1,26 +1,21 @@
 {
-  "title": "Project: Function Library Toolkit",
-  "tagline": "Build a collection of reusable utility functions.",
-  "description": "Create a library of utility functions: array operations, string helpers, math utilities, and a compose function — all following best practices.",
-  "requirements": [
-    "Implement 10+ utility functions",
-    "Each function does one thing",
-    "Include docstrings/comments",
-    "Handle edge cases",
-    "Export as a module"
-  ],
+  "title": "Modular Unit Conversion Suite",
+  "tagline": "Clean function-oriented utility library",
+  "description": "Build a modular conversion toolkit for length, temperature, and weight.",
   "learningGoals": [
-    "Master function design",
-    "Practice pure functions",
-    "Build a reusable module"
+    "Function encapsulation & modularity"
   ],
-  "starterCode": "# utils.py - Utility Function Library\n\ndef clamp(value, low, high):\n    \"\"\"Clamp value between low and high.\"\"\"\n    pass\n\ndef chunk(arr, size):\n    \"\"\"Split array into chunks of given size.\"\"\"\n    pass\n\ndef unique(arr):\n    \"\"\"Remove duplicates from array.\"\"\"\n    pass\n\n# Add 7 more functions...",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "c_to_f",
+    "f_to_c",
+    "km_to_miles",
+    "miles_to_km"
+  ],
+  "starterCode": "# Define converter functions",
+  "solution": "def c_to_f(c): return (c * 9/5) + 32\ndef f_to_c(f): return (f - 32) * 5/9\ndef km_to_miles(km): return km * 0.621371\ndef miles_to_km(m): return m / 0.621371",
+  "solutionExpl": "Encapsulates mathematical conversions into clean single-responsibility functions.",
+  "expectedOutput": "32.0",
   "extensions": [
-    "Add TypeScript type annotations",
-    "Write unit tests",
-    "Publish as a package"
+    "Add generic converter router"
   ]
 }

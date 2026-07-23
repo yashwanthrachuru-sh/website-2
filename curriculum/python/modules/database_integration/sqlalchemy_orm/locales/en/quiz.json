@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is SQLAlchemy ORM?",
+      "question": "What design pattern does the SQLAlchemy Session use to track model changes?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "Unit of Work",
+        "Singleton",
+        "Factory",
+        "Observer"
       ],
       "answer": 0,
-      "explanation": "SQLAlchemy ORM is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does SQLAlchemy ORM exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "The Session implements Unit of Work, tracking modifications and flushing them together.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: SQLAlchemy ORM is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding SQLAlchemy ORM improves code quality.",
+      "question": "True or False: `joinedload()` helps resolve the N+1 query problem in ORMs.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Eagerly loads relationships using SQL JOINs."
     }
   ]
 }

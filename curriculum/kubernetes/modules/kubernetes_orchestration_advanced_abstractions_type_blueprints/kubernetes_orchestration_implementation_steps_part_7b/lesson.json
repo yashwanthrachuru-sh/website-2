@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Implementation Steps Part 7B",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Implementation Steps Part 7B.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Implementation Steps Part 7B.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Implementation Steps Part 7B."
+    "Understand Kubernetes Orchestration Implementation Steps Part 7B from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Implementation Steps Part 7B",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Implementation Steps Part 7B"
   ],
   "tags": [
+    "kubernetes_orchestration_implementation_steps_part_7b",
     "kubernetes",
-    "orchestration",
-    "implementation",
-    "steps",
-    "part",
-    "7b"
+    "kubernetes_orchestration_advanced_abstractions_type_blueprints"
   ]
 }

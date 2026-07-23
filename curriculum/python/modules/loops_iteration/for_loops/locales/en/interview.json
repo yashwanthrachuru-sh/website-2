@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "When would you use a for loop vs a while loop?",
-      "answer": "For is best when you know the iteration count in advance (iterating an array, counting). While is for condition-based repetition (reading a file until EOF, waiting for a state change). Every for can be written as while, but not vice versa.",
-      "followUp": "Can you write a for loop as a while loop?"
-    },
-    {
-      "question": "What is an off-by-one error and how do you prevent it?",
-      "answer": "A loop runs one too many or too few times. Causes: using <= instead of <, starting at 1 instead of 0. Prevent by using consistent conventions (start at 0, use <), testing boundaries (empty, single-element), and using for-of/enhanced loops that eliminate index management.",
-      "followUp": "How do off-by-one errors affect binary search?"
-    },
-    {
-      "question": "How do you iterate a very large dataset without memory issues?",
-      "answer": "Use lazy iteration — generators/streams that yield one item at a time. In Python, generators with yield. In Node, streams or async iterators. For databases, cursor-based pagination. Never load the entire dataset into RAM.",
-      "followUp": "How do you handle mid-iteration errors?"
+      "question": "What happens under the hood when a `for` loop runs in Python?",
+      "answer": "Python calls `iter(obj)` to get an iterator object. In each iteration, it calls `next(iterator)`. When the sequence ends, `next()` raises a `StopIteration` exception, which the `for` loop catches silently to exit.",
+      "level": "intermediate"
     }
   ]
 }

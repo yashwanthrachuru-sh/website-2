@@ -1,24 +1,19 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/running python scripts",
-      "type": "documentation",
-      "description": "Official reference for Running Python Scripts in Python"
-    }
-  ],
-  "books": [
+      "type": "official",
+      "title": "Python REPL — Python Docs",
+      "url": "https://docs.python.org/3/tutorial/interpreter.html"
+    },
     {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Running Python Scripts in depth with practical examples"
-    }
-  ],
-  "communities": [
+      "type": "official",
+      "title": "sys.argv — Python Docs",
+      "url": "https://docs.python.org/3/library/sys.html#sys.argv"
+    },
     {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Running Python Scripts with other developers"
+      "type": "official",
+      "title": "argparse — Command-Line Parser",
+      "url": "https://docs.python.org/3/library/argparse.html"
     }
   ]
 }

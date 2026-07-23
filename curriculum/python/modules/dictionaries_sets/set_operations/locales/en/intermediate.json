@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Set Operations becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Python sets are implemented as hash tables without values (keys only). Membership testing (`x in set`) is O(1) average time complexity, compared to O(N) linear search for lists.",
+  "internalImplementation": "Frozenset (`frozenset()`) is the immutable, hashable variant of a set, allowing sets to be stored inside other sets or used as dict keys.",
   "examples": [
     {
-      "title": "Getting Started with Set Operations",
-      "code": "print(\"Learning Set Operations\")",
-      "explanation": "Basic introduction to Set Operations.",
-      "language": "python"
+      "code": "# Set Operations Comparison Methods vs Operators\ns1 = {1, 2}\ns2 = {2, 3}\nprint(s1.union(s2))        # {1, 2, 3} (accepts any iterable)\nprint(s1.intersection(s2)) # {2}\nprint(s1.difference(s2))   # {1}\nprint(s1.symmetric_difference(s2)) # {1, 3}",
+      "explanation": "Method versions (e.g. `.union()`) accept any iterable as argument, unlike bitwise operators which require sets on both sides."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A set operations implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Add, remove, in-check are O(1) average. Set operations (union/intersection) are O(len(s1) + len(s2)).",
+    "spaceComplexity": "O(N)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Creating empty dict instead of empty set.",
+    "incorrectCode": "s = {}\ns.add(1)  # AttributeError: 'dict' object has no attribute 'add'",
+    "correctCode": "s = set()\ns.add(1)  # Works correctly"
+  },
+  "bestPractices": [
+    "Use sets when checking membership (`item in collection`) frequently in large datasets.",
+    "Use `frozenset()` when immutable set data is needed for dict keys."
+  ]
 }

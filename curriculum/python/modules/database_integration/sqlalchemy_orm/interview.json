@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between WHERE and HAVING in SQL?",
-      "answer": "WHERE filters rows BEFORE aggregation (GROUP BY). It applies to individual rows and cannot reference aggregate functions. HAVING filters groups AFTER aggregation — it can reference SUM(), COUNT(), AVG(), etc. Rule: WHERE operates on raw data, HAVING operates on grouped data. You can use both in the same query: WHERE filters the rows that participate in groups, HAVING filters which groups appear in results.",
+      "question": "Explain SQLAlchemy ORM and its primary use case in Python.",
+      "answer": "SQLAlchemy ORM provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common mistakes developers make with SQLAlchemy ORM?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "Explain the difference between INNER JOIN, LEFT JOIN, and FULL OUTER JOIN.",
-      "answer": "INNER JOIN: returns only matching rows from both tables. Unmatched rows from either table are excluded. LEFT JOIN: returns all rows from the left table; matching rows from the right table, and NULL for non-matches. Use LEFT JOIN to find \"customers who have no orders.\" FULL OUTER JOIN: all rows from both tables with NULLs where no match exists.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What is a database index? When should you add one?",
-      "answer": "An index is a data structure (usually a B-tree) that allows the database to find rows without scanning the entire table. Like a book index. Add indexes on: (1) Columns used frequently in WHERE, JOIN ON, ORDER BY, and GROUP BY. (2) Foreign key columns (most DBs don't auto-index these). (3) Columns used in unique constraints. Avoid over-indexing: indexes slow down INSERT/UPDATE/DELETE because the index must be updated. Never index small tables or low-cardinality columns (columns with few distinct values like boolean).",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are ACID properties in database transactions?",
-      "answer": "Atomicity: all operations in a transaction succeed or none do (no partial completion). Consistency: the database moves between valid states (constraints are never violated). Isolation: concurrent transactions see consistent state — one transaction's uncommitted changes are invisible to others (isolation levels: read uncommitted, read committed, repeatable read, serializable). Durability: once committed, data survives crashes (written to persistent storage, WAL logs).",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency SQLAlchemy ORM queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency SQLAlchemy ORM queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency SQLAlchemy ORM queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency SQLAlchemy ORM queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency SQLAlchemy ORM queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency SQLAlchemy ORM queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Python runtime optimize SQLAlchemy ORM under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

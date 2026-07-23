@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Virtual Environments — Basic Practice",
-    "description": "Write a basic virtual environments implementation.",
-    "starterCode": "def basic_virtual_environments():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Check Active Venv",
+    "description": "Write function returning True if running inside a venv.",
+    "starterCode": "import sys\ndef is_venv(): pass",
+    "expectedOutput": "True",
+    "solution": "import sys\ndef is_venv(): return sys.prefix != sys.base_prefix",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Check sys.prefix != sys.base_prefix"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Virtual Environments — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Parse Requirements File",
+    "description": "Parse `requirements.txt` content into dict `{pkg: version}`.",
+    "starterCode": "def parse_reqs(text):\n    pass",
+    "expectedOutput": "{'flask': '2.0.1'}",
+    "solution": "def parse_reqs(text):\n    reqs = {}\n    for line in text.splitlines():\n        if '==' in line:\n            p, v = line.strip().split('==')\n            reqs[p] = v\n    return reqs",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Split on =="
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Virtual Environments — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Generate Gitignore Checker",
+    "description": "Verify `.venv` entry exists in `.gitignore` text.",
+    "starterCode": "def checks_gitignore(text):\n    pass",
+    "expectedOutput": "True",
+    "solution": "def checks_gitignore(text):\n    return any(line.strip().startswith('.venv') or line.strip() == 'venv' for line in text.splitlines())",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Check for .venv or venv line"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Virtual Environments",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Gitignore Venv Entry",
+    "description": "Fix missing venv entry in gitignore list.",
+    "buggyCode": "git_entries = ['__pycache__/', '*.pyc']",
+    "fixedCode": "git_entries = ['__pycache__/', '*.pyc', '.venv/']",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Missing `.venv/` entry causes environment directory to be tracked by Git."
     ]
   }
 }

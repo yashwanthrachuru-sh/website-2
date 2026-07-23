@@ -3,27 +3,22 @@
   "title": "Data Engineering Implementation Steps Part 5B",
   "technology": "Data Engineering",
   "module": "Data Engineering Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Implementation Steps Part 5B.",
-    "Write error-free implementations utilizing Data Engineering Implementation Steps Part 5B.",
-    "Debug and optimize performance characteristics of Data Engineering Implementation Steps Part 5B."
+    "Understand Data Engineering Implementation Steps Part 5B from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Implementation Steps Part 5B",
+    "Debug edge cases and answer interview questions about Data Engineering Implementation Steps Part 5B"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "implementation",
-    "steps",
-    "part",
-    "5b"
+    "data_engineering_implementation_steps_part_5b",
+    "data-engineering",
+    "data_engineering_modular_functions_signature_scopes"
   ]
 }

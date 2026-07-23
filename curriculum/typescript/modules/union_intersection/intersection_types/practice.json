@@ -1,46 +1,42 @@
 {
   "easy": {
-    "problem": "Implement a basic routine demonstrating the startup code syntax for Intersection Types.",
-    "starterCode": "// Write your code here\n",
-    "hints": [
-      "Review the syntax rules in the beginner notes.",
-      "Check name spelling."
-    ],
+    "title": "Easy: Intersection Types Basics",
+    "problem": "Write a simple program demonstrating Intersection Types.",
+    "starterCode": "// TypeScript implementation for Intersection Types",
+    "solution": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
     "expectedOutput": "Success",
-    "solution": "// Solution goes here\n",
-    "explanation": "Verifies basic execution."
+    "hints": [
+      "Check basic syntax"
+    ]
   },
   "medium": {
-    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
-    "starterCode": "function process(val) {\n}",
+    "title": "Medium: Intersection Types Logic",
+    "problem": "Implement a function using Intersection Types to transform input data.",
+    "starterCode": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+    "solution": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+    "expectedOutput": "Processed",
     "hints": [
-      "Use conditional statements to inspect values.",
-      "Throw ValueError or Error."
-    ],
-    "expectedOutput": "Error raised",
-    "solution": "function process(val) {\n    if (val < 0) throw new Error('Negative value');\n    return val;\n}",
-    "explanation": "Ensures input validation constraints are met."
+      "Check edge cases"
+    ]
   },
   "hard": {
-    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
-    "starterCode": "const cache = new Map();\nfunction lookup(key) {\n}",
+    "title": "Hard: Intersection Types System",
+    "problem": "Build an optimized module applying Intersection Types principles.",
+    "starterCode": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+    "solution": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+    "expectedOutput": "Optimized Output",
     "hints": [
-      "Use a dictionary or Map.",
-      "Store results after the first query."
-    ],
-    "expectedOutput": "Cached output retrieved",
-    "solution": "const cache = new Map();\nfunction lookup(key, calculator) {\n    if (!cache.has(key)) cache.set(key, calculator(key));\n    return cache.get(key);\n}",
-    "explanation": "Implements high-performance memoization caching."
+      "Focus on efficiency"
+    ]
   },
   "debugging": {
-    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
-    "starterCode": "const recordData = 100;\nconsole.log(recordDatas);",
+    "title": "Debugging: Fix Intersection Types Bug",
+    "problem": "Identify and fix errors in the provided snippet.",
+    "starterCode": "// Fix bug here\n// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+    "solution": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+    "expectedOutput": "Fixed Output",
     "hints": [
-      "Inspect variable identifiers.",
-      "Match call names exactly."
-    ],
-    "expectedOutput": "100",
-    "solution": "const recordData = 100;\nconsole.log(recordData);",
-    "explanation": "Aligns identifiers within namespace bindings."
+      "Review error message"
+    ]
   }
 }

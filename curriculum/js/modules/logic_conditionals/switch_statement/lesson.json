@@ -3,23 +3,22 @@
   "title": "Switch Statement",
   "technology": "JavaScript",
   "module": "Logic & Conditionals",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Types & Coercion"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Switch Statement.",
-    "Write error-free implementations utilizing Switch Statement.",
-    "Debug and optimize performance characteristics of Switch Statement."
+    "Understand Switch Statement from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Switch Statement",
+    "Debug edge cases and answer interview questions about Switch Statement"
   ],
   "tags": [
-    "switch",
-    "statement"
+    "switch_statement",
+    "js",
+    "logic_conditionals"
   ]
 }

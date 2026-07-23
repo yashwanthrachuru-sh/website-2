@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Core Principles Part 4A",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Core Principles Part 4A.",
-    "Write error-free implementations utilizing AWS Cloud Architect Core Principles Part 4A.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Core Principles Part 4A."
+    "Understand AWS Cloud Architect Core Principles Part 4A from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Core Principles Part 4A",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Core Principles Part 4A"
   ],
   "tags": [
+    "aws_cloud_architect_core_principles_part_4a",
     "aws",
-    "cloud",
-    "architect",
-    "core",
-    "principles",
-    "part",
-    "4a"
+    "aws_cloud_architect_iteration_loops_state_traversal"
   ]
 }

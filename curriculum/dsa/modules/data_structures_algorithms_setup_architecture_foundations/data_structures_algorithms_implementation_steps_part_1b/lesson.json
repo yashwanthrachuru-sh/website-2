@@ -3,29 +3,22 @@
   "title": "Data Structures & Algorithms Implementation Steps Part 1B",
   "technology": "Data Structures & Algorithms",
   "module": "Data Structures & Algorithms Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Structures & Algorithms Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing Data Structures & Algorithms Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of Data Structures & Algorithms Implementation Steps Part 1B."
+    "Understand Data Structures & Algorithms Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade Data Structures & Algorithms code for Data Structures & Algorithms Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about Data Structures & Algorithms Implementation Steps Part 1B"
   ],
   "tags": [
-    "data",
-    "structures",
-    "&",
-    "algorithms",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "data_structures_algorithms_implementation_steps_part_1b",
+    "dsa",
+    "data_structures_algorithms_setup_architecture_foundations"
   ]
 }

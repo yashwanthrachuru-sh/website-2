@@ -1,45 +1,59 @@
 {
-  "motivation": "Select routes using numeric or character codes.",
-  "whyExists": "Without conditionals, every program would execute identically regardless of input. Conditionals enable **business logic**: charge a different tax rate based on country, show different UI based on user role, retry a network request only if it failed, validate form input before sending. Every meaningful program contains conditional logic — it is the foundation of decision-making in software.",
-  "realWorldAnalogy": "Imagine you're playing a video game. If you have enough coins, the door opens. If you don't, it stays locked. That's a conditional!\n\nIn programming: **if** something is true → do this. **else** → do that.\n\nExample: if your age is over 18, you can vote. Otherwise, you cannot. The computer checks the condition (age > 18) and picks the right path.",
-  "simpleExplanation": "To learn Switch Case Routing from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Switch Case Routing defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Switch Case Routing] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the c syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how Switch Case Routing works under the hood in C Programming?",
+  "whyExists": "Switch Case Routing is a core building block in C Programming. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of Switch Case Routing like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, Switch Case Routing provides a clear, standardized way to execute logic in C Programming. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for Switch Case Routing:\n\n```c\n// C/C++ implementation for Switch Case Routing\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Switch Case Routing\");\n    return 0;\n}\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// C/C++ implementation for Switch Case Routing",
+      "desc": "Initialize and configure Switch Case Routing parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "#include <iostream>",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "}",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "switch_case_routing_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "switch_case_routing_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running Switch Case Routing...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic Switch Case Routing Example",
+      "code": "// C/C++ implementation for Switch Case Routing\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Switch Case Routing\");\n    return 0;\n}",
+      "explanation": "Demonstrates basic usage of Switch Case Routing in C Programming."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in Switch Case Routing",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// C/C++ implementation for Switch Case Routing",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

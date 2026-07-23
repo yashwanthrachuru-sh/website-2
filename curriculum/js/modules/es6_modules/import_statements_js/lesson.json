@@ -3,24 +3,22 @@
   "title": "Import Statements JS",
   "technology": "JavaScript",
   "module": "ES6 Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Fetch API integration"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Import Statements JS.",
-    "Write error-free implementations utilizing Import Statements JS.",
-    "Debug and optimize performance characteristics of Import Statements JS."
+    "Understand Import Statements JS from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Import Statements JS",
+    "Debug edge cases and answer interview questions about Import Statements JS"
   ],
   "tags": [
-    "import",
-    "statements",
-    "js"
+    "import_statements_js",
+    "js",
+    "es6_modules"
   ]
 }

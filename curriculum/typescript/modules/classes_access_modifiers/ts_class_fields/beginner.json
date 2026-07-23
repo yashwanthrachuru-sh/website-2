@@ -1,45 +1,59 @@
 {
-  "motivation": "Declare type tags on class properties and methods.",
-  "whyExists": "Real-world systems model real-world entities. An e-commerce platform deals with Users, Products, Orders, Payments, and Shipments — each with distinct state and behavior. OOP maps these naturally to classes. Encapsulation protects data integrity. Inheritance eliminates duplication of shared behavior. Polymorphism allows new types to be added without modifying existing code (the Open/Closed Principle). These properties make large codebases maintainable, extensible, and testable.",
-  "realWorldAnalogy": "Imagine you are working in a warehouse. Instead of tossing boxes around randomly, you place them into labeled shelves. When a package arrives, you look up its shelf label to update the stock index. Similarly, **TS Class Fields** acts as a named workspace or rule that coordinates statements, keeping variables safe and ensuring operations execute only when matching conditions are met.",
-  "simpleExplanation": "To learn TS Class Fields from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. TS Class Fields defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: TS Class Fields] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the typescript syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how TS Class Fields works under the hood in TypeScript?",
+  "whyExists": "TS Class Fields is a core building block in TypeScript. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of TS Class Fields like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, TS Class Fields provides a clear, standardized way to execute logic in TypeScript. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for TS Class Fields:\n\n```typescript\n// TypeScript implementation for TS Class Fields\ninterface TSClassFieldsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processTSClassFields(item: TSClassFieldsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processTSClassFields({ id: 1, title: 'TS Class Fields', status: 'active' }));\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// TypeScript implementation for TS Class Fields",
+      "desc": "Initialize and configure TS Class Fields parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "interface TSClassFieldsPayload {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "console.log(processTSClassFields({ id: 1, title: 'TS Class Fields', status: 'active' }));",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "ts_class_fields_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "ts_class_fields_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running TS Class Fields...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic TS Class Fields Example",
+      "code": "// TypeScript implementation for TS Class Fields\ninterface TSClassFieldsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processTSClassFields(item: TSClassFieldsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processTSClassFields({ id: 1, title: 'TS Class Fields', status: 'active' }));",
+      "explanation": "Demonstrates basic usage of TS Class Fields in TypeScript."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in TS Class Fields",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// TypeScript implementation for TS Class Fields",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

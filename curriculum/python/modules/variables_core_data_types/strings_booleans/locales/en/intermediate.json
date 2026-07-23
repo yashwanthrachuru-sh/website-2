@@ -1,43 +1,28 @@
 {
-  "deeperExplanation": "Strings & Booleans becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "In Python, strings are sequence objects of immutable Unicode code points. CPython uses an adaptive internal representation (PEP 393): ASCII-only strings take 1 byte per character, Latin-1 takes 1 byte, UCS-2 takes 2 bytes, and UCS-4 takes 4 bytes. This optimizes memory footprint automatically.\n\nBooleans in Python are a strict subclass of integers (`bool` inherits from `int`). `True` has numerical value `1` and `False` has numerical value `0`. Truthiness evaluation applies to all Python objects via the `__bool__()` or `__len__()` dunder methods.",
+  "internalImplementation": "Because strings are immutable, string concatenation in a loop (e.g., `s += char`) can create O(N^2) memory allocations. CPython includes an optimization for `s += char` when `s` has a reference count of 1, but the idiomatic and guaranteed O(N) pattern is appending to a list and calling `''.join(list)`.",
   "examples": [
     {
-      "title": "Getting Started with Strings & Booleans",
-      "code": "print(\"Learning Strings & Booleans\")",
-      "explanation": "Basic introduction to Strings & Booleans.",
-      "language": "python"
+      "code": "# Efficient String Construction with join()\nwords = ['Python', 'is', 'fast', 'and', 'expressive']\nsentence = ' '.join(words)\nprint(sentence)  # 'Python is fast and expressive'",
+      "explanation": "`' '.join(words)` calculates total memory required in advance, allocates one contiguous buffer, and copies characters in a single pass."
+    },
+    {
+      "code": "# Truthiness & Falsy Values\nfalsy_values = [0, 0.0, '', [], {}, set(), None, False]\nfor v in falsy_values:\n    print(f'bool({v!r}) -> {bool(v)}')",
+      "explanation": "Python considers empty containers, zeroes, `None`, and `False` as falsy in conditional contexts (`if not container:`)."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A strings & booleans implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "String indexing `s[i]` is O(1). String slicing `s[a:b]` is O(b-a). String concatenation `a + b` is O(len(a) + len(b)).",
+    "spaceComplexity": "Strings require 48 bytes base overhead plus 1 to 4 bytes per character depending on highest Unicode code point."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Unintended string repetition instead of integer addition due to `input()` returning strings.",
+    "incorrectCode": "num1 = input('Enter first number: ')\nnum2 = input('Enter second number: ')\nprint('Total:', num1 + num2)",
+    "correctCode": "num1 = int(input('Enter first number: '))\nnum2 = int(input('Enter second number: '))\nprint('Total:', num1 + num2)"
+  },
+  "bestPractices": [
+    "Use f-strings (`f'Hello {name}'`) for string formatting instead of `%` or `.format()`.",
+    "Use `''.join(list)` when concatenating multiple strings inside loops.",
+    "Rely on implicit truthiness: use `if not items:` instead of `if len(items) == 0:`."
+  ]
 }

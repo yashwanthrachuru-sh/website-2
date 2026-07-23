@@ -3,27 +3,22 @@
   "title": "SQL & Databases Troubleshooting Part 12C",
   "technology": "SQL & Databases",
   "module": "SQL & Databases Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: SQL & Databases Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of SQL & Databases Troubleshooting Part 12C.",
-    "Write error-free implementations utilizing SQL & Databases Troubleshooting Part 12C.",
-    "Debug and optimize performance characteristics of SQL & Databases Troubleshooting Part 12C."
+    "Understand SQL & Databases Troubleshooting Part 12C from zero to advanced level",
+    "Write clean, production-grade SQL & Databases code for SQL & Databases Troubleshooting Part 12C",
+    "Debug edge cases and answer interview questions about SQL & Databases Troubleshooting Part 12C"
   ],
   "tags": [
+    "sql_databases_troubleshooting_part_12c",
     "sql",
-    "&",
-    "databases",
-    "troubleshooting",
-    "part",
-    "12c"
+    "sql_databases_production_deployment_server_pipelines"
   ]
 }

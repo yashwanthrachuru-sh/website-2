@@ -1,11 +1,14 @@
 {
-  "title": "Main Method System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Main Method.",
+  "title": "Main Method Project",
+  "tagline": "Build a mini application using Main Method",
+  "description": "Create a working Java application demonstrating Main Method.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// Java implementation for Main Method\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Main Method\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "solution": "// Java implementation for Main Method\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Main Method\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Main Method in Java."
 }

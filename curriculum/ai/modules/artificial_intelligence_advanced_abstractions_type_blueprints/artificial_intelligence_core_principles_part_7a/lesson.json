@@ -3,27 +3,22 @@
   "title": "Artificial Intelligence Core Principles Part 7A",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Core Principles Part 7A.",
-    "Write error-free implementations utilizing Artificial Intelligence Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Core Principles Part 7A."
+    "Understand Artificial Intelligence Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Core Principles Part 7A"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "artificial_intelligence_core_principles_part_7a",
+    "ai",
+    "artificial_intelligence_advanced_abstractions_type_blueprints"
   ]
 }

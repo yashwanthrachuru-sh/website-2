@@ -3,24 +3,22 @@
   "title": "Try With Resources",
   "technology": "Java",
   "module": "Exception Handling",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Interfaces & Inheritance"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Try With Resources.",
-    "Write error-free implementations utilizing Try With Resources.",
-    "Debug and optimize performance characteristics of Try With Resources."
+    "Understand Try With Resources from zero to advanced level",
+    "Write clean, production-grade Java code for Try With Resources",
+    "Debug edge cases and answer interview questions about Try With Resources"
   ],
   "tags": [
-    "try",
-    "with",
-    "resources"
+    "try_with_resources",
+    "java",
+    "exception_handling"
   ]
 }

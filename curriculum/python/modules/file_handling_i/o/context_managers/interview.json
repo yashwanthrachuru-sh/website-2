@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "What is Context Managers and why is it important in Python?",
+      "answer": "Context Managers is a core Python feature that enables structured, clean programming.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common performance pitfalls when using Context Managers?",
+      "answer": "Avoid unnecessary memory allocations or deep loop nesting.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "How is Context Managers implemented internally in CPython?",
+      "answer": "CPython manages it through bytecode instructions and evaluation stack frames.",
+      "difficulty": "Advanced"
+    }
+  ]
+}

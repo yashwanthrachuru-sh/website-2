@@ -3,27 +3,22 @@
   "title": "Blockchain Developer Implementation Steps Part 6B",
   "technology": "Blockchain Developer",
   "module": "Blockchain Developer Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Blockchain Developer Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Blockchain Developer Implementation Steps Part 6B.",
-    "Write error-free implementations utilizing Blockchain Developer Implementation Steps Part 6B.",
-    "Debug and optimize performance characteristics of Blockchain Developer Implementation Steps Part 6B."
+    "Understand Blockchain Developer Implementation Steps Part 6B from zero to advanced level",
+    "Write clean, production-grade Blockchain Developer code for Blockchain Developer Implementation Steps Part 6B",
+    "Debug edge cases and answer interview questions about Blockchain Developer Implementation Steps Part 6B"
   ],
   "tags": [
+    "blockchain_developer_implementation_steps_part_6b",
     "blockchain",
-    "developer",
-    "implementation",
-    "steps",
-    "part",
-    "6b"
+    "blockchain_developer_data_collections_list_structures"
   ]
 }

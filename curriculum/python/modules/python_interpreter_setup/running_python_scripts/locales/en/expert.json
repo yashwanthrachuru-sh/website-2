@@ -1,45 +1,8 @@
 {
-  "overview": "At the expert level, this concept requires understanding python runtime internals and production optimization strategies.",
-  "industryContext": "In production Python systems, this pattern is implemented with attention to performance, security, and maintainability.",
-  "examples": [],
-  "codeReviewChecklist": [
-    "Does the implementation handle all error cases?",
-    "Is the code readable and maintainable?",
-    "Are there performance concerns?",
-    "Is the approach appropriate for the scale?"
-  ],
-  "testingPatterns": {
-    "unitTests": "Test individual components in isolation",
-    "integrationTests": "Test with actual dependencies",
-    "propertyBasedTests": "Test with random inputs",
-    "benchmarkTests": "Measure performance under load"
-  },
-  "refactoringGuide": {
-    "smell": "Implementation is too complex or tightly coupled",
-    "solution": "Break into smaller, focused functions",
-    "steps": [
-      "Identify responsibilities",
-      "Separate concerns",
-      "Extract reusable parts",
-      "Verify behavior"
-    ]
-  },
-  "securityConsiderations": [
-    "Validate all inputs",
-    "Avoid exposing internal state",
-    "Log without leaking sensitive data"
-  ],
-  "scalability": {
-    "considerations": "Design for statelessness to enable horizontal scaling.",
-    "recommendations": [
-      "Implement caching",
-      "Use connection pooling",
-      "Monitor performance metrics"
-    ]
-  },
-  "complexityAnalysis": {
-    "timeComplexity": "Varies by implementation",
-    "spaceComplexity": "Varies by implementation",
-    "notes": "Analyze specific implementation for accurate complexity bounds"
-  }
+  "examples": [
+    {
+      "code": "# Production CLI pattern using argparse\nimport argparse\nimport sys\n\ndef main():\n    parser = argparse.ArgumentParser(\n        description='Process data files',\n        formatter_class=argparse.RawDescriptionHelpFormatter\n    )\n    parser.add_argument('input', help='Input file path')\n    parser.add_argument('-o', '--output', default='output.txt', help='Output file path')\n    parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose output')\n    parser.add_argument('--version', action='version', version='%(prog)s 1.0')\n    \n    args = parser.parse_args()\n    \n    if args.verbose:\n        print(f'Processing: {args.input}', file=sys.stderr)\n    \n    # Main logic here\n    return 0  # Exit code: 0 = success\n\nif __name__ == '__main__':\n    sys.exit(main())",
+      "explanation": "This is the production pattern for Python CLI scripts: argparse handles argument parsing, main() returns an exit code, sys.exit() passes it to the OS, and all output goes through proper streams (stdout for data, stderr for logs). The if __name__ == '__main__': guard ensures main() only runs when executed directly."
+    }
+  ]
 }

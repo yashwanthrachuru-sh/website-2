@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```html\n// Declaring and executing HTML Core Principles Part 5A\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "HTML Core Principles Part 5A Cheat Sheet",
+  "printNote": "Quick reference for HTML Core Principles Part 5A in HTML.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "<!-- HTML5 Structure for HTML Core Principles Part 5A -->",
+          "example": "<!-- HTML5 Structure for HTML Core Principles Part 5A -->\n<section id=\"html_core_principles_part_5a\" class=\"card-container\">\n  <h2>HTML Core Principles Part 5A</h2>\n  <p>Learn HTML Core Principles Part 5A with interactive examples.</p>\n  <button type=\"button\" id=\"btn-action\">Click Here</button>\n</section>",
+          "description": "Basic syntax for HTML Core Principles Part 5A",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

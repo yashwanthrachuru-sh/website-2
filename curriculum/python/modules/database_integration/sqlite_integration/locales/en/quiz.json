@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is SQLite Integration?",
+      "question": "How do you prevent SQL Injection in Python sqlite3 queries?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "Use `?` parameterized placeholders and pass args as a tuple",
+        "Use f-strings with quote escaping",
+        "Convert all inputs to uppercase",
+        "Encrypt the database"
       ],
       "answer": 0,
-      "explanation": "SQLite Integration is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does SQLite Integration exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "Parameterized queries separate SQL commands from user data safely.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: SQLite Integration is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding SQLite Integration improves code quality.",
+      "question": "True or False: sqlite3.connect(':memory:') creates a database stored purely in RAM.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. `:memory:` creates a temporary in-memory DB."
     }
   ]
 }

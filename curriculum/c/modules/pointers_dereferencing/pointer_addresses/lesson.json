@@ -3,23 +3,22 @@
   "title": "Pointer Addresses",
   "technology": "C Programming",
   "module": "Pointers Dereferencing",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Arrays String Termination"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Pointer Addresses.",
-    "Write error-free implementations utilizing Pointer Addresses.",
-    "Debug and optimize performance characteristics of Pointer Addresses."
+    "Understand Pointer Addresses from zero to advanced level",
+    "Write clean, production-grade C Programming code for Pointer Addresses",
+    "Debug edge cases and answer interview questions about Pointer Addresses"
   ],
   "tags": [
-    "pointer",
-    "addresses"
+    "pointer_addresses",
+    "c",
+    "pointers_dereferencing"
   ]
 }

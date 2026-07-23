@@ -1,62 +1,55 @@
 {
-  "curiosityQuestion": "What if you had to write the same instruction a thousand times — would you copy-paste or teach the computer to repeat?",
-  "whyExists": "Repetition is at computing's heart. Processing 10,000 records, sending notifications to every user, or summing millions of numbers would be impossible if each step had to be written individually. Loops define the work once and repeat it efficiently.",
-  "problemItSolves": "Without loops, you copy-paste code for every item — impractical for large datasets and impossible when repetition count is unknown at compile time.",
-  "withoutVariables": "Imagine an assembly line worker who has to be told every single step for every single item. Loops are the automation that lets the line run without constant instruction.",
-  "whereUsed": "Every program with collections, data processing, batch operations, or repeated calculations uses loops. They are fundamental to computing.",
-  "realWorldAnalogy": "A loop is like a factory conveyor belt. Items come down the line one by one. Each goes through the same stations (loop body). The belt keeps moving as long as there are items (condition is true).",
-  "simpleExplanation": "A for loop iterates over a sequence (list, range, string). A while loop runs as long as a condition is true. Each repetition is called an iteration.",
-  "syntaxExplanation": "for item in collection:\n    process(item)\n\nwhile condition:\n    do_something()\n    update_condition()",
+  "whyExists": "Programs often need to repeat an action until a specific target condition changes — for example, waiting for user input, retrying a failed network request, or processing data streams of unknown length. A `while` loop continues executing its code block repeatedly as long as its condition remains `True`.",
+  "curiosityQuestion": "What happens inside your computer's CPU and memory when a `while` loop gets stuck in an infinite loop?",
+  "problemItSolves": "Without `while` loops, you would have to duplicate code lines manually. `while` loops automate indefinite iteration where the exact number of repetitions is unknown beforehand.",
+  "realWorldAnalogy": "A `while` loop is like a thermostat: WHILE the current temperature is below 70°F, keep the heater running. Once 70°F is reached, turn off the heater.",
+  "simpleExplanation": "In Python:\n- `while condition:` evaluates the condition.\n- If `True`, the indented block runs.\n- Then it re-checks the condition. This repeats until the condition evaluates to `False`.\n- Make sure the condition eventually becomes `False`, or the loop will run forever!",
+  "syntaxExplanation": "count = 1\nwhile count <= 3:\n    print('Count is:', count)\n    count += 1  # Increment to avoid infinite loop",
   "examples": [
     {
-      "title": "While Loop",
-      "code": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1",
-      "explanation": "The loop body runs once per iteration. In a for loop, the counter updates automatically. In a while loop, you must update the condition to avoid infinite loops.",
+      "title": "Basic Countdown Loop",
+      "code": "countdown = 3\nwhile countdown > 0:\n    print(countdown)\n    countdown -= 1\nprint('Blast off!')",
+      "explanation": "Prints 3, 2, 1. When `countdown` hits 0, `0 > 0` is False, terminating the loop.",
       "language": "python"
     }
   ],
-  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start] --> B[Initialize Counter]\n    B --> C{Condition True?}\n    C -->|Yes| D[Execute Loop Body]\n    D --> E[Update Counter]\n    E --> C\n    C -->|No| F[Exit Loop]\n```",
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start Loop] --> B{condition True?}\n    B -- Yes --> C[Execute Loop Body]\n    C --> D[Update Loop Variables]\n    D --> B\n    B -- No --> E[Exit Loop]\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "action": "Initialize",
-      "explanation": "Set up the condition variable."
+      "action": "Initialize `countdown = 3`",
+      "explanation": "Set loop counter."
     },
     {
       "step": 2,
-      "action": "Check condition",
-      "explanation": "If true, enter the body. If false, exit the loop."
+      "action": "Evaluate `3 > 0`",
+      "explanation": "True: Print 3, decrement to 2."
     },
     {
       "step": 3,
-      "action": "Execute body",
-      "explanation": "Run the statements inside the loop."
+      "action": "Evaluate `2 > 0`",
+      "explanation": "True: Print 2, decrement to 1."
     },
     {
       "step": 4,
-      "action": "Update",
-      "explanation": "Modify the condition variable."
+      "action": "Evaluate `1 > 0`",
+      "explanation": "True: Print 1, decrement to 0."
     },
     {
       "step": 5,
-      "action": "Repeat from step 2",
-      "explanation": "Continue until the condition is false."
+      "action": "Evaluate `0 > 0`",
+      "explanation": "False: Exit loop and print 'Blast off!'."
     }
   ],
   "memoryDiagram": {
-    "stack": "[Stack]\n  Local variables and call context",
-    "heap": "[Heap]\n  Dynamic data structures"
+    "stack": "[Counter Variable]\n  countdown = 3 -> 2 -> 1 -> 0",
+    "heap": "N/A"
   },
   "namingRules": [
-    "Use snake_case for variables and functions",
-    "Use PascalCase for classes",
-    "Use UPPER_SNAKE_CASE for constants",
-    "Use lowercase for module names"
+    "Ensure counter or flag variable names clearly state their purpose."
   ],
   "commonMistakes": [
-    "Infinite loops — forgetting to update the condition",
-    "Off-by-one errors (<= vs <)",
-    "Modifying the collection while iterating",
-    "Using the loop variable after the loop ends"
+    "Forgetting to update the loop control variable, causing an infinite loop.",
+    "Off-by-one errors in loop termination condition (`<` vs `<=`)."
   ]
 }

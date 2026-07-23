@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Try Except Blocks?",
+      "question": "Which block ALWAYS runs in a try-except statement?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "finally",
+        "else",
+        "except",
+        "try"
       ],
       "answer": 0,
-      "explanation": "Try Except Blocks is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Try Except Blocks exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "The `finally` block runs regardless of whether an exception occurred or was caught.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Try Except Blocks is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Try Except Blocks improves code quality.",
+      "question": "True or False: `else` in try-except runs only if no exception occurred.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True."
     }
   ]
 }

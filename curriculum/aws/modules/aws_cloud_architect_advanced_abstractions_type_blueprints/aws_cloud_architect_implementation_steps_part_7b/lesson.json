@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Implementation Steps Part 7B",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Implementation Steps Part 7B.",
-    "Write error-free implementations utilizing AWS Cloud Architect Implementation Steps Part 7B.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Implementation Steps Part 7B."
+    "Understand AWS Cloud Architect Implementation Steps Part 7B from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Implementation Steps Part 7B",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Implementation Steps Part 7B"
   ],
   "tags": [
+    "aws_cloud_architect_implementation_steps_part_7b",
     "aws",
-    "cloud",
-    "architect",
-    "implementation",
-    "steps",
-    "part",
-    "7b"
+    "aws_cloud_architect_advanced_abstractions_type_blueprints"
   ]
 }

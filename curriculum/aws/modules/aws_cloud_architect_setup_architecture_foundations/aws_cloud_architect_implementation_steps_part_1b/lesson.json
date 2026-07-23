@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Implementation Steps Part 1B",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing AWS Cloud Architect Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Implementation Steps Part 1B."
+    "Understand AWS Cloud Architect Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Implementation Steps Part 1B"
   ],
   "tags": [
+    "aws_cloud_architect_implementation_steps_part_1b",
     "aws",
-    "cloud",
-    "architect",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "aws_cloud_architect_setup_architecture_foundations"
   ]
 }

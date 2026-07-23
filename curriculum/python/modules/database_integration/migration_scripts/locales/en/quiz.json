@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Migration Scripts?",
+      "question": "Which table tracks applied migrations in Alembic?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "alembic_version",
+        "schema_migrations",
+        "migration_history",
+        "db_version"
       ],
       "answer": 0,
-      "explanation": "Migration Scripts is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Migration Scripts exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "Alembic uses the `alembic_version` table to store revision hashes.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Migration Scripts is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Migration Scripts improves code quality.",
+      "question": "True or False: `alembic upgrade head` applies all unapplied migration scripts.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True."
     }
   ]
 }

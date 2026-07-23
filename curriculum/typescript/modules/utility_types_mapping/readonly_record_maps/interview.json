@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "How does a hash table work internally?",
-      "answer": "A hash table uses a hash function to convert a key into an integer index in an array. The value is stored at that index. For lookup, the same hash function maps the key to the index, and the value is retrieved in O(1). Hash collisions (two keys map to the same index) are handled by chaining (linked list at each slot) or open addressing (probing adjacent slots). Python's dict uses open addressing with a clever probing strategy.",
-      "difficulty": "Advanced"
+      "question": "Explain Readonly Record Maps and its primary use case in TypeScript.",
+      "answer": "Readonly Record Maps provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
     },
     {
-      "question": "What is the difference between == and === for objects in JavaScript?",
-      "answer": "For primitive values, == does type coercion before comparing; === checks type and value. For objects (including arrays), both == and === check REFERENCE EQUALITY (same object in memory), not structural equality. {a:1} == {a:1} is false — two different objects. To check structural equality, use JSON.stringify (limited) or a deep equality library (lodash.isEqual).",
+      "question": "What are common mistakes developers make with Readonly Record Maps?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "When would you use a Map vs a plain object in JavaScript?",
-      "answer": "Map advantages: any value type as key (not just strings/symbols), guaranteed insertion order, O(1) size with .size, better performance for frequent additions/deletions, clean iteration with for...of. Object advantages: simpler syntax, JSON serializable, natural method attachment, prototype inheritance. Use Map when: keys are non-strings, key set changes frequently, or you need guaranteed iteration order.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Readonly Record Maps queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Readonly Record Maps queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Readonly Record Maps queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Readonly Record Maps queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Readonly Record Maps queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Readonly Record Maps queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Readonly Record Maps queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the TypeScript runtime optimize Readonly Record Maps under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

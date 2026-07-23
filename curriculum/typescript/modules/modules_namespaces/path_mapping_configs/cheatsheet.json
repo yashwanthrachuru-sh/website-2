@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```typescript\n// Declaring and executing Path Mapping Configs\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Path Mapping Configs Cheat Sheet",
+  "printNote": "Quick reference for Path Mapping Configs in TypeScript.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// TypeScript implementation for Path Mapping Configs",
+          "example": "// TypeScript implementation for Path Mapping Configs\ninterface PathMappingConfigsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPathMappingConfigs(item: PathMappingConfigsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPathMappingConfigs({ id: 1, title: 'Path Mapping Configs', status: 'active' }));",
+          "description": "Basic syntax for Path Mapping Configs",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

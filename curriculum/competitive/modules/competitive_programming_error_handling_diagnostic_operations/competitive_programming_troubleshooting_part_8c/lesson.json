@@ -3,26 +3,22 @@
   "title": "Competitive Programming Troubleshooting Part 8C",
   "technology": "Competitive Programming",
   "module": "Competitive Programming Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Competitive Programming Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Competitive Programming Troubleshooting Part 8C.",
-    "Write error-free implementations utilizing Competitive Programming Troubleshooting Part 8C.",
-    "Debug and optimize performance characteristics of Competitive Programming Troubleshooting Part 8C."
+    "Understand Competitive Programming Troubleshooting Part 8C from zero to advanced level",
+    "Write clean, production-grade Competitive Programming code for Competitive Programming Troubleshooting Part 8C",
+    "Debug edge cases and answer interview questions about Competitive Programming Troubleshooting Part 8C"
   ],
   "tags": [
+    "competitive_programming_troubleshooting_part_8c",
     "competitive",
-    "programming",
-    "troubleshooting",
-    "part",
-    "8c"
+    "competitive_programming_error_handling_diagnostic_operations"
   ]
 }

@@ -1,47 +1,31 @@
 {
-  "oneLineSummary": "Conditional statements let programs make decisions by choosing different paths based on boolean conditions.",
-  "summary": "We covered how if/else statements allow programs to branch based on conditions: evaluation, selection, chaining, logical operators, and common pitfalls like = vs ==.",
+  "summary": "Ternary operator evaluates `val1 if condition else val2`. Both `if` and `else` are mandatory.",
+  "oneLineSummary": "Ternary expression: `X if condition else Y` computes inline values in one line.",
   "keyTakeaways": [
-    "Conditions evaluate to True/False and determine which branch runs",
-    "Only one branch in if/elif/else executes",
-    "Use logical operators (and/or/not) to combine conditions",
-    "Always consider the else case"
+    "Requires both if and else.",
+    "Short-circuits evaluation.",
+    "Keep on 1 line."
   ],
   "memoryTricks": [
-    "Think of a fork in the road — the condition determines your path",
-    "Remember: = is assignment (set), == is comparison (check)"
-  ],
-  "preInterviewChecklist": [
-    "Can you write a leap year checker from memory?",
-    "Do you understand short-circuit evaluation?",
-    "Can you explain = vs ==?"
+    {
+      "concept": "Ternary Syntax",
+      "trick": "Read as English: 'GIVE ME THIS if THIS IS TRUE else GIVE ME THAT'."
+    }
   ],
   "commonErrors": [
-    "Using = instead of ==",
-    "Floating-point == comparisons",
-    "Missing else cases",
-    "Dead code from always-true/false conditions"
+    {
+      "error": "SyntaxError using ?",
+      "cause": "Using C-style `? :`",
+      "fix": "Use Python `if-else` syntax"
+    }
   ],
-  "mindMap": {
-    "central": "Conditionals",
-    "branches": [
-      "If/Else",
-      "Chained Conditions",
-      "Logical Operators",
-      "Comparison",
-      "Ternary",
-      "Switch/Match",
-      "Branch Prediction"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain Python ternary syntax vs C-style"
+  ],
   "nextTopics": [
-    "Switch statements and pattern matching",
-    "Polymorphism as alternative to conditionals",
-    "Branch prediction and CPU architecture"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Loops & Iteration: while Loops",
+      "whyNext": "Transition from branching decisions to repeating code using while loops."
+    }
+  ]
 }

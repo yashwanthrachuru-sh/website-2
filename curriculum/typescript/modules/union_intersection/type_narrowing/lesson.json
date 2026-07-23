@@ -3,23 +3,22 @@
   "title": "Type Narrowing",
   "technology": "TypeScript",
   "module": "Union & Intersection",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Interfaces & Types"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Type Narrowing.",
-    "Write error-free implementations utilizing Type Narrowing.",
-    "Debug and optimize performance characteristics of Type Narrowing."
+    "Understand Type Narrowing from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Type Narrowing",
+    "Debug edge cases and answer interview questions about Type Narrowing"
   ],
   "tags": [
-    "type",
-    "narrowing"
+    "type_narrowing",
+    "typescript",
+    "union_intersection"
   ]
 }

@@ -1,31 +1,14 @@
 {
-  "officialDocs": "https://docs.microsoft.com/en-us/ OR https://docs.python.org/3/",
-  "books": [
+  "links": [
     {
-      "title": "Clean Code",
-      "author": "Robert C. Martin"
+      "type": "official_doc",
+      "title": "MDN & Tech Documentation",
+      "url": "https://developer.mozilla.org/"
     },
     {
-      "title": "Design Patterns",
-      "author": "Gang of Four"
+      "type": "official_doc",
+      "title": "Microsoft Learn Documentation",
+      "url": "https://learn.microsoft.com/"
     }
-  ],
-  "articles": [
-    {
-      "title": "Understanding Android Developer Core Principles Part 12A Internals",
-      "url": "https://medium.com"
-    }
-  ],
-  "references": [
-    "MDN Web Docs",
-    "Stack Overflow Guide"
-  ],
-  "externalTools": [
-    "Visual Studio Code",
-    "Git"
-  ],
-  "practiceWebsites": [
-    "LeetCode",
-    "HackerRank"
   ]
 }

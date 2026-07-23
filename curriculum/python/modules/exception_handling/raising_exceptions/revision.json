@@ -1,23 +1,14 @@
 {
-  "summary": "You have completed this lesson! You studied how Raising Exceptions allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Master Raising Exceptions for building robust Python software.",
+  "summary": "Key concepts covered: Raising Exceptions syntax, execution flow, best practices, and interview questions.",
+  "keyTakeaways": [
+    "Understand core syntax of Raising Exceptions",
+    "Follow style guidelines",
+    "Write automated tests"
   ],
-  "keySyntax": [
-    "// python syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
-    {
-      "front": "What is the primary role of Raising Exceptions?",
-      "back": "To manage states, loop checks, or object definitions."
-    },
-    {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
-    }
+  "preInterviewChecklist": [
+    "Define Raising Exceptions",
+    "Provide code example",
+    "Explain time/space complexity"
   ]
 }

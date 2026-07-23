@@ -3,27 +3,22 @@
   "title": "Blockchain Developer Core Principles Part 6A",
   "technology": "Blockchain Developer",
   "module": "Blockchain Developer Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Blockchain Developer Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Blockchain Developer Core Principles Part 6A.",
-    "Write error-free implementations utilizing Blockchain Developer Core Principles Part 6A.",
-    "Debug and optimize performance characteristics of Blockchain Developer Core Principles Part 6A."
+    "Understand Blockchain Developer Core Principles Part 6A from zero to advanced level",
+    "Write clean, production-grade Blockchain Developer code for Blockchain Developer Core Principles Part 6A",
+    "Debug edge cases and answer interview questions about Blockchain Developer Core Principles Part 6A"
   ],
   "tags": [
+    "blockchain_developer_core_principles_part_6a",
     "blockchain",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "6a"
+    "blockchain_developer_data_collections_list_structures"
   ]
 }

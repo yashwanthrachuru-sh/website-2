@@ -3,23 +3,22 @@
   "title": "Nested Conditions",
   "technology": "Python",
   "module": "Control Flow & Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Variables & Core Data Types"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Nested Conditions.",
-    "Write error-free implementations utilizing Nested Conditions.",
-    "Debug and optimize performance characteristics of Nested Conditions."
+    "Understand Nested Conditions from zero to advanced level",
+    "Write clean, production-grade Python code for Nested Conditions",
+    "Debug edge cases and answer interview questions about Nested Conditions"
   ],
   "tags": [
-    "nested",
-    "conditions"
+    "nested_conditions",
+    "python",
+    "control_flow_branching"
   ]
 }

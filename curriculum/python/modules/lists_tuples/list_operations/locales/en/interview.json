@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain List Operations to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of list operations?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for list operations?",
-      "answer": "Use List Operations when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "Explain amortized O(1) time complexity of Python `list.append()`.",
+      "answer": "CPython over-allocates list capacity when resizing. When capacity is exceeded, it allocates a larger chunk of memory (growing by ~1.125x) and copies elements. Because resizes occur infrequently, the average cost per `append()` over N operations is O(1).",
+      "level": "intermediate"
     }
   ]
 }

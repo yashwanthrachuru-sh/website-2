@@ -1,34 +1,14 @@
 {
-  "title": "List Operations — Quick Reference",
+  "printNote": "List Operations Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# List Operations\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "List Slicing & Methods",
+      "entries": [
+        {
+          "syntax": "lst[start:stop:step]",
+          "example": "lst[::-1]",
+          "description": "Reverse list slice"
+        }
       ]
     }
   ]

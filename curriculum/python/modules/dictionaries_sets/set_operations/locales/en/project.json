@@ -1,24 +1,18 @@
 {
-  "title": "Project: Set Operations Application",
-  "tagline": "Apply set operations in a practical project.",
-  "description": "Build an application demonstrating Set Operations.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "Access Permission Overlap Engine",
+  "tagline": "Role-based access matrix comparator",
+  "description": "Compare user permissions against required security roles using set intersection/difference.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Set algebra for access control"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Find missing permissions for required role"
+  ],
+  "starterCode": "def check_permissions(user_perms, role_perms):\n    pass",
+  "solution": "def check_permissions(user_perms, role_perms):\n    u, r = set(user_perms), set(role_perms)\n    missing = r - u\n    return {\n        'has_access': len(missing) == 0,\n        'missing': list(missing),\n        'extra': list(u - r)\n    }",
+  "solutionExpl": "Uses set difference `-` to compute missing and extra user permissions.",
+  "expectedOutput": "{'has_access': False, 'missing': ['write'], 'extra': []}",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Support multi-role aggregation"
   ]
 }

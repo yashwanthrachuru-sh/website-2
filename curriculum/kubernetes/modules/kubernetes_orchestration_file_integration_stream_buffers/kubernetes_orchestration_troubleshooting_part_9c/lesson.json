@@ -3,26 +3,22 @@
   "title": "Kubernetes Orchestration Troubleshooting Part 9C",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 9C.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 9C.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 9C."
+    "Understand Kubernetes Orchestration Troubleshooting Part 9C from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Troubleshooting Part 9C",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Troubleshooting Part 9C"
   ],
   "tags": [
+    "kubernetes_orchestration_troubleshooting_part_9c",
     "kubernetes",
-    "orchestration",
-    "troubleshooting",
-    "part",
-    "9c"
+    "kubernetes_orchestration_file_integration_stream_buffers"
   ]
 }

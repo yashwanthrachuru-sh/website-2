@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "What is the difference between a parameter and an argument?",
-      "answer": "Parameters are the variables listed in the function definition (the placeholders). Arguments are the actual values passed to the function when calling it. Parameters receive the argument values.",
-      "followUp": "How do default parameters work?"
-    },
-    {
-      "question": "Explain closures and give a practical example.",
-      "answer": "A closure is a function that remembers the variables from its outer scope even after the outer function has returned. Practical: create a counter that increments each call, or a function factory that generates customized functions with preset configuration.",
-      "followUp": "How do closures interact with loops in JavaScript?"
-    },
-    {
-      "question": "What is recursion and when would you use it?",
-      "answer": "Recursion is when a function calls itself. Use it for problems with a recursive structure: tree traversal, directory walking, divide-and-conquer algorithms (quicksort, merge sort). Always need a base case to stop.",
-      "followUp": "What are the tradeoffs of recursion vs iteration?"
+      "question": "What does it mean that functions are 'First-Class Objects' in Python?",
+      "answer": "It means functions are treated like any other variable/object: they have types, can be passed as arguments, returned from other functions, stored in lists/dicts, and assigned new attributes.",
+      "level": "intermediate"
     }
   ]
 }

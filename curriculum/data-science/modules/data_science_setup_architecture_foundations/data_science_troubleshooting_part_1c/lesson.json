@@ -3,26 +3,22 @@
   "title": "Data Science Troubleshooting Part 1C",
   "technology": "Data Science",
   "module": "Data Science Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Troubleshooting Part 1C.",
-    "Write error-free implementations utilizing Data Science Troubleshooting Part 1C.",
-    "Debug and optimize performance characteristics of Data Science Troubleshooting Part 1C."
+    "Understand Data Science Troubleshooting Part 1C from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Troubleshooting Part 1C",
+    "Debug edge cases and answer interview questions about Data Science Troubleshooting Part 1C"
   ],
   "tags": [
-    "data",
-    "science",
-    "troubleshooting",
-    "part",
-    "1c"
+    "data_science_troubleshooting_part_1c",
+    "data-science",
+    "data_science_setup_architecture_foundations"
   ]
 }

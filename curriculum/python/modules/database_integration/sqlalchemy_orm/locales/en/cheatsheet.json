@@ -1,34 +1,14 @@
 {
-  "title": "SQLAlchemy ORM — Quick Reference",
+  "printNote": "SQLAlchemy Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# SQLAlchemy ORM\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "SQLAlchemy 2.0 Syntax",
+      "entries": [
+        {
+          "syntax": "session.scalars(select(Model).where(cond))",
+          "example": "s.scalars(select(User)).all()",
+          "description": "Query records with select()"
+        }
       ]
     }
   ]

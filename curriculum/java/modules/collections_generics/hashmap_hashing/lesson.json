@@ -3,23 +3,22 @@
   "title": "HashMap Hashing",
   "technology": "Java",
   "module": "Collections & Generics",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Exception Handling"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HashMap Hashing.",
-    "Write error-free implementations utilizing HashMap Hashing.",
-    "Debug and optimize performance characteristics of HashMap Hashing."
+    "Understand HashMap Hashing from zero to advanced level",
+    "Write clean, production-grade Java code for HashMap Hashing",
+    "Debug edge cases and answer interview questions about HashMap Hashing"
   ],
   "tags": [
-    "hashmap",
-    "hashing"
+    "hashmap_hashing",
+    "java",
+    "collections_generics"
   ]
 }

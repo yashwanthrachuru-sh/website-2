@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "List Comprehensions — Basic Practice",
-    "description": "Write a basic list comprehensions implementation.",
-    "starterCode": "def basic_list_comprehensions():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Square Even Numbers",
+    "description": "Return squares of even numbers from input list using list comprehension.",
+    "starterCode": "def square_evens(nums):\n    pass",
+    "expectedOutput": "[4, 16]",
+    "solution": "def square_evens(nums):\n    return [x**2 for x in nums if x % 2 == 0]",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Use x**2 for x in nums if x % 2 == 0"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "List Comprehensions — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Vowel Stripper",
+    "description": "Remove all vowels from string and return list of remaining lowercase characters.",
+    "starterCode": "def strip_vowels(s):\n    pass",
+    "expectedOutput": "['h', 'l', 'l', 'w', 'r', 'l', 'd']",
+    "solution": "def strip_vowels(s):\n    vowels = set('aeiouAEIOU')\n    return [c.lower() for c in s if c.isalnum() and c not in vowels]",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Filter out c in vowels"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "List Comprehensions — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Pythagorean Triples Generator",
+    "description": "Generate list of tuples `(a, b, c)` such that `a^2 + b^2 = c^2` for 1 <= a < b < c <= N.",
+    "starterCode": "def pythagorean_triples(n):\n    pass",
+    "expectedOutput": "[(3, 4, 5)]",
+    "solution": "def pythagorean_triples(n):\n    return [(a, b, c) for a in range(1, n+1) for b in range(a+1, n+1) for c in range(b+1, n+1) if a**2 + b**2 == c**2]",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Use 3 nested for clauses in comprehension"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the List Comprehensions",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix SyntaxError in Filter",
+    "description": "Fix placement of filter condition.",
+    "buggyCode": "res = [x for x in range(10) if x % 2 == 0 else 'odd']",
+    "fixedCode": "res = [x if x % 2 == 0 else 'odd' for x in range(10)]",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Ternary `if-else` must precede `for` clause."
     ]
   }
 }

@@ -3,23 +3,22 @@
   "title": "Main Method",
   "technology": "Java",
   "module": "Java JVM & Setup",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Main Method.",
-    "Write error-free implementations utilizing Main Method.",
-    "Debug and optimize performance characteristics of Main Method."
+    "Understand Main Method from zero to advanced level",
+    "Write clean, production-grade Java code for Main Method",
+    "Debug edge cases and answer interview questions about Main Method"
   ],
   "tags": [
-    "main",
-    "method"
+    "main_method",
+    "java",
+    "java_jvm_setup"
   ]
 }

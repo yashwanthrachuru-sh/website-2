@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Import Statements?",
+      "question": "Where does Python check first to see if a module is already loaded?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "sys.modules",
+        "sys.path",
+        "PYTHONPATH",
+        "__init__.py"
       ],
       "answer": 0,
-      "explanation": "Import Statements is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Import Statements exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "sys.modules caches loaded modules.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Import Statements is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Import Statements improves code quality.",
+      "question": "True or False: Wildcard imports `from module import *` are considered bad practice.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. They pollute the global namespace."
     }
   ]
 }

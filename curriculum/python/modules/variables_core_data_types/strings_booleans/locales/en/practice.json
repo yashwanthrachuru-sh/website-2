@@ -1,46 +1,47 @@
 {
   "easy": {
-    "title": "Strings & Booleans — Basic Practice",
-    "description": "Write a basic strings & booleans implementation.",
-    "starterCode": "def basic_strings___booleans():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Palindrome & Truthiness Checker",
+    "description": "Write a function `is_palindrome(text)` that returns `True` if the string is a palindrome (reads same forwards and backwards, case-insensitive, ignoring spaces).",
+    "starterCode": "def is_palindrome(text):\n    pass",
+    "expectedOutput": "True",
+    "solution": "def is_palindrome(text):\n    cleaned = ''.join(c.lower() for c in text if c.isalnum())\n    return cleaned == cleaned[::-1]",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Filter out non-alphanumeric characters with c.isalnum()",
+      "Reverse string with slicing text[::-1]"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Strings & Booleans — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "String Compression (RLE)",
+    "description": "Implement Run-Length Encoding: convert 'aabcccccaaa' into 'a2b1c5a3'. If compressed string is not shorter, return original.",
+    "starterCode": "def compress_string(s):\n    pass",
+    "expectedOutput": "a2b1c5a3",
+    "solution": "def compress_string(s):\n    if not s: return s\n    res = []\n    count = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i-1]:\n            count += 1\n        else:\n            res.append(s[i-1] + str(count))\n            count = 1\n    res.append(s[-1] + str(count))\n    out = ''.join(res)\n    return out if len(out) < len(s) else s",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Iterate through indices from 1 to len(s)",
+      "Use a list to collect parts and join at the end"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Strings & Booleans — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Valid Password Validator",
+    "description": "Write `validate_password(pwd)` returning `(is_valid: bool, issues: list)`. Password must have min 8 chars, 1 uppercase, 1 lowercase, 1 digit, 1 special char (`!@#$%^&*`).",
+    "starterCode": "def validate_password(pwd):\n    pass",
+    "expectedOutput": "(True, [])",
+    "solution": "def validate_password(pwd):\n    issues = []\n    if len(pwd) < 8:\n        issues.append('Must be at least 8 characters long')\n    if not any(c.isupper() for c in pwd):\n        issues.append('Must contain an uppercase letter')\n    if not any(c.islower() for c in pwd):\n        issues.append('Must contain a lowercase letter')\n    if not any(c.isdigit() for c in pwd):\n        issues.append('Must contain a digit')\n    specials = set('!@#$%^&*')\n    if not any(c in specials for c in pwd):\n        issues.append('Must contain a special character (!@#$%^&*)')\n    return (len(issues) == 0, issues)",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Use generator expressions with any()",
+      "Check each requirement independently and collect error messages"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Strings & Booleans",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix String Mutability Bug",
+    "description": "Fix the function trying to capitalize vowels in a string.",
+    "buggyCode": "def capitalize_vowels(s):\n    vowels = 'aeiou'\n    for i in range(len(s)):\n        if s[i] in vowels:\n            s[i] = s[i].upper()\n    return s",
+    "fixedCode": "def capitalize_vowels(s):\n    vowels = 'aeiou'\n    res = []\n    for char in s:\n        if char in vowels:\n            res.append(char.upper())\n        else:\n            res.append(char)\n    return ''.join(res)",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Strings are immutable in Python; `s[i] = ...` throws TypeError. Rebuild using list and `join()`."
     ]
   }
 }

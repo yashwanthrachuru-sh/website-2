@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Key Value Pairs becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Python 3.6+ dictionaries preserve insertion order. CPython implements dictionaries as compact hash tables: a dense array of `(hash, key, value)` entries plus a sparse indices table, reducing memory footprint by 20-25%.",
+  "internalImplementation": "Lookups calculate `hash(key) % capacity`. Collisions are resolved using open addressing with quadratic probing.",
   "examples": [
     {
-      "title": "Getting Started with Key Value Pairs",
-      "code": "print(\"Learning Key Value Pairs\")",
-      "explanation": "Basic introduction to Key Value Pairs.",
-      "language": "python"
+      "code": "# Dict Merging Patterns (Python 3.9+ | operator)\ndefault_config = {'theme': 'light', 'fontsize': 14}\nuser_config = {'theme': 'dark'}\n\n# Merge using | operator\nfinal_config = default_config | user_config\nprint(final_config)  # {'theme': 'dark', 'fontsize': 14}",
+      "explanation": "The `|` union operator merges two dicts, with values on the right overriding the left."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A key value pairs implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Key lookup, insertion, deletion are O(1) average.",
+    "spaceComplexity": "O(N) with ~30% hash table overhead."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Crashing with KeyError when accessing optional dictionary keys.",
+    "incorrectCode": "data = {'name': 'Alice'}\nprint(data['age'])  # KeyError: 'age'",
+    "correctCode": "data = {'name': 'Alice'}\nprint(data.get('age', 0))  # Returns default 0 safely"
+  },
+  "bestPractices": [
+    "Use `.get()` or `collections.defaultdict` to handle missing keys gracefully.",
+    "Use dictionary unpacking `{**d1, **d2}` or `d1 | d2` for merging configs."
+  ]
 }

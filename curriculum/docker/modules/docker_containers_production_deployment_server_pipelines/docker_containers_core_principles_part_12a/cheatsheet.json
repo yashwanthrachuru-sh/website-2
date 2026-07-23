@@ -1,22 +1,17 @@
 {
-  "syntax": "## Docker Cheat Sheet\n\n### Key Concepts\n- **Image**: Read-only blueprint (like a class)\n- **Container**: Running instance of an image (like an object)\n- **Dockerfile**: Script to build an image\n- **Docker Hub**: Registry of public images\n- **Volume**: Persistent storage that survives container restarts\n- **Network**: How containers communicate with each other\n\n### Essential Commands\n```bash\n# Build image from Dockerfile in current directory\ndocker build -t myapp:v1 .\n\n# Run a container\ndocker run -d -p 3000:3000 --name myapp myapp:v1\n  # -d: detached (background)\n  # -p host:container port mapping\n  # --name: give it a name\n\n# View running containers\ndocker ps\n\n# View logs\ndocker logs myapp\ndocker logs -f myapp  # follow (live)\n\n# Stop / remove\ndocker stop myapp\ndocker rm myapp\ndocker rmi myapp:v1  # remove image\n\n# Execute command inside running container\ndocker exec -it myapp bash\n```\n\n### Dockerfile Keywords\n```dockerfile\nFROM node:18-alpine      # base image\nWORKDIR /app             # working directory\nCOPY package*.json ./    # copy files\nRUN npm ci               # run command during build\nEXPOSE 3000              # document port (doesn't publish)\nCMD [\"node\", \"server.js\"] # default run command\n```\n\n### Docker Compose\n```yaml\nservices:\n  app:\n    build: .\n    ports: [\"3000:3000\"]\n    depends_on: [db]\n  db:\n    image: postgres:15\n    environment:\n      POSTGRES_PASSWORD: secret\n```\n```bash\ndocker compose up -d   # start all services\ndocker compose down    # stop and remove\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Docker Containers Core Principles Part 12A Cheat Sheet",
+  "printNote": "Quick reference for Docker Containers Core Principles Part 12A in Docker Containers.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// JavaScript implementation for Docker Containers Core Principles Part 12A",
+          "example": "// JavaScript implementation for Docker Containers Core Principles Part 12A\nasync function handleExecution(payload) {\n  try {\n    const response = await fetch('/api/data', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(payload)\n    });\n    const data = await response.json();\n    console.log('Docker Containers Core Principles Part 12A status:', data.success);\n    return data;\n  } catch (err) {\n    console.error('Execution error:', err);\n  }\n}\n\nhandleExecution({ item: 'Docker Containers Core Principles Part 12A' });",
+          "description": "Basic syntax for Docker Containers Core Principles Part 12A",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

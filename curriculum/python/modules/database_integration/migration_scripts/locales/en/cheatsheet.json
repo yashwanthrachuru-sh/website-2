@@ -1,34 +1,14 @@
 {
-  "title": "Migration Scripts — Quick Reference",
+  "printNote": "Alembic Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Migration Scripts\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Alembic Commands",
+      "entries": [
+        {
+          "syntax": "alembic revision --autogenerate -m 'msg'\nalembic upgrade head",
+          "example": "alembic upgrade head",
+          "description": "Migration generation and execution"
+        }
       ]
     }
   ]

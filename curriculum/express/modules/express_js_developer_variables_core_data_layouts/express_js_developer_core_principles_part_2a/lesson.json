@@ -3,27 +3,22 @@
   "title": "Express.js Developer Core Principles Part 2A",
   "technology": "Express.js Developer",
   "module": "Express.js Developer Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Express.js Developer Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Express.js Developer Core Principles Part 2A.",
-    "Write error-free implementations utilizing Express.js Developer Core Principles Part 2A.",
-    "Debug and optimize performance characteristics of Express.js Developer Core Principles Part 2A."
+    "Understand Express.js Developer Core Principles Part 2A from zero to advanced level",
+    "Write clean, production-grade Express.js Developer code for Express.js Developer Core Principles Part 2A",
+    "Debug edge cases and answer interview questions about Express.js Developer Core Principles Part 2A"
   ],
   "tags": [
-    "express.js",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "2a"
+    "express_js_developer_core_principles_part_2a",
+    "express",
+    "express_js_developer_variables_core_data_layouts"
   ]
 }

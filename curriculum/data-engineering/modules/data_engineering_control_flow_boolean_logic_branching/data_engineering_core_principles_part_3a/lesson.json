@@ -3,27 +3,22 @@
   "title": "Data Engineering Core Principles Part 3A",
   "technology": "Data Engineering",
   "module": "Data Engineering Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Core Principles Part 3A.",
-    "Write error-free implementations utilizing Data Engineering Core Principles Part 3A.",
-    "Debug and optimize performance characteristics of Data Engineering Core Principles Part 3A."
+    "Understand Data Engineering Core Principles Part 3A from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Core Principles Part 3A",
+    "Debug edge cases and answer interview questions about Data Engineering Core Principles Part 3A"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "core",
-    "principles",
-    "part",
-    "3a"
+    "data_engineering_core_principles_part_3a",
+    "data-engineering",
+    "data_engineering_control_flow_boolean_logic_branching"
   ]
 }

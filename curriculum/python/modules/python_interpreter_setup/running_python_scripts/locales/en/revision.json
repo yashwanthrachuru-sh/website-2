@@ -1,46 +1,41 @@
 {
-  "oneLineSummary": "Python environment setup is the foundation — the interpreter translates your code into actions.",
-  "summary": "This lesson covered the python runtime environment: what the interpreter does, how it executes code, the pipeline from source to output, and common modes of operation.",
+  "summary": "Python scripts are .py files executed with 'python3 filename.py'. Python compiles source to bytecode (.pyc in __pycache__) for faster loading. sys.argv contains command-line arguments. The REPL (python3 with no arguments) runs interactive Python sessions. __name__ == '__main__' is the guard that separates runnable script code from importable module code.",
+  "oneLineSummary": "Python reads your .py file top-to-bottom, compiles to bytecode, and executes it; use __name__ == '__main__' to protect entry-point code.",
   "keyTakeaways": [
-    "The interpreter translates source code to bytecode, then executes it on a VM",
-    "Multiple execution modes serve different purposes",
-    "Virtual environments isolate project dependencies",
-    "Version and configuration differences cause cross-machine issues"
+    "Run scripts with: python3 script.py",
+    "sys.argv is a list where [0]=script name, [1+]=arguments",
+    "REPL auto-prints expressions; scripts need explicit print()",
+    "__name__ == '__main__' only True when run directly, not when imported",
+    "Python caches bytecode in __pycache__/*.pyc for performance",
+    "Never name scripts after standard library modules (os.py, math.py)"
   ],
   "memoryTricks": [
-    "Remember: Source -> Lexer -> Parser -> Compiler -> VM -> Output",
-    "Think of the interpreter as a translator: your language -> machine language -> action"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain compilation vs interpretation?",
-    "Do you understand how the GIL affects Python concurrency?",
-    "Can you set up a virtual environment from scratch?"
+    {
+      "concept": "__name__ == '__main__'",
+      "trick": "Think: 'Am I the main character or a supporting character?' If you're run directly, you're the main character (__name__ == '__main__'). If you're imported, you play a supporting role."
+    }
   ],
   "commonErrors": [
-    "Running the wrong interpreter version",
-    "Forgetting to activate the virtual environment",
-    "Assuming production is the same as your machine"
+    {
+      "error": "ModuleNotFoundError: No module named 'xyz'",
+      "cause": "Named your script the same as a standard library module (e.g., random.py)",
+      "fix": "Rename your script to something unique"
+    },
+    {
+      "error": "IndexError: list index out of range on sys.argv[1]",
+      "cause": "Accessing sys.argv[1] but no arguments were passed",
+      "fix": "Check len(sys.argv) > 1 before accessing sys.argv[1]"
+    }
   ],
-  "mindMap": {
-    "central": "Python Environment",
-    "branches": [
-      "Interpreter",
-      "Bytecode & VM",
-      "Execution Modes",
-      "Virtual Environments",
-      "Debugging & Profiling",
-      "Packages & Dependencies"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain __name__ == '__main__' and why it matters",
+    "Describe sys.argv structure",
+    "Explain the REPL vs script differences"
+  ],
   "nextTopics": [
-    "Package management",
-    "Advanced debugging",
-    "Containerization",
-    "Runtime security"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Variables & Data Types",
+      "whyNext": "With Python running, learn the fundamental building blocks: variables and the types of data Python can store."
+    }
+  ]
 }

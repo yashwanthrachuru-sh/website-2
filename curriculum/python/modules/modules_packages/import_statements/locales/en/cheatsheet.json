@@ -1,34 +1,14 @@
 {
-  "title": "Import Statements — Quick Reference",
+  "printNote": "Import Statements Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Import Statements\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Import Syntax",
+      "entries": [
+        {
+          "syntax": "from mod import func as alias",
+          "example": "from math import sqrt as s",
+          "description": "Explicit aliased import"
+        }
       ]
     }
   ]

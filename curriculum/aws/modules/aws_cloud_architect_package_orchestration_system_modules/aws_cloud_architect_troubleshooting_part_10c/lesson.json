@@ -3,27 +3,22 @@
   "title": "AWS Cloud Architect Troubleshooting Part 10C",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing AWS Cloud Architect Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Troubleshooting Part 10C."
+    "Understand AWS Cloud Architect Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Troubleshooting Part 10C"
   ],
   "tags": [
+    "aws_cloud_architect_troubleshooting_part_10c",
     "aws",
-    "cloud",
-    "architect",
-    "troubleshooting",
-    "part",
-    "10c"
+    "aws_cloud_architect_package_orchestration_system_modules"
   ]
 }

@@ -3,24 +3,22 @@
   "title": "Switch Case Routing",
   "technology": "C Programming",
   "module": "Control Flow Conditions",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Operators Expressions"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Switch Case Routing.",
-    "Write error-free implementations utilizing Switch Case Routing.",
-    "Debug and optimize performance characteristics of Switch Case Routing."
+    "Understand Switch Case Routing from zero to advanced level",
+    "Write clean, production-grade C Programming code for Switch Case Routing",
+    "Debug edge cases and answer interview questions about Switch Case Routing"
   ],
   "tags": [
-    "switch",
-    "case",
-    "routing"
+    "switch_case_routing",
+    "c",
+    "control_flow_conditions"
   ]
 }

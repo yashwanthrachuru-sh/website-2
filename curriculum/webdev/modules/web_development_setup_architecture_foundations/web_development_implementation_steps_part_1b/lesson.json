@@ -3,27 +3,22 @@
   "title": "Web Development Implementation Steps Part 1B",
   "technology": "Web Development",
   "module": "Web Development Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Web Development Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing Web Development Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of Web Development Implementation Steps Part 1B."
+    "Understand Web Development Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade Web Development code for Web Development Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about Web Development Implementation Steps Part 1B"
   ],
   "tags": [
-    "web",
-    "development",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "web_development_implementation_steps_part_1b",
+    "webdev",
+    "web_development_setup_architecture_foundations"
   ]
 }

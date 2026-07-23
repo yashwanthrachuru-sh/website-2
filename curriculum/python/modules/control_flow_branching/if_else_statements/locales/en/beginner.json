@@ -1,57 +1,46 @@
 {
-  "curiosityQuestion": "What if your program could make decisions on its own, choosing different actions based on the situation?",
-  "whyExists": "Programs need to react differently to different situations. A login system must grant access to legitimate users and deny intruders. Conditional statements give programs this decision-making ability.",
-  "problemItSolves": "Without conditionals, every program would follow the exact same sequence every time, making software useless for scenarios requiring adaptive behavior based on input or state.",
-  "withoutVariables": "Imagine a traffic light that only shows green, regardless of traffic conditions. That is programming without conditionals — no ability to adapt to different situations.",
-  "whereUsed": "Conditionals are everywhere: form validation, access control, game logic, data processing pipelines, and virtually every piece of software ever written.",
-  "realWorldAnalogy": "Think of if/else like a traffic intersection. The light (condition) determines which path traffic takes. Green means go straight, red means stop, turn signals mean turn. The same intersection handles multiple scenarios by checking conditions.",
-  "simpleExplanation": "An if/else statement checks a condition — true or false. If true, one block runs. If false, another (the else) can run. This lets your program make binary decisions.",
-  "syntaxExplanation": "if condition:\n    action()\nelif other_condition:\n    other_action()\nelse:\n    default_action()",
+  "whyExists": "Programs cannot just execute blindly line by line — they must make decisions based on data. Should a user be allowed to log in? Is a shopping cart total eligible for free shipping? Has a game character run out of health? The `if`, `elif`, and `else` statements allow Python code to branch into different execution paths depending on whether conditions evaluate to `True` or `False`.",
+  "curiosityQuestion": "How does Python decide which block of code to run when multiple conditions are met?",
+  "problemItSolves": "Without conditional branching, software would run identical instructions regardless of user input or environmental state. Conditional statements provide the decision-making logic of software.",
+  "realWorldAnalogy": "A conditional statement is like a traffic signal: IF the light is GREEN, drive. ELIF the light is YELLOW, slow down. ELSE (light is RED), stop completely. Only one path is executed.",
+  "simpleExplanation": "In Python:\n- `if condition:` evaluates the condition. If `True`, its indented block runs.\n- `elif condition:` (short for else-if) checks a new condition if previous conditions were `False`.\n- `else:` runs if ALL preceding `if` and `elif` conditions were `False`.\n- Indentation (4 spaces) defines which lines belong to which block.",
+  "syntaxExplanation": "score = 85\n\nif score >= 90:\n    print('Grade: A')\nelif score >= 80:\n    print('Grade: B')  # Executed!\nelif score >= 70:\n    print('Grade: C')\nelse:\n    print('Grade: F')",
   "examples": [
     {
-      "title": "If/Else Statement",
-      "code": "age = 18\nif age >= 18:\n    print(\"You can vote\")\nelse:\n    print(\"Too young to vote\")",
-      "explanation": "The condition is evaluated first. If true, the first block executes. If false, the else block runs. Only one block ever executes.",
+      "title": "Basic If-Elif-Else Branching",
+      "code": "temperature = 28\n\nif temperature > 30:\n    print('It is hot outside!')\nelif temperature >= 20:\n    print('The weather is pleasant.')\nelse:\n    print('It is cold outside.')",
+      "explanation": "Python checks conditions top-to-bottom. Since `28 > 30` is False, it proceeds to `28 >= 20`, which is True. It prints 'The weather is pleasant.' and skips all remaining branches.",
       "language": "python"
     }
   ],
-  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start] --> B{Condition?}\n    B -->|True| C[Execute If-Block]\n    B -->|False| D[Execute Else-Block]\n    C --> E[Continue]\n    D --> E\n    E --> F[End]\n```",
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[Start] --> B{temperature > 30?}\n    B -- True --> C[Print Hot]\n    B -- False --> D{temperature >= 20?}\n    D -- True --> E[Print Pleasant]\n    D -- False --> F[Print Cold]\n    C --> G[End]\n    E --> G\n    F --> G\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "action": "Evaluate the condition",
-      "explanation": "The boolean expression is evaluated to True or False."
+      "action": "Evaluate `if temperature > 30`",
+      "explanation": "28 > 30 is False. Skip indented block."
     },
     {
       "step": 2,
-      "action": "Choose the branch",
-      "explanation": "If True: run the indented block. If False: skip to elif or else."
+      "action": "Evaluate `elif temperature >= 20`",
+      "explanation": "28 >= 20 is True. Execute indented block."
     },
     {
       "step": 3,
-      "action": "Execute the selected block",
-      "explanation": "Only the matching branch executes — others are skipped."
-    },
-    {
-      "step": 4,
-      "action": "Continue after the conditional",
-      "explanation": "Execution continues with the next statement after the structure."
+      "action": "Skip `else` block",
+      "explanation": "Branch complete. Resume execution after the control flow structure."
     }
   ],
   "memoryDiagram": {
-    "stack": "[Stack]\n  Local variables and call context",
-    "heap": "[Heap]\n  Dynamic data structures"
+    "stack": "[Instruction Pointer]\n  Executes matching branch block, skips remaining conditional frames",
+    "heap": "N/A"
   },
   "namingRules": [
-    "Use snake_case for variables and functions",
-    "Use PascalCase for classes",
-    "Use UPPER_SNAKE_CASE for constants",
-    "Use lowercase for module names"
+    "Keep condition expressions clean and readable."
   ],
   "commonMistakes": [
-    "Using = (assignment) instead of == (comparison) in conditions",
-    "Forgetting the colon (Python) or curly braces (JS/Java)",
-    "Not handling all possible cases (missing else)",
-    "Overcomplicating with deeply nested if/else when a switch or lookup table would be cleaner"
+    "Mixing up `=` (assignment) and `==` (equality comparison) in `if` statements.",
+    "Forgetting the colon `:` at the end of `if`, `elif`, or `else` lines.",
+    "Inconsistent indentation inside block levels (IndentationError)."
   ]
 }

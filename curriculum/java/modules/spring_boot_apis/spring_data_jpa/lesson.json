@@ -3,24 +3,22 @@
   "title": "Spring Data JPA",
   "technology": "Java",
   "module": "Spring Boot APIs",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Java Multithreading"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Spring Data JPA.",
-    "Write error-free implementations utilizing Spring Data JPA.",
-    "Debug and optimize performance characteristics of Spring Data JPA."
+    "Understand Spring Data JPA from zero to advanced level",
+    "Write clean, production-grade Java code for Spring Data JPA",
+    "Debug edge cases and answer interview questions about Spring Data JPA"
   ],
   "tags": [
-    "spring",
-    "data",
-    "jpa"
+    "spring_data_jpa",
+    "java",
+    "spring_boot_apis"
   ]
 }

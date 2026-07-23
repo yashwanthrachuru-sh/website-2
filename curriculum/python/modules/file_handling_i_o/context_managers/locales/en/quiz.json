@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Context Managers?",
+      "question": "Which dunder methods define a class Context Manager?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "__enter__ and __exit__",
+        "__start__ and __stop__",
+        "__open__ and __close__",
+        "__init__ and __del__"
       ],
       "answer": 0,
-      "explanation": "Context Managers is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Context Managers exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "Context Managers implement `__enter__` and `__exit__`.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Context Managers is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Context Managers improves code quality.",
+      "question": "True or False: Returning True from `__exit__` suppresses exceptions raised in the with block.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Returning True suppresses exception propagation."
     }
   ]
 }

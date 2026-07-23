@@ -3,26 +3,22 @@
   "title": "CSS Core Principles Part 8A",
   "technology": "CSS",
   "module": "CSS Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Core Principles Part 8A.",
-    "Write error-free implementations utilizing CSS Core Principles Part 8A.",
-    "Debug and optimize performance characteristics of CSS Core Principles Part 8A."
+    "Understand CSS Core Principles Part 8A from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Core Principles Part 8A",
+    "Debug edge cases and answer interview questions about CSS Core Principles Part 8A"
   ],
   "tags": [
+    "css_core_principles_part_8a",
     "css",
-    "core",
-    "principles",
-    "part",
-    "8a"
+    "css_error_handling_diagnostic_operations"
   ]
 }

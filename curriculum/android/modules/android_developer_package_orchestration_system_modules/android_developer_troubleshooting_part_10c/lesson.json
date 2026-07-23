@@ -3,26 +3,22 @@
   "title": "Android Developer Troubleshooting Part 10C",
   "technology": "Android Developer",
   "module": "Android Developer Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Android Developer File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Android Developer Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Android Developer Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Android Developer Troubleshooting Part 10C."
+    "Understand Android Developer Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Android Developer code for Android Developer Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Android Developer Troubleshooting Part 10C"
   ],
   "tags": [
+    "android_developer_troubleshooting_part_10c",
     "android",
-    "developer",
-    "troubleshooting",
-    "part",
-    "10c"
+    "android_developer_package_orchestration_system_modules"
   ]
 }

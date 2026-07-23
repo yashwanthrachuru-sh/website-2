@@ -3,26 +3,22 @@
   "title": "Artificial Intelligence Troubleshooting Part 11C",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Artificial Intelligence Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Troubleshooting Part 11C."
+    "Understand Artificial Intelligence Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Troubleshooting Part 11C"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "troubleshooting",
-    "part",
-    "11c"
+    "artificial_intelligence_troubleshooting_part_11c",
+    "ai",
+    "artificial_intelligence_performance_optimization_complexity"
   ]
 }

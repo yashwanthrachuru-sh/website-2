@@ -1,36 +1,50 @@
 {
-  "title": "Running Python Scripts — Quick Reference",
+  "printNote": "Quick reference for running Python scripts and using the REPL.",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "python script.py        # Run a script\npython -m module_name   # Run as module\npython -c \"code\"        # Inline code\npython -i script.py     # Run then interactive"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Interpreter: reads and executes code",
-        "Bytecode: compiled intermediate representation",
-        "REPL: interactive testing mode",
-        "Module: reusable code file",
-        "Virtual Environment: isolated dependencies"
+      "heading": "Running Scripts",
+      "entries": [
+        {
+          "syntax": "python3 script.py",
+          "example": "$ python3 hello.py",
+          "description": "Run a Python script file",
+          "commonMistake": "Running from wrong directory — use cd to navigate first"
+        },
+        {
+          "syntax": "python3 script.py arg1 arg2",
+          "example": "$ python3 greet.py Alice 25",
+          "description": "Pass command-line arguments",
+          "commonMistake": "Forgetting sys.argv elements are strings — convert with int() or float()"
+        },
+        {
+          "syntax": "python3 -c 'code'",
+          "example": "$ python3 -c 'print(2+2)'",
+          "description": "Run inline Python expression",
+          "commonMistake": "Quote conflicts — use double quotes outside if single quotes inside"
+        },
+        {
+          "syntax": "python3 -m module",
+          "example": "$ python3 -m http.server",
+          "description": "Run a module as a script",
+          "commonMistake": "Confusing module name with filename — use 'http.server' not 'http/server.py'"
+        }
       ]
     },
     {
-      "title": "Common Patterns",
-      "content": [
-        "Pattern 1: basic usage",
-        "Pattern 2: with error handling"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Use virtual environments",
-        "✓ Pin dependency versions",
-        "✓ Test on the same version as production",
-        "✗ Run untrusted code without sandboxing",
-        "✗ Ignore deprecation warnings",
-        "✗ Assume all platforms are identical"
+      "heading": "Script Conventions",
+      "entries": [
+        {
+          "syntax": "if __name__ == '__main__':",
+          "example": "if __name__ == '__main__':\n    main()",
+          "description": "Entry point guard — code only runs when file is executed directly",
+          "commonMistake": "Forgetting the double underscores: __main__ not _main_"
+        },
+        {
+          "syntax": "sys.argv",
+          "example": "name = sys.argv[1]  # first argument",
+          "description": "List of command-line arguments",
+          "commonMistake": "argv[0] is the script name, not the first user argument"
+        }
       ]
     }
   ]

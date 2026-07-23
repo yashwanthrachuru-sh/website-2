@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/classes & instances",
-      "type": "documentation",
-      "description": "Official reference for Classes & Instances in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Classes & Instances in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Classes & Instances with other developers"
+      "type": "official",
+      "title": "Python Classes Tutorial",
+      "url": "https://docs.python.org/3/tutorial/classes.html"
     }
   ]
 }

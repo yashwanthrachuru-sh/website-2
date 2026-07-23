@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Migration Scripts — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Migration Scripts for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Migration Scripts Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Migration Scripts patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Database Migrations with Alembic",
+    "video_id": "baO-94XKGj8",
+    "url": "https://www.youtube.com/watch?v=baO-94XKGj8",
+    "channel": "Corey Schafer",
+    "duration": "16m",
+    "description": "How to use Alembic with SQLAlchemy to manage database migrations."
+  }
+]

@@ -3,27 +3,22 @@
   "title": "AWS Cloud Architect Troubleshooting Part 6C",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing AWS Cloud Architect Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Troubleshooting Part 6C."
+    "Understand AWS Cloud Architect Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Troubleshooting Part 6C"
   ],
   "tags": [
+    "aws_cloud_architect_troubleshooting_part_6c",
     "aws",
-    "cloud",
-    "architect",
-    "troubleshooting",
-    "part",
-    "6c"
+    "aws_cloud_architect_data_collections_list_structures"
   ]
 }

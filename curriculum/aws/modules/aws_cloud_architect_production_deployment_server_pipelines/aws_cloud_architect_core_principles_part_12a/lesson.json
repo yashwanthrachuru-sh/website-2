@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Core Principles Part 12A",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Core Principles Part 12A.",
-    "Write error-free implementations utilizing AWS Cloud Architect Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Core Principles Part 12A."
+    "Understand AWS Cloud Architect Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Core Principles Part 12A"
   ],
   "tags": [
+    "aws_cloud_architect_core_principles_part_12a",
     "aws",
-    "cloud",
-    "architect",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "aws_cloud_architect_production_deployment_server_pipelines"
   ]
 }

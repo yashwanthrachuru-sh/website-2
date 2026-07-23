@@ -1,31 +1,14 @@
 {
-  "officialDocs": "https://docs.microsoft.com/en-us/ OR https://docs.python.org/3/",
-  "books": [
+  "links": [
     {
-      "title": "Clean Code",
-      "author": "Robert C. Martin"
+      "type": "official_doc",
+      "title": "Official React Documentation",
+      "url": "https://react.dev/"
     },
     {
-      "title": "Design Patterns",
-      "author": "Gang of Four"
+      "type": "official_doc",
+      "title": "Next.js Documentation",
+      "url": "https://nextjs.org/docs"
     }
-  ],
-  "articles": [
-    {
-      "title": "Understanding Next.js Developer Core Principles Part 6A Internals",
-      "url": "https://medium.com"
-    }
-  ],
-  "references": [
-    "MDN Web Docs",
-    "Stack Overflow Guide"
-  ],
-  "externalTools": [
-    "Visual Studio Code",
-    "Git"
-  ],
-  "practiceWebsites": [
-    "LeetCode",
-    "HackerRank"
   ]
 }

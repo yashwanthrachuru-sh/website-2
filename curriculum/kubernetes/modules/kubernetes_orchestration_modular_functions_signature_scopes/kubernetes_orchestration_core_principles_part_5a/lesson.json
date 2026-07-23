@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Core Principles Part 5A",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Core Principles Part 5A.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Core Principles Part 5A.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Core Principles Part 5A."
+    "Understand Kubernetes Orchestration Core Principles Part 5A from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Core Principles Part 5A",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Core Principles Part 5A"
   ],
   "tags": [
+    "kubernetes_orchestration_core_principles_part_5a",
     "kubernetes",
-    "orchestration",
-    "core",
-    "principles",
-    "part",
-    "5a"
+    "kubernetes_orchestration_modular_functions_signature_scopes"
   ]
 }

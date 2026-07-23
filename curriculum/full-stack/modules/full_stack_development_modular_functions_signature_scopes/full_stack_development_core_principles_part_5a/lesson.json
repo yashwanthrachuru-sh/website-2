@@ -3,28 +3,22 @@
   "title": "Full Stack Development Core Principles Part 5A",
   "technology": "Full Stack Development",
   "module": "Full Stack Development Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Full Stack Development Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Full Stack Development Core Principles Part 5A.",
-    "Write error-free implementations utilizing Full Stack Development Core Principles Part 5A.",
-    "Debug and optimize performance characteristics of Full Stack Development Core Principles Part 5A."
+    "Understand Full Stack Development Core Principles Part 5A from zero to advanced level",
+    "Write clean, production-grade Full Stack Development code for Full Stack Development Core Principles Part 5A",
+    "Debug edge cases and answer interview questions about Full Stack Development Core Principles Part 5A"
   ],
   "tags": [
-    "full",
-    "stack",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "5a"
+    "full_stack_development_core_principles_part_5a",
+    "full-stack",
+    "full_stack_development_modular_functions_signature_scopes"
   ]
 }

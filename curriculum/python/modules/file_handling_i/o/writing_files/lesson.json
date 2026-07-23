@@ -1,0 +1,24 @@
+{
+  "id": "python_writing_files",
+  "title": "Writing Files",
+  "technology": "Python",
+  "module": "File Handling & I/O",
+  "estimatedTime": 60,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Master Writing Files concepts from first principles",
+    "Write clean, production-grade Python code for Writing Files",
+    "Debug common pitfalls and edge cases in Writing Files"
+  ],
+  "tags": [
+    "writing_files",
+    "writing files",
+    "file handling & i/o"
+  ]
+}

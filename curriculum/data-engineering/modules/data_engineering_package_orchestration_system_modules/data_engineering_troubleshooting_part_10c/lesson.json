@@ -3,26 +3,22 @@
   "title": "Data Engineering Troubleshooting Part 10C",
   "technology": "Data Engineering",
   "module": "Data Engineering Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Data Engineering Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Data Engineering Troubleshooting Part 10C."
+    "Understand Data Engineering Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Data Engineering Troubleshooting Part 10C"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "troubleshooting",
-    "part",
-    "10c"
+    "data_engineering_troubleshooting_part_10c",
+    "data-engineering",
+    "data_engineering_package_orchestration_system_modules"
   ]
 }

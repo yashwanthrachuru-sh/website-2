@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain Python Standard Library to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of python standard library?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for python standard library?",
-      "answer": "Use Python Standard Library when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "What is Python's 'Batteries Included' philosophy?",
+      "answer": "It means Python comes with a comprehensive standard library out of the box (math, datetime, json, sqlite3, asyncio, etc.), allowing developers to perform complex tasks without installing external dependencies.",
+      "level": "beginner"
     }
   ]
 }

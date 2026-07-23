@@ -3,23 +3,22 @@
   "title": "Timeout Intervals",
   "technology": "JavaScript",
   "module": "Async Callbacks",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Event Handling"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Timeout Intervals.",
-    "Write error-free implementations utilizing Timeout Intervals.",
-    "Debug and optimize performance characteristics of Timeout Intervals."
+    "Understand Timeout Intervals from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Timeout Intervals",
+    "Debug edge cases and answer interview questions about Timeout Intervals"
   ],
   "tags": [
-    "timeout",
-    "intervals"
+    "timeout_intervals",
+    "js",
+    "async_callbacks"
   ]
 }

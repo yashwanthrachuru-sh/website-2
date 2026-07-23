@@ -2,77 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "How many times does `for i in range(5):` run?",
+      "question": "What is the difference between `continue` and `pass`?",
       "options": [
-        "4",
-        "5",
-        "6",
-        "Infinite"
+        "continue skips to the next iteration; pass does nothing",
+        "pass exits the loop; continue skips iteration",
+        "They are identical synonyms",
+        "pass skips to next iteration; continue does nothing"
       ],
-      "answer": 1,
-      "explanation": "range(5) produces 0, 1, 2, 3, 4 — five values."
-    },
-    {
-      "id": "q2",
-      "question": "What is the main risk of while loops?",
-      "options": [
-        "Slower than for",
-        "Infinite loops if condition never false",
-        "Cannot iterate collections",
-        "Use more memory"
-      ],
-      "answer": 1,
-      "explanation": "If the condition never becomes false, a while loop runs forever."
-    },
-    {
-      "id": "q3",
-      "question": "What does `break` do in a loop?",
-      "options": [
-        "Skips current iteration",
-        "Exits the loop entirely",
-        "Restarts the loop",
-        "Pauses it"
-      ],
-      "answer": 1,
-      "explanation": "break immediately exits the loop regardless of the condition."
-    },
-    {
-      "id": "q4",
-      "question": "What does `continue` do?",
-      "options": [
-        "Exits the loop",
-        "Skips to next iteration",
-        "Restarts from beginning",
-        "Stops all loops"
-      ],
-      "answer": 1,
-      "explanation": "continue skips the rest of the current iteration and moves to the next."
-    },
-    {
-      "id": "q5",
-      "question": "What happens iterating over an empty list?",
-      "options": [
-        "Error",
-        "Body runs once",
-        "Body never runs",
-        "Infinite loop"
-      ],
-      "answer": 2,
-      "explanation": "An empty iterable means the loop body never executes — no error."
+      "answer": 0,
+      "explanation": "`continue` jumps to the next loop iteration. `pass` is a no-op placeholder.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Modifying a list during iteration is safe.",
+      "question": "True or False: A `break` statement inside an inner loop exits both the inner and outer loops.",
       "answer": false,
-      "explanation": "It can skip items, process duplicates, or crash."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Nested loops multiply total iterations.",
-      "answer": true,
-      "explanation": "100 × 100 × 100 = 1,000,000 — a potential bottleneck."
+      "explanation": "False. `break` exits only the immediate innermost loop."
     }
   ]
 }

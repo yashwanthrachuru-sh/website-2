@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Virtual Environments is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Virtual Environments is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Create venv with `python3 -m venv .venv`. Activate with `source .venv/bin/activate`. Never commit `.venv` to Git.",
+  "oneLineSummary": "Virtual environments isolate project dependencies by modifying shell PATH.",
   "keyTakeaways": [
-    "Virtual Environments solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "python3 -m venv .venv creates environment.",
+    "Add .venv/ to .gitignore.",
+    "pip freeze > requirements.txt saves dependencies."
   ],
   "memoryTricks": [
-    "Think of virtual environments as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Virtual Environments in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "venv",
+      "trick": "VENV = Virtual Extra Package Locker."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "Committing .venv to GitHub",
+      "cause": "Missing .gitignore entry",
+      "fix": "Add .venv/ to .gitignore"
+    }
   ],
-  "mindMap": {
-    "central": "Virtual Environments",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain how PATH modification isolates venvs"
+  ],
   "nextTopics": [
-    "Advanced virtual environments",
-    "Testing virtual environments",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "OOP: Classes & Instances",
+      "whyNext": "Learn Object-Oriented Programming fundamentals."
+    }
+  ]
 }

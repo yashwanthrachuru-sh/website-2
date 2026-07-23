@@ -1,46 +1,49 @@
 {
   "easy": {
-    "problem": "Implement a basic routine demonstrating the startup code syntax for Dynamic Typing in Python.",
-    "starterCode": "# Write your code here\n",
+    "title": "Variable Reassignment & Type Inspection",
+    "description": "Create a script that assigns a number to a variable `data`, prints its type, then reassigns `data` to a string `'EduNet'` and prints its new type using `type()`.",
+    "problem": "Write Python code to demonstrate dynamic variable reassignment.",
+    "starterCode": "# Step 1: Assign integer 100 to variable data\ndata = 100\nprint('Initial type:', type(data))\n\n# Step 2: Reassign data to string 'EduNet' and print type\n# Write code below:\n",
+    "expectedOutput": "Initial type: <class 'int'>\nReassigned type: <class 'str'>",
+    "solution": "data = 100\nprint('Initial type:', type(data))\n\ndata = 'EduNet'\nprint('Reassigned type:', type(data))",
     "hints": [
-      "Review the syntax rules in the beginner notes.",
-      "Check name spelling."
-    ],
-    "expectedOutput": "Success",
-    "solution": "# Solution goes here\n",
-    "explanation": "Verifies basic execution."
+      "Use `data = 'EduNet'` to reassign the variable.",
+      "Call `type(data)` inside `print()` to output the updated class type."
+    ]
   },
   "medium": {
-    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
-    "starterCode": "def process(val):\n    pass",
+    "title": "Safe Type Conversion Utility",
+    "description": "Implement a function `safe_to_int(val)` that attempts to convert any variable `val` to an integer. If `val` is `None` or an invalid string like `'abc'`, return `0`.",
+    "problem": "Implement safe conversion logic avoiding unexpected runtime TypeErrors.",
+    "starterCode": "def safe_to_int(val):\n    # Implement type check and conversion\n    pass\n\nprint(safe_to_int('42'))    # Expected: 42\nprint(safe_to_int('invalid')) # Expected: 0\nprint(safe_to_int(None))     # Expected: 0\n",
+    "expectedOutput": "42\n0\n0",
+    "solution": "def safe_to_int(val):\n    if val is None:\n        return 0\n    try:\n        return int(val)\n    except (ValueError, TypeError):\n        return 0\n\nprint(safe_to_int('42'))\nprint(safe_to_int('invalid'))\nprint(safe_to_int(None))",
     "hints": [
-      "Use conditional statements to inspect values.",
-      "Throw ValueError or Error."
-    ],
-    "expectedOutput": "Error raised",
-    "solution": "def process(val):\n    if val < 0:\n        raise ValueError('Negative value')\n    return val",
-    "explanation": "Ensures input validation constraints are met."
+      "Check `if val is None:` first.",
+      "Use a `try...except (ValueError, TypeError):` block around `int(val)`."
+    ]
   },
   "hard": {
-    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
-    "starterCode": "cache = {}\ndef lookup(key):\n    pass",
+    "title": "Dynamic Argument Dispatcher",
+    "description": "Create a function `format_payload(item)` that dynamically inspects the type of `item`:\n- If `item` is an `int` or `float`, format it as a currency string `'$<item>.00'`\n- If `item` is a `str`, return it in uppercase `'<ITEM>'`\n- If `item` is a `list`, return comma-separated string `'1, 2, 3'`\n- For any other type or `None`, return `'UNKNOWN'`.",
+    "problem": "Build a multi-type polymorphic formatting pipeline in Python.",
+    "starterCode": "def format_payload(item):\n    # Write your polymorphic type checker here\n    pass\n\nprint(format_payload(50))\nprint(format_payload('python'))\nprint(format_payload([10, 20, 30]))\nprint(format_payload(None))\n",
+    "expectedOutput": "$50.00\nPYTHON\n10, 20, 30\nUNKNOWN",
+    "solution": "def format_payload(item):\n    if item is None:\n        return 'UNKNOWN'\n    if isinstance(item, (int, float)):\n        return f'${float(item):.2f}'\n    if isinstance(item, str):\n        return item.upper()\n    if isinstance(item, list):\n        return ', '.join(map(str, item))\n    return 'UNKNOWN'\n\nprint(format_payload(50))\nprint(format_payload('python'))\nprint(format_payload([10, 20, 30]))\nprint(format_payload(None))",
     "hints": [
-      "Use a dictionary or Map.",
-      "Store results after the first query."
-    ],
-    "expectedOutput": "Cached output retrieved",
-    "solution": "cache = {}\ndef lookup(key, calculator):\n    if key not in cache:\n        cache[key] = calculator(key)\n    return cache[key]",
-    "explanation": "Implements high-performance memoization caching."
+      "Use `isinstance(item, (int, float))` to handle both numeric types.",
+      "Use `', '.join(map(str, item))` to convert list elements into a single string."
+    ]
   },
   "debugging": {
-    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
-    "starterCode": "record_data = 100\nprint(record_datas)",
+    "title": "Fix Implicit Type Mismatch Bug",
+    "description": "The script below fails with a runtime error when trying to calculate total invoice cost with tax. Fix the bugs to make the output match `$115.00`.",
+    "problem": "Identify and resolve string concatenation and type conversion runtime errors.",
+    "starterCode": "price = '100'\ntax_rate = 0.15\n\n# Buggy calculation causing TypeError\ntotal = price + (price * tax_rate)\nprint('Total invoice cost: $' + total)\n",
+    "solution": "price = '100'\ntax_rate = 0.15\n\n# Fixed calculation converting string to float and using f-strings\nnumeric_price = float(price)\ntotal = numeric_price + (numeric_price * tax_rate)\nprint(f'Total invoice cost: ${total:.2f}')",
     "hints": [
-      "Inspect variable identifiers.",
-      "Match call names exactly."
-    ],
-    "expectedOutput": "100",
-    "solution": "record_data = 100\nprint(record_data)",
-    "explanation": "Aligns identifiers within namespace bindings."
+      "`price` is a string `'100'`, so `price * tax_rate` causes a TypeError.",
+      "Convert `price` to a `float` before doing arithmetic."
+    ]
   }
 }

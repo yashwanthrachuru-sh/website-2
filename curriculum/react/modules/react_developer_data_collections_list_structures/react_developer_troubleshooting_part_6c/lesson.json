@@ -3,26 +3,22 @@
   "title": "React Developer Troubleshooting Part 6C",
   "technology": "React Developer",
   "module": "React Developer Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: React Developer Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of React Developer Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing React Developer Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of React Developer Troubleshooting Part 6C."
+    "Understand React Developer Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade React Developer code for React Developer Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about React Developer Troubleshooting Part 6C"
   ],
   "tags": [
+    "react_developer_troubleshooting_part_6c",
     "react",
-    "developer",
-    "troubleshooting",
-    "part",
-    "6c"
+    "react_developer_data_collections_list_structures"
   ]
 }

@@ -3,27 +3,22 @@
   "title": "DevOps Engineer Implementation Steps Part 11B",
   "technology": "DevOps Engineer",
   "module": "DevOps Engineer Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: DevOps Engineer Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of DevOps Engineer Implementation Steps Part 11B.",
-    "Write error-free implementations utilizing DevOps Engineer Implementation Steps Part 11B.",
-    "Debug and optimize performance characteristics of DevOps Engineer Implementation Steps Part 11B."
+    "Understand DevOps Engineer Implementation Steps Part 11B from zero to advanced level",
+    "Write clean, production-grade DevOps Engineer code for DevOps Engineer Implementation Steps Part 11B",
+    "Debug edge cases and answer interview questions about DevOps Engineer Implementation Steps Part 11B"
   ],
   "tags": [
+    "devops_engineer_implementation_steps_part_11b",
     "devops",
-    "engineer",
-    "implementation",
-    "steps",
-    "part",
-    "11b"
+    "devops_engineer_performance_optimization_complexity"
   ]
 }

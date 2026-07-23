@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Inheritance?",
+      "question": "What function calls a method from the parent class inside a child class?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "super()",
+        "parent()",
+        "base()",
+        "this()"
       ],
       "answer": 0,
-      "explanation": "Inheritance is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Inheritance exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "`super()` returns a proxy object delegating method calls to parent/sibling classes in MRO.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Inheritance is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Inheritance improves code quality.",
+      "question": "True or False: `Class.mro()` reveals the Method Resolution Order search path.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True."
     }
   ]
 }

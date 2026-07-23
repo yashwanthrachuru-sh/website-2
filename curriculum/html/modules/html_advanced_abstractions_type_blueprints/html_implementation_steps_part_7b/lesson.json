@@ -3,26 +3,22 @@
   "title": "HTML Implementation Steps Part 7B",
   "technology": "HTML",
   "module": "HTML Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Implementation Steps Part 7B.",
-    "Write error-free implementations utilizing HTML Implementation Steps Part 7B.",
-    "Debug and optimize performance characteristics of HTML Implementation Steps Part 7B."
+    "Understand HTML Implementation Steps Part 7B from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Implementation Steps Part 7B",
+    "Debug edge cases and answer interview questions about HTML Implementation Steps Part 7B"
   ],
   "tags": [
+    "html_implementation_steps_part_7b",
     "html",
-    "implementation",
-    "steps",
-    "part",
-    "7b"
+    "html_advanced_abstractions_type_blueprints"
   ]
 }

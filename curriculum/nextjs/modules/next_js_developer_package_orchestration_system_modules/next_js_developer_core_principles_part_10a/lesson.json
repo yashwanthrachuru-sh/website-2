@@ -3,27 +3,22 @@
   "title": "Next.js Developer Core Principles Part 10A",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Next.js Developer File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Core Principles Part 10A.",
-    "Write error-free implementations utilizing Next.js Developer Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of Next.js Developer Core Principles Part 10A."
+    "Understand Next.js Developer Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about Next.js Developer Core Principles Part 10A"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "next_js_developer_core_principles_part_10a",
+    "nextjs",
+    "next_js_developer_package_orchestration_system_modules"
   ]
 }

@@ -3,27 +3,22 @@
   "title": "GCP Cloud Engineer Troubleshooting Part 9C",
   "technology": "GCP Cloud Engineer",
   "module": "GCP Cloud Engineer File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: GCP Cloud Engineer Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of GCP Cloud Engineer Troubleshooting Part 9C.",
-    "Write error-free implementations utilizing GCP Cloud Engineer Troubleshooting Part 9C.",
-    "Debug and optimize performance characteristics of GCP Cloud Engineer Troubleshooting Part 9C."
+    "Understand GCP Cloud Engineer Troubleshooting Part 9C from zero to advanced level",
+    "Write clean, production-grade GCP Cloud Engineer code for GCP Cloud Engineer Troubleshooting Part 9C",
+    "Debug edge cases and answer interview questions about GCP Cloud Engineer Troubleshooting Part 9C"
   ],
   "tags": [
+    "gcp_cloud_engineer_troubleshooting_part_9c",
     "gcp",
-    "cloud",
-    "engineer",
-    "troubleshooting",
-    "part",
-    "9c"
+    "gcp_cloud_engineer_file_integration_stream_buffers"
   ]
 }

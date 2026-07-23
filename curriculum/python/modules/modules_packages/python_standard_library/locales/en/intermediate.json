@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Python Standard Library becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Use `pathlib.Path` over legacy `os.path` for object-oriented filesystem paths.",
+  "internalImplementation": "Stdlib modules written in C (like `math`, `sys`) or Python.",
   "examples": [
     {
-      "title": "Getting Started with Python Standard Library",
-      "code": "print(\"Learning Python Standard Library\")",
-      "explanation": "Basic introduction to Python Standard Library.",
-      "language": "python"
+      "code": "from pathlib import Path\np = Path('.') / 'data' / 'file.txt'\nprint('Exists:', p.exists())",
+      "explanation": "Pathlib object-oriented path manipulation."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A python standard library implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "C-extension modules (math, cjson) execute at native C speeds.",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Shadowing stdlib module with local file.",
+    "incorrectCode": "# Local file named math.py!\nimport math  # Imports local math.py!",
+    "correctCode": "# Rename local file to my_math.py"
+  },
+  "bestPractices": [
+    "Use `pathlib` for file paths.",
+    "Prefer stdlib over 3rd party libs when suitable."
+  ]
 }

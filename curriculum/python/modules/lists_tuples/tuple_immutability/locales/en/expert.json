@@ -1,45 +1,8 @@
 {
-  "overview": "At the expert level, Tuple Immutability involves tradeoffs between approaches, optimization for specific use cases, and design for maintainability.",
-  "industryContext": "In production Python systems, this is implemented with attention to performance and security.",
-  "examples": [],
-  "codeReviewChecklist": [
-    "Handles all errors?",
-    "Readable and maintainable?",
-    "Performance concerns?",
-    "Appropriate scale?"
-  ],
-  "testingPatterns": {
-    "unitTests": "Test components in isolation",
-    "integrationTests": "Test with dependencies",
-    "propertyBasedTests": "Test with random inputs",
-    "benchmarkTests": "Measure performance"
-  },
-  "refactoringGuide": {
-    "smell": "Implementation too complex or coupled",
-    "solution": "Break into smaller functions",
-    "steps": [
-      "Identify responsibilities",
-      "Separate concerns",
-      "Extract reusable parts",
-      "Verify"
-    ]
-  },
-  "securityConsiderations": [
-    "Validate inputs",
-    "Avoid exposing internal state",
-    "Log appropriately"
-  ],
-  "scalability": {
-    "considerations": "Design for statelessness for horizontal scaling.",
-    "recommendations": [
-      "Cache results",
-      "Use connection pooling",
-      "Monitor metrics"
-    ]
-  },
-  "complexityAnalysis": {
-    "timeComplexity": "Varies",
-    "spaceComplexity": "Varies",
-    "notes": "Analyze specific implementation for accurate complexity"
-  }
+  "examples": [
+    {
+      "code": "# collections.namedtuple for self-documenting data structures\nfrom collections import namedtuple\nPoint = namedtuple('Point', ['x', 'y'])\np = Point(x=10, y=20)\nprint(f'X={p.x}, Y={p.y}')  # Access by field name or index p[0]",
+      "explanation": "namedtuple provides tuple memory efficiency + attribute name access."
+    }
+  ]
 }

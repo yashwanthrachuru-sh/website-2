@@ -3,26 +3,22 @@
   "title": "Machine Learning Troubleshooting Part 4C",
   "technology": "Machine Learning",
   "module": "Machine Learning Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Machine Learning Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Machine Learning Troubleshooting Part 4C.",
-    "Write error-free implementations utilizing Machine Learning Troubleshooting Part 4C.",
-    "Debug and optimize performance characteristics of Machine Learning Troubleshooting Part 4C."
+    "Understand Machine Learning Troubleshooting Part 4C from zero to advanced level",
+    "Write clean, production-grade Machine Learning code for Machine Learning Troubleshooting Part 4C",
+    "Debug edge cases and answer interview questions about Machine Learning Troubleshooting Part 4C"
   ],
   "tags": [
-    "machine",
-    "learning",
-    "troubleshooting",
-    "part",
-    "4c"
+    "machine_learning_troubleshooting_part_4c",
+    "ml",
+    "machine_learning_iteration_loops_state_traversal"
   ]
 }

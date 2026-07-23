@@ -3,27 +3,22 @@
   "title": "Placement Preparation Core Principles Part 12A",
   "technology": "Placement Preparation",
   "module": "Placement Preparation Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Placement Preparation Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Placement Preparation Core Principles Part 12A.",
-    "Write error-free implementations utilizing Placement Preparation Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of Placement Preparation Core Principles Part 12A."
+    "Understand Placement Preparation Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade Placement Preparation code for Placement Preparation Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about Placement Preparation Core Principles Part 12A"
   ],
   "tags": [
+    "placement_preparation_core_principles_part_12a",
     "placement",
-    "preparation",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "placement_preparation_production_deployment_server_pipelines"
   ]
 }

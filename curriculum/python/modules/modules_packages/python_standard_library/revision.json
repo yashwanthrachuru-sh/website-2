@@ -1,23 +1,14 @@
 {
-  "summary": "You have completed this lesson! You studied how Python Standard Library allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Master Python Standard Library for building robust Python software.",
+  "summary": "Key concepts covered: Python Standard Library syntax, execution flow, best practices, and interview questions.",
+  "keyTakeaways": [
+    "Understand core syntax of Python Standard Library",
+    "Follow style guidelines",
+    "Write automated tests"
   ],
-  "keySyntax": [
-    "// python syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
-    {
-      "front": "What is the primary role of Python Standard Library?",
-      "back": "To manage states, loop checks, or object definitions."
-    },
-    {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
-    }
+  "preInterviewChecklist": [
+    "Define Python Standard Library",
+    "Provide code example",
+    "Explain time/space complexity"
   ]
 }

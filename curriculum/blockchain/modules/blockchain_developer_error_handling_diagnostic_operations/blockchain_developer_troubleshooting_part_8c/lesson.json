@@ -3,26 +3,22 @@
   "title": "Blockchain Developer Troubleshooting Part 8C",
   "technology": "Blockchain Developer",
   "module": "Blockchain Developer Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Blockchain Developer Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Blockchain Developer Troubleshooting Part 8C.",
-    "Write error-free implementations utilizing Blockchain Developer Troubleshooting Part 8C.",
-    "Debug and optimize performance characteristics of Blockchain Developer Troubleshooting Part 8C."
+    "Understand Blockchain Developer Troubleshooting Part 8C from zero to advanced level",
+    "Write clean, production-grade Blockchain Developer code for Blockchain Developer Troubleshooting Part 8C",
+    "Debug edge cases and answer interview questions about Blockchain Developer Troubleshooting Part 8C"
   ],
   "tags": [
+    "blockchain_developer_troubleshooting_part_8c",
     "blockchain",
-    "developer",
-    "troubleshooting",
-    "part",
-    "8c"
+    "blockchain_developer_error_handling_diagnostic_operations"
   ]
 }

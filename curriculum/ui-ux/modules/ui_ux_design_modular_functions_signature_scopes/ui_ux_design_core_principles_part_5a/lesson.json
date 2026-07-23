@@ -3,27 +3,22 @@
   "title": "UI/UX Design Core Principles Part 5A",
   "technology": "UI/UX Design",
   "module": "UI/UX Design Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: UI/UX Design Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of UI/UX Design Core Principles Part 5A.",
-    "Write error-free implementations utilizing UI/UX Design Core Principles Part 5A.",
-    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 5A."
+    "Understand UI/UX Design Core Principles Part 5A from zero to advanced level",
+    "Write clean, production-grade UI/UX Design code for UI/UX Design Core Principles Part 5A",
+    "Debug edge cases and answer interview questions about UI/UX Design Core Principles Part 5A"
   ],
   "tags": [
-    "ui/ux",
-    "design",
-    "core",
-    "principles",
-    "part",
-    "5a"
+    "ui_ux_design_core_principles_part_5a",
+    "ui-ux",
+    "ui_ux_design_modular_functions_signature_scopes"
   ]
 }

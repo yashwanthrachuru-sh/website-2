@@ -1,0 +1,24 @@
+{
+  "id": "python_reading_files",
+  "title": "Reading Files",
+  "technology": "Python",
+  "module": "File Handling & I/O",
+  "estimatedTime": 60,
+  "difficultyLevels": [
+    "beginner",
+    "intermediate",
+    "expert"
+  ],
+  "prerequisites": [],
+  "nextLessons": [],
+  "learningObjectives": [
+    "Master Reading Files concepts from first principles",
+    "Write clean, production-grade Python code for Reading Files",
+    "Debug common pitfalls and edge cases in Reading Files"
+  ],
+  "tags": [
+    "reading_files",
+    "reading files",
+    "file handling & i/o"
+  ]
+}

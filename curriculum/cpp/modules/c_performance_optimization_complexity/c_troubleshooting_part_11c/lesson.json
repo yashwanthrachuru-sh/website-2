@@ -3,25 +3,22 @@
   "title": "C++ Troubleshooting Part 11C",
   "technology": "C++",
   "module": "C++ Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: C++ Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of C++ Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing C++ Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of C++ Troubleshooting Part 11C."
+    "Understand C++ Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade C++ code for C++ Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about C++ Troubleshooting Part 11C"
   ],
   "tags": [
-    "c++",
-    "troubleshooting",
-    "part",
-    "11c"
+    "c_troubleshooting_part_11c",
+    "cpp",
+    "c_performance_optimization_complexity"
   ]
 }

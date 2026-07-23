@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Tuple Immutability becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Tuples are slightly faster and consume less memory than lists because CPython allocates exact memory size once during creation. A tuple is hashable (has a `__hash__()` method) ONLY if all of its contained elements are also hashable. If a tuple contains a mutable list `(1, [2, 3])`, the tuple itself cannot be hashed!",
+  "internalImplementation": "CPython maintains a free-list cache for small tuples (up to size 20) to speed up creation/allocation.",
   "examples": [
     {
-      "title": "Getting Started with Tuple Immutability",
-      "code": "print(\"Learning Tuple Immutability\")",
-      "explanation": "Basic introduction to Tuple Immutability.",
-      "language": "python"
+      "code": "# Tuple with Mutable Objects\ntup = (1, [2, 3])\ntup[1].append(4)  # Modifies nested list inside tuple!\nprint(tup)         # (1, [2, 3, 4])\n# hash(tup)        # TypeError: unhashable type: 'list'",
+      "explanation": "While tuple reference array is immutable, nested mutable objects inside can still mutate, making tuple unhashable."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A tuple immutability implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Creation & Indexing O(1).",
+    "spaceComplexity": "Saves 16-24 bytes memory compared to equivalent list."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Creating single element parenthesis expression instead of tuple.",
+    "incorrectCode": "item = ('apple')  # Type is str!\nprint(type(item)) # <class 'str'>",
+    "correctCode": "item = ('apple',) # Trailing comma creates tuple\nprint(type(item)) # <class 'tuple'>"
+  },
+  "bestPractices": [
+    "Use tuples for heterogeneous records `(name, age, email)`.",
+    "Use namedtuples (`collections.namedtuple`) for self-documenting tuple fields."
+  ]
 }

@@ -3,23 +3,22 @@
   "title": "Generic Constraints",
   "technology": "TypeScript",
   "module": "Generics Constraints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Functions & Overloads"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Generic Constraints.",
-    "Write error-free implementations utilizing Generic Constraints.",
-    "Debug and optimize performance characteristics of Generic Constraints."
+    "Understand Generic Constraints from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Generic Constraints",
+    "Debug edge cases and answer interview questions about Generic Constraints"
   ],
   "tags": [
-    "generic",
-    "constraints"
+    "generic_constraints",
+    "typescript",
+    "generics_constraints"
   ]
 }

@@ -3,27 +3,22 @@
   "title": "Node.js Developer Core Principles Part 12A",
   "technology": "Node.js Developer",
   "module": "Node.js Developer Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Node.js Developer Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Node.js Developer Core Principles Part 12A.",
-    "Write error-free implementations utilizing Node.js Developer Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of Node.js Developer Core Principles Part 12A."
+    "Understand Node.js Developer Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade Node.js Developer code for Node.js Developer Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about Node.js Developer Core Principles Part 12A"
   ],
   "tags": [
-    "node.js",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "node_js_developer_core_principles_part_12a",
+    "nodejs",
+    "node_js_developer_production_deployment_server_pipelines"
   ]
 }

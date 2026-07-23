@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Polymorphism — Basic Practice",
-    "description": "Write a basic polymorphism implementation.",
-    "starterCode": "def basic_polymorphism():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Polymorphic Area Calculator",
+    "description": "Write function `total_area(shapes)` calling `s.area()` on each shape and returning sum.",
+    "starterCode": "def total_area(shapes):\n    pass",
+    "expectedOutput": "25.0",
+    "solution": "def total_area(shapes):\n    return sum(s.area() for s in shapes)",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "sum(s.area() for s in shapes)"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Polymorphism — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Notification System ABC",
+    "description": "Create ABC `Notifier` with abstract `send(msg)`. Subclasses: `EmailNotifier`, `SMSNotifier`.",
+    "starterCode": "from abc import ABC, abstractmethod\nclass Notifier(ABC): pass",
+    "expectedOutput": "'Email: hi'",
+    "solution": "from abc import ABC, abstractmethod\nclass Notifier(ABC):\n    @abstractmethod\n    def send(self, msg): pass\nclass EmailNotifier(Notifier):\n    def send(self, msg): return f'Email: {msg}'\nclass SMSNotifier(Notifier):\n    def send(self, msg): return f'SMS: {msg}'",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Use @abstractmethod on send"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Polymorphism — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Plugin Dispatch Processor",
+    "description": "Build pipeline executing `.transform(data)` on list of polymorphic plugin objects.",
+    "starterCode": "def run_pipeline(plugins, data):\n    pass",
+    "expectedOutput": "'DATA'",
+    "solution": "def run_pipeline(plugins, data):\n    for p in plugins:\n        data = p.transform(data)\n    return data",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Chain output of p.transform(data)"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Polymorphism",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Abstract Instantiation Error",
+    "description": "Implement missing abstract method in subclass.",
+    "buggyCode": "class Writer(ABC):\n    @abstractmethod\n    def write(self): pass\nclass FileWriter(Writer): pass",
+    "fixedCode": "class FileWriter(Writer):\n    def write(self): print('writing')",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "FileWriter failed to implement abstract method `write()`."
     ]
   }
 }

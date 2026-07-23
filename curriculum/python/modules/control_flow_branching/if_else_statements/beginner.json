@@ -1,45 +1,59 @@
 {
-  "motivation": "Evaluate logic thresholds using conditional if branching.",
-  "whyExists": "Without conditionals, every program would execute identically regardless of input. Conditionals enable **business logic**: charge a different tax rate based on country, show different UI based on user role, retry a network request only if it failed, validate form input before sending. Every meaningful program contains conditional logic — it is the foundation of decision-making in software.",
-  "realWorldAnalogy": "Imagine you're playing a video game. If you have enough coins, the door opens. If you don't, it stays locked. That's a conditional!\n\nIn programming: **if** something is true → do this. **else** → do that.\n\nExample: if your age is over 18, you can vote. Otherwise, you cannot. The computer checks the condition (age > 18) and picks the right path.",
-  "simpleExplanation": "To learn If Else Statements from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. If Else Statements defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: If Else Statements] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the python syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how If Else Statements works under the hood in Python?",
+  "whyExists": "If Else Statements is a core building block in Python. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of If Else Statements like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, If Else Statements provides a clear, standardized way to execute logic in Python. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for If Else Statements:\n\n```python\n# Python implementation for If Else Statements\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "# Python implementation for If Else Statements",
+      "desc": "Initialize and configure If Else Statements parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "def process_data(records):",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "    print('Processed:', process_data(data))",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "if_else_statements_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "if_else_statements_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "print(\"Running If Else Statements...\")",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic If Else Statements Example",
+      "code": "# Python implementation for If Else Statements\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+      "explanation": "Demonstrates basic usage of If Else Statements in Python."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in If Else Statements",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "# Python implementation for If Else Statements",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

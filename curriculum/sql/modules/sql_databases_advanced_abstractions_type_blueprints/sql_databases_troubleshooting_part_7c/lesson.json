@@ -3,27 +3,22 @@
   "title": "SQL & Databases Troubleshooting Part 7C",
   "technology": "SQL & Databases",
   "module": "SQL & Databases Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: SQL & Databases Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of SQL & Databases Troubleshooting Part 7C.",
-    "Write error-free implementations utilizing SQL & Databases Troubleshooting Part 7C.",
-    "Debug and optimize performance characteristics of SQL & Databases Troubleshooting Part 7C."
+    "Understand SQL & Databases Troubleshooting Part 7C from zero to advanced level",
+    "Write clean, production-grade SQL & Databases code for SQL & Databases Troubleshooting Part 7C",
+    "Debug edge cases and answer interview questions about SQL & Databases Troubleshooting Part 7C"
   ],
   "tags": [
+    "sql_databases_troubleshooting_part_7c",
     "sql",
-    "&",
-    "databases",
-    "troubleshooting",
-    "part",
-    "7c"
+    "sql_databases_advanced_abstractions_type_blueprints"
   ]
 }

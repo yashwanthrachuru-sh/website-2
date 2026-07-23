@@ -1,24 +1,34 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/python installation",
-      "type": "documentation",
-      "description": "Official reference for Python Installation in Python"
-    }
-  ],
-  "books": [
+      "type": "official",
+      "title": "Python Downloads — python.org",
+      "url": "https://www.python.org/downloads/"
+    },
     {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Python Installation in depth with practical examples"
-    }
-  ],
-  "communities": [
+      "type": "official",
+      "title": "Python Installation Guide (Windows, macOS, Linux)",
+      "url": "https://docs.python.org/3/using/index.html"
+    },
     {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Python Installation with other developers"
+      "type": "official",
+      "title": "venv — Virtual Environments (Python Docs)",
+      "url": "https://docs.python.org/3/library/venv.html"
+    },
+    {
+      "type": "official",
+      "title": "pip User Guide",
+      "url": "https://pip.pypa.io/en/stable/user_guide/"
+    },
+    {
+      "type": "reference",
+      "title": "pyenv — Python Version Management",
+      "url": "https://github.com/pyenv/pyenv"
+    },
+    {
+      "type": "reference",
+      "title": "PyPI — The Python Package Index",
+      "url": "https://pypi.org"
     }
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "easy": {
+    "title": "Basic Context Managers Task",
+    "problem": "Implement a simple snippet demonstrating Context Managers.",
+    "starterCode": "# Write code for Context Managers\n",
+    "hints": [
+      "Review beginner notes"
+    ],
+    "solution": "from contextlib import contextmanager\n\n@contextmanager\ndef open_managed_file(filename):\n    f = open(filename, 'w')\n    try:\n        yield f\n    finally:\n        f.close()",
+    "expectedOutput": "Success"
+  },
+  "medium": {
+    "title": "Applied Context Managers Challenge",
+    "problem": "Build a function that uses Context Managers to process input data.",
+    "starterCode": "# Implement function using Context Managers\n",
+    "hints": [
+      "Check edge cases"
+    ],
+    "solution": "with open_managed_file('test.txt') as f: f.write('Hello')",
+    "expectedOutput": "Processed Result"
+  },
+  "hard": {
+    "title": "Advanced Context Managers Optimization",
+    "problem": "Optimize a computational routine using Context Managers principles.",
+    "starterCode": "# Advanced Context Managers\n",
+    "hints": [
+      "Use efficient algorithms"
+    ],
+    "solution": "from contextlib import contextmanager\n\n@contextmanager\ndef open_managed_file(filename):\n    f = open(filename, 'w')\n    try:\n        yield f\n    finally:\n        f.close()",
+    "expectedOutput": "Optimized Output"
+  },
+  "debugging": {
+    "title": "Fix Context Managers Bug",
+    "problem": "Identify and repair syntax or logic errors in the provided Context Managers code.",
+    "starterCode": "# Broken code snippet\n",
+    "hints": [
+      "Check error messages"
+    ],
+    "solution": "from contextlib import contextmanager\n\n@contextmanager\ndef open_managed_file(filename):\n    f = open(filename, 'w')\n    try:\n        yield f\n    finally:\n        f.close()",
+    "expectedOutput": "Fixed Output"
+  }
+}

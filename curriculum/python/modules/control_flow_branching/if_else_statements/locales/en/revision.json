@@ -1,47 +1,32 @@
 {
-  "oneLineSummary": "Conditional statements let programs make decisions by choosing different paths based on boolean conditions.",
-  "summary": "We covered how if/else statements allow programs to branch based on conditions: evaluation, selection, chaining, logical operators, and common pitfalls like = vs ==.",
+  "summary": "`if`, `elif`, and `else` control code execution paths. Conditions evaluate top-down; the first `True` branch executes and remaining branches are skipped.",
+  "oneLineSummary": "Conditional branching executes the first true block in a sequence of checks.",
   "keyTakeaways": [
-    "Conditions evaluate to True/False and determine which branch runs",
-    "Only one branch in if/elif/else executes",
-    "Use logical operators (and/or/not) to combine conditions",
-    "Always consider the else case"
+    "Order conditions from most specific to least specific.",
+    "Use `and`/`or` for short-circuit safety.",
+    "Always use 4-space indentation for blocks."
   ],
   "memoryTricks": [
-    "Think of a fork in the road — the condition determines your path",
-    "Remember: = is assignment (set), == is comparison (check)"
-  ],
-  "preInterviewChecklist": [
-    "Can you write a leap year checker from memory?",
-    "Do you understand short-circuit evaluation?",
-    "Can you explain = vs ==?"
+    {
+      "concept": "Branching",
+      "trick": "Think of a train track switch — once the switch is set to one track, the train travels down that path only."
+    }
   ],
   "commonErrors": [
-    "Using = instead of ==",
-    "Floating-point == comparisons",
-    "Missing else cases",
-    "Dead code from always-true/false conditions"
+    {
+      "error": "IndentationError",
+      "cause": "Mismatched indentation spaces",
+      "fix": "Ensure all statements in block share identical indent level"
+    }
   ],
-  "mindMap": {
-    "central": "Conditionals",
-    "branches": [
-      "If/Else",
-      "Chained Conditions",
-      "Logical Operators",
-      "Comparison",
-      "Ternary",
-      "Switch/Match",
-      "Branch Prediction"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain short-circuiting",
+    "Differentiate if-if vs if-elif"
+  ],
   "nextTopics": [
-    "Switch statements and pattern matching",
-    "Polymorphism as alternative to conditionals",
-    "Branch prediction and CPU architecture"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Nested Conditions & Ternary Operators",
+      "whyNext": "Learn inline conditionals and nested decision trees."
+    }
+  ]
 }

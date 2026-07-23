@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain SQLite Integration to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of sqlite integration?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for sqlite integration?",
-      "answer": "Use SQLite Integration when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "What happens if you forget to call `conn.commit()` after executing an INSERT/UPDATE in sqlite3?",
+      "answer": "The changes remain in an uncommitted transaction state inside that connection session. Once the connection closes or application terminates without commit, SQLite automatically rolls back the uncommitted changes, losing the edits.",
+      "level": "intermediate"
     }
   ]
 }

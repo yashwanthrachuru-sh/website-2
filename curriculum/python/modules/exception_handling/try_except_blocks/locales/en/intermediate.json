@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Try Except Blocks becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Python uses EAFP ('Easier to Ask for Forgiveness than Permission') style. Instead of pre-checking `if file_exists()`, pythonic code tries `open()` and catches `FileNotFoundError`.",
+  "internalImplementation": "CPython manages exception handlers using `SETUP_FINALLY` and `POP_EXCEPT` bytecode instructions.",
   "examples": [
     {
-      "title": "Getting Started with Try Except Blocks",
-      "code": "print(\"Learning Try Except Blocks\")",
-      "explanation": "Basic introduction to Try Except Blocks.",
-      "language": "python"
+      "code": "try:\n    f = open('data.txt')\nexcept FileNotFoundError:\n    print('File missing')",
+      "explanation": "EAFP pattern for file opening."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A try except blocks implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "O(1) setup cost when no exception occurs.",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Bare except catching KeyboardInterrupt.",
+    "incorrectCode": "try: work()\nexcept: pass",
+    "correctCode": "try: work()\nexcept Exception: pass"
+  },
+  "bestPractices": [
+    "Catch specific exceptions.",
+    "Keep `try` blocks small."
+  ]
 }

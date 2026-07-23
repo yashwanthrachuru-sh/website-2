@@ -1,44 +1,30 @@
 {
-  "oneLineSummary": "Raising Exceptions is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Raising Exceptions is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "`raise` triggers exceptions deliberately. Re-raise with bare `raise`. Chain with `raise B from A`.",
+  "oneLineSummary": "raise triggers exceptions to enforce constraints and business logic rules.",
   "keyTakeaways": [
-    "Raising Exceptions solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Use specific exception types.",
+    "raise ... from e preserves root cause."
   ],
   "memoryTricks": [
-    "Think of raising exceptions as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Raising Exceptions in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "raise",
+      "trick": "RAISE a red flag when rules are broken."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "Losing original traceback",
+      "cause": "Using raise e instead of bare raise",
+      "fix": "Use bare raise inside except block"
+    }
   ],
-  "mindMap": {
-    "central": "Raising Exceptions",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Demonstrate exception chaining with from"
+  ],
   "nextTopics": [
-    "Advanced raising exceptions",
-    "Testing raising exceptions",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Custom Exceptions",
+      "whyNext": "Learn to define custom exception classes."
+    }
+  ]
 }

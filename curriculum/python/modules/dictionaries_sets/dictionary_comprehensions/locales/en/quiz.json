@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Dictionary Comprehensions?",
+      "question": "What separates the key expression from the value expression in a dict comprehension?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        ": (colon)",
+        "= (equals)",
+        "-> (arrow)",
+        ", (comma)"
       ],
       "answer": 0,
-      "explanation": "Dictionary Comprehensions is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Dictionary Comprehensions exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "Dict comprehensions use `{key: value for ...}` syntax.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Dictionary Comprehensions is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Dictionary Comprehensions improves code quality.",
+      "question": "True or False: If duplicate keys are produced in a dict comprehension, the last key-value pair overwrites earlier ones.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Later duplicate key evaluations overwrite prior entries."
     }
   ]
 }

@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Context Managers becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "The `@contextmanager` decorator from `contextlib` allows writing context managers using a simple generator function with `yield` instead of a class.",
+  "internalImplementation": "CPython uses `SETUP_WITH` bytecode instruction.",
   "examples": [
     {
-      "title": "Getting Started with Context Managers",
-      "code": "print(\"Learning Context Managers\")",
-      "explanation": "Basic introduction to Context Managers.",
-      "language": "python"
+      "code": "from contextlib import contextmanager\n@contextmanager\ndef temp_file(path):\n    f = open(path, 'w')\n    try:\n        yield f\n    finally:\n        f.close()\n\nwith temp_file('tmp.txt') as f:\n    f.write('temp')",
+      "explanation": "Generator-based context manager using `@contextmanager`."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A context managers implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "O(1) setup/cleanup.",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Exception swallowed by __exit__ returning True unintentionally.",
+    "incorrectCode": "def __exit__(self, *args): return True  # Swallows all exceptions!",
+    "correctCode": "def __exit__(self, *args): return False # Allows exceptions to propagate"
+  },
+  "bestPractices": [
+    "Use `@contextmanager` for simple resource managers.",
+    "Return `False` in `__exit__` unless explicitly suppressing errors."
+  ]
 }

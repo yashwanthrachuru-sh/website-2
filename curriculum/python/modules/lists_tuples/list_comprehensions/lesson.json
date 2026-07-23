@@ -3,23 +3,22 @@
   "title": "List Comprehensions",
   "technology": "Python",
   "module": "Lists & Tuples",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Functions & Scope"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of List Comprehensions.",
-    "Write error-free implementations utilizing List Comprehensions.",
-    "Debug and optimize performance characteristics of List Comprehensions."
+    "Understand List Comprehensions from zero to advanced level",
+    "Write clean, production-grade Python code for List Comprehensions",
+    "Debug edge cases and answer interview questions about List Comprehensions"
   ],
   "tags": [
-    "list",
-    "comprehensions"
+    "list_comprehensions",
+    "python",
+    "lists_tuples"
   ]
 }

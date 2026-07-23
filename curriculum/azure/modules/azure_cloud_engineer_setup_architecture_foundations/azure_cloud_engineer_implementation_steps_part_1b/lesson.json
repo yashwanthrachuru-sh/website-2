@@ -3,28 +3,22 @@
   "title": "Azure Cloud Engineer Implementation Steps Part 1B",
   "technology": "Azure Cloud Engineer",
   "module": "Azure Cloud Engineer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Azure Cloud Engineer Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing Azure Cloud Engineer Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of Azure Cloud Engineer Implementation Steps Part 1B."
+    "Understand Azure Cloud Engineer Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade Azure Cloud Engineer code for Azure Cloud Engineer Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about Azure Cloud Engineer Implementation Steps Part 1B"
   ],
   "tags": [
+    "azure_cloud_engineer_implementation_steps_part_1b",
     "azure",
-    "cloud",
-    "engineer",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "azure_cloud_engineer_setup_architecture_foundations"
   ]
 }

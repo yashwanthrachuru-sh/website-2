@@ -3,27 +3,22 @@
   "title": "Web Development Core Principles Part 6A",
   "technology": "Web Development",
   "module": "Web Development Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Web Development Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Web Development Core Principles Part 6A.",
-    "Write error-free implementations utilizing Web Development Core Principles Part 6A.",
-    "Debug and optimize performance characteristics of Web Development Core Principles Part 6A."
+    "Understand Web Development Core Principles Part 6A from zero to advanced level",
+    "Write clean, production-grade Web Development code for Web Development Core Principles Part 6A",
+    "Debug edge cases and answer interview questions about Web Development Core Principles Part 6A"
   ],
   "tags": [
-    "web",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "6a"
+    "web_development_core_principles_part_6a",
+    "webdev",
+    "web_development_data_collections_list_structures"
   ]
 }

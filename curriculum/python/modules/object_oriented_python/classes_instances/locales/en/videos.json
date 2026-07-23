@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Classes & Instances — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Classes & Instances for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Classes & Instances Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Classes & Instances patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python OOP Tutorial 1: Classes and Instances",
+    "video_id": "ZDa-Z5JzLYM",
+    "url": "https://www.youtube.com/watch?v=ZDa-Z5JzLYM",
+    "channel": "Corey Schafer",
+    "duration": "15m",
+    "description": "Foundational tutorial on Python classes and instance attributes."
+  }
+]

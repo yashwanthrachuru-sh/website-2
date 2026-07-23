@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/nested conditions",
-      "type": "documentation",
-      "description": "Official reference for Nested Conditions in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Nested Conditions in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Nested Conditions with other developers"
+      "type": "official",
+      "title": "Refactoring Guard Clauses",
+      "url": "https://refactoring.guru/replace-nested-conditional-with-guard-clauses"
     }
   ]
 }

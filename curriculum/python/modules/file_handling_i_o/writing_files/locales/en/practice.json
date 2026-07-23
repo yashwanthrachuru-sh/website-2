@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Writing Files — Basic Practice",
-    "description": "Write a basic writing files implementation.",
-    "starterCode": "def basic_writing_files():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Write String List to File",
+    "description": "Write list of strings to file, one per line.",
+    "starterCode": "def write_lines(fn, lines):\n    pass",
+    "expectedOutput": "True",
+    "solution": "def write_lines(fn, lines):\n    with open(fn, 'w', encoding='utf-8') as f:\n        for l in lines: f.write(l + '\\n')\n    return True",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Add \\n newline to each string"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Writing Files — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Append Timestamped Log Entry",
+    "description": "Append line `[TIMESTAMP] msg` to log file.",
+    "starterCode": "import datetime\ndef log_msg(fn, msg):\n    pass",
+    "expectedOutput": "True",
+    "solution": "import datetime\ndef log_msg(fn, msg):\n    ts = datetime.datetime.now().isoformat()\n    with open(fn, 'a', encoding='utf-8') as f:\n        f.write(f'[{ts}] {msg}\\n')\n    return True",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Use 'a' mode"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Writing Files — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Safe Atomic File Writer",
+    "description": "Write data to temp file then use os.replace for atomic save.",
+    "starterCode": "import os\ndef atomic_write(fn, data):\n    pass",
+    "expectedOutput": "True",
+    "solution": "import os\ndef atomic_write(fn, data):\n    tmp = fn + '.tmp'\n    with open(tmp, 'w', encoding='utf-8') as f:\n        f.write(data)\n    os.replace(tmp, fn)\n    return True",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Use os.replace(tmp, fn)"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Writing Files",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Overwrite Bug",
+    "description": "Fix mode truncating log file.",
+    "buggyCode": "open('log.txt', 'w')",
+    "fixedCode": "open('log.txt', 'a')",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Mode 'w' truncates existing data; change to 'a'."
     ]
   }
 }

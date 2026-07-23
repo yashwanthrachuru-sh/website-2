@@ -3,27 +3,22 @@
   "title": "DevOps Engineer Core Principles Part 3A",
   "technology": "DevOps Engineer",
   "module": "DevOps Engineer Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: DevOps Engineer Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of DevOps Engineer Core Principles Part 3A.",
-    "Write error-free implementations utilizing DevOps Engineer Core Principles Part 3A.",
-    "Debug and optimize performance characteristics of DevOps Engineer Core Principles Part 3A."
+    "Understand DevOps Engineer Core Principles Part 3A from zero to advanced level",
+    "Write clean, production-grade DevOps Engineer code for DevOps Engineer Core Principles Part 3A",
+    "Debug edge cases and answer interview questions about DevOps Engineer Core Principles Part 3A"
   ],
   "tags": [
+    "devops_engineer_core_principles_part_3a",
     "devops",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "3a"
+    "devops_engineer_control_flow_boolean_logic_branching"
   ]
 }

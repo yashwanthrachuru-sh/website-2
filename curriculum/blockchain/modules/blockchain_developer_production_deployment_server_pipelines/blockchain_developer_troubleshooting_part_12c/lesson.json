@@ -3,26 +3,22 @@
   "title": "Blockchain Developer Troubleshooting Part 12C",
   "technology": "Blockchain Developer",
   "module": "Blockchain Developer Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Blockchain Developer Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Blockchain Developer Troubleshooting Part 12C.",
-    "Write error-free implementations utilizing Blockchain Developer Troubleshooting Part 12C.",
-    "Debug and optimize performance characteristics of Blockchain Developer Troubleshooting Part 12C."
+    "Understand Blockchain Developer Troubleshooting Part 12C from zero to advanced level",
+    "Write clean, production-grade Blockchain Developer code for Blockchain Developer Troubleshooting Part 12C",
+    "Debug edge cases and answer interview questions about Blockchain Developer Troubleshooting Part 12C"
   ],
   "tags": [
+    "blockchain_developer_troubleshooting_part_12c",
     "blockchain",
-    "developer",
-    "troubleshooting",
-    "part",
-    "12c"
+    "blockchain_developer_production_deployment_server_pipelines"
   ]
 }

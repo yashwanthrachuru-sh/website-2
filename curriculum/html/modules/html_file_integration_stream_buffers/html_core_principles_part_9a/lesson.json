@@ -3,26 +3,22 @@
   "title": "HTML Core Principles Part 9A",
   "technology": "HTML",
   "module": "HTML File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Core Principles Part 9A.",
-    "Write error-free implementations utilizing HTML Core Principles Part 9A.",
-    "Debug and optimize performance characteristics of HTML Core Principles Part 9A."
+    "Understand HTML Core Principles Part 9A from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Core Principles Part 9A",
+    "Debug edge cases and answer interview questions about HTML Core Principles Part 9A"
   ],
   "tags": [
+    "html_core_principles_part_9a",
     "html",
-    "core",
-    "principles",
-    "part",
-    "9a"
+    "html_file_integration_stream_buffers"
   ]
 }

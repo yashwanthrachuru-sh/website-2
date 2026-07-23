@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Core Principles Part 7A",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Core Principles Part 7A.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Core Principles Part 7A."
+    "Understand Kubernetes Orchestration Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Core Principles Part 7A"
   ],
   "tags": [
+    "kubernetes_orchestration_core_principles_part_7a",
     "kubernetes",
-    "orchestration",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "kubernetes_orchestration_advanced_abstractions_type_blueprints"
   ]
 }

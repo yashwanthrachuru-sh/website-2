@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Lambda Functions — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Lambda Functions for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Lambda Functions Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Lambda Functions patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Lambda Functions Tutorial",
+    "video_id": "25ovWs2V154",
+    "url": "https://www.youtube.com/watch?v=25ovWs2V154",
+    "channel": "Corey Schafer",
+    "duration": "9m",
+    "description": "How to use lambda functions with map, filter, and sorted."
+  }
+]

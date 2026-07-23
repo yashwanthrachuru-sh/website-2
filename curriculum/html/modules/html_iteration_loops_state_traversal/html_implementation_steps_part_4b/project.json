@@ -1,11 +1,14 @@
 {
-  "title": "HTML Implementation Steps Part 4B System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of HTML Implementation Steps Part 4B.",
+  "title": "HTML Implementation Steps Part 4B Project",
+  "tagline": "Build a mini application using HTML Implementation Steps Part 4B",
+  "description": "Create a working HTML application demonstrating HTML Implementation Steps Part 4B.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "<!-- HTML5 Structure for HTML Implementation Steps Part 4B -->\n<section id=\"html_implementation_steps_part_4b\" class=\"card-container\">\n  <h2>HTML Implementation Steps Part 4B</h2>\n  <p>Learn HTML Implementation Steps Part 4B with interactive examples.</p>\n  <button type=\"button\" id=\"btn-action\">Click Here</button>\n</section>",
+  "solution": "<!-- HTML5 Structure for HTML Implementation Steps Part 4B -->\n<section id=\"html_implementation_steps_part_4b\" class=\"card-container\">\n  <h2>HTML Implementation Steps Part 4B</h2>\n  <p>Learn HTML Implementation Steps Part 4B with interactive examples.</p>\n  <button type=\"button\" id=\"btn-action\">Click Here</button>\n</section>",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of HTML Implementation Steps Part 4B in HTML."
 }

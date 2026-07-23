@@ -3,27 +3,22 @@
   "title": "Blockchain Developer Core Principles Part 11A",
   "technology": "Blockchain Developer",
   "module": "Blockchain Developer Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Blockchain Developer Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Blockchain Developer Core Principles Part 11A.",
-    "Write error-free implementations utilizing Blockchain Developer Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of Blockchain Developer Core Principles Part 11A."
+    "Understand Blockchain Developer Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade Blockchain Developer code for Blockchain Developer Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about Blockchain Developer Core Principles Part 11A"
   ],
   "tags": [
+    "blockchain_developer_core_principles_part_11a",
     "blockchain",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "blockchain_developer_performance_optimization_complexity"
   ]
 }

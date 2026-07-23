@@ -3,27 +3,22 @@
   "title": "Docker Containers Core Principles Part 7A",
   "technology": "Docker Containers",
   "module": "Docker Containers Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Docker Containers Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Core Principles Part 7A.",
-    "Write error-free implementations utilizing Docker Containers Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of Docker Containers Core Principles Part 7A."
+    "Understand Docker Containers Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about Docker Containers Core Principles Part 7A"
   ],
   "tags": [
+    "docker_containers_core_principles_part_7a",
     "docker",
-    "containers",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "docker_containers_advanced_abstractions_type_blueprints"
   ]
 }

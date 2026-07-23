@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Core Principles Part 1A",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Core Principles Part 1A.",
-    "Write error-free implementations utilizing AWS Cloud Architect Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Core Principles Part 1A."
+    "Understand AWS Cloud Architect Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Core Principles Part 1A"
   ],
   "tags": [
+    "aws_cloud_architect_core_principles_part_1a",
     "aws",
-    "cloud",
-    "architect",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "aws_cloud_architect_setup_architecture_foundations"
   ]
 }

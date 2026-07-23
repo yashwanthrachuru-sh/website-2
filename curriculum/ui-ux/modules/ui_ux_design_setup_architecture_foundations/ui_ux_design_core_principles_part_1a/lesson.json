@@ -3,27 +3,22 @@
   "title": "UI/UX Design Core Principles Part 1A",
   "technology": "UI/UX Design",
   "module": "UI/UX Design Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of UI/UX Design Core Principles Part 1A.",
-    "Write error-free implementations utilizing UI/UX Design Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 1A."
+    "Understand UI/UX Design Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade UI/UX Design code for UI/UX Design Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about UI/UX Design Core Principles Part 1A"
   ],
   "tags": [
-    "ui/ux",
-    "design",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "ui_ux_design_core_principles_part_1a",
+    "ui-ux",
+    "ui_ux_design_setup_architecture_foundations"
   ]
 }

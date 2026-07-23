@@ -3,23 +3,22 @@
   "title": "Lambda Functions",
   "technology": "Python",
   "module": "Functions & Scope",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Loops & Iteration"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Lambda Functions.",
-    "Write error-free implementations utilizing Lambda Functions.",
-    "Debug and optimize performance characteristics of Lambda Functions."
+    "Understand Lambda Functions from zero to advanced level",
+    "Write clean, production-grade Python code for Lambda Functions",
+    "Debug edge cases and answer interview questions about Lambda Functions"
   ],
   "tags": [
-    "lambda",
-    "functions"
+    "lambda_functions",
+    "python",
+    "functions_scope"
   ]
 }

@@ -3,26 +3,22 @@
   "title": "Data Engineering Troubleshooting Part 4C",
   "technology": "Data Engineering",
   "module": "Data Engineering Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Troubleshooting Part 4C.",
-    "Write error-free implementations utilizing Data Engineering Troubleshooting Part 4C.",
-    "Debug and optimize performance characteristics of Data Engineering Troubleshooting Part 4C."
+    "Understand Data Engineering Troubleshooting Part 4C from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Troubleshooting Part 4C",
+    "Debug edge cases and answer interview questions about Data Engineering Troubleshooting Part 4C"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "troubleshooting",
-    "part",
-    "4c"
+    "data_engineering_troubleshooting_part_4c",
+    "data-engineering",
+    "data_engineering_iteration_loops_state_traversal"
   ]
 }

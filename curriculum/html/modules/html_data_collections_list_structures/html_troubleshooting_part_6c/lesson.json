@@ -3,25 +3,22 @@
   "title": "HTML Troubleshooting Part 6C",
   "technology": "HTML",
   "module": "HTML Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing HTML Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of HTML Troubleshooting Part 6C."
+    "Understand HTML Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about HTML Troubleshooting Part 6C"
   ],
   "tags": [
+    "html_troubleshooting_part_6c",
     "html",
-    "troubleshooting",
-    "part",
-    "6c"
+    "html_data_collections_list_structures"
   ]
 }

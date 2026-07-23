@@ -3,24 +3,22 @@
   "title": "For Counter Loop",
   "technology": "C Programming",
   "module": "Loops Iterations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Control Flow Conditions"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of For Counter Loop.",
-    "Write error-free implementations utilizing For Counter Loop.",
-    "Debug and optimize performance characteristics of For Counter Loop."
+    "Understand For Counter Loop from zero to advanced level",
+    "Write clean, production-grade C Programming code for For Counter Loop",
+    "Debug edge cases and answer interview questions about For Counter Loop"
   ],
   "tags": [
-    "for",
-    "counter",
-    "loop"
+    "for_counter_loop",
+    "c",
+    "loops_iterations"
   ]
 }

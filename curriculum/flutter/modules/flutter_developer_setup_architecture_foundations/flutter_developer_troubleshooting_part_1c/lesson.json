@@ -3,26 +3,22 @@
   "title": "Flutter Developer Troubleshooting Part 1C",
   "technology": "Flutter Developer",
   "module": "Flutter Developer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Flutter Developer Troubleshooting Part 1C.",
-    "Write error-free implementations utilizing Flutter Developer Troubleshooting Part 1C.",
-    "Debug and optimize performance characteristics of Flutter Developer Troubleshooting Part 1C."
+    "Understand Flutter Developer Troubleshooting Part 1C from zero to advanced level",
+    "Write clean, production-grade Flutter Developer code for Flutter Developer Troubleshooting Part 1C",
+    "Debug edge cases and answer interview questions about Flutter Developer Troubleshooting Part 1C"
   ],
   "tags": [
+    "flutter_developer_troubleshooting_part_1c",
     "flutter",
-    "developer",
-    "troubleshooting",
-    "part",
-    "1c"
+    "flutter_developer_setup_architecture_foundations"
   ]
 }

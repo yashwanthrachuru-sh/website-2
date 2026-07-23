@@ -3,27 +3,22 @@
   "title": "Next.js Developer Core Principles Part 8A",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Next.js Developer Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Core Principles Part 8A.",
-    "Write error-free implementations utilizing Next.js Developer Core Principles Part 8A.",
-    "Debug and optimize performance characteristics of Next.js Developer Core Principles Part 8A."
+    "Understand Next.js Developer Core Principles Part 8A from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Core Principles Part 8A",
+    "Debug edge cases and answer interview questions about Next.js Developer Core Principles Part 8A"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "8a"
+    "next_js_developer_core_principles_part_8a",
+    "nextjs",
+    "next_js_developer_error_handling_diagnostic_operations"
   ]
 }

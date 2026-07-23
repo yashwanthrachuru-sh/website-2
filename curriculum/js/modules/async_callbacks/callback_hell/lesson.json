@@ -3,23 +3,22 @@
   "title": "Callback Hell",
   "technology": "JavaScript",
   "module": "Async Callbacks",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Event Handling"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Callback Hell.",
-    "Write error-free implementations utilizing Callback Hell.",
-    "Debug and optimize performance characteristics of Callback Hell."
+    "Understand Callback Hell from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Callback Hell",
+    "Debug edge cases and answer interview questions about Callback Hell"
   ],
   "tags": [
-    "callback",
-    "hell"
+    "callback_hell",
+    "js",
+    "async_callbacks"
   ]
 }

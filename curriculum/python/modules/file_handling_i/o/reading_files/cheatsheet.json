@@ -1,0 +1,16 @@
+{
+  "title": "Reading Files Cheat Sheet",
+  "sections": [
+    {
+      "heading": "Quick Reference",
+      "entries": [
+        {
+          "syntax": "with open('data.txt', 'r', encoding='utf-8') as f:",
+          "example": "with open('data.txt', 'r', encoding='utf-8') as f:\n    content = f.read()\n    for line in f:\n        print(line.strip())",
+          "description": "Basic syntax for Reading Files",
+          "commonMistake": "Syntax or scope error"
+        }
+      ]
+    }
+  ]
+}

@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Raising Exceptions becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Re-raising exceptions: inside an `except` block, calling `raise` with no arguments re-raises the active exception currently being handled. Exception chaining `raise NewError() from orig_error` preserves cause trace.",
+  "internalImplementation": "CPython sets `__cause__` and `__context__` attributes on chained exceptions.",
   "examples": [
     {
-      "title": "Getting Started with Raising Exceptions",
-      "code": "print(\"Learning Raising Exceptions\")",
-      "explanation": "Basic introduction to Raising Exceptions.",
-      "language": "python"
+      "code": "try:\n    int('abc')\nexcept ValueError as e:\n    raise RuntimeError('Failed to parse config') from e",
+      "explanation": "Chains ValueError to RuntimeError."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A raising exceptions implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Raising exception unwinds stack frames (moderate overhead). Do not use exceptions for standard control flow.",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Re-raising loses original traceback.",
+    "incorrectCode": "except ValueError as e: raise e",
+    "correctCode": "except ValueError: raise  # Re-raises current exception preserving traceback"
+  },
+  "bestPractices": [
+    "Use `raise ... from e` for exception chaining.",
+    "Never use exceptions as control flow jumps."
+  ]
 }

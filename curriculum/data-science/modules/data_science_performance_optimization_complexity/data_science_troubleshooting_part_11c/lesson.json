@@ -3,26 +3,22 @@
   "title": "Data Science Troubleshooting Part 11C",
   "technology": "Data Science",
   "module": "Data Science Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Science Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Data Science Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Data Science Troubleshooting Part 11C."
+    "Understand Data Science Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Data Science Troubleshooting Part 11C"
   ],
   "tags": [
-    "data",
-    "science",
-    "troubleshooting",
-    "part",
-    "11c"
+    "data_science_troubleshooting_part_11c",
+    "data-science",
+    "data_science_performance_optimization_complexity"
   ]
 }

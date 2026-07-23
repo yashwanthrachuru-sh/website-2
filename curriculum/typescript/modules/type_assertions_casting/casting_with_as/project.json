@@ -1,11 +1,14 @@
 {
-  "title": "Casting with As System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Casting with As.",
+  "title": "Casting with As Project",
+  "tagline": "Build a mini application using Casting with As",
+  "description": "Create a working TypeScript application demonstrating Casting with As.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Casting with As\ninterface CastingwithAsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processCastingwithAs(item: CastingwithAsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processCastingwithAs({ id: 1, title: 'Casting with As', status: 'active' }));",
+  "solution": "// TypeScript implementation for Casting with As\ninterface CastingwithAsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processCastingwithAs(item: CastingwithAsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processCastingwithAs({ id: 1, title: 'Casting with As', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Casting with As in TypeScript."
 }

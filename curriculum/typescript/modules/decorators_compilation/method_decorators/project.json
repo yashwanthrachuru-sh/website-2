@@ -1,11 +1,14 @@
 {
-  "title": "Method Decorators System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Method Decorators.",
+  "title": "Method Decorators Project",
+  "tagline": "Build a mini application using Method Decorators",
+  "description": "Create a working TypeScript application demonstrating Method Decorators.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Method Decorators\ninterface MethodDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processMethodDecorators(item: MethodDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processMethodDecorators({ id: 1, title: 'Method Decorators', status: 'active' }));",
+  "solution": "// TypeScript implementation for Method Decorators\ninterface MethodDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processMethodDecorators(item: MethodDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processMethodDecorators({ id: 1, title: 'Method Decorators', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Method Decorators in TypeScript."
 }

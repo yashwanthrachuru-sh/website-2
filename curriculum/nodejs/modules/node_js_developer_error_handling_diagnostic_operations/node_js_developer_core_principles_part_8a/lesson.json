@@ -3,27 +3,22 @@
   "title": "Node.js Developer Core Principles Part 8A",
   "technology": "Node.js Developer",
   "module": "Node.js Developer Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Node.js Developer Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Node.js Developer Core Principles Part 8A.",
-    "Write error-free implementations utilizing Node.js Developer Core Principles Part 8A.",
-    "Debug and optimize performance characteristics of Node.js Developer Core Principles Part 8A."
+    "Understand Node.js Developer Core Principles Part 8A from zero to advanced level",
+    "Write clean, production-grade Node.js Developer code for Node.js Developer Core Principles Part 8A",
+    "Debug edge cases and answer interview questions about Node.js Developer Core Principles Part 8A"
   ],
   "tags": [
-    "node.js",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "8a"
+    "node_js_developer_core_principles_part_8a",
+    "nodejs",
+    "node_js_developer_error_handling_diagnostic_operations"
   ]
 }

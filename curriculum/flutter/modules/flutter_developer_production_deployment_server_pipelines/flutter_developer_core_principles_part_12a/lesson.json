@@ -3,27 +3,22 @@
   "title": "Flutter Developer Core Principles Part 12A",
   "technology": "Flutter Developer",
   "module": "Flutter Developer Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Flutter Developer Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Flutter Developer Core Principles Part 12A.",
-    "Write error-free implementations utilizing Flutter Developer Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of Flutter Developer Core Principles Part 12A."
+    "Understand Flutter Developer Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade Flutter Developer code for Flutter Developer Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about Flutter Developer Core Principles Part 12A"
   ],
   "tags": [
+    "flutter_developer_core_principles_part_12a",
     "flutter",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "flutter_developer_production_deployment_server_pipelines"
   ]
 }

@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/strings & booleans",
-      "type": "documentation",
-      "description": "Official reference for Strings & Booleans in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Strings & Booleans in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Strings & Booleans with other developers"
+      "type": "official",
+      "title": "Python String Methods",
+      "url": "https://docs.python.org/3/library/stdtypes.html#string-methods"
     }
   ]
 }

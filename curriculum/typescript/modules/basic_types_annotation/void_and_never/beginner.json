@@ -1,45 +1,59 @@
 {
-  "motivation": "Type signatures for functions that return nothing.",
-  "whyExists": "Without **Void and Never**, modern software engineering would be extremely tedious. Developers would have to manually configure physical memory slots, write repetitive loop patterns, or establish unsafe socket connections for basic data operations. This concept exists to remove boilerplate redundancy, guarantee code safety limits, and offer a standard method for developers to manage application states.",
-  "realWorldAnalogy": "Imagine you are working in a warehouse. Instead of tossing boxes around randomly, you place them into labeled shelves. When a package arrives, you look up its shelf label to update the stock index. Similarly, **Void and Never** acts as a named workspace or rule that coordinates statements, keeping variables safe and ensuring operations execute only when matching conditions are met.",
-  "simpleExplanation": "To learn Void and Never from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Void and Never defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Void and Never] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the typescript syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how Void and Never works under the hood in TypeScript?",
+  "whyExists": "Void and Never is a core building block in TypeScript. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of Void and Never like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, Void and Never provides a clear, standardized way to execute logic in TypeScript. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for Void and Never:\n\n```typescript\n// TypeScript implementation for Void and Never\ninterface VoidandNeverPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processVoidandNever(item: VoidandNeverPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processVoidandNever({ id: 1, title: 'Void and Never', status: 'active' }));\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// TypeScript implementation for Void and Never",
+      "desc": "Initialize and configure Void and Never parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "interface VoidandNeverPayload {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "console.log(processVoidandNever({ id: 1, title: 'Void and Never', status: 'active' }));",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "void_and_never_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "void_and_never_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running Void and Never...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic Void and Never Example",
+      "code": "// TypeScript implementation for Void and Never\ninterface VoidandNeverPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processVoidandNever(item: VoidandNeverPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processVoidandNever({ id: 1, title: 'Void and Never', status: 'active' }));",
+      "explanation": "Demonstrates basic usage of Void and Never in TypeScript."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in Void and Never",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// TypeScript implementation for Void and Never",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

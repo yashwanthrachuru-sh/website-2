@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain Migration Scripts to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of migration scripts?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for migration scripts?",
-      "answer": "Use Migration Scripts when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "What is database schema drift and how do migration tools solve it?",
+      "answer": "Schema drift occurs when database table structures in development, staging, and production environments become inconsistent. Migration tools like Alembic solve this by storing version-controlled Python migration scripts that apply identical schema DDL changes in exact sequence across all environments.",
+      "level": "intermediate"
     }
   ]
 }

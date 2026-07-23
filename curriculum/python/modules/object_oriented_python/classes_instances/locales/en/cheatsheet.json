@@ -1,34 +1,14 @@
 {
-  "title": "Classes & Instances — Quick Reference",
+  "printNote": "OOP Classes Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Classes & Instances\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Class Syntax",
+      "entries": [
+        {
+          "syntax": "class Name:\n    def __init__(self, arg):\n        self.arg = arg",
+          "example": "c = Name('val')",
+          "description": "Class instantiation"
+        }
       ]
     }
   ]

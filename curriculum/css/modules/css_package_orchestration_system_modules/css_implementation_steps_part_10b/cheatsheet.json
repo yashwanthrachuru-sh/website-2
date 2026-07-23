@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```css\n// Declaring and executing CSS Implementation Steps Part 10B\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "CSS Implementation Steps Part 10B Cheat Sheet",
+  "printNote": "Quick reference for CSS Implementation Steps Part 10B in CSS.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "/* CSS3 Styling for CSS Implementation Steps Part 10B */",
+          "example": "/* CSS3 Styling for CSS Implementation Steps Part 10B */\n.css_implementation_steps_part_10b-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1.5rem;\n  background: var(--surface);\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n}",
+          "description": "Basic syntax for CSS Implementation Steps Part 10B",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

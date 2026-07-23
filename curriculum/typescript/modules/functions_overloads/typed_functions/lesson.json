@@ -3,23 +3,22 @@
   "title": "Typed Functions",
   "technology": "TypeScript",
   "module": "Functions & Overloads",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Classes & Access Modifiers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Typed Functions.",
-    "Write error-free implementations utilizing Typed Functions.",
-    "Debug and optimize performance characteristics of Typed Functions."
+    "Understand Typed Functions from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Typed Functions",
+    "Debug edge cases and answer interview questions about Typed Functions"
   ],
   "tags": [
-    "typed",
-    "functions"
+    "typed_functions",
+    "typescript",
+    "functions_overloads"
   ]
 }

@@ -1,45 +1,23 @@
 {
-  "deeperExplanation": "Loops are more than repetition — understanding iterator protocols, generators, and lazy evaluation enables efficient data processing. Loops can be nested, creating multi-dimensional iteration for matrices and grids.",
-  "mutabilityExplained": "The loop variable is typically read-only within the body. The collection being iterated should not be modified during iteration.",
-  "noneValue": "An empty iterable means the loop body never executes — this is valid. Your code should handle it gracefully.",
-  "internalImplementation": "The for loop uses an iterator protocol: get iterator from collection, call next() repeatedly until exhausted. Understanding this lets you create custom iterable objects.",
+  "deeperExplanation": "`break` statements cause a loop's `else` clause to be skipped. `continue` statements do NOT skip the loop's `else` clause.",
+  "internalImplementation": "CPython compiles `break` to `BREAK_LOOP` / `JUMP_FORWARD` and `continue` to `JUMP_ABSOLUTE` to the loop header.",
   "examples": [
     {
-      "title": "Nested Loop — Matrix",
-      "code": "for i in range(3):\n    for j in range(3):\n        print(i, j)",
-      "explanation": "The outer loop iterates rows, the inner iterates columns. Total iterations = rows × columns.",
-      "language": "python"
+      "code": "# Prime Number Search using break & loop-else\nfor n in range(2, 10):\n    for x in range(2, n):\n        if n % x == 0:\n            print(f'{n} equals {x} * {n//x}')\n            break\n    else:\n        print(f'{n} is a prime number')",
+      "explanation": "If no factor is found (`break` not hit), the `else` block executes, identifying prime numbers."
     }
   ],
-  "bestPractices": [
-    "Prefer for over while for known collections",
-    "Use break/continue for flow control",
-    "Keep loop bodies short",
-    "Avoid modifying collections during iteration",
-    "Consider map/filter/reduce as alternatives"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A loop processes a list but skips items.",
-    "steps": [
-      "Check if modifying the list inside the loop",
-      "Verify the loop variable updates correctly",
-      "Check for off-by-one errors",
-      "Print the loop variable each iteration",
-      "Test with 3 items to isolate the bug"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "O(1) per jump.",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty collection",
-    "Single-element collection",
-    "Very large collection (memory/performance)",
-    "Collection modified during iteration"
-  ],
-  "performanceNotes": {
-    "notes": "Loops are highly optimized, but nested loops multiply complexity. Keep bodies short and avoid deep nesting.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^m) for m nested"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Confusing `pass` with `continue`, causing unwanted code execution.",
+    "incorrectCode": "for item in items:\n    if item is None:\n        pass  # Intended to skip None!\n    print(item.name)",
+    "correctCode": "for item in items:\n    if item is None:\n        continue  # Skips None safely\n    print(item.name)"
+  },
+  "bestPractices": [
+    "Use `continue` to reduce nesting inside loop bodies.",
+    "Remember `break` only breaks out of the innermost enclosing loop."
+  ]
 }

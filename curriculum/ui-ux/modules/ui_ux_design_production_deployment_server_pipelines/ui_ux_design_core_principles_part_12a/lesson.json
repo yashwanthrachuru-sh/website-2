@@ -3,27 +3,22 @@
   "title": "UI/UX Design Core Principles Part 12A",
   "technology": "UI/UX Design",
   "module": "UI/UX Design Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: UI/UX Design Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of UI/UX Design Core Principles Part 12A.",
-    "Write error-free implementations utilizing UI/UX Design Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 12A."
+    "Understand UI/UX Design Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade UI/UX Design code for UI/UX Design Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about UI/UX Design Core Principles Part 12A"
   ],
   "tags": [
-    "ui/ux",
-    "design",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "ui_ux_design_core_principles_part_12a",
+    "ui-ux",
+    "ui_ux_design_production_deployment_server_pipelines"
   ]
 }

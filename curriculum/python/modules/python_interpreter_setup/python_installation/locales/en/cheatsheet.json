@@ -1,36 +1,102 @@
 {
-  "title": "Python Installation — Quick Reference",
+  "printNote": "Keep this cheat sheet handy when setting up a new Python environment.",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "python script.py        # Run a script\npython -m module_name   # Run as module\npython -c \"code\"        # Inline code\npython -i script.py     # Run then interactive"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Interpreter: reads and executes code",
-        "Bytecode: compiled intermediate representation",
-        "REPL: interactive testing mode",
-        "Module: reusable code file",
-        "Virtual Environment: isolated dependencies"
+      "heading": "Installation Verification Commands",
+      "entries": [
+        {
+          "syntax": "python3 --version",
+          "example": "$ python3 --version\nPython 3.12.0",
+          "description": "Check Python is installed and on PATH. Shows version number.",
+          "commonMistake": "Forgetting to open a NEW terminal after installation — old terminal doesn't see updated PATH"
+        },
+        {
+          "syntax": "pip3 --version",
+          "example": "$ pip3 --version\npip 23.3 from /usr/local/lib/python3.12/site-packages/pip (python 3.12)",
+          "description": "Check pip is available. The path confirms which Python it belongs to.",
+          "commonMistake": "pip and python3 pointing to different Python versions — use 'python3 -m pip' instead"
+        },
+        {
+          "syntax": "python3 -c \"print('works')\"",
+          "example": "$ python3 -c \"print('works')\"\nworks",
+          "description": "Quick smoke test — runs a Python expression inline without creating a file.",
+          "commonMistake": "Using single quotes inside the string when the outer string also uses single quotes — escape them or swap quote types"
+        }
       ]
     },
     {
-      "title": "Common Patterns",
-      "content": [
-        "Pattern 1: basic usage",
-        "Pattern 2: with error handling"
+      "heading": "Virtual Environment Commands",
+      "entries": [
+        {
+          "syntax": "python3 -m venv .venv",
+          "example": "$ python3 -m venv .venv\n# Creates .venv/ directory with isolated Python + pip",
+          "description": "Create an isolated virtual environment in the .venv directory.",
+          "commonMistake": "Creating the venv but forgetting to activate it — packages still install globally"
+        },
+        {
+          "syntax": "source .venv/bin/activate",
+          "example": "$ source .venv/bin/activate\n(.venv) $",
+          "description": "Activate the virtual environment on macOS/Linux. Prompt changes to show (.venv).",
+          "commonMistake": "On Windows the command is: .venv\\Scripts\\activate (backslash, no 'source')"
+        },
+        {
+          "syntax": ".venv\\Scripts\\activate",
+          "example": "C:\\project> .venv\\Scripts\\activate\n(.venv) C:\\project>",
+          "description": "Activate virtual environment on Windows (Command Prompt).",
+          "commonMistake": "Running this in PowerShell may require: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser"
+        },
+        {
+          "syntax": "deactivate",
+          "example": "(.venv) $ deactivate\n$",
+          "description": "Exit (deactivate) the active virtual environment. Works on all platforms.",
+          "commonMistake": "Closing the terminal without deactivating — the venv is automatically deactivated when the terminal closes"
+        }
       ]
     },
     {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Use virtual environments",
-        "✓ Pin dependency versions",
-        "✓ Test on the same version as production",
-        "✗ Run untrusted code without sandboxing",
-        "✗ Ignore deprecation warnings",
-        "✗ Assume all platforms are identical"
+      "heading": "pip Package Management",
+      "entries": [
+        {
+          "syntax": "pip install package_name",
+          "example": "(.venv) $ pip install requests\nSuccessfully installed requests-2.31.0",
+          "description": "Install a package from PyPI. Always run inside an activated virtual environment.",
+          "commonMistake": "Running pip install without activating venv — installs globally and potentially causes conflicts"
+        },
+        {
+          "syntax": "pip freeze > requirements.txt",
+          "example": "(.venv) $ pip freeze > requirements.txt\n# requirements.txt now contains: requests==2.31.0 ...",
+          "description": "Save all installed packages with exact versions to requirements.txt.",
+          "commonMistake": "Using 'pip list' instead of 'pip freeze' — pip list shows human-readable output, not installable format"
+        },
+        {
+          "syntax": "pip install -r requirements.txt",
+          "example": "(.venv) $ pip install -r requirements.txt\n# Installs all packages at pinned versions",
+          "description": "Install all packages listed in requirements.txt. Used to reproduce an environment.",
+          "commonMistake": "Forgetting to activate the venv before running this — installs into system Python"
+        }
+      ]
+    },
+    {
+      "heading": "Runtime Inspection (sys module)",
+      "entries": [
+        {
+          "syntax": "import sys; sys.version_info",
+          "example": ">>> import sys\n>>> sys.version_info\nsys.version_info(major=3, minor=12, micro=0, ...)",
+          "description": "Named tuple with Python version details. Access .major, .minor, .micro.",
+          "commonMistake": "Using sys.version (a string) instead of sys.version_info (a tuple) for version comparisons in code"
+        },
+        {
+          "syntax": "sys.executable",
+          "example": ">>> sys.executable\n'/usr/local/bin/python3'",
+          "description": "Absolute path to the Python interpreter currently running. Useful for subprocess calls.",
+          "commonMistake": "Hardcoding '/usr/bin/python3' in scripts — use sys.executable to always get the correct interpreter"
+        },
+        {
+          "syntax": "sys.path",
+          "example": ">>> sys.path\n['', '/usr/local/lib/python312.zip', '/usr/local/lib/python3.12', ...]",
+          "description": "List of directories Python searches for modules. '' means the current directory.",
+          "commonMistake": "Manually appending to sys.path in production code — instead, structure your project correctly or install as a package"
+        }
       ]
     }
   ]

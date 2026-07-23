@@ -3,29 +3,22 @@
   "title": "Data Structures & Algorithms Core Principles Part 12A",
   "technology": "Data Structures & Algorithms",
   "module": "Data Structures & Algorithms Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Structures & Algorithms Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Structures & Algorithms Core Principles Part 12A.",
-    "Write error-free implementations utilizing Data Structures & Algorithms Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of Data Structures & Algorithms Core Principles Part 12A."
+    "Understand Data Structures & Algorithms Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade Data Structures & Algorithms code for Data Structures & Algorithms Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about Data Structures & Algorithms Core Principles Part 12A"
   ],
   "tags": [
-    "data",
-    "structures",
-    "&",
-    "algorithms",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "data_structures_algorithms_core_principles_part_12a",
+    "dsa",
+    "data_structures_algorithms_production_deployment_server_pipelines"
   ]
 }

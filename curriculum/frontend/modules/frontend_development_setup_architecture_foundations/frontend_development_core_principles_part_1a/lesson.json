@@ -3,27 +3,22 @@
   "title": "Frontend Development Core Principles Part 1A",
   "technology": "Frontend Development",
   "module": "Frontend Development Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Frontend Development Core Principles Part 1A.",
-    "Write error-free implementations utilizing Frontend Development Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Frontend Development Core Principles Part 1A."
+    "Understand Frontend Development Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Frontend Development code for Frontend Development Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Frontend Development Core Principles Part 1A"
   ],
   "tags": [
+    "frontend_development_core_principles_part_1a",
     "frontend",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "frontend_development_setup_architecture_foundations"
   ]
 }

@@ -1,45 +1,59 @@
 {
-  "motivation": "Load external script modules into scopes.",
-  "whyExists": "A 100,000-line application in a single file is unmaintainable. Modules provide: (1) Encapsulation — internals are hidden; only the public API is exported. (2) Reusability — a `validate_email` function in `validators.py` can be used by registration, settings, and admin modules. (3) Namespace isolation — two modules can both define `calculate_tax` without conflict. (4) Lazy loading — browser apps can defer loading heavy modules until needed, improving initial load time.",
-  "realWorldAnalogy": "Imagine you are working in a warehouse. Instead of tossing boxes around randomly, you place them into labeled shelves. When a package arrives, you look up its shelf label to update the stock index. Similarly, **Import Statements JS** acts as a named workspace or rule that coordinates statements, keeping variables safe and ensuring operations execute only when matching conditions are met.",
-  "simpleExplanation": "To learn Import Statements JS from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Import Statements JS defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Import Statements JS] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the javascript syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how Import Statements JS works under the hood in JavaScript?",
+  "whyExists": "Import Statements JS is a core building block in JavaScript. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of Import Statements JS like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, Import Statements JS provides a clear, standardized way to execute logic in JavaScript. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for Import Statements JS:\n\n```javascript\n// JavaScript implementation for Import Statements JS\nasync function handleExecution(payload) {\n  try {\n    const response = await fetch('/api/data', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(payload)\n    });\n    const data = await response.json();\n    console.log('Import Statements JS status:', data.success);\n    return data;\n  } catch (err) {\n    console.error('Execution error:', err);\n  }\n}\n\nhandleExecution({ item: 'Import Statements JS' });\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// JavaScript implementation for Import Statements JS",
+      "desc": "Initialize and configure Import Statements JS parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "async function handleExecution(payload) {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "handleExecution({ item: 'Import Statements JS' });",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "import_statements_js_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "import_statements_js_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running Import Statements JS...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic Import Statements JS Example",
+      "code": "// JavaScript implementation for Import Statements JS\nasync function handleExecution(payload) {\n  try {\n    const response = await fetch('/api/data', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(payload)\n    });\n    const data = await response.json();\n    console.log('Import Statements JS status:', data.success);\n    return data;\n  } catch (err) {\n    console.error('Execution error:', err);\n  }\n}\n\nhandleExecution({ item: 'Import Statements JS' });",
+      "explanation": "Demonstrates basic usage of Import Statements JS in JavaScript."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in Import Statements JS",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// JavaScript implementation for Import Statements JS",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

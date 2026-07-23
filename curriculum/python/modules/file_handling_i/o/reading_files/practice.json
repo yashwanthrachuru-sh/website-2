@@ -1,0 +1,42 @@
+{
+  "easy": {
+    "title": "Basic Reading Files Task",
+    "problem": "Implement a simple snippet demonstrating Reading Files.",
+    "starterCode": "# Write code for Reading Files\n",
+    "hints": [
+      "Review beginner notes"
+    ],
+    "solution": "with open('data.txt', 'r', encoding='utf-8') as f:\n    content = f.read()\n    for line in f:\n        print(line.strip())",
+    "expectedOutput": "Success"
+  },
+  "medium": {
+    "title": "Applied Reading Files Challenge",
+    "problem": "Build a function that uses Reading Files to process input data.",
+    "starterCode": "# Implement function using Reading Files\n",
+    "hints": [
+      "Check edge cases"
+    ],
+    "solution": "lines = f.readlines()",
+    "expectedOutput": "Processed Result"
+  },
+  "hard": {
+    "title": "Advanced Reading Files Optimization",
+    "problem": "Optimize a computational routine using Reading Files principles.",
+    "starterCode": "# Advanced Reading Files\n",
+    "hints": [
+      "Use efficient algorithms"
+    ],
+    "solution": "with open('data.txt', 'r', encoding='utf-8') as f:\n    content = f.read()\n    for line in f:\n        print(line.strip())",
+    "expectedOutput": "Optimized Output"
+  },
+  "debugging": {
+    "title": "Fix Reading Files Bug",
+    "problem": "Identify and repair syntax or logic errors in the provided Reading Files code.",
+    "starterCode": "# Broken code snippet\n",
+    "hints": [
+      "Check error messages"
+    ],
+    "solution": "with open('data.txt', 'r', encoding='utf-8') as f:\n    content = f.read()\n    for line in f:\n        print(line.strip())",
+    "expectedOutput": "Fixed Output"
+  }
+}

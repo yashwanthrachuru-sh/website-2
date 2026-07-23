@@ -3,26 +3,22 @@
   "title": "CSS Core Principles Part 7A",
   "technology": "CSS",
   "module": "CSS Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Core Principles Part 7A.",
-    "Write error-free implementations utilizing CSS Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of CSS Core Principles Part 7A."
+    "Understand CSS Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about CSS Core Principles Part 7A"
   ],
   "tags": [
+    "css_core_principles_part_7a",
     "css",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "css_advanced_abstractions_type_blueprints"
   ]
 }

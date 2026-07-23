@@ -1014,60 +1014,68 @@ pre code {
           <!-- Populated dynamically via JS -->
         </div>
 
-        <!-- Tab: Overview -->
+        <!-- 17-Stage Learning Journey Containers -->
         <div id="tab-overview" class="tab-panel">
           <div id="overviewContainer"></div>
         </div>
-
-        <!-- Tab: Learn & Theory -->
-        <div id="tab-learn" class="tab-panel" style="display:none;">
-          <div id="learnContainer"></div>
+        <div id="tab-objectives" class="tab-panel" style="display:none;">
+          <div id="objectivesContainer"></div>
         </div>
-
-        <!-- Tab: Interactive Code Lab -->
-        <div id="tab-codelab" class="tab-panel" style="display:none;">
-          <div id="examplesContainer"></div>
+        <div id="tab-motivation" class="tab-panel" style="display:none;">
+          <div id="motivationContainer"></div>
+        </div>
+        <div id="tab-theory" class="tab-panel" style="display:none;">
+          <div id="theoryContainer"></div>
+        </div>
+        <div id="tab-visualization" class="tab-panel" style="display:none;">
           <div id="visualizationContainer"></div>
         </div>
-
-        <!-- Tab: Practice Lab -->
+        <div id="tab-interactive" class="tab-panel" style="display:none;">
+          <div id="interactiveContainer"></div>
+        </div>
+        <div id="tab-code" class="tab-panel" style="display:none;">
+          <div id="codeContainer"></div>
+        </div>
         <div id="tab-practice" class="tab-panel" style="display:none;">
           <div id="practiceContainer"></div>
-          <div id="quizContainer"></div>
-          <div id="quizActions" style="display:none;margin-top:1.5rem;">
-            <button class="btn btn-primary" id="submitQuizBtn">Submit Lesson Quiz</button>
-            <div id="quizScore" style="display:none;margin-top:1rem;padding:1rem;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);"></div>
-          </div>
         </div>
-
-        <!-- Tab: Interview Prep -->
+        <div id="tab-debugging" class="tab-panel" style="display:none;">
+          <div id="debuggingContainer"></div>
+        </div>
+        <div id="tab-quiz" class="tab-panel" style="display:none;">
+          <div id="quizContainer"></div>
+        </div>
         <div id="tab-interview" class="tab-panel" style="display:none;">
           <div id="interviewContainer"></div>
-          <div id="cheatsheetContainer"></div>
-          <div id="revisionContainer"></div>
         </div>
-
-        <!-- Tab: Project & Assessment -->
         <div id="tab-project" class="tab-panel" style="display:none;">
           <div id="projectContainer"></div>
-          <div id="assessmentContainer"></div>
         </div>
-
-        <!-- Tab: Completion -->
-        <div id="tab-complete" class="tab-panel" style="display:none;">
-          <div id="completionContainer"></div>
+        <div id="tab-assignment" class="tab-panel" style="display:none;">
+          <div id="assignmentContainer"></div>
         </div>
-
-        <!-- Tab: Notes -->
         <div id="tab-notes" class="tab-panel" style="display:none;">
-          <div style="margin-bottom:1rem;">
+          <div id="notesContainer"></div>
+          <div style="margin-top:1.5rem;padding:1.25rem;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-md);">
             <label for="studentNotesArea" style="display:block;font-size:13px;font-weight:600;margin-bottom:.5rem;color:var(--text);">Write your personal notes for this lesson:</label>
-            <textarea id="studentNotesArea" style="width:100%;height:300px;background:var(--abyss-2);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);padding:1rem;font-family:inherit;font-size:14px;resize:vertical;" placeholder="Write down important key takeaways, syntax summaries, or anything else you'd like to remember..."></textarea>
+            <textarea id="studentNotesArea" style="width:100%;height:220px;background:var(--abyss);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text);padding:1rem;font-family:inherit;font-size:14px;resize:vertical;" placeholder="Write down key takeaways, syntax notes, or questions..."></textarea>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span id="notesStatus" style="font-size:12px;color:var(--mist-dim);">Saved locally & synced to backend.</span>
+              <button class="btn btn-primary btn-sm" id="saveNotesBtn">Save Notes</button>
+            </div>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span id="notesStatus" style="font-size:12px;color:var(--mist-dim);">All notes are auto-saved to database.</span>
-            <button class="btn btn-primary btn-sm" id="saveNotesBtn">Save Notes</button>
-          </div>
+        </div>
+        <div id="tab-cheatsheet" class="tab-panel" style="display:none;">
+          <div id="cheatsheetContainer"></div>
+        </div>
+        <div id="tab-revision" class="tab-panel" style="display:none;">
+          <div id="revisionContainer"></div>
+        </div>
+        <div id="tab-complete" class="tab-panel" style="display:none;">
+          <div id="completeContainer"></div>
+        </div>
+        <div id="moduleCompleteView" class="tab-panel" style="display:none;">
+          <div id="moduleCompleteContainer"></div>
         </div>
 
         <!-- Timed Exam/Assessment Workspace -->
@@ -1186,6 +1194,7 @@ pre code {
 
 <script src="js/api.js"></script>
 <script src="js/page-shell.js"></script>
+<script src="js/stage-engine.js"></script>
 <script src="js/lesson-adapter.js"></script>
 <script src="js/roadmap-learn.js"></script>
 </body>

@@ -1,49 +1,30 @@
 {
-  "oneLineSummary": "Functions are reusable, named blocks of code that take inputs, process them, and return outputs — the fundamental unit of program organization.",
-  "summary": "This lesson covered function definition, parameters, return values, scope, lambda/arrow functions, recursion, and best practices for writing clean, testable functions.",
+  "summary": "Functions group reusable code defined with `def`. Return values with `return`; missing returns yield `None`.",
+  "oneLineSummary": "Functions package reusable code blocks; first-class objects in Python.",
   "keyTakeaways": [
-    "Functions encapsulate reusable logic",
-    "Parameters receive inputs; return sends output",
-    "Local variables are scoped to the function",
-    "Pure functions are easier to test and debug",
-    "Functions are first-class citizens"
+    "Functions implicitly return None without `return`.",
+    "First-class objects can be passed as arguments."
   ],
   "memoryTricks": [
-    "Think of a function as a vending machine: input (money/selection) -> process -> output (snack)"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain the difference between parameters and arguments?",
-    "Can you write a recursive function?",
-    "Do you understand closures?"
+    {
+      "concept": "Functions",
+      "trick": "Think of a recipe card: write it once, use it to cook anytime."
+    }
   ],
   "commonErrors": [
-    "Missing return",
-    "Modifying global/input state",
-    "Using mutable default arguments",
-    "Stack overflow from infinite recursion"
+    {
+      "error": "Printing function reference instead of output",
+      "cause": "Omitting parentheses `func` instead of `func()`",
+      "fix": "Add `()` to invoke function"
+    }
   ],
-  "mindMap": {
-    "central": "Functions",
-    "branches": [
-      "Definition",
-      "Parameters",
-      "Return",
-      "Scope",
-      "Recursion",
-      "Lambda",
-      "Higher-Order",
-      "Closures"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain first-class functions"
+  ],
   "nextTopics": [
-    "Closures and decorators",
-    "Function composition",
-    "Monads and functional programming",
-    "Concurrency with async functions"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Parameters & Arguments",
+      "whyNext": "Learn positional, keyword, default, and *args/**kwargs parameters."
+    }
+  ]
 }

@@ -1,24 +1,19 @@
 {
-  "title": "Project: Key Value Pairs Application",
-  "tagline": "Apply key value pairs in a practical project.",
-  "description": "Build an application demonstrating Key Value Pairs.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "JSON Config Store Manager",
+  "tagline": "Key-value setting management engine",
+  "description": "Build a configuration manager loading defaults, applying user overrides, and looking up nested keys.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Dictionary manipulation & merging"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Merge default and user dicts",
+    "Provide safe key lookup"
+  ],
+  "starterCode": "class ConfigStore:\n    def __init__(self, defaults): self.cfg = defaults",
+  "solution": "class ConfigStore:\n    def __init__(self, defaults):\n        self.cfg = dict(defaults)\n    def update(self, overrides):\n        self.cfg |= overrides\n    def get(self, key, default=None):\n        return self.cfg.get(key, default)",
+  "solutionExpl": "Uses dict union operator `|` to apply settings overrides.",
+  "expectedOutput": "'dark'",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Save settings to JSON file"
   ]
 }

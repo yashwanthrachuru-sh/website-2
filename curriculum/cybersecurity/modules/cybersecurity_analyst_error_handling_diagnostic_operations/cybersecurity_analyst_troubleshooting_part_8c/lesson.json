@@ -3,26 +3,22 @@
   "title": "Cybersecurity Analyst Troubleshooting Part 8C",
   "technology": "Cybersecurity Analyst",
   "module": "Cybersecurity Analyst Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Cybersecurity Analyst Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Cybersecurity Analyst Troubleshooting Part 8C.",
-    "Write error-free implementations utilizing Cybersecurity Analyst Troubleshooting Part 8C.",
-    "Debug and optimize performance characteristics of Cybersecurity Analyst Troubleshooting Part 8C."
+    "Understand Cybersecurity Analyst Troubleshooting Part 8C from zero to advanced level",
+    "Write clean, production-grade Cybersecurity Analyst code for Cybersecurity Analyst Troubleshooting Part 8C",
+    "Debug edge cases and answer interview questions about Cybersecurity Analyst Troubleshooting Part 8C"
   ],
   "tags": [
+    "cybersecurity_analyst_troubleshooting_part_8c",
     "cybersecurity",
-    "analyst",
-    "troubleshooting",
-    "part",
-    "8c"
+    "cybersecurity_analyst_error_handling_diagnostic_operations"
   ]
 }

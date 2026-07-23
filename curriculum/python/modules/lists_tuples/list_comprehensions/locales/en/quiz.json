@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is List Comprehensions?",
+      "question": "Where does a ternary `if-else` placement go in a list comprehension?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "Before the `for` keyword",
+        "After the `for` keyword",
+        "At the very end of comprehension",
+        "Not allowed in comprehensions"
       ],
       "answer": 0,
-      "explanation": "List Comprehensions is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does List Comprehensions exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "Ternary expressions `X if cond else Y` go before `for`. Filtering `if cond` goes after `for`.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: List Comprehensions is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding List Comprehensions improves code quality.",
+      "question": "True or False: List comprehensions are generally faster than standard for-loops using `.append()` in CPython.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. List comprehensions use optimized `LIST_APPEND` bytecode instructions."
     }
   ]
 }

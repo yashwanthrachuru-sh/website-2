@@ -3,26 +3,22 @@
   "title": "Data Engineering Troubleshooting Part 6C",
   "technology": "Data Engineering",
   "module": "Data Engineering Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing Data Engineering Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of Data Engineering Troubleshooting Part 6C."
+    "Understand Data Engineering Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about Data Engineering Troubleshooting Part 6C"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "troubleshooting",
-    "part",
-    "6c"
+    "data_engineering_troubleshooting_part_6c",
+    "data-engineering",
+    "data_engineering_data_collections_list_structures"
   ]
 }

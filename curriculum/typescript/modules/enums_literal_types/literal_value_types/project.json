@@ -1,11 +1,14 @@
 {
-  "title": "Literal Value Types System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Literal Value Types.",
+  "title": "Literal Value Types Project",
+  "tagline": "Build a mini application using Literal Value Types",
+  "description": "Create a working TypeScript application demonstrating Literal Value Types.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Literal Value Types\ninterface LiteralValueTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processLiteralValueTypes(item: LiteralValueTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processLiteralValueTypes({ id: 1, title: 'Literal Value Types', status: 'active' }));",
+  "solution": "// TypeScript implementation for Literal Value Types\ninterface LiteralValueTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processLiteralValueTypes(item: LiteralValueTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processLiteralValueTypes({ id: 1, title: 'Literal Value Types', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Literal Value Types in TypeScript."
 }

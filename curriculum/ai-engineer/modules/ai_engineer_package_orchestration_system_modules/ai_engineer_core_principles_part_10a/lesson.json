@@ -3,27 +3,22 @@
   "title": "AI Engineer Core Principles Part 10A",
   "technology": "AI Engineer",
   "module": "AI Engineer Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AI Engineer File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AI Engineer Core Principles Part 10A.",
-    "Write error-free implementations utilizing AI Engineer Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of AI Engineer Core Principles Part 10A."
+    "Understand AI Engineer Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade AI Engineer code for AI Engineer Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about AI Engineer Core Principles Part 10A"
   ],
   "tags": [
-    "ai",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "ai_engineer_core_principles_part_10a",
+    "ai-engineer",
+    "ai_engineer_package_orchestration_system_modules"
   ]
 }

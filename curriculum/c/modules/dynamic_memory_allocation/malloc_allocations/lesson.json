@@ -3,23 +3,22 @@
   "title": "Malloc Allocations",
   "technology": "C Programming",
   "module": "Dynamic Memory Allocation",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Structures Unions"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Malloc Allocations.",
-    "Write error-free implementations utilizing Malloc Allocations.",
-    "Debug and optimize performance characteristics of Malloc Allocations."
+    "Understand Malloc Allocations from zero to advanced level",
+    "Write clean, production-grade C Programming code for Malloc Allocations",
+    "Debug edge cases and answer interview questions about Malloc Allocations"
   ],
   "tags": [
-    "malloc",
-    "allocations"
+    "malloc_allocations",
+    "c",
+    "dynamic_memory_allocation"
   ]
 }

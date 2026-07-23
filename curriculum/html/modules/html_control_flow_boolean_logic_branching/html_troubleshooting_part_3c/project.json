@@ -1,11 +1,14 @@
 {
-  "title": "HTML Troubleshooting Part 3C System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of HTML Troubleshooting Part 3C.",
+  "title": "HTML Troubleshooting Part 3C Project",
+  "tagline": "Build a mini application using HTML Troubleshooting Part 3C",
+  "description": "Create a working HTML application demonstrating HTML Troubleshooting Part 3C.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "<!-- HTML5 Structure for HTML Troubleshooting Part 3C -->\n<section id=\"html_troubleshooting_part_3c\" class=\"card-container\">\n  <h2>HTML Troubleshooting Part 3C</h2>\n  <p>Learn HTML Troubleshooting Part 3C with interactive examples.</p>\n  <button type=\"button\" id=\"btn-action\">Click Here</button>\n</section>",
+  "solution": "<!-- HTML5 Structure for HTML Troubleshooting Part 3C -->\n<section id=\"html_troubleshooting_part_3c\" class=\"card-container\">\n  <h2>HTML Troubleshooting Part 3C</h2>\n  <p>Learn HTML Troubleshooting Part 3C with interactive examples.</p>\n  <button type=\"button\" id=\"btn-action\">Click Here</button>\n</section>",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of HTML Troubleshooting Part 3C in HTML."
 }

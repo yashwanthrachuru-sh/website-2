@@ -3,26 +3,22 @@
   "title": "Data Engineering Troubleshooting Part 9C",
   "technology": "Data Engineering",
   "module": "Data Engineering File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Troubleshooting Part 9C.",
-    "Write error-free implementations utilizing Data Engineering Troubleshooting Part 9C.",
-    "Debug and optimize performance characteristics of Data Engineering Troubleshooting Part 9C."
+    "Understand Data Engineering Troubleshooting Part 9C from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Troubleshooting Part 9C",
+    "Debug edge cases and answer interview questions about Data Engineering Troubleshooting Part 9C"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "troubleshooting",
-    "part",
-    "9c"
+    "data_engineering_troubleshooting_part_9c",
+    "data-engineering",
+    "data_engineering_file_integration_stream_buffers"
   ]
 }

@@ -1,11 +1,27 @@
 {
-  "title": "Dynamic Typing in Python System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Dynamic Typing in Python.",
-  "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+  "title": "Dynamic Data Processor CLI Tool",
+  "tagline": "Build a multi-type data ingestion pipeline that parses, cleans, and transforms raw dynamic input records.",
+  "description": "In this hands-on project, you will build a Python CLI utility that receives messy, dynamic input data (strings, numbers, lists, null values) from external feeds and normalizes them into clean structured dictionaries using Python's dynamic typing and type inspection capabilities.",
+  "learningGoals": [
+    "Master runtime type checking using `isinstance()` across varied inputs.",
+    "Handle `None` and missing values safely without runtime crashes.",
+    "Perform dynamic type casting and formatting on unstructured data.",
+    "Build a production-grade error-tolerant parser."
   ],
-  "starterCode": "# Project starting point\n",
-  "solution": "print('Project Complete!')"
+  "requirements": [
+    "Accept a list of raw dynamic records (containing strings, integers, floats, None, and lists).",
+    "Filter out invalid or null (`None`) records.",
+    "Convert all string values to title case and trim whitespace.",
+    "Round all float values to 2 decimal places.",
+    "Return a summary dictionary containing total item count and category breakdown."
+  ],
+  "starterCode": "def process_dynamic_feed(raw_records):\n    \"\"\"Process raw dynamic input records safely.\n    \n    Args:\n        raw_records (list): List of un-sanitized values of mixed types.\n    \n    Returns:\n        dict: Processed clean items and statistics.\n    \"\"\"\n    clean_items = []\n    # TODO: Iterate over raw_records and apply type checking\n    \n    return {\n        'processed_count': len(clean_items),\n        'items': clean_items\n    }\n\n# Test feed\nfeed = ['  alice  ', 42, 99.998, None, [1, 2], '  BOB  ']\nresult = process_dynamic_feed(feed)\nprint(result)\n",
+  "solution": "def process_dynamic_feed(raw_records):\n    clean_items = []\n    for item in raw_records:\n        if item is None:\n            continue\n        if isinstance(item, str):\n            cleaned = item.strip().title()\n            if cleaned:\n                clean_items.append(cleaned)\n        elif isinstance(item, float):\n            clean_items.append(round(item, 2))\n        elif isinstance(item, int):\n            clean_items.append(item)\n        elif isinstance(item, list):\n            clean_items.append([x for x in item if x is not None])\n            \n    return {\n        'processed_count': len(clean_items),\n        'items': clean_items\n    }\n\nfeed = ['  alice  ', 42, 99.998, None, [1, 2], '  BOB  ']\nresult = process_dynamic_feed(feed)\nprint(result)",
+  "solutionExpl": "The solution checks each item's type using `isinstance()`. `None` values are safely skipped using `item is None`. Strings are stripped and title-cased, floats are rounded to 2 decimal places, and integers and lists are normalized.",
+  "expectedOutput": "{'processed_count': 5, 'items': ['Alice', 42, 100.0, [1, 2], 'Bob']}",
+  "extensions": [
+    "Add logging for every skipped `None` item.",
+    "Add type annotations (`raw_records: list`) and verify with `mypy`.",
+    "Export normalized items into a JSON file."
+  ]
 }

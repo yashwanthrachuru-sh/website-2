@@ -3,27 +3,22 @@
   "title": "DevOps Engineer Core Principles Part 10A",
   "technology": "DevOps Engineer",
   "module": "DevOps Engineer Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: DevOps Engineer File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of DevOps Engineer Core Principles Part 10A.",
-    "Write error-free implementations utilizing DevOps Engineer Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of DevOps Engineer Core Principles Part 10A."
+    "Understand DevOps Engineer Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade DevOps Engineer code for DevOps Engineer Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about DevOps Engineer Core Principles Part 10A"
   ],
   "tags": [
+    "devops_engineer_core_principles_part_10a",
     "devops",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "devops_engineer_package_orchestration_system_modules"
   ]
 }

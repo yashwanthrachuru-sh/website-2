@@ -3,27 +3,22 @@
   "title": "Flutter Developer Core Principles Part 11A",
   "technology": "Flutter Developer",
   "module": "Flutter Developer Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Flutter Developer Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Flutter Developer Core Principles Part 11A.",
-    "Write error-free implementations utilizing Flutter Developer Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of Flutter Developer Core Principles Part 11A."
+    "Understand Flutter Developer Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade Flutter Developer code for Flutter Developer Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about Flutter Developer Core Principles Part 11A"
   ],
   "tags": [
+    "flutter_developer_core_principles_part_11a",
     "flutter",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "flutter_developer_performance_optimization_complexity"
   ]
 }

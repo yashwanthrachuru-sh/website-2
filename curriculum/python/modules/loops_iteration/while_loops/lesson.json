@@ -3,23 +3,22 @@
   "title": "While Loops",
   "technology": "Python",
   "module": "Loops & Iteration",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Control Flow & Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of While Loops.",
-    "Write error-free implementations utilizing While Loops.",
-    "Debug and optimize performance characteristics of While Loops."
+    "Understand While Loops from zero to advanced level",
+    "Write clean, production-grade Python code for While Loops",
+    "Debug edge cases and answer interview questions about While Loops"
   ],
   "tags": [
-    "while",
-    "loops"
+    "while_loops",
+    "python",
+    "loops_iteration"
   ]
 }

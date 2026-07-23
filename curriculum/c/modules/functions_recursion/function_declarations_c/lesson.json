@@ -3,24 +3,22 @@
   "title": "Function Declarations C",
   "technology": "C Programming",
   "module": "Functions Recursion",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Loops Iterations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Function Declarations C.",
-    "Write error-free implementations utilizing Function Declarations C.",
-    "Debug and optimize performance characteristics of Function Declarations C."
+    "Understand Function Declarations C from zero to advanced level",
+    "Write clean, production-grade C Programming code for Function Declarations C",
+    "Debug edge cases and answer interview questions about Function Declarations C"
   ],
   "tags": [
-    "function",
-    "declarations",
-    "c"
+    "function_declarations_c",
+    "c",
+    "functions_recursion"
   ]
 }

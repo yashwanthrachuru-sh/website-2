@@ -1,0 +1,16 @@
+{
+  "title": "Context Managers Cheat Sheet",
+  "sections": [
+    {
+      "heading": "Quick Reference",
+      "entries": [
+        {
+          "syntax": "from contextlib import contextmanager",
+          "example": "from contextlib import contextmanager\n\n@contextmanager\ndef open_managed_file(filename):\n    f = open(filename, 'w')\n    try:\n        yield f\n    finally:\n        f.close()",
+          "description": "Basic syntax for Context Managers",
+          "commonMistake": "Syntax or scope error"
+        }
+      ]
+    }
+  ]
+}

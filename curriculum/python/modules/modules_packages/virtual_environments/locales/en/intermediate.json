@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Virtual Environments becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Activating a virtual environment simply modifies your shell's `PATH` environment variable so that running `python` or `pip` points to `.venv/bin/python` first. Virtual environments do not use virtualization or hypervisors.",
+  "internalImplementation": "Sets `VIRTUAL_ENV` env var and modifies `sys.prefix`.",
   "examples": [
     {
-      "title": "Getting Started with Virtual Environments",
-      "code": "print(\"Learning Virtual Environments\")",
-      "explanation": "Basic introduction to Virtual Environments.",
-      "language": "python"
+      "code": "# Checking active virtual environment in Python\nimport sys\nprint('Venv active:', sys.prefix != sys.base_prefix)",
+      "explanation": "Checks if running inside a virtual environment."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A virtual environments implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "O(1) activation overhead.",
+    "spaceComplexity": "10-50MB disk space per venv."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Pip installing packages into system Python accidentally.",
+    "incorrectCode": "$ pip install requests  # Prompt lacks (.venv)",
+    "correctCode": "$ source .venv/bin/activate\n(.venv) $ pip install requests"
+  },
+  "bestPractices": [
+    "Always add `.venv` to `.gitignore`.",
+    "Use `pip freeze > requirements.txt`."
+  ]
 }

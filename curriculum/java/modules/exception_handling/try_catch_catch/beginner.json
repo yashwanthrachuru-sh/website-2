@@ -1,45 +1,59 @@
 {
-  "motivation": "Intercept compiler errors and handle failures.",
-  "whyExists": "Without exceptions, functions would need to check every possible error via return codes (like C's `errno`). Error handling code would be tangled with business logic, making both harder to read. Exceptions separate the \"happy path\" from error handling, allow errors to propagate up the call stack automatically until something handles them, and carry rich information (stack trace, error message, error type) for debugging.",
-  "realWorldAnalogy": "Imagine you're following a recipe. The recipe says \"add eggs.\" But you open the fridge and there are no eggs! That's an \"exception\" — something unexpected happened and you can't continue normally.\n\nYou have options: go to the store (retry), use a substitute (fallback), or tell whoever asked you to make the dish that it failed (re-throw).\n\nIn programming, `try` is \"attempt the recipe,\" `catch` is \"what to do when something goes wrong,\" and `finally` is \"clean up the kitchen whether it worked or not.\"",
-  "simpleExplanation": "To learn Try Catch Catch from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Try Catch Catch defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Try Catch Catch] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the java syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how Try Catch Catch works under the hood in Java?",
+  "whyExists": "Try Catch Catch is a core building block in Java. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of Try Catch Catch like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, Try Catch Catch provides a clear, standardized way to execute logic in Java. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for Try Catch Catch:\n\n```java\n// Java implementation for Try Catch Catch\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Try Catch Catch\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// Java implementation for Try Catch Catch",
+      "desc": "Initialize and configure Try Catch Catch parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "public class Main {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "}",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "try_catch_catch_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "try_catch_catch_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running Try Catch Catch...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic Try Catch Catch Example",
+      "code": "// Java implementation for Try Catch Catch\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Try Catch Catch\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+      "explanation": "Demonstrates basic usage of Try Catch Catch in Java."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in Try Catch Catch",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// Java implementation for Try Catch Catch",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

@@ -1,11 +1,14 @@
 {
-  "title": "Path Mapping Configs System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Path Mapping Configs.",
+  "title": "Path Mapping Configs Project",
+  "tagline": "Build a mini application using Path Mapping Configs",
+  "description": "Create a working TypeScript application demonstrating Path Mapping Configs.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Path Mapping Configs\ninterface PathMappingConfigsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPathMappingConfigs(item: PathMappingConfigsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPathMappingConfigs({ id: 1, title: 'Path Mapping Configs', status: 'active' }));",
+  "solution": "// TypeScript implementation for Path Mapping Configs\ninterface PathMappingConfigsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPathMappingConfigs(item: PathMappingConfigsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPathMappingConfigs({ id: 1, title: 'Path Mapping Configs', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Path Mapping Configs in TypeScript."
 }

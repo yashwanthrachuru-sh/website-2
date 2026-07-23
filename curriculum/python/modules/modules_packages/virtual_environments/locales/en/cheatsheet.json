@@ -1,34 +1,14 @@
 {
-  "title": "Virtual Environments — Quick Reference",
+  "printNote": "Virtual Environment Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Virtual Environments\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Venv Commands",
+      "entries": [
+        {
+          "syntax": "python3 -m venv .venv\nsource .venv/bin/activate",
+          "example": "pip freeze > requirements.txt",
+          "description": "Venv creation and activation"
+        }
       ]
     }
   ]

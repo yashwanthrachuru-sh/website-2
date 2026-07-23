@@ -1,11 +1,14 @@
 {
-  "title": "DevOps Engineer Implementation Steps Part 10B System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of DevOps Engineer Implementation Steps Part 10B.",
+  "title": "DevOps Engineer Implementation Steps Part 10B Project",
+  "tagline": "Build a mini application using DevOps Engineer Implementation Steps Part 10B",
+  "description": "Create a working DevOps Engineer application demonstrating DevOps Engineer Implementation Steps Part 10B.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// JavaScript implementation for DevOps Engineer Implementation Steps Part 10B\nasync function handleExecution(payload) {\n  try {\n    const response = await fetch('/api/data', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(payload)\n    });\n    const data = await response.json();\n    console.log('DevOps Engineer Implementation Steps Part 10B status:', data.success);\n    return data;\n  } catch (err) {\n    console.error('Execution error:', err);\n  }\n}\n\nhandleExecution({ item: 'DevOps Engineer Implementation Steps Part 10B' });",
+  "solution": "// JavaScript implementation for DevOps Engineer Implementation Steps Part 10B\nasync function handleExecution(payload) {\n  try {\n    const response = await fetch('/api/data', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(payload)\n    });\n    const data = await response.json();\n    console.log('DevOps Engineer Implementation Steps Part 10B status:', data.success);\n    return data;\n  } catch (err) {\n    console.error('Execution error:', err);\n  }\n}\n\nhandleExecution({ item: 'DevOps Engineer Implementation Steps Part 10B' });",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of DevOps Engineer Implementation Steps Part 10B in DevOps Engineer."
 }

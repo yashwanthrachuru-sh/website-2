@@ -3,26 +3,22 @@
   "title": "Flutter Developer Troubleshooting Part 5C",
   "technology": "Flutter Developer",
   "module": "Flutter Developer Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Flutter Developer Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Flutter Developer Troubleshooting Part 5C.",
-    "Write error-free implementations utilizing Flutter Developer Troubleshooting Part 5C.",
-    "Debug and optimize performance characteristics of Flutter Developer Troubleshooting Part 5C."
+    "Understand Flutter Developer Troubleshooting Part 5C from zero to advanced level",
+    "Write clean, production-grade Flutter Developer code for Flutter Developer Troubleshooting Part 5C",
+    "Debug edge cases and answer interview questions about Flutter Developer Troubleshooting Part 5C"
   ],
   "tags": [
+    "flutter_developer_troubleshooting_part_5c",
     "flutter",
-    "developer",
-    "troubleshooting",
-    "part",
-    "5c"
+    "flutter_developer_modular_functions_signature_scopes"
   ]
 }

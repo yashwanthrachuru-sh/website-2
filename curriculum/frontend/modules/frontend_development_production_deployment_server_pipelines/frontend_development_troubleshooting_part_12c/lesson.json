@@ -3,26 +3,22 @@
   "title": "Frontend Development Troubleshooting Part 12C",
   "technology": "Frontend Development",
   "module": "Frontend Development Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Frontend Development Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Frontend Development Troubleshooting Part 12C.",
-    "Write error-free implementations utilizing Frontend Development Troubleshooting Part 12C.",
-    "Debug and optimize performance characteristics of Frontend Development Troubleshooting Part 12C."
+    "Understand Frontend Development Troubleshooting Part 12C from zero to advanced level",
+    "Write clean, production-grade Frontend Development code for Frontend Development Troubleshooting Part 12C",
+    "Debug edge cases and answer interview questions about Frontend Development Troubleshooting Part 12C"
   ],
   "tags": [
+    "frontend_development_troubleshooting_part_12c",
     "frontend",
-    "development",
-    "troubleshooting",
-    "part",
-    "12c"
+    "frontend_development_production_deployment_server_pipelines"
   ]
 }

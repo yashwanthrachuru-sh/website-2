@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Migration Scripts is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Migration Scripts is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Alembic tracks database migrations using revision scripts (`upgrade()` & `downgrade()`) and the `alembic_version` table.",
+  "oneLineSummary": "Alembic provides version control for database schemas using upgrade and downgrade functions.",
   "keyTakeaways": [
-    "Migration Scripts solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "alembic upgrade head applies migrations.",
+    "Never modify already-applied migration files.",
+    "alembic_version tracks current revision."
   ],
   "memoryTricks": [
-    "Think of migration scripts as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Migration Scripts in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Alembic",
+      "trick": "Alembic = Git for Database Tables."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "Table already exists on upgrade",
+      "cause": "Manual DB changes out of sync with Alembic",
+      "fix": "Stamp database version with alembic stamp head"
+    }
   ],
-  "mindMap": {
-    "central": "Migration Scripts",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain alembic upgrade vs downgrade"
+  ],
   "nextTopics": [
-    "Advanced migration scripts",
-    "Testing migration scripts",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Python Curriculum Complete!",
+      "whyNext": "Congratulations! You have mastered the entire Python curriculum."
+    }
+  ]
 }

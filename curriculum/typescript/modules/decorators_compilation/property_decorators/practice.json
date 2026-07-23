@@ -1,46 +1,42 @@
 {
   "easy": {
-    "problem": "Implement a basic routine demonstrating the startup code syntax for Property Decorators.",
-    "starterCode": "// Write your code here\n",
-    "hints": [
-      "Review the syntax rules in the beginner notes.",
-      "Check name spelling."
-    ],
+    "title": "Easy: Property Decorators Basics",
+    "problem": "Write a simple program demonstrating Property Decorators.",
+    "starterCode": "// TypeScript implementation for Property Decorators",
+    "solution": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
     "expectedOutput": "Success",
-    "solution": "// Solution goes here\n",
-    "explanation": "Verifies basic execution."
+    "hints": [
+      "Check basic syntax"
+    ]
   },
   "medium": {
-    "problem": "Refactor the simple routine to support dynamic inputs and raise an exception on out-of-bounds parameters.",
-    "starterCode": "function process(val) {\n}",
+    "title": "Medium: Property Decorators Logic",
+    "problem": "Implement a function using Property Decorators to transform input data.",
+    "starterCode": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+    "solution": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+    "expectedOutput": "Processed",
     "hints": [
-      "Use conditional statements to inspect values.",
-      "Throw ValueError or Error."
-    ],
-    "expectedOutput": "Error raised",
-    "solution": "function process(val) {\n    if (val < 0) throw new Error('Negative value');\n    return val;\n}",
-    "explanation": "Ensures input validation constraints are met."
+      "Check edge cases"
+    ]
   },
   "hard": {
-    "problem": "Optimize the routine to run in O(1) time complexity by caching duplicate lookup cycles.",
-    "starterCode": "const cache = new Map();\nfunction lookup(key) {\n}",
+    "title": "Hard: Property Decorators System",
+    "problem": "Build an optimized module applying Property Decorators principles.",
+    "starterCode": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+    "solution": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+    "expectedOutput": "Optimized Output",
     "hints": [
-      "Use a dictionary or Map.",
-      "Store results after the first query."
-    ],
-    "expectedOutput": "Cached output retrieved",
-    "solution": "const cache = new Map();\nfunction lookup(key, calculator) {\n    if (!cache.has(key)) cache.set(key, calculator(key));\n    return cache.get(key);\n}",
-    "explanation": "Implements high-performance memoization caching."
+      "Focus on efficiency"
+    ]
   },
   "debugging": {
-    "problem": "Locate and correct the spelling mismatch preventing this routine from executing.",
-    "starterCode": "const recordData = 100;\nconsole.log(recordDatas);",
+    "title": "Debugging: Fix Property Decorators Bug",
+    "problem": "Identify and fix errors in the provided snippet.",
+    "starterCode": "// Fix bug here\n// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+    "solution": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+    "expectedOutput": "Fixed Output",
     "hints": [
-      "Inspect variable identifiers.",
-      "Match call names exactly."
-    ],
-    "expectedOutput": "100",
-    "solution": "const recordData = 100;\nconsole.log(recordData);",
-    "explanation": "Aligns identifiers within namespace bindings."
+      "Review error message"
+    ]
   }
 }

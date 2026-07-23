@@ -109,34 +109,61 @@ function normalizeBeginner(rawBeginner, context = '') {
   const b = safeObject(rawBeginner, 'beginner', context);
   const examplesRaw = b.examples || b.example;
   const examplesList = safeArray(examplesRaw, 'beginner.examples', context);
-  
+
+  // Normalize memoryDiagram — supports both {stack,heap} and {slots} formats
+  let memDiagram = null;
+  if (b.memoryDiagram) {
+    if (b.memoryDiagram.slots) {
+      // Legacy flat slots format
+      memDiagram = { slots: safeArray(b.memoryDiagram.slots, 'beginner.memoryDiagram.slots', context), stack: [], heap: [] };
+    } else {
+      memDiagram = {
+        stack: safeArray(b.memoryDiagram.stack, 'beginner.memoryDiagram.stack', context).map(item => ({
+          address: item.address || '', label: item.label || '', value: item.value || '', type: item.type || ''
+        })),
+        heap: safeArray(b.memoryDiagram.heap, 'beginner.memoryDiagram.heap', context).map(item => ({
+          address: item.address || '', label: item.label || '', value: item.value || '', type: item.type || ''
+        }))
+      };
+    }
+  }
+
   return {
-    motivation: b.motivation || '',
-    whyExists: b.whyExists || b.why_exists || '',
-    simpleExplanation: b.simpleExplanation || b.explanation || '',
-    syntaxExplanation: b.syntaxExplanation || b.syntax_breakdown || '',
-    visualDiagram: b.visualDiagram || b.visual_flow || '',
-    realWorldAnalogy: b.realWorldAnalogy || b.real_world_analogies || '',
+    // Fields used by lesson-adapter.js + renderers
+    motivation            : b.motivation || '',
+    curiosityQuestion     : b.curiosityQuestion || b.motivation || '',
+    whyExists             : b.whyExists || b.why_exists || '',
+    problemItSolves       : b.problemItSolves || '',
+    programmingWithoutVariables: b.programmingWithoutVariables || b.withoutVariables || '',
+    whereVariablesAreUsed : b.whereVariablesAreUsed || b.whereUsed || '',
+    simpleExplanation     : b.simpleExplanation || b.explanation || '',
+    syntaxExplanation     : b.syntaxExplanation || b.syntax_breakdown || '',
+    visualDiagram         : b.visualDiagram || b.visual_flow || '',
+    realWorldAnalogy      : b.realWorldAnalogy || b.real_world_analogies || '',
     examples: examplesList.map(e => ({
-      code: e.code || '',
-      explanation: e.explanation || e.desc || ''
+      title       : e.title || e.description || '',
+      code        : e.code || '',
+      explanation : e.explanation || e.desc || ''
     })),
     stepByStepExecution: safeArray(b.stepByStepExecution || b.stepByStep, 'beginner.stepByStepExecution', context).map(s => ({
-      step: Number(s.step) || 0,
-      desc: s.desc || s.explanation || ''
+      step : Number(s.step) || 0,
+      line : s.line || s.code || '',
+      desc : s.desc || s.explanation || ''
     })),
-    memoryDiagram: b.memoryDiagram ? {
-      stack: safeArray(b.memoryDiagram.stack, 'beginner.memoryDiagram.stack', context).map(item => ({
-        address: item.address || '',
-        label: item.label || '',
-        value: item.value || ''
-      })),
-      heap: safeArray(b.memoryDiagram.heap, 'beginner.memoryDiagram.heap', context).map(item => ({
-        address: item.address || '',
-        label: item.label || '',
-        value: item.value || ''
-      }))
-    } : { stack: [], heap: [] }
+    namingRules: safeArray(b.namingRules, 'beginner.namingRules', context).map(r => ({
+      rule : r.rule || String(r),
+      good : r.good || '',
+      bad  : r.bad  || '',
+      why  : r.why  || ''
+    })),
+    commonMistakes: safeArray(b.commonMistakes, 'beginner.commonMistakes', context).map(m => ({
+      mistake : m.mistake || m.error || String(m),
+      wrong   : m.wrong   || m.bad   || '',
+      error   : m.error   || '',
+      right   : m.right   || m.good  || '',
+      why     : m.why     || m.fix   || ''
+    })),
+    memoryDiagram: memDiagram || { stack: [], heap: [] }
   };
 }
 
@@ -145,23 +172,41 @@ function normalizeIntermediate(rawIntermediate, context = '') {
   const examplesRaw = im.examples || im.example;
   const examplesList = safeArray(examplesRaw, 'intermediate.examples', context);
 
+  // bestPractices can be array of strings or array of {rule, good, why} objects — preserve both
+  const bpRaw = safeArray(im.bestPractices || im.best_practices, 'intermediate.bestPractices', context);
+  const bestPractices = bpRaw.map(bp => {
+    if (typeof bp === 'string') return { rule: bp, good: '', why: '' };
+    return { rule: bp.rule || bp.practice || String(bp), good: bp.good || bp.example || '', bad: bp.bad || '', why: bp.why || bp.reason || '' };
+  });
+
   return {
-    deeperExplanation: im.deeperExplanation || im.detailed_concept || '',
-    internalImplementation: im.internalImplementation || im.internal_working || '',
+    deeperExplanation      : im.deeperExplanation || im.detailed_concept || '',
+    mutabilityExplained    : im.mutabilityExplained || im.mutability || '',
+    noneValue              : im.noneValue || im.none_value || '',
+    internalImplementation : im.internalImplementation || im.internal_working || '',
     examples: examplesList.map(e => ({
-      code: e.code || '',
-      explanation: e.explanation || e.desc || ''
+      title       : e.title || e.description || '',
+      code        : e.code || '',
+      explanation : e.explanation || e.desc || ''
     })),
+    bestPractices,
+    edgeCases: safeArray(im.edgeCases || im.edge_cases, 'intermediate.edgeCases', context).map(ec => {
+      if (typeof ec === 'string') return { case: ec, code: '', explanation: ec };
+      return { case: ec.case || ec.title || '', code: ec.code || '', explanation: ec.explanation || ec.desc || '' };
+    }),
     performanceConsiderations: {
-      timeComplexity: im.performanceConsiderations?.timeComplexity || im.performance?.timeComplexity || '',
-      spaceComplexity: im.performanceConsiderations?.spaceComplexity || im.performance?.spaceComplexity || ''
+      timeComplexity  : im.performanceConsiderations?.timeComplexity  || im.performance?.timeComplexity  || '',
+      spaceComplexity : im.performanceConsiderations?.spaceComplexity || im.performance?.spaceComplexity || '',
+      notes           : im.performanceConsiderations?.notes || im.performanceNotes || ''
     },
     debuggingWalkthrough: {
-      bugDescription: im.debuggingWalkthrough?.bugDescription || im.debugging?.bugDescription || '',
-      incorrectCode: im.debuggingWalkthrough?.incorrectCode || im.debugging?.incorrectCode || im.debugging?.wrong || '',
-      correctCode: im.debuggingWalkthrough?.correctCode || im.debugging?.correctCode || im.debugging?.right || ''
-    },
-    bestPractices: safeArray(im.bestPractices || im.best_practices, 'intermediate.bestPractices', context).map(bp => String(bp))
+      bugDescription : im.debuggingWalkthrough?.bugDescription || im.debugging?.bugDescription || '',
+      scenario       : im.debuggingWalkthrough?.scenario || '',
+      incorrectCode  : im.debuggingWalkthrough?.incorrectCode || im.debugging?.incorrectCode || im.debugging?.wrong || '',
+      errorMessage   : im.debuggingWalkthrough?.errorMessage || im.debugging?.error || '',
+      correctCode    : im.debuggingWalkthrough?.correctCode || im.debugging?.correctCode || im.debugging?.right || '',
+      whyItHappens   : im.debuggingWalkthrough?.whyItHappens || im.debuggingWalkthrough?.why || ''
+    }
   };
 }
 
@@ -171,10 +216,34 @@ function normalizeExpert(rawExpert, context = '') {
   const examplesList = safeArray(examplesRaw, 'expert.examples', context);
 
   return {
+    overview          : ex.overview || ex.production_overview || '',
+    industryContext   : ex.industryContext || ex.industry_context || '',
     examples: examplesList.map(e => ({
-      code: e.code || '',
-      explanation: e.explanation || e.desc || ''
-    }))
+      title       : e.title || e.description || '',
+      code        : e.code || '',
+      explanation : e.explanation || e.desc || ''
+    })),
+    codeReviewChecklist: safeArray(ex.codeReviewChecklist || ex.code_review_checklist, 'expert.codeReviewChecklist', context).map(item => String(item)),
+    testingVariables: ex.testingVariables || ex.testing_patterns || {
+      objective : '',
+      code      : ''
+    },
+    refactoringGuide: {
+      before      : ex.refactoringGuide?.before || '',
+      after       : ex.refactoringGuide?.after  || '',
+      explanation : ex.refactoringGuide?.explanation || ex.refactoringGuide?.why || ''
+    },
+    securityConsiderations: safeArray(ex.securityConsiderations || ex.security, 'expert.securityConsiderations', context).map(s => {
+      if (typeof s === 'string') return { risk: s, bad: '', good: '', why: s };
+      return { risk: s.risk || s.title || '', bad: s.bad || '', good: s.good || '', why: s.why || s.explanation || '' };
+    }),
+    designPatterns: safeArray(ex.designPatterns || ex.design_patterns, 'expert.designPatterns', context).map(p => String(p)),
+    scalabilityConsiderations: ex.scalabilityConsiderations || ex.scalability || {},
+    complexityAnalysis: {
+      time  : ex.complexityAnalysis?.time  || ex.timeComplexity  || '',
+      space : ex.complexityAnalysis?.space || ex.spaceComplexity || '',
+      notes : ex.complexityAnalysis?.notes || ''
+    }
   };
 }
 
@@ -214,15 +283,23 @@ function normalizePractice(rawPractice, context = '') {
 function normalizeQuiz(rawQuiz, context = '') {
   const q = safeObject(rawQuiz, 'quiz', context);
   const mcqsList = safeArray(q.mcqs, 'quiz.mcqs', context);
+  const checkpointsList = safeArray(q.checkpoints, 'quiz.checkpoints', context);
 
   return {
     mcqs: mcqsList.map(item => ({
-      id: item.id || '',
-      question: item.question || '',
-      options: safeArray(item.options, 'quiz.mcqs[].options', context).map(opt => String(opt)),
-      answer: item.answer || '',
-      explanation: item.explanation || '',
-      difficulty: item.difficulty || 'medium'
+      id          : item.id || '',
+      question    : item.question || '',
+      options     : safeArray(item.options, 'quiz.mcqs[].options', context).map(opt => String(opt)),
+      answer      : item.answer || '',
+      explanation : item.explanation || '',
+      difficulty  : item.difficulty || 'medium'
+    })),
+    // Checkpoint questions gate progression through stepper steps
+    checkpoints: checkpointsList.map(cp => ({
+      question    : cp.question || '',
+      options     : safeArray(cp.options, 'quiz.checkpoints[].options', context).map(opt => String(opt)),
+      correct     : typeof cp.correct === 'number' ? cp.correct : 0,
+      explanation : cp.explanation || ''
     }))
   };
 }

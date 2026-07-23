@@ -3,26 +3,22 @@
   "title": "Competitive Programming Troubleshooting Part 1C",
   "technology": "Competitive Programming",
   "module": "Competitive Programming Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Competitive Programming Troubleshooting Part 1C.",
-    "Write error-free implementations utilizing Competitive Programming Troubleshooting Part 1C.",
-    "Debug and optimize performance characteristics of Competitive Programming Troubleshooting Part 1C."
+    "Understand Competitive Programming Troubleshooting Part 1C from zero to advanced level",
+    "Write clean, production-grade Competitive Programming code for Competitive Programming Troubleshooting Part 1C",
+    "Debug edge cases and answer interview questions about Competitive Programming Troubleshooting Part 1C"
   ],
   "tags": [
+    "competitive_programming_troubleshooting_part_1c",
     "competitive",
-    "programming",
-    "troubleshooting",
-    "part",
-    "1c"
+    "competitive_programming_setup_architecture_foundations"
   ]
 }

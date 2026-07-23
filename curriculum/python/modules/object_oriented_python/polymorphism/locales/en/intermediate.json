@@ -1,43 +1,22 @@
 {
-  "deeperExplanation": "Polymorphism becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Abstract Base Classes (`abc.ABC` and `@abstractmethod`) define formal interface contracts in Python. Subclasses MUST implement abstract methods or raising `TypeError` upon instantiation.",
+  "internalImplementation": "CPython checks `__abstractmethods__` set during class instantiation.",
   "examples": [
     {
-      "title": "Getting Started with Polymorphism",
-      "code": "print(\"Learning Polymorphism\")",
-      "explanation": "Basic introduction to Polymorphism.",
-      "language": "python"
+      "code": "from abc import ABC, abstractmethod\nclass PaymentProcessor(ABC):\n    @abstractmethod\n    def process_payment(self, amount): pass\n\nclass StripeProcessor(PaymentProcessor):\n    def process_payment(self, amount):\n        print(f'Stripe charged ${amount}')",
+      "explanation": "Abstract Base Class enforces implementation contract."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A polymorphism implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Dynamic attribute dispatch overhead O(1).",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "TypeError trying to instantiate class with un-implemented abstract method.",
+    "incorrectCode": "class BadProcessor(PaymentProcessor): pass\np = BadProcessor() # TypeError: Can't instantiate abstract class",
+    "correctCode": "class GoodProcessor(PaymentProcessor):\n    def process_payment(self, amount): print(amount)"
+  },
+  "bestPractices": [
+    "Use `abc.ABC` when strict interface contracts are required across teams."
+  ]
 }

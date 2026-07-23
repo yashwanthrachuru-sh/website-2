@@ -3,27 +3,22 @@
   "title": "AWS Cloud Architect Troubleshooting Part 1C",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Troubleshooting Part 1C.",
-    "Write error-free implementations utilizing AWS Cloud Architect Troubleshooting Part 1C.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Troubleshooting Part 1C."
+    "Understand AWS Cloud Architect Troubleshooting Part 1C from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Troubleshooting Part 1C",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Troubleshooting Part 1C"
   ],
   "tags": [
+    "aws_cloud_architect_troubleshooting_part_1c",
     "aws",
-    "cloud",
-    "architect",
-    "troubleshooting",
-    "part",
-    "1c"
+    "aws_cloud_architect_setup_architecture_foundations"
   ]
 }

@@ -3,23 +3,22 @@
   "title": "Runnable Thread",
   "technology": "Java",
   "module": "Java Multithreading",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Collections & Generics"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Runnable Thread.",
-    "Write error-free implementations utilizing Runnable Thread.",
-    "Debug and optimize performance characteristics of Runnable Thread."
+    "Understand Runnable Thread from zero to advanced level",
+    "Write clean, production-grade Java code for Runnable Thread",
+    "Debug edge cases and answer interview questions about Runnable Thread"
   ],
   "tags": [
-    "runnable",
-    "thread"
+    "runnable_thread",
+    "java",
+    "java_multithreading"
   ]
 }

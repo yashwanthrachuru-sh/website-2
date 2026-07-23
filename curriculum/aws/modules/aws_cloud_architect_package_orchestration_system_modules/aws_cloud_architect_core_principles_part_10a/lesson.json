@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Core Principles Part 10A",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Core Principles Part 10A.",
-    "Write error-free implementations utilizing AWS Cloud Architect Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Core Principles Part 10A."
+    "Understand AWS Cloud Architect Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Core Principles Part 10A"
   ],
   "tags": [
+    "aws_cloud_architect_core_principles_part_10a",
     "aws",
-    "cloud",
-    "architect",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "aws_cloud_architect_package_orchestration_system_modules"
   ]
 }

@@ -3,26 +3,22 @@
   "title": "Placement Preparation Troubleshooting Part 4C",
   "technology": "Placement Preparation",
   "module": "Placement Preparation Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Placement Preparation Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Placement Preparation Troubleshooting Part 4C.",
-    "Write error-free implementations utilizing Placement Preparation Troubleshooting Part 4C.",
-    "Debug and optimize performance characteristics of Placement Preparation Troubleshooting Part 4C."
+    "Understand Placement Preparation Troubleshooting Part 4C from zero to advanced level",
+    "Write clean, production-grade Placement Preparation code for Placement Preparation Troubleshooting Part 4C",
+    "Debug edge cases and answer interview questions about Placement Preparation Troubleshooting Part 4C"
   ],
   "tags": [
+    "placement_preparation_troubleshooting_part_4c",
     "placement",
-    "preparation",
-    "troubleshooting",
-    "part",
-    "4c"
+    "placement_preparation_iteration_loops_state_traversal"
   ]
 }

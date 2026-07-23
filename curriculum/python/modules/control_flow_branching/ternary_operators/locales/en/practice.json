@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Number Classification",
-    "description": "Write a function that returns \"positive\", \"negative\", or \"zero\".",
-    "starterCode": "def classify(n):\n    pass\n\nprint(classify(5))\nprint(classify(-3))\nprint(classify(0))",
-    "solution": "def classify(n):\n    if n > 0: return \"positive\"\n    elif n < 0: return \"negative\"\n    else: return \"zero\"",
+    "title": "Even or Odd String",
+    "description": "Write `even_or_odd(n)` returning `'Even'` if `n` is even else `'Odd'` using a single-line ternary.",
+    "starterCode": "def even_or_odd(n):\n    pass",
+    "expectedOutput": "'Even'",
+    "solution": "def even_or_odd(n):\n    return 'Even' if n % 2 == 0 else 'Odd'",
     "hints": [
-      "What three relationships can a number have with zero?",
-      "Handle the zero case explicitly"
+      "Use n % 2 == 0 as condition"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Leap Year Detector",
-    "description": "Return true if a year is a leap year (divisible by 4, except centuries not divisible by 400).",
-    "starterCode": "def is_leap(year):\n    pass\n\nprint(is_leap(2024))\nprint(is_leap(1900))\nprint(is_leap(2000))",
-    "solution": "def is_leap(year):\n    if year % 400 == 0: return True\n    elif year % 100 == 0: return False\n    elif year % 4 == 0: return True\n    else: return False",
+    "title": "Absolute Value Calculator",
+    "description": "Implement `my_abs(n)` returning `n` if `n >= 0` else `-n` using a ternary.",
+    "starterCode": "def my_abs(n):\n    pass",
+    "expectedOutput": "5",
+    "solution": "def my_abs(n):\n    return n if n >= 0 else -n",
     "hints": [
-      "Check the most restrictive rule first (400)",
-      "The order of conditions matters"
+      "Return -n for negative numbers"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Date Validator",
-    "description": "Validate a date (day, month, year) — check month range, days per month, and leap year February.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def is_leap(y): return y%400==0 or (y%100!=0 and y%4==0)\ndef validate(d, m, y):\n    if m<1 or m>12 or y<1: return False\n    dim = [31,29 if is_leap(y) else 28,31,30,31,30,31,31,30,31,30,31]\n    return 1<=d<=dim[m-1]",
+    "title": "Formatted Access Label",
+    "description": "Write `get_access_label(user)` returning `'Admin (Full)'` if admin, `'VIP ({tier})'` if subscriber, else `'Guest'` using clean ternary expressions.",
+    "starterCode": "def get_access_label(user):\n    pass",
+    "expectedOutput": "'Admin (Full)'",
+    "solution": "def get_access_label(user):\n    if user.get('is_admin'): return 'Admin (Full)'\n    return f\"VIP ({user['tier']})\" if user.get('is_sub') else 'Guest'",
     "hints": [
-      "Store days per month in an array",
-      "Reuse your leap year function",
-      "Validate month and year before day"
+      "Combine early return with ternary for tier"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Conditions",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def discount(price, is_member):\n    if is_member = True:\n        return price * 0.8\n    if price > 100:\n        return price * 0.9\n    return price",
-    "fixedCode": "def discount(price, is_member):\n    if is_member: return price * 0.8\n    elif price > 100: return price * 0.9\n    return price",
+    "title": "Fix C-Style Ternary",
+    "description": "Fix Python SyntaxError caused by C-style ternary.",
+    "buggyCode": "res = is_valid ? 'Yes' : 'No'",
+    "fixedCode": "res = 'Yes' if is_valid else 'No'",
     "bugs": [
-      "Assignment (=) instead of comparison (==) — always true",
-      "Missing elif — both conditions can apply, giving double discount"
+      "Python does not use `? :` syntax. Use `X if cond else Y`."
     ]
   }
 }

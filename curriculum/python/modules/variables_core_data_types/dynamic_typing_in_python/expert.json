@@ -1,17 +1,47 @@
 {
-  "productionExplanation": "In high-performance microservices, Dynamic Typing in Python is utilized inside concurrency layers, cache indexing segments, and transactional boundaries. Memory pooling and zero-allocation techniques are standard.",
-  "designDecisions": "Architects must decide between statically-scoped registers and dynamic binding. In python, scoping matches lexical nesting, which allows compilers to pre-calculate offset registers, optimizing performance.",
+  "overview": "In large-scale production architectures, Python's dynamic typing presents both a massive velocity advantage and a static-analysis challenge. Large engineering teams (at companies like Instagram, Dropbox, and Meta) manage millions of lines of Python by combining dynamic runtime behavior with strict static type checking via Pyright/Mypy in CI/CD pipelines.",
+  "industryContext": "Dropbox famously migrated millions of lines of Python code to use type annotations after finding that dynamic typing errors accounted for runtime incidents at scale. They built Pytype, while Instagram built MonkeyType to automatically generate type annotations by observing dynamic execution at runtime.",
   "examples": [
     {
-      "title": "Enterprise Grade Service",
-      "code": "class Manager:\n    def process(self):\n        print(\"Managing Dynamic Typing in Python...\")",
-      "explanation": "Handles async constraints, handles error boundaries, and provides robust latency monitoring."
+      "title": "High-Performance Dynamic Attribute Dispatch",
+      "code": "class DynamicRecord:\n    \"\"\"Production data container using dynamic attribute binding.\"\"\"\n    def __init__(self, **kwargs):\n        for key, value in kwargs.items():\n            setattr(self, key, value)\n            \n    def __getattr__(self, name):\n        return f\"[Attribute '{name}' not found]\"\n\n# Usage\nuser = DynamicRecord(id=101, username=\"dev_lead\", role=\"admin\")\nprint(user.username)  # dev_lead\nprint(user.salary)    # [Attribute 'salary' not found]",
+      "explanation": "Dynamic typing enables meta-programming patterns like dynamic attribute binding (`setattr`, `__getattr__`), allowing objects to adapt to incoming payload schemas (e.g. dynamic API responses) without hardcoded boilerplate."
     }
   ],
-  "optimizationTips": [
-    "Pre-size collection arrays to prevent redundant reallocation resizing.",
-    "Use read-only properties to enable memory consolidation optimization in virtual machines.",
-    "Avoid deep call hierarchies to limit stack depth overflows."
+  "codeReviewChecklist": [
+    "Verify that type annotations exist on all public function signatures.",
+    "Ensure `isinstance()` is used instead of direct `type()` equality checks.",
+    "Confirm no variables are reused for different data types within the same function scope.",
+    "Check that `Optional[T]` or `T | None` is explicitly annotated if `None` can be returned.",
+    "Validate that high-frequency loops avoid dynamic type dispatch where NumPy or C-extensions are needed."
   ],
-  "securityConsiderations": "Sanitize arguments, enforce boundaries to block memory overflow vulnerabilities, and keep token signatures out of logs."
+  "testingVariables": {
+    "objective": "Verify dynamic type safety and runtime error handling using pytest.",
+    "code": "import pytest\n\ndef calculate_discount(price: float, discount: float) -> float:\n    if not isinstance(price, (int, float)) or not isinstance(discount, (int, float)):\n        raise TypeError('Price and discount must be numeric values.')\n    if not (0 <= discount <= 1):\n        raise ValueError('Discount must be between 0.0 and 1.0.')\n    return price * (1 - discount)\n\ndef test_calculate_discount_valid():\n    assert calculate_discount(100, 0.2) == 80.0\n\ndef test_calculate_discount_type_error():\n    with pytest.raises(TypeError):\n        calculate_discount('100', 0.2)"
+  },
+  "refactoringGuide": {
+    "before": "# Anti-pattern: Loose dynamic typing with variable re-use and missing checks\ndef process_user(data):\n    res = data.get('id')\n    res = str(res) # Re-using variable for completely different type\n    return res",
+    "after": "# Refactored: Strongly typed, explicit variable names, clear return type\nfrom typing import Any, Dict, Optional\n\ndef process_user(user_data: Dict[str, Any]) -> Optional[str]:\n    user_id = user_data.get('id')\n    if user_id is None:\n        return None\n    return str(user_id)",
+    "explanation": "Refactoring loose dynamic reassignments into explicit, distinct variable names with type annotations prevents hidden bugs and vastly improves IDE autocomplete."
+  },
+  "securityConsiderations": [
+    {
+      "risk": "Untrusted Dynamic Attribute Access / Insecure Deserialization",
+      "bad": "setattr(user_obj, request.form['key'], request.form['val'])",
+      "good": "ALLOWED_KEYS = {'name', 'bio'}\nkey = request.form['key']\nif key in ALLOWED_KEYS:\n    setattr(user_obj, key, request.form['val'])",
+      "why": "Allowing untrusted external input to dynamically set attributes on internal Python objects can lead to arbitrary code execution or attribute pollution (e.g. overwriting `__class__` or private methods)."
+    }
+  ],
+  "designPatterns": [
+    "Adapter Pattern (wrapping incompatible dynamic interfaces)",
+    "Strategy Pattern (dynamically injecting algorithmic functions at runtime)",
+    "Factory Pattern (instantiating dynamic classes based on configuration parameters)"
+  ],
+  "scalabilityConsiderations": {
+    "notes": "For ultra-high-throughput systems, CPython's dynamic dispatch overhead can be mitigated by using __slots__ to eliminate per-instance __dict__ allocations, decreasing RAM usage by ~30-40%."
+  },
+  "complexityAnalysis": {
+    "time": "O(1) dictionary key lookup for dynamic attribute resolution in CPython (`PyDict_GetItem`).",
+    "space": "O(1) reference pointer cost per variable reference on stack/frame scope."
+  }
 }

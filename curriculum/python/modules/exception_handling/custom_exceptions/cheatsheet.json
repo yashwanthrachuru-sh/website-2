@@ -1,22 +1,17 @@
 {
-  "syntax": "## Python Exception Handling Cheat Sheet\n\n### Basic Pattern\n```python\ntry:\n    result = risky_operation()\nexcept SpecificError as e:\n    handle_it(e)\nexcept (TypeError, ValueError):\n    handle_multiple()\nexcept Exception as e:\n    log_unexpected(e)\n    raise  # re-raise after logging\nelse:\n    # Runs only if NO exception\n    use_result(result)\nfinally:\n    cleanup()  # ALWAYS runs\n```\n\n### Custom Exceptions\n```python\nclass ValidationError(ValueError):\n    def __init__(self, field, message):\n        self.field = field\n        super().__init__(f\"{field}: {message}\")\n\nraise ValidationError('email', 'Invalid format')\n```\n\n### Context Manager (auto-cleanup)\n```python\nwith open('file.txt') as f:  # closes automatically\n    data = f.read()\n```\n\n### Common Built-in Exceptions\n- `ValueError` — right type, wrong value\n- `TypeError` — wrong type\n- `KeyError` — dict key missing\n- `IndexError` — list index out of range\n- `FileNotFoundError` — file doesn't exist\n- `ZeroDivisionError` — division by zero",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Custom Exceptions Cheat Sheet",
+  "printNote": "Quick reference for Custom Exceptions in Python.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "# Python implementation for Custom Exceptions",
+          "example": "# Python implementation for Custom Exceptions\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+          "description": "Basic syntax for Custom Exceptions",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

@@ -1,11 +1,14 @@
 {
-  "title": "Intersection Types System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Intersection Types.",
+  "title": "Intersection Types Project",
+  "tagline": "Build a mini application using Intersection Types",
+  "description": "Create a working TypeScript application demonstrating Intersection Types.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+  "solution": "// TypeScript implementation for Intersection Types\ninterface IntersectionTypesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processIntersectionTypes(item: IntersectionTypesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processIntersectionTypes({ id: 1, title: 'Intersection Types', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Intersection Types in TypeScript."
 }

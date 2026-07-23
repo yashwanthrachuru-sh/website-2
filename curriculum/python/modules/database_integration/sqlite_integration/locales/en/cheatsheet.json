@@ -1,34 +1,14 @@
 {
-  "title": "SQLite Integration — Quick Reference",
+  "printNote": "SQLite Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# SQLite Integration\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "sqlite3 Syntax",
+      "entries": [
+        {
+          "syntax": "cur.execute('SELECT * WHERE id=?', (val,))",
+          "example": "cur.fetchone()",
+          "description": "Parameterized SQL execution"
+        }
       ]
     }
   ]

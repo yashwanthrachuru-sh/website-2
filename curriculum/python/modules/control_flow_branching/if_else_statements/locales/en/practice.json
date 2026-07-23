@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Number Classification",
-    "description": "Write a function that returns \"positive\", \"negative\", or \"zero\".",
-    "starterCode": "def classify(n):\n    pass\n\nprint(classify(5))\nprint(classify(-3))\nprint(classify(0))",
-    "solution": "def classify(n):\n    if n > 0: return \"positive\"\n    elif n < 0: return \"negative\"\n    else: return \"zero\"",
+    "title": "Leap Year Detector",
+    "description": "Write `is_leap_year(year)`: return `True` if year is divisible by 4, except century years must be divisible by 400.",
+    "starterCode": "def is_leap_year(year):\n    pass",
+    "expectedOutput": "True",
+    "solution": "def is_leap_year(year):\n    if year % 400 == 0:\n        return True\n    elif year % 100 == 0:\n        return False\n    return year % 4 == 0",
     "hints": [
-      "What three relationships can a number have with zero?",
-      "Handle the zero case explicitly"
+      "Check 400 first, then 100, then 4"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Leap Year Detector",
-    "description": "Return true if a year is a leap year (divisible by 4, except centuries not divisible by 400).",
-    "starterCode": "def is_leap(year):\n    pass\n\nprint(is_leap(2024))\nprint(is_leap(1900))\nprint(is_leap(2000))",
-    "solution": "def is_leap(year):\n    if year % 400 == 0: return True\n    elif year % 100 == 0: return False\n    elif year % 4 == 0: return True\n    else: return False",
+    "title": "E-commerce Shipping Fee Calculator",
+    "description": "Calculate shipping: Orders >= $100 -> Free. Orders >= $50 -> $5. Prime members get free shipping regardless of order amount.",
+    "starterCode": "def calc_shipping(amount, is_prime):\n    pass",
+    "expectedOutput": "0",
+    "solution": "def calc_shipping(amount, is_prime):\n    if is_prime or amount >= 100:\n        return 0\n    elif amount >= 50:\n        return 5\n    else:\n        return 10",
     "hints": [
-      "Check the most restrictive rule first (400)",
-      "The order of conditions matters"
+      "Combine is_prime or amount >= 100 in the first branch"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Date Validator",
-    "description": "Validate a date (day, month, year) — check month range, days per month, and leap year February.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def is_leap(y): return y%400==0 or (y%100!=0 and y%4==0)\ndef validate(d, m, y):\n    if m<1 or m>12 or y<1: return False\n    dim = [31,29 if is_leap(y) else 28,31,30,31,30,31,31,30,31,30,31]\n    return 1<=d<=dim[m-1]",
+    "title": "Tax Bracket Calculator",
+    "description": "Calculate progressive tax: Income up to $10,000 @ 0%, $10k-$50k @ 10%, above $50k @ 20%.",
+    "starterCode": "def calc_tax(income):\n    pass",
+    "expectedOutput": "5000.0",
+    "solution": "def calc_tax(income):\n    if income <= 10000:\n        return 0.0\n    elif income <= 50000:\n        return (income - 10000) * 0.10\n    else:\n        return (40000 * 0.10) + ((income - 50000) * 0.20)",
     "hints": [
-      "Store days per month in an array",
-      "Reuse your leap year function",
-      "Validate month and year before day"
+      "Calculate marginal tax per bracket, not flat rate on entire income"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Conditions",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def discount(price, is_member):\n    if is_member = True:\n        return price * 0.8\n    if price > 100:\n        return price * 0.9\n    return price",
-    "fixedCode": "def discount(price, is_member):\n    if is_member: return price * 0.8\n    elif price > 100: return price * 0.9\n    return price",
+    "title": "Fix Grade Assigner",
+    "description": "Fix the condition order bug causing all scores above 60 to get 'D'.",
+    "buggyCode": "def get_grade(score):\n    if score >= 60:\n        return 'D'\n    elif score >= 90:\n        return 'A'\n    return 'F'",
+    "fixedCode": "def get_grade(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 60:\n        return 'D'\n    return 'F'",
     "bugs": [
-      "Assignment (=) instead of comparison (==) — always true",
-      "Missing elif — both conditions can apply, giving double discount"
+      "Ordering branches from least restrictive to most restrictive causes higher grades to be intercepted prematurely."
     ]
   }
 }

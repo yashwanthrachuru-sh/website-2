@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "SQLite Integration is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what SQLite Integration is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Use `sqlite3.connect()`. Always use `?` placeholders to prevent SQL Injection. Call `conn.commit()` to save changes.",
+  "oneLineSummary": "Python sqlite3 provides built-in serverless SQL database storage.",
   "keyTakeaways": [
-    "SQLite Integration solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Never use f-strings for SQL queries.",
+    "Use ? parameter placeholders.",
+    "with conn handles transactions."
   ],
   "memoryTricks": [
-    "Think of sqlite integration as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain SQLite Integration in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "SQL Safety",
+      "trick": "Question Mark (?) = Shield against SQL Injection."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "OperationalError or lost data",
+      "cause": "Forgot to call conn.commit()",
+      "fix": "Call conn.commit() or use with conn:"
+    }
   ],
-  "mindMap": {
-    "central": "SQLite Integration",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Demonstrate parameterized queries"
+  ],
   "nextTopics": [
-    "Advanced sqlite integration",
-    "Testing sqlite integration",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "SQLAlchemy ORM",
+      "whyNext": "Map Python objects to SQL tables using SQLAlchemy."
+    }
+  ]
 }

@@ -1,46 +1,52 @@
 {
   "easy": {
-    "title": "Hello, Environment",
-    "description": "Write a python script that prints your name, the date, and the python version.",
-    "starterCode": "import sys\nfrom datetime import date\n\nname = \"Your Name\"\ntoday = date.today()\nversion = sys.version\nprint(f\"Name: {name}\")\nprint(f\"Date: {today}\")\nprint(f\"Version: {version}\")",
-    "solution": "import sys\nfrom datetime import date\nname = \"Your Name\"\ntoday = date.today()\nv = sys.version\nprint(f\"Name: {name}\")\nprint(f\"Date: {today}\")\nprint(f\"Version: {v}\")",
+    "title": "Script with User Arguments",
+    "description": "Write a Python script 'calculator.py' that takes two numbers as command-line arguments and prints their sum.\n\nThe script should:\n1. Read the two numbers from sys.argv[1] and sys.argv[2]\n2. Convert them to float\n3. Print: 'Sum: {result}'\n4. If not enough arguments, print: 'Usage: python3 calculator.py num1 num2'\n\nRun it as: python3 calculator.py 3.5 2.1",
+    "starterCode": "import sys\n\n# Check argument count\n# Read and convert arguments\n# Print the result\n",
+    "expectedOutput": "Sum: 5.6",
+    "solution": "import sys\n\nif len(sys.argv) < 3:\n    print('Usage: python3 calculator.py num1 num2')\n    sys.exit(1)\n\na = float(sys.argv[1])\nb = float(sys.argv[2])\nprint(f'Sum: {a + b}')",
     "hints": [
-      "Look up how to get the current date",
-      "Find the module that gives version info"
+      "sys.argv[0] is the script name, sys.argv[1] is the first argument",
+      "sys.argv elements are strings — convert with float()",
+      "len(sys.argv) checks how many arguments were given"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Environment Inspector",
-    "description": "List all environment variables, the working directory, and the python executable path.",
-    "starterCode": "import os\nimport sys\n\nfor key, value in os.environ.items():\n    print(f\"{key}={value}\")\nprint(f\"\\nCWD: {os.getcwd()}\")\nprint(f\"EXE: {sys.executable}\")",
-    "solution": "import os, sys\nfor k, v in os.environ.items():\n    print(f\"{k}={v}\")\nprint(f\"\\nCWD: {os.getcwd()}\")\nprint(f\"EXE: {sys.executable}\")",
+    "title": "Module Guard Pattern",
+    "description": "Write two files:\n\n1. 'utils.py': Define a function greet(name) that returns 'Hello, {name}!'. Also add: if __name__ == '__main__': print(greet('World')) at the bottom.\n\n2. 'main.py': Import greet from utils and call it with a name from sys.argv[1].\n\nVerify: running 'python3 utils.py' should print 'Hello, World!'. Running 'python3 main.py Alice' should print 'Hello, Alice!'.",
+    "starterCode": "# utils.py\ndef greet(name):\n    pass\n\n# Add the __name__ guard here\n\n# ─────────────────\n# main.py\nimport sys\n# from utils import greet\n\n# Get name from sys.argv[1] and call greet\n",
+    "expectedOutput": "Hello, Alice!",
+    "solution": "# utils.py:\ndef greet(name):\n    return f'Hello, {name}!'\n\nif __name__ == '__main__':\n    print(greet('World'))\n\n# main.py:\nimport sys\nfrom utils import greet\n\nif len(sys.argv) > 1:\n    print(greet(sys.argv[1]))\nelse:\n    print('Usage: python3 main.py <name>')",
     "hints": [
-      "Environment variables are stored in a dictionary-like object",
-      "The current directory may differ from the script location"
+      "if __name__ == '__main__': runs only when the file is executed directly",
+      "from utils import greet imports the function (not the __main__ block)",
+      "sys.argv[1] is the first command-line argument"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Mini REPL",
-    "description": "Build a minimal interactive REPL with error handling.",
-    "starterCode": "def repl():\n    while True:\n        try:\n            code = input(\">>> \")\n            result = eval(code)\n            if result: print(result)\n        except Exception as e:\n            print(f\"Error: {e}\")",
-    "solution": "def repl():\n    while True:\n        try:\n            code = input(\">>> \")\n            if code in ('exit','quit'): break\n            result = eval(code)\n            if result is not None: print(result)\n        except KeyboardInterrupt: break\n        except Exception as e: print(f\"Error: {e}\")",
+    "title": "Mini Task Runner",
+    "description": "Write a script 'run.py' that works like a simple task runner. It should:\n1. Accept a task name as sys.argv[1]\n2. Support tasks: 'hello' (prints 'Hello from Python!'), 'info' (prints Python version and OS platform), 'check' (prints whether sys.argv[2] is an int, float, or string)\n3. For unknown tasks, print 'Unknown task: {name}' and list available tasks\n4. For missing arguments, print usage instructions",
+    "starterCode": "import sys\n\ndef task_hello():\n    pass\n\ndef task_info():\n    pass\n\ndef task_check(value):\n    pass\n\n# Route to correct task based on sys.argv\n",
+    "expectedOutput": "$ python3 run.py hello\nHello from Python!\n\n$ python3 run.py info\nPython 3.12.0\nPlatform: linux\n\n$ python3 run.py check 42\n'42' looks like: int",
+    "solution": "import sys\n\ndef task_hello():\n    print('Hello from Python!')\n\ndef task_info():\n    import platform\n    print(f'Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}')\n    print(f'Platform: {sys.platform}')\n\ndef task_check(value):\n    try:\n        int(value)\n        print(f\"'{value}' looks like: int\")\n        return\n    except ValueError:\n        pass\n    try:\n        float(value)\n        print(f\"'{value}' looks like: float\")\n        return\n    except ValueError:\n        pass\n    print(f\"'{value}' looks like: string\")\n\nTASKS = {\n    'hello': lambda: task_hello(),\n    'info': lambda: task_info(),\n    'check': lambda: task_check(sys.argv[2] if len(sys.argv) > 2 else ''),\n}\n\nif len(sys.argv) < 2:\n    print('Usage: python3 run.py <task>')\n    print(f'Available tasks: {\", \".join(TASKS)}')\n    sys.exit(1)\n\ntask_name = sys.argv[1]\nif task_name in TASKS:\n    TASKS[task_name]()\nelse:\n    print(f'Unknown task: {task_name}')\n    print(f'Available tasks: {\", \".join(TASKS)}')",
     "hints": [
-      "Use eval() to execute code strings",
-      "Handle KeyboardInterrupt gracefully",
-      "The readline module helps create interactive programs"
+      "Use a dictionary mapping task names to functions",
+      "try/except ValueError is how you test if a string can be converted to int/float",
+      "sys.exit(1) signals an error exit to the calling shell"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Python Setup",
-    "description": "The following python code has setup-related bugs. Find and fix them.",
-    "buggyCode": "import os, sys, datetime\nprint(os.getcwd)\nprint(\"Version: \" + sys.version_info)\ncurrent_time = datetime.datetime.now\nprint(\"Time: \" + current_time)",
-    "fixedCode": "import os, sys, datetime\nprint(os.getcwd())\nprint(f\"Version: {sys.version_info.major}.{sys.version_info.minor}\")\nnow = datetime.datetime.now()\nprint(f\"Time: {now}\")",
+    "title": "Fix the Script Runner",
+    "description": "This script has 3 bugs.",
+    "buggyCode": "import sys\n\n# Bug 1: Wrong index for first argument\nscript_name = sys.argv[1]  # should be 0\n\n# Bug 2: Comparison uses = instead of ==\nif __name__ = '__main__':\n    print('Running directly')\n\n# Bug 3: Missing conversion from string to number\nnum = sys.argv[1]\nresult = num + 10  # TypeError: can't add str and int",
+    "fixedCode": "import sys\n\n# Fix 1: argv[0] is the script name\nscript_name = sys.argv[0]   # correct index\n\n# Fix 2: Use == for comparison\nif __name__ == '__main__':\n    print('Running directly')\n\n# Fix 3: Convert string to number\nnum = int(sys.argv[1])   # convert first\nresult = num + 10",
     "bugs": [
-      "Missing parentheses on function calls",
-      "Wrong concatenation of non-string types"
+      "sys.argv[0] is the script name, argv[1] is the first user argument",
+      "if __name__ = '__main__': uses = (assignment) which is a SyntaxError. Must use == (comparison).",
+      "sys.argv elements are always strings. You must convert with int() or float() before doing arithmetic."
     ]
   }
 }

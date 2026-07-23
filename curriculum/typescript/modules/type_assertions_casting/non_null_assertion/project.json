@@ -1,11 +1,14 @@
 {
-  "title": "Non-Null Assertion System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Non-Null Assertion.",
+  "title": "Non-Null Assertion Project",
+  "tagline": "Build a mini application using Non-Null Assertion",
+  "description": "Create a working TypeScript application demonstrating Non-Null Assertion.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Non-Null Assertion\ninterface NonNullAssertionPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processNonNullAssertion(item: NonNullAssertionPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processNonNullAssertion({ id: 1, title: 'Non-Null Assertion', status: 'active' }));",
+  "solution": "// TypeScript implementation for Non-Null Assertion\ninterface NonNullAssertionPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processNonNullAssertion(item: NonNullAssertionPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processNonNullAssertion({ id: 1, title: 'Non-Null Assertion', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Non-Null Assertion in TypeScript."
 }

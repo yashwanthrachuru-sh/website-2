@@ -3,28 +3,22 @@
   "title": "Azure Cloud Engineer Core Principles Part 11A",
   "technology": "Azure Cloud Engineer",
   "module": "Azure Cloud Engineer Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Azure Cloud Engineer Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Azure Cloud Engineer Core Principles Part 11A.",
-    "Write error-free implementations utilizing Azure Cloud Engineer Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of Azure Cloud Engineer Core Principles Part 11A."
+    "Understand Azure Cloud Engineer Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade Azure Cloud Engineer code for Azure Cloud Engineer Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about Azure Cloud Engineer Core Principles Part 11A"
   ],
   "tags": [
+    "azure_cloud_engineer_core_principles_part_11a",
     "azure",
-    "cloud",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "azure_cloud_engineer_performance_optimization_complexity"
   ]
 }

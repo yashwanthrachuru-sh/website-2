@@ -3,27 +3,22 @@
   "title": "Artificial Intelligence Core Principles Part 11A",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Core Principles Part 11A.",
-    "Write error-free implementations utilizing Artificial Intelligence Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Core Principles Part 11A."
+    "Understand Artificial Intelligence Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Core Principles Part 11A"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "artificial_intelligence_core_principles_part_11a",
+    "ai",
+    "artificial_intelligence_performance_optimization_complexity"
   ]
 }

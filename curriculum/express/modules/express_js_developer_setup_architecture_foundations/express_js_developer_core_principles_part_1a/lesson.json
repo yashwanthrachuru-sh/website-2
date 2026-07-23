@@ -3,27 +3,22 @@
   "title": "Express.js Developer Core Principles Part 1A",
   "technology": "Express.js Developer",
   "module": "Express.js Developer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Express.js Developer Core Principles Part 1A.",
-    "Write error-free implementations utilizing Express.js Developer Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Express.js Developer Core Principles Part 1A."
+    "Understand Express.js Developer Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Express.js Developer code for Express.js Developer Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Express.js Developer Core Principles Part 1A"
   ],
   "tags": [
-    "express.js",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "express_js_developer_core_principles_part_1a",
+    "express",
+    "express_js_developer_setup_architecture_foundations"
   ]
 }

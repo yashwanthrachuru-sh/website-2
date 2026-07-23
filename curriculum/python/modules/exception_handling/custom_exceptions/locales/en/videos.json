@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Custom Exceptions — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Custom Exceptions for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Custom Exceptions Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Custom Exceptions patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Creating Custom Exceptions",
+    "video_id": "1HbgT2kHkh8",
+    "url": "https://www.youtube.com/watch?v=1HbgT2kHkh8",
+    "channel": "Corey Schafer",
+    "duration": "7m",
+    "description": "How to create and use custom exception classes in Python."
+  }
+]

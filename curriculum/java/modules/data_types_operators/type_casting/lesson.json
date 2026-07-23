@@ -3,23 +3,22 @@
   "title": "Type Casting",
   "technology": "Java",
   "module": "Data Types & Operators",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Java JVM & Setup"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Type Casting.",
-    "Write error-free implementations utilizing Type Casting.",
-    "Debug and optimize performance characteristics of Type Casting."
+    "Understand Type Casting from zero to advanced level",
+    "Write clean, production-grade Java code for Type Casting",
+    "Debug edge cases and answer interview questions about Type Casting"
   ],
   "tags": [
-    "type",
-    "casting"
+    "type_casting",
+    "java",
+    "data_types_operators"
   ]
 }

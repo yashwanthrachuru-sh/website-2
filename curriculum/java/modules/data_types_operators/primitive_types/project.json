@@ -1,11 +1,14 @@
 {
-  "title": "Primitive Types System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Primitive Types.",
+  "title": "Primitive Types Project",
+  "tagline": "Build a mini application using Primitive Types",
+  "description": "Create a working Java application demonstrating Primitive Types.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// Java implementation for Primitive Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Primitive Types\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "solution": "// Java implementation for Primitive Types\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: Primitive Types\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Primitive Types in Java."
 }

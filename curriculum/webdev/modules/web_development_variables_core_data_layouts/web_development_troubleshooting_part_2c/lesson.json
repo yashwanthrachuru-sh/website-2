@@ -3,26 +3,22 @@
   "title": "Web Development Troubleshooting Part 2C",
   "technology": "Web Development",
   "module": "Web Development Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Web Development Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Web Development Troubleshooting Part 2C.",
-    "Write error-free implementations utilizing Web Development Troubleshooting Part 2C.",
-    "Debug and optimize performance characteristics of Web Development Troubleshooting Part 2C."
+    "Understand Web Development Troubleshooting Part 2C from zero to advanced level",
+    "Write clean, production-grade Web Development code for Web Development Troubleshooting Part 2C",
+    "Debug edge cases and answer interview questions about Web Development Troubleshooting Part 2C"
   ],
   "tags": [
-    "web",
-    "development",
-    "troubleshooting",
-    "part",
-    "2c"
+    "web_development_troubleshooting_part_2c",
+    "webdev",
+    "web_development_variables_core_data_layouts"
   ]
 }

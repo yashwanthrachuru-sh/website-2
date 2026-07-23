@@ -3,27 +3,22 @@
   "title": "System Design Implementation Steps Part 1B",
   "technology": "System Design",
   "module": "System Design Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of System Design Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing System Design Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of System Design Implementation Steps Part 1B."
+    "Understand System Design Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade System Design code for System Design Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about System Design Implementation Steps Part 1B"
   ],
   "tags": [
-    "system",
-    "design",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "system_design_implementation_steps_part_1b",
+    "system-design",
+    "system_design_setup_architecture_foundations"
   ]
 }

@@ -3,23 +3,22 @@
   "title": "Non-Null Assertion",
   "technology": "TypeScript",
   "module": "Type Assertions Casting",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Enums & Literal Types"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Non-Null Assertion.",
-    "Write error-free implementations utilizing Non-Null Assertion.",
-    "Debug and optimize performance characteristics of Non-Null Assertion."
+    "Understand Non-Null Assertion from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Non-Null Assertion",
+    "Debug edge cases and answer interview questions about Non-Null Assertion"
   ],
   "tags": [
-    "non-null",
-    "assertion"
+    "non_null_assertion",
+    "typescript",
+    "type_assertions_casting"
   ]
 }

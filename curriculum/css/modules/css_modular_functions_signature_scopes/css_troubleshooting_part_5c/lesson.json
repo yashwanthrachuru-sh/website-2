@@ -3,25 +3,22 @@
   "title": "CSS Troubleshooting Part 5C",
   "technology": "CSS",
   "module": "CSS Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Troubleshooting Part 5C.",
-    "Write error-free implementations utilizing CSS Troubleshooting Part 5C.",
-    "Debug and optimize performance characteristics of CSS Troubleshooting Part 5C."
+    "Understand CSS Troubleshooting Part 5C from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Troubleshooting Part 5C",
+    "Debug edge cases and answer interview questions about CSS Troubleshooting Part 5C"
   ],
   "tags": [
+    "css_troubleshooting_part_5c",
     "css",
-    "troubleshooting",
-    "part",
-    "5c"
+    "css_modular_functions_signature_scopes"
   ]
 }

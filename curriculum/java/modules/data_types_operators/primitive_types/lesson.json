@@ -3,23 +3,22 @@
   "title": "Primitive Types",
   "technology": "Java",
   "module": "Data Types & Operators",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Java JVM & Setup"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Primitive Types.",
-    "Write error-free implementations utilizing Primitive Types.",
-    "Debug and optimize performance characteristics of Primitive Types."
+    "Understand Primitive Types from zero to advanced level",
+    "Write clean, production-grade Java code for Primitive Types",
+    "Debug edge cases and answer interview questions about Primitive Types"
   ],
   "tags": [
-    "primitive",
-    "types"
+    "primitive_types",
+    "java",
+    "data_types_operators"
   ]
 }

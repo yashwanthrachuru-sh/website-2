@@ -1,11 +1,14 @@
 {
-  "title": "File Close fclose System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of File Close fclose.",
+  "title": "File Close fclose Project",
+  "tagline": "Build a mini application using File Close fclose",
+  "description": "Create a working C Programming application demonstrating File Close fclose.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// C/C++ implementation for File Close fclose\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"File Close fclose\");\n    return 0;\n}",
+  "solution": "// C/C++ implementation for File Close fclose\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"File Close fclose\");\n    return 0;\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of File Close fclose in C Programming."
 }

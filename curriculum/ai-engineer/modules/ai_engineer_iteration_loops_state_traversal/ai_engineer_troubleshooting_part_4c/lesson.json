@@ -3,26 +3,22 @@
   "title": "AI Engineer Troubleshooting Part 4C",
   "technology": "AI Engineer",
   "module": "AI Engineer Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AI Engineer Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AI Engineer Troubleshooting Part 4C.",
-    "Write error-free implementations utilizing AI Engineer Troubleshooting Part 4C.",
-    "Debug and optimize performance characteristics of AI Engineer Troubleshooting Part 4C."
+    "Understand AI Engineer Troubleshooting Part 4C from zero to advanced level",
+    "Write clean, production-grade AI Engineer code for AI Engineer Troubleshooting Part 4C",
+    "Debug edge cases and answer interview questions about AI Engineer Troubleshooting Part 4C"
   ],
   "tags": [
-    "ai",
-    "engineer",
-    "troubleshooting",
-    "part",
-    "4c"
+    "ai_engineer_troubleshooting_part_4c",
+    "ai-engineer",
+    "ai_engineer_iteration_loops_state_traversal"
   ]
 }

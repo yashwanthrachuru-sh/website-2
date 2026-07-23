@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/custom exceptions",
-      "type": "documentation",
-      "description": "Official reference for Custom Exceptions in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Custom Exceptions in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Custom Exceptions with other developers"
+      "type": "official",
+      "title": "Python User-defined Exceptions",
+      "url": "https://docs.python.org/3/tutorial/errors.html#user-defined-exceptions"
     }
   ]
 }

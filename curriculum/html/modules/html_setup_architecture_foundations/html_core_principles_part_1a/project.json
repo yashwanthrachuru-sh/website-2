@@ -1,11 +1,14 @@
 {
-  "title": "HTML Core Principles Part 1A System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of HTML Core Principles Part 1A.",
+  "title": "HTML Core Principles Part 1A Project",
+  "tagline": "Build a mini application using HTML Core Principles Part 1A",
+  "description": "Create a working HTML application demonstrating HTML Core Principles Part 1A.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "<!-- HTML5 Structure for HTML Core Principles Part 1A -->\n<section id=\"html_core_principles_part_1a\" class=\"card-container\">\n  <h2>HTML Core Principles Part 1A</h2>\n  <p>Learn HTML Core Principles Part 1A with interactive examples.</p>\n  <button type=\"button\" id=\"btn-action\">Click Here</button>\n</section>",
+  "solution": "<!-- HTML5 Structure for HTML Core Principles Part 1A -->\n<section id=\"html_core_principles_part_1a\" class=\"card-container\">\n  <h2>HTML Core Principles Part 1A</h2>\n  <p>Learn HTML Core Principles Part 1A with interactive examples.</p>\n  <button type=\"button\" id=\"btn-action\">Click Here</button>\n</section>",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of HTML Core Principles Part 1A in HTML."
 }

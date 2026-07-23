@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "SQLAlchemy ORM — Basic Practice",
-    "description": "Write a basic sqlalchemy orm implementation.",
-    "starterCode": "def basic_sqlalchemy_orm():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Define User ORM Model",
+    "description": "Define `User(Base)` with primary key `id` and `name` string.",
+    "starterCode": "# Define Base and User model",
+    "expectedOutput": "True",
+    "solution": "from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column\nfrom sqlalchemy import String\nclass Base(DeclarativeBase): pass\nclass User(Base):\n    __tablename__ = 'users'\n    id: Mapped[int] = mapped_column(primary_key=True)\n    name: Mapped[str] = mapped_column(String(50))",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Use Mapped and mapped_column"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "SQLAlchemy ORM — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "ORM Insert and Query",
+    "description": "Insert User('Alice') and return name using Session.",
+    "starterCode": "def add_and_get(engine):\n    pass",
+    "expectedOutput": "'Alice'",
+    "solution": "from sqlalchemy.orm import Session\nfrom sqlalchemy import select\ndef add_and_get(engine):\n    with Session(engine) as s:\n        s.add(User(id=1, name='Alice'))\n        s.commit()\n        return s.scalars(select(User)).first().name",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Use session.add() and session.scalars()"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "SQLAlchemy ORM — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "One-to-Many Relationship Model",
+    "description": "Define User (1) to Posts (N) relationship using `relationship()`.",
+    "starterCode": "# Define User and Post models",
+    "expectedOutput": "True",
+    "solution": "from sqlalchemy.orm import relationship\nfrom sqlalchemy import ForeignKey\nclass Post(Base):\n    __tablename__ = 'posts'\n    id: Mapped[int] = mapped_column(primary_key=True)\n    user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))\n    user: Mapped['User'] = relationship(back_populates='posts')\nUser.posts = relationship('Post', back_populates='user')",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Use ForeignKey and relationship"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the SQLAlchemy ORM",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Detached Instance Error",
+    "description": "Fix accessing lazy attribute after Session closed.",
+    "buggyCode": "with Session(engine) as s: u = s.get(User, 1)\nprint(u.posts) # DetachedInstanceError!",
+    "fixedCode": "with Session(engine) as s:\n    u = s.scalars(select(User).options(joinedload(User.posts))).first()\n    print(u.posts)",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Eager load relationship with joinedload before closing session."
     ]
   }
 }

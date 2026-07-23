@@ -1,24 +1,18 @@
 {
-  "title": "Project: Writing Files Application",
-  "tagline": "Apply writing files in a practical project.",
-  "description": "Build an application demonstrating Writing Files.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "CSV Exporter Engine",
+  "tagline": "Structured data CSV file writer",
+  "description": "Export list of dicts to CSV file with headers.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Writing CSV files with csv module"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Write header and data rows"
+  ],
+  "starterCode": "import csv\ndef export_csv(fn, data):\n    pass",
+  "solution": "import csv\ndef export_csv(fn, data):\n    if not data: return\n    with open(fn, 'w', newline='', encoding='utf-8') as f:\n        w = csv.DictWriter(f, fieldnames=data[0].keys())\n        w.writeheader()\n        w.writerows(data)",
+  "solutionExpl": "Exports dictionary array to CSV using DictWriter.",
+  "expectedOutput": "True",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Add custom delimiter support"
   ]
 }

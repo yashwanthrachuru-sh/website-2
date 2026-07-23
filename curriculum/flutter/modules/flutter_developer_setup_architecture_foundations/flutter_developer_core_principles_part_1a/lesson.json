@@ -3,27 +3,22 @@
   "title": "Flutter Developer Core Principles Part 1A",
   "technology": "Flutter Developer",
   "module": "Flutter Developer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Flutter Developer Core Principles Part 1A.",
-    "Write error-free implementations utilizing Flutter Developer Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Flutter Developer Core Principles Part 1A."
+    "Understand Flutter Developer Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Flutter Developer code for Flutter Developer Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Flutter Developer Core Principles Part 1A"
   ],
   "tags": [
+    "flutter_developer_core_principles_part_1a",
     "flutter",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "flutter_developer_setup_architecture_foundations"
   ]
 }

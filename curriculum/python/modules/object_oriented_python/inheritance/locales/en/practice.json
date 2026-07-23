@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Inheritance — Basic Practice",
-    "description": "Write a basic inheritance implementation.",
-    "starterCode": "def basic_inheritance():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Vehicle Inheritance",
+    "description": "Create `Vehicle` with `drive()`, and child `Car` overriding `drive()`.",
+    "starterCode": "class Vehicle: pass",
+    "expectedOutput": "'Driving car'",
+    "solution": "class Vehicle:\n    def drive(self): return 'Driving vehicle'\nclass Car(Vehicle):\n    def drive(self): return 'Driving car'",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Override drive() in Car"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Inheritance — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Shape Hierarchy",
+    "description": "Base `Shape` with `area()`, children `Square(side)` and `Circle(radius)`.",
+    "starterCode": "class Shape: pass",
+    "expectedOutput": "16",
+    "solution": "import math\nclass Shape:\n    def area(self): return 0\nclass Square(Shape):\n    def __init__(self, s): self.s = s\n    def area(self): return self.s ** 2\nclass Circle(Shape):\n    def __init__(self, r): self.r = r\n    def area(self): return math.pi * self.r ** 2",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Implement area() in each subclass"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Inheritance — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Multi-level Employee Hierarchy",
+    "description": "Base `Person`, child `Employee`, grandchild `Manager` with `team` list.",
+    "starterCode": "class Person: pass",
+    "expectedOutput": "1",
+    "solution": "class Person:\n    def __init__(self, name):\n        self.name = name\nclass Employee(Person):\n    def __init__(self, name, salary):\n        super().__init__(name)\n        self.salary = salary\nclass Manager(Employee):\n    def __init__(self, name, salary):\n        super().__init__(name, salary)\n        self.team = []",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Chain super().__init__() calls"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Inheritance",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Missing Super Bug",
+    "description": "Fix AttributeError on missing parent attribute initialization.",
+    "buggyCode": "class Child(Parent):\n    def __init__(self, name):\n        self.name = name",
+    "fixedCode": "class Child(Parent):\n    def __init__(self, name):\n        super().__init__(name)",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Missing `super().__init__(name)` call."
     ]
   }
 }

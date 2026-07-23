@@ -1,49 +1,31 @@
 {
-  "oneLineSummary": "Functions are reusable, named blocks of code that take inputs, process them, and return outputs — the fundamental unit of program organization.",
-  "summary": "This lesson covered function definition, parameters, return values, scope, lambda/arrow functions, recursion, and best practices for writing clean, testable functions.",
+  "summary": "Parameters define input variables. `*args` packs positional args as a tuple; `**kwargs` packs keyword args as a dict. Never use mutable objects as defaults.",
+  "oneLineSummary": "Parameters receive arguments; use None for mutable defaults and *args/**kwargs for flexible signatures.",
   "keyTakeaways": [
-    "Functions encapsulate reusable logic",
-    "Parameters receive inputs; return sends output",
-    "Local variables are scoped to the function",
-    "Pure functions are easier to test and debug",
-    "Functions are first-class citizens"
+    "Mutable default args persist across calls.",
+    "*args = tuple, **kwargs = dict."
   ],
   "memoryTricks": [
-    "Think of a function as a vending machine: input (money/selection) -> process -> output (snack)"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain the difference between parameters and arguments?",
-    "Can you write a recursive function?",
-    "Do you understand closures?"
+    {
+      "concept": "Mutable Defaults",
+      "trick": "Default list = Shared Bucket! Use None to get a fresh bucket every time."
+    }
   ],
   "commonErrors": [
-    "Missing return",
-    "Modifying global/input state",
-    "Using mutable default arguments",
-    "Stack overflow from infinite recursion"
+    {
+      "error": "SyntaxError: non-default argument follows default argument",
+      "cause": "Wrong parameter order",
+      "fix": "Put all positional parameters before default parameters"
+    }
   ],
-  "mindMap": {
-    "central": "Functions",
-    "branches": [
-      "Definition",
-      "Parameters",
-      "Return",
-      "Scope",
-      "Recursion",
-      "Lambda",
-      "Higher-Order",
-      "Closures"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain *args vs **kwargs",
+    "Demonstrate fixing mutable default argument bug"
+  ],
   "nextTopics": [
-    "Closures and decorators",
-    "Function composition",
-    "Monads and functional programming",
-    "Concurrency with async functions"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Lambda Functions",
+      "whyNext": "Learn anonymous one-line functions."
+    }
+  ]
 }

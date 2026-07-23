@@ -3,27 +3,22 @@
   "title": "Frontend Development Core Principles Part 7A",
   "technology": "Frontend Development",
   "module": "Frontend Development Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Frontend Development Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Frontend Development Core Principles Part 7A.",
-    "Write error-free implementations utilizing Frontend Development Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of Frontend Development Core Principles Part 7A."
+    "Understand Frontend Development Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade Frontend Development code for Frontend Development Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about Frontend Development Core Principles Part 7A"
   ],
   "tags": [
+    "frontend_development_core_principles_part_7a",
     "frontend",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "frontend_development_advanced_abstractions_type_blueprints"
   ]
 }

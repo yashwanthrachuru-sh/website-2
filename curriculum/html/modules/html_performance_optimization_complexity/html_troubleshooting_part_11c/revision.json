@@ -1,23 +1,14 @@
 {
-  "summary": "You have completed this lesson! You studied how HTML Troubleshooting Part 11C allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Master HTML Troubleshooting Part 11C for building robust HTML software.",
+  "summary": "Key concepts covered: HTML Troubleshooting Part 11C syntax, execution flow, best practices, and interview questions.",
+  "keyTakeaways": [
+    "Understand core syntax of HTML Troubleshooting Part 11C",
+    "Follow style guidelines",
+    "Write automated tests"
   ],
-  "keySyntax": [
-    "// html syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
-    {
-      "front": "What is the primary role of HTML Troubleshooting Part 11C?",
-      "back": "To manage states, loop checks, or object definitions."
-    },
-    {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
-    }
+  "preInterviewChecklist": [
+    "Define HTML Troubleshooting Part 11C",
+    "Provide code example",
+    "Explain time/space complexity"
   ]
 }

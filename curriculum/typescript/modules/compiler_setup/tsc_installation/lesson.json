@@ -3,23 +3,22 @@
   "title": "TSC Installation",
   "technology": "TypeScript",
   "module": "Compiler & Setup",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of TSC Installation.",
-    "Write error-free implementations utilizing TSC Installation.",
-    "Debug and optimize performance characteristics of TSC Installation."
+    "Understand TSC Installation from zero to advanced level",
+    "Write clean, production-grade TypeScript code for TSC Installation",
+    "Debug edge cases and answer interview questions about TSC Installation"
   ],
   "tags": [
-    "tsc",
-    "installation"
+    "tsc_installation",
+    "typescript",
+    "compiler_setup"
   ]
 }

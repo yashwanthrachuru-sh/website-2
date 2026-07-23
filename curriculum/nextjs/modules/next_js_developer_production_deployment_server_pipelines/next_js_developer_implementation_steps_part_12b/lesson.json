@@ -3,27 +3,22 @@
   "title": "Next.js Developer Implementation Steps Part 12B",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Next.js Developer Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Implementation Steps Part 12B.",
-    "Write error-free implementations utilizing Next.js Developer Implementation Steps Part 12B.",
-    "Debug and optimize performance characteristics of Next.js Developer Implementation Steps Part 12B."
+    "Understand Next.js Developer Implementation Steps Part 12B from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Implementation Steps Part 12B",
+    "Debug edge cases and answer interview questions about Next.js Developer Implementation Steps Part 12B"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "implementation",
-    "steps",
-    "part",
-    "12b"
+    "next_js_developer_implementation_steps_part_12b",
+    "nextjs",
+    "next_js_developer_production_deployment_server_pipelines"
   ]
 }

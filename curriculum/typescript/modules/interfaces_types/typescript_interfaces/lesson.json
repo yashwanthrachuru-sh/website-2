@@ -3,23 +3,22 @@
   "title": "TypeScript Interfaces",
   "technology": "TypeScript",
   "module": "Interfaces & Types",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Basic Types Annotation"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of TypeScript Interfaces.",
-    "Write error-free implementations utilizing TypeScript Interfaces.",
-    "Debug and optimize performance characteristics of TypeScript Interfaces."
+    "Understand TypeScript Interfaces from zero to advanced level",
+    "Write clean, production-grade TypeScript code for TypeScript Interfaces",
+    "Debug edge cases and answer interview questions about TypeScript Interfaces"
   ],
   "tags": [
+    "typescript_interfaces",
     "typescript",
-    "interfaces"
+    "interfaces_types"
   ]
 }

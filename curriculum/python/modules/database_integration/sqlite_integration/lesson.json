@@ -3,23 +3,22 @@
   "title": "SQLite Integration",
   "technology": "Python",
   "module": "Database Integration",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Exception Handling"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of SQLite Integration.",
-    "Write error-free implementations utilizing SQLite Integration.",
-    "Debug and optimize performance characteristics of SQLite Integration."
+    "Understand SQLite Integration from zero to advanced level",
+    "Write clean, production-grade Python code for SQLite Integration",
+    "Debug edge cases and answer interview questions about SQLite Integration"
   ],
   "tags": [
-    "sqlite",
-    "integration"
+    "sqlite_integration",
+    "python",
+    "database_integration"
   ]
 }

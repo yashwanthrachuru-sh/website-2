@@ -3,27 +3,22 @@
   "title": "Artificial Intelligence Core Principles Part 10A",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Core Principles Part 10A.",
-    "Write error-free implementations utilizing Artificial Intelligence Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Core Principles Part 10A."
+    "Understand Artificial Intelligence Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Core Principles Part 10A"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "artificial_intelligence_core_principles_part_10a",
+    "ai",
+    "artificial_intelligence_package_orchestration_system_modules"
   ]
 }

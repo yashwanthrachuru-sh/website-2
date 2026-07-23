@@ -3,27 +3,22 @@
   "title": "UI/UX Design Core Principles Part 7A",
   "technology": "UI/UX Design",
   "module": "UI/UX Design Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: UI/UX Design Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of UI/UX Design Core Principles Part 7A.",
-    "Write error-free implementations utilizing UI/UX Design Core Principles Part 7A.",
-    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 7A."
+    "Understand UI/UX Design Core Principles Part 7A from zero to advanced level",
+    "Write clean, production-grade UI/UX Design code for UI/UX Design Core Principles Part 7A",
+    "Debug edge cases and answer interview questions about UI/UX Design Core Principles Part 7A"
   ],
   "tags": [
-    "ui/ux",
-    "design",
-    "core",
-    "principles",
-    "part",
-    "7a"
+    "ui_ux_design_core_principles_part_7a",
+    "ui-ux",
+    "ui_ux_design_advanced_abstractions_type_blueprints"
   ]
 }

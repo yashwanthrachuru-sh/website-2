@@ -3,24 +3,22 @@
   "title": "Console Input scanf",
   "technology": "C Programming",
   "module": "Format Specifiers I/O",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: GCC Compiler & Headers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Console Input scanf.",
-    "Write error-free implementations utilizing Console Input scanf.",
-    "Debug and optimize performance characteristics of Console Input scanf."
+    "Understand Console Input scanf from zero to advanced level",
+    "Write clean, production-grade C Programming code for Console Input scanf",
+    "Debug edge cases and answer interview questions about Console Input scanf"
   ],
   "tags": [
-    "console",
-    "input",
-    "scanf"
+    "console_input_scanf",
+    "c",
+    "format_specifiers_i_o"
   ]
 }

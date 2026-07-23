@@ -3,27 +3,22 @@
   "title": "Backend Development Core Principles Part 12A",
   "technology": "Backend Development",
   "module": "Backend Development Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Backend Development Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Backend Development Core Principles Part 12A.",
-    "Write error-free implementations utilizing Backend Development Core Principles Part 12A.",
-    "Debug and optimize performance characteristics of Backend Development Core Principles Part 12A."
+    "Understand Backend Development Core Principles Part 12A from zero to advanced level",
+    "Write clean, production-grade Backend Development code for Backend Development Core Principles Part 12A",
+    "Debug edge cases and answer interview questions about Backend Development Core Principles Part 12A"
   ],
   "tags": [
+    "backend_development_core_principles_part_12a",
     "backend",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "12a"
+    "backend_development_production_deployment_server_pipelines"
   ]
 }

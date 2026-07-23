@@ -3,27 +3,22 @@
   "title": "Web Development Core Principles Part 8A",
   "technology": "Web Development",
   "module": "Web Development Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Web Development Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Web Development Core Principles Part 8A.",
-    "Write error-free implementations utilizing Web Development Core Principles Part 8A.",
-    "Debug and optimize performance characteristics of Web Development Core Principles Part 8A."
+    "Understand Web Development Core Principles Part 8A from zero to advanced level",
+    "Write clean, production-grade Web Development code for Web Development Core Principles Part 8A",
+    "Debug edge cases and answer interview questions about Web Development Core Principles Part 8A"
   ],
   "tags": [
-    "web",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "8a"
+    "web_development_core_principles_part_8a",
+    "webdev",
+    "web_development_error_handling_diagnostic_operations"
   ]
 }

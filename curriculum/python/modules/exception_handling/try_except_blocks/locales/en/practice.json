@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Try Except Blocks — Basic Practice",
-    "description": "Write a basic try except blocks implementation.",
-    "starterCode": "def basic_try_except_blocks():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Safe Int Converter",
+    "description": "Write `safe_int(val, default=0)` returning converted int or default on ValueError.",
+    "starterCode": "def safe_int(val, default=0):\n    pass",
+    "expectedOutput": "0",
+    "solution": "def safe_int(val, default=0):\n    try: return int(val)\n    except (ValueError, TypeError): return default",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Use try-except ValueError"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Try Except Blocks — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Dict Value Accessor",
+    "description": "Write `get_key(d, k)` handling KeyError & TypeError.",
+    "starterCode": "def get_key(d, k):\n    pass",
+    "expectedOutput": "None",
+    "solution": "def get_key(d, k):\n    try: return d[k]\n    except (KeyError, TypeError): return None",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Catch KeyError and TypeError"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Try Except Blocks — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Retrying API Call Simulator",
+    "description": "Retry function `func` up to `max_retries` times on Exception.",
+    "starterCode": "def retry(func, max_retries=3):\n    pass",
+    "expectedOutput": "'OK'",
+    "solution": "def retry(func, max_retries=3):\n    for i in range(max_retries):\n        try: return func()\n        except Exception as e:\n            if i == max_retries - 1: raise e",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Re-raise on last attempt"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Try Except Blocks",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Bare Except",
+    "description": "Fix bare except statement.",
+    "buggyCode": "try: process()\nexcept: pass",
+    "fixedCode": "try: process()\nexcept Exception: pass",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Bare except catches SystemExit."
     ]
   }
 }

@@ -3,28 +3,22 @@
   "title": "Full Stack Development Core Principles Part 1A",
   "technology": "Full Stack Development",
   "module": "Full Stack Development Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Full Stack Development Core Principles Part 1A.",
-    "Write error-free implementations utilizing Full Stack Development Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Full Stack Development Core Principles Part 1A."
+    "Understand Full Stack Development Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Full Stack Development code for Full Stack Development Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Full Stack Development Core Principles Part 1A"
   ],
   "tags": [
-    "full",
-    "stack",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "full_stack_development_core_principles_part_1a",
+    "full-stack",
+    "full_stack_development_setup_architecture_foundations"
   ]
 }

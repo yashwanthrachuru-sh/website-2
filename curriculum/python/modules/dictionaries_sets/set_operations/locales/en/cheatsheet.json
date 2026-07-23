@@ -1,34 +1,14 @@
 {
-  "title": "Set Operations — Quick Reference",
+  "printNote": "Set Operations Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Set Operations\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Set Operators",
+      "entries": [
+        {
+          "syntax": "a & b | c - d",
+          "example": "{1,2} & {2,3} -> {2}",
+          "description": "Set intersection, union, difference"
+        }
       ]
     }
   ]

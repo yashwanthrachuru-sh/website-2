@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "List Operations — Basic Practice",
-    "description": "Write a basic list operations implementation.",
-    "starterCode": "def basic_list_operations():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Second Largest Number",
+    "description": "Write `second_largest(nums)` returning second highest distinct number.",
+    "starterCode": "def second_largest(nums):\n    pass",
+    "expectedOutput": "5",
+    "solution": "def second_largest(nums):\n    unique = sorted(set(nums))\n    return unique[-2] if len(unique) >= 2 else None",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Use set() to remove duplicates"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "List Operations — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Rotate List K Steps",
+    "description": "Rotate list right by K steps in O(N) time.",
+    "starterCode": "def rotate_list(nums, k):\n    pass",
+    "expectedOutput": "[4, 5, 1, 2, 3]",
+    "solution": "def rotate_list(nums, k):\n    if not nums: return []\n    k = k % len(nums)\n    return nums[-k:] + nums[:-k]",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Use slicing nums[-k:] and nums[:-k]"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "List Operations — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Merge Intervals",
+    "description": "Given list of overlapping intervals `[[1,3],[2,6],[8,10]]`, merge overlapping ranges.",
+    "starterCode": "def merge_intervals(intervals):\n    pass",
+    "expectedOutput": "[[1, 6], [8, 10]]",
+    "solution": "def merge_intervals(intervals):\n    if not intervals: return []\n    intervals.sort(key=lambda x: x[0])\n    merged = [intervals[0]]\n    for curr in intervals[1:]:\n        prev = merged[-1]\n        if curr[0] <= prev[1]:\n            prev[1] = max(prev[1], curr[1])\n        else:\n            merged.append(curr)\n    return merged",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Sort intervals by start time first"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the List Operations",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix In-Place Assignment Bug",
+    "description": "Fix function setting list to None.",
+    "buggyCode": "def get_sorted(nums):\n    return nums.sort()",
+    "fixedCode": "def get_sorted(nums):\n    return sorted(nums)",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "`nums.sort()` returns None. Use `sorted(nums)` to return new sorted list."
     ]
   }
 }

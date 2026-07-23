@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Tuple Immutability?",
+      "question": "How do you create a tuple with a single element in Python?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "(element,)",
+        "(element)",
+        "[element]",
+        "tuple[element]"
       ],
       "answer": 0,
-      "explanation": "Tuple Immutability is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Tuple Immutability exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "A trailing comma `(element,)` is required to distinguish a 1-element tuple from parenthesized expression.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Tuple Immutability is only for experts.",
+      "question": "True or False: A tuple containing a list can be used as a dictionary key.",
       "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Tuple Immutability improves code quality.",
-      "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "False. A tuple is hashable only if all its elements are hashable."
     }
   ]
 }

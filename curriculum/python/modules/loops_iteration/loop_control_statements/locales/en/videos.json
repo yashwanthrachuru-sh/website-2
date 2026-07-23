@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Loop Control Statements — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Loop Control Statements for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Loop Control Statements Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Loop Control Statements patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Break, Continue, and Pass",
+    "video_id": "yCZBnjF4_tU",
+    "url": "https://www.youtube.com/watch?v=yCZBnjF4_tU",
+    "channel": "Corey Schafer",
+    "duration": "8m",
+    "description": "Clear explanation of break, continue, and pass keywords in loops."
+  }
+]

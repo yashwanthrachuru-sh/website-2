@@ -1,11 +1,14 @@
 {
-  "title": "Next.js Developer Troubleshooting Part 11C System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Next.js Developer Troubleshooting Part 11C.",
+  "title": "Next.js Developer Troubleshooting Part 11C Project",
+  "tagline": "Build a mini application using Next.js Developer Troubleshooting Part 11C",
+  "description": "Create a working Next.js Developer application demonstrating Next.js Developer Troubleshooting Part 11C.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// JavaScript implementation for Next.js Developer Troubleshooting Part 11C\nasync function handleExecution(payload) {\n  try {\n    const response = await fetch('/api/data', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(payload)\n    });\n    const data = await response.json();\n    console.log('Next.js Developer Troubleshooting Part 11C status:', data.success);\n    return data;\n  } catch (err) {\n    console.error('Execution error:', err);\n  }\n}\n\nhandleExecution({ item: 'Next.js Developer Troubleshooting Part 11C' });",
+  "solution": "// JavaScript implementation for Next.js Developer Troubleshooting Part 11C\nasync function handleExecution(payload) {\n  try {\n    const response = await fetch('/api/data', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(payload)\n    });\n    const data = await response.json();\n    console.log('Next.js Developer Troubleshooting Part 11C status:', data.success);\n    return data;\n  } catch (err) {\n    console.error('Execution error:', err);\n  }\n}\n\nhandleExecution({ item: 'Next.js Developer Troubleshooting Part 11C' });",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Next.js Developer Troubleshooting Part 11C in Next.js Developer."
 }

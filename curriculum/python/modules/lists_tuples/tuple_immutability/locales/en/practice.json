@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Tuple Immutability — Basic Practice",
-    "description": "Write a basic tuple immutability implementation.",
-    "starterCode": "def basic_tuple_immutability():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Swap Variables using Tuple Unpacking",
+    "description": "Write `swap(a, b)` returning `(b, a)` using single-line tuple unpacking.",
+    "starterCode": "def swap(a, b):\n    pass",
+    "expectedOutput": "(20, 10)",
+    "solution": "def swap(a, b):\n    return b, a",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Return b, a"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Tuple Immutability — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Distance Between 2D Points",
+    "description": "Calculate Euclidean distance between points `p1=(x1,y1)` and `p2=(x2,y2)`.",
+    "starterCode": "import math\ndef distance(p1, p2):\n    pass",
+    "expectedOutput": "5.0",
+    "solution": "import math\ndef distance(p1, p2):\n    x1, y1 = p1\n    x2, y2 = p2\n    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Unpack tuple coordinates first"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Tuple Immutability — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Immutable RGB Palette Generator",
+    "description": "Create namedtuple `Color(r, g, b)` and return list of hex strings.",
+    "starterCode": "from collections import namedtuple\ndef colors_to_hex(color_list):\n    pass",
+    "expectedOutput": "['#ff0000']",
+    "solution": "from collections import namedtuple\nColor = namedtuple('Color', ['r', 'g', 'b'])\ndef colors_to_hex(color_list):\n    return [f'#{c.r:02x}{c.g:02x}{c.b:02x}' for c in color_list]",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Use :02x format specifier"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Tuple Immutability",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Single Tuple Syntax",
+    "description": "Fix string type return when tuple expected.",
+    "buggyCode": "def get_singleton(val):\n    return (val)",
+    "fixedCode": "def get_singleton(val):\n    return (val,)",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "`(val)` without comma evaluates to type of val. Add trailing comma `(val,)`."
     ]
   }
 }

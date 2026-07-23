@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "SQLAlchemy ORM is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what SQLAlchemy ORM is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "SQLAlchemy maps Python classes to SQL tables. Unit of Work tracks Session changes. Prevent N+1 queries with `joinedload()`.",
+  "oneLineSummary": "SQLAlchemy ORM maps database tables directly to Python class models.",
   "keyTakeaways": [
-    "SQLAlchemy ORM solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Use DeclarativeBase for models.",
+    "Session tracks Unit of Work.",
+    "joinedload() fixes N+1 queries."
   ],
   "memoryTricks": [
-    "Think of sqlalchemy orm as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain SQLAlchemy ORM in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "ORM",
+      "trick": "ORM = Python Classes in, SQL Tables out."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "N+1 Query Bottleneck",
+      "cause": "Accessing lazy relationships in loops",
+      "fix": "Use joinedload() in select query options"
+    }
   ],
-  "mindMap": {
-    "central": "SQLAlchemy ORM",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain N+1 query problem and joinedload"
+  ],
   "nextTopics": [
-    "Advanced sqlalchemy orm",
-    "Testing sqlalchemy orm",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Database Migrations with Alembic",
+      "whyNext": "Learn schema version control."
+    }
+  ]
 }

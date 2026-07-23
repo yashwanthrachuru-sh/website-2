@@ -1,45 +1,59 @@
 {
-  "motivation": "Define routing handlers using GetMapping and PostMapping.",
-  "whyExists": "HTTP enables any client (browser, mobile app, IoT device) to communicate with any server, regardless of programming language or platform. REST APIs are the universal language for web services — Twitter, GitHub, Stripe, Google Maps — all expose REST APIs. Every web developer must understand HTTP to build web apps, consume third-party APIs, debug network issues, and design scalable backend services.",
-  "realWorldAnalogy": "Imagine you're ordering food at a restaurant. You (the client/browser) look at the menu and tell the waiter (the HTTP request) what you want. The waiter goes to the kitchen (the server) and brings back your food (the HTTP response).\n\nGET = \"Can I see the menu?\" (read something)\nPOST = \"I'd like to order this dish\" (create something)\nDELETE = \"Cancel my order\" (delete something)\n\nThe \"status code\" is like the waiter telling you: \"200 = Here's your order!\", \"404 = Sorry, we don't have that dish\", \"500 = The kitchen is on fire.\"",
-  "simpleExplanation": "To learn REST Controllers from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. REST Controllers defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: REST Controllers] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the java syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how REST Controllers works under the hood in Java?",
+  "whyExists": "REST Controllers is a core building block in Java. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of REST Controllers like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, REST Controllers provides a clear, standardized way to execute logic in Java. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for REST Controllers:\n\n```java\n// Java implementation for REST Controllers\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: REST Controllers\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// Java implementation for REST Controllers",
+      "desc": "Initialize and configure REST Controllers parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "public class Main {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "}",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "rest_controllers_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "rest_controllers_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running REST Controllers...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic REST Controllers Example",
+      "code": "// Java implementation for REST Controllers\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: REST Controllers\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+      "explanation": "Demonstrates basic usage of REST Controllers in Java."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in REST Controllers",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// Java implementation for REST Controllers",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

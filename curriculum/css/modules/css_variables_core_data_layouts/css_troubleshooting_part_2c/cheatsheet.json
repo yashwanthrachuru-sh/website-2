@@ -1,22 +1,17 @@
 {
-  "syntax": "## CSS Layout Cheat Sheet\n\n### Flexbox\n```css\n.container {\n  display: flex;\n  flex-direction: row;        /* or column */\n  justify-content: center;   /* main axis: flex-start|center|space-between|space-around */\n  align-items: center;       /* cross axis: stretch|flex-start|center|flex-end */\n  flex-wrap: wrap;           /* allow wrapping */\n  gap: 1rem;                 /* space between items */\n}\n.item {\n  flex: 1;            /* grow to fill space */\n  flex-basis: 200px;  /* minimum width */\n  flex-shrink: 0;     /* don't shrink */\n}\n```\n\n### CSS Grid\n```css\n.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);  /* 3 equal columns */\n  grid-template-columns: 250px 1fr 300px;  /* sidebar, main, right */\n  grid-template-rows: auto 1fr auto;       /* header, content, footer */\n  gap: 1.5rem;\n}\n.item {\n  grid-column: 1 / 3;    /* span 2 columns */\n  grid-row: 1 / -1;      /* full height */\n}\n```\n\n### Responsive (Media Queries)\n```css\n/* Mobile-first approach */\n.grid { grid-template-columns: 1fr; }  /* 1 column on mobile */\n\n@media (min-width: 768px) {\n  .grid { grid-template-columns: repeat(2, 1fr); }  /* 2 on tablet */\n}\n@media (min-width: 1200px) {\n  .grid { grid-template-columns: repeat(4, 1fr); }  /* 4 on desktop */\n}\n```\n\n### Centering Tricks\n```css\n/* Perfect center with flexbox */\n.center { display: flex; align-items: center; justify-content: center; }\n/* Full-page centered content */\n.full-center { display: grid; place-items: center; min-height: 100vh; }\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "CSS Troubleshooting Part 2C Cheat Sheet",
+  "printNote": "Quick reference for CSS Troubleshooting Part 2C in CSS.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "/* CSS3 Styling for CSS Troubleshooting Part 2C */",
+          "example": "/* CSS3 Styling for CSS Troubleshooting Part 2C */\n.css_troubleshooting_part_2c-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1.5rem;\n  background: var(--surface);\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n}",
+          "description": "Basic syntax for CSS Troubleshooting Part 2C",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

@@ -3,24 +3,22 @@
   "title": "While Loop Guards",
   "technology": "JavaScript",
   "module": "Iteration & Loops",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Logic & Conditionals"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of While Loop Guards.",
-    "Write error-free implementations utilizing While Loop Guards.",
-    "Debug and optimize performance characteristics of While Loop Guards."
+    "Understand While Loop Guards from zero to advanced level",
+    "Write clean, production-grade JavaScript code for While Loop Guards",
+    "Debug edge cases and answer interview questions about While Loop Guards"
   ],
   "tags": [
-    "while",
-    "loop",
-    "guards"
+    "while_loop_guards",
+    "js",
+    "iteration_loops"
   ]
 }

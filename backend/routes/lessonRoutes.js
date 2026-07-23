@@ -23,7 +23,8 @@ router.post('/:id/quiz/submit', verifyToken, roadmapController.submitLessonTopic
 router.get('/:id/quizzes',    roadmapController.getLessonQuizzes);
 
 // Lesson progress
-router.post('/:id/progress',  verifyToken,   roadmapController.completeLesson);
+router.post('/:id/progress',       verifyToken, roadmapController.completeLesson);
+router.post('/:id/stage-progress', verifyToken, roadmapController.saveLessonStageProgress);
 
 // Lesson notes
 router.post('/:id/notes',     verifyToken,   roadmapController.saveLessonNote);

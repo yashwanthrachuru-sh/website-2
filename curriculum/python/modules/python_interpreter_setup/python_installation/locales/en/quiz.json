@@ -2,77 +2,218 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What does the python interpreter do?",
+      "question": "What does the 'Add Python to PATH' checkbox do during Windows installation?",
       "options": [
-        "Converts source code to machine code and executes it",
-        "Compiles to a standalone executable",
-        "Executes raw text directly",
-        "Uploads code to a remote server"
+        "It adds the Python installer directory to the system PATH so the terminal can find python.exe from any folder",
+        "It installs Python for all users instead of just the current user",
+        "It enables Python to access system files",
+        "It installs additional Python packages automatically"
       ],
       "answer": 0,
-      "explanation": "The interpreter reads source code, compiles to bytecode, and executes it on a virtual machine."
+      "explanation": "The PATH environment variable is a list of directories the OS searches when you type a command in the terminal. Adding Python's bin directory to PATH means you can type 'python' or 'python3' from any directory. Without it, you'd have to type the full path every time (e.g., C:\\Python312\\python.exe script.py).",
+      "difficulty": "beginner"
     },
     {
       "id": "q2",
-      "question": "What is an advantage of interpreted languages like python?",
+      "question": "You open your terminal and type 'python3 --version' but see 'command not found'. What is the most likely cause?",
       "options": [
-        "Faster execution than compiled languages",
-        "Easier development with immediate feedback",
-        "No programmer control over memory",
-        "Guaranteed security"
+        "Python is installed but its directory is not in your system PATH",
+        "Python is corrupted and needs reinstalling",
+        "Your computer doesn't support Python 3",
+        "The --version flag is incorrect syntax"
       ],
-      "answer": 1,
-      "explanation": "Interpreted languages provide rapid feedback — you can test code immediately without a separate compilation step."
+      "answer": 0,
+      "explanation": "'command not found' specifically means the shell searched all directories in PATH and didn't find an executable called 'python3'. The most common cause is that Python is installed but its directory wasn't added to PATH. On Windows, re-run the installer and check 'Add to PATH'. On macOS/Linux, add it manually to your ~/.bashrc or ~/.zshrc.",
+      "difficulty": "beginner"
     },
     {
       "id": "q3",
-      "question": "What happens on a syntax error?",
+      "question": "What is pip and why does it matter?",
       "options": [
-        "The interpreter auto-fixes it",
-        "It skips the line and continues",
-        "It stops and reports a traceback",
-        "It shows a warning only"
+        "Python's package manager — it downloads and installs third-party libraries from PyPI",
+        "Python's IDE — it provides a development environment",
+        "Python's debugger — it finds errors in your code",
+        "Python's compiler — it converts code to machine language"
       ],
-      "answer": 2,
-      "explanation": "The interpreter stops at the first syntax error and displays a traceback."
+      "answer": 0,
+      "explanation": "pip (Pip Installs Packages) is Python's official package manager. It downloads packages from PyPI (Python Package Index), which has 400,000+ libraries. When you see instructions like 'pip install flask' or 'pip install pandas', you're using pip. It handles downloads, dependencies, and version management.",
+      "difficulty": "beginner"
     },
     {
       "id": "q4",
-      "question": "Which mode runs code one line at a time?",
+      "question": "Which Python version should you install for a new project in 2024?",
       "options": [
-        "Script mode",
-        "REPL mode",
-        "Compiled mode",
-        "Batch mode"
+        "Python 3.x (the latest stable release, e.g. 3.12)",
+        "Python 2.7 for maximum compatibility",
+        "Python 1.0 for simplicity",
+        "Whichever version came pre-installed on your system"
       ],
-      "answer": 1,
-      "explanation": "REPL (Read-Eval-Print-Loop) lets you type and execute code one line at a time."
+      "answer": 0,
+      "explanation": "Python 2 reached end-of-life on January 1, 2020 — it no longer receives security updates or bug fixes. You should always install Python 3.x. The latest stable release (e.g., 3.12) is recommended for new projects. Python 2.7 is kept for legacy system maintenance only.",
+      "difficulty": "beginner"
     },
     {
       "id": "q5",
-      "question": "Why might a script work on one machine but fail on another?",
+      "question": "You have Python 3.10 installed. A library requires Python 3.12. What is the correct professional approach?",
       "options": [
-        "Interpreters are identical everywhere",
-        "Different versions, missing deps, or OS differences",
-        "Scripts are platform-independent",
-        "The interpreter auto-adapts"
+        "Install Python 3.12 using pyenv and create a new virtual environment that uses it",
+        "Uninstall Python 3.10 and install Python 3.12 globally",
+        "Downgrade the library to a version that supports Python 3.10",
+        "Ignore the requirement — the library will probably work anyway"
       ],
-      "answer": 1,
-      "explanation": "Differences in versions, installed packages, and OS can cause different behavior across machines."
+      "answer": 0,
+      "explanation": "pyenv allows you to install and manage multiple Python versions side-by-side without conflicts. You can then create a virtual environment targeting the correct version (pyenv local 3.12.0 && python -m venv .venv). This preserves your existing Python 3.10 environment for other projects.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q6",
+      "question": "What is CPython?",
+      "options": [
+        "The reference implementation of Python, written in C — the version you download from python.org",
+        "A Python library for C programming integration",
+        "A Python-to-C code compiler",
+        "A Python IDE built in C++"
+      ],
+      "answer": 0,
+      "explanation": "CPython is the official, reference implementation of the Python language, written in C. When people say 'Python', they almost always mean CPython. Alternative implementations (PyPy, Jython, MicroPython) exist and conform to the same Python language specification but have different performance characteristics.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q7",
+      "question": "What does 'python3 -m venv .venv' create?",
+      "options": [
+        "An isolated Python environment in a .venv folder with its own Python binary and pip, separate from the system Python",
+        "A virtual machine that runs Python in a sandbox",
+        "A compressed archive of your Python project",
+        "A Docker container for Python deployment"
+      ],
+      "answer": 0,
+      "explanation": "python3 -m venv creates a virtual environment — a self-contained directory that has its own Python interpreter and pip. Packages installed in a virtual environment don't affect the system Python or other projects. This is how professional Python developers isolate project dependencies.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q8",
+      "question": "What does 'sys.executable' return in Python?",
+      "options": [
+        "The absolute filesystem path to the Python interpreter currently running your script",
+        "Whether the current script is an executable file",
+        "The name of the currently executing Python function",
+        "The process ID of the Python interpreter"
+      ],
+      "answer": 0,
+      "explanation": "import sys; print(sys.executable) prints something like '/usr/local/bin/python3' or 'C:\\Python312\\python.exe'. This is useful when you have multiple Python versions installed and need to verify which one is running your script, or when you need to spawn subprocess calls using the same interpreter.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q9",
+      "question": "Why does 'pip3 install requests' fail with 'externally-managed-environment' on modern Ubuntu/Debian?",
+      "options": [
+        "The OS is protecting the system Python from modifications that could break system tools that depend on it",
+        "The 'requests' library is not available on Linux",
+        "pip3 is deprecated and must be replaced with pip4",
+        "You need sudo permissions to run pip"
+      ],
+      "answer": 0,
+      "explanation": "Modern Debian/Ubuntu systems mark the system Python as 'externally managed' (PEP 668) to prevent pip from accidentally breaking system tools (like apt) that depend on specific Python package versions. The solution is to use a virtual environment or the --user flag, not to bypass this protection with --break-system-packages.",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q10",
+      "question": "In a Docker container, why should you use 'python:3.12-slim' instead of 'python:3.12'?",
+      "options": [
+        "The slim variant excludes many Debian packages (~45MB vs ~300MB), reducing attack surface and deployment time",
+        "Slim containers run Python faster",
+        "The slim variant includes more Python libraries",
+        "python:3.12 is deprecated and no longer maintained"
+      ],
+      "answer": 0,
+      "explanation": "The official python:3.12 Docker image is based on a full Debian install (~300MB+). The python:3.12-slim variant strips out many unused OS packages, reducing the image to ~45MB. Smaller images mean faster pulls in CI/CD, reduced attack surface, and lower costs for container registries. For even smaller images, python:3.12-alpine exists but can have compatibility issues with C extensions.",
+      "difficulty": "expert"
+    },
+    {
+      "id": "q11",
+      "question": "What does 'pip freeze > requirements.txt' do?",
+      "options": [
+        "Writes a list of all currently installed packages and their exact versions to requirements.txt for reproducible environments",
+        "Saves your Python code to a file called requirements.txt",
+        "Downloads all requirements listed in a requirements.txt file",
+        "Freezes Python's memory usage to prevent leaks"
+      ],
+      "answer": 0,
+      "explanation": "pip freeze outputs all installed packages in 'name==version' format (e.g., 'requests==2.31.0'). Redirecting this to requirements.txt creates a snapshot of your environment. Anyone who runs 'pip install -r requirements.txt' will get the exact same package versions, ensuring reproducibility across machines.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q12",
+      "question": "What is PyPI?",
+      "options": [
+        "The Python Package Index — a public repository of 400,000+ Python packages that pip downloads from",
+        "The Python Programming Institute — the organization that manages Python standards",
+        "Python's built-in package system, equivalent to Java's Maven Central",
+        "A paid enterprise Python distribution"
+      ],
+      "answer": 0,
+      "explanation": "PyPI (pypi.org) is the official public repository where Python packages are published. When you run 'pip install flask', pip connects to PyPI, downloads the flask package and its dependencies, and installs them. Anyone can publish packages to PyPI. Trusted publishers include Flask, Django, NumPy, Pandas, Requests, and thousands of others.",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "q13",
+      "question": "Which command tells you where Python will search for modules when you use import?",
+      "options": [
+        "python3 -c \"import sys; print(sys.path)\"",
+        "python3 --list-modules",
+        "pip3 list --module-path",
+        "python3 --show-imports"
+      ],
+      "answer": 0,
+      "explanation": "sys.path is a list of directories Python searches in order when you 'import modulename'. It includes the current directory, installed packages (site-packages), and standard library directories. Understanding sys.path is essential for debugging 'ModuleNotFoundError' issues.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q14",
+      "question": "Why is using the system Python directly for project development a bad practice?",
+      "options": [
+        "Installing packages globally can break system tools that depend on specific versions of Python libraries, and different projects may require conflicting versions",
+        "The system Python is usually Python 2, which is outdated",
+        "System Python runs slower than user-installed Python",
+        "System Python cannot import third-party libraries"
+      ],
+      "answer": 0,
+      "explanation": "Many OS tools (like apt on Ubuntu) depend on specific Python library versions. Installing conflicting packages globally can break these tools. Additionally, Project A might need requests==2.28 while Project B needs requests==2.31. Virtual environments solve both problems by giving each project its own isolated package space.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q15",
+      "question": "What is the difference between 'python' and 'python3' on the command line?",
+      "options": [
+        "On many Linux/macOS systems, 'python' refers to Python 2 while 'python3' explicitly runs Python 3; on Windows, Python 3 installs as 'python'",
+        "They are always identical — python and python3 run the same version",
+        "'python' is the development version and 'python3' is the stable release",
+        "'python3' is only available on Linux, not macOS or Windows"
+      ],
+      "answer": 0,
+      "explanation": "Historically, 'python' defaulted to Python 2 on Linux/macOS systems that shipped with Python 2 pre-installed. 'python3' was added to explicitly invoke Python 3. On Windows and on modern systems where Python 2 is absent, they may point to the same version. Always use 'python3' explicitly to be safe and clear in scripts.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: The python interpreter executes code without any intermediate representation.",
+      "question": "True or False: Python 2 is still safe to use for new projects because it is widely supported.",
       "answer": false,
-      "explanation": "It compiles to bytecode before execution."
+      "explanation": "False. Python 2 reached end-of-life on January 1, 2020. It no longer receives security patches or bug fixes. Using Python 2 for new projects exposes you to unpatched vulnerabilities and missing modern language features. Always use Python 3.x."
     },
     {
       "id": "cp2",
-      "question": "True or False: Virtual environments isolate project dependencies.",
+      "question": "True or False: Virtual environments allow you to have different versions of the same library installed for different projects on the same machine.",
       "answer": true,
-      "explanation": "They create isolated spaces for each project's dependencies."
+      "explanation": "True. A virtual environment is an isolated directory with its own Python binary and site-packages. Project A can have flask==2.3 while Project B has flask==3.0, both on the same machine, with zero conflict."
+    },
+    {
+      "id": "cp3",
+      "question": "True or False: After installing Python on Windows, you must close and reopen your terminal before 'python3 --version' will work.",
+      "answer": true,
+      "explanation": "True. PATH changes made by the installer take effect for new terminal sessions only. The terminal you had open before installation still has the old PATH. Always open a fresh terminal window to test that Python is available."
     }
   ]
 }

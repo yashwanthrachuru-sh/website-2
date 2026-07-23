@@ -3,25 +3,22 @@
   "title": "HTML Troubleshooting Part 12C",
   "technology": "HTML",
   "module": "HTML Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Troubleshooting Part 12C.",
-    "Write error-free implementations utilizing HTML Troubleshooting Part 12C.",
-    "Debug and optimize performance characteristics of HTML Troubleshooting Part 12C."
+    "Understand HTML Troubleshooting Part 12C from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Troubleshooting Part 12C",
+    "Debug edge cases and answer interview questions about HTML Troubleshooting Part 12C"
   ],
   "tags": [
+    "html_troubleshooting_part_12c",
     "html",
-    "troubleshooting",
-    "part",
-    "12c"
+    "html_production_deployment_server_pipelines"
   ]
 }

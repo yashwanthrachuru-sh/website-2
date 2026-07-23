@@ -1,63 +1,68 @@
 {
-  "curiosityQuestion": "Every program depends on a hidden layer of infrastructure — what if the tools you use daily are more powerful than you realize?",
-  "whyExists": "Before you write a single line of code, your computer needs to understand and execute it. The python interpreter bridges human-readable code and machine instructions, managing memory and providing the runtime environment your programs depend on.",
-  "problemItSolves": "In early computing, every program had to be written in raw binary. Python lets humans write natural, readable syntax, and the interpreter handles the complex translation to machine instructions automatically.",
-  "withoutVariables": "Imagine needing to speak fluent French just to order coffee in Paris. That is what programming was like before interpreters — you had to speak the computer's language (binary) natively.",
-  "whereUsed": "Python interpreters are used everywhere: from small scripts on Raspberry Pis to massive server farms at Google, Netflix, and Spotify handling billions of requests daily.",
-  "realWorldAnalogy": "Think of the python interpreter like a translator at the United Nations. A diplomat speaks in English (your code), the translator converts it to French (machine code), and the delegate acts on it. Without the translator, you would need to speak French fluently.",
-  "simpleExplanation": "Python is an environment that reads your code line by line, checks for errors, and executes it. The interpreter manages variables, memory, and program flow so you can focus on solving problems instead of managing hardware details.",
-  "syntaxExplanation": "Python code is written in .py files. Comments start with #, functions use 'def', and blocks are indented with spaces. Statements execute in order from top to bottom.",
+  "whyExists": "Before you can write a single line of Python, your computer needs to know what Python is. Right now, if you type 'python' into your terminal, your computer has no idea what you mean — it's like asking someone to read a book written in a language they've never seen. Installing Python gives your computer the Python interpreter: a program that can read your Python code, understand it, and execute it. Without this step, nothing works.",
+  "curiosityQuestion": "Why do some computers already have Python, while others need it installed separately?",
+  "problemItSolves": "Python installation puts three essential things on your machine: the interpreter (which runs your .py files), the standard library (thousands of built-in tools), and pip (the package installer for third-party libraries). Each of these is needed before you can do anything in Python.",
+  "realWorldAnalogy": "Think of Python like a foreign language translator. Your computer only speaks machine code by default. Installing Python is like hiring a translator who fluently converts your Python instructions into commands your computer can actually execute. Without the translator, your instructions are meaningless.",
+  "simpleExplanation": "Here is what happens step by step:\n\n1. You download the Python installer from python.org\n2. The installer places the Python interpreter (a program called 'python3') into a folder on your system\n3. It also puts pip (Python's package manager) on your system\n4. It optionally adds Python to your PATH — which means your terminal can find python3 no matter which folder you're in\n\nAfter installation, when you type 'python3 hello.py' in your terminal, the operating system finds the python3 interpreter, which reads your hello.py file and runs it.",
+  "syntaxExplanation": "# After installation, verify it works:\n# In your terminal (command prompt / bash / zsh):\n\npython3 --version\n# Expected output: Python 3.x.x (e.g. Python 3.12.0)\n\npip3 --version\n# Expected output: pip 23.x.x from /usr/lib/python3.x/...\n\n# Run a quick test:\npython3 -c \"print('Python is working!')\"\n# Expected output: Python is working!",
   "examples": [
     {
-      "title": "Your First Python Program",
-      "code": "print(\"Hello, World!\")\n\nname = input(\"Enter your name: \")\nprint(f\"Welcome, {name}!\")",
-      "explanation": "This program demonstrates output, input, and string interpolation. The interpreter executes each line sequentially.",
-      "language": "python"
+      "title": "Verifying Your Python Installation",
+      "code": "# Step 1: Open your terminal (Mac/Linux) or Command Prompt (Windows)\n# Step 2: Type the following and press Enter:\n\npython3 --version\n\n# You should see something like:\n# Python 3.12.0\n\n# If you see 'command not found', Python is not installed or not on your PATH\n# On Windows, you may need to use 'python' instead of 'python3'",
+      "explanation": "The '--version' flag tells Python to print its version number and exit. If Python is installed and on your PATH, you'll see the version. If not, your terminal doesn't know where to find it.",
+      "language": "bash"
+    },
+    {
+      "title": "Your First Python Program via Terminal",
+      "code": "# The -c flag lets you run a Python statement directly in the terminal\n# without creating a file\n\npython3 -c \"print('Hello, World!')\"\n\n# Output:\n# Hello, World!\n\n# This proves Python can read your code and execute it immediately",
+      "explanation": "The '-c' flag (short for 'command') lets you pass a Python expression directly to the interpreter. This is a quick way to test that Python is working before you write your first .py file.",
+      "language": "bash"
+    },
+    {
+      "title": "Checking pip is Available",
+      "code": "# pip is Python's package installer\n# It comes bundled with Python 3.4+\n\npip3 --version\n\n# Example output:\n# pip 23.3.1 from /Library/Python/3.12/lib/python/site-packages/pip (python 3.12)\n\n# pip lets you install any of the 400,000+ packages from PyPI:\npip3 install requests  # installs the 'requests' HTTP library",
+      "explanation": "pip (Pip Installs Packages) is the tool you use to add third-party libraries to Python. When you see tutorials saying 'pip install flask' or 'pip install numpy', this is the tool they mean. It's included with Python automatically.",
+      "language": "bash"
     }
   ],
-  "visualDiagram": "```mermaid\nflowchart TD\n    A[Input] --> B[Process]\n    B --> C[Output]\n```",
+  "visualDiagram": "```mermaid\nflowchart TD\n    A[Download Python from python.org] --> B[Run the Installer]\n    B --> C{Add Python to PATH?}\n    C -->|Yes| D[python3 command works globally in terminal]\n    C -->|No| E[Must navigate to Python folder to run it]\n    D --> F[Verify: python3 --version]\n    E --> G[Re-run installer and check 'Add to PATH']\n    F --> H{See version number?}\n    H -->|Yes| I[✅ Installation Complete]\n    H -->|No| J[Check PATH or reinstall]\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "action": "Write source code",
-      "explanation": "Create a .py file with your program instructions."
+      "action": "Go to python.org/downloads",
+      "explanation": "Always download Python from the official python.org website. Avoid third-party download sites. The site automatically detects your operating system and recommends the latest stable version."
     },
     {
       "step": 2,
-      "action": "Run the interpreter",
-      "explanation": "The python environment reads your file."
+      "action": "Download the installer for your OS",
+      "explanation": "Windows: download the .exe installer. macOS: download the .pkg installer. Linux: Python usually comes pre-installed; if not, use your package manager (sudo apt install python3 on Ubuntu)."
     },
     {
       "step": 3,
-      "action": "Compile to bytecode",
-      "explanation": "python converts your code to an intermediate representation the VM can process."
+      "action": "Run the installer — check 'Add Python to PATH'",
+      "explanation": "On Windows, the installer has a critical checkbox at the bottom: 'Add Python to PATH'. If you skip this, your terminal won't find python3 later. Check this box before clicking Install Now."
     },
     {
       "step": 4,
-      "action": "Execute instructions",
-      "explanation": "The VM runs your code line by line, managing memory and variables."
+      "action": "Open a new terminal and verify",
+      "explanation": "Open a NEW terminal window (the old one won't see the PATH change). Type: python3 --version. You should see the version number. On Windows, try 'python --version' if python3 doesn't work."
     },
     {
       "step": 5,
-      "action": "Output results",
-      "explanation": "Results are printed to the console or returned to the caller."
+      "action": "Verify pip",
+      "explanation": "Type: pip3 --version. You should see pip's version. This confirms you can install packages later. If pip isn't found, you may need to run: python3 -m ensurepip --upgrade"
     }
   ],
   "memoryDiagram": {
-    "stack": "[Call Stack]\n  Main program frame\n  Local variables...",
-    "heap": "[Heap]\n  Runtime objects\n  Dynamic allocations",
-    "interpreter": "[Interpreter Pipeline]\n  Source -> Lexer -> Parser -> Compiler -> VM -> Output"
+    "stack": "[Stack]\n  PATH variable = ['/usr/bin', '/usr/local/bin/python3', ...]",
+    "heap": "[Disk]\n  /usr/local/bin/python3    ← interpreter executable\n  /usr/local/lib/python3.12  ← standard library\n  /usr/local/lib/python3.12/site-packages  ← installed packages"
   },
-  "namingRules": [
-    "Use snake_case for variables and functions",
-    "Use PascalCase for classes",
-    "Use UPPER_SNAKE_CASE for constants",
-    "Use lowercase for module names"
-  ],
+  "namingRules": [],
   "commonMistakes": [
-    "Forgetting to save the file before running it",
-    "Using the wrong command (python vs python3)",
-    "Not having the correct interpreter version installed",
-    "Misunderstanding indentation in Python"
+    "Forgetting to check 'Add Python to PATH' on Windows — fix by re-running the installer and enabling this option",
+    "Installing Python 2 instead of Python 3 — Python 2 is end-of-life (2020). Always install Python 3.x",
+    "Closing and not reopening the terminal — PATH changes only take effect in new terminal windows. If python3 --version fails, open a new terminal first",
+    "Having multiple Python versions and using the wrong one — use 'python3.12' instead of 'python3' to be explicit, or use pyenv for version management",
+    "Installing packages globally when you should use a virtual environment — for projects, always create a venv (covered in the Modules & Packages lesson)"
   ]
 }

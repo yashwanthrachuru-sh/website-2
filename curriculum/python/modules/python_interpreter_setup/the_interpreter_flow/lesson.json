@@ -3,24 +3,22 @@
   "title": "The Interpreter Flow",
   "technology": "Python",
   "module": "Python Interpreter & Setup",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of The Interpreter Flow.",
-    "Write error-free implementations utilizing The Interpreter Flow.",
-    "Debug and optimize performance characteristics of The Interpreter Flow."
+    "Understand The Interpreter Flow from zero to advanced level",
+    "Write clean, production-grade Python code for The Interpreter Flow",
+    "Debug edge cases and answer interview questions about The Interpreter Flow"
   ],
   "tags": [
-    "the",
-    "interpreter",
-    "flow"
+    "the_interpreter_flow",
+    "python",
+    "python_interpreter_setup"
   ]
 }

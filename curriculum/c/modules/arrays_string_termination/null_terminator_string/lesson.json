@@ -3,24 +3,22 @@
   "title": "Null Terminator String",
   "technology": "C Programming",
   "module": "Arrays String Termination",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Functions Recursion"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Null Terminator String.",
-    "Write error-free implementations utilizing Null Terminator String.",
-    "Debug and optimize performance characteristics of Null Terminator String."
+    "Understand Null Terminator String from zero to advanced level",
+    "Write clean, production-grade C Programming code for Null Terminator String",
+    "Debug edge cases and answer interview questions about Null Terminator String"
   ],
   "tags": [
-    "null",
-    "terminator",
-    "string"
+    "null_terminator_string",
+    "c",
+    "arrays_string_termination"
   ]
 }

@@ -3,26 +3,22 @@
   "title": "Kubernetes Orchestration Troubleshooting Part 6C",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Troubleshooting Part 6C."
+    "Understand Kubernetes Orchestration Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Troubleshooting Part 6C"
   ],
   "tags": [
+    "kubernetes_orchestration_troubleshooting_part_6c",
     "kubernetes",
-    "orchestration",
-    "troubleshooting",
-    "part",
-    "6c"
+    "kubernetes_orchestration_data_collections_list_structures"
   ]
 }

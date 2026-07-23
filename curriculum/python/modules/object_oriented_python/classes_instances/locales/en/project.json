@@ -1,24 +1,19 @@
 {
-  "title": "Project: Classes & Instances Application",
-  "tagline": "Apply classes & instances in a practical project.",
-  "description": "Build an application demonstrating Classes & Instances.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "Student Gradebook Manager Class",
+  "tagline": "OOP Student entity modeler",
+  "description": "Build `Student` class tracking grades list and calculating GPA.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Encapsulation of student data and GPA methods"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "add_grade()",
+    "get_gpa()"
+  ],
+  "starterCode": "class Student: pass",
+  "solution": "class Student:\n    def __init__(self, name):\n        self.name = name\n        self.grades = []\n    def add_grade(self, g):\n        self.grades.append(g)\n    def get_gpa(self):\n        return sum(self.grades)/len(self.grades) if self.grades else 0.0",
+  "solutionExpl": "Encapsulates grade list management and GPA calculations.",
+  "expectedOutput": "85.0",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Add pass/fail status property"
   ]
 }

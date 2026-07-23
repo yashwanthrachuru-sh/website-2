@@ -3,26 +3,22 @@
   "title": "CSS Core Principles Part 5A",
   "technology": "CSS",
   "module": "CSS Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Core Principles Part 5A.",
-    "Write error-free implementations utilizing CSS Core Principles Part 5A.",
-    "Debug and optimize performance characteristics of CSS Core Principles Part 5A."
+    "Understand CSS Core Principles Part 5A from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Core Principles Part 5A",
+    "Debug edge cases and answer interview questions about CSS Core Principles Part 5A"
   ],
   "tags": [
+    "css_core_principles_part_5a",
     "css",
-    "core",
-    "principles",
-    "part",
-    "5a"
+    "css_modular_functions_signature_scopes"
   ]
 }

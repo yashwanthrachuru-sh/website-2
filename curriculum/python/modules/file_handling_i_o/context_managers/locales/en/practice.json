@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Context Managers — Basic Practice",
-    "description": "Write a basic context managers implementation.",
-    "starterCode": "def basic_context_managers():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Execution Timer Context",
+    "description": "Write `@contextmanager` printing elapsed time of block.",
+    "starterCode": "from contextlib import contextmanager\n@contextmanager\ndef timer(): pass",
+    "expectedOutput": "True",
+    "solution": "import time\nfrom contextlib import contextmanager\n@contextmanager\ndef timer():\n    t0 = time.time()\n    try: yield\n    finally: print(f'Elapsed: {time.time()-t0:.2f}s')",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "yield in try, measure in finally"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Context Managers — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Temporary Directory Changer",
+    "description": "Context manager `change_dir(path)` changing working dir during block and restoring original on exit.",
+    "starterCode": "import os\nfrom contextlib import contextmanager\n@contextmanager\ndef change_dir(path):\n    pass",
+    "expectedOutput": "True",
+    "solution": "import os\nfrom contextlib import contextmanager\n@contextmanager\ndef change_dir(path):\n    old = os.getcwd()\n    os.chdir(path)\n    try: yield\n    finally: os.chdir(old)",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Save os.getcwd() and restore in finally"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Context Managers — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Database Transaction Context",
+    "description": "Context manager committing transaction on success and rolling back on exception.",
+    "starterCode": "@contextmanager\ndef transaction(db_conn):\n    pass",
+    "expectedOutput": "True",
+    "solution": "from contextlib import contextmanager\n@contextmanager\ndef transaction(db_conn):\n    try:\n        yield db_conn\n        db_conn.commit()\n    except Exception:\n        db_conn.rollback()\n        raise",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Commit on success, rollback on exception"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Context Managers",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Swallowed Exception",
+    "description": "Fix __exit__ swallowing exceptions.",
+    "buggyCode": "def __exit__(self, *args): return True",
+    "fixedCode": "def __exit__(self, *args): return False",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Returning True suppresses exceptions; return False instead."
     ]
   }
 }

@@ -3,26 +3,22 @@
   "title": "Next.js Developer Troubleshooting Part 3C",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Next.js Developer Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Troubleshooting Part 3C.",
-    "Write error-free implementations utilizing Next.js Developer Troubleshooting Part 3C.",
-    "Debug and optimize performance characteristics of Next.js Developer Troubleshooting Part 3C."
+    "Understand Next.js Developer Troubleshooting Part 3C from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Troubleshooting Part 3C",
+    "Debug edge cases and answer interview questions about Next.js Developer Troubleshooting Part 3C"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "troubleshooting",
-    "part",
-    "3c"
+    "next_js_developer_troubleshooting_part_3c",
+    "nextjs",
+    "next_js_developer_control_flow_boolean_logic_branching"
   ]
 }

@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Inheritance becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Python supports Multiple Inheritance (`class Child(ParentA, ParentB)`). CPython resolves method lookups using the Method Resolution Order (MRO) algorithm (C3 Linearization). Check MRO with `Class.mro()`.",
+  "internalImplementation": "C3 linearization calculates deterministic MRO order.",
   "examples": [
     {
-      "title": "Getting Started with Inheritance",
-      "code": "print(\"Learning Inheritance\")",
-      "explanation": "Basic introduction to Inheritance.",
-      "language": "python"
+      "code": "class A: pass\nclass B(A): pass\nprint(B.mro())  # [<class 'B'>, <class 'A'>, <class 'object'>]",
+      "explanation": "Inspects Method Resolution Order."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A inheritance implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "MRO resolution cached in class structure O(1).",
+    "spaceComplexity": "O(1)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Uninitialized parent attributes due to missing super().__init__().",
+    "incorrectCode": "class Child(Parent):\n    def __init__(self):\n        self.child_val = 1  # Parent __init__ never called!",
+    "correctCode": "class Child(Parent):\n    def __init__(self):\n        super().__init__()\n        self.child_val = 1"
+  },
+  "bestPractices": [
+    "Always call `super().__init__()` in child constructors.",
+    "Use composition over inheritance when relationships are not strict 'is-a'."
+  ]
 }

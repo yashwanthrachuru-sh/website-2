@@ -3,26 +3,22 @@
   "title": "HTML Core Principles Part 5A",
   "technology": "HTML",
   "module": "HTML Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Core Principles Part 5A.",
-    "Write error-free implementations utilizing HTML Core Principles Part 5A.",
-    "Debug and optimize performance characteristics of HTML Core Principles Part 5A."
+    "Understand HTML Core Principles Part 5A from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Core Principles Part 5A",
+    "Debug edge cases and answer interview questions about HTML Core Principles Part 5A"
   ],
   "tags": [
+    "html_core_principles_part_5a",
     "html",
-    "core",
-    "principles",
-    "part",
-    "5a"
+    "html_modular_functions_signature_scopes"
   ]
 }

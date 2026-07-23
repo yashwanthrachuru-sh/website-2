@@ -3,26 +3,22 @@
   "title": "Node.js Developer Troubleshooting Part 11C",
   "technology": "Node.js Developer",
   "module": "Node.js Developer Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Node.js Developer Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Node.js Developer Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Node.js Developer Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Node.js Developer Troubleshooting Part 11C."
+    "Understand Node.js Developer Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Node.js Developer code for Node.js Developer Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Node.js Developer Troubleshooting Part 11C"
   ],
   "tags": [
-    "node.js",
-    "developer",
-    "troubleshooting",
-    "part",
-    "11c"
+    "node_js_developer_troubleshooting_part_11c",
+    "nodejs",
+    "node_js_developer_performance_optimization_complexity"
   ]
 }

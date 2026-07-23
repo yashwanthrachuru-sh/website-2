@@ -1,45 +1,59 @@
 {
-  "motivation": "Configure interfaces that adapt to parameter types.",
-  "whyExists": "JavaScript was designed for small scripts; modern JavaScript apps have millions of lines of code, hundreds of developers, and thousands of interdependent functions. Without types, a function signature tells you nothing: `function processOrder(order, options)` — what fields does order have? What is options? TypeScript makes the contract explicit. Microsoft, Google, Meta, Airbnb, Slack all use TypeScript for large codebases. It has become the standard for professional JavaScript development.",
-  "realWorldAnalogy": "Imagine you have a lunchbox. Without a label, someone might put anything inside — sandwiches, soup, marbles. TypeScript is like putting a label: \"This box is for SANDWICHES ONLY.\" The label doesn't change what's in the box, but it prevents mistakes before they happen.\n\nIn code: `let name: string = \"Alice\"` means \"name can only ever hold text.\" TypeScript yells at you if you accidentally put a number there — catching the mistake before the program runs.",
-  "simpleExplanation": "To learn Generic Interfaces from first principles, start by looking at how data resolves at runtime. Imagine your processor executing instructions sequentially. Generic Interfaces defines how values bind, operations evaluate, and stack structures are clean.",
-  "visualDiagram": "```text\n[User Input] ──► [Process Scope: Generic Interfaces] ──► [Memory Address] ──► [Console Output]\n```",
-  "syntaxExplanation": "Verify that all brackets, colons, keywords, and assignments match the typescript syntax specifications. Avoid naming collisions by using scoped namespaces.",
+  "curiosityQuestion": "Have you ever wondered how Generic Interfaces works under the hood in TypeScript?",
+  "whyExists": "Generic Interfaces is a core building block in TypeScript. It solves fundamental structural and data manipulation problems that arise when building scalable applications.",
+  "realWorldAnalogy": "Think of Generic Interfaces like a well-designed component in an everyday physical system — organizing, transforming, and routing data efficiently.",
+  "simpleExplanation": "At its foundation, Generic Interfaces provides a clear, standardized way to execute logic in TypeScript. This section explains every detail step by step from absolute zero.",
+  "syntaxExplanation": "Here is the core syntax for Generic Interfaces:\n\n```typescript\n// TypeScript implementation for Generic Interfaces\ninterface GenericInterfacesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processGenericInterfaces(item: GenericInterfacesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processGenericInterfaces({ id: 1, title: 'Generic Interfaces', status: 'active' }));\n```",
   "stepByStepExecution": [
     {
       "step": 1,
-      "desc": "Allocate memory segment and load bindings."
+      "code": "// TypeScript implementation for Generic Interfaces",
+      "desc": "Initialize and configure Generic Interfaces parameters."
     },
     {
       "step": 2,
-      "desc": "Process instruction registers."
+      "code": "interface GenericInterfacesPayload {",
+      "desc": "Execute core statements sequentially."
     },
     {
       "step": 3,
-      "desc": "Pop current stack frame."
+      "code": "console.log(processGenericInterfaces({ id: 1, title: 'Generic Interfaces', status: 'active' }));",
+      "desc": "Return output and clean up execution scope."
     }
   ],
   "memoryDiagram": {
-    "type": "variables",
-    "theme": "dark",
+    "type": "concept_layout",
     "slots": [
       {
-        "address": "0x7fff01",
+        "address": "0x1001",
         "name": "generic_interfaces_ref",
-        "value": "0x7fff08"
-      },
-      {
-        "address": "0x7fff08",
-        "name": "generic_interfaces_val",
-        "value": "100"
+        "value": "Active",
+        "type": "pointer"
       }
     ]
   },
   "examples": [
     {
-      "title": "Basic Syntax Pattern",
-      "code": "console.log(\"Running Generic Interfaces...\");",
-      "explanation": "This output statement verifies execution."
+      "title": "Basic Generic Interfaces Example",
+      "code": "// TypeScript implementation for Generic Interfaces\ninterface GenericInterfacesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processGenericInterfaces(item: GenericInterfacesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processGenericInterfaces({ id: 1, title: 'Generic Interfaces', status: 'active' }));",
+      "explanation": "Demonstrates basic usage of Generic Interfaces in TypeScript."
+    }
+  ],
+  "namingRules": [
+    {
+      "rule": "Follow language style guidelines",
+      "good": "clean_name",
+      "bad": "badName123",
+      "why": "Adhering to standard naming conventions improves code readability."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Incorrect syntax in Generic Interfaces",
+      "wrong": "// Incorrect code",
+      "error": "SyntaxError / Compilation Error",
+      "right": "// TypeScript implementation for Generic Interfaces",
+      "why": "Always verify syntax rules before running code."
     }
   ]
 }

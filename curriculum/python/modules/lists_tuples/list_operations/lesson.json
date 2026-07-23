@@ -3,23 +3,22 @@
   "title": "List Operations",
   "technology": "Python",
   "module": "Lists & Tuples",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Functions & Scope"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of List Operations.",
-    "Write error-free implementations utilizing List Operations.",
-    "Debug and optimize performance characteristics of List Operations."
+    "Understand List Operations from zero to advanced level",
+    "Write clean, production-grade Python code for List Operations",
+    "Debug edge cases and answer interview questions about List Operations"
   ],
   "tags": [
-    "list",
-    "operations"
+    "list_operations",
+    "python",
+    "lists_tuples"
   ]
 }

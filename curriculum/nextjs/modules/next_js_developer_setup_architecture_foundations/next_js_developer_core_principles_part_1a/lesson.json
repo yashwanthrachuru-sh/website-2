@@ -3,27 +3,22 @@
   "title": "Next.js Developer Core Principles Part 1A",
   "technology": "Next.js Developer",
   "module": "Next.js Developer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Next.js Developer Core Principles Part 1A.",
-    "Write error-free implementations utilizing Next.js Developer Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Next.js Developer Core Principles Part 1A."
+    "Understand Next.js Developer Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Next.js Developer code for Next.js Developer Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Next.js Developer Core Principles Part 1A"
   ],
   "tags": [
-    "next.js",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "next_js_developer_core_principles_part_1a",
+    "nextjs",
+    "next_js_developer_setup_architecture_foundations"
   ]
 }

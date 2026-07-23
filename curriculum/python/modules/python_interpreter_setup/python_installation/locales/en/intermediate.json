@@ -1,43 +1,31 @@
 {
-  "deeperExplanation": "This concept goes deeper when you consider how it interacts with other parts of your python program.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Python installation involves several interconnected system-level concepts. When you install Python, the operating system records where the interpreter binary lives (e.g., /usr/local/bin/python3 on macOS/Linux, or C:\\Python312\\python.exe on Windows). The PATH environment variable is a list of directories your shell searches when you type a command. If Python's bin directory is in PATH, the shell finds python3 instantly. If not, 'python3' returns 'command not found'.\n\nInstalling multiple Python versions (e.g., 3.10 and 3.12) is common in professional environments. The system resolves which one runs based on which appears first in PATH, or by calling the version explicitly (python3.10 vs python3.12). This is why tools like pyenv exist — they manage multiple installed versions and make switching trivial.",
+  "internalImplementation": "The Python interpreter itself is a C program (CPython, the reference implementation). When you install from python.org, you get CPython compiled for your OS and architecture. Alternative implementations exist: PyPy (JIT-compiled, up to 5x faster for CPU-bound code), Jython (runs on the JVM), MicroPython (for microcontrollers), and Brython (runs in browsers).\n\nThe standard library is installed as .py files (source) plus .pyc bytecode cache files in __pycache__ directories. When you import a module, Python checks if a cached .pyc exists and is newer than the .py — if so, it skips parsing and loads the bytecode directly, which is faster.",
   "examples": [
     {
-      "title": "Your First Python Program",
-      "code": "print(\"Hello, World!\")\n\nname = input(\"Enter your name: \")\nprint(f\"Welcome, {name}!\")",
-      "explanation": "This program demonstrates output, input, and string interpolation. The interpreter executes each line sequentially.",
-      "language": "python"
+      "code": "# Understanding which Python is running\nimport sys\n\nprint(sys.version)        # Full version string: '3.12.0 (main, Oct 2 2023, ...)'\nprint(sys.version_info)   # Structured: sys.version_info(major=3, minor=12, ...)\nprint(sys.executable)     # Path: '/usr/local/bin/python3'\nprint(sys.path)           # List of directories Python searches for modules",
+      "explanation": "The sys module gives you runtime information about the Python interpreter itself. sys.version_info is especially useful in code that needs to check the Python version programmatically (e.g., if sys.version_info < (3, 10): raise RuntimeError('Python 3.10+ required'))."
+    },
+    {
+      "code": "# Using pyenv for version management (shell commands)\n# Install pyenv (macOS/Linux):\ncurl https://pyenv.run | bash\n\n# List available Python versions:\npyenv install --list | grep '3.12'\n\n# Install a specific version:\npyenv install 3.12.0\n\n# Set global default:\npyenv global 3.12.0\n\n# Set a version for just this project directory:\npyenv local 3.11.0\n\n# Verify:\npython --version  # Uses pyenv's version",
+      "explanation": "pyenv is the professional way to manage multiple Python versions. It works by placing a shim in PATH that intercepts 'python' calls and routes them to the correct version based on the directory's .python-version file or the global setting. This avoids polluting the system Python."
     }
   ],
-  "bestPractices": [
-    "Validate inputs before processing",
-    "Handle edge cases explicitly",
-    "Write tests for both success and failure paths",
-    "Document expected behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A common bug occurs when edge cases are not handled properly.",
-    "steps": [
-      "Reproduce the issue",
-      "Check input values",
-      "Verify assumptions",
-      "Test boundary conditions"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Installation is a one-time setup cost. Interpreter startup time for a trivial script is typically 20–100ms depending on what's imported. Importing large libraries like numpy or pandas adds 300–800ms of startup time.",
+    "spaceComplexity": "A base Python 3.12 installation takes approximately 60–80 MB. Adding common data science libraries (numpy, pandas, matplotlib, scikit-learn) adds ~500 MB–1 GB. Use virtual environments to isolate project dependencies and avoid namespace conflicts."
   },
-  "edgeCases": [
-    "Empty input",
-    "Maximum values",
-    "Unexpected types",
-    "Resource exhaustion"
-  ],
-  "performanceNotes": {
-    "notes": "Performance depends on the specific implementation. Profile to identify bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "python3 is installed but pip3 install requests fails with 'externally managed environment' error (Python 3.11+ on Debian/Ubuntu)",
+    "incorrectCode": "# Failing command:\n$ pip3 install requests\nerror: externally-managed-environment\n× This environment is externally managed\n╰─> To install Python packages system-wide, use apt install\n    python3-xyz, where xyz is the package you are trying to\n    install.",
+    "correctCode": "# Fix 1: Use a virtual environment (recommended)\n$ python3 -m venv myenv\n$ source myenv/bin/activate  # Linux/macOS\n$ pip install requests        # works inside the venv\n\n# Fix 2: Use --user flag (installs to ~/.local)\n$ pip3 install --user requests\n\n# Fix 3: Use pipx for global CLI tools\n$ pipx install black"
+  },
+  "bestPractices": [
+    "Always use Python 3.x — Python 2 reached end-of-life in January 2020 and receives no security patches",
+    "Use pyenv or asdf to manage multiple Python versions on a developer machine — never modify your system Python",
+    "Create a virtual environment for every project (python3 -m venv .venv) — never install project dependencies globally",
+    "Pin exact versions in requirements.txt (pip freeze > requirements.txt) so collaborators and CI systems get identical environments",
+    "On production servers, use Docker images with a pinned Python version (FROM python:3.12-slim) for reproducibility",
+    "Verify downloads with the SHA256 hash listed on python.org before running any installer from an untrusted network"
+  ]
 }

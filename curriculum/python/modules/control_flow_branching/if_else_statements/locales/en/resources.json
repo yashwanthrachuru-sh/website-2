@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/if else statements",
-      "type": "documentation",
-      "description": "Official reference for If Else Statements in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers If Else Statements in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss If Else Statements with other developers"
+      "type": "official",
+      "title": "Python Control Flow",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html"
     }
   ]
 }

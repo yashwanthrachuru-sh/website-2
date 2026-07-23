@@ -1,22 +1,17 @@
 {
-  "syntax": "## Conditionals Cheat Sheet\n\n### Pattern\n```\nif (condition) { run this }\nelse if (other) { run this }\nelse { fallback }\n```\n\n- Check truthiness, not equality where possible\n- Prefer early returns over deeply nested else chains\n- Use switch/match for multiple known values",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "If Else Branching Cheat Sheet",
+  "printNote": "Quick reference for If Else Branching in Java.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// Java implementation for If Else Branching",
+          "example": "// Java implementation for If Else Branching\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: If Else Branching\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+          "description": "Basic syntax for If Else Branching",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

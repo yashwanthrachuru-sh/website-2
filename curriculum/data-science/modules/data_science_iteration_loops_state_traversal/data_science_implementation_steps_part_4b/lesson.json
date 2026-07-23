@@ -3,27 +3,22 @@
   "title": "Data Science Implementation Steps Part 4B",
   "technology": "Data Science",
   "module": "Data Science Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Science Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Implementation Steps Part 4B.",
-    "Write error-free implementations utilizing Data Science Implementation Steps Part 4B.",
-    "Debug and optimize performance characteristics of Data Science Implementation Steps Part 4B."
+    "Understand Data Science Implementation Steps Part 4B from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Implementation Steps Part 4B",
+    "Debug edge cases and answer interview questions about Data Science Implementation Steps Part 4B"
   ],
   "tags": [
-    "data",
-    "science",
-    "implementation",
-    "steps",
-    "part",
-    "4b"
+    "data_science_implementation_steps_part_4b",
+    "data-science",
+    "data_science_iteration_loops_state_traversal"
   ]
 }

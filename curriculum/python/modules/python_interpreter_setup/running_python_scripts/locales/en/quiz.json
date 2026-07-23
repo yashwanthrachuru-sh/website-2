@@ -2,77 +2,108 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What does the python interpreter do?",
+      "question": "What does the '>>> ' prompt in a Python terminal session mean?",
       "options": [
-        "Converts source code to machine code and executes it",
-        "Compiles to a standalone executable",
-        "Executes raw text directly",
-        "Uploads code to a remote server"
+        "Python has encountered an error",
+        "Python is ready for interactive input (REPL mode)",
+        "Python is in debug mode",
+        "Python is running a background process"
       ],
-      "answer": 0,
-      "explanation": "The interpreter reads source code, compiles to bytecode, and executes it on a virtual machine."
+      "answer": 1,
+      "explanation": "The '>>> ' prompt is the Python REPL (Read-Eval-Print Loop) waiting for input. The '...' prompt appears when continuing a multi-line block. This is the standard Python interactive interpreter.",
+      "difficulty": "beginner"
     },
     {
       "id": "q2",
-      "question": "What is an advantage of interpreted languages like python?",
+      "question": "What is the '# -*- coding: utf-8 -*-' line at the top of a Python file?",
       "options": [
-        "Faster execution than compiled languages",
-        "Easier development with immediate feedback",
-        "No programmer control over memory",
-        "Guaranteed security"
+        "A comment that has no effect in Python 3",
+        "An encoding declaration that tells Python how to read the file bytes",
+        "A magic function call to enable Unicode",
+        "A required Python 3 header line"
       ],
       "answer": 1,
-      "explanation": "Interpreted languages provide rapid feedback — you can test code immediately without a separate compilation step."
+      "explanation": "In Python 2, the encoding declaration was required for non-ASCII source files. In Python 3, UTF-8 is the default, so this declaration is usually unnecessary. It's still valid and harmless to include, and some tools use it as a hint.",
+      "difficulty": "intermediate"
     },
     {
       "id": "q3",
-      "question": "What happens on a syntax error?",
+      "question": "What is __pycache__ and when does Python create it?",
       "options": [
-        "The interpreter auto-fixes it",
-        "It skips the line and continues",
-        "It stops and reports a traceback",
-        "It shows a warning only"
+        "A directory Python creates when it compiles your .py files to bytecode (.pyc files) for faster subsequent loading",
+        "Python's hidden configuration directory",
+        "A cache of recently imported module names",
+        "A temporary directory deleted when Python exits"
       ],
-      "answer": 2,
-      "explanation": "The interpreter stops at the first syntax error and displays a traceback."
+      "answer": 0,
+      "explanation": "When Python first imports a .py file, it compiles it to bytecode and caches the result in __pycache__/__name__.cpython-312.pyc. On subsequent imports, Python loads the cached bytecode instead of re-parsing the source, which is faster. You can safely delete __pycache__ — Python will recreate it.",
+      "difficulty": "intermediate"
     },
     {
       "id": "q4",
-      "question": "Which mode runs code one line at a time?",
+      "question": "What happens to __name__ when you run a script directly vs when it's imported?",
       "options": [
-        "Script mode",
-        "REPL mode",
-        "Compiled mode",
-        "Batch mode"
+        "Direct run: __name__ = '__main__'; Imported: __name__ = the module filename",
+        "Direct run: __name__ = 'main'; Imported: __name__ = '__imported__'",
+        "Direct run: __name__ = None; Imported: __name__ = the filename",
+        "Direct run: __name__ = '__file__'; Imported: __name__ = '__main__'"
       ],
-      "answer": 1,
-      "explanation": "REPL (Read-Eval-Print-Loop) lets you type and execute code one line at a time."
+      "answer": 0,
+      "explanation": "When you run 'python3 script.py', Python sets __name__ = '__main__'. When another file does 'import script', Python sets __name__ = 'script'. This is why 'if __name__ == \"__main__\":' is the standard guard for code that should only run when a script is executed directly, not when imported.",
+      "difficulty": "intermediate"
     },
     {
       "id": "q5",
-      "question": "Why might a script work on one machine but fail on another?",
+      "question": "What is the purpose of 'sys.argv' in a Python script?",
       "options": [
-        "Interpreters are identical everywhere",
-        "Different versions, missing deps, or OS differences",
-        "Scripts are platform-independent",
-        "The interpreter auto-adapts"
+        "A list of command-line arguments passed to the script when it was run",
+        "The Python version information",
+        "The list of installed modules",
+        "The current working directory"
       ],
-      "answer": 1,
-      "explanation": "Differences in versions, installed packages, and OS can cause different behavior across machines."
+      "answer": 0,
+      "explanation": "sys.argv is a list where argv[0] is the script name and argv[1:] are any arguments passed on the command line. For example, 'python3 greet.py Alice 25' gives sys.argv = ['greet.py', 'Alice', '25'].",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "q6",
+      "question": "What does 'python3 -m module_name' do?",
+      "options": [
+        "Runs the module as a script (executes its __main__ block), finding it via sys.path",
+        "Imports the module into memory without running it",
+        "Lists all functions in the module",
+        "Compiles the module to bytecode"
+      ],
+      "answer": 0,
+      "explanation": "The -m flag tells Python to find the named module in sys.path and run it as a __main__ script. 'python3 -m venv .venv' runs the venv module. 'python3 -m http.server' starts a web server. This ensures the correct Python's module is used.",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q7",
+      "question": "Why is it bad practice to name your Python file 'os.py' or 'math.py'?",
+      "options": [
+        "It shadows Python's built-in standard library module of the same name, causing ImportError when you try to import the real one",
+        "Python will refuse to run files with those names",
+        "Those filenames are reserved by the Python runtime",
+        "The files won't be found by the interpreter"
+      ],
+      "answer": 0,
+      "explanation": "Python searches for modules in sys.path, starting with the current directory. If you have a file called math.py in the same directory as your code, 'import math' will import YOUR file instead of Python's standard library math module. This causes confusing errors. Always use unique, project-specific names.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: The python interpreter executes code without any intermediate representation.",
+      "question": "True or False: In the Python REPL, you must use print() to see the value of an expression.",
       "answer": false,
-      "explanation": "It compiles to bytecode before execution."
+      "explanation": "False. The REPL automatically prints the value of expressions that aren't assignments. Just type '2 + 2' and press Enter — the REPL prints '4'. However, in script files (.py), you DO need print() to see output."
     },
     {
       "id": "cp2",
-      "question": "True or False: Virtual environments isolate project dependencies.",
-      "answer": true,
-      "explanation": "They create isolated spaces for each project's dependencies."
+      "question": "True or False: Variables defined in a REPL session are saved automatically when you exit().",
+      "answer": false,
+      "explanation": "False. All variables and code typed in a REPL session exist only in memory and are lost when you exit. To save your work, copy important code into a .py file."
     }
   ]
 }

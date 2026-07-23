@@ -1,54 +1,29 @@
 {
   "questions": [
     {
-      "question": "What is the difference between a variable and a constant?",
-      "answer": "A variable can have its value changed after initial assignment. A constant is bound to a value that should not change. In Python, constants are a convention (SCREAMING_SNAKE_CASE) with no runtime enforcement. In JavaScript, const prevents reassignment of the binding but not mutation of the object. In Java, final prevents reassignment.",
-      "difficulty": "Beginner"
+      "question": "What is the difference between dynamic typing and static typing, and how does Python implement dynamic typing under the hood?",
+      "fullAnswer": "In statically-typed languages (like Java, C++, or Go), variable types are checked at compile time and variables are bound to a specific memory type.\n\nIn Python (dynamically-typed), variables are simply names (references) bound to heap-allocated objects (`PyObject` in CPython). Type information is stored inside the object header (`ob_type`), not in the variable name.\n\n```python\n# In CPython, 'x' is a pointer in the namespace dict mapping to an integer PyObject\nx = 10\n\n# Reassignment simply points 'x' to a new str PyObject\nx = 'hello'\n```\n\nThis means dynamic typing is resolved at runtime during object evaluation.",
+      "level": "intermediate"
     },
     {
-      "question": "Explain Python's dynamic typing. How is it different from Java's static typing?",
-      "answer": "Python is dynamically typed: types are associated with objects, not variables. A variable can point to an int, then be rebound to a string — the interpreter checks types at runtime, not compilation. Java is statically typed: the variable's type is declared at compile time and never changes. Java catches type mismatches before execution; Python raises TypeError at runtime.",
-      "difficulty": "Beginner"
+      "question": "What is 'Duck Typing' in Python, and how does it relate to dynamic typing?",
+      "fullAnswer": "Duck typing originates from the phrase: *'If it walks like a duck and quacks like a duck, it's a duck.'*\n\nIn Python, functions do not check whether an argument belongs to a specific class. Instead, they check whether the object implements the required methods or behaviors.\n\n```python\nclass FileLogger:\n    def write((self, msg):\n        print(f'[FILE] {msg}')\n\nclass ConsoleLogger:\n    def write(self, msg):\n        print(f'[CONSOLE] {msg}')\n\ndef log_message(logger, msg):\n    logger.write(msg) # Works with ANY object having a .write() method\n```",
+      "level": "intermediate"
     },
     {
-      "question": "What is the difference between == and is in Python?",
-      "answer": "== tests value equality (do two objects have equal content?). is tests identity (do two variables point to the exact same object in memory?). a = [1,2]; b = [1,2]; a==b is True but a is b is False. For singletons like None, always use is: if value is None.",
-      "difficulty": "Beginner"
+      "question": "Explain CPython's reference counting and garbage collection for dynamic variables.",
+      "fullAnswer": "CPython manages object memory using reference counting (`ob_refcnt`). Every time a variable is bound to an object, its reference count increments. When a variable goes out of scope or is reassigned, the reference count decrements.\n\nWhen `ob_refcnt == 0`, CPython immediately deallocates the object's memory. To handle circular references (e.g. Object A referencing Object B and vice-versa), CPython runs a cyclic garbage collector periodically.",
+      "level": "expert"
     },
     {
-      "question": "Explain the LEGB rule with an example.",
-      "answer": "LEGB = Local → Enclosing → Global → Built-in. Python searches for a name starting at the innermost Local scope, then the Enclosing function scopes (for nested functions), then the Global (module-level) scope, then Built-in names (print, len, etc.). Example: a function can access a global variable without declaring it global, but to modify it, must use the global keyword.",
-      "difficulty": "Intermediate"
+      "question": "What are Python Type Hints (PEP 484), and do they make Python statically typed?",
+      "fullAnswer": "No, Type Hints do NOT make Python statically typed. Type hints (`x: int = 5`) are purely metadata added to function signatures and variable declarations.\n\nThe Python interpreter completely ignores type hints at runtime — code with type mismatches will still run without throwing interpreter errors.\n\nType hints are designed for external static analysis tools (like `mypy` or `pyright`) and IDE autocomplete engines to catch errors before code reaches production.",
+      "level": "intermediate"
     },
     {
-      "question": "Why is using a mutable default argument dangerous?",
-      "answer": "Default values are evaluated once when the function is defined — a mutable default (list, dict) is shared across all calls. If any call mutates it, later calls see the modified state. The fix: use None as default and create a fresh mutable inside the function body.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "How does Python garbage collection work?",
-      "answer": "CPython uses reference counting as its primary strategy. Every object has a refcount — the number of references pointing to it. When refcount reaches zero, memory is freed immediately. A cyclic garbage collector handles circular references (two objects pointing to each other) that reference counting cannot resolve, running periodically to find and collect these cycles.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Dynamic Typing in Python queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Dynamic Typing in Python queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Dynamic Typing in Python queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Dynamic Typing in Python queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
+      "question": "Why should you use `isinstance(val, int)` instead of `type(val) == int`?",
+      "fullAnswer": "`isinstance()` respects class inheritance trees, whereas `type() ==` checks for an exact class match.\n\nFor example, `bool` inherits from `int` in Python:\n\n```python\nval = True\nprint(type(val) == int)       # False (Exact class is bool)\nprint(isinstance(val, int))   # True (bool inherits from int)\n```\n\nUsing `isinstance()` ensures polymorphic subclasses function properly across your application.",
+      "level": "beginner"
     }
   ]
 }

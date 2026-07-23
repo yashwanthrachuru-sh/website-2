@@ -1,45 +1,12 @@
 {
-  "overview": "At the expert level, this concept requires understanding python runtime internals and production optimization strategies.",
-  "industryContext": "In production Python systems, this pattern is implemented with attention to performance, security, and maintainability.",
-  "examples": [],
-  "codeReviewChecklist": [
-    "Does the implementation handle all error cases?",
-    "Is the code readable and maintainable?",
-    "Are there performance concerns?",
-    "Is the approach appropriate for the scale?"
-  ],
-  "testingPatterns": {
-    "unitTests": "Test individual components in isolation",
-    "integrationTests": "Test with actual dependencies",
-    "propertyBasedTests": "Test with random inputs",
-    "benchmarkTests": "Measure performance under load"
-  },
-  "refactoringGuide": {
-    "smell": "Implementation is too complex or tightly coupled",
-    "solution": "Break into smaller, focused functions",
-    "steps": [
-      "Identify responsibilities",
-      "Separate concerns",
-      "Extract reusable parts",
-      "Verify behavior"
-    ]
-  },
-  "securityConsiderations": [
-    "Validate all inputs",
-    "Avoid exposing internal state",
-    "Log without leaking sensitive data"
-  ],
-  "scalability": {
-    "considerations": "Design for statelessness to enable horizontal scaling.",
-    "recommendations": [
-      "Implement caching",
-      "Use connection pooling",
-      "Monitor performance metrics"
-    ]
-  },
-  "complexityAnalysis": {
-    "timeComplexity": "Varies by implementation",
-    "spaceComplexity": "Varies by implementation",
-    "notes": "Analyze specific implementation for accurate complexity bounds"
-  }
+  "examples": [
+    {
+      "code": "# Production pattern: Dockerfile for a Python application\n# Pinning exact versions for reproducibility\n\nFROM python:3.12.0-slim\n\n# Set working directory\nWORKDIR /app\n\n# Copy dependency definitions first (Docker cache optimization)\nCOPY requirements.txt .\n\n# Install dependencies\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Copy application code\nCOPY . .\n\n# Don't run as root in production\nRUN adduser --disabled-password --gecos '' appuser\nUSER appuser\n\nCMD [\"python\", \"main.py\"]",
+      "explanation": "Production Python deployments always pin the exact Python version in the Docker base image to guarantee the runtime environment is identical across development, staging, and production. The 'slim' variant excludes many OS packages to reduce attack surface and image size (~45MB vs ~300MB for the full image)."
+    },
+    {
+      "code": "# GitHub Actions CI: matrix testing across Python versions\n# .github/workflows/test.yml\n\nname: Python Tests\non: [push, pull_request]\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        python-version: ['3.10', '3.11', '3.12']\n    steps:\n      - uses: actions/checkout@v4\n      - name: Set up Python ${{ matrix.python-version }}\n        uses: actions/setup-python@v4\n        with:\n          python-version: ${{ matrix.python-version }}\n      - name: Install dependencies\n        run: pip install -r requirements.txt\n      - name: Run tests\n        run: pytest",
+      "explanation": "Professional open-source projects test against multiple Python versions to ensure compatibility. The actions/setup-python action downloads and configures Python in the CI environment — the same mechanism as pyenv but for automated pipelines. The matrix strategy runs the test job once for each Python version in parallel."
+    }
+  ]
 }

@@ -1,11 +1,14 @@
 {
-  "title": "CSS Core Principles Part 10A System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of CSS Core Principles Part 10A.",
+  "title": "CSS Core Principles Part 10A Project",
+  "tagline": "Build a mini application using CSS Core Principles Part 10A",
+  "description": "Create a working CSS application demonstrating CSS Core Principles Part 10A.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "/* CSS3 Styling for CSS Core Principles Part 10A */\n.css_core_principles_part_10a-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1.5rem;\n  background: var(--surface);\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n}",
+  "solution": "/* CSS3 Styling for CSS Core Principles Part 10A */\n.css_core_principles_part_10a-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1.5rem;\n  background: var(--surface);\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of CSS Core Principles Part 10A in CSS."
 }

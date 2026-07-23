@@ -1,44 +1,30 @@
 {
-  "oneLineSummary": "Try Except Blocks is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Try Except Blocks is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "`try` wraps code, `except` catches errors, `else` runs if no error, `finally` always runs.",
+  "oneLineSummary": "try-except handles runtime exceptions gracefully.",
   "keyTakeaways": [
-    "Try Except Blocks solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Catch specific exceptions.",
+    "EAFP is pythonic."
   ],
   "memoryTricks": [
-    "Think of try except blocks as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Try Except Blocks in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "try-except",
+      "trick": "TRY it, EXCEPT if it breaks, ELSE if it worked, FINALLY clean up."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "Bare except",
+      "cause": "Catches KeyboardInterrupt",
+      "fix": "Use except Exception"
+    }
   ],
-  "mindMap": {
-    "central": "Try Except Blocks",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain EAFP vs LBYL"
+  ],
   "nextTopics": [
-    "Advanced try except blocks",
-    "Testing try except blocks",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Raising Exceptions",
+      "whyNext": "Learn to raise custom error triggers."
+    }
+  ]
 }

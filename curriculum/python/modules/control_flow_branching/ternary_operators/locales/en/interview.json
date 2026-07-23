@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain if/else vs switch. When would you use each?",
-      "answer": "If/else checks arbitrary boolean conditions and supports ranges. Switch compares one value against discrete cases. Use if/else for complex conditions; switch for single-value multi-case comparisons, which is often faster (jump table) and more readable.",
-      "followUp": "How would you refactor a long if/else chain?"
-    },
-    {
-      "question": "What is short-circuit evaluation?",
-      "answer": "Logical operators &&/|| stop evaluating once the result is determined. In \"A && B\", if A is false, B is never evaluated — useful for guarding: `if (user && user.name)`. In \"A || B\", if A is true, B is skipped — useful for defaults: `const name = input || \"default\"`.",
-      "followUp": "Can short-circuit evaluation cause bugs?"
-    },
-    {
-      "question": "How do you test all branches of a complex conditional without exponential test cases?",
-      "answer": "Use equivalence partitioning and boundary value analysis. Group inputs into classes. Test one example per class plus boundaries. For \"score >= 90 -> A, score >= 80 -> B\", test 89, 90, 79, 80.",
-      "followUp": "What tools measure branch coverage?"
+      "question": "Does Python's ternary expression short-circuit?",
+      "answer": "Yes. In `A if cond else B`, Python evaluates `cond` first. If True, only A is evaluated and returned. B is completely skipped. If False, only B is evaluated.",
+      "level": "intermediate"
     }
   ]
 }

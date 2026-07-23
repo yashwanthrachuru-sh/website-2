@@ -1,24 +1,18 @@
 {
-  "title": "Project: Tuple Immutability Application",
-  "tagline": "Apply tuple immutability in a practical project.",
-  "description": "Build an application demonstrating Tuple Immutability.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "GPS Coordinate Track Tracker",
+  "tagline": "Immutable telemetry data recorder",
+  "description": "Record telemetry track logs using immutable namedtuple structures.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "Immutability for telemetry data audit trails"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Store timestamp, lat, lon in namedtuple"
+  ],
+  "starterCode": "from collections import namedtuple\n# Create Telemetry namedtuple",
+  "solution": "from collections import namedtuple\nTelemetry = namedtuple('Telemetry', ['timestamp', 'lat', 'lon'])\n\ndef create_log(ts, lat, lon):\n    return Telemetry(timestamp=ts, lat=lat, lon=lon)",
+  "solutionExpl": "Uses immutable namedtuple ensuring historical GPS telemetry cannot be tampered with.",
+  "expectedOutput": "Telemetry(timestamp='12:00', lat=37.77, lon=-122.41)",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Calculate total distance traveled along track"
   ]
 }

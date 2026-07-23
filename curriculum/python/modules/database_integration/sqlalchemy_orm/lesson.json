@@ -3,23 +3,22 @@
   "title": "SQLAlchemy ORM",
   "technology": "Python",
   "module": "Database Integration",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Exception Handling"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of SQLAlchemy ORM.",
-    "Write error-free implementations utilizing SQLAlchemy ORM.",
-    "Debug and optimize performance characteristics of SQLAlchemy ORM."
+    "Understand SQLAlchemy ORM from zero to advanced level",
+    "Write clean, production-grade Python code for SQLAlchemy ORM",
+    "Debug edge cases and answer interview questions about SQLAlchemy ORM"
   ],
   "tags": [
-    "sqlalchemy",
-    "orm"
+    "sqlalchemy_orm",
+    "python",
+    "database_integration"
   ]
 }

@@ -3,28 +3,22 @@
   "title": "GCP Cloud Engineer Core Principles Part 3A",
   "technology": "GCP Cloud Engineer",
   "module": "GCP Cloud Engineer Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: GCP Cloud Engineer Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of GCP Cloud Engineer Core Principles Part 3A.",
-    "Write error-free implementations utilizing GCP Cloud Engineer Core Principles Part 3A.",
-    "Debug and optimize performance characteristics of GCP Cloud Engineer Core Principles Part 3A."
+    "Understand GCP Cloud Engineer Core Principles Part 3A from zero to advanced level",
+    "Write clean, production-grade GCP Cloud Engineer code for GCP Cloud Engineer Core Principles Part 3A",
+    "Debug edge cases and answer interview questions about GCP Cloud Engineer Core Principles Part 3A"
   ],
   "tags": [
+    "gcp_cloud_engineer_core_principles_part_3a",
     "gcp",
-    "cloud",
-    "engineer",
-    "core",
-    "principles",
-    "part",
-    "3a"
+    "gcp_cloud_engineer_control_flow_boolean_logic_branching"
   ]
 }

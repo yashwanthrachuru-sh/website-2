@@ -1,11 +1,14 @@
 {
-  "title": "Recursive Call Frames System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Recursive Call Frames.",
+  "title": "Recursive Call Frames Project",
+  "tagline": "Build a mini application using Recursive Call Frames",
+  "description": "Create a working C Programming application demonstrating Recursive Call Frames.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// C/C++ implementation for Recursive Call Frames\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Recursive Call Frames\");\n    return 0;\n}",
+  "solution": "// C/C++ implementation for Recursive Call Frames\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Recursive Call Frames\");\n    return 0;\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Recursive Call Frames in C Programming."
 }

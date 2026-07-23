@@ -3,26 +3,22 @@
   "title": "Machine Learning Troubleshooting Part 10C",
   "technology": "Machine Learning",
   "module": "Machine Learning Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Machine Learning File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Machine Learning Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Machine Learning Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Machine Learning Troubleshooting Part 10C."
+    "Understand Machine Learning Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Machine Learning code for Machine Learning Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Machine Learning Troubleshooting Part 10C"
   ],
   "tags": [
-    "machine",
-    "learning",
-    "troubleshooting",
-    "part",
-    "10c"
+    "machine_learning_troubleshooting_part_10c",
+    "ml",
+    "machine_learning_package_orchestration_system_modules"
   ]
 }

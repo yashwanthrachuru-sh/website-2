@@ -3,26 +3,22 @@
   "title": "HTML Implementation Steps Part 5B",
   "technology": "HTML",
   "module": "HTML Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Implementation Steps Part 5B.",
-    "Write error-free implementations utilizing HTML Implementation Steps Part 5B.",
-    "Debug and optimize performance characteristics of HTML Implementation Steps Part 5B."
+    "Understand HTML Implementation Steps Part 5B from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Implementation Steps Part 5B",
+    "Debug edge cases and answer interview questions about HTML Implementation Steps Part 5B"
   ],
   "tags": [
+    "html_implementation_steps_part_5b",
     "html",
-    "implementation",
-    "steps",
-    "part",
-    "5b"
+    "html_modular_functions_signature_scopes"
   ]
 }

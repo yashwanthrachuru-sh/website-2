@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/lambda functions",
-      "type": "documentation",
-      "description": "Official reference for Lambda Functions in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Lambda Functions in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Lambda Functions with other developers"
+      "type": "official",
+      "title": "Python Lambda Expressions",
+      "url": "https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions"
     }
   ]
 }

@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "List Comprehensions becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "List comprehensions run faster than traditional `.append()` loops in CPython because element appending is executed directly in optimized C bytecodes (`LIST_APPEND`), avoiding python-level method lookup overhead.",
+  "internalImplementation": "CPython uses the `LIST_APPEND` bytecode instruction inside comprehension frames.",
   "examples": [
     {
-      "title": "Getting Started with List Comprehensions",
-      "code": "print(\"Learning List Comprehensions\")",
-      "explanation": "Basic introduction to List Comprehensions.",
-      "language": "python"
+      "code": "# Flattening 2D Matrix with Nested Comprehension\nmatrix = [[1, 2], [3, 4], [5, 6]]\nflat = [num for row in matrix for num in row]\nprint(flat)  # [1, 2, 3, 4, 5, 6]",
+      "explanation": "Outer loop `for row in matrix` comes first, followed by inner loop `for num in row`."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A list comprehensions implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "O(N) — roughly 20-30% faster than explicit for-loop append.",
+    "spaceComplexity": "O(N) memory allocation for new list."
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Confusing filter `if` position with ternary `if-else` position.",
+    "incorrectCode": "# Trying to use if-else at the end:\n[x ** 2 for x in nums if x > 0 else 0]  # SyntaxError!",
+    "correctCode": "# Ternary if-else goes BEFORE 'for':\n[x ** 2 if x > 0 else 0 for x in nums]\n# Filter if goes AFTER 'for':\n[x ** 2 for x in nums if x > 0]"
+  },
+  "bestPractices": [
+    "Use list comprehension when creating a new list from an iterable.",
+    "If comprehension exceeds 2 loops or 80 characters, refactor into standard for loop."
+  ]
 }

@@ -3,23 +3,22 @@
   "title": "Type Aliases",
   "technology": "TypeScript",
   "module": "Interfaces & Types",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Basic Types Annotation"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Type Aliases.",
-    "Write error-free implementations utilizing Type Aliases.",
-    "Debug and optimize performance characteristics of Type Aliases."
+    "Understand Type Aliases from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Type Aliases",
+    "Debug edge cases and answer interview questions about Type Aliases"
   ],
   "tags": [
-    "type",
-    "aliases"
+    "type_aliases",
+    "typescript",
+    "interfaces_types"
   ]
 }

@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between Flexbox and CSS Grid?",
-      "answer": "Flexbox is one-dimensional: it lays items along a row OR a column. Great for: navbars, button groups, centering, distributing items along one axis. Grid is two-dimensional: rows AND columns simultaneously. Great for: overall page layout, complex card grids, magazine-style layouts. Use Flexbox for UI components (nav, buttons, forms). Use Grid for page structure and complex two-dimensional layouts. They complement each other — a Grid cell can contain a Flexbox container.",
+      "question": "Explain CSS Troubleshooting Part 12C and its primary use case in CSS.",
+      "answer": "CSS Troubleshooting Part 12C provides a structured mechanism to handle core application logic cleanly.",
       "difficulty": "Beginner"
     },
     {
-      "question": "What does \"mobile-first\" mean in responsive design?",
-      "answer": "Mobile-first means writing CSS for mobile screens first, then using min-width media queries to add styles for larger screens. Example: .grid { grid-template-columns: 1fr; } /* mobile: 1 column */ @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } } /* tablet: 2 */ This is better than \"desktop-first\" (max-width queries) because: mobile users are majority (60%+), mobile CSS is simpler (often less code), progressive enhancement is good practice.",
+      "question": "What are common mistakes developers make with CSS Troubleshooting Part 12C?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What is the box model in CSS?",
-      "answer": "Every CSS element is a box with four layers (inside out): Content (the actual text/image), Padding (space inside the border), Border (the visible border), Margin (space outside the border). box-sizing: border-box (recommended) makes width and height include padding and border — more intuitive sizing. box-sizing: content-box (default) means width is just the content, so adding padding/border makes the element larger than expected. Always set * { box-sizing: border-box; } at the start of your CSS.",
-      "difficulty": "Beginner"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency CSS Troubleshooting Part 12C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency CSS Troubleshooting Part 12C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency CSS Troubleshooting Part 12C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency CSS Troubleshooting Part 12C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency CSS Troubleshooting Part 12C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency CSS Troubleshooting Part 12C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency CSS Troubleshooting Part 12C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the CSS runtime optimize CSS Troubleshooting Part 12C under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

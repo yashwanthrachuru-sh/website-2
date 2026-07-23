@@ -3,27 +3,22 @@
   "title": "Placement Preparation Core Principles Part 1A",
   "technology": "Placement Preparation",
   "module": "Placement Preparation Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Placement Preparation Core Principles Part 1A.",
-    "Write error-free implementations utilizing Placement Preparation Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Placement Preparation Core Principles Part 1A."
+    "Understand Placement Preparation Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Placement Preparation code for Placement Preparation Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Placement Preparation Core Principles Part 1A"
   ],
   "tags": [
+    "placement_preparation_core_principles_part_1a",
     "placement",
-    "preparation",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "placement_preparation_setup_architecture_foundations"
   ]
 }

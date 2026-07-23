@@ -2,53 +2,50 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Strings & Booleans?",
+      "question": "What happens when you execute `s = 'hello'; s[0] = 'H'` in Python?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "Raises TypeError because strings are immutable",
+        "Modifies string in-place to 'Hello'",
+        "Creates a new string and updates pointer",
+        "Raises AttributeError"
       ],
       "answer": 0,
-      "explanation": "Strings & Booleans is a programming concept."
+      "explanation": "Python strings are immutable. You cannot modify individual characters in-place; attempting to do so raises a TypeError.",
+      "difficulty": "beginner"
     },
     {
       "id": "q2",
-      "question": "Why does Strings & Booleans exist?",
+      "question": "What is the boolean evaluation of `bool([])` in Python?",
       "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
+        "False — empty collections are falsy",
+        "True — non-null object",
+        "TypeError — lists cannot be converted to bool",
+        "None"
       ],
       "answer": 0,
-      "explanation": "It solves a specific programming problem."
+      "explanation": "All empty collections (lists, tuples, dicts, sets, empty strings) evaluate to `False` in boolean contexts.",
+      "difficulty": "beginner"
     },
     {
       "id": "q3",
-      "question": "What is a common beginner mistake?",
+      "question": "Why is `''.join(string_list)` preferred over `+=` inside long loops?",
       "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
+        "join() allocates memory once (O(N)), while += can cause repeated reallocations (O(N^2))",
+        "join() supports Unicode while += does not",
+        "+= is deprecated in Python 3",
+        "join() executes on multiple CPU cores"
       ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "answer": 0,
+      "explanation": "join() computes total length beforehand and performs a single memory allocation (O(N)), avoiding repeated reallocations.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Strings & Booleans is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Strings & Booleans improves code quality.",
+      "question": "True or False: In Python, `isinstance(True, int)` evaluates to True.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. In Python, `bool` is a direct subclass of `int`. `True` has integer value `1`."
     }
   ]
 }

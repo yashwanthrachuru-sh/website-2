@@ -1,44 +1,30 @@
 {
-  "oneLineSummary": "Context Managers is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Context Managers is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Context Managers implement `__enter__` and `__exit__` (or `@contextmanager`). Guarantee resource cleanup.",
+  "oneLineSummary": "Context managers automate resource allocation and guaranteed cleanup.",
   "keyTakeaways": [
-    "Context Managers solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "__enter__ sets up, __exit__ cleans up.",
+    "@contextmanager uses generator yield."
   ],
   "memoryTricks": [
-    "Think of context managers as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Context Managers in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Context Manager",
+      "trick": "Context Manager = Automatic Door: opens when you enter, closes when you leave."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "Swallowing exceptions unintentionally",
+      "cause": "Returning True from __exit__",
+      "fix": "Return False from __exit__"
+    }
   ],
-  "mindMap": {
-    "central": "Context Managers",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain __enter__ and __exit__"
+  ],
   "nextTopics": [
-    "Advanced context managers",
-    "Testing context managers",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Modules & Packages",
+      "whyNext": "Organize code into modular Python packages."
+    }
+  ]
 }

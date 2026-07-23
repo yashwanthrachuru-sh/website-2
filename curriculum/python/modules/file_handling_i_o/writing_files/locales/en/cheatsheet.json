@@ -1,34 +1,14 @@
 {
-  "title": "Writing Files — Quick Reference",
+  "printNote": "Write Modes Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Writing Files\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Write Modes",
+      "entries": [
+        {
+          "syntax": "open('f.txt', 'w')",
+          "example": "f.write('data')",
+          "description": "Overwrite mode"
+        }
       ]
     }
   ]

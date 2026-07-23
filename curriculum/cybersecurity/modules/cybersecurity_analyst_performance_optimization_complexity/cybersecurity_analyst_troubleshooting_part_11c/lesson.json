@@ -3,26 +3,22 @@
   "title": "Cybersecurity Analyst Troubleshooting Part 11C",
   "technology": "Cybersecurity Analyst",
   "module": "Cybersecurity Analyst Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Cybersecurity Analyst Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Cybersecurity Analyst Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Cybersecurity Analyst Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Cybersecurity Analyst Troubleshooting Part 11C."
+    "Understand Cybersecurity Analyst Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Cybersecurity Analyst code for Cybersecurity Analyst Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Cybersecurity Analyst Troubleshooting Part 11C"
   ],
   "tags": [
+    "cybersecurity_analyst_troubleshooting_part_11c",
     "cybersecurity",
-    "analyst",
-    "troubleshooting",
-    "part",
-    "11c"
+    "cybersecurity_analyst_performance_optimization_complexity"
   ]
 }

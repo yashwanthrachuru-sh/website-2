@@ -3,26 +3,22 @@
   "title": "CSS Core Principles Part 11A",
   "technology": "CSS",
   "module": "CSS Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Core Principles Part 11A.",
-    "Write error-free implementations utilizing CSS Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of CSS Core Principles Part 11A."
+    "Understand CSS Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about CSS Core Principles Part 11A"
   ],
   "tags": [
+    "css_core_principles_part_11a",
     "css",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "css_performance_optimization_complexity"
   ]
 }

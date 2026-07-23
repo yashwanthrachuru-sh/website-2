@@ -3,27 +3,22 @@
   "title": "System Design Implementation Steps Part 7B",
   "technology": "System Design",
   "module": "System Design Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: System Design Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of System Design Implementation Steps Part 7B.",
-    "Write error-free implementations utilizing System Design Implementation Steps Part 7B.",
-    "Debug and optimize performance characteristics of System Design Implementation Steps Part 7B."
+    "Understand System Design Implementation Steps Part 7B from zero to advanced level",
+    "Write clean, production-grade System Design code for System Design Implementation Steps Part 7B",
+    "Debug edge cases and answer interview questions about System Design Implementation Steps Part 7B"
   ],
   "tags": [
-    "system",
-    "design",
-    "implementation",
-    "steps",
-    "part",
-    "7b"
+    "system_design_implementation_steps_part_7b",
+    "system-design",
+    "system_design_advanced_abstractions_type_blueprints"
   ]
 }

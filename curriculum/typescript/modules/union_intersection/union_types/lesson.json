@@ -3,23 +3,22 @@
   "title": "Union Types",
   "technology": "TypeScript",
   "module": "Union & Intersection",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Interfaces & Types"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Union Types.",
-    "Write error-free implementations utilizing Union Types.",
-    "Debug and optimize performance characteristics of Union Types."
+    "Understand Union Types from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Union Types",
+    "Debug edge cases and answer interview questions about Union Types"
   ],
   "tags": [
-    "union",
-    "types"
+    "union_types",
+    "typescript",
+    "union_intersection"
   ]
 }

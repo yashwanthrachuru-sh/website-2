@@ -3,23 +3,22 @@
   "title": "Export Signatures",
   "technology": "JavaScript",
   "module": "ES6 Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Fetch API integration"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Export Signatures.",
-    "Write error-free implementations utilizing Export Signatures.",
-    "Debug and optimize performance characteristics of Export Signatures."
+    "Understand Export Signatures from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Export Signatures",
+    "Debug edge cases and answer interview questions about Export Signatures"
   ],
   "tags": [
-    "export",
-    "signatures"
+    "export_signatures",
+    "js",
+    "es6_modules"
   ]
 }

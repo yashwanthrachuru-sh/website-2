@@ -3,26 +3,22 @@
   "title": "DevOps Engineer Troubleshooting Part 12C",
   "technology": "DevOps Engineer",
   "module": "DevOps Engineer Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: DevOps Engineer Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of DevOps Engineer Troubleshooting Part 12C.",
-    "Write error-free implementations utilizing DevOps Engineer Troubleshooting Part 12C.",
-    "Debug and optimize performance characteristics of DevOps Engineer Troubleshooting Part 12C."
+    "Understand DevOps Engineer Troubleshooting Part 12C from zero to advanced level",
+    "Write clean, production-grade DevOps Engineer code for DevOps Engineer Troubleshooting Part 12C",
+    "Debug edge cases and answer interview questions about DevOps Engineer Troubleshooting Part 12C"
   ],
   "tags": [
+    "devops_engineer_troubleshooting_part_12c",
     "devops",
-    "engineer",
-    "troubleshooting",
-    "part",
-    "12c"
+    "devops_engineer_production_deployment_server_pipelines"
   ]
 }

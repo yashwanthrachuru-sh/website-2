@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain Tuple Immutability to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of tuple immutability?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for tuple immutability?",
-      "answer": "Use Tuple Immutability when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "Why are tuples faster than lists in Python?",
+      "answer": "Tuples are immutable, allowing CPython to allocate a fixed-size memory block upfront without over-allocation padding. They also benefit from CPython's internal free-list memory caching.",
+      "level": "intermediate"
     }
   ]
 }

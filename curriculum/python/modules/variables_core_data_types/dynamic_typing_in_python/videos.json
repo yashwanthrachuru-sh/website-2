@@ -1,8 +1,16 @@
 [
   {
-    "title": "Intro to Dynamic Typing in Python",
-    "channel": "freeCodeCamp",
-    "videoId": "PkZNo7MFNFg",
-    "duration": "15m"
+    "title": "Python Tutorial: Variables & Data Types",
+    "video_id": "khKv-8q7YmY",
+    "channel": "Corey Schafer",
+    "duration": "18:24",
+    "description": "Comprehensive tutorial on Python variables, dynamic assignment, and data types."
+  },
+  {
+    "title": "Python Dynamic Typing vs Static Typing Explained",
+    "video_id": "cKxrvEzgDA0",
+    "channel": "Programming with Mosh",
+    "duration": "12:10",
+    "description": "Mosh explains Python memory pointers and dynamic typing mechanics."
   }
 ]

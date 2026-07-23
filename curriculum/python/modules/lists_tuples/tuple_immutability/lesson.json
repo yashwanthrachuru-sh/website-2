@@ -3,23 +3,22 @@
   "title": "Tuple Immutability",
   "technology": "Python",
   "module": "Lists & Tuples",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Functions & Scope"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Tuple Immutability.",
-    "Write error-free implementations utilizing Tuple Immutability.",
-    "Debug and optimize performance characteristics of Tuple Immutability."
+    "Understand Tuple Immutability from zero to advanced level",
+    "Write clean, production-grade Python code for Tuple Immutability",
+    "Debug edge cases and answer interview questions about Tuple Immutability"
   ],
   "tags": [
-    "tuple",
-    "immutability"
+    "tuple_immutability",
+    "python",
+    "lists_tuples"
   ]
 }

@@ -3,27 +3,22 @@
   "title": "Docker Containers Core Principles Part 10A",
   "technology": "Docker Containers",
   "module": "Docker Containers Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Docker Containers File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Core Principles Part 10A.",
-    "Write error-free implementations utilizing Docker Containers Core Principles Part 10A.",
-    "Debug and optimize performance characteristics of Docker Containers Core Principles Part 10A."
+    "Understand Docker Containers Core Principles Part 10A from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Core Principles Part 10A",
+    "Debug edge cases and answer interview questions about Docker Containers Core Principles Part 10A"
   ],
   "tags": [
+    "docker_containers_core_principles_part_10a",
     "docker",
-    "containers",
-    "core",
-    "principles",
-    "part",
-    "10a"
+    "docker_containers_package_orchestration_system_modules"
   ]
 }

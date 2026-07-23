@@ -3,27 +3,22 @@
   "title": "Web Development Core Principles Part 11A",
   "technology": "Web Development",
   "module": "Web Development Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Web Development Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Web Development Core Principles Part 11A.",
-    "Write error-free implementations utilizing Web Development Core Principles Part 11A.",
-    "Debug and optimize performance characteristics of Web Development Core Principles Part 11A."
+    "Understand Web Development Core Principles Part 11A from zero to advanced level",
+    "Write clean, production-grade Web Development code for Web Development Core Principles Part 11A",
+    "Debug edge cases and answer interview questions about Web Development Core Principles Part 11A"
   ],
   "tags": [
-    "web",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "11a"
+    "web_development_core_principles_part_11a",
+    "webdev",
+    "web_development_performance_optimization_complexity"
   ]
 }

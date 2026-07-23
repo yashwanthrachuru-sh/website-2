@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain Virtual Environments to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of virtual environments?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for virtual environments?",
-      "answer": "Use Virtual Environments when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "How does a Python virtual environment work under the hood?",
+      "answer": "A virtual environment is a lightweight folder containing copies/symlinks of the Python executable and pip. Activating it prepends the `.venv/bin` directory to the shell's `PATH` environment variable. When you type `python` or `pip`, the OS finds the `.venv` executables first, isolating package installations to `.venv/lib/python3.x/site-packages`.",
+      "level": "intermediate"
     }
   ]
 }

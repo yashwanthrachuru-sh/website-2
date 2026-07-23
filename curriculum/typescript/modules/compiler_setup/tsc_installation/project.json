@@ -1,11 +1,14 @@
 {
-  "title": "TSC Installation System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of TSC Installation.",
+  "title": "TSC Installation Project",
+  "tagline": "Build a mini application using TSC Installation",
+  "description": "Create a working TypeScript application demonstrating TSC Installation.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for TSC Installation\ninterface TSCInstallationPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processTSCInstallation(item: TSCInstallationPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processTSCInstallation({ id: 1, title: 'TSC Installation', status: 'active' }));",
+  "solution": "// TypeScript implementation for TSC Installation\ninterface TSCInstallationPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processTSCInstallation(item: TSCInstallationPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processTSCInstallation({ id: 1, title: 'TSC Installation', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of TSC Installation in TypeScript."
 }

@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Set Operations is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Set Operations is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Sets store unique, hashable elements with O(1) lookups. Use `set()` for empty sets. Operations: `|` (union), `&` (intersection), `-` (difference).",
+  "oneLineSummary": "Sets store unique elements and perform O(1) membership checks and mathematical set algebra.",
   "keyTakeaways": [
-    "Set Operations solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "set() for empty set.",
+    "O(1) membership testing (`x in set`).",
+    "frozenset is the immutable variant."
   ],
   "memoryTricks": [
-    "Think of set operations as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Set Operations in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Set Operators",
+      "trick": "& = AND (Intersection), | = OR (Union), - = SUBTRACT (Difference)."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "AttributeError on dict",
+      "cause": "Using `{}` for empty set",
+      "fix": "Use `set()` instead"
+    }
   ],
-  "mindMap": {
-    "central": "Set Operations",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain set vs frozenset"
+  ],
   "nextTopics": [
-    "Advanced set operations",
-    "Testing set operations",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Dictionary Comprehensions",
+      "whyNext": "Construct dynamic dictionaries concisely."
+    }
+  ]
 }

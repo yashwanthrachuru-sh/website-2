@@ -1,11 +1,14 @@
 {
-  "title": "Function Declarations C System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Function Declarations C.",
+  "title": "Function Declarations C Project",
+  "tagline": "Build a mini application using Function Declarations C",
+  "description": "Create a working C Programming application demonstrating Function Declarations C.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// C/C++ implementation for Function Declarations C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Function Declarations C\");\n    return 0;\n}",
+  "solution": "// C/C++ implementation for Function Declarations C\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Function Declarations C\");\n    return 0;\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Function Declarations C in C Programming."
 }

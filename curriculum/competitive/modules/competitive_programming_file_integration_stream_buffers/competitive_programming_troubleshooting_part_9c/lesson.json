@@ -3,26 +3,22 @@
   "title": "Competitive Programming Troubleshooting Part 9C",
   "technology": "Competitive Programming",
   "module": "Competitive Programming File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Competitive Programming Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Competitive Programming Troubleshooting Part 9C.",
-    "Write error-free implementations utilizing Competitive Programming Troubleshooting Part 9C.",
-    "Debug and optimize performance characteristics of Competitive Programming Troubleshooting Part 9C."
+    "Understand Competitive Programming Troubleshooting Part 9C from zero to advanced level",
+    "Write clean, production-grade Competitive Programming code for Competitive Programming Troubleshooting Part 9C",
+    "Debug edge cases and answer interview questions about Competitive Programming Troubleshooting Part 9C"
   ],
   "tags": [
+    "competitive_programming_troubleshooting_part_9c",
     "competitive",
-    "programming",
-    "troubleshooting",
-    "part",
-    "9c"
+    "competitive_programming_file_integration_stream_buffers"
   ]
 }

@@ -3,24 +3,22 @@
   "title": "Dynamic Import Loading",
   "technology": "JavaScript",
   "module": "ES6 Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Fetch API integration"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Dynamic Import Loading.",
-    "Write error-free implementations utilizing Dynamic Import Loading.",
-    "Debug and optimize performance characteristics of Dynamic Import Loading."
+    "Understand Dynamic Import Loading from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Dynamic Import Loading",
+    "Debug edge cases and answer interview questions about Dynamic Import Loading"
   ],
   "tags": [
-    "dynamic",
-    "import",
-    "loading"
+    "dynamic_import_loading",
+    "js",
+    "es6_modules"
   ]
 }

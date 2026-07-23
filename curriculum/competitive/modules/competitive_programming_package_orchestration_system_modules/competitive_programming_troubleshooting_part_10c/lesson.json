@@ -3,26 +3,22 @@
   "title": "Competitive Programming Troubleshooting Part 10C",
   "technology": "Competitive Programming",
   "module": "Competitive Programming Package Orchestration & System Modules",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Competitive Programming File Integration & Stream Buffers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Competitive Programming Troubleshooting Part 10C.",
-    "Write error-free implementations utilizing Competitive Programming Troubleshooting Part 10C.",
-    "Debug and optimize performance characteristics of Competitive Programming Troubleshooting Part 10C."
+    "Understand Competitive Programming Troubleshooting Part 10C from zero to advanced level",
+    "Write clean, production-grade Competitive Programming code for Competitive Programming Troubleshooting Part 10C",
+    "Debug edge cases and answer interview questions about Competitive Programming Troubleshooting Part 10C"
   ],
   "tags": [
+    "competitive_programming_troubleshooting_part_10c",
     "competitive",
-    "programming",
-    "troubleshooting",
-    "part",
-    "10c"
+    "competitive_programming_package_orchestration_system_modules"
   ]
 }

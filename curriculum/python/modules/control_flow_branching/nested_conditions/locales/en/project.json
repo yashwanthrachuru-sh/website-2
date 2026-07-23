@@ -1,26 +1,20 @@
 {
-  "title": "Project: Loan Decision Engine",
-  "tagline": "Build a rule-based loan approval system using conditionals.",
-  "description": "Create a program that evaluates loan applications using credit score, income, debt ratio, and employment status — applying business rules through conditionals.",
-  "requirements": [
-    "Define at least 4 input criteria with ranges",
-    "Implement decision rules using if/elif/else",
-    "Handle all edge cases",
-    "Return a clear decision with explanation",
-    "Include 3+ test cases"
-  ],
+  "title": "Hierarchical File Access Guard",
+  "tagline": "Multi-tier security authorization engine",
+  "description": "Build a file access controller verifying user authentication, subscription level, and file security classification.",
   "learningGoals": [
-    "Master complex conditional chains",
-    "Practice handling interdependent conditions",
-    "Build real-world business logic"
+    "Nested condition evaluation",
+    "Security rule layering"
   ],
-  "starterCode": "def evaluate_loan(credit_score, income, debt_ratio, employed):\n    reasons = []\n    # Your rules here\n    pass",
-  "solution": "def evaluate_loan(credit, income, debt, emp):\n    reasons = []\n    if credit < 600: reasons.append(\"Low credit\")\n    if income < 25000: reasons.append(\"Low income\")\n    if debt > 0.43: reasons.append(\"High DTI\")\n    if not emp: reasons.append(\"Unemployed\")\n    if not reasons: return (True, \"Approved\")\n    return (False, f\"Denied: {'; '.join(reasons)}\")",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Verify user authenticated",
+    "Verify clearance level matches file classification"
+  ],
+  "starterCode": "def check_file_access(user, file_obj):\n    pass",
+  "solution": "def check_file_access(user, file_obj):\n    if not user.get('is_authenticated'):\n        return 'Denied: Unauthenticated'\n    if file_obj['is_public']:\n        return 'Granted: Public File'\n    if user['role'] == 'admin':\n        return 'Granted: Admin Clearance'\n    if user['clearance'] >= file_obj['required_clearance']:\n        return 'Granted: Clearance Verified'\n    return 'Denied: Insufficient Clearance'",
+  "solutionExpl": "Uses flat guard checks to evaluate permission hierarchy.",
+  "expectedOutput": "'Granted: Clearance Verified'",
   "extensions": [
-    "Add tiered interest rates",
-    "Build a web interface",
-    "Add weighted scoring"
+    "Add audit logging for denied access attempts"
   ]
 }

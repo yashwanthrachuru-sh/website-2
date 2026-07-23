@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Inheritance is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Inheritance is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Child classes inherit from parents: `class Child(Parent):`. Use `super().__init__()` to initialize parent attributes. Check MRO with `.mro()`.",
+  "oneLineSummary": "Inheritance enables code reuse and hierarchical class specialization via super().",
   "keyTakeaways": [
-    "Inheritance solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "super() delegates calls to parent.",
+    "Child can override parent methods.",
+    "Python supports multiple inheritance."
   ],
   "memoryTricks": [
-    "Think of inheritance as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Inheritance in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Inheritance",
+      "trick": "Child Class = Parent Features + Custom Upgrades."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "AttributeError on parent field",
+      "cause": "Forgot to call super().__init__()",
+      "fix": "Add super().__init__() in child constructor"
+    }
   ],
-  "mindMap": {
-    "central": "Inheritance",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain MRO and C3 linearization"
+  ],
   "nextTopics": [
-    "Advanced inheritance",
-    "Testing inheritance",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Polymorphism",
+      "whyNext": "Learn uniform interfaces across diverse object types."
+    }
+  ]
 }

@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Python Standard Library — Basic Practice",
-    "description": "Write a basic python standard library implementation.",
-    "starterCode": "def basic_python_standard_library():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Random Dice Roller",
+    "description": "Return random int 1 to 6 using random module.",
+    "starterCode": "import random\ndef roll_dice(): pass",
+    "expectedOutput": "5",
+    "solution": "import random\ndef roll_dice(): return random.randint(1, 6)",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "random.randint(1, 6)"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Python Standard Library — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "ISO Date Formatter",
+    "description": "Return today's date formatted as YYYY-MM-DD string.",
+    "starterCode": "import datetime\ndef get_today_str(): pass",
+    "expectedOutput": "'2026-07-22'",
+    "solution": "import datetime\ndef get_today_str(): return datetime.date.today().isoformat()",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "datetime.date.today().isoformat()"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Python Standard Library — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "JSON File Data Merger",
+    "description": "Load two JSON strings and return merged dict using json module.",
+    "starterCode": "import json\ndef merge_json(j1, j2): pass",
+    "expectedOutput": "{'a': 1, 'b': 2}",
+    "solution": "import json\ndef merge_json(j1, j2):\n    d1, d2 = json.loads(j1), json.loads(j2)\n    return d1 | d2",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "json.loads() and | operator"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Python Standard Library",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Local File Shadowing",
+    "description": "Fix module shadowing error.",
+    "buggyCode": "# In file named random.py\nimport random",
+    "fixedCode": "# Rename file to my_random_test.py\nimport random",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "File name `random.py` shadows Python's `random` stdlib module."
     ]
   }
 }

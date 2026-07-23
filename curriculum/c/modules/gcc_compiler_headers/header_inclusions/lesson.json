@@ -3,23 +3,22 @@
   "title": "Header Inclusions",
   "technology": "C Programming",
   "module": "GCC Compiler & Headers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Header Inclusions.",
-    "Write error-free implementations utilizing Header Inclusions.",
-    "Debug and optimize performance characteristics of Header Inclusions."
+    "Understand Header Inclusions from zero to advanced level",
+    "Write clean, production-grade C Programming code for Header Inclusions",
+    "Debug edge cases and answer interview questions about Header Inclusions"
   ],
   "tags": [
-    "header",
-    "inclusions"
+    "header_inclusions",
+    "c",
+    "gcc_compiler_headers"
   ]
 }

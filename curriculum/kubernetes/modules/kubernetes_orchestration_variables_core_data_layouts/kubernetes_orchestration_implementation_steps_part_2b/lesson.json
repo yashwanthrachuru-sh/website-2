@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Implementation Steps Part 2B",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Implementation Steps Part 2B.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Implementation Steps Part 2B.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Implementation Steps Part 2B."
+    "Understand Kubernetes Orchestration Implementation Steps Part 2B from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Implementation Steps Part 2B",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Implementation Steps Part 2B"
   ],
   "tags": [
+    "kubernetes_orchestration_implementation_steps_part_2b",
     "kubernetes",
-    "orchestration",
-    "implementation",
-    "steps",
-    "part",
-    "2b"
+    "kubernetes_orchestration_variables_core_data_layouts"
   ]
 }

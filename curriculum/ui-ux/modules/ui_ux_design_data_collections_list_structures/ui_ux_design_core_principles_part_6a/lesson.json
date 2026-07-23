@@ -3,27 +3,22 @@
   "title": "UI/UX Design Core Principles Part 6A",
   "technology": "UI/UX Design",
   "module": "UI/UX Design Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: UI/UX Design Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of UI/UX Design Core Principles Part 6A.",
-    "Write error-free implementations utilizing UI/UX Design Core Principles Part 6A.",
-    "Debug and optimize performance characteristics of UI/UX Design Core Principles Part 6A."
+    "Understand UI/UX Design Core Principles Part 6A from zero to advanced level",
+    "Write clean, production-grade UI/UX Design code for UI/UX Design Core Principles Part 6A",
+    "Debug edge cases and answer interview questions about UI/UX Design Core Principles Part 6A"
   ],
   "tags": [
-    "ui/ux",
-    "design",
-    "core",
-    "principles",
-    "part",
-    "6a"
+    "ui_ux_design_core_principles_part_6a",
+    "ui-ux",
+    "ui_ux_design_data_collections_list_structures"
   ]
 }

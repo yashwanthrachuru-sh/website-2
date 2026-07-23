@@ -2,77 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What does a function return if there is no return statement?",
+      "question": "Why is `def func(lst=[])` dangerous in Python?",
       "options": [
-        "0",
-        "None/undefined",
-        "The last expression",
-        "Error"
+        "The default list is created once and shared across all function calls",
+        "It causes a SyntaxError",
+        "It is slower than tuple defaults",
+        "Lists cannot be passed to functions"
       ],
-      "answer": 1,
-      "explanation": "Functions without return return None (Python) or undefined (JS)."
-    },
-    {
-      "id": "q2",
-      "question": "What is the term for variables defined inside a function?",
-      "options": [
-        "Global",
-        "Local",
-        "Static",
-        "Dynamic"
-      ],
-      "answer": 1,
-      "explanation": "Variables defined inside a function are local to that function and cannot be accessed outside it."
-    },
-    {
-      "id": "q3",
-      "question": "What is a pure function?",
-      "options": [
-        "One that uses global variables",
-        "Same input always gives same output, no side effects",
-        "A function with no parameters",
-        "Any function defined in a library"
-      ],
-      "answer": 1,
-      "explanation": "Pure functions are deterministic and have no side effects — they do not modify external state."
-    },
-    {
-      "id": "q4",
-      "question": "What happens when a function calls itself?",
-      "options": [
-        "Infinite loop",
-        "Recursion",
-        "Stack overflow immediately",
-        "Memory leak"
-      ],
-      "answer": 1,
-      "explanation": "A function calling itself is recursion. It needs a base case to stop; otherwise it causes stack overflow."
-    },
-    {
-      "id": "q5",
-      "question": "Why use functions?",
-      "options": [
-        "They make code run faster",
-        "Reusability, organization, testability",
-        "They use less memory",
-        "They are required by the compiler"
-      ],
-      "answer": 1,
-      "explanation": "Functions provide reusability, organization, and testability — the three pillars of maintainable code."
+      "answer": 0,
+      "explanation": "Default parameter expressions are evaluated once when the function is defined, causing mutable objects to persist across calls.",
+      "difficulty": "intermediate"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: A function can only return one value.",
-      "answer": false,
-      "explanation": "In Python, return a tuple to effectively return multiple values. In JS, return an object/array."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Functions are first-class citizens in Python and JavaScript.",
+      "question": "True or False: `*args` in a function signature receives extra positional arguments as a tuple.",
       "answer": true,
-      "explanation": "Functions can be assigned to variables, passed as arguments, and returned from other functions."
+      "explanation": "True. `*args` collects positional arguments into a tuple."
     }
   ]
 }

@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Classes & Instances — Basic Practice",
-    "description": "Write a basic classes & instances implementation.",
-    "starterCode": "def basic_classes___instances():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Rectangle Class",
+    "description": "Create `Rectangle(width, height)` with `area()` method.",
+    "starterCode": "class Rectangle: pass",
+    "expectedOutput": "20",
+    "solution": "class Rectangle:\n    def __init__(self, w, h):\n        self.w = w\n        self.h = h\n    def area(self):\n        return self.w * self.h",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "return self.w * self.h"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Classes & Instances — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Counter Class with Increments",
+    "description": "Create `Counter` class with `inc()`, `dec()`, `get_val()`.",
+    "starterCode": "class Counter: pass",
+    "expectedOutput": "2",
+    "solution": "class Counter:\n    def __init__(self, init=0):\n        self.val = init\n    def inc(self): self.val += 1\n    def dec(self): self.val -= 1\n    def get_val(self): return self.val",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Track self.val"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Classes & Instances — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Slots Memory Optimization",
+    "description": "Create `Point3D` using `__slots__ = ['x', 'y', 'z']`.",
+    "starterCode": "class Point3D: pass",
+    "expectedOutput": "True",
+    "solution": "class Point3D:\n    __slots__ = ['x', 'y', 'z']\n    def __init__(self, x, y, z):\n        self.x = x\n        self.y = y\n        self.z = z",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Define __slots__ list"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Classes & Instances",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Missing Self Bug",
+    "description": "Fix missing self parameter in method header.",
+    "buggyCode": "class Car:\n    def drive(): print('vroom')",
+    "fixedCode": "class Car:\n    def drive(self): print('vroom')",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Method `drive()` lacks `self` parameter."
     ]
   }
 }

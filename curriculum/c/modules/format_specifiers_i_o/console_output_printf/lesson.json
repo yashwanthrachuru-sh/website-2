@@ -3,24 +3,22 @@
   "title": "Console Output printf",
   "technology": "C Programming",
   "module": "Format Specifiers I/O",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: GCC Compiler & Headers"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Console Output printf.",
-    "Write error-free implementations utilizing Console Output printf.",
-    "Debug and optimize performance characteristics of Console Output printf."
+    "Understand Console Output printf from zero to advanced level",
+    "Write clean, production-grade C Programming code for Console Output printf",
+    "Debug edge cases and answer interview questions about Console Output printf"
   ],
   "tags": [
-    "console",
-    "output",
-    "printf"
+    "console_output_printf",
+    "c",
+    "format_specifiers_i_o"
   ]
 }

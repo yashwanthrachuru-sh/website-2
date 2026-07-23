@@ -1,19 +1,16 @@
 {
   "questions": [
     {
-      "question": "Explain compiled vs interpreted languages. Where does python fit?",
-      "answer": "Compiled languages (C, Rust) produce machine code ahead of time. Interpreted languages use a runtime that reads and executes code on the fly. Python is compiled to bytecode, then interpreted by a VM — a hybrid approach giving portability and development speed.",
-      "followUp": "How does JIT compilation blur this line?"
+      "question": "What is the Python REPL and when would you use it over writing a script?",
+      "answer": "REPL stands for Read-Eval-Print Loop — the interactive Python interpreter started by typing 'python3' in a terminal. It reads input, evaluates it, prints the result, and loops. It's ideal for: (1) Quickly testing a function or expression, (2) Exploring an API or library, (3) Debugging — pasting problematic code and testing it in isolation, (4) Data exploration (Python's primary use in data science). Scripts are better when: code needs to be repeatable, shareable, or longer than a few lines.",
+      "level": "beginner",
+      "followUp": "What is Jupyter Notebook and how does it relate to the REPL?"
     },
     {
-      "question": "What is the GIL in Python and how does it affect concurrency?",
-      "answer": "The GIL prevents multiple native threads from executing Python bytecode simultaneously, simplifying memory management but limiting CPU-bound multi-threading. For CPU-bound work, use multiprocessing or C extensions.",
-      "followUp": "How does Node.js handle concurrency without a GIL?"
-    },
-    {
-      "question": "How do virtual environments solve dependency conflicts?",
-      "answer": "They create isolated directories with their own interpreter and packages, so different projects can use different dependency versions without conflict.",
-      "followUp": "How would you design a CI/CD pipeline for consistent environments?"
+      "question": "Explain why the pattern 'if __name__ == \"__main__\":' exists and why every Python script should use it.",
+      "answer": "When Python runs a file directly (python3 foo.py), it sets __name__ = '__main__'. When another file imports it (import foo), Python sets __name__ = 'foo'. Without the guard, any code at module level runs both when executed directly AND when imported. This causes side effects on import. The guard ensures demonstration/test code and entry points only run when the file is the main script, not when it's used as a library module.",
+      "level": "intermediate",
+      "followUp": "What would break in a library module that doesn't use this guard?"
     }
   ]
 }

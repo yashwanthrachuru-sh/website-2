@@ -1,11 +1,14 @@
 {
-  "title": "CSS Troubleshooting Part 9C System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of CSS Troubleshooting Part 9C.",
+  "title": "CSS Troubleshooting Part 9C Project",
+  "tagline": "Build a mini application using CSS Troubleshooting Part 9C",
+  "description": "Create a working CSS application demonstrating CSS Troubleshooting Part 9C.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "/* CSS3 Styling for CSS Troubleshooting Part 9C */\n.css_troubleshooting_part_9c-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1.5rem;\n  background: var(--surface);\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n}",
+  "solution": "/* CSS3 Styling for CSS Troubleshooting Part 9C */\n.css_troubleshooting_part_9c-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 1.5rem;\n  background: var(--surface);\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of CSS Troubleshooting Part 9C in CSS."
 }

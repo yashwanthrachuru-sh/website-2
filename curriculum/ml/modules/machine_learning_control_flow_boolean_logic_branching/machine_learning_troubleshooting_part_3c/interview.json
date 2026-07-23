@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is overfitting and how do you prevent it?",
-      "answer": "Overfitting: the model memorizes the training data (including noise) instead of learning generalizable patterns. It performs great on training data but poorly on new data. Prevention: (1) More training data. (2) Regularization (L1/Lasso, L2/Ridge) — penalize large weights. (3) Dropout (neural networks) — randomly zero out neurons during training. (4) Cross-validation — evaluate on multiple held-out sets. (5) Simpler model — fewer parameters. (6) Early stopping — stop training when validation loss starts increasing. (7) Data augmentation — generate more training examples from existing ones.",
+      "question": "Explain Machine Learning Troubleshooting Part 3C and its primary use case in Machine Learning.",
+      "answer": "Machine Learning Troubleshooting Part 3C provides a structured mechanism to handle core application logic cleanly.",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "What are common mistakes developers make with Machine Learning Troubleshooting Part 3C?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "What is the bias-variance tradeoff?",
-      "answer": "Bias: error from wrong assumptions — the model is too simple and misses patterns (underfitting). High bias = low accuracy on training AND test data. Variance: sensitivity to training data fluctuations — the model is too complex and learns noise (overfitting). High variance = high accuracy on training, low on test. The tradeoff: reducing bias (more complexity) increases variance, and vice versa. Goal: find the \"sweet spot\" with low bias AND low variance. Ensemble methods (Random Forest, Gradient Boosting) explicitly manage this tradeoff.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What is the difference between precision and recall?",
-      "answer": "Precision = true positives / (true positives + false positives). \"Of all the positives I predicted, how many were actually positive?\" Recall = true positives / (true positives + false negatives). \"Of all the actual positives, how many did I catch?\" Trade-off example: Cancer detection — prefer high RECALL (catch all cancers, even if some false alarms). Spam filter — prefer high PRECISION (every email in spam folder IS spam, even if some spam slips through to inbox). F1 score = harmonic mean of precision and recall — a balanced metric.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Machine Learning Troubleshooting Part 3C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Machine Learning Troubleshooting Part 3C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Machine Learning Troubleshooting Part 3C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Machine Learning Troubleshooting Part 3C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Machine Learning Troubleshooting Part 3C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Machine Learning Troubleshooting Part 3C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Machine Learning Troubleshooting Part 3C queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the Machine Learning runtime optimize Machine Learning Troubleshooting Part 3C under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

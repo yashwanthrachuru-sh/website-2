@@ -3,26 +3,22 @@
   "title": "AI Engineer Troubleshooting Part 1C",
   "technology": "AI Engineer",
   "module": "AI Engineer Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AI Engineer Troubleshooting Part 1C.",
-    "Write error-free implementations utilizing AI Engineer Troubleshooting Part 1C.",
-    "Debug and optimize performance characteristics of AI Engineer Troubleshooting Part 1C."
+    "Understand AI Engineer Troubleshooting Part 1C from zero to advanced level",
+    "Write clean, production-grade AI Engineer code for AI Engineer Troubleshooting Part 1C",
+    "Debug edge cases and answer interview questions about AI Engineer Troubleshooting Part 1C"
   ],
   "tags": [
-    "ai",
-    "engineer",
-    "troubleshooting",
-    "part",
-    "1c"
+    "ai_engineer_troubleshooting_part_1c",
+    "ai-engineer",
+    "ai_engineer_setup_architecture_foundations"
   ]
 }

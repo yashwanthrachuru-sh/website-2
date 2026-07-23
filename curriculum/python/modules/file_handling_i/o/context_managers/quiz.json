@@ -1,0 +1,424 @@
+{
+  "mcqs": [
+    {
+      "id": "q_1",
+      "question": "What statement in Python automatically manages resource cleanup (like closing files)?",
+      "options": [
+        "with",
+        "using",
+        "try",
+        "resource"
+      ],
+      "answer": "A",
+      "explanation": "The 'with' statement activates a context manager, ensuring automatic cleanup upon exit.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_2",
+      "question": "What dunder methods must a class implement to act as a custom Context Manager?",
+      "options": [
+        "__enter__ and __exit__",
+        "__start__ and __stop__",
+        "__open__ and __close__",
+        "__init__ and __del__"
+      ],
+      "answer": "A",
+      "explanation": "A context manager class implements `__enter__()` (returns resource) and `__exit__()` (handles cleanup/exceptions).",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_3",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 3?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 3 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_4",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 4?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 4 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_5",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 5?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 5 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_6",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 6?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 6 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_7",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 7?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 7 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_8",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 8?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 8 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_9",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 9?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 9 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_10",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 10?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 10 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Beginner",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_11",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 11?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 11 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_12",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 12?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 12 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_13",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 13?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 13 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_14",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 14?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 14 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_15",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 15?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 15 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_16",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 16?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 16 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_17",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 17?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 17 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_18",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 18?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 18 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_19",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 19?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 19 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_20",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 20?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 20 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Intermediate",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_21",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 21?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 21 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_22",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 22?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 22 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_23",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 23?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 23 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_24",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 24?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 24 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_25",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 25?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 25 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_26",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 26?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 26 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_27",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 27?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 27 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_28",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 28?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 28 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_29",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 29?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 29 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    },
+    {
+      "id": "q_30",
+      "question": "In Python Context Managers, which concept ensures correct execution during step 30?",
+      "options": [
+        "Adhering to standard syntax rules for Context Managers",
+        "Bypassing compiler validation entirely",
+        "Deleting memory allocation buffers on every loop",
+        "Using invalid identifiers without quotes"
+      ],
+      "answer": "A",
+      "explanation": "Step 30 in Context Managers relies on standard Python runtime evaluation rules and proper scope management.",
+      "difficulty": "Advanced",
+      "topic": "Context Managers"
+    }
+  ]
+}

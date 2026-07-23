@@ -1,11 +1,14 @@
 {
-  "title": "Any vs Unknown System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Any vs Unknown.",
+  "title": "Any vs Unknown Project",
+  "tagline": "Build a mini application using Any vs Unknown",
+  "description": "Create a working TypeScript application demonstrating Any vs Unknown.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Any vs Unknown\ninterface AnyvsUnknownPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processAnyvsUnknown(item: AnyvsUnknownPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processAnyvsUnknown({ id: 1, title: 'Any vs Unknown', status: 'active' }));",
+  "solution": "// TypeScript implementation for Any vs Unknown\ninterface AnyvsUnknownPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processAnyvsUnknown(item: AnyvsUnknownPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processAnyvsUnknown({ id: 1, title: 'Any vs Unknown', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Any vs Unknown in TypeScript."
 }

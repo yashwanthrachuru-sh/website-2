@@ -3,28 +3,22 @@
   "title": "SQL & Databases Core Principles Part 5A",
   "technology": "SQL & Databases",
   "module": "SQL & Databases Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: SQL & Databases Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of SQL & Databases Core Principles Part 5A.",
-    "Write error-free implementations utilizing SQL & Databases Core Principles Part 5A.",
-    "Debug and optimize performance characteristics of SQL & Databases Core Principles Part 5A."
+    "Understand SQL & Databases Core Principles Part 5A from zero to advanced level",
+    "Write clean, production-grade SQL & Databases code for SQL & Databases Core Principles Part 5A",
+    "Debug edge cases and answer interview questions about SQL & Databases Core Principles Part 5A"
   ],
   "tags": [
+    "sql_databases_core_principles_part_5a",
     "sql",
-    "&",
-    "databases",
-    "core",
-    "principles",
-    "part",
-    "5a"
+    "sql_databases_modular_functions_signature_scopes"
   ]
 }

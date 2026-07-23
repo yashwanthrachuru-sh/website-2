@@ -1,45 +1,8 @@
 {
-  "overview": "At the expert level, List Comprehensions involves tradeoffs between approaches, optimization for specific use cases, and design for maintainability.",
-  "industryContext": "In production Python systems, this is implemented with attention to performance and security.",
-  "examples": [],
-  "codeReviewChecklist": [
-    "Handles all errors?",
-    "Readable and maintainable?",
-    "Performance concerns?",
-    "Appropriate scale?"
-  ],
-  "testingPatterns": {
-    "unitTests": "Test components in isolation",
-    "integrationTests": "Test with dependencies",
-    "propertyBasedTests": "Test with random inputs",
-    "benchmarkTests": "Measure performance"
-  },
-  "refactoringGuide": {
-    "smell": "Implementation too complex or coupled",
-    "solution": "Break into smaller functions",
-    "steps": [
-      "Identify responsibilities",
-      "Separate concerns",
-      "Extract reusable parts",
-      "Verify"
-    ]
-  },
-  "securityConsiderations": [
-    "Validate inputs",
-    "Avoid exposing internal state",
-    "Log appropriately"
-  ],
-  "scalability": {
-    "considerations": "Design for statelessness for horizontal scaling.",
-    "recommendations": [
-      "Cache results",
-      "Use connection pooling",
-      "Monitor metrics"
-    ]
-  },
-  "complexityAnalysis": {
-    "timeComplexity": "Varies",
-    "spaceComplexity": "Varies",
-    "notes": "Analyze specific implementation for accurate complexity"
-  }
+  "examples": [
+    {
+      "code": "# Generator Expression vs List Comprehension Memory Test\nimport sys\nlist_comp = [x ** 2 for x in range(100000)]\ngen_exp = (x ** 2 for x in range(100000))\nprint('List Comp Bytes:', sys.getsizeof(list_comp)) # ~800,000 bytes\nprint('Gen Exp Bytes:', sys.getsizeof(gen_exp))     # ~200 bytes",
+      "explanation": "Generator expressions `(...)` compute items lazily on demand, consuming minimal memory."
+    }
+  ]
 }

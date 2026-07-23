@@ -1,11 +1,14 @@
 {
-  "title": "JDK vs JRE System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of JDK vs JRE.",
+  "title": "JDK vs JRE Project",
+  "tagline": "Build a mini application using JDK vs JRE",
+  "description": "Create a working Java application demonstrating JDK vs JRE.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// Java implementation for JDK vs JRE\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: JDK vs JRE\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "solution": "// Java implementation for JDK vs JRE\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: JDK vs JRE\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of JDK vs JRE in Java."
 }

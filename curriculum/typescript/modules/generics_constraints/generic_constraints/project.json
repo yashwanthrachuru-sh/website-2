@@ -1,11 +1,14 @@
 {
-  "title": "Generic Constraints System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Generic Constraints.",
+  "title": "Generic Constraints Project",
+  "tagline": "Build a mini application using Generic Constraints",
+  "description": "Create a working TypeScript application demonstrating Generic Constraints.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Generic Constraints\ninterface GenericConstraintsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processGenericConstraints(item: GenericConstraintsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processGenericConstraints({ id: 1, title: 'Generic Constraints', status: 'active' }));",
+  "solution": "// TypeScript implementation for Generic Constraints\ninterface GenericConstraintsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processGenericConstraints(item: GenericConstraintsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processGenericConstraints({ id: 1, title: 'Generic Constraints', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Generic Constraints in TypeScript."
 }

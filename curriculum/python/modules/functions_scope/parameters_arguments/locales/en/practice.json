@@ -1,45 +1,44 @@
 {
   "easy": {
-    "title": "Temperature Converter",
-    "description": "Write a function that converts Celsius to Fahrenheit.",
-    "starterCode": "def celsius_to_fahrenheit(c):\n    pass\n\nprint(celsius_to_fahrenheit(0))\nprint(celsius_to_fahrenheit(100))",
-    "solution": "def celsius_to_fahrenheit(c):\n    return (c * 9/5) + 32",
+    "title": "Flex Sum (*args)",
+    "description": "Write `sum_all(*args)` returning sum of all numbers passed.",
+    "starterCode": "def sum_all(*args):\n    pass",
+    "expectedOutput": "15",
+    "solution": "def sum_all(*args):\n    return sum(args)",
     "hints": [
-      "Formula: multiply by 9/5, add 32",
-      "Test with freezing (0°C = 32°F) and boiling (100°C = 212°F)"
+      "args is a tuple of inputs"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "String Utilities",
-    "description": "Write functions: reverse a string, check palindrome, count vowels.",
-    "starterCode": "def reverse(s): pass\ndef is_palindrome(s): pass\ndef count_vowels(s): pass\n\nprint(reverse(\"hello\"))\nprint(is_palindrome(\"racecar\"))\nprint(count_vowels(\"hello\"))",
-    "solution": "def reverse(s): return s[::-1]\ndef is_palindrome(s): return s == s[::-1]\ndef count_vowels(s): return sum(1 for c in s.lower() if c in 'aeiou')",
+    "title": "HTML Tag Generator (**kwargs)",
+    "description": "Write `make_tag(tag, content, **attrs)` returning HTML string e.g. `<a href='link'>Click</a>`.",
+    "starterCode": "def make_tag(tag, content, **attrs):\n    pass",
+    "expectedOutput": "'<a href=\"link\">Click</a>'",
+    "solution": "def make_tag(tag, content, **attrs):\n    attr_str = ''.join(f' {k}=\"{v}\"' for k, v in attrs.items())\n    return f'<{tag}{attr_str}>{content}</{tag}>'",
     "hints": [
-      "String slicing/array methods can help",
-      "A palindrome reads the same forward and backward"
+      "Format kwargs items as key=\"value\""
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Function Pipeline",
-    "description": "Create a compose/pipeline function that chains multiple functions together, passing each result to the next.",
-    "starterCode": "def compose(*funcs):\n    pass\n\n# compose(f, g)(x) = f(g(x))\ndef double(x): return x * 2\ndef add_one(x): return x + 1\n\npipeline = compose(double, add_one)\nprint(pipeline(5))  # 12",
-    "solution": "def compose(*funcs):\n    def composed(arg):\n        result = arg\n        for func in reversed(funcs):\n            result = func(result)\n        return result\n    return composed",
+    "title": "Strict Type Enforcer Decorator",
+    "description": "Write decorator verifying keyword args match target types.",
+    "starterCode": "def enforce_types(**type_specs):\n    pass",
+    "expectedOutput": "True",
+    "solution": "def enforce_types(**type_specs):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for param, expected_type in type_specs.items():\n                if param in kwargs and not isinstance(kwargs[param], expected_type):\n                    raise TypeError(f'{param} must be {expected_type}')\n            return func(*args, **kwargs)\n        return wrapper\n    return decorator",
     "hints": [
-      "Functions execute from right to left in compose",
-      "Each function receives the previous result"
+      "Inspect kwargs and check isinstance against spec"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Function",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def add(x, y):\n    sum = x + y\ndef main():\n    result = add(3, 4)\n    print(result * 2)",
-    "fixedCode": "def add(x, y):\n    return x + y\n\ndef main():\n    result = add(3, 4)\n    print(result * 2)  # 14",
+    "title": "Fix Default Parameter Order Bug",
+    "description": "Fix SyntaxError in function header parameter order.",
+    "buggyCode": "def build_profile(title='Guest', name):\n    return f'{title} {name}'",
+    "fixedCode": "def build_profile(name, title='Guest'):\n    return f'{title} {name}'",
     "bugs": [
-      "Missing return statement — function returns None/undefined",
-      "Arithmetic on None/undefined causes NaN/TypeError"
+      "Non-default parameter `name` follows default parameter `title`."
     ]
   }
 }

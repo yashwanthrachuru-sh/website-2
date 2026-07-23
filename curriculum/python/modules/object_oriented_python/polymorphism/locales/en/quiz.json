@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Polymorphism?",
+      "question": "What decorator marks a method as mandatory for subclasses in an Abstract Base Class?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "@abstractmethod",
+        "@interface",
+        "@override",
+        "@mandatory"
       ],
       "answer": 0,
-      "explanation": "Polymorphism is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Polymorphism exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "`@abstractmethod` from `abc` module marks required interface methods.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Polymorphism is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Polymorphism improves code quality.",
+      "question": "True or False: An Abstract Base Class with unimplemented `@abstractmethod` cannot be instantiated.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Instantiating raises TypeError."
     }
   ]
 }

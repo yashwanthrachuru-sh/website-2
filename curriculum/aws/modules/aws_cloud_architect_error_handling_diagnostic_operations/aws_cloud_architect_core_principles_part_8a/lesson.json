@@ -3,28 +3,22 @@
   "title": "AWS Cloud Architect Core Principles Part 8A",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Core Principles Part 8A.",
-    "Write error-free implementations utilizing AWS Cloud Architect Core Principles Part 8A.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Core Principles Part 8A."
+    "Understand AWS Cloud Architect Core Principles Part 8A from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Core Principles Part 8A",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Core Principles Part 8A"
   ],
   "tags": [
+    "aws_cloud_architect_core_principles_part_8a",
     "aws",
-    "cloud",
-    "architect",
-    "core",
-    "principles",
-    "part",
-    "8a"
+    "aws_cloud_architect_error_handling_diagnostic_operations"
   ]
 }

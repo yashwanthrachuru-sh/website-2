@@ -3,25 +3,22 @@
   "title": "HTML Troubleshooting Part 7C",
   "technology": "HTML",
   "module": "HTML Advanced Abstractions & Type Blueprints",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Data Collections & List Structures"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Troubleshooting Part 7C.",
-    "Write error-free implementations utilizing HTML Troubleshooting Part 7C.",
-    "Debug and optimize performance characteristics of HTML Troubleshooting Part 7C."
+    "Understand HTML Troubleshooting Part 7C from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Troubleshooting Part 7C",
+    "Debug edge cases and answer interview questions about HTML Troubleshooting Part 7C"
   ],
   "tags": [
+    "html_troubleshooting_part_7c",
     "html",
-    "troubleshooting",
-    "part",
-    "7c"
+    "html_advanced_abstractions_type_blueprints"
   ]
 }

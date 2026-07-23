@@ -1,18 +1,10 @@
-{
-  "recommendations": [
-    {
-      "title": "Tuple Immutability — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Tuple Immutability for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Tuple Immutability Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Tuple Immutability patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Tuples and Immutability",
+    "video_id": "NI2646mwxn0",
+    "url": "https://www.youtube.com/watch?v=NI2646mwxn0",
+    "channel": "Corey Schafer",
+    "duration": "8m",
+    "description": "Complete guide to Python tuples and immutability."
+  }
+]

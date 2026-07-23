@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Import Statements — Basic Practice",
-    "description": "Write a basic import statements implementation.",
-    "starterCode": "def basic_import_statements():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Alias Math Import",
+    "description": "Import math as m and calculate sqrt of 144.",
+    "starterCode": "def get_sqrt(): pass",
+    "expectedOutput": "12.0",
+    "solution": "import math as m\ndef get_sqrt(): return m.sqrt(144)",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "import math as m"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Import Statements — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Dynamic Module Loader",
+    "description": "Write function importing module by string name using `importlib`.",
+    "starterCode": "import importlib\ndef load_mod(name): pass",
+    "expectedOutput": "True",
+    "solution": "import importlib\ndef load_mod(name):\n    mod = importlib.import_module(name)\n    return mod is not None",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "importlib.import_module(name)"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Import Statements — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Inspect sys.path Searcher",
+    "description": "Return True if dir_path exists in sys.path.",
+    "starterCode": "import sys\ndef in_path(p): pass",
+    "expectedOutput": "True",
+    "solution": "import sys\ndef in_path(p):\n    return p in sys.path",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Check p in sys.path"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Import Statements",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Wildcard Import",
+    "description": "Replace wildcard import with explicit imports.",
+    "buggyCode": "from math import *",
+    "fixedCode": "from math import sqrt, pi",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Wildcard imports pollute namespace."
     ]
   }
 }

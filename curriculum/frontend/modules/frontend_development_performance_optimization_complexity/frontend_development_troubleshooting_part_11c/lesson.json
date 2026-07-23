@@ -3,26 +3,22 @@
   "title": "Frontend Development Troubleshooting Part 11C",
   "technology": "Frontend Development",
   "module": "Frontend Development Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Frontend Development Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Frontend Development Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Frontend Development Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Frontend Development Troubleshooting Part 11C."
+    "Understand Frontend Development Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Frontend Development code for Frontend Development Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Frontend Development Troubleshooting Part 11C"
   ],
   "tags": [
+    "frontend_development_troubleshooting_part_11c",
     "frontend",
-    "development",
-    "troubleshooting",
-    "part",
-    "11c"
+    "frontend_development_performance_optimization_complexity"
   ]
 }

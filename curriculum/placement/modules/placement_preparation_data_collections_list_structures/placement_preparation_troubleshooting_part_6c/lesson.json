@@ -3,26 +3,22 @@
   "title": "Placement Preparation Troubleshooting Part 6C",
   "technology": "Placement Preparation",
   "module": "Placement Preparation Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Placement Preparation Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Placement Preparation Troubleshooting Part 6C.",
-    "Write error-free implementations utilizing Placement Preparation Troubleshooting Part 6C.",
-    "Debug and optimize performance characteristics of Placement Preparation Troubleshooting Part 6C."
+    "Understand Placement Preparation Troubleshooting Part 6C from zero to advanced level",
+    "Write clean, production-grade Placement Preparation code for Placement Preparation Troubleshooting Part 6C",
+    "Debug edge cases and answer interview questions about Placement Preparation Troubleshooting Part 6C"
   ],
   "tags": [
+    "placement_preparation_troubleshooting_part_6c",
     "placement",
-    "preparation",
-    "troubleshooting",
-    "part",
-    "6c"
+    "placement_preparation_data_collections_list_structures"
   ]
 }

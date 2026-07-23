@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Key Value Pairs — Basic Practice",
-    "description": "Write a basic key value pairs implementation.",
-    "starterCode": "def basic_key_value_pairs():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Character Frequency Map",
+    "description": "Return dictionary mapping each char to its frequency.",
+    "starterCode": "def count_chars(s):\n    pass",
+    "expectedOutput": "{'a': 2}",
+    "solution": "def count_chars(s):\n    counts = {}\n    for c in s:\n        counts[c] = counts.get(c, 0) + 1\n    return counts",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Use counts.get(c, 0) + 1"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Key Value Pairs — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Invert Dictionary",
+    "description": "Invert dict keys and values (assume unique values). `{'a': 1}` -> `{1: 'a'}`.",
+    "starterCode": "def invert_dict(d):\n    pass",
+    "expectedOutput": "{1: 'a'}",
+    "solution": "def invert_dict(d):\n    return {v: k for k, v in d.items()}",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Use dict comprehension {v: k for k, v in d.items()}"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Key Value Pairs — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Deep Nested Dict Getter",
+    "description": "Write `get_nested(d, path_str, default=None)` where path_str is `'user.profile.name'`.",
+    "starterCode": "def get_nested(d, path_str, default=None):\n    pass",
+    "expectedOutput": "'Alice'",
+    "solution": "def get_nested(d, path_str, default=None):\n    keys = path_str.split('.')\n    curr = d\n    for k in keys:\n        if isinstance(curr, dict) and k in curr:\n            curr = curr[k]\n        else:\n            return default\n    return curr",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Split path string by '.' and traverse"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Key Value Pairs",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Unhashable Key Error",
+    "description": "Fix TypeError trying to use list as dict key.",
+    "buggyCode": "d = {}\nkey = [1, 2]\nd[key] = 'val'",
+    "fixedCode": "d = {}\nkey = (1, 2)\nd[key] = 'val'",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Lists are unhashable. Convert key list to immutable tuple `(1, 2)`."
     ]
   }
 }

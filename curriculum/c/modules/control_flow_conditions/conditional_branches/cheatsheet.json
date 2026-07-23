@@ -1,22 +1,17 @@
 {
-  "syntax": "## Conditionals Cheat Sheet\n\n### Pattern\n```\nif (condition) { run this }\nelse if (other) { run this }\nelse { fallback }\n```\n\n- Check truthiness, not equality where possible\n- Prefer early returns over deeply nested else chains\n- Use switch/match for multiple known values",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Conditional Branches Cheat Sheet",
+  "printNote": "Quick reference for Conditional Branches in C Programming.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// C/C++ implementation for Conditional Branches",
+          "example": "// C/C++ implementation for Conditional Branches\n#include <iostream>\n#include <vector>\n#include <string>\n\nvoid runProcess(const std::string& label) {\n    std::cout << \"Executing C++ routines for \" << label << std::endl;\n}\n\nint main() {\n    runProcess(\"Conditional Branches\");\n    return 0;\n}",
+          "description": "Basic syntax for Conditional Branches",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

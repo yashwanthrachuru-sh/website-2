@@ -1,144 +1,148 @@
 {
+  "checkpoints": [
+    {
+      "question": "What happens in Python when you execute: `x = 10; x = 'Python'`?",
+      "options": [
+        "Python throws a TypeError because `x` was initialized as an integer.",
+        "Python creates a string object `'Python'` and updates `x` to point to it.",
+        "Python converts `'Python'` into an integer ASCII representation.",
+        "The program crashes at runtime during memory allocation."
+      ],
+      "correct": 1,
+      "explanation": "In Python, variables do not have fixed types; objects do. Reassigning `x` makes `x` reference the new string object `'Python'`."
+    },
+    {
+      "question": "Which function is the recommended Pythonic way to verify whether a variable `val` is a string or list?",
+      "options": [
+        "type(val) == str or type(val) == list",
+        "isinstance(val, (str, list))",
+        "val.has_type(str, list)",
+        "typeof(val) in ['string', 'array']"
+      ],
+      "correct": 1,
+      "explanation": "`isinstance(val, (str, list))` is the standard Pythonic method because it accounts for class inheritance and accepts a tuple of types."
+    }
+  ],
   "mcqs": [
     {
-      "id": "q_1",
-      "question": "What is the primary role of Dynamic Typing in Python?",
+      "id": "q1",
+      "question": "Why is Python classified as a dynamically-typed language?",
       "options": [
-        "To manage and coordinate state transformations for Dynamic Typing in Python.",
-        "To override platform-level memory access constraints.",
-        "To run asynchronous file compression routines.",
-        "To construct direct database socket bindings."
+        "Variables must be declared with their data type before assignment.",
+        "Type checking occurs at runtime, and variables can reference values of any type.",
+        "Variables automatically convert their types during arithmetic operations.",
+        "Code is compiled into C binary code prior to execution."
       ],
-      "answer": "A",
-      "explanation": "Dynamic Typing in Python organizes logic flow and handles operations safely at runtime.",
-      "difficulty": "Beginner",
-      "topic": "Dynamic Typing in Python"
+      "answer": "B",
+      "explanation": "Python performs type checks dynamically at runtime when code executes, allowing variables to bind to objects of any data type."
     },
     {
-      "id": "q_2",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q2",
+      "question": "What will `print(type(5 / 2))` output in Python 3?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "<class 'int'>",
+        "<class 'float'>",
+        "<class 'double'>",
+        "<class 'number'>"
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
-      "topic": "Dynamic Typing in Python"
+      "answer": "B",
+      "explanation": "In Python 3, standard division (`/`) always returns a `<class 'float'>`, even if the division has no remainder."
     },
     {
-      "id": "q_3",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q3",
+      "question": "What is the result of evaluating `isinstance(True, int)` in Python?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "False",
+        "True",
+        "TypeError",
+        "None"
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
-      "topic": "Dynamic Typing in Python"
+      "answer": "B",
+      "explanation": "In Python, `bool` is a subclass of `int`. `True` has an integer value of 1 and `False` has 0, so `isinstance(True, int)` evaluates to True."
     },
     {
-      "id": "q_4",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q4",
+      "question": "What happens when you run `'Score: ' + 100` in Python?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "Evaluates to `'Score: 100'`",
+        "Evaluates to `'Score: 100.0'`",
+        "Raises a `TypeError`",
+        "Raises a `ValueError`"
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
-      "topic": "Dynamic Typing in Python"
+      "answer": "C",
+      "explanation": "Python is strongly typed and will not implicitly convert integer 100 into a string for concatenation. It raises a TypeError."
     },
     {
-      "id": "q_5",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q5",
+      "question": "Which of the following describes CPython's reference counting mechanism for garbage collection?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "Objects are deleted immediately when their reference count (`ob_refcnt`) reaches zero.",
+        "Objects are kept in memory until the program terminates.",
+        "Garbage collection runs only once every 5 minutes in a background thread.",
+        "Reference counts are incremented only when variables are deleted."
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
-      "topic": "Dynamic Typing in Python"
+      "explanation": "CPython uses reference counting as its primary memory management strategy. When an object's `ob_refcnt` hits 0, its memory is deallocated."
     },
     {
-      "id": "q_6",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q6",
+      "question": "What does the statement `val = None` signify in Python?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "`val` is set to 0 in memory.",
+        "`val` is assigned an empty string `''`.",
+        "`val` points to the singleton `NoneType` object indicating absence of value.",
+        "`val` is an undefined variable that raises NameError if accessed."
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
-      "topic": "Dynamic Typing in Python"
+      "answer": "C",
+      "explanation": "`None` is Python's built-in singleton object representing the absence of a value, belonging to class `NoneType`."
     },
     {
-      "id": "q_7",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q7",
+      "question": "What is the recommended PEP 8 convention for checking if a variable `item` is `None`?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "if item == None:",
+        "if item is None:",
+        "if item.is_none():",
+        "if type(item) == None:"
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Advanced",
-      "topic": "Dynamic Typing in Python"
+      "answer": "B",
+      "explanation": "PEP 8 specifies using identity comparison `if item is None:` because `is` checks memory identity with the `None` singleton."
     },
     {
-      "id": "q_8",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q8",
+      "question": "How do Type Hints (e.g. `def add(x: int) -> int:`) affect Python's runtime execution?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "They enforce strict static typing and raise runtime exceptions on type mismatch.",
+        "They automatically convert incorrect input types into the expected type.",
+        "They are ignored by the Python runtime and serve as annotations for IDEs and static checkers like mypy.",
+        "They speed up code execution by pre-allocating static C memory buffers."
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Advanced",
-      "topic": "Dynamic Typing in Python"
+      "answer": "C",
+      "explanation": "Type hints in Python are purely informational at runtime; the Python interpreter does not enforce type hints when code executes."
     },
     {
-      "id": "q_9",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q9",
+      "question": "What is the result of integer division `17 // 5` in Python?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "3.4",
+        "3",
+        "4",
+        "3.0"
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Advanced",
-      "topic": "Dynamic Typing in Python"
+      "answer": "B",
+      "explanation": "The floor division operator (`//`) divides numbers and rounds down to the nearest integer, producing `3` for `17 // 5`."
     },
     {
-      "id": "q_10",
-      "question": "In python, which of the following is true about Dynamic Typing in Python?",
+      "id": "q10",
+      "question": "What happens when you declare a variable named `list = [1, 2, 3]` in Python?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "It raises a SyntaxError because `list` is a reserved keyword.",
+        "It successfully creates the variable but shadows Python's built-in `list` class.",
+        "It creates a immutable tuple instead of a list.",
+        "It throws a NameError at runtime."
       ],
-      "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Advanced",
-      "topic": "Dynamic Typing in Python"
+      "answer": "B",
+      "explanation": "In Python `list` is a built-in type name, not a reserved keyword. Assigning to `list` shadows the built-in function in that scope."
     }
   ]
 }

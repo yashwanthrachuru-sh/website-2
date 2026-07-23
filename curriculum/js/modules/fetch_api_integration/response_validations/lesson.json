@@ -3,23 +3,22 @@
   "title": "Response Validations",
   "technology": "JavaScript",
   "module": "Fetch API integration",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Async Await Syntax"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Response Validations.",
-    "Write error-free implementations utilizing Response Validations.",
-    "Debug and optimize performance characteristics of Response Validations."
+    "Understand Response Validations from zero to advanced level",
+    "Write clean, production-grade JavaScript code for Response Validations",
+    "Debug edge cases and answer interview questions about Response Validations"
   ],
   "tags": [
-    "response",
-    "validations"
+    "response_validations",
+    "js",
+    "fetch_api_integration"
   ]
 }

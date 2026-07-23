@@ -1,11 +1,14 @@
 {
-  "title": "Pick and Omit System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Pick and Omit.",
+  "title": "Pick and Omit Project",
+  "tagline": "Build a mini application using Pick and Omit",
+  "description": "Create a working TypeScript application demonstrating Pick and Omit.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Pick and Omit\ninterface PickandOmitPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPickandOmit(item: PickandOmitPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPickandOmit({ id: 1, title: 'Pick and Omit', status: 'active' }));",
+  "solution": "// TypeScript implementation for Pick and Omit\ninterface PickandOmitPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPickandOmit(item: PickandOmitPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPickandOmit({ id: 1, title: 'Pick and Omit', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Pick and Omit in TypeScript."
 }

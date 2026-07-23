@@ -1,31 +1,19 @@
 {
-  "officialDocs": "https://docs.microsoft.com/en-us/ OR https://docs.python.org/3/",
-  "books": [
+  "links": [
     {
-      "title": "Clean Code",
-      "author": "Robert C. Martin"
+      "type": "official_doc",
+      "title": "Official Python Documentation",
+      "url": "https://docs.python.org/3/"
     },
     {
-      "title": "Design Patterns",
-      "author": "Gang of Four"
-    }
-  ],
-  "articles": [
+      "type": "official_doc",
+      "title": "Python Standard Library Reference",
+      "url": "https://docs.python.org/3/library/"
+    },
     {
-      "title": "Understanding Function Definitions Internals",
-      "url": "https://medium.com"
+      "type": "official_doc",
+      "title": "PEP 8 Style Guide",
+      "url": "https://peps.python.org/pep-0008/"
     }
-  ],
-  "references": [
-    "MDN Web Docs",
-    "Stack Overflow Guide"
-  ],
-  "externalTools": [
-    "Visual Studio Code",
-    "Git"
-  ],
-  "practiceWebsites": [
-    "LeetCode",
-    "HackerRank"
   ]
 }

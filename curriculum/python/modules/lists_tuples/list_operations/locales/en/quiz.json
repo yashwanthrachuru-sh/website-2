@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is List Operations?",
+      "question": "What is returned by `lst.append(x)`?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "None",
+        "The modified list",
+        "The index of appended item",
+        "Length of list"
       ],
       "answer": 0,
-      "explanation": "List Operations is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does List Operations exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "In-place mutation methods like .append(), .sort(), and .reverse() return None in Python.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: List Operations is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding List Operations improves code quality.",
+      "question": "True or False: Python list indexing `lst[-1]` accesses the last element.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Negative indices count backwards from the end."
     }
   ]
 }

@@ -3,27 +3,22 @@
   "title": "Data Science Implementation Steps Part 3B",
   "technology": "Data Science",
   "module": "Data Science Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Science Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Implementation Steps Part 3B.",
-    "Write error-free implementations utilizing Data Science Implementation Steps Part 3B.",
-    "Debug and optimize performance characteristics of Data Science Implementation Steps Part 3B."
+    "Understand Data Science Implementation Steps Part 3B from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Implementation Steps Part 3B",
+    "Debug edge cases and answer interview questions about Data Science Implementation Steps Part 3B"
   ],
   "tags": [
-    "data",
-    "science",
-    "implementation",
-    "steps",
-    "part",
-    "3b"
+    "data_science_implementation_steps_part_3b",
+    "data-science",
+    "data_science_control_flow_boolean_logic_branching"
   ]
 }

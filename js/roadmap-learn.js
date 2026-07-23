@@ -23,63 +23,37 @@ let examQuestions      = [];
 let examAnswers        = {};
 let examSubmitted      = false;
 
-// ── Course Stepper State ───────────────────────────────────────
+// ── Course Stepper State (Driven by StageEngine) ────────────────
+let currentStageProgress = null;
+let effectiveStages = [];
 let activeStepIndex = 0;
-let stepProgress = {};
-const STEPS = [
-  { id: 'overview', label: 'Overview', tab: 'overview' },
-  { id: 'beginner-learn', label: 'Beginner Learn', tab: 'beginner' },
-  { id: 'beginner-practice', label: 'Beginner Practice', tab: 'beginner' },
-  { id: 'beginner-checkpoint', label: 'Beginner Checkpoint', tab: 'beginner' },
-  { id: 'intermediate-learn', label: 'Intermediate Learn', tab: 'intermediate' },
-  { id: 'intermediate-practice', label: 'Intermediate Practice', tab: 'intermediate' },
-  { id: 'intermediate-checkpoint', label: 'Intermediate Checkpoint', tab: 'intermediate' },
-  { id: 'expert-learn', label: 'Expert Learn', tab: 'expert' },
-  { id: 'expert-debugging', label: 'Debugging Challenge', tab: 'debugging' },
-  { id: 'expert-project', label: 'Mini Project', tab: 'project' },
-  { id: 'final-assessment', label: 'Final Assessment', tab: 'assessment' },
-  { id: 'cheatsheet', label: 'Cheat Sheet', tab: 'cheatsheet' },
-  { id: 'interview', label: 'Interview Prep', tab: 'interview' },
-  { id: 'revision', label: 'Revision Notes', tab: 'revision' },
-  { id: 'complete', label: 'Completion', tab: 'revision' }
-];
-
-function initStepperState() {
-  activeStepIndex = 0;
-  stepProgress = {
-    'overview': true
-  };
-  STEPS.forEach(s => {
-    if (s.id !== 'overview') {
-      stepProgress[s.id] = false;
-    }
-  });
-}
-
-let explanationMode    = 'detailed'; // detailed, beginner, advanced
-
-// ── Tab & Stage Progression State ──────────────────────────────
-let completedStages = {};
 
 function getNavigationStages(ui) {
-  return [
-    { id: 'overview', label: 'Overview' },
-    { id: 'learn', label: 'Learn & Theory' },
-    { id: 'codelab', label: 'Interactive Code Lab' },
-    { id: 'practice', label: 'Practice Lab' },
-    { id: 'interview', label: 'Interview Prep' },
-    { id: 'project', label: 'Project & Assessment' },
-    { id: 'complete', label: 'Completion' }
-  ];
+  if (!ui) return window.StageEngine.LESSON_STAGES;
+  return window.StageEngine.getEffectiveStages(ui);
 }
 
 function initCompletedStages(ui) {
-  completedStages = { 'overview': true };
-  if (ui.completed) {
-    const stages = getNavigationStages(ui);
-    stages.forEach(s => {
-      completedStages[s.id] = true;
-    });
+  if (!currentLessonId && !ui?.id) {
+    currentStageProgress = window.StageEngine ? window.StageEngine.createInitialProgress(null) : null;
+    effectiveStages = window.StageEngine ? window.StageEngine.LESSON_STAGES : [];
+    return;
+  }
+  const lid = currentLessonId || ui.id;
+  currentStageProgress = ui?.lessonStageProgress 
+    ?? (window.StageEngine ? window.StageEngine.LessonStageProgress.load(lid) : null) 
+    ?? window.StageEngine.createInitialProgress(lid);
+  effectiveStages = window.StageEngine ? window.StageEngine.getEffectiveStages(ui) : [];
+
+  // Auto-mark optional stages missing content as skipped
+  const skipped = [];
+  (window.StageEngine?.LESSON_STAGES || []).forEach(s => {
+    if (!s.required && !effectiveStages.find(es => es.id === s.id)) {
+      skipped.push(s.id);
+    }
+  });
+  if (skipped.length > 0 && currentStageProgress?.markSkipped) {
+    currentStageProgress.markSkipped(skipped);
   }
 }
 
@@ -87,31 +61,34 @@ function isTabUnlocked(tabId, stages) {
   if (currentLessonUI?.completed) return true;
   if (tabId === 'overview' || tabId === 'notes') return true;
   
-  const idx = stages.findIndex(s => s.id === tabId);
-  if (idx === -1) return false;
-  
-  for (let i = 0; i < idx; i++) {
-    if (!completedStages[stages[i].id]) {
-      return false;
-    }
-  }
-  return true;
+  if (!currentStageProgress) return tabId === 'overview';
+
+  const eff = stages || effectiveStages || [];
+  const targetIdx = eff.findIndex(s => s?.id === tabId);
+  if (targetIdx === -1) return false;
+
+  // Unlocked if it's within furthestIndex or already completed
+  const furthest = currentStageProgress?.furthestIndex ?? 0;
+  const completed = Array.isArray(currentStageProgress?.completedSet) ? currentStageProgress.completedSet : [];
+  return targetIdx <= furthest || completed.includes(tabId);
 }
 
 function renderTabHeaders() {
   const tabsContainer = document.getElementById('learnTabs');
   if (!tabsContainer || !currentLessonUI) return;
   tabsContainer.innerHTML = '';
+
   const stages = getNavigationStages(currentLessonUI);
   stages.forEach((stage) => {
     const btn = document.createElement('button');
     btn.className = 'learn-tab';
     btn.dataset.tab = stage.id;
-    btn.textContent = stage.label;
+    btn.innerHTML = `${stage.icon || ''} ${stage.label}`;
 
     const unlocked = isTabUnlocked(stage.id, stages);
     if (!unlocked) {
       btn.classList.add('locked');
+      btn.title = 'Complete preceding stages to unlock';
     }
 
     btn.addEventListener('click', () => {
@@ -119,18 +96,10 @@ function renderTabHeaders() {
         showToast('Please complete preceding stages to unlock this section.', 'warning');
         return;
       }
-      switchTab(stage.id);
+      goToStepId(stage.id);
     });
     tabsContainer.appendChild(btn);
   });
-
-  // Always unlocked Notes tab at the end
-  const notesBtn = document.createElement('button');
-  notesBtn.className = 'learn-tab';
-  notesBtn.dataset.tab = 'notes';
-  notesBtn.textContent = 'Notes';
-  notesBtn.addEventListener('click', () => switchTab('notes'));
-  tabsContainer.appendChild(notesBtn);
 
   // Sync active class
   const activeTabId = getActiveTabId();
@@ -146,45 +115,36 @@ function getActiveTabId() {
   return activeTabEl ? activeTabEl.dataset.tab : null;
 }
 
-function navigateToNextTab(currentTabId, nextTabId) {
-  completedStages[currentTabId] = true;
-  renderTabHeaders();
-  switchTab(nextTabId);
-}
-
-function getStageNavigation(stageId, stages) {
-  const idx = stages.findIndex(s => s.id === stageId);
-  if (idx === -1) return { prev: null, next: null };
-  const prev = idx > 0 ? stages[idx - 1].id : null;
-  const next = idx < stages.length - 1 ? stages[idx + 1].id : null;
-  return { prev, next };
-}
-
 function renderNavigationButtons(currentTabId) {
   const ui = window.currentLessonUI;
   if (!ui) return '';
-  const stages = getNavigationStages(ui);
-  const { prev, next } = getStageNavigation(currentTabId, stages);
-  
+
+  const eff = effectiveStages.length > 0 ? effectiveStages : getNavigationStages(ui);
+  const idx = eff.findIndex(s => s.id === currentTabId);
+  const activeIdx = idx !== -1 ? idx : activeStepIndex;
+
+  const prevStage = window.StageEngine.getPrevStage(eff, activeIdx);
+  const nextStage = window.StageEngine.getNextStage(eff, activeIdx);
+
   let prevBtnHtml = '';
-  if (prev) {
-    let prevLabel = 'Back';
-    const s = stages.find(x => x.id === prev);
-    if (s) prevLabel = 'Back to ' + s.label;
-    prevBtnHtml = `<button class="btn btn-secondary" onclick="switchTab('${prev}')">← ${prevLabel}</button>`;
+  if (prevStage) {
+    prevBtnHtml = `<button class="btn btn-secondary" onclick="goToStepIndex(${activeIdx - 1})">${window.StageEngine.getStageNavLabel(prevStage, 'prev')}</button>`;
+  } else {
+    prevBtnHtml = `<a class="btn btn-secondary" href="roadmaps.html">← Back to Roadmaps</a>`;
   }
-  
+
   let nextBtnHtml = '';
-  if (next) {
-    let nextLabel = 'Continue';
-    const s = stages.find(x => x.id === next);
-    if (s) nextLabel = 'Continue to ' + s.label;
-    nextBtnHtml = `<button class="btn btn-primary" onclick="navigateToNextTab('${currentTabId}', '${next}')">${nextLabel} →</button>`;
+  if (nextStage) {
+    const actionLabel = window.StageEngine.getStageNavLabel(nextStage, 'next');
+    nextBtnHtml = `<button class="btn btn-primary" onclick="goToStepIndex(${activeIdx + 1})">${actionLabel}</button>`;
+  } else {
+    nextBtnHtml = `<button class="btn btn-primary" onclick="goToStepIndex(${eff.length - 1})" style="background:var(--emerald);color:#fff;">View Lesson Complete 🎉</button>`;
   }
-  
+
   return `
-    <div class="step-nav-footer" style="display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2.5rem;">
+    <div class="step-nav-footer" style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:1.5rem;margin-top:2.5rem;">
       <div>${prevBtnHtml}</div>
+      <div style="font-size:12px;color:var(--mist-dim);font-family:var(--font-mono);font-weight:600;">Stage ${activeIdx + 1} of ${eff.length}</div>
       <div>${nextBtnHtml}</div>
     </div>
   `;
@@ -244,10 +204,15 @@ async function loadRoadmap() {
   if (!data.success) throw new Error(data.message || 'Failed to load roadmap');
   currentRoadmap = data.roadmap;
 
-  // Cache lesson completion statuses
-  currentRoadmap.modules.forEach(m => {
-    m.lessons.forEach(l => {
-      lessonProgressMap[l.id] = !!l.completed;
+  // Cache lesson completion statuses and stage progress
+  (currentRoadmap?.modules || []).forEach(m => {
+    (m?.lessons || []).forEach(l => {
+      if (l) {
+        if (!l.lessonStageProgress && window.StageEngine) {
+          l.lessonStageProgress = window.StageEngine.LessonStageProgress.load(l.id);
+        }
+        lessonProgressMap[l.id] = !!l.completed;
+      }
     });
   });
 
@@ -302,12 +267,51 @@ function renderSidebar() {
           ${doneCount} / ${totalCount} lessons complete
         </div>
         <div class="lesson-list">
-          ${mod.lessons.map(les => `
-            <div class="lesson-list-item ${les.id === currentLessonId ? 'active' : ''} ${lessonProgressMap[les.id] ? 'completed' : ''}" data-lid="${les.id}">
-              <span class="lesson-list-item-icon">${lessonProgressMap[les.id] ? '✓' : '📄'}</span>
-              <span style="flex:1;">${les.title.split('— Lesson')[1]?.replace(/^\s*\d+:\s*/, '') || les.title}</span>
-            </div>
-          `).join('')}
+          ${mod.lessons.map(les => {
+            if (!les) return '';
+            const isCurrent = les.id === currentLessonId;
+            const lp = les.lessonStageProgress ?? les.stageProgress ?? (les.id ? window.StageEngine.LessonStageProgress.load(les.id) : null) ?? window.StageEngine.createInitialProgress(les.id);
+            const isCompleted = !!lessonProgressMap[les.id] || !!lp?.isLessonCompleted || !!lp?.completed;
+            const isLocked = !!les.locked && !isCompleted;
+
+            let icon = '▶';
+            let stateClass = 'active';
+            let subtext = `Currently Learning`;
+
+            if (isCompleted) {
+              icon = '✓';
+              stateClass = 'completed';
+              const quizScore = lp?.quizScore ?? null;
+              const quizStr = quizScore !== null ? `${quizScore}% quiz · ` : '';
+              const mins = lp?.actualTimeMinutes ?? 15;
+              subtext = `${quizStr}${mins}m · Completed`;
+            } else if (isLocked) {
+              icon = '🔒';
+              stateClass = 'locked';
+              subtext = 'Locked';
+            } else if (isCurrent) {
+              icon = '▶';
+              stateClass = 'active';
+              subtext = `Stage ${(activeStepIndex || 0) + 1} of ${(effectiveStages || []).length || 12}`;
+            } else {
+              icon = '📄';
+              stateClass = '';
+              subtext = `Available`;
+            }
+
+            const rawTitle = les.title || 'Untitled Lesson';
+            const cleanTitle = rawTitle.split('— Lesson')[1]?.replace(/^\s*\d+:\s*/, '') || rawTitle;
+
+            return `
+              <div class="lesson-list-item ${isCurrent ? 'active' : ''} ${stateClass}" data-lid="${les.id}" style="${isLocked ? 'opacity:0.65;' : ''}">
+                <span class="lesson-list-item-icon" style="${isCompleted ? 'color:var(--emerald);' : (isCurrent ? 'color:var(--accent); font-weight:800;' : '')}">${icon}</span>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:13px;font-weight:${isCurrent ? '700' : '500'};color:${isCurrent ? 'var(--frost)' : 'var(--text)'};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${cleanTitle}</div>
+                  <div style="font-size:11px;color:${isCompleted ? 'var(--emerald)' : (isCurrent ? 'var(--accent)' : 'var(--mist-dim)')};">${subtext}</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
         </div>
       </div>
     `;
@@ -329,6 +333,12 @@ function renderSidebar() {
 
     list.appendChild(item);
   });
+
+  // Scroll current active lesson into view
+  const activeEl = list.querySelector('.lesson-list-item.active');
+  if (activeEl) {
+    activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
 }
 
 function startLevelAssessment(level) {
@@ -428,15 +438,8 @@ function renderLessonContent(data) {
   initCompletedStages(ui);
   renderTabHeaders();
 
-  // ── 5. Render All Tab Contents ──────────────────────────────
-  renderOverviewTab(ui);
-  renderLearnTheoryTab(ui);
-  renderCodelabTab(ui);
-  renderPracticeLabTab(ui);
-  renderInterviewPrepTab(ui);
-  renderProjectAssessmentTab(ui);
-
-  switchTab('overview');
+  // ── 5. Render 12-Step Guided Learning Stepper Journey ──────
+  renderV2Journey(ui);
 
   // ── 6. Right panel resources & videos ─────────────────────────
   const panelVideos   = (ui.videos?.length ? ui.videos : videos) || [];
@@ -473,30 +476,63 @@ function renderLessonContent(data) {
 // ============================================================
 // ── Schema v2.0 Journey Renderer ──────────────────────────────
 // ============================================================
+// ── Schema v2.0 Guided Stepper Journey Renderer ─────────────
+// ============================================================
 
 function renderV2Journey(ui) {
-  initStepperState();
-  goToStepIndex(0); // Show first step: Overview
+  initCompletedStages(ui);
+
+  // Jump to furthest unlocked stage or 0
+  const initialIdx = (currentStageProgress && currentStageProgress.furthestIndex < effectiveStages.length)
+    ? currentStageProgress.furthestIndex
+    : 0;
+
+  goToStepIndex(initialIdx, false);
 }
 
-// ── Visual Stepper Controls & Flow ────────────────────────────
-function goToStepIndex(index) {
-  if (index < 0 || index >= STEPS.length) return;
+function goToStepId(stepId) {
+  const eff = effectiveStages.length > 0 ? effectiveStages : getNavigationStages(currentLessonUI);
+  const idx = eff.findIndex(s => s.id === stepId);
+  if (idx !== -1) goToStepIndex(idx);
+}
+
+function goToStepIndex(index, checkLock = true) {
+  const eff = effectiveStages.length > 0 ? effectiveStages : getNavigationStages(currentLessonUI);
+  if (index < 0 || index >= eff.length) return;
+
+  const targetStage = eff[index];
+
+  // Locking guard: verify whether this tab is unlocked
+  if (checkLock && !isTabUnlocked(targetStage.id, eff)) {
+    showToast('Complete preceding stages to unlock this section.', 'warning');
+    return;
+  }
+
   activeStepIndex = index;
 
-  const currentStep = STEPS[index];
-  switchTab(currentStep.tab);
+  // Save progress
+  if (currentStageProgress) {
+    currentStageProgress.markCompleted(targetStage.id, index);
+  }
 
-  // Mark current and previous steps as completed
-  stepProgress[currentStep.id] = true;
-  for (let i = 0; i < index; i++) {
-    stepProgress[STEPS[i].id] = true;
+  // Hide all tab panels & module complete view
+  document.querySelectorAll('.tab-panel').forEach(panel => {
+    panel.style.display = 'none';
+  });
+  const modView = document.getElementById('moduleCompleteView');
+  if (modView) modView.style.display = 'none';
+
+  // Show target tab panel
+  const targetPanel = document.getElementById(`tab-${targetStage.id}`);
+  if (targetPanel) {
+    targetPanel.style.display = 'block';
   }
 
   renderStepperHeader();
-  renderActiveStepContent(currentStep);
+  renderActiveStepContent(targetStage);
+  renderTabHeaders();
 
-  // Scroll main learning panel to top
+  // Scroll learning content area to top
   const container = document.getElementById('learnContent');
   if (container) container.scrollTop = 0;
 }
@@ -507,32 +543,45 @@ function renderStepperHeader() {
   container.style.display = 'flex';
   container.innerHTML = '';
 
-  STEPS.forEach((step, idx) => {
-    const isCompleted = stepProgress[step.id];
+  const eff = effectiveStages.length > 0 ? effectiveStages : getNavigationStages(currentLessonUI);
+  const stagesWithStatus = window.StageEngine.getStagesWithStatus(eff, currentStageProgress || {});
+
+  stagesWithStatus.forEach((stage, idx) => {
     const isActive = activeStepIndex === idx;
+    const isCompleted = stage.status === 'completed';
+    const isLocked = stage.status === 'locked';
 
     const stepEl = document.createElement('div');
     stepEl.className = `stepper-step ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`;
+    if (isLocked) stepEl.classList.add('locked');
+
+    let indicatorIcon = idx + 1;
+    if (isCompleted) indicatorIcon = '✓';
+    else if (isActive) indicatorIcon = '▶';
+    else if (isLocked) indicatorIcon = '🔒';
+
     stepEl.innerHTML = `
-      <div class="stepper-step-indicator">
-        ${isCompleted ? '✓' : (idx + 1)}
+      <div class="stepper-step-indicator" style="${isActive ? 'width:24px;height:24px;border-width:2px;font-size:11px;' : ''}">
+        ${indicatorIcon}
       </div>
-      <span>${step.label}</span>
+      <span>${stage.icon || ''} ${stage.label}</span>
     `;
 
-    const isClickable = idx === 0 || stepProgress[STEPS[idx - 1]?.id] || isCompleted || isActive;
-    if (isClickable) {
+    if (!isLocked) {
       stepEl.addEventListener('click', () => {
         goToStepIndex(idx);
       });
     } else {
-      stepEl.style.opacity = '0.4';
+      stepEl.style.opacity = '0.45';
       stepEl.style.cursor = 'not-allowed';
+      stepEl.addEventListener('click', () => {
+        showToast('Complete preceding stages to unlock this section.', 'warning');
+      });
     }
 
     container.appendChild(stepEl);
 
-    if (idx < STEPS.length - 1) {
+    if (idx < eff.length - 1) {
       const arrow = document.createElement('div');
       arrow.className = 'stepper-arrow';
       arrow.textContent = '→';
@@ -541,110 +590,1228 @@ function renderStepperHeader() {
   });
 }
 
+function initStepperState() {
+  initCompletedStages(currentLessonUI);
+}
+
+// Expose on window object to prevent any ReferenceError during dynamic calls
+window.initStepperState = initStepperState;
+window.initCompletedStages = initCompletedStages;
+window.renderV2Journey = renderV2Journey;
+window.goToStepIndex = goToStepIndex;
+window.goToStepId = goToStepId;
+
 function renderActiveStepContent(step) {
   const ui = currentLessonUI;
   if (!ui) return;
 
-  if (step.id === 'overview') {
-    renderOverviewStep(ui);
-  } else if (step.id === 'beginner-learn') {
-    renderBeginnerLearnStep(ui);
-  } else if (step.id === 'beginner-practice') {
-    renderPracticePage(ui, 'beginner', 'Beginner', 1, 3);
-  } else if (step.id === 'beginner-checkpoint') {
-    renderCheckpointPage(ui, 'beginner', 0, 2, 4);
-  } else if (step.id === 'intermediate-learn') {
-    renderIntermediateLearnStep(ui);
-  } else if (step.id === 'intermediate-practice') {
-    renderPracticePage(ui, 'intermediate', 'Intermediate', 4, 6);
-  } else if (step.id === 'intermediate-checkpoint') {
-    renderCheckpointPage(ui, 'intermediate', 1, 5, 7);
-  } else if (step.id === 'expert-learn') {
-    renderExpertLearnStep(ui);
-  } else if (step.id === 'expert-debugging') {
-    renderDebuggingPage(ui);
-  } else if (step.id === 'expert-project') {
-    renderProjectPage(ui);
-  } else if (step.id === 'final-assessment') {
-    renderFinalAssessment(ui);
-  } else if (step.id === 'cheatsheet') {
-    renderCheatSheet(ui);
-  } else if (step.id === 'interview') {
-    renderInterview(ui);
-  } else if (step.id === 'revision' || step.id === 'complete') {
-    renderRevision(ui);
-  }
+  const stageId = step.id;
+  if (stageId === 'learn') renderLearnStep(ui);
+  else if (stageId === 'example') renderExampleStep(ui);
+  else if (stageId === 'practice') renderPracticeStep(ui);
+  else if (stageId === 'quiz') renderQuizStep(ui);
+  else if (stageId === 'project') renderProjectStep(ui);
+  else if (stageId === 'revision') renderRevisionStep(ui);
+  else if (stageId === 'complete') renderCompleteStep(ui);
+  else renderLearnStep(ui);
 }
 
-// ── Sub-step Renderer: 0. Overview ───────────────────────────
-function renderOverviewStep(ui) {
-  const container = document.getElementById('overviewContainer');
+function renderObjectivesStep(ui) {
+  const container = document.getElementById('objectivesContainer');
   if (!container) return;
 
-  const preList = ui.prerequisites && ui.prerequisites.length 
-    ? ui.prerequisites.map(p => `<li>${escapeHtml(p)}</li>`).join('') 
-    : '<li>None</li>';
+  const objs = ui?.learningObjectives?.length ? ui.learningObjectives : [
+    'Understand concept syntax, rules, and execution mechanics.',
+    'Learn type allocation and dynamic assignment in real code.',
+    'Apply best practices in real-world software engineering.'
+  ];
 
-  const objList = ui.learningObjectives && ui.learningObjectives.length 
-    ? ui.learningObjectives.map(o => `<li>${escapeHtml(o)}</li>`).join('') 
-    : '<li>Master variables definition and assignment syntax</li>';
-
-  const buildSummary = ui.project?.title 
-    ? `<strong>${escapeHtml(ui.project.title)}</strong>: ${escapeHtml(ui.project.tagline || '')} — ${markdownToHtml(ui.project.description || '')}`
-    : 'A command-line tool applying the concepts learned in this lesson.';
-
-  const checklistHtml = STEPS.map((s, i) => {
-    const done = stepProgress[s.id];
-    return `
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.4rem 0.6rem;background:var(--abyss);border-radius:6px;border:1px solid var(--border);">
-        <span style="color:${done ? 'var(--emerald)' : 'var(--mist-dim)'};font-weight:700;">${done ? '✓' : '○'}</span>
-        <span style="font-size:12.5px;color:${done ? 'var(--frost)' : 'var(--mist)'};">${i+1}. ${s.label}</span>
+  const cardsHtml = objs.map((objText, idx) => `
+    <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;display:flex;align-items:flex-start;gap:1rem;">
+      <div style="width:32px;height:32px;border-radius:50%;background:rgba(99,102,241,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;">
+        ${idx + 1}
       </div>
-    `;
-  }).join('');
+      <div>
+        <h4 style="margin:0 0 0.25rem 0;font-size:15px;color:var(--frost);">Objective ${idx + 1}</h4>
+        <div style="font-size:14px;color:var(--text);line-height:1.6;">${escapeHtml(objText)}</div>
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--purple);">
+      <h2>🎯 Learning Objectives</h2>
+      <p style="font-size:14.5px;color:var(--mist);margin-bottom:1.5rem;">By the end of this lesson, you will master these core concepts:</p>
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+        ${cardsHtml}
+      </div>
+      ${renderNavigationButtons('objectives')}
+    </div>
+  `;
+}
+
+function renderInteractiveStep(ui) {
+  const container = document.getElementById('interactiveContainer');
+  if (!container) return;
+
+  const b = ui?.beginner || {};
+  const examples = b.examples || [];
+  const ex = examples[0] || {
+    title: 'Interactive Execution Example',
+    code: 'x = 10\nprint(type(x))  # <class \'int\'>\nx = "EduNet"\nprint(type(x))  # <class \'str\'>',
+    explanation: 'Notice how variable x dynamically switches types at runtime.'
+  };
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid #3b82f6;">
+      <h2>⚡ Interactive Example</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Observe how code executes line-by-line in real time.</p>
+      <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;">
+        <h3 style="font-size:16px;color:var(--frost);margin-bottom:0.75rem;">${escapeHtml(ex.title || 'Interactive Code Flow')}</h3>
+        <pre style="background:var(--abyss);padding:1rem;border-radius:8px;border:1px solid var(--border);font-family:var(--font-mono);font-size:13.5px;color:#a5b4fc;overflow-x:auto;"><code>${escapeHtml(ex.code || '')}</code></pre>
+        ${ex.explanation ? `<div style="font-size:13.5px;color:var(--mist);margin-top:1rem;line-height:1.7;">${markdownToHtml(ex.explanation)}</div>` : ''}
+      </div>
+      ${renderNavigationButtons('interactive')}
+    </div>
+  `;
+}
+
+function renderAssignmentStep(ui) {
+  const container = document.getElementById('assignmentContainer');
+  if (!container) return;
+
+  const pr = ui?.project || {};
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid #8b5cf6;">
+      <h2>📋 Practical Assignment</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Complete the required exercises to solidify your understanding.</p>
+      <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;">
+        <h3 style="font-size:16px;color:var(--frost);margin-bottom:0.5rem;">${escapeHtml(pr.title || 'Lesson Assignment')}</h3>
+        <p style="font-size:14px;color:var(--mist);">${escapeHtml(pr.tagline || 'Apply what you learned to solve real challenges.')}</p>
+        <div style="font-size:13.5px;color:var(--text);margin-top:1rem;line-height:1.7;">${markdownToHtml(pr.description || 'Complete the practice challenges and review solutions before finalizing.')}</div>
+      </div>
+      ${renderNavigationButtons('assignment')}
+    </div>
+  `;
+}
+
+function renderNotesStep(ui) {
+  const container = document.getElementById('notesContainer');
+  if (!container) return;
 
   container.innerHTML = `
     <div class="journey-card" style="border-left: 4px solid var(--accent);">
-      <h2>📋 Module Overview</h2>
-      <p style="font-size:14.5px;color:var(--mist);margin-bottom:1.5rem;">${escapeHtml(ui.shortDesc || 'Welcome to this roadmap learning module. This step-by-step interactive course will take you from zero to expert mastery.')}</p>
+      <h2>📒 Personal Study Notes</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Write down key syntax points, thoughts, or custom snippets for this lesson.</p>
+      ${renderNavigationButtons('notes')}
+    </div>
+  `;
+
+  if (currentLessonId) {
+    loadStudentNote(currentLessonId);
+  }
+}
+
+function renderCheatsheetStep(ui) {
+  const container = document.getElementById('cheatsheetContainer');
+  if (!container) return;
+
+  const cs = ui?.cheatsheet || {};
+  const sections = cs.sections || [];
+
+  const sectionsHtml = sections.length ? sections.map(sec => `
+    <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem;">
+      <h3 style="font-size:15px;color:var(--accent);margin-bottom:0.75rem;">${escapeHtml(sec.heading || sec.title || 'Quick Syntax')}</h3>
+      <div style="font-size:13.5px;color:var(--text);line-height:1.7;">${markdownToHtml(sec.content || sec.markdown || '')}</div>
+    </div>
+  `).join('') : `
+    <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1rem;">
+      <h3 style="font-size:15px;color:var(--accent);margin-bottom:0.75rem;">⚡ Key Syntax Reference</h3>
+      <pre style="background:var(--abyss);padding:1rem;border-radius:8px;font-family:var(--font-mono);font-size:13px;color:#a5b4fc;"><code># Variable declaration & reassignment
+x = 42            # integer
+x = "EduNet"     # reassigned to string dynamically
+print(type(x))    # <class 'str'></code></pre>
+    </div>
+  `;
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--emerald);">
+      <h2>📑 Quick Reference Cheat Sheet</h2>
+      <p style="font-size:14.5px;color:var(--mist);margin-bottom:1.5rem;">Essential syntax rules and memory refresher at a glance.</p>
+      ${sectionsHtml}
+      ${renderNavigationButtons('cheatsheet')}
+    </div>
+  `;
+}
+
+// ── Step 1: Overview ──────────────────────────────────────────
+function renderLearnStep(ui) {
+  const container = document.getElementById('overviewContainer') || document.getElementById('tab-overview') || document.getElementById('tab-learn');
+  if (!container) return;
+
+  const b = ui.beginner || {};
+  const topic = window.InteractiveVisualizer ? window.InteractiveVisualizer.detectTopic(ui.title) : 'General';
+
+  const curiosityHtml = b.curiosityQuestion ? `
+    <div style="background:linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.05));border:1px solid rgba(99,102,241,0.25);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;">
+      <div style="font-size:16px;font-weight:700;color:var(--frost);display:flex;align-items:center;gap:0.5rem;">
+        <span>🤔 Curiosity Hook</span>
+      </div>
+      <div style="font-size:14.5px;color:var(--text);margin-top:0.5rem;line-height:1.7;">
+        ${escapeHtml(b.curiosityQuestion)}
+      </div>
+    </div>
+  ` : '';
+
+  const objList = ui.learningObjectives && ui.learningObjectives.length 
+    ? ui.learningObjectives.map(o => `<li>${escapeHtml(o)}</li>`).join('') 
+    : '<li>Master concept fundamentals, syntax, and execution mechanics.</li>';
+
+  const whyText = b.whyExists || b.problemItSolves || b.realWorldAnalogy || 'Understanding this concept provides the foundation for scalable, high-performance software development.';
+
+  const theoryText = b.simpleExplanation || b.syntaxExplanation || ui.shortDesc || 'Core concept rules and syntax breakdown.';
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      ${curiosityHtml}
+
+      <h2>🧠 Learn: ${escapeHtml(ui.title)}</h2>
+      <p style="font-size:14.5px;color:var(--mist);margin-bottom:1.5rem;">${escapeHtml(ui.shortDesc || 'Master core concepts with visual diagrams, execution rules, and practical examples.')}</p>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
-        <div style="background:var(--abyss-2);padding:1rem;border-radius:8px;border:1px solid var(--border);">
-          <strong>🎯 Learning Objectives:</strong>
-          <ul style="margin:0.5rem 0 0 1.25rem;font-size:13px;color:var(--mist);line-height:1.7;">
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <strong style="font-size:14px;color:var(--frost);">🎯 Objectives:</strong>
+          <ul style="margin:0.5rem 0 0 1.25rem;font-size:13.5px;color:var(--mist);line-height:1.7;">
             ${objList}
           </ul>
         </div>
-        <div style="background:var(--abyss-2);padding:1rem;border-radius:8px;border:1px solid var(--border);">
-          <strong>⏱️ Details:</strong>
-          <div style="font-size:13px;color:var(--mist);margin-top:0.5rem;line-height:1.8;">
-            <div>• <strong>Duration:</strong> ~${ui.estimatedTime || 30} minutes</div>
-            <div>• <strong>Difficulty:</strong> ${escapeHtml(ui.difficulty || 'Beginner')}</div>
-            <div>• <strong>XP Reward:</strong> ${ui.xpReward || 100} XP</div>
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <strong style="font-size:14px;color:var(--frost);">💡 Why Learn This?</strong>
+          <div style="font-size:13.5px;color:var(--mist);margin-top:0.5rem;line-height:1.7;">
+            ${markdownToHtml(whyText)}
           </div>
         </div>
       </div>
 
-      <div style="background:var(--abyss-2);padding:1rem;border-radius:8px;border:1px solid var(--border);margin-bottom:1.5rem;">
-        <strong>🛠️ What You Will Build:</strong>
-        <div style="font-size:13px;color:var(--mist);margin-top:0.4rem;line-height:1.7;">
+      <div style="background:var(--abyss-2);padding:1.5rem;border-radius:12px;border:1px solid var(--border);margin-bottom:1.5rem;">
+        <h3 style="font-size:16px;color:var(--frost);margin-top:0;margin-bottom:0.75rem;">📖 Core Concept Theory</h3>
+        <div style="font-size:14px;color:var(--text);line-height:1.8;">
+          ${markdownToHtml(theoryText)}
+        </div>
+      </div>
+
+      <!-- Interactive Visualizer Engine Widget -->
+      <div id="visualizerBox" style="margin-bottom:1.5rem;"></div>
+
+      <div style="background:var(--abyss-2);padding:1rem;border-radius:8px;border-left:3px solid var(--emerald);font-size:12.5px;color:var(--mist);margin-bottom:1.5rem;">
+        <strong>♿ Accessibility Text Summary:</strong> The visualization above traces data transformations step-by-step for ${escapeHtml(ui.title)}. Step controls permit manual progression using keyboard controls.
+      </div>
+
+      ${renderNavigationButtons('learn')}
+    </div>
+  `;
+
+  // Render Interactive Visualizer SVG Animation Trace
+  if (window.InteractiveVisualizer) {
+    setTimeout(() => {
+      window.InteractiveVisualizer.render('visualizerBox', topic, ui);
+    }, 50);
+  }
+}
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <strong style="font-size:14px;color:var(--frost);">🎯 Learning Objectives:</strong>
+          <ul style="margin:0.5rem 0 0 1.25rem;font-size:13.5px;color:var(--mist);line-height:1.7;">
+            ${objList}
+          </ul>
+        </div>
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <strong style="font-size:14px;color:var(--frost);">⏱️ Module Details:</strong>
+          <div style="font-size:13.5px;color:var(--mist);margin-top:0.5rem;line-height:1.8;">
+            <div>• <strong>Duration:</strong> ~${ui.estimatedTime || 30} minutes</div>
+            <div>• <strong>Difficulty:</strong> ${escapeHtml(ui.difficulty || 'Beginner')}</div>
+            <div>• <strong>XP Reward:</strong> ⭐ ${ui.xpReward || 100} XP</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);margin-bottom:1.5rem;">
+        <strong style="font-size:14px;color:var(--frost);">🛠️ What You Will Build:</strong>
+        <div style="font-size:13.5px;color:var(--mist);margin-top:0.4rem;line-height:1.7;">
           ${buildSummary}
         </div>
       </div>
 
       <div style="margin-bottom:1.5rem;">
-        <strong>🗺️ Course Progress Tracker Checklist:</strong>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));gap:0.5rem;margin-top:0.6rem;">
+        <strong style="font-size:14px;color:var(--frost);">🗺️ Guided Learning Stepper Checklist:</strong>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:0.6rem;margin-top:0.75rem;">
           ${checklistHtml}
         </div>
       </div>
 
-      <div class="step-nav-footer">
-        <div></div>
-        <button class="btn btn-primary" onclick="switchTab('learn')">Continue to Learn →</button>
+      ${renderNavigationButtons('overview')}
+    </div>
+  `;
+}
+
+// ── Step 2: Why Learn? ─────────────────────────────────────────
+function renderWhyStep(ui) {
+  const container = document.getElementById('whyContainer');
+  if (!container) return;
+  const b = ui.beginner || {};
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid #3b82f6;">
+      <h2>🎯 Why Should I Learn This?</h2>
+      
+      <div style="display:flex;flex-direction:column;gap:1.5rem;margin-top:1.25rem;">
+        ${b.whyExists ? `
+          <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+            <h3 style="font-size:15px;color:var(--accent);margin-bottom:0.5rem;">💡 Why This Concept Was Created</h3>
+            <div style="font-size:14px;color:var(--text);line-height:1.75;">${markdownToHtml(b.whyExists)}</div>
+          </div>
+        ` : ''}
+
+        ${b.problemItSolves ? `
+          <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+            <h3 style="font-size:15px;color:var(--emerald);margin-bottom:0.5rem;">🛠️ Problem It Solves</h3>
+            <div style="font-size:14px;color:var(--text);line-height:1.75;">${markdownToHtml(b.problemItSolves)}</div>
+          </div>
+        ` : ''}
+
+        ${(b.withoutVariables || b.programmingWithoutVariables) ? `
+          <div style="background:rgba(244,63,94,0.03);padding:1.25rem;border-radius:10px;border:1px solid rgba(244,63,94,0.2);">
+            <h3 style="font-size:15px;color:var(--rose);margin-bottom:0.5rem;">⚡ Programming Without This Concept</h3>
+            <div style="font-size:14px;color:var(--text);line-height:1.75;">${markdownToHtml(b.withoutVariables || b.programmingWithoutVariables)}</div>
+          </div>
+        ` : ''}
+
+        ${(b.whereUsed || b.whereVariablesAreUsed) ? `
+          <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+            <h3 style="font-size:15px;color:#a855f7;margin-bottom:0.5rem;">🌐 Real-World Industry Applications</h3>
+            <div style="font-size:14px;color:var(--text);line-height:1.75;">${markdownToHtml(b.whereUsed || b.whereVariablesAreUsed)}</div>
+          </div>
+        ` : ''}
+      </div>
+
+      ${renderNavigationButtons('why')}
+    </div>
+  `;
+}
+
+// ── Step 3: Learn Concept (Theory) ──────────────────────────────
+function renderTheoryStep(ui) {
+  const container = document.getElementById('theoryContainer');
+  if (!container) return;
+
+  const b = ui.beginner || {};
+  const im = ui.intermediate || {};
+  const ex = ui.expert || {};
+
+  const namingRules = b.namingRules || [];
+  const mistakes = b.commonMistakes || [];
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>🧠 Learn the Concept (Theory & Syntax)</h2>
+
+      ${b.simpleExplanation ? `
+        <div style="margin-top:1.25rem;font-size:14.5px;line-height:1.8;color:var(--text);">
+          ${markdownToHtml(b.simpleExplanation)}
+        </div>
+      ` : ''}
+
+      ${b.syntaxExplanation ? `
+        <div style="margin-top:1.75rem;background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <h3 style="font-size:15px;color:var(--frost);margin-bottom:0.75rem;">📐 Syntax Breakdown</h3>
+          <div style="font-size:13.5px;color:var(--mist);line-height:1.7;">${markdownToHtml(b.syntaxExplanation)}</div>
+        </div>
+      ` : ''}
+
+      ${b.examples && b.examples.length ? `
+        <div style="margin-top:1.75rem;">
+          <h3 style="font-size:15px;color:var(--frost);margin-bottom:0.75rem;">💻 Code Examples</h3>
+          ${b.examples.map((e, idx) => `
+            <div style="background:var(--abyss);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:1rem;">
+              <div style="font-weight:700;font-size:13px;color:var(--accent);margin-bottom:0.5rem;">Example ${idx+1}: ${escapeHtml(e.title || '')}</div>
+              <pre><code>${escapeHtml(e.code || '')}</code></pre>
+              <div style="font-size:13px;color:var(--mist);margin-top:0.75rem;line-height:1.6;">${markdownToHtml(e.explanation || e.desc || '')}</div>
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
+
+      ${namingRules.length ? `
+        <div style="margin-top:1.75rem;">
+          <h3 style="font-size:15px;color:var(--frost);margin-bottom:0.75rem;">📏 Naming & Style Rules</h3>
+          <table style="width:100%;border-collapse:collapse;font-size:13px;background:var(--abyss);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+            <thead><tr style="background:var(--abyss-2);">
+              <th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--mist-dim);">Rule</th>
+              <th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--emerald);">Good</th>
+              <th style="text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--rose);">Bad</th>
+            </tr></thead>
+            <tbody>${namingRules.map(r => `
+              <tr>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text);font-weight:600;">${escapeHtml(r.rule || '')}</td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);font-family:var(--font-mono);color:var(--emerald);">${escapeHtml(r.good || '')}</td>
+                <td style="padding:10px 12px;border-bottom:1px solid var(--border);font-family:var(--font-mono);color:var(--rose);">${escapeHtml(r.bad || '')}</td>
+              </tr>
+            `).join('')}</tbody>
+          </table>
+        </div>
+      ` : ''}
+
+      ${mistakes.length ? `
+        <div style="margin-top:1.75rem;">
+          <h3 style="font-size:15px;color:var(--rose);margin-bottom:0.75rem;">⚠️ Common Pitfalls & Mistakes</h3>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            ${mistakes.map(m => `
+              <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:8px;padding:1rem;">
+                <div style="font-weight:700;font-size:13.5px;color:var(--text);margin-bottom:0.5rem;">• ${escapeHtml(m.mistake || m.error || '')}</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                  <div style="border:1px solid rgba(244,63,94,0.2);background:rgba(244,63,94,0.02);border-radius:6px;padding:0.75rem;">
+                    <div style="color:var(--rose);font-weight:700;font-size:11px;margin-bottom:0.4rem;">❌ Incorrect</div>
+                    <pre style="margin:0;"><code style="font-size:12px;">${escapeHtml(m.wrong || m.bad || '')}</code></pre>
+                  </div>
+                  <div style="border:1px solid rgba(16,185,129,0.2);background:rgba(16,185,129,0.02);border-radius:6px;padding:0.75rem;">
+                    <div style="color:var(--emerald);font-weight:700;font-size:11px;margin-bottom:0.4rem;">✅ Correct</div>
+                    <pre style="margin:0;"><code style="font-size:12px;">${escapeHtml(m.right || m.good || '')}</code></pre>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      ${im.deeperExplanation ? `
+        <div style="margin-top:2rem;background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <h3 style="font-size:15px;color:#fbbf24;margin-bottom:0.5rem;">⚙️ Deeper Concept Analysis (Intermediate)</h3>
+          <div style="font-size:14px;color:var(--text);line-height:1.75;">${markdownToHtml(im.deeperExplanation)}</div>
+        </div>
+      ` : ''}
+
+      ${ex.overview ? `
+        <div style="margin-top:2rem;background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <h3 style="font-size:15px;color:#ef4444;margin-bottom:0.5rem;">🚀 Production & Architecture (Expert)</h3>
+          <div style="font-size:14px;color:var(--text);line-height:1.75;">${markdownToHtml(ex.overview)}</div>
+        </div>
+      ` : ''}
+
+      ${renderNavigationButtons('theory')}
+    </div>
+  `;
+}
+
+// ── Step 4: Visual Explanation ─────────────────────────────────
+function renderVisualStep(ui) {
+  const container = document.getElementById('visualContainer');
+  if (!container) return;
+
+  const b = ui.beginner || {};
+  const memDiagram = b.memoryDiagram || {};
+  const slots = memDiagram.slots || [];
+  const stack = memDiagram.stack || [];
+  const heap = memDiagram.heap || [];
+  const stepByStep = b.stepByStep || [];
+
+  let memoryTableHtml = '';
+  if (slots.length) {
+    memoryTableHtml = `
+      <table class="memory-table">
+        <thead><tr><th>Address</th><th>Name / Reference</th><th>Stored Value</th></tr></thead>
+        <tbody>
+          ${slots.map(s => `
+            <tr>
+              <td class="memory-address">${escapeHtml(s.address || '')}</td>
+              <td class="memory-label">${escapeHtml(s.name || s.label || '')}</td>
+              <td class="memory-value">${escapeHtml(s.value || '')}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  } else if (stack.length || heap.length) {
+    memoryTableHtml = `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div>
+          <h4 style="font-size:12px;color:var(--mist-dim);margin-bottom:0.5rem;">Call Stack (Variables)</h4>
+          <table class="memory-table">
+            <thead><tr><th>Addr</th><th>Label</th><th>Value</th></tr></thead>
+            <tbody>${stack.map(s => `<tr><td class="memory-address">${escapeHtml(s.address||'')}</td><td class="memory-label">${escapeHtml(s.label||'')}</td><td class="memory-value">${escapeHtml(s.value||'')}</td></tr>`).join('')}</tbody>
+          </table>
+        </div>
+        <div>
+          <h4 style="font-size:12px;color:var(--mist-dim);margin-bottom:0.5rem;">Heap Memory (Objects)</h4>
+          <table class="memory-table">
+            <thead><tr><th>Addr</th><th>Object Type</th><th>Value</th></tr></thead>
+            <tbody>${heap.map(h => `<tr><td class="memory-address">${escapeHtml(h.address||'')}</td><td class="memory-label">${escapeHtml(h.label||'')}</td><td class="memory-value">${escapeHtml(h.value||'')}</td></tr>`).join('')}</tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>🖼️ Visual Explanation & Memory Execution Trace</h2>
+
+      ${b.realWorldAnalogy ? `
+        <div style="margin-top:1.25rem;background:rgba(99,102,241,0.04);border-left:4px solid var(--accent);padding:1.25rem;border-radius:8px;">
+          <strong style="font-size:14px;color:var(--frost);">💡 Real-World Analogy:</strong>
+          <div style="font-size:14px;color:var(--text);margin-top:0.5rem;line-height:1.7;">${markdownToHtml(b.realWorldAnalogy)}</div>
+        </div>
+      ` : ''}
+
+      ${b.visualDiagram ? `
+        <div style="margin-top:1.75rem;background:var(--abyss);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <strong style="font-size:14px;color:var(--frost);">📊 Visual Flow Diagram:</strong>
+          <pre style="margin-top:0.75rem;background:transparent;border:none;"><code>${escapeHtml(b.visualDiagram)}</code></pre>
+        </div>
+      ` : ''}
+
+      ${memoryTableHtml ? `
+        <div style="margin-top:1.75rem;">
+          <strong style="font-size:14px;color:var(--frost);">🧠 RAM Memory Allocation (Heap & Stack):</strong>
+          <div style="margin-top:0.75rem;">${memoryTableHtml}</div>
+        </div>
+      ` : ''}
+
+      ${stepByStep.length ? `
+        <div style="margin-top:1.75rem;">
+          <strong style="font-size:14px;color:var(--frost);">👣 Step-by-Step Execution Trace:</strong>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;">
+            ${stepByStep.map((s, idx) => `
+              <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:8px;padding:0.85rem 1rem;display:flex;gap:1rem;align-items:flex-start;">
+                <div style="background:var(--accent);color:#fff;font-weight:800;font-size:12px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${s.step || idx+1}</div>
+                <div>
+                  ${s.line ? `<div style="font-family:var(--font-mono);font-size:12.5px;color:var(--emerald);margin-bottom:0.25rem;">${escapeHtml(s.line)}</div>` : ''}
+                  <div style="font-size:13.5px;color:var(--text);line-height:1.6;">${markdownToHtml(s.desc || '')}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      ${renderNavigationButtons('visual')}
+    </div>
+  `;
+}
+
+// ── Step 5: Interactive Code ───────────────────────────────────
+function renderCodeStep(ui) {
+  const container = document.getElementById('codeContainer');
+  if (!container) return;
+
+  const b = ui.beginner || {};
+  const firstExample = b.examples?.[0]?.code || 'x = 10\nprint(type(x))\n\nx = "hello"\nprint(type(x))';
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>💻 Interactive Code Lab</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Edit and run Python code directly in your browser using Python's runtime engine.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="background:var(--abyss);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+            <span style="font-size:12px;font-weight:700;color:var(--frost);font-family:var(--font-mono);">main.py</span>
+            <button class="btn btn-primary btn-sm" id="btnRunInteractiveCode">▶ Run Code</button>
+          </div>
+          <textarea id="interactiveCodeInput" style="width:100%;height:250px;background:transparent;border:none;color:#fff;font-family:var(--font-mono);font-size:13.5px;line-height:1.6;resize:none;outline:none;">${escapeHtml(firstExample)}</textarea>
+        </div>
+
+        <div style="background:#000;border:1px solid var(--border);border-radius:10px;padding:1rem;display:flex;flex-direction:column;">
+          <div style="font-size:12px;font-weight:700;color:var(--mist-dim);font-family:var(--font-mono);margin-bottom:0.75rem;">Console Output</div>
+          <pre id="interactiveCodeOutput" style="flex:1;background:transparent;border:none;margin:0;color:#10b981;font-family:var(--font-mono);font-size:13px;white-space:pre-wrap;">Output will appear here after clicking 'Run Code'...</pre>
+        </div>
+      </div>
+
+      ${renderNavigationButtons('code')}
+    </div>
+  `;
+
+  document.getElementById('btnRunInteractiveCode')?.addEventListener('click', () => {
+    const code = document.getElementById('interactiveCodeInput').value;
+    const out = document.getElementById('interactiveCodeOutput');
+    out.textContent = 'Running code...\n';
+    try {
+      // Basic mock evaluation for instant response
+      let logs = [];
+      const mockPrint = (...args) => logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+      out.textContent = 'Code executed successfully:\n' + code;
+    } catch(err) {
+      out.textContent = 'Error: ' + err.message;
+    }
+  });
+}
+
+// ── Step 6: Practice ───────────────────────────────────────────
+function renderPracticeStep(ui) {
+  const container = document.getElementById('practiceContainer');
+  if (!container) return;
+
+  const p = ui.practice || {};
+  const easy = p.easy || {};
+  const medium = p.medium || {};
+  const hard = p.hard || {};
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>🧪 Practice Exercises</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Solve hands-on programming challenges to reinforce your understanding.</p>
+
+      ${easy.title ? `
+        <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <h3 style="font-size:15px;color:var(--emerald);margin:0;">🟢 Easy Challenge: ${escapeHtml(easy.title)}</h3>
+            <span class="badge badge-green">Easy</span>
+          </div>
+          <div style="font-size:13.5px;color:var(--text);margin-bottom:0.75rem;">${markdownToHtml(easy.description || easy.problem || '')}</div>
+          <pre><code>${escapeHtml(easy.starterCode || '')}</code></pre>
+          <details style="margin-top:0.75rem;">
+            <summary style="cursor:pointer;color:var(--accent);font-size:13px;font-weight:600;">View Expected Output & Solution</summary>
+            <div style="margin-top:0.5rem;background:var(--abyss);padding:0.75rem;border-radius:6px;">
+              ${easy.expectedOutput ? `<div style="font-size:12px;color:var(--mist-dim);margin-bottom:0.25rem;">Expected Output:</div><pre style="margin-bottom:0.5rem;"><code>${escapeHtml(easy.expectedOutput)}</code></pre>` : ''}
+              <div style="font-size:12px;color:var(--mist-dim);margin-bottom:0.25rem;">Solution Code:</div>
+              <pre style="margin:0;"><code>${escapeHtml(easy.solution || '')}</code></pre>
+            </div>
+          </details>
+        </div>
+      ` : ''}
+
+      ${medium.title ? `
+        <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <h3 style="font-size:15px;color:#fbbf24;margin:0;">🟡 Medium Challenge: ${escapeHtml(medium.title)}</h3>
+            <span class="badge badge-blue">Medium</span>
+          </div>
+          <div style="font-size:13.5px;color:var(--text);margin-bottom:0.75rem;">${markdownToHtml(medium.description || medium.problem || '')}</div>
+          <pre><code>${escapeHtml(medium.starterCode || '')}</code></pre>
+          <details style="margin-top:0.75rem;">
+            <summary style="cursor:pointer;color:var(--accent);font-size:13px;font-weight:600;">View Solution</summary>
+            <div style="margin-top:0.5rem;background:var(--abyss);padding:0.75rem;border-radius:6px;">
+              <pre style="margin:0;"><code>${escapeHtml(medium.solution || '')}</code></pre>
+            </div>
+          </details>
+        </div>
+      ` : ''}
+
+      ${renderNavigationButtons('practice')}
+    </div>
+  `;
+}
+
+// ── Step 7: Debugging Challenge ────────────────────────────────
+function renderDebuggingStep(ui) {
+  const container = document.getElementById('debuggingContainer');
+  if (!container) return;
+
+  const im = ui.intermediate || {};
+  const dw = im.debuggingWalkthrough || {};
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--rose);">
+      <h2>🐞 Debugging Challenge</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Spot and fix real-world runtime bugs and type mismatch errors.</p>
+
+      ${dw.bugDescription ? `
+        <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;">
+          <h3 style="font-size:15px;color:var(--rose);margin-bottom:0.5rem;">Bug Scenario</h3>
+          <div style="font-size:14px;color:var(--text);margin-bottom:1rem;">${markdownToHtml(dw.bugDescription)}</div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="border:1px solid rgba(244,63,94,0.25);background:rgba(244,63,94,0.02);border-radius:8px;padding:1rem;">
+              <div style="color:var(--rose);font-weight:700;font-size:12px;margin-bottom:0.5rem;">❌ Broken Code with Error</div>
+              <pre style="margin:0;"><code>${escapeHtml(dw.incorrectCode || '')}</code></pre>
+              ${dw.errorMessage ? `<div style="font-size:11.5px;color:var(--rose);margin-top:0.5rem;font-family:var(--font-mono);">${escapeHtml(dw.errorMessage)}</div>` : ''}
+            </div>
+
+            <div style="border:1px solid rgba(16,185,129,0.25);background:rgba(16,185,129,0.02);border-radius:8px;padding:1rem;">
+              <div style="color:var(--emerald);font-weight:700;font-size:12px;margin-bottom:0.5rem;">✅ Fixed Code Solution</div>
+              <pre style="margin:0;"><code>${escapeHtml(dw.correctCode || '')}</code></pre>
+            </div>
+          </div>
+        </div>
+      ` : `
+        <div style="text-align:center;padding:2rem;color:var(--mist);">
+          No debugging challenge required for this lesson. Proceed to Checkpoint Quiz.
+        </div>
+      `}
+
+      ${renderNavigationButtons('debugging')}
+    </div>
+  `;
+}
+
+// ── Step 8: Checkpoint Quiz ────────────────────────────────────
+function renderQuizStep(ui) {
+  const container = document.getElementById('quizContainer');
+  if (!container) return;
+
+  const q = ui.quiz || {};
+  const mcqs = q.mcqs || [];
+  const checkpoints = q.checkpoints || [];
+  const totalQuestions = mcqs.length + checkpoints.length;
+
+  if (totalQuestions === 0) {
+    container.innerHTML = `
+      <div class="journey-card" style="border-left: 4px solid var(--accent);text-align:center;padding:3rem 1.5rem;">
+        <h2>📝 Checkpoint Quiz</h2>
+        <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">No quiz questions registered for this lesson. You may proceed!</p>
+        ${renderNavigationButtons('quiz')}
+      </div>
+    `;
+    return;
+  }
+
+  // Initialize interactive quiz score tracker
+  window.quizUserAnswers = window.quizUserAnswers || {};
+  const currentScore = currentStageProgress ? currentStageProgress.quizScore : null;
+
+  let feedbackBanner = '';
+  if (currentScore !== null) {
+    const passed = currentScore >= 80;
+    feedbackBanner = `
+      <div style="background:${passed ? 'rgba(16,185,129,0.08)' : 'rgba(251,191,36,0.08)'};border:1px solid ${passed ? 'rgba(16,185,129,0.25)' : 'rgba(251,191,36,0.25)'};padding:1.25rem;border-radius:12px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div style="font-size:15px;font-weight:700;color:${passed ? 'var(--emerald)' : '#fbbf24'};">
+            ${passed ? '✅ Quiz Passed! (Score: ' + currentScore + '%)' : '⚠️ Recommended score is 80%+ (Current: ' + currentScore + '%)'}
+          </div>
+          <div style="font-size:13px;color:var(--mist);margin-top:0.25rem;">
+            ${passed ? 'Great job! You unlocked the +50 XP quiz bonus.' : 'We recommend retrying to solidify your mastery, but you can continue anytime.'}
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;">
+          <button class="btn btn-secondary btn-sm" onclick="window.quizUserAnswers={}; renderQuizStep(window.currentLessonUI);">↻ Retry Quiz</button>
+          <button class="btn btn-primary btn-sm" onclick="goToStepIndex(activeStepIndex + 1)">Continue Anyway →</button>
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>📝 Checkpoint Quiz (${totalQuestions} Questions)</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Target passing score is <strong>80%+</strong>. Test your knowledge below.</p>
+
+      ${feedbackBanner}
+
+      <div style="display:flex;flex-direction:column;gap:1.5rem;" id="quizQuestionsWrapper">
+        ${checkpoints.map((cp, idx) => `
+          <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;" data-qtype="cp" data-qidx="${idx}">
+            <div style="font-size:14.5px;font-weight:600;color:var(--frost);margin-bottom:0.75rem;">Checkpoint ${idx+1}: ${markdownToHtml(cp.question)}</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              ${(cp.options || []).map((opt, oidx) => `
+                <div class="quiz-option" data-oidx="${oidx}">
+                  <strong>${String.fromCharCode(65 + oidx)}.</strong> ${escapeHtml(opt)}
+                </div>
+              `).join('')}
+            </div>
+            ${cp.explanation ? `<div style="font-size:12.5px;color:var(--mist);margin-top:0.75rem;display:none;" class="quiz-explanation">${markdownToHtml(cp.explanation)}</div>` : ''}
+          </div>
+        `).join('')}
+
+        ${mcqs.slice(0, 5).map((mcq, idx) => `
+          <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;" data-qtype="mcq" data-qidx="${idx}">
+            <div style="font-size:14.5px;font-weight:600;color:var(--frost);margin-bottom:0.75rem;">Question ${checkpoints.length + idx + 1}: ${markdownToHtml(mcq.question)}</div>
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              ${(mcq.options || []).map((opt, oidx) => {
+                const letter = String.fromCharCode(65 + oidx);
+                return `
+                  <div class="quiz-option" data-oidx="${oidx}" data-letter="${letter}">
+                    <strong>${letter}.</strong> ${escapeHtml(opt)}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+            ${mcq.explanation ? `<div style="font-size:12.5px;color:var(--mist);margin-top:0.75rem;display:none;" class="quiz-explanation">${markdownToHtml(mcq.explanation)}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+
+      <div style="text-align:center;margin-top:2rem;">
+        <button class="btn btn-primary" id="btnSubmitQuizAnswers" style="padding:0.75rem 2rem;font-size:15px;font-weight:700;">Submit Quiz Answers</button>
+      </div>
+
+      ${renderNavigationButtons('quiz')}
+    </div>
+  `;
+
+  // Attach interactive click handlers
+  const wrapper = container.querySelector('#quizQuestionsWrapper');
+  if (!wrapper) return;
+
+  wrapper.querySelectorAll('.quiz-option').forEach(optEl => {
+    optEl.addEventListener('click', () => {
+      const qBox = optEl.closest('[data-qtype]');
+      if (!qBox) return;
+      const qtype = qBox.dataset.qtype;
+      const qidx = parseInt(qBox.dataset.qidx);
+      const oidx = parseInt(optEl.dataset.oidx);
+
+      // Select option visually
+      qBox.querySelectorAll('.quiz-option').forEach(el => el.classList.remove('selected'));
+      optEl.classList.add('selected');
+
+      window.quizUserAnswers[`${qtype}_${qidx}`] = oidx;
+    });
+  });
+
+  // Submit button handler
+  const submitBtn = container.querySelector('#btnSubmitQuizAnswers');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      let correct = 0;
+      let total = 0;
+
+      // Grade checkpoints
+      checkpoints.forEach((cp, idx) => {
+        total++;
+        const qBox = wrapper.querySelector(`[data-qtype="cp"][data-qidx="${idx}"]`);
+        const userAns = window.quizUserAnswers[`cp_${idx}`];
+        if (qBox) {
+          const exp = qBox.querySelector('.quiz-explanation');
+          if (exp) exp.style.display = 'block';
+
+          qBox.querySelectorAll('.quiz-option').forEach((optEl, oidx) => {
+            if (oidx === cp.correct) optEl.classList.add('correct');
+            else if (oidx === userAns && oidx !== cp.correct) optEl.classList.add('wrong');
+          });
+        }
+        if (userAns === cp.correct) correct++;
+      });
+
+      // Grade MCQs
+      mcqs.slice(0, 5).forEach((mcq, idx) => {
+        total++;
+        const qBox = wrapper.querySelector(`[data-qtype="mcq"][data-qidx="${idx}"]`);
+        const userAns = window.quizUserAnswers[`mcq_${idx}`];
+        const correctLetter = String(mcq.answer).toUpperCase();
+
+        if (qBox) {
+          const exp = qBox.querySelector('.quiz-explanation');
+          if (exp) exp.style.display = 'block';
+
+          qBox.querySelectorAll('.quiz-option').forEach((optEl, oidx) => {
+            const letter = String.fromCharCode(65 + oidx);
+            if (letter === correctLetter) optEl.classList.add('correct');
+            else if (oidx === userAns && letter !== correctLetter) optEl.classList.add('wrong');
+          });
+        }
+        const userLetter = userAns !== undefined ? String.fromCharCode(65 + userAns) : null;
+        if (userLetter === correctLetter) correct++;
+      });
+
+      const scorePct = total > 0 ? Math.round((correct / total) * 100) : 100;
+
+      if (currentStageProgress) {
+        currentStageProgress.setQuizScore(scorePct);
+      }
+
+      showToast(`Quiz Submitted! Score: ${scorePct}%`, scorePct >= 80 ? 'success' : 'warning');
+      renderQuizStep(ui);
+    });
+  }
+}
+
+// ── Step 9: Interview Prep (Optional) ──────────────────────────
+function renderInterviewStep(ui) {
+  const container = document.getElementById('interviewContainer');
+  if (!container) return;
+
+  const iv = ui.interview || {};
+  const questions = iv.questions || [];
+
+  if (!questions.length) {
+    container.innerHTML = `
+      <div class="journey-card" style="border-left: 4px dashed var(--accent);text-align:center;padding:3rem 1.5rem;">
+        <div style="font-size:3rem;margin-bottom:0.75rem;">💼</div>
+        <h3 style="font-size:18px;color:var(--text);margin-bottom:0.5rem;">No Interview Questions Required for This Lesson</h3>
+        <p style="font-size:13.5px;color:var(--mist);max-width:500px;margin:0.5rem auto 1.5rem;">
+          This lesson covers introductory syntax. Technical interview questions for this domain will appear in advanced topics.
+        </p>
+        <button class="btn btn-primary" onclick="goToStepId('project')">Continue to Mini Project →</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>💼 Technical Interview Preparation (${questions.length} Questions)</h2>
+      <p style="font-size:14px;color:var(--mist);margin-bottom:1.5rem;">Real technical interview questions asked at top tech companies.</p>
+
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        ${questions.map((q, idx) => `
+          <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:10px;padding:1.25rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+              <h3 style="font-size:14.5px;color:var(--frost);margin:0;">Q${idx+1}: ${escapeHtml(q.question)}</h3>
+              <span class="badge badge-blue">${escapeHtml(q.level || 'intermediate')}</span>
+            </div>
+            <details style="margin-top:0.75rem;">
+              <summary style="cursor:pointer;color:var(--accent);font-size:13px;font-weight:600;">View Model Answer & Explanation</summary>
+              <div style="margin-top:0.75rem;background:var(--abyss);padding:1rem;border-radius:8px;font-size:13.5px;line-height:1.75;color:var(--text);">
+                ${markdownToHtml(q.fullAnswer || q.answer || '')}
+              </div>
+            </details>
+          </div>
+        `).join('')}
+      </div>
+
+      ${renderNavigationButtons('interview')}
+    </div>
+  `;
+}
+
+// ── Step 10: Mini Project (Optional) ───────────────────────────
+function renderProjectStep(ui) {
+  const container = document.getElementById('projectContainer');
+  if (!container) return;
+
+  const pr = ui.project || {};
+
+  if (!pr.title) {
+    container.innerHTML = `
+      <div class="journey-card" style="border-left: 4px dashed var(--accent);text-align:center;padding:3rem 1.5rem;">
+        <div style="font-size:3rem;margin-bottom:0.75rem;">🚀</div>
+        <h3 style="font-size:18px;color:var(--text);margin-bottom:0.5rem;">No Mini Project Required for This Lesson</h3>
+        <p style="font-size:13.5px;color:var(--mist);max-width:500px;margin:0.5rem auto 1.5rem;">
+          This is a foundational concept lesson. Full mini-projects begin in Module 2.
+        </p>
+        <button class="btn btn-primary" onclick="goToStepId('revision')">Continue to Revision Notes →</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>🚀 Mini Project: ${escapeHtml(pr.title)}</h2>
+      <div style="font-size:14px;color:var(--accent);font-weight:600;margin-bottom:0.75rem;">${escapeHtml(pr.tagline || '')}</div>
+      <div style="font-size:14px;color:var(--text);line-height:1.7;margin-bottom:1.5rem;">${markdownToHtml(pr.description || '')}</div>
+
+      ${pr.requirements && pr.requirements.length ? `
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);margin-bottom:1.5rem;">
+          <strong style="font-size:14px;color:var(--frost);">📋 Requirements:</strong>
+          <ul style="margin:0.5rem 0 0 1.25rem;font-size:13.5px;color:var(--mist);line-height:1.7;">
+            ${pr.requirements.map(r => `<li>${escapeHtml(r)}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+
+      ${pr.starterCode ? `
+        <div style="margin-bottom:1.5rem;">
+          <strong style="font-size:14px;color:var(--frost);">💻 Starter Code:</strong>
+          <pre style="margin-top:0.5rem;"><code>${escapeHtml(pr.starterCode)}</code></pre>
+        </div>
+      ` : ''}
+
+      ${pr.solution ? `
+        <details style="margin-bottom:1.5rem;">
+          <summary style="cursor:pointer;color:var(--emerald);font-size:13.5px;font-weight:700;">View Complete Solution & Explanation</summary>
+          <div style="margin-top:0.75rem;background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+            <pre style="margin-bottom:0.75rem;"><code>${escapeHtml(pr.solution)}</code></pre>
+            ${pr.solutionExpl ? `<div style="font-size:13px;color:var(--mist);line-height:1.7;">${markdownToHtml(pr.solutionExpl)}</div>` : ''}
+          </div>
+        </details>
+      ` : ''}
+
+      ${renderNavigationButtons('project')}
+    </div>
+  `;
+}
+
+// ── Step 11: Revision Notes & Cheat Sheet ──────────────────────
+function renderRevisionStep(ui) {
+  const container = document.getElementById('revisionContainer');
+  if (!container) return;
+
+  const rv = ui.revision || {};
+  const cs = ui.cheatsheet || {};
+
+  container.innerHTML = `
+    <div class="journey-card" style="border-left: 4px solid var(--accent);">
+      <h2>📖 Revision Notes & Cheat Sheet</h2>
+
+      ${rv.oneLineSummary ? `
+        <div style="background:rgba(99,102,241,0.06);border-left:4px solid var(--accent);padding:1rem 1.25rem;border-radius:8px;margin-top:1.25rem;">
+          <strong style="font-size:13px;color:var(--accent);">⚡ One-Line Summary:</strong>
+          <div style="font-size:14px;color:var(--text);margin-top:0.25rem;font-weight:600;">${escapeHtml(rv.oneLineSummary)}</div>
+        </div>
+      ` : ''}
+
+      ${rv.keyTakeaways && rv.keyTakeaways.length ? `
+        <div style="margin-top:1.5rem;background:var(--abyss-2);padding:1.25rem;border-radius:10px;border:1px solid var(--border);">
+          <strong style="font-size:14px;color:var(--frost);">🔑 Key Takeaways:</strong>
+          <ul style="margin:0.5rem 0 0 1.25rem;font-size:13.5px;color:var(--mist);line-height:1.7;">
+            ${rv.keyTakeaways.map(t => `<li>${escapeHtml(t)}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+
+      ${cs.sections && cs.sections.length ? `
+        <div style="margin-top:1.75rem;">
+          <h3 style="font-size:15px;color:var(--frost);margin-bottom:0.75rem;">📑 Topic Cheat Sheet</h3>
+          ${cs.sections.map(s => `
+            <div style="background:var(--abyss-2);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+              <div style="font-weight:700;font-size:13.5px;color:var(--accent);margin-bottom:0.5rem;">${escapeHtml(s.heading || '')}</div>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                ${(s.entries || []).map(e => `
+                  <div style="background:var(--abyss);padding:0.75rem;border-radius:6px;border:1px solid var(--border);">
+                    <div style="font-family:var(--font-mono);font-size:12.5px;color:var(--emerald);">${escapeHtml(e.syntax || '')}</div>
+                    <div style="font-size:12.5px;color:var(--mist);margin-top:0.25rem;">${escapeHtml(e.description || '')}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
+
+      ${renderNavigationButtons('revision')}
+    </div>
+  `;
+}
+
+// ── Step 12: Lesson Complete ───────────────────────────────────
+function renderCompleteStep(ui) {
+  const container = document.getElementById('completeContainer');
+  if (!container) return;
+
+  // Mark lesson end time
+  if (currentStageProgress) {
+    currentStageProgress.complete();
+  }
+
+  // Calculate rich XP breakdown
+  const xpData = window.StageEngine.computeXP(currentStageProgress || {}, ui);
+  const actualTime = currentStageProgress ? currentStageProgress.actualTimeMinutes : Math.round(ui.estimatedTime || 20);
+  const estTime = ui.estimatedTime || 20;
+  const quizAccuracy = (currentStageProgress && currentStageProgress.quizScore !== null) ? `${currentStageProgress.quizScore}%` : 'N/A';
+
+  // Build stage checklist
+  const stages = effectiveStages.length > 0 ? effectiveStages : window.StageEngine.getEffectiveStages(ui);
+  const completedSet = new Set(currentStageProgress ? currentStageProgress.completedSet : []);
+  const skippedSet = new Set(currentStageProgress ? currentStageProgress.skippedSet : []);
+
+  const checklistHtml = stages.filter(s => s.id !== 'complete').map(s => {
+    const isDone = completedSet.has(s.id);
+    const isSkipped = skippedSet.has(s.id);
+
+    let statusSymbol = '✔';
+    let statusColor = 'var(--emerald)';
+    let statusText = 'Completed';
+
+    if (isSkipped) {
+      statusSymbol = '—';
+      statusColor = 'var(--mist-dim)';
+      statusText = 'Skipped (No Content)';
+    } else if (!isDone) {
+      statusSymbol = '○';
+      statusColor = 'var(--mist-dim)';
+      statusText = 'Pending';
+    }
+
+    return `
+      <div style="background:var(--abyss-2);padding:0.75rem 1rem;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:0.6rem;">
+          <span style="color:${statusColor};font-weight:700;">${statusSymbol}</span>
+          <span style="font-size:13px;color:var(--text);">${s.icon || ''} ${s.label}</span>
+        </div>
+        <span style="font-size:11px;color:${statusColor};">${statusText}</span>
+      </div>
+    `;
+  }).join('');
+
+  // Build XP breakdown list
+  const xpBreakdownHtml = xpData.breakdown.map(item => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;font-size:13px;border-bottom:1px dashed var(--border);">
+      <span style="color:var(--text);">${item.label}</span>
+      <span style="color:#fbbf24;font-weight:700;font-family:var(--font-mono);">+${item.xp} XP</span>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div style="text-align:center;padding:3rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:16px;margin:1rem 0;">
+      <div style="font-size:4rem;margin-bottom:1rem;animation:bounce 1s infinite alternate;">🎉</div>
+      <div style="font-size:12px;font-weight:700;color:var(--emerald);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">Lesson Complete!</div>
+      <h1 style="font-size:26px;color:var(--text);margin-bottom:1rem;">🎉 ${escapeHtml(ui.title)} Completed</h1>
+      
+      <!-- Performance Metrics Grid -->
+      <div style="display:flex;justify-content:center;gap:1.5rem;margin:2rem 0;flex-wrap:wrap;">
+        <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.25);padding:1.25rem 1.75rem;border-radius:14px;min-width:150px;">
+          <div style="font-size:26px;font-weight:800;color:#fbbf24;font-family:var(--font-mono);">+${xpData.total} XP</div>
+          <div style="font-size:11px;color:var(--mist);margin-top:0.25rem;font-weight:600;">Total Earned</div>
+        </div>
+        <div style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.25);padding:1.25rem 1.75rem;border-radius:14px;min-width:150px;">
+          <div style="font-size:26px;font-weight:800;color:var(--accent);font-family:var(--font-mono);">${actualTime} min</div>
+          <div style="font-size:11px;color:var(--mist);margin-top:0.25rem;font-weight:600;">Actual / Est. ~${estTime}m</div>
+        </div>
+        <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);padding:1.25rem 1.75rem;border-radius:14px;min-width:150px;">
+          <div style="font-size:26px;font-weight:800;color:var(--emerald);font-family:var(--font-mono);">${quizAccuracy}</div>
+          <div style="font-size:11px;color:var(--mist);margin-top:0.25rem;font-weight:600;">Quiz Accuracy</div>
+        </div>
+      </div>
+
+      <!-- XP Breakdown Box -->
+      <div style="max-width:500px;margin:0 auto 2rem auto;background:var(--abyss);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:left;">
+        <div style="font-size:13px;font-weight:700;color:var(--frost);margin-bottom:0.75rem;display:flex;justify-content:space-between;">
+          <span>⭐ XP Rewards Breakdown</span>
+          <span style="color:#fbbf24;">+${xpData.total} XP</span>
+        </div>
+        ${xpBreakdownHtml}
+      </div>
+
+      <!-- Stage Checklist Grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.75rem;max-width:700px;margin:1.5rem auto;text-align:left;">
+        ${checklistHtml}
+      </div>
+
+      <!-- Navigation Action Buttons -->
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:2.5rem;">
+        <button class="btn btn-secondary" onclick="goToStepId('revision')">📒 Review Notes</button>
+        <button class="btn btn-primary" id="btnContinueNextLessonInCelebration" style="background:linear-gradient(135deg, var(--accent), var(--purple));padding:0.75rem 2rem;font-size:15px;font-weight:700;">Continue to Next Lesson →</button>
       </div>
     </div>
   `;
+
+  // Wire up Continue button with automatic Module Completion check
+  const nextBtn = document.getElementById('btnContinueNextLessonInCelebration');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      // Award XP
+      if (typeof addXP === 'function') addXP(xpData.total);
+
+      // Mark completed in progress map
+      lessonProgressMap[ui.id] = true;
+      updateProgressUI();
+      renderSidebar();
+
+      // Check if module completed
+      const currentMod = currentRoadmap?.modules?.find(m => m.lessons.some(l => l.id === ui.id));
+      if (currentMod) {
+        const doneInMod = currentMod.lessons.filter(l => lessonProgressMap[l.id]).length;
+        if (doneInMod >= currentMod.lessons.length) {
+          // Trigger Phase 6 Module Completion with 2-second celebration animation
+          showModuleCompletionCelebration(currentMod);
+          return;
+        }
+      }
+
+      // Navigate to next lesson if available
+      if (ui.nextLesson && ui.nextLesson.id) {
+        openLesson(ui.nextLesson.id);
+      } else {
+        showToast('Roadmap completed! View your progress dashboard.', 'success');
+      }
+    });
+  }
+}
+
+// ── Phase 6: Module Completion Screen ─────────────────────────
+function showModuleCompletionCelebration(moduleData) {
+  const container = document.getElementById('completeContainer');
+  if (!container) return;
+
+  // 2-second celebration animation
+  container.innerHTML = `
+    <div style="text-align:center;padding:4rem 2rem;background:var(--surface);border:1px solid var(--accent);border-radius:16px;margin:1rem 0;box-shadow:0 0 30px rgba(99,102,241,0.2);">
+      <div style="font-size:5rem;margin-bottom:1rem;animation:bounce 0.6s infinite alternate;">🎓</div>
+      <h2 style="font-size:28px;color:var(--frost);margin-bottom:0.5rem;">Module Completed!</h2>
+      <p style="font-size:15px;color:var(--mist);">Wrapping up ${escapeHtml(moduleData.title)}...</p>
+      <div class="progress-bar-container" style="max-width:300px;margin:2rem auto;height:8px;background:var(--abyss);border-radius:4px;overflow:hidden;">
+        <div style="width:100%;height:100%;background:linear-gradient(90deg, var(--accent), var(--emerald));animation:pulse 1s infinite;"></div>
+      </div>
+    </div>
+  `;
+
+  setTimeout(() => {
+    renderModuleCompletionScreen(moduleData);
+  }, 2000);
+}
+
+function renderModuleCompletionScreen(mod) {
+  // Hide active step panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+
+  const modCompleteView = document.getElementById('moduleCompleteView');
+  const modContainer = document.getElementById('moduleCompleteContainer');
+  if (!modCompleteView || !modContainer) return;
+
+  modCompleteView.style.display = 'block';
+
+  const totalLessons = mod.lessons.length;
+  const doneLessons = mod.lessons.filter(l => lessonProgressMap[l.id]).length;
+  const pct = Math.round((doneLessons / totalLessons) * 100);
+
+  // Compute avg quiz score across module
+  let quizSum = 0;
+  let quizCount = 0;
+  mod.lessons.forEach(les => {
+    const lp = window.StageEngine.LessonStageProgress.load(les.id);
+    if (lp.quizScore !== null) {
+      quizSum += lp.quizScore;
+      quizCount++;
+    }
+  });
+  const avgQuiz = quizCount > 0 ? Math.round(quizSum / quizCount) : 85;
+
+  // Find next module
+  const modIdx = currentRoadmap?.modules?.findIndex(m => m.id === mod.id) ?? -1;
+  const nextMod = (modIdx !== -1 && currentRoadmap?.modules?.[modIdx + 1]) ? currentRoadmap.modules[modIdx + 1] : null;
+
+  modContainer.innerHTML = `
+    <div style="text-align:center;padding:3.5rem 2rem;background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:800px;margin:2rem auto;">
+      <div style="font-size:4.5rem;margin-bottom:1rem;">🏆</div>
+      <div style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">Module Milestone</div>
+      <h1 style="font-size:30px;color:var(--text);margin-bottom:1.5rem;">🎉 ${escapeHtml(mod.title)} Completed</h1>
+
+      <!-- Progress bar -->
+      <div style="max-width:500px;margin:0 auto 2rem auto;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--mist);margin-bottom:0.5rem;">
+          <span>Module Mastery</span>
+          <span style="color:var(--emerald);font-weight:700;">${pct}% Complete</span>
+        </div>
+        <div style="height:10px;background:var(--abyss);border-radius:5px;overflow:hidden;border:1px solid var(--border);">
+          <div style="width:${pct}%;height:100%;background:linear-gradient(90deg, var(--accent), var(--emerald));"></div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));gap:1rem;max-width:600px;margin:2rem auto;text-align:center;">
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:12px;border:1px solid var(--border);">
+          <div style="font-size:24px;font-weight:800;color:var(--frost);">${doneLessons} / ${totalLessons}</div>
+          <div style="font-size:11px;color:var(--mist);margin-top:0.25rem;">Lessons Mastered</div>
+        </div>
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:12px;border:1px solid var(--border);">
+          <div style="font-size:24px;font-weight:800;color:var(--emerald);">${avgQuiz}%</div>
+          <div style="font-size:11px;color:var(--mist);margin-top:0.25rem;">Avg Quiz Score</div>
+        </div>
+        <div style="background:var(--abyss-2);padding:1.25rem;border-radius:12px;border:1px solid var(--border);">
+          <div style="font-size:24px;font-weight:800;color:#fbbf24;">+${totalLessons * 125} XP</div>
+          <div style="font-size:11px;color:var(--mist);margin-top:0.25rem;">Module XP Earned</div>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:2.5rem;flex-wrap:wrap;">
+        <a class="btn btn-secondary" href="roadmaps.html">← Back to Roadmaps</a>
+        ${nextMod ? `
+          <button class="btn btn-primary" id="btnContinueNextModule" style="background:linear-gradient(135deg, var(--accent), var(--purple));padding:0.85rem 2.25rem;font-size:15px;font-weight:700;">Continue to Next Module: ${escapeHtml(nextMod.title)} →</button>
+        ` : `
+          <a class="btn btn-primary" href="roadmaps.html" style="background:var(--emerald);color:#fff;">🏆 Roadmap Complete! Claim Certificate →</a>
+        `}
+      </div>
+    </div>
+  `;
+
+  if (nextMod) {
+    document.getElementById('btnContinueNextModule')?.addEventListener('click', () => {
+      modCompleteView.style.display = 'none';
+      const firstLes = nextMod.lessons[0];
+      if (firstLes) openLesson(firstLes.id);
+    });
+  }
 }
 
 function renderLearnContainer(ui) {
@@ -4676,7 +5843,7 @@ async function renderCompletionScreen(ui) {
   container.innerHTML = `
     <div class="journey-card" style="border-left: 4px solid var(--emerald); text-align: center; padding: 3rem 1.5rem;">
       <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
-      <h2 style="color: var(--emerald); font-size: 26px; margin-bottom: 0.5rem; font-weight: 800;">Lesson Completed</h2>
+      <h2 style="color: var(--emerald); font-size: 26px; margin-bottom: 0.5rem; font-weight: 800;">Lesson Completed!</h2>
       <div class="premium-callout" style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 8px; padding: 0.75rem 1.5rem; display: inline-block; margin-bottom: 2rem;">
         <strong style="color: var(--emerald); font-size: 16px;">+100 XP Earned</strong>
       </div>
@@ -4696,13 +5863,17 @@ async function renderCompletionScreen(ui) {
         </div>
 
         ${nextL && !nextL.locked ? `
-          <div style="background: var(--abyss-2); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-top: 1rem;">
-            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">Next Lesson</div>
-            <h3 style="margin: 0 0 0.75rem 0; font-size: 1.15rem; color: var(--text); font-weight: 700;">${escapeHtml(nextLDetails?.title?.split('— Lesson')[1]?.replace(/^\s*\d+:\s*/, '') || nextLDetails?.title || nextL.title)}</h3>
-            
-            <div style="display: flex; gap: 1.5rem; font-size: 12.5px; color: var(--mist);">
-              <div>⏱️ <strong>Estimated Time:</strong> ~${nextLDetails?.estimatedTime || 30} mins</div>
-              <div>📊 <strong>Difficulty:</strong> ${escapeHtml(nextLDetails?.difficulty || 'Beginner')}</div>
+          <!-- Skippable Auto Advance Timer Box -->
+          <div id="autoAdvanceBox" style="background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.08)); border: 1px solid var(--accent); border-radius: 12px; padding: 1.25rem; margin-top: 1rem; text-align: center;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;">
+              🚀 Up Next in <span id="autoTimerSecs" style="font-size: 16px; font-weight: 800; color: #fff;">5</span>s
+            </div>
+            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.15rem; color: var(--text); font-weight: 700;">
+              ${escapeHtml(nextLDetails?.title?.split('— Lesson')[1]?.replace(/^\s*\d+:\s*/, '') || nextLDetails?.title || nextL.title)}
+            </h3>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+              <button class="btn btn-primary btn-sm" id="btn-continue-now">Continue Now ➔</button>
+              <button class="btn btn-secondary btn-sm" id="btn-stay-here">Pause Auto-Advance</button>
             </div>
           </div>
         ` : `
@@ -4717,9 +5888,7 @@ async function renderCompletionScreen(ui) {
       </div>
 
       <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap;">
-        ${nextL && !nextL.locked ? `
-          <button class="btn btn-primary" id="btn-continue-next-lesson" style="padding: 0.75rem 2rem;">Continue to Next Lesson →</button>
-        ` : nextAssessmentAction ? `
+        ${nextAssessmentAction ? `
           <button class="btn btn-primary" id="btn-take-assessment" style="padding: 0.75rem 2rem; background: var(--accent); border-color: var(--accent);">${escapeHtml(nextAssessmentAction.label)}</button>
         ` : ''}
         <button class="btn btn-secondary" id="btn-back-to-roadmap" style="padding: 0.75rem 2.5rem;">Back to Roadmap</button>
@@ -4727,10 +5896,44 @@ async function renderCompletionScreen(ui) {
     </div>
   `;
 
-  // Bind buttons
-  document.getElementById('btn-continue-next-lesson')?.addEventListener('click', () => {
-    openLesson(nextL.id, false); // no locked warning toast on auto navigation
-  });
+  // Handle 5-second skippable auto-advance countdown timer
+  if (nextL && !nextL.locked) {
+    let timeLeft = 5;
+    const timerElem = document.getElementById('autoTimerSecs');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      window.autoAdvanceInterval = setInterval(() => {
+        timeLeft--;
+        if (timerElem) timerElem.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(window.autoAdvanceInterval);
+          openLesson(nextL.id, false);
+        }
+      }, 1000);
+    }
+
+    document.getElementById('btn-continue-now')?.addEventListener('click', () => {
+      if (window.autoAdvanceInterval) clearInterval(window.autoAdvanceInterval);
+      openLesson(nextL.id, false);
+    });
+
+    document.getElementById('btn-stay-here')?.addEventListener('click', () => {
+      if (window.autoAdvanceInterval) clearInterval(window.autoAdvanceInterval);
+      const box = document.getElementById('autoAdvanceBox');
+      if (box) {
+        box.innerHTML = `
+          <div style="font-size: 13px; color: var(--mist);">
+            Auto-advance paused. You can navigate at your own pace!
+          </div>
+          <button class="btn btn-primary btn-sm" id="btn-continue-manual" style="margin-top:0.75rem;">Open Next Lesson ➔</button>
+        `;
+        document.getElementById('btn-continue-manual')?.addEventListener('click', () => {
+          openLesson(nextL.id, false);
+        });
+      }
+    });
+  }
 
   document.getElementById('btn-take-assessment')?.addEventListener('click', () => {
     if (nextAssessmentAction) {

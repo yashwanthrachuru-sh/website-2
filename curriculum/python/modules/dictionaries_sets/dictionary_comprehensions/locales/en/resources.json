@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/dictionary comprehensions",
-      "type": "documentation",
-      "description": "Official reference for Dictionary Comprehensions in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Dictionary Comprehensions in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Dictionary Comprehensions with other developers"
+      "type": "official",
+      "title": "Python Dict Comprehensions",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#dictionaries"
     }
   ]
 }

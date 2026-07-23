@@ -3,25 +3,22 @@
   "title": "Call By Value Stack",
   "technology": "C Programming",
   "module": "Functions Recursion",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Loops Iterations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Call By Value Stack.",
-    "Write error-free implementations utilizing Call By Value Stack.",
-    "Debug and optimize performance characteristics of Call By Value Stack."
+    "Understand Call By Value Stack from zero to advanced level",
+    "Write clean, production-grade C Programming code for Call By Value Stack",
+    "Debug edge cases and answer interview questions about Call By Value Stack"
   ],
   "tags": [
-    "call",
-    "by",
-    "value",
-    "stack"
+    "call_by_value_stack",
+    "c",
+    "functions_recursion"
   ]
 }

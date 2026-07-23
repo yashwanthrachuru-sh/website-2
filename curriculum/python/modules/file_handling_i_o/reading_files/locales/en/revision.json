@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Reading Files is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Reading Files is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Read files with `with open(path, 'r', encoding='utf-8') as f:`. Stream line by line for large files.",
+  "oneLineSummary": "Always use `with open()` with explicit UTF-8 encoding for safe file reading.",
   "keyTakeaways": [
-    "Reading Files solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Specify encoding='utf-8'.",
+    "Stream line by line for memory efficiency.",
+    "with open handles cleanup."
   ],
   "memoryTricks": [
-    "Think of reading files as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Reading Files in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "File Reading",
+      "trick": "WITH OPEN = Auto-Cleanup Safety Net."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "UnicodeDecodeError",
+      "cause": "Omitting encoding on Windows",
+      "fix": "Add encoding='utf-8'"
+    }
   ],
-  "mindMap": {
-    "central": "Reading Files",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain streaming file iteration"
+  ],
   "nextTopics": [
-    "Advanced reading files",
-    "Testing reading files",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Writing Files",
+      "whyNext": "Learn to create and append data to disk files."
+    }
+  ]
 }

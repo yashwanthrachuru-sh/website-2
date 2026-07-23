@@ -1,46 +1,23 @@
 {
-  "deeperExplanation": "Functions are first-class citizens in python. They can be assigned to variables, passed as arguments, returned from other functions, and stored in data structures. This enables powerful patterns: callbacks, closures, decorators, and higher-order functions.",
-  "mutabilityExplained": "Parameters are passed by assignment (Python) or by value (primitives) / reference (objects in JS). Mutable objects passed to a function can be modified inside, affecting the caller's copy.",
-  "noneValue": "A function without an explicit return statement returns None (Python) or undefined (JS). Always ensure your function has a clear return path.",
-  "internalImplementation": "Python creates a new stack frame for each function call, storing parameters and local variables. When the function returns, the frame is popped. Recursive functions create multiple frames — too many cause stack overflow.",
+  "deeperExplanation": "In Python, functions are First-Class Objects. This means functions can be assigned to variables, passed as arguments to other functions, returned from functions, and stored in data structures like dicts and lists.",
+  "internalImplementation": "CPython creates a `PyFunctionObject` in memory. Calling a function pushes a new `PyFrameObject` onto the execution call stack.",
   "examples": [
     {
-      "title": "Function with Default Parameters",
-      "code": "def power(base, exponent=2):\n    return base ** exponent\n\nprint(power(5))     # 25 (default exponent 2)\nprint(power(5, 3))  # 125 (exponent 3)",
-      "explanation": "Default parameters make functions flexible — they work with fewer arguments by providing sensible defaults.",
-      "language": "python"
+      "code": "# First-Class Functions Pattern\ndef square(x): return x * x\ndef cube(x): return x * x * x\n\nmath_ops = {'sq': square, 'cb': cube}\nprint(math_ops['sq'](4))  # 16",
+      "explanation": "Functions stored as values in a dictionary and called dynamically."
     }
   ],
-  "bestPractices": [
-    "One function, one responsibility",
-    "Use descriptive names (verb + noun)",
-    "Keep functions short (under 20 lines)",
-    "Avoid side effects — prefer pure functions",
-    "Document with docstrings/comments",
-    "Return early for edge cases (guard clauses)"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A function returns the wrong value for certain inputs.",
-    "steps": [
-      "Check return statements in all branches",
-      "Verify parameters are what you expect",
-      "Print intermediate values",
-      "Test with the simplest possible input",
-      "Check for unintended side effects"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Function call stack frame creation adds slight overhead (~50ns).",
+    "spaceComplexity": "Stack memory scales with call depth (recursion limits)."
   },
-  "edgeCases": [
-    "No arguments vs default parameters",
-    "Too many/few arguments (error)",
-    "Mutable default arguments (Python gotcha)",
-    "Recursive functions without base case (stack overflow)"
-  ],
-  "performanceNotes": {
-    "notes": "Function calls have overhead (stack frame creation). For performance-critical code, inline or use lambda where appropriate. Modern engines optimize frequently-called functions (JIT).",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(1)",
-      "worst": "O(1) — but the function body adds its own complexity"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Assigning function result when function returns None implicitly.",
+    "incorrectCode": "def set_user(name):\n    user = name\n    # Missing return!\n\nu = set_user('Alice')\nprint(u.upper())",
+    "correctCode": "def set_user(name):\n    return name\n\nu = set_user('Alice')\nprint(u.upper())"
+  },
+  "bestPractices": [
+    "Follow the Single Responsibility Principle: each function should do one thing well.",
+    "Include Google or NumPy style docstrings for every public function."
+  ]
 }

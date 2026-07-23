@@ -3,26 +3,22 @@
   "title": "System Design Troubleshooting Part 1C",
   "technology": "System Design",
   "module": "System Design Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of System Design Troubleshooting Part 1C.",
-    "Write error-free implementations utilizing System Design Troubleshooting Part 1C.",
-    "Debug and optimize performance characteristics of System Design Troubleshooting Part 1C."
+    "Understand System Design Troubleshooting Part 1C from zero to advanced level",
+    "Write clean, production-grade System Design code for System Design Troubleshooting Part 1C",
+    "Debug edge cases and answer interview questions about System Design Troubleshooting Part 1C"
   ],
   "tags": [
-    "system",
-    "design",
-    "troubleshooting",
-    "part",
-    "1c"
+    "system_design_troubleshooting_part_1c",
+    "system-design",
+    "system_design_setup_architecture_foundations"
   ]
 }

@@ -3,23 +3,22 @@
   "title": "Generics Templates",
   "technology": "Java",
   "module": "Collections & Generics",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Exception Handling"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Generics Templates.",
-    "Write error-free implementations utilizing Generics Templates.",
-    "Debug and optimize performance characteristics of Generics Templates."
+    "Understand Generics Templates from zero to advanced level",
+    "Write clean, production-grade Java code for Generics Templates",
+    "Debug edge cases and answer interview questions about Generics Templates"
   ],
   "tags": [
-    "generics",
-    "templates"
+    "generics_templates",
+    "java",
+    "collections_generics"
   ]
 }

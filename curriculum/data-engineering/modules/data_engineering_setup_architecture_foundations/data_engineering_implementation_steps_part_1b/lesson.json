@@ -3,27 +3,22 @@
   "title": "Data Engineering Implementation Steps Part 1B",
   "technology": "Data Engineering",
   "module": "Data Engineering Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing Data Engineering Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of Data Engineering Implementation Steps Part 1B."
+    "Understand Data Engineering Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about Data Engineering Implementation Steps Part 1B"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "data_engineering_implementation_steps_part_1b",
+    "data-engineering",
+    "data_engineering_setup_architecture_foundations"
   ]
 }

@@ -3,27 +3,22 @@
   "title": "Data Science Core Principles Part 1A",
   "technology": "Data Science",
   "module": "Data Science Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Science Core Principles Part 1A.",
-    "Write error-free implementations utilizing Data Science Core Principles Part 1A.",
-    "Debug and optimize performance characteristics of Data Science Core Principles Part 1A."
+    "Understand Data Science Core Principles Part 1A from zero to advanced level",
+    "Write clean, production-grade Data Science code for Data Science Core Principles Part 1A",
+    "Debug edge cases and answer interview questions about Data Science Core Principles Part 1A"
   ],
   "tags": [
-    "data",
-    "science",
-    "core",
-    "principles",
-    "part",
-    "1a"
+    "data_science_core_principles_part_1a",
+    "data-science",
+    "data_science_setup_architecture_foundations"
   ]
 }

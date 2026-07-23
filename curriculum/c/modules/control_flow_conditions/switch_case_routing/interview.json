@@ -1,53 +1,18 @@
 {
   "questions": [
     {
-      "question": "What is the difference between == and === in JavaScript?",
-      "answer": "== performs type coercion before comparison. 1 == \"1\" is true; 0 == false is true. === checks both type and value without coercion. 1 === \"1\" is false. Always use === in production code to avoid subtle bugs from implicit type conversion.",
+      "question": "Explain Switch Case Routing and its primary use case in C Programming.",
+      "answer": "Switch Case Routing provides a structured mechanism to handle core application logic cleanly.",
       "difficulty": "Beginner"
     },
     {
-      "question": "What is \"guard clause\" pattern and why is it better than else chains?",
-      "answer": "A guard clause is an early return that handles invalid/edge cases at the top of a function. Instead of: if (valid) { ... lots of code ... } else { return error; } — you write: if (!valid) return error; (rest of function runs only in the happy path). This reduces nesting, makes error conditions explicit, and makes the main logic easier to read.",
+      "question": "What are common mistakes developers make with Switch Case Routing?",
+      "answer": "Common issues include scoping errors, unhandled boundary cases, and improper resource cleanup.",
       "difficulty": "Intermediate"
     },
     {
-      "question": "Explain truthiness in Python vs JavaScript.",
-      "answer": "Python falsy values: None, False, 0, 0.0, \"\", [], {}, (). Everything else is truthy. JavaScript falsy values: false, 0, -0, 0n, \"\", null, undefined, NaN. Key differences: In Python, empty collections are falsy; in JavaScript they are truthy ([] and {} are truthy in JS). Python has no NaN truthiness issue since NaN is a float concept. Always know your language's specific falsy values.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Switch Case Routing queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Switch Case Routing queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Intermediate"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Switch Case Routing queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Switch Case Routing queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Switch Case Routing queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Switch Case Routing queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
-      "difficulty": "Advanced"
-    },
-    {
-      "question": "What are the performance characteristics of high-frequency Switch Case Routing queries?",
-      "answer": "It depends on the data structure used. Average queries execute in O(1) time when using hash indexes, but can degrade to O(N) linear search if colliding.",
+      "question": "How does the C Programming runtime optimize Switch Case Routing under the hood?",
+      "answer": "The runtime engine uses symbol tables, call stack frames, and bytecode optimization to run instructions efficiently.",
       "difficulty": "Advanced"
     }
   ]

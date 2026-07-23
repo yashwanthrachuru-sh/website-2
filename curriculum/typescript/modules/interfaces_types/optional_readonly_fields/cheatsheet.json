@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```typescript\n// Declaring and executing Optional Readonly Fields\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Optional Readonly Fields Cheat Sheet",
+  "printNote": "Quick reference for Optional Readonly Fields in TypeScript.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// TypeScript implementation for Optional Readonly Fields",
+          "example": "// TypeScript implementation for Optional Readonly Fields\ninterface OptionalReadonlyFieldsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processOptionalReadonlyFields(item: OptionalReadonlyFieldsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processOptionalReadonlyFields({ id: 1, title: 'Optional Readonly Fields', status: 'active' }));",
+          "description": "Basic syntax for Optional Readonly Fields",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

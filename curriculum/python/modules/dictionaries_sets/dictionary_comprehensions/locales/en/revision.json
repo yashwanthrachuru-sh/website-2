@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Dictionary Comprehensions is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Dictionary Comprehensions is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Dict comprehensions construct dicts in one line: `{k: v for item in iter if cond}`. Requires colon `:` between key and value.",
+  "oneLineSummary": "Dict comprehensions build dynamic dictionaries using `{k: v for item in iter}` syntax.",
   "keyTakeaways": [
-    "Dictionary Comprehensions solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Requires colon between key and value.",
+    "Duplicate keys overwrite earlier entries.",
+    "Can invert dicts with `{v: k}`."
   ],
   "memoryTricks": [
-    "Think of dictionary comprehensions as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Dictionary Comprehensions in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Dict Comp",
+      "trick": "{KEY: VALUE for ITEM in ITERABLE}"
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "SyntaxError",
+      "cause": "Using comma instead of colon between key and value",
+      "fix": "Use `{k: v ...}`"
+    }
   ],
-  "mindMap": {
-    "central": "Dictionary Comprehensions",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Demonstrate inverting a dict with dict comprehension"
+  ],
   "nextTopics": [
-    "Advanced dictionary comprehensions",
-    "Testing dictionary comprehensions",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Exception Handling",
+      "whyNext": "Learn robust error handling with try-except blocks."
+    }
+  ]
 }

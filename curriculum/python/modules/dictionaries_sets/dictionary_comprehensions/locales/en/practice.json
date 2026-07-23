@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Dictionary Comprehensions — Basic Practice",
-    "description": "Write a basic dictionary comprehensions implementation.",
-    "starterCode": "def basic_dictionary_comprehensions():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Word Length Map",
+    "description": "Given list of words, return dict mapping `word: len(word)` using dict comprehension.",
+    "starterCode": "def word_lengths(words):\n    pass",
+    "expectedOutput": "{'cat': 3}",
+    "solution": "def word_lengths(words):\n    return {w: len(w) for w in words}",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Use {w: len(w) for w in words}"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Dictionary Comprehensions — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Filter Passing Grades",
+    "description": "Given dict `{'Alice': 85, 'Bob': 45}`, return dict of students with score >= 50.",
+    "starterCode": "def filter_passing(scores):\n    pass",
+    "expectedOutput": "{'Alice': 85}",
+    "solution": "def filter_passing(scores):\n    return {k: v for k, v in scores.items() if v >= 50}",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Iterate scores.items() with if v >= 50"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Dictionary Comprehensions — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Count Character Occurrences",
+    "description": "Build frequency dict for string using set and count in dict comprehension.",
+    "starterCode": "def char_freq_comp(s):\n    pass",
+    "expectedOutput": "{'a': 2}",
+    "solution": "def char_freq_comp(s):\n    return {c: s.count(c) for c in set(s)}",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Iterate set(s) to avoid redundant counts"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Dictionary Comprehensions",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Missing Colon Syntax",
+    "description": "Fix SyntaxError in dict comprehension.",
+    "buggyCode": "d = {x, x**2 for x in range(3)}",
+    "fixedCode": "d = {x: x**2 for x in range(3)}",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Comma used instead of colon `:` between key and value."
     ]
   }
 }

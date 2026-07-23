@@ -3,23 +3,22 @@
   "title": "REST Controllers",
   "technology": "Java",
   "module": "Spring Boot APIs",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Java Multithreading"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of REST Controllers.",
-    "Write error-free implementations utilizing REST Controllers.",
-    "Debug and optimize performance characteristics of REST Controllers."
+    "Understand REST Controllers from zero to advanced level",
+    "Write clean, production-grade Java code for REST Controllers",
+    "Debug edge cases and answer interview questions about REST Controllers"
   ],
   "tags": [
-    "rest",
-    "controllers"
+    "rest_controllers",
+    "java",
+    "spring_boot_apis"
   ]
 }

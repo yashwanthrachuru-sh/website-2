@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Implementation Steps Part 12B",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Implementation Steps Part 12B.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Implementation Steps Part 12B.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Implementation Steps Part 12B."
+    "Understand Kubernetes Orchestration Implementation Steps Part 12B from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Implementation Steps Part 12B",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Implementation Steps Part 12B"
   ],
   "tags": [
+    "kubernetes_orchestration_implementation_steps_part_12b",
     "kubernetes",
-    "orchestration",
-    "implementation",
-    "steps",
-    "part",
-    "12b"
+    "kubernetes_orchestration_production_deployment_server_pipelines"
   ]
 }

@@ -1,46 +1,44 @@
 {
   "easy": {
-    "title": "Reading Files — Basic Practice",
-    "description": "Write a basic reading files implementation.",
-    "starterCode": "def basic_reading_files():\n    pass",
-    "solution": "def basic():\n    return \"done\"",
+    "title": "Count File Lines",
+    "description": "Write `count_lines(filename)` returning line count.",
+    "starterCode": "def count_lines(filename):\n    pass",
+    "expectedOutput": "5",
+    "solution": "def count_lines(filename):\n    with open(filename, 'r', encoding='utf-8') as f:\n        return sum(1 for _ in f)",
     "hints": [
-      "Start simple",
-      "Test with sample inputs"
+      "Use sum(1 for _ in f)"
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Reading Files — Intermediate",
-    "description": "Extend your implementation with error handling.",
-    "starterCode": "def improved():\n    pass",
-    "solution": "def improved():\n    try:\n        return \"done\"\n    except Exception as e:\n        return f\"Error: {e}\"",
+    "title": "Search Keyword in File",
+    "description": "Return list of line numbers containing `keyword`.",
+    "starterCode": "def find_keyword(filename, keyword):\n    pass",
+    "expectedOutput": "[1, 4]",
+    "solution": "def find_keyword(filename, keyword):\n    matches = []\n    with open(filename, 'r', encoding='utf-8') as f:\n        for idx, line in enumerate(f, start=1):\n            if keyword in line:\n                matches.append(idx)\n    return matches",
     "hints": [
-      "Consider edge cases",
-      "Add proper error handling"
+      "Use enumerate(f, start=1)"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Reading Files — Expert Challenge",
-    "description": "Build a production-quality implementation with optimizations.",
-    "starterCode": "def solution():\n    # Your code here\n    pass",
-    "solution": "def solution():\n    # Your code here\n    pass",
+    "title": "Parse Key-Value Config File",
+    "description": "Parse file lines `key=value` into dict (ignoring comments starting with `#`).",
+    "starterCode": "def parse_config(filename):\n    pass",
+    "expectedOutput": "{'host': 'localhost'}",
+    "solution": "def parse_config(filename):\n    cfg = {}\n    with open(filename, 'r', encoding='utf-8') as f:\n        for line in f:\n            line = line.strip()\n            if line and not line.startswith('#') and '=' in line:\n                k, v = line.split('=', 1)\n                cfg[k.strip()] = v.strip()\n    return cfg",
     "hints": [
-      "Think about performance",
-      "Consider concurrent access",
-      "Profile your solution"
+      "Split line on '='"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Reading Files",
-    "description": "The following python code has bugs. Find and fix them.",
-    "buggyCode": "def broken(x):\n    result = x / 0  # bug\n    return result",
-    "fixedCode": "def fixed(x):\n    if x == 0: return 0\n    return x / 1",
+    "title": "Fix Missing Close Bug",
+    "description": "Refactor raw open() to use context manager.",
+    "buggyCode": "f = open('log.txt')\ndata = f.read()",
+    "fixedCode": "with open('log.txt', 'r', encoding='utf-8') as f:\n    data = f.read()",
     "bugs": [
-      "Division by zero",
-      "No error handling"
+      "Missing close call causes resource leak. Wrap in `with open()`."
     ]
   }
 }

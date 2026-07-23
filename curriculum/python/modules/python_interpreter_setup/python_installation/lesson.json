@@ -3,23 +3,22 @@
   "title": "Python Installation",
   "technology": "Python",
   "module": "Python Interpreter & Setup",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Python Installation.",
-    "Write error-free implementations utilizing Python Installation.",
-    "Debug and optimize performance characteristics of Python Installation."
+    "Understand Python Installation from zero to advanced level",
+    "Write clean, production-grade Python code for Python Installation",
+    "Debug edge cases and answer interview questions about Python Installation"
   ],
   "tags": [
+    "python_installation",
     "python",
-    "installation"
+    "python_interpreter_setup"
   ]
 }

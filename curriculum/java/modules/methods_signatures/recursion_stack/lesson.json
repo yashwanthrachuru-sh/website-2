@@ -3,23 +3,22 @@
   "title": "Recursion Stack",
   "technology": "Java",
   "module": "Methods & Signatures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Loops & Iteration"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Recursion Stack.",
-    "Write error-free implementations utilizing Recursion Stack.",
-    "Debug and optimize performance characteristics of Recursion Stack."
+    "Understand Recursion Stack from zero to advanced level",
+    "Write clean, production-grade Java code for Recursion Stack",
+    "Debug edge cases and answer interview questions about Recursion Stack"
   ],
   "tags": [
-    "recursion",
-    "stack"
+    "recursion_stack",
+    "java",
+    "methods_signatures"
   ]
 }

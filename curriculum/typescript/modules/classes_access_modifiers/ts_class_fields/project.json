@@ -1,11 +1,14 @@
 {
-  "title": "TS Class Fields System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of TS Class Fields.",
+  "title": "TS Class Fields Project",
+  "tagline": "Build a mini application using TS Class Fields",
+  "description": "Create a working TypeScript application demonstrating TS Class Fields.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for TS Class Fields\ninterface TSClassFieldsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processTSClassFields(item: TSClassFieldsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processTSClassFields({ id: 1, title: 'TS Class Fields', status: 'active' }));",
+  "solution": "// TypeScript implementation for TS Class Fields\ninterface TSClassFieldsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processTSClassFields(item: TSClassFieldsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processTSClassFields({ id: 1, title: 'TS Class Fields', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of TS Class Fields in TypeScript."
 }

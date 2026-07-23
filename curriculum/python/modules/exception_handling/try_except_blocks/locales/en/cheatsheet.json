@@ -1,34 +1,14 @@
 {
-  "title": "Try Except Blocks — Quick Reference",
+  "printNote": "Exception Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Try Except Blocks\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Try-Except",
+      "entries": [
+        {
+          "syntax": "try:\n    ...\nexcept Error:\n    ...",
+          "example": "try: 1/0\nexcept ZeroDivisionError: pass",
+          "description": "Error handling block"
+        }
       ]
     }
   ]

@@ -2,141 +2,421 @@
   "mcqs": [
     {
       "id": "q_1",
-      "question": "What is the primary role of System Design Troubleshooting Part 7C?",
+      "question": "What is the primary role of System Design Troubleshooting Part 7C in System Design?",
       "options": [
-        "To manage and coordinate state transformations for System Design Troubleshooting Part 7C.",
-        "To override platform-level memory access constraints.",
-        "To run asynchronous file compression routines.",
-        "To construct direct database socket bindings."
+        "To provide a structured logic mechanism for building software applications",
+        "To bypass memory allocation rules in hardware",
+        "To delete temporary project files on every compile",
+        "To format text files without executing instructions"
       ],
       "answer": "A",
-      "explanation": "System Design Troubleshooting Part 7C organizes logic flow and handles operations safely at runtime.",
+      "explanation": "System Design Troubleshooting Part 7C provides a fundamental building block in System Design for organizing code and state.",
       "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_2",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "Which statement is true regarding the execution of System Design Troubleshooting Part 7C?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "It follows standard scope and syntax rules defined by System Design",
+        "It runs only when connected to an external cloud server",
+        "It causes an immediate compiler error",
+        "It automatically disables error handling"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
+      "explanation": "All valid System Design Troubleshooting Part 7C instructions follow System Design's official language specification.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_3",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "What is a common best practice when writing System Design Troubleshooting Part 7C?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "Writing clean, self-documenting code with clear variable and function names",
+        "Using cryptic single-letter identifiers everywhere",
+        "Skipping error handling and boundary checks",
+        "Hardcoding configuration values directly inside logic loops"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
+      "explanation": "Clean naming conventions and defensive checks make System Design Troubleshooting Part 7C maintainable in team projects.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_4",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "How should exceptions or errors in System Design Troubleshooting Part 7C be handled?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "By using explicit error handling structures (e.g. try-catch / try-except)",
+        "By ignoring all error messages completely",
+        "By force-quitting the operating system",
+        "By converting error messages to comments"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
+      "explanation": "Proper error handling prevents system crashes and provides informative diagnostic feedback.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_5",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "What is the performance characteristic of System Design Troubleshooting Part 7C lookups or execution?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "Efficient runtime performance when following standard data structure patterns",
+        "Always executes in O(N^3) time complexity",
+        "Requires 100% of host CPU core resources",
+        "Causes immediate memory leaks"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
+      "explanation": "Using proper data structures ensures optimal execution speed and auxiliary memory usage.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_6",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "What happens if a syntax mistake is made in System Design Troubleshooting Part 7C?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "The language parser raises a SyntaxError or compilation error",
+        "The computer restarts automatically",
+        "The program runs with modified values",
+        "The file is deleted from disk"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Intermediate",
+      "explanation": "Syntax errors are caught during the parsing/compilation stage before execution begins.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_7",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "In a real-world production app, where is System Design Troubleshooting Part 7C typically applied?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "Inside core business logic, API controllers, or data processing pipelines",
+        "Only inside local README documentation files",
+        "In temporary test configuration flags that are never deployed",
+        "Inside graphics driver binaries"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Advanced",
+      "explanation": "System Design Troubleshooting Part 7C is used directly in production services, web backends, and data workflows.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_8",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "Which tool or command is used to verify code quality for System Design Troubleshooting Part 7C?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "A static linter or compiler verification tool",
+        "An image editing program",
+        "A web browser search bar",
+        "A text compressor"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Advanced",
+      "explanation": "Linters and static analysis tools verify formatting, type correctness, and syntax standards.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_9",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "What is the recommended approach for unit testing System Design Troubleshooting Part 7C?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "Writing automated test cases that cover normal execution and edge cases",
+        "Testing manually by clicking around once before release",
+        "Skipping unit tests completely",
+        "Testing only when users report bugs"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
-      "difficulty": "Advanced",
+      "explanation": "Automated unit tests ensure code correctness across refactoring and future updates.",
+      "difficulty": "Beginner",
       "topic": "System Design Troubleshooting Part 7C"
     },
     {
       "id": "q_10",
-      "question": "In javascript, which of the following is true about System Design Troubleshooting Part 7C?",
+      "question": "Why is modular code structure important when implementing System Design Troubleshooting Part 7C?",
       "options": [
-        "It follows local scope rules.",
-        "It runs directly on GPUs with zero CPU usage.",
-        "It requires network connections to execute.",
-        "It is deprecated in the latest release."
+        "It separates concerns, making code easier to test, debug, and reuse",
+        "It makes source files larger",
+        "It prevents other developers from reading the code",
+        "It forces the CPU to run in single-thread mode"
       ],
       "answer": "A",
-      "explanation": "Scopes constrain variable accessibility and prevent collisions.",
+      "explanation": "Modularity divides complex applications into isolated, testable, and reusable modules.",
+      "difficulty": "Beginner",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_11",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 11 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 11",
+        "Bypassing type checks and runtime validation for step 11",
+        "Using global variables for all internal states in step 11",
+        "Hardcoding step 11 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 11 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_12",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 12 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 12",
+        "Bypassing type checks and runtime validation for step 12",
+        "Using global variables for all internal states in step 12",
+        "Hardcoding step 12 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 12 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_13",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 13 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 13",
+        "Bypassing type checks and runtime validation for step 13",
+        "Using global variables for all internal states in step 13",
+        "Hardcoding step 13 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 13 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_14",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 14 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 14",
+        "Bypassing type checks and runtime validation for step 14",
+        "Using global variables for all internal states in step 14",
+        "Hardcoding step 14 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 14 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_15",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 15 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 15",
+        "Bypassing type checks and runtime validation for step 15",
+        "Using global variables for all internal states in step 15",
+        "Hardcoding step 15 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 15 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_16",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 16 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 16",
+        "Bypassing type checks and runtime validation for step 16",
+        "Using global variables for all internal states in step 16",
+        "Hardcoding step 16 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 16 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_17",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 17 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 17",
+        "Bypassing type checks and runtime validation for step 17",
+        "Using global variables for all internal states in step 17",
+        "Hardcoding step 17 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 17 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_18",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 18 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 18",
+        "Bypassing type checks and runtime validation for step 18",
+        "Using global variables for all internal states in step 18",
+        "Hardcoding step 18 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 18 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_19",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 19 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 19",
+        "Bypassing type checks and runtime validation for step 19",
+        "Using global variables for all internal states in step 19",
+        "Hardcoding step 19 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 19 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_20",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 20 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 20",
+        "Bypassing type checks and runtime validation for step 20",
+        "Using global variables for all internal states in step 20",
+        "Hardcoding step 20 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 20 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Intermediate",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_21",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 21 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 21",
+        "Bypassing type checks and runtime validation for step 21",
+        "Using global variables for all internal states in step 21",
+        "Hardcoding step 21 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 21 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_22",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 22 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 22",
+        "Bypassing type checks and runtime validation for step 22",
+        "Using global variables for all internal states in step 22",
+        "Hardcoding step 22 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 22 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_23",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 23 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 23",
+        "Bypassing type checks and runtime validation for step 23",
+        "Using global variables for all internal states in step 23",
+        "Hardcoding step 23 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 23 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_24",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 24 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 24",
+        "Bypassing type checks and runtime validation for step 24",
+        "Using global variables for all internal states in step 24",
+        "Hardcoding step 24 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 24 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_25",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 25 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 25",
+        "Bypassing type checks and runtime validation for step 25",
+        "Using global variables for all internal states in step 25",
+        "Hardcoding step 25 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 25 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_26",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 26 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 26",
+        "Bypassing type checks and runtime validation for step 26",
+        "Using global variables for all internal states in step 26",
+        "Hardcoding step 26 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 26 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_27",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 27 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 27",
+        "Bypassing type checks and runtime validation for step 27",
+        "Using global variables for all internal states in step 27",
+        "Hardcoding step 27 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 27 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_28",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 28 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 28",
+        "Bypassing type checks and runtime validation for step 28",
+        "Using global variables for all internal states in step 28",
+        "Hardcoding step 28 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 28 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_29",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 29 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 29",
+        "Bypassing type checks and runtime validation for step 29",
+        "Using global variables for all internal states in step 29",
+        "Hardcoding step 29 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 29 requires clean scoping and proper memory management to maintain high performance.",
+      "difficulty": "Advanced",
+      "topic": "System Design Troubleshooting Part 7C"
+    },
+    {
+      "id": "q_30",
+      "question": "In System Design (System Design Advanced Abstractions & Type Blueprints), what is a key architectural consideration for step 30 of System Design Troubleshooting Part 7C?",
+      "options": [
+        "Ensuring proper scope boundaries and memory deallocation for step 30",
+        "Bypassing type checks and runtime validation for step 30",
+        "Using global variables for all internal states in step 30",
+        "Hardcoding step 30 directly into system kernel instructions"
+      ],
+      "answer": "A",
+      "explanation": "Step 30 requires clean scoping and proper memory management to maintain high performance.",
       "difficulty": "Advanced",
       "topic": "System Design Troubleshooting Part 7C"
     }

@@ -3,27 +3,22 @@
   "title": "Artificial Intelligence Implementation Steps Part 6B",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Implementation Steps Part 6B.",
-    "Write error-free implementations utilizing Artificial Intelligence Implementation Steps Part 6B.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Implementation Steps Part 6B."
+    "Understand Artificial Intelligence Implementation Steps Part 6B from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Implementation Steps Part 6B",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Implementation Steps Part 6B"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "implementation",
-    "steps",
-    "part",
-    "6b"
+    "artificial_intelligence_implementation_steps_part_6b",
+    "ai",
+    "artificial_intelligence_data_collections_list_structures"
   ]
 }

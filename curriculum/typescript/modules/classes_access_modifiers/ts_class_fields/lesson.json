@@ -3,24 +3,22 @@
   "title": "TS Class Fields",
   "technology": "TypeScript",
   "module": "Classes & Access Modifiers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Union & Intersection"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of TS Class Fields.",
-    "Write error-free implementations utilizing TS Class Fields.",
-    "Debug and optimize performance characteristics of TS Class Fields."
+    "Understand TS Class Fields from zero to advanced level",
+    "Write clean, production-grade TypeScript code for TS Class Fields",
+    "Debug edge cases and answer interview questions about TS Class Fields"
   ],
   "tags": [
-    "ts",
-    "class",
-    "fields"
+    "ts_class_fields",
+    "typescript",
+    "classes_access_modifiers"
   ]
 }

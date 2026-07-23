@@ -3,27 +3,22 @@
   "title": "System Design Implementation Steps Part 2B",
   "technology": "System Design",
   "module": "System Design Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: System Design Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of System Design Implementation Steps Part 2B.",
-    "Write error-free implementations utilizing System Design Implementation Steps Part 2B.",
-    "Debug and optimize performance characteristics of System Design Implementation Steps Part 2B."
+    "Understand System Design Implementation Steps Part 2B from zero to advanced level",
+    "Write clean, production-grade System Design code for System Design Implementation Steps Part 2B",
+    "Debug edge cases and answer interview questions about System Design Implementation Steps Part 2B"
   ],
   "tags": [
-    "system",
-    "design",
-    "implementation",
-    "steps",
-    "part",
-    "2b"
+    "system_design_implementation_steps_part_2b",
+    "system-design",
+    "system_design_variables_core_data_layouts"
   ]
 }

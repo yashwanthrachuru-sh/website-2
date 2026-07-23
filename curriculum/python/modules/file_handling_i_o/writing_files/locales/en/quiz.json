@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Writing Files?",
+      "question": "Which mode overwrites an existing file completely?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "'w'",
+        "'a'",
+        "'r'",
+        "'x'"
       ],
       "answer": 0,
-      "explanation": "Writing Files is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Writing Files exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "'w' mode truncates/erases file contents upon opening.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Writing Files is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Writing Files improves code quality.",
+      "question": "True or False: 'x' mode fails if the file already exists.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Exclusive creation mode prevents overwriting."
     }
   ]
 }

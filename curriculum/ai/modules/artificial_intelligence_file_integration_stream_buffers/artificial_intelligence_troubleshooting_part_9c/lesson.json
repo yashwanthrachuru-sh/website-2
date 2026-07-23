@@ -3,26 +3,22 @@
   "title": "Artificial Intelligence Troubleshooting Part 9C",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Troubleshooting Part 9C.",
-    "Write error-free implementations utilizing Artificial Intelligence Troubleshooting Part 9C.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Troubleshooting Part 9C."
+    "Understand Artificial Intelligence Troubleshooting Part 9C from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Troubleshooting Part 9C",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Troubleshooting Part 9C"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "troubleshooting",
-    "part",
-    "9c"
+    "artificial_intelligence_troubleshooting_part_9c",
+    "ai",
+    "artificial_intelligence_file_integration_stream_buffers"
   ]
 }

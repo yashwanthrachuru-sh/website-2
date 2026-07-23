@@ -3,24 +3,22 @@
   "title": "JDK vs JRE",
   "technology": "Java",
   "module": "Java JVM & Setup",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of JDK vs JRE.",
-    "Write error-free implementations utilizing JDK vs JRE.",
-    "Debug and optimize performance characteristics of JDK vs JRE."
+    "Understand JDK vs JRE from zero to advanced level",
+    "Write clean, production-grade Java code for JDK vs JRE",
+    "Debug edge cases and answer interview questions about JDK vs JRE"
   ],
   "tags": [
-    "jdk",
-    "vs",
-    "jre"
+    "jdk_vs_jre",
+    "java",
+    "java_jvm_setup"
   ]
 }

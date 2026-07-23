@@ -1,22 +1,39 @@
 {
-  "syntax": "## Syntax Reference\n```python\n// Declaring and executing Dynamic Typing in Python\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Dynamic Typing & Type Inspection Cheat Sheet",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Type Inspection & Checking",
+      "entries": [
+        {
+          "syntax": "type(variable)",
+          "example": "type(42)  # <class 'int'>",
+          "description": "Returns the exact class type of the object.",
+          "commonMistake": "Using `type(x) == int` instead of `isinstance()`."
+        },
+        {
+          "syntax": "isinstance(val, type_or_tuple)",
+          "example": "isinstance('hello', (str, int))  # True",
+          "description": "Checks if object is an instance of class or subclass.",
+          "commonMistake": "Passing a list `[str, int]` instead of a tuple `(str, int)`."
+        }
+      ]
+    },
+    {
+      "heading": "Explicit Type Casting",
+      "entries": [
+        {
+          "syntax": "int(val) / float(val)",
+          "example": "int('100') -> 100",
+          "description": "Converts string/float to integer.",
+          "commonMistake": "Calling `int('10.5')` directly raises ValueError; use `int(float('10.5'))`."
+        },
+        {
+          "syntax": "str(val)",
+          "example": "str(99.9) -> '99.9'",
+          "description": "Converts any object into string representation.",
+          "commonMistake": "Concatenating string with integer without calling `str()`."
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

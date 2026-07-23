@@ -1,43 +1,30 @@
 {
-  "deeperExplanation": "This concept goes deeper when you consider how it interacts with other parts of your python program.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "When Python runs a script, it doesn't interpret raw text directly. It first parses the source into an Abstract Syntax Tree (AST), then compiles the AST to bytecode (.pyc files stored in __pycache__), and finally executes the bytecode via the CPython virtual machine. The bytecode step explains why Python is faster on subsequent runs — if the .py hasn't changed, Python skips parsing/compilation and loads the cached .pyc directly.\n\nYou can inspect bytecode with the dis module: import dis; dis.dis(your_function). This level of understanding helps when debugging performance-sensitive code.",
+  "internalImplementation": "The CPython bytecode is a stack-based VM instruction set. Operations like LOAD_CONST, STORE_NAME, CALL_FUNCTION, RETURN_VALUE are the actual instructions that run your script. These are platform-independent — the same .pyc file runs on Windows, macOS, and Linux as long as the Python version matches.",
   "examples": [
     {
-      "title": "Your First Python Program",
-      "code": "print(\"Hello, World!\")\n\nname = input(\"Enter your name: \")\nprint(f\"Welcome, {name}!\")",
-      "explanation": "This program demonstrates output, input, and string interpolation. The interpreter executes each line sequentially.",
-      "language": "python"
+      "code": "# Inspect Python's bytecode for a simple function\nimport dis\n\ndef greet(name):\n    return f'Hello, {name}!'\n\ndis.dis(greet)\n\n# Output shows bytecode instructions:\n# LOAD_CONST, LOAD_FAST, FORMAT_VALUE, RETURN_VALUE, etc.",
+      "explanation": "dis.dis() disassembles a function or code object into its bytecode instructions. This is how CPython actually runs your Python code — the human-readable .py is compiled to these VM instructions first."
+    },
+    {
+      "code": "# Shebang line makes a script directly executable on Unix\n#!/usr/bin/env python3\n# ^^ Put this as line 1 of your script\n\nimport sys\nprint(f'Running with Python {sys.version_info.major}.{sys.version_info.minor}')\nprint(f'Arguments: {sys.argv[1:]}')\n\n# Then make executable and run:\n# $ chmod +x myscript.py\n# $ ./myscript.py arg1 arg2",
+      "explanation": "The shebang (#!) is a Unix feature: when the OS sees #!/usr/bin/env python3 as the first line, it routes the file to python3 automatically. This lets you run './script.py' instead of 'python3 script.py'. The env command finds python3 in PATH, which correctly handles virtual environments."
     }
   ],
-  "bestPractices": [
-    "Validate inputs before processing",
-    "Handle edge cases explicitly",
-    "Write tests for both success and failure paths",
-    "Document expected behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A common bug occurs when edge cases are not handled properly.",
-    "steps": [
-      "Reproduce the issue",
-      "Check input values",
-      "Verify assumptions",
-      "Test boundary conditions"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Python script startup time is 20–100ms for a trivial script. Each import adds time. Import caching via .pyc bytecode reduces subsequent import time by 30–50%.",
+    "spaceComplexity": "Each .py file generates a .pyc bytecode cache in __pycache__. The bytecode is roughly 2-4x larger than the source. Delete __pycache__ directories freely — Python regenerates them automatically."
   },
-  "edgeCases": [
-    "Empty input",
-    "Maximum values",
-    "Unexpected types",
-    "Resource exhaustion"
-  ],
-  "performanceNotes": {
-    "notes": "Performance depends on the specific implementation. Profile to identify bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Script fails with 'SyntaxError: Non-UTF-8 code starting with ...' when containing special characters",
+    "incorrectCode": "# No encoding declaration\nname = 'Ünïcödé name'   # SyntaxError in Python 2",
+    "correctCode": "# Python 3 defaults to UTF-8 — no declaration needed\n# But if you need to be explicit:\n# -*- coding: utf-8 -*-\n\nname = 'Ünïcödé name'   # Works fine in Python 3"
+  },
+  "bestPractices": [
+    "Always use 'if __name__ == \"__main__\":' to separate runnable code from importable code",
+    "Use sys.argv for command-line arguments in simple scripts; use argparse for complex CLIs",
+    "Put all executable code inside functions — only the if __name__ == '__main__': block calls them",
+    "Use the shebang (#!/usr/bin/env python3) in executable scripts on Unix/Linux/macOS",
+    "Never rely on the script's current working directory — use pathlib.Path(__file__).parent to get the script's directory"
+  ]
 }

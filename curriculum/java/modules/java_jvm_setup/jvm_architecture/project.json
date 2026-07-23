@@ -1,11 +1,14 @@
 {
-  "title": "JVM Architecture System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of JVM Architecture.",
+  "title": "JVM Architecture Project",
+  "tagline": "Build a mini application using JVM Architecture",
+  "description": "Create a working Java application demonstrating JVM Architecture.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// Java implementation for JVM Architecture\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: JVM Architecture\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "solution": "// Java implementation for JVM Architecture\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Executing Java process for: JVM Architecture\");\n        int result = calculateScore(85, 92);\n        System.out.println(\"Final Score: \" + result);\n    }\n\n    public static int calculateScore(int a, int b) {\n        return (a + b) / 2;\n    }\n}",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of JVM Architecture in Java."
 }

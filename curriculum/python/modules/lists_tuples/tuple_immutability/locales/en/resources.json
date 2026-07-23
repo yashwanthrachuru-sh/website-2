@@ -1,24 +1,9 @@
 {
   "links": [
     {
-      "title": "Python Official Documentation",
-      "url": "https://docs.example.com/python/tuple immutability",
-      "type": "documentation",
-      "description": "Official reference for Tuple Immutability in Python"
-    }
-  ],
-  "books": [
-    {
-      "title": "Python: The Comprehensive Guide",
-      "author": "Industry Expert",
-      "description": "Covers Tuple Immutability in depth with practical examples"
-    }
-  ],
-  "communities": [
-    {
-      "name": "Python Community Forum",
-      "url": "https://community.example.com/python",
-      "description": "Discuss Tuple Immutability with other developers"
+      "type": "official",
+      "title": "Python Tuples",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences"
     }
   ]
 }

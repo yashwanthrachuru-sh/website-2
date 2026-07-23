@@ -2,53 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What is Classes & Instances?",
+      "question": "What does `self` represent in a Python class method?",
       "options": [
-        "A programming concept",
-        "A hardware device",
-        "A network protocol",
-        "A database system"
+        "The specific instance of the class being called",
+        "The parent class",
+        "A global variable",
+        "The module object"
       ],
       "answer": 0,
-      "explanation": "Classes & Instances is a programming concept."
-    },
-    {
-      "id": "q2",
-      "question": "Why does Classes & Instances exist?",
-      "options": [
-        "To solve a specific problem",
-        "To make code slower",
-        "For decorative purposes",
-        "To replace hardware"
-      ],
-      "answer": 0,
-      "explanation": "It solves a specific programming problem."
-    },
-    {
-      "id": "q3",
-      "question": "What is a common beginner mistake?",
-      "options": [
-        "Reading docs",
-        "Ignoring edge cases",
-        "Writing comments",
-        "Testing code"
-      ],
-      "answer": 1,
-      "explanation": "Beginners often ignore edge cases."
+      "explanation": "`self` refers to the instance calling the method.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: Classes & Instances is only for experts.",
-      "answer": false,
-      "explanation": "It is relevant at all skill levels."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: Understanding Classes & Instances improves code quality.",
+      "question": "True or False: Class attributes are shared across all instances of a class.",
       "answer": true,
-      "explanation": "Mastery leads to better code."
+      "explanation": "True. Class attributes sit on the class object."
     }
   ]
 }

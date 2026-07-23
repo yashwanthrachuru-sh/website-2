@@ -3,26 +3,22 @@
   "title": "Data Engineering Troubleshooting Part 11C",
   "technology": "Data Engineering",
   "module": "Data Engineering Performance Optimization & Complexity",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Engineering Package Orchestration & System Modules"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Engineering Troubleshooting Part 11C.",
-    "Write error-free implementations utilizing Data Engineering Troubleshooting Part 11C.",
-    "Debug and optimize performance characteristics of Data Engineering Troubleshooting Part 11C."
+    "Understand Data Engineering Troubleshooting Part 11C from zero to advanced level",
+    "Write clean, production-grade Data Engineering code for Data Engineering Troubleshooting Part 11C",
+    "Debug edge cases and answer interview questions about Data Engineering Troubleshooting Part 11C"
   ],
   "tags": [
-    "data",
-    "engineering",
-    "troubleshooting",
-    "part",
-    "11c"
+    "data_engineering_troubleshooting_part_11c",
+    "data-engineering",
+    "data_engineering_performance_optimization_complexity"
   ]
 }

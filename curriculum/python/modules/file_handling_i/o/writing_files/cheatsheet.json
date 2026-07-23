@@ -1,0 +1,16 @@
+{
+  "title": "Writing Files Cheat Sheet",
+  "sections": [
+    {
+      "heading": "Quick Reference",
+      "entries": [
+        {
+          "syntax": "import json",
+          "example": "import json\ndata = {'user': 'Arjun', 'score': 95}\nwith open('user.json', 'w') as f:\n    json.dump(data, f, indent=2)",
+          "description": "Basic syntax for Writing Files",
+          "commonMistake": "Syntax or scope error"
+        }
+      ]
+    }
+  ]
+}

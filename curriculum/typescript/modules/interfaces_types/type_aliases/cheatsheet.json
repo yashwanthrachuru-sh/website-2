@@ -1,22 +1,17 @@
 {
-  "syntax": "## TypeScript Cheat Sheet\n\n### Basic Types\n```typescript\nlet name: string = \"Alice\";\nlet age: number = 30;\nlet active: boolean = true;\nlet scores: number[] = [90, 85, 92];\nlet data: unknown;    // must type-check before use\nlet wild: any;        // disables type checking (avoid)\n```\n\n### Object Types (Interface vs Type)\n```typescript\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n  role?: string;      // optional field\n  readonly createdAt: Date;  // immutable\n}\n\ntype Product = {\n  id: string;\n  price: number;\n  category: 'electronics' | 'clothing' | 'food'; // union\n};\n```\n\n### Function Types\n```typescript\nfunction greet(name: string, greeting = 'Hello'): string {\n  return `${greeting}, ${name}!`;\n}\n\n// Arrow function\nconst add = (a: number, b: number): number => a + b;\n\n// Generic function\nfunction first<T>(arr: T[]): T | undefined {\n  return arr[0];\n}\n```\n\n### Utility Types\n```typescript\nPartial<User>        // all fields optional\nRequired<User>       // all fields required\nReadonly<User>       // all fields readonly\nPick<User, 'name' | 'email'>  // subset of fields\nOmit<User, 'password'>        // exclude fields\nRecord<string, number>        // dictionary type\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Type Aliases Cheat Sheet",
+  "printNote": "Quick reference for Type Aliases in TypeScript.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// TypeScript implementation for Type Aliases",
+          "example": "// TypeScript implementation for Type Aliases\ninterface TypeAliasesPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processTypeAliases(item: TypeAliasesPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processTypeAliases({ id: 1, title: 'Type Aliases', status: 'active' }));",
+          "description": "Basic syntax for Type Aliases",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

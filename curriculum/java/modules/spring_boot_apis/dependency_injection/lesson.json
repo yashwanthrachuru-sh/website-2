@@ -3,23 +3,22 @@
   "title": "Dependency Injection",
   "technology": "Java",
   "module": "Spring Boot APIs",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Java Multithreading"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Dependency Injection.",
-    "Write error-free implementations utilizing Dependency Injection.",
-    "Debug and optimize performance characteristics of Dependency Injection."
+    "Understand Dependency Injection from zero to advanced level",
+    "Write clean, production-grade Java code for Dependency Injection",
+    "Debug edge cases and answer interview questions about Dependency Injection"
   ],
   "tags": [
-    "dependency",
-    "injection"
+    "dependency_injection",
+    "java",
+    "spring_boot_apis"
   ]
 }

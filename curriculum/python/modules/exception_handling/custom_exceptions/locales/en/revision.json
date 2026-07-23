@@ -1,44 +1,31 @@
 {
-  "oneLineSummary": "Custom Exceptions is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Custom Exceptions is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "Custom exceptions inherit from `Exception`. Name classes with `Error` suffix. Use base exception for library packages.",
+  "oneLineSummary": "Custom exceptions inherit from Exception to provide domain-specific error handling.",
   "keyTakeaways": [
-    "Custom Exceptions solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Inherit from Exception.",
+    "End name with Error.",
+    "Use attributes for extra metadata."
   ],
   "memoryTricks": [
-    "Think of custom exceptions as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Custom Exceptions in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Custom Errors",
+      "trick": "Custom Errors = Specific Diagnosis. Don't just say 'Sick', say 'Flu'."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "Inheriting from BaseException",
+      "cause": "Wrong base class",
+      "fix": "Change base to Exception"
+    }
   ],
-  "mindMap": {
-    "central": "Custom Exceptions",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain Exception vs BaseException"
+  ],
   "nextTopics": [
-    "Advanced custom exceptions",
-    "Testing custom exceptions",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "File & I/O: Reading Files",
+      "whyNext": "Learn disk I/O operations."
+    }
+  ]
 }

@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "Import Statements becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Python searches `sys.path` (current directory, PYTHONPATH, standard lib, site-packages) to locate modules.",
+  "internalImplementation": "Loaded modules are cached in `sys.modules` dictionary.",
   "examples": [
     {
-      "title": "Getting Started with Import Statements",
-      "code": "print(\"Learning Import Statements\")",
-      "explanation": "Basic introduction to Import Statements.",
-      "language": "python"
+      "code": "import sys\nprint('Search paths:', sys.path[:2])",
+      "explanation": "Displays sys.path search directories."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A import statements implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "First import O(N) file load; subsequent imports O(1) sys.modules cache lookup.",
+    "spaceComplexity": "O(N)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Circular import error between two files.",
+    "incorrectCode": "# a.py: import b\n# b.py: import a",
+    "correctCode": "# Move shared import into function or third module"
+  },
+  "bestPractices": [
+    "Use absolute imports.",
+    "Avoid `from module import *`."
+  ]
 }

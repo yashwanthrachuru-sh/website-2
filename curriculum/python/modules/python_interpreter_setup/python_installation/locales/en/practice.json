@@ -1,46 +1,54 @@
 {
   "easy": {
-    "title": "Hello, Environment",
-    "description": "Write a python script that prints your name, the date, and the python version.",
-    "starterCode": "import sys\nfrom datetime import date\n\nname = \"Your Name\"\ntoday = date.today()\nversion = sys.version\nprint(f\"Name: {name}\")\nprint(f\"Date: {today}\")\nprint(f\"Version: {version}\")",
-    "solution": "import sys\nfrom datetime import date\nname = \"Your Name\"\ntoday = date.today()\nv = sys.version\nprint(f\"Name: {name}\")\nprint(f\"Date: {today}\")\nprint(f\"Version: {v}\")",
+    "title": "Verify Your Python Installation",
+    "description": "Write a Python script that prints your Python version information without using any import statement or any command-line flags. The script should output two things on separate lines:\n1. The text 'Python is installed and working!'\n2. The text 'Ready to learn Python!'",
+    "starterCode": "# Your task:\n# Print two lines as described above\n# This is your first Python program!\n\n",
+    "expectedOutput": "Python is installed and working!\nReady to learn Python!",
+    "solution": "print('Python is installed and working!')\nprint('Ready to learn Python!')",
     "hints": [
-      "Look up how to get the current date",
-      "Find the module that gives version info"
+      "The print() function outputs text to the screen",
+      "Call print() once for each line you want to output",
+      "Text strings in Python are wrapped in single quotes '' or double quotes \"\""
     ],
     "difficulty": "easy"
   },
   "medium": {
-    "title": "Environment Inspector",
-    "description": "List all environment variables, the working directory, and the python executable path.",
-    "starterCode": "import os\nimport sys\n\nfor key, value in os.environ.items():\n    print(f\"{key}={value}\")\nprint(f\"\\nCWD: {os.getcwd()}\")\nprint(f\"EXE: {sys.executable}\")",
-    "solution": "import os, sys\nfor k, v in os.environ.items():\n    print(f\"{k}={v}\")\nprint(f\"\\nCWD: {os.getcwd()}\")\nprint(f\"EXE: {sys.executable}\")",
+    "title": "System Information Reporter",
+    "description": "Write a Python script that prints a formatted report about the Python environment. Your script must:\n1. Import the sys module\n2. Print the Python major version number (e.g., 3)\n3. Print the Python minor version number (e.g., 12)\n4. Print the full path to the Python executable\n5. Print how many directories Python searches for modules (the length of sys.path)\n\nFormat each line clearly (e.g., 'Major version: 3').",
+    "starterCode": "import sys\n\n# Access sys.version_info for major and minor version\n# Access sys.executable for the interpreter path\n# Access sys.path for the module search path list\n\n",
+    "expectedOutput": "Major version: 3\nMinor version: 12\nExecutable: /usr/local/bin/python3\nModule search directories: 8",
+    "solution": "import sys\n\nprint(f'Major version: {sys.version_info.major}')\nprint(f'Minor version: {sys.version_info.minor}')\nprint(f'Executable: {sys.executable}')\nprint(f'Module search directories: {len(sys.path)}')",
     "hints": [
-      "Environment variables are stored in a dictionary-like object",
-      "The current directory may differ from the script location"
+      "sys.version_info is a named tuple with .major, .minor, .micro attributes",
+      "sys.executable is a string containing the path",
+      "sys.path is a list — use len() to count its elements",
+      "Use f-strings to embed variables in strings: f'text {variable}'"
     ],
     "difficulty": "medium"
   },
   "hard": {
-    "title": "Mini REPL",
-    "description": "Build a minimal interactive REPL with error handling.",
-    "starterCode": "def repl():\n    while True:\n        try:\n            code = input(\">>> \")\n            result = eval(code)\n            if result: print(result)\n        except Exception as e:\n            print(f\"Error: {e}\")",
-    "solution": "def repl():\n    while True:\n        try:\n            code = input(\">>> \")\n            if code in ('exit','quit'): break\n            result = eval(code)\n            if result is not None: print(result)\n        except KeyboardInterrupt: break\n        except Exception as e: print(f\"Error: {e}\")",
+    "title": "Python Environment Inspector",
+    "description": "Write a script that checks whether the Python environment meets a set of minimum requirements and prints a summary report. Your script must:\n1. Check that Python version is 3.8 or higher — if not, print a warning\n2. Check that pip is importable (import pip) — if not, print a warning\n3. Try to import a common standard library module (e.g., 'json') and confirm it's available\n4. Print a final verdict: 'Environment OK' if all checks passed, or 'Environment has issues' if any failed\n\nAll checks should complete even if one fails — do not let an exception stop the script.",
+    "starterCode": "import sys\n\nall_ok = True\n\n# Check 1: Python version\n# sys.version_info.major and sys.version_info.minor\n\n# Check 2: pip importable\n# Use try/except ImportError\n\n# Check 3: json importable\n# Use try/except ImportError\n\n# Print verdict\n",
+    "expectedOutput": "✓ Python 3.12 — meets minimum requirement (3.8+)\n✓ pip is available\n✓ Standard library (json) is available\nEnvironment OK",
+    "solution": "import sys\n\nall_ok = True\n\n# Check 1: Python version\nmajor = sys.version_info.major\nminor = sys.version_info.minor\nif major >= 3 and minor >= 8:\n    print(f'✓ Python {major}.{minor} — meets minimum requirement (3.8+)')\nelse:\n    print(f'✗ Python {major}.{minor} — upgrade required (need 3.8+)')\n    all_ok = False\n\n# Check 2: pip\ntry:\n    import pip\n    print('✓ pip is available')\nexcept ImportError:\n    print('✗ pip not found — run: python3 -m ensurepip --upgrade')\n    all_ok = False\n\n# Check 3: Standard library\ntry:\n    import json\n    print('✓ Standard library (json) is available')\nexcept ImportError:\n    print('✗ Standard library broken — reinstall Python')\n    all_ok = False\n\nif all_ok:\n    print('Environment OK')\nelse:\n    print('Environment has issues')",
     "hints": [
-      "Use eval() to execute code strings",
-      "Handle KeyboardInterrupt gracefully",
-      "The readline module helps create interactive programs"
+      "Use sys.version_info.major >= 3 and sys.version_info.minor >= 8 for the version check",
+      "Wrap each import in try/except ImportError to handle failures gracefully",
+      "Use a boolean flag (all_ok) that starts as True and gets set to False when a check fails",
+      "The script should print the verdict at the end regardless of individual check results"
     ],
     "difficulty": "hard"
   },
   "debugging": {
-    "title": "Debug the Python Setup",
-    "description": "The following python code has setup-related bugs. Find and fix them.",
-    "buggyCode": "import os, sys, datetime\nprint(os.getcwd)\nprint(\"Version: \" + sys.version_info)\ncurrent_time = datetime.datetime.now\nprint(\"Time: \" + current_time)",
-    "fixedCode": "import os, sys, datetime\nprint(os.getcwd())\nprint(f\"Version: {sys.version_info.major}.{sys.version_info.minor}\")\nnow = datetime.datetime.now()\nprint(f\"Time: {now}\")",
+    "title": "Fix the Installation Checker",
+    "description": "The following script has 3 bugs. Find and fix them all.",
+    "buggyCode": "import sys\n\n# Bug 1: Wrong attribute name\nversion = sys.version_info.Version\nprint(f'Python {version}')\n\n# Bug 2: Wrong comparison\nif sys.version_info.major = 3:\n    print('Running Python 3')\n\n# Bug 3: Missing the module search path variable\nprint(f'Search paths: {len(system.path)}')",
+    "fixedCode": "import sys\n\n# Fix 1: Correct attribute is .major (lowercase), not .Version\nversion = sys.version_info.major\nprint(f'Python {version}')\n\n# Fix 2: == for comparison, not = (= is assignment)\nif sys.version_info.major == 3:\n    print('Running Python 3')\n\n# Fix 3: sys.path not system.path\nprint(f'Search paths: {len(sys.path)}')",
     "bugs": [
-      "Missing parentheses on function calls",
-      "Wrong concatenation of non-string types"
+      "sys.version_info.Version should be sys.version_info.major — Python attributes are lowercase; Version is not a valid attribute",
+      "if sys.version_info.major = 3 uses = (assignment) instead of == (equality comparison). This is a SyntaxError in Python.",
+      "system.path should be sys.path — 'system' is not imported; only 'sys' is"
     ]
   }
 }

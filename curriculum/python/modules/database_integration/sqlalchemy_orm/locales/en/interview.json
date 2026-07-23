@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain SQLAlchemy ORM to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of sqlalchemy orm?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for sqlalchemy orm?",
-      "answer": "Use SQLAlchemy ORM when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "What is the N+1 Query Problem and how do you fix it in SQLAlchemy?",
+      "answer": "The N+1 problem occurs when fetching a list of N parent records executes 1 initial query, and then accessing a lazy-loaded child relationship inside a loop executes N additional database queries (total N+1 queries). Fix it by using eager loading (`joinedload()` or `selectinload()`) to fetch parents and children in 1 or 2 queries.",
+      "level": "intermediate"
     }
   ]
 }

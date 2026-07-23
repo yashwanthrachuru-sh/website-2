@@ -3,29 +3,22 @@
   "title": "Data Structures & Algorithms Implementation Steps Part 12B",
   "technology": "Data Structures & Algorithms",
   "module": "Data Structures & Algorithms Production Deployment & Server Pipelines",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Data Structures & Algorithms Performance Optimization & Complexity"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Data Structures & Algorithms Implementation Steps Part 12B.",
-    "Write error-free implementations utilizing Data Structures & Algorithms Implementation Steps Part 12B.",
-    "Debug and optimize performance characteristics of Data Structures & Algorithms Implementation Steps Part 12B."
+    "Understand Data Structures & Algorithms Implementation Steps Part 12B from zero to advanced level",
+    "Write clean, production-grade Data Structures & Algorithms code for Data Structures & Algorithms Implementation Steps Part 12B",
+    "Debug edge cases and answer interview questions about Data Structures & Algorithms Implementation Steps Part 12B"
   ],
   "tags": [
-    "data",
-    "structures",
-    "&",
-    "algorithms",
-    "implementation",
-    "steps",
-    "part",
-    "12b"
+    "data_structures_algorithms_implementation_steps_part_12b",
+    "dsa",
+    "data_structures_algorithms_production_deployment_server_pipelines"
   ]
 }

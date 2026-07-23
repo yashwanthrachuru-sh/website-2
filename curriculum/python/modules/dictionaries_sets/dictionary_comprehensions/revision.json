@@ -1,23 +1,14 @@
 {
-  "summary": "You have completed this lesson! You studied how Dictionary Comprehensions allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Master Dictionary Comprehensions for building robust Python software.",
+  "summary": "Key concepts covered: Dictionary Comprehensions syntax, execution flow, best practices, and interview questions.",
+  "keyTakeaways": [
+    "Understand core syntax of Dictionary Comprehensions",
+    "Follow style guidelines",
+    "Write automated tests"
   ],
-  "keySyntax": [
-    "// python syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
-    {
-      "front": "What is the primary role of Dictionary Comprehensions?",
-      "back": "To manage states, loop checks, or object definitions."
-    },
-    {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
-    }
+  "preInterviewChecklist": [
+    "Define Dictionary Comprehensions",
+    "Provide code example",
+    "Explain time/space complexity"
   ]
 }

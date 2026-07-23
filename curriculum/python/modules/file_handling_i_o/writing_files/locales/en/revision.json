@@ -1,44 +1,30 @@
 {
-  "oneLineSummary": "Writing Files is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what Writing Files is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "'w' overwrites, 'a' appends, 'x' exclusive creation. Flush with f.flush(). Use atomic replace for safety.",
+  "oneLineSummary": "File writing modes: 'w' overwrites, 'a' appends, 'x' creates exclusively.",
   "keyTakeaways": [
-    "Writing Files solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "'w' erases existing data.",
+    "Use atomic replace for critical saves."
   ],
   "memoryTricks": [
-    "Think of writing files as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain Writing Files in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "File Modes",
+      "trick": "W = Wipe clean & write; A = Add to bottom."
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "Data loss from 'w' mode",
+      "cause": "Using 'w' instead of 'a'",
+      "fix": "Use 'a' to append"
+    }
   ],
-  "mindMap": {
-    "central": "Writing Files",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain atomic file writing"
+  ],
   "nextTopics": [
-    "Advanced writing files",
-    "Testing writing files",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Context Managers",
+      "whyNext": "Learn custom `with` statement resource management."
+    }
+  ]
 }

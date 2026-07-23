@@ -1,22 +1,17 @@
 {
-  "syntax": "## Python Conditionals Cheat Sheet\n\n### Basic If/Else\n```python\nif condition:\n    # runs if True\nelif other_condition:\n    # runs if other_condition is True\nelse:\n    # runs if all above are False\n```\n\n### Ternary (Inline)\n```python\nresult = value_if_true if condition else value_if_false\n```\n\n### Truthy/Falsy\n- Falsy: `0`, `\"\"`, `[]`, `{}`, `None`, `False`\n- Truthy: everything else\n\n### Match (Python 3.10+)\n```python\nmatch status:\n    case 200: print(\"OK\")\n    case 404: print(\"Not Found\")\n    case _:   print(\"Unknown\")\n```\n\n### Common Pitfalls\n- Use `is None` not `== None`\n- Use `not x` not `x == False`\n- Avoid deep nesting — use early returns",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "If Else Statements Cheat Sheet",
+  "printNote": "Quick reference for If Else Statements in Python.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "# Python implementation for If Else Statements",
+          "example": "# Python implementation for If Else Statements\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+          "description": "Basic syntax for If Else Statements",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

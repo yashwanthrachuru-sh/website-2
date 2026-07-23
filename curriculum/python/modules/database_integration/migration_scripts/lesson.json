@@ -3,23 +3,22 @@
   "title": "Migration Scripts",
   "technology": "Python",
   "module": "Database Integration",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Exception Handling"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Migration Scripts.",
-    "Write error-free implementations utilizing Migration Scripts.",
-    "Debug and optimize performance characteristics of Migration Scripts."
+    "Understand Migration Scripts from zero to advanced level",
+    "Write clean, production-grade Python code for Migration Scripts",
+    "Debug edge cases and answer interview questions about Migration Scripts"
   ],
   "tags": [
-    "migration",
-    "scripts"
+    "migration_scripts",
+    "python",
+    "database_integration"
   ]
 }

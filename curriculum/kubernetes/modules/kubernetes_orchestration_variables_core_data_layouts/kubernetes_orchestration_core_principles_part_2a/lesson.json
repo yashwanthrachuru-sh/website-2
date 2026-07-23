@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Core Principles Part 2A",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Core Principles Part 2A.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Core Principles Part 2A.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Core Principles Part 2A."
+    "Understand Kubernetes Orchestration Core Principles Part 2A from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Core Principles Part 2A",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Core Principles Part 2A"
   ],
   "tags": [
+    "kubernetes_orchestration_core_principles_part_2a",
     "kubernetes",
-    "orchestration",
-    "core",
-    "principles",
-    "part",
-    "2a"
+    "kubernetes_orchestration_variables_core_data_layouts"
   ]
 }

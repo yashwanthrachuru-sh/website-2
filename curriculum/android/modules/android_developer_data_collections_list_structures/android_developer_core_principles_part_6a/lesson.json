@@ -3,27 +3,22 @@
   "title": "Android Developer Core Principles Part 6A",
   "technology": "Android Developer",
   "module": "Android Developer Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Android Developer Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Android Developer Core Principles Part 6A.",
-    "Write error-free implementations utilizing Android Developer Core Principles Part 6A.",
-    "Debug and optimize performance characteristics of Android Developer Core Principles Part 6A."
+    "Understand Android Developer Core Principles Part 6A from zero to advanced level",
+    "Write clean, production-grade Android Developer code for Android Developer Core Principles Part 6A",
+    "Debug edge cases and answer interview questions about Android Developer Core Principles Part 6A"
   ],
   "tags": [
+    "android_developer_core_principles_part_6a",
     "android",
-    "developer",
-    "core",
-    "principles",
-    "part",
-    "6a"
+    "android_developer_data_collections_list_structures"
   ]
 }

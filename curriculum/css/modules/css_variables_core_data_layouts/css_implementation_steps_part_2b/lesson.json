@@ -3,26 +3,22 @@
   "title": "CSS Implementation Steps Part 2B",
   "technology": "CSS",
   "module": "CSS Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Implementation Steps Part 2B.",
-    "Write error-free implementations utilizing CSS Implementation Steps Part 2B.",
-    "Debug and optimize performance characteristics of CSS Implementation Steps Part 2B."
+    "Understand CSS Implementation Steps Part 2B from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Implementation Steps Part 2B",
+    "Debug edge cases and answer interview questions about CSS Implementation Steps Part 2B"
   ],
   "tags": [
+    "css_implementation_steps_part_2b",
     "css",
-    "implementation",
-    "steps",
-    "part",
-    "2b"
+    "css_variables_core_data_layouts"
   ]
 }

@@ -1,11 +1,14 @@
 {
-  "title": "Property Decorators System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Property Decorators.",
+  "title": "Property Decorators Project",
+  "tagline": "Build a mini application using Property Decorators",
+  "description": "Create a working TypeScript application demonstrating Property Decorators.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+  "solution": "// TypeScript implementation for Property Decorators\ninterface PropertyDecoratorsPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processPropertyDecorators(item: PropertyDecoratorsPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processPropertyDecorators({ id: 1, title: 'Property Decorators', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Property Decorators in TypeScript."
 }

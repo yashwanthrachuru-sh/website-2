@@ -3,26 +3,22 @@
   "title": "CSS Implementation Steps Part 1B",
   "technology": "CSS",
   "module": "CSS Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing CSS Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of CSS Implementation Steps Part 1B."
+    "Understand CSS Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about CSS Implementation Steps Part 1B"
   ],
   "tags": [
+    "css_implementation_steps_part_1b",
     "css",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "css_setup_architecture_foundations"
   ]
 }

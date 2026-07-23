@@ -2,77 +2,24 @@
   "mcqs": [
     {
       "id": "q1",
-      "question": "What does `True and False` evaluate to?",
+      "question": "What is printed by: `x = 5; if x > 10: print('A') elif x > 3: print('B') else: print('C')`?",
       "options": [
-        "True",
-        "False",
-        "None",
-        "Error"
+        "B",
+        "A",
+        "C",
+        "B and C"
       ],
-      "answer": 1,
-      "explanation": "AND returns True only when both operands are True."
-    },
-    {
-      "id": "q2",
-      "question": "What is the difference between `=` and `==`?",
-      "options": [
-        "They are the same",
-        "`=` assigns, `==` compares",
-        "`=` compares, `==` assigns",
-        "Both compare"
-      ],
-      "answer": 1,
-      "explanation": "Single `=` is assignment. Double `==` is comparison."
-    },
-    {
-      "id": "q3",
-      "question": "In if/elif/else, how many branches execute?",
-      "options": [
-        "All of them",
-        "Only the first match",
-        "All matching ones",
-        "None"
-      ],
-      "answer": 1,
-      "explanation": "The first True condition triggers its branch; the rest are skipped."
-    },
-    {
-      "id": "q4",
-      "question": "What does `not (x > 0 or y < 10)` mean?",
-      "options": [
-        "x > 0 or y < 10",
-        "x <= 0 and y >= 10",
-        "x <= 0 or y >= 10",
-        "Always false"
-      ],
-      "answer": 1,
-      "explanation": "By De Morgan's law, `not (A or B)` equals `(not A) and (not B)`."
-    },
-    {
-      "id": "q5",
-      "question": "Is an if without an else valid?",
-      "options": [
-        "No, it causes an error",
-        "Yes, the block simply skips if false",
-        "Only in some languages",
-        "It depends on the condition"
-      ],
-      "answer": 1,
-      "explanation": "An if without else simply skips the block when the condition is false."
+      "answer": 0,
+      "explanation": "5 is not > 10 (False). 5 > 3 is True, so 'B' is printed. Remaining branches are skipped.",
+      "difficulty": "beginner"
     }
   ],
   "checkpoints": [
     {
       "id": "cp1",
-      "question": "True or False: An if without an else causes an error if the condition is false.",
+      "question": "True or False: In `A and B`, if A is False, Python will still evaluate B.",
       "answer": false,
-      "explanation": "It simply skips the block — no error."
-    },
-    {
-      "id": "cp2",
-      "question": "True or False: elif is the same as a separate if statement.",
-      "answer": false,
-      "explanation": "With elif, once a condition matches, the rest are skipped. Separate ifs evaluate every condition."
+      "explanation": "False. Short-circuit evaluation stops immediately if A is False."
     }
   ]
 }

@@ -3,27 +3,22 @@
   "title": "Kubernetes Orchestration Implementation Steps Part 9B",
   "technology": "Kubernetes Orchestration",
   "module": "Kubernetes Orchestration File Integration & Stream Buffers",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Kubernetes Orchestration Error Handling & Diagnostic Operations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Kubernetes Orchestration Implementation Steps Part 9B.",
-    "Write error-free implementations utilizing Kubernetes Orchestration Implementation Steps Part 9B.",
-    "Debug and optimize performance characteristics of Kubernetes Orchestration Implementation Steps Part 9B."
+    "Understand Kubernetes Orchestration Implementation Steps Part 9B from zero to advanced level",
+    "Write clean, production-grade Kubernetes Orchestration code for Kubernetes Orchestration Implementation Steps Part 9B",
+    "Debug edge cases and answer interview questions about Kubernetes Orchestration Implementation Steps Part 9B"
   ],
   "tags": [
+    "kubernetes_orchestration_implementation_steps_part_9b",
     "kubernetes",
-    "orchestration",
-    "implementation",
-    "steps",
-    "part",
-    "9b"
+    "kubernetes_orchestration_file_integration_stream_buffers"
   ]
 }

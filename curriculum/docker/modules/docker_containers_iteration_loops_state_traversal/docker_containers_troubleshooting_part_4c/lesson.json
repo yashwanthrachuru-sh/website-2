@@ -3,26 +3,22 @@
   "title": "Docker Containers Troubleshooting Part 4C",
   "technology": "Docker Containers",
   "module": "Docker Containers Iteration loops & State Traversal",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Docker Containers Control Flow & Boolean Logic Branching"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Docker Containers Troubleshooting Part 4C.",
-    "Write error-free implementations utilizing Docker Containers Troubleshooting Part 4C.",
-    "Debug and optimize performance characteristics of Docker Containers Troubleshooting Part 4C."
+    "Understand Docker Containers Troubleshooting Part 4C from zero to advanced level",
+    "Write clean, production-grade Docker Containers code for Docker Containers Troubleshooting Part 4C",
+    "Debug edge cases and answer interview questions about Docker Containers Troubleshooting Part 4C"
   ],
   "tags": [
+    "docker_containers_troubleshooting_part_4c",
     "docker",
-    "containers",
-    "troubleshooting",
-    "part",
-    "4c"
+    "docker_containers_iteration_loops_state_traversal"
   ]
 }

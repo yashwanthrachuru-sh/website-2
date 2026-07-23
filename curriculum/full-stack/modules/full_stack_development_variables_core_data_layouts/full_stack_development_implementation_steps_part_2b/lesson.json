@@ -3,28 +3,22 @@
   "title": "Full Stack Development Implementation Steps Part 2B",
   "technology": "Full Stack Development",
   "module": "Full Stack Development Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Full Stack Development Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Full Stack Development Implementation Steps Part 2B.",
-    "Write error-free implementations utilizing Full Stack Development Implementation Steps Part 2B.",
-    "Debug and optimize performance characteristics of Full Stack Development Implementation Steps Part 2B."
+    "Understand Full Stack Development Implementation Steps Part 2B from zero to advanced level",
+    "Write clean, production-grade Full Stack Development code for Full Stack Development Implementation Steps Part 2B",
+    "Debug edge cases and answer interview questions about Full Stack Development Implementation Steps Part 2B"
   ],
   "tags": [
-    "full",
-    "stack",
-    "development",
-    "implementation",
-    "steps",
-    "part",
-    "2b"
+    "full_stack_development_implementation_steps_part_2b",
+    "full-stack",
+    "full_stack_development_variables_core_data_layouts"
   ]
 }

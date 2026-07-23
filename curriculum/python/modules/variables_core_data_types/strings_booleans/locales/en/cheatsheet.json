@@ -1,34 +1,24 @@
 {
-  "title": "Strings & Booleans — Quick Reference",
+  "printNote": "Python Strings & Booleans Cheat Sheet",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Strings & Booleans\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "String Operations",
+      "entries": [
+        {
+          "syntax": "s.strip()",
+          "example": "' hi '.strip() -> 'hi'",
+          "description": "Removes leading/trailing whitespace"
+        },
+        {
+          "syntax": "s.split(delim)",
+          "example": "'a,b,c'.split(',') -> ['a','b','c']",
+          "description": "Splits string into list"
+        },
+        {
+          "syntax": "delim.join(list)",
+          "example": "'-'.join(['a','b']) -> 'a-b'",
+          "description": "Joins list elements into string"
+        }
       ]
     }
   ]

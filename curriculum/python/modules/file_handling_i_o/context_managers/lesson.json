@@ -3,23 +3,22 @@
   "title": "Context Managers",
   "technology": "Python",
   "module": "File Handling & I/O",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Dictionaries & Sets"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Context Managers.",
-    "Write error-free implementations utilizing Context Managers.",
-    "Debug and optimize performance characteristics of Context Managers."
+    "Understand Context Managers from zero to advanced level",
+    "Write clean, production-grade Python code for Context Managers",
+    "Debug edge cases and answer interview questions about Context Managers"
   ],
   "tags": [
-    "context",
-    "managers"
+    "context_managers",
+    "python",
+    "file_handling_i_o"
   ]
 }

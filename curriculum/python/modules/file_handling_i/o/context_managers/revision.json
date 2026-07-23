@@ -1,0 +1,14 @@
+{
+  "oneLineSummary": "Master Context Managers for effective Python development.",
+  "summary": "Key concepts: Context Managers setup, syntax, best practices, and performance.",
+  "keyTakeaways": [
+    "Understand Context Managers syntax",
+    "Apply best practices",
+    "Avoid common pitfalls"
+  ],
+  "preInterviewChecklist": [
+    "Define Context Managers",
+    "Provide a code example",
+    "Explain time complexity"
+  ]
+}

@@ -3,24 +3,22 @@
   "title": "Void and Never",
   "technology": "TypeScript",
   "module": "Basic Types Annotation",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Compiler & Setup"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Void and Never.",
-    "Write error-free implementations utilizing Void and Never.",
-    "Debug and optimize performance characteristics of Void and Never."
+    "Understand Void and Never from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Void and Never",
+    "Debug edge cases and answer interview questions about Void and Never"
   ],
   "tags": [
-    "void",
-    "and",
-    "never"
+    "void_and_never",
+    "typescript",
+    "basic_types_annotation"
   ]
 }

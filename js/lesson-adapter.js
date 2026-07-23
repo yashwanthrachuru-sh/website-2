@@ -187,6 +187,21 @@ window.LessonAdapter = (function () {
       nextLesson : lesson._nextLesson || null,
       completed  : !!lesson._completed,
       locked     : !!lesson._locked,
+
+      // ── Stage Presence Flags ────────────────────────────────────
+      // Used by StageEngine.getEffectiveStages() to determine which
+      // optional stages to include. Never inspect lesson internals
+      // in the renderer — always read these flags instead.
+      hasDebugging  : !!(im.debuggingWalkthrough && im.debuggingWalkthrough.bugDescription),
+      hasInterview  : arr(iv.questions).length > 0,
+      hasProject    : !!(pr.title),
+      hasAssignment : !!(obj(lesson.assignment).title),
+      hasVisualization: !!(b.visualDiagram || b.memoryDiagram),
+      hasCode       : true, // code playground always shown
+      hasPractice   : !!(p.easy || p.medium || p.hard || p.debugging),
+      hasQuiz       : arr(q.mcqs).length > 0 || arr(q.checkpoints).length > 0,
+      hasNotes      : !!(rv.summary || rv.oneLineSummary || arr(rv.keyTakeaways).length),
+      hasCheatsheet : arr(cs.sections).length > 0,
     };
   }
 
@@ -301,6 +316,18 @@ window.LessonAdapter = (function () {
       nextLesson  : lesson._nextLesson || null,
       completed   : !!lesson._completed,
       locked      : !!lesson._locked,
+
+      // ── Stage Presence Flags (legacy: minimal content) ──────────
+      hasDebugging  : false,
+      hasInterview  : arr(lesson.interview_questions).length > 0,
+      hasProject    : !!(lesson.project_description),
+      hasAssignment : false,
+      hasVisualization: !!(sc.visual_flow || sc.memoryDiagram),
+      hasCode       : true,
+      hasPractice   : !!(legacyPractice.easy || legacyPractice.medium || legacyPractice.hard),
+      hasQuiz       : legacyMCQs.length > 0,
+      hasNotes      : !!(sc.summary),
+      hasCheatsheet : false,
     };
   }
 
@@ -334,7 +361,14 @@ window.LessonAdapter = (function () {
     lesson._locked     = !!apiResponse.locked;
 
     const version = detectVersion(lesson);
-    return version === 'v2' ? normalizeV2(lesson) : normalizeLegacy(lesson);
+    const normalized = version === 'v2' ? normalizeV2(lesson) : normalizeLegacy(lesson);
+
+    if (window.StageEngine && normalized.id) {
+      normalized.lessonStageProgress = window.StageEngine.LessonStageProgress.load(normalized.id);
+    } else if (window.StageEngine) {
+      normalized.lessonStageProgress = window.StageEngine.createInitialProgress(normalized.id);
+    }
+    return normalized;
   }
 
   function _emptyLesson() {
@@ -350,6 +384,11 @@ window.LessonAdapter = (function () {
       interview: { questions: [] },
       revision: { summary: '', keyTakeaways: [], memoryTricks: [], preInterviewChecklist: [], commonErrors: [] },
       videos: [], resources: [], prevLesson: null, nextLesson: null, completed: false, locked: false,
+      // Stage presence flags
+      hasDebugging: false, hasInterview: false, hasProject: false, hasAssignment: false,
+      hasVisualization: false, hasCode: false, hasPractice: false, hasQuiz: false,
+      hasNotes: false, hasCheatsheet: false,
+      lessonStageProgress: window.StageEngine ? window.StageEngine.createInitialProgress(null) : null,
     };
   }
 

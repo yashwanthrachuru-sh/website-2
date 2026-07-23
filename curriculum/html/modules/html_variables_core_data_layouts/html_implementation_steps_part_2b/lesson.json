@@ -3,26 +3,22 @@
   "title": "HTML Implementation Steps Part 2B",
   "technology": "HTML",
   "module": "HTML Variables & Core Data Layouts",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: HTML Setup & Architecture Foundations"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Implementation Steps Part 2B.",
-    "Write error-free implementations utilizing HTML Implementation Steps Part 2B.",
-    "Debug and optimize performance characteristics of HTML Implementation Steps Part 2B."
+    "Understand HTML Implementation Steps Part 2B from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Implementation Steps Part 2B",
+    "Debug edge cases and answer interview questions about HTML Implementation Steps Part 2B"
   ],
   "tags": [
+    "html_implementation_steps_part_2b",
     "html",
-    "implementation",
-    "steps",
-    "part",
-    "2b"
+    "html_variables_core_data_layouts"
   ]
 }

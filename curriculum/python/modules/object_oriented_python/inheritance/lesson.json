@@ -3,22 +3,22 @@
   "title": "Inheritance",
   "technology": "Python",
   "module": "Object Oriented Python",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: File Handling & I/O"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Inheritance.",
-    "Write error-free implementations utilizing Inheritance.",
-    "Debug and optimize performance characteristics of Inheritance."
+    "Understand Inheritance from zero to advanced level",
+    "Write clean, production-grade Python code for Inheritance",
+    "Debug edge cases and answer interview questions about Inheritance"
   ],
   "tags": [
-    "inheritance"
+    "inheritance",
+    "python",
+    "object_oriented_python"
   ]
 }

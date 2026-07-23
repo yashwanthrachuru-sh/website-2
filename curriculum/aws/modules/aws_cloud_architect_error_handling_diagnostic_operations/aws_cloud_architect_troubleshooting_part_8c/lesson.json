@@ -3,27 +3,22 @@
   "title": "AWS Cloud Architect Troubleshooting Part 8C",
   "technology": "AWS Cloud Architect",
   "module": "AWS Cloud Architect Error Handling & Diagnostic Operations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: AWS Cloud Architect Advanced Abstractions & Type Blueprints"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of AWS Cloud Architect Troubleshooting Part 8C.",
-    "Write error-free implementations utilizing AWS Cloud Architect Troubleshooting Part 8C.",
-    "Debug and optimize performance characteristics of AWS Cloud Architect Troubleshooting Part 8C."
+    "Understand AWS Cloud Architect Troubleshooting Part 8C from zero to advanced level",
+    "Write clean, production-grade AWS Cloud Architect code for AWS Cloud Architect Troubleshooting Part 8C",
+    "Debug edge cases and answer interview questions about AWS Cloud Architect Troubleshooting Part 8C"
   ],
   "tags": [
+    "aws_cloud_architect_troubleshooting_part_8c",
     "aws",
-    "cloud",
-    "architect",
-    "troubleshooting",
-    "part",
-    "8c"
+    "aws_cloud_architect_error_handling_diagnostic_operations"
   ]
 }

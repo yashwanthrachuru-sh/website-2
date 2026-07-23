@@ -3,26 +3,22 @@
   "title": "Android Developer Troubleshooting Part 5C",
   "technology": "Android Developer",
   "module": "Android Developer Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Android Developer Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Android Developer Troubleshooting Part 5C.",
-    "Write error-free implementations utilizing Android Developer Troubleshooting Part 5C.",
-    "Debug and optimize performance characteristics of Android Developer Troubleshooting Part 5C."
+    "Understand Android Developer Troubleshooting Part 5C from zero to advanced level",
+    "Write clean, production-grade Android Developer code for Android Developer Troubleshooting Part 5C",
+    "Debug edge cases and answer interview questions about Android Developer Troubleshooting Part 5C"
   ],
   "tags": [
+    "android_developer_troubleshooting_part_5c",
     "android",
-    "developer",
-    "troubleshooting",
-    "part",
-    "5c"
+    "android_developer_modular_functions_signature_scopes"
   ]
 }

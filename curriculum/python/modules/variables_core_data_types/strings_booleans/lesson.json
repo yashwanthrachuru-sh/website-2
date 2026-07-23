@@ -3,24 +3,22 @@
   "title": "Strings & Booleans",
   "technology": "Python",
   "module": "Variables & Core Data Types",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Python Interpreter & Setup"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Strings & Booleans.",
-    "Write error-free implementations utilizing Strings & Booleans.",
-    "Debug and optimize performance characteristics of Strings & Booleans."
+    "Understand Strings & Booleans from zero to advanced level",
+    "Write clean, production-grade Python code for Strings & Booleans",
+    "Debug edge cases and answer interview questions about Strings & Booleans"
   ],
   "tags": [
-    "strings",
-    "&",
-    "booleans"
+    "strings_booleans",
+    "python",
+    "variables_core_data_types"
   ]
 }

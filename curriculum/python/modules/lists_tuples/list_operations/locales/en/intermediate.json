@@ -1,43 +1,23 @@
 {
-  "deeperExplanation": "List Operations becomes more powerful when combined with other Python concepts. In production, it interacts with error handling, validation, and optimization.",
-  "mutabilityExplained": "Consider whether your data structures should be mutable or immutable when implementing this pattern.",
-  "noneValue": "Always check for null/None/undefined values — this is the most common source of runtime errors.",
-  "internalImplementation": "The python runtime handles this efficiently behind the scenes.",
+  "deeperExplanation": "Python lists are dynamic arrays of object pointers (`PyObject**`). CPython uses an over-allocation strategy (`0, 4, 8, 16, 25, 35, 46, 58, 72, 88...`) to ensure `.append()` achieves amortized O(1) time complexity.",
+  "internalImplementation": "Inserting or removing elements at index 0 requires shifting all N pointers in memory (O(N) operation). For frequent double-ended insertion/pop, use `collections.deque` (O(1)).",
   "examples": [
     {
-      "title": "Getting Started with List Operations",
-      "code": "print(\"Learning List Operations\")",
-      "explanation": "Basic introduction to List Operations.",
-      "language": "python"
+      "code": "# List In-Place Sorting vs sorted()\nnums = [5, 2, 8, 1]\nnums.sort(reverse=True)  # Modifies nums in-place, returns None\nprint('In-place:', nums) # [8, 5, 2, 1]\n\noriginal = [5, 2, 8, 1]\nnew_list = sorted(original) # Returns brand new list\nprint('New list:', new_list)",
+      "explanation": "`.sort()` mutates list in-place returning `None`. `sorted()` leaves original untouched and returns new sorted list."
     }
   ],
-  "bestPractices": [
-    "Validate inputs",
-    "Handle edge cases",
-    "Write tests",
-    "Document behavior"
-  ],
-  "debuggingWalkthrough": {
-    "scenario": "A list operations implementation behaves unexpectedly.",
-    "steps": [
-      "Reproduce with minimal test",
-      "Check inputs",
-      "Verify logic",
-      "Test boundaries"
-    ]
+  "performanceConsiderations": {
+    "timeComplexity": "Indexing O(1), append() amortized O(1), insert(0)/pop(0) O(N), sort() O(N log N) Timsort.",
+    "spaceComplexity": "O(N)"
   },
-  "edgeCases": [
-    "Empty input",
-    "Null values",
-    "Large datasets",
-    "Unexpected types"
-  ],
-  "performanceNotes": {
-    "notes": "Performance varies by implementation. Profile to find bottlenecks.",
-    "bigO": {
-      "best": "O(1)",
-      "average": "O(n)",
-      "worst": "O(n^2)"
-    }
-  }
+  "debuggingWalkthrough": {
+    "bugDescription": "Assigning result of in-place method `.append()` to variable.",
+    "incorrectCode": "items = [1, 2]\nitems = items.append(3)  # BUG: items becomes None!",
+    "correctCode": "items = [1, 2]\nitems.append(3)          # Correct: mutates items in-place"
+  },
+  "bestPractices": [
+    "Use `.sort()` when you don't need the original order; use `sorted()` when preserving original data.",
+    "Use `collections.deque` for O(1) queue/deque push and pop operations."
+  ]
 }

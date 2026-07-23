@@ -1,34 +1,14 @@
 {
-  "title": "Python Standard Library — Quick Reference",
+  "printNote": "Stdlib Reference",
   "sections": [
     {
-      "title": "Core Syntax",
-      "content": "# Python Standard Library\n# See lesson examples"
-    },
-    {
-      "title": "Key Concepts",
-      "content": [
-        "Concept overview",
-        "Basic usage",
-        "Advanced patterns"
-      ]
-    },
-    {
-      "title": "Common Patterns",
-      "content": [
-        "Basic pattern",
-        "Error handling pattern",
-        "Optimization pattern"
-      ]
-    },
-    {
-      "title": "Do's and Don'ts",
-      "content": [
-        "✓ Learn the concept",
-        "✓ Test edge cases",
-        "✓ Follow idioms",
-        "✗ Copy blindly",
-        "✗ Skip error handling"
+      "heading": "Key Stdlib Modules",
+      "entries": [
+        {
+          "syntax": "import math, datetime, json, pathlib",
+          "example": "pathlib.Path('.').exists()",
+          "description": "Core stdlib modules"
+        }
       ]
     }
   ]

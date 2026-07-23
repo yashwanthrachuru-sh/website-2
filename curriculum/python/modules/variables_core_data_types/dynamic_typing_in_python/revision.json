@@ -1,23 +1,49 @@
 {
-  "summary": "You have completed this lesson! You studied how Dynamic Typing in Python allocates memory, processes syntax rules, handles errors, and executes in production environments.",
-  "keyFormulas": [
-    "O(1) hash mapping",
-    "O(N) linear scan"
+  "oneLineSummary": "Python variables are dynamic references to typed memory objects, evaluated at runtime.",
+  "summary": "Dynamic typing allows Python variables to reference objects of any data type without explicit declaration. Type information resides in the object itself (via `PyObject`), not in the variable name.",
+  "keyTakeaways": [
+    "Variables in Python are reference tags pointing to objects in heap memory.",
+    "Objects have fixed data types; variables have no type constraints.",
+    "Python performs type checking dynamically at runtime.",
+    "Use `isinstance(obj, Type)` rather than `type(obj) == Type` to support subclasses.",
+    "Type hints (`x: int`) serve as documentation and static checking metadata; they do not enforce runtime constraints."
   ],
-  "keySyntax": [
-    "// python syntax definition\n"
-  ],
-  "mindMap": [
-    "State -> Declarations -> Stack Frame -> Heap allocation"
-  ],
-  "flashcards": [
+  "memoryTricks": [
     {
-      "front": "What is the primary role of Dynamic Typing in Python?",
-      "back": "To manage states, loop checks, or object definitions."
+      "concept": "Variable binding",
+      "trick": "Think of variables as luggage tags attached to boxes, not the boxes themselves."
     },
     {
-      "front": "Is local scope preferred over global scope?",
-      "back": "Yes, to avoid namespace collisions and memory leakage."
+      "concept": "isinstance vs type",
+      "trick": "isinstance IS subclass friendly; type() is strict identity."
+    }
+  ],
+  "commonErrors": [
+    {
+      "error": "TypeError: can only concatenate str to str",
+      "cause": "Attempting `'Age: ' + 25` without explicit string conversion.",
+      "fix": "Use f-strings `f'Age: {25}'` or explicit `str(25)`."
+    },
+    {
+      "error": "Shadowing built-ins",
+      "cause": "Naming a variable `list = [1, 2]` which overrides `builtins.list`.",
+      "fix": "Rename variable to `item_list` or `items`."
+    }
+  ],
+  "preInterviewChecklist": [
+    "Can explain `PyObject` structure (refcount + type pointer).",
+    "Understands why `bool` inherits from `int`.",
+    "Knows how duck typing works in Python functions.",
+    "Can demonstrate type hints + `mypy` usage."
+  ],
+  "nextTopics": [
+    {
+      "title": "Numeric Data Types",
+      "whyNext": "Learn integers, floats, complex numbers, and precision arithmetic."
+    },
+    {
+      "title": "Strings & Booleans",
+      "whyNext": "Master string immutability, methods, and boolean truthiness."
     }
   ]
 }

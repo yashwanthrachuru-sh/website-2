@@ -3,23 +3,22 @@
   "title": "Const Assertions",
   "technology": "TypeScript",
   "module": "Type Assertions Casting",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Enums & Literal Types"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Const Assertions.",
-    "Write error-free implementations utilizing Const Assertions.",
-    "Debug and optimize performance characteristics of Const Assertions."
+    "Understand Const Assertions from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Const Assertions",
+    "Debug edge cases and answer interview questions about Const Assertions"
   ],
   "tags": [
-    "const",
-    "assertions"
+    "const_assertions",
+    "typescript",
+    "type_assertions_casting"
   ]
 }

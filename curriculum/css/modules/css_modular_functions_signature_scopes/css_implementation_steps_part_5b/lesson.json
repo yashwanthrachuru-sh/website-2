@@ -3,26 +3,22 @@
   "title": "CSS Implementation Steps Part 5B",
   "technology": "CSS",
   "module": "CSS Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: CSS Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of CSS Implementation Steps Part 5B.",
-    "Write error-free implementations utilizing CSS Implementation Steps Part 5B.",
-    "Debug and optimize performance characteristics of CSS Implementation Steps Part 5B."
+    "Understand CSS Implementation Steps Part 5B from zero to advanced level",
+    "Write clean, production-grade CSS code for CSS Implementation Steps Part 5B",
+    "Debug edge cases and answer interview questions about CSS Implementation Steps Part 5B"
   ],
   "tags": [
+    "css_implementation_steps_part_5b",
     "css",
-    "implementation",
-    "steps",
-    "part",
-    "5b"
+    "css_modular_functions_signature_scopes"
   ]
 }

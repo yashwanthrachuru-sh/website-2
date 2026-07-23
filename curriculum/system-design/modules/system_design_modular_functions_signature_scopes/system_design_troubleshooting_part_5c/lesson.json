@@ -3,26 +3,22 @@
   "title": "System Design Troubleshooting Part 5C",
   "technology": "System Design",
   "module": "System Design Modular Functions & Signature Scopes",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: System Design Iteration loops & State Traversal"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of System Design Troubleshooting Part 5C.",
-    "Write error-free implementations utilizing System Design Troubleshooting Part 5C.",
-    "Debug and optimize performance characteristics of System Design Troubleshooting Part 5C."
+    "Understand System Design Troubleshooting Part 5C from zero to advanced level",
+    "Write clean, production-grade System Design code for System Design Troubleshooting Part 5C",
+    "Debug edge cases and answer interview questions about System Design Troubleshooting Part 5C"
   ],
   "tags": [
-    "system",
-    "design",
-    "troubleshooting",
-    "part",
-    "5c"
+    "system_design_troubleshooting_part_5c",
+    "system-design",
+    "system_design_modular_functions_signature_scopes"
   ]
 }

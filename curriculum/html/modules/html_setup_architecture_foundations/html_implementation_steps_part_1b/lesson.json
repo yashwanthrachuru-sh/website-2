@@ -3,26 +3,22 @@
   "title": "HTML Implementation Steps Part 1B",
   "technology": "HTML",
   "module": "HTML Setup & Architecture Foundations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Basic computer literacy"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of HTML Implementation Steps Part 1B.",
-    "Write error-free implementations utilizing HTML Implementation Steps Part 1B.",
-    "Debug and optimize performance characteristics of HTML Implementation Steps Part 1B."
+    "Understand HTML Implementation Steps Part 1B from zero to advanced level",
+    "Write clean, production-grade HTML code for HTML Implementation Steps Part 1B",
+    "Debug edge cases and answer interview questions about HTML Implementation Steps Part 1B"
   ],
   "tags": [
+    "html_implementation_steps_part_1b",
     "html",
-    "implementation",
-    "steps",
-    "part",
-    "1b"
+    "html_setup_architecture_foundations"
   ]
 }

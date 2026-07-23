@@ -1,24 +1,20 @@
 {
-  "title": "Project: List Operations Application",
-  "tagline": "Apply list operations in a practical project.",
-  "description": "Build an application demonstrating List Operations.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "Task Queue Priority Manager",
+  "tagline": "Dynamic task list processor",
+  "description": "Build a task manager queue supporting adding tasks with priority, removing completed tasks, and reordering.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "List manipulation & slicing"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Add task at index",
+    "Remove task by name",
+    "Move task to top"
+  ],
+  "starterCode": "class TaskManager:\n    def __init__(self): self.tasks = []",
+  "solution": "class TaskManager:\n    def __init__(self):\n        self.tasks = []\n    def add_task(self, name, priority=False):\n        if priority:\n            self.tasks.insert(0, name)\n        else:\n            self.tasks.append(name)\n    def remove_task(self, name):\n        if name in self.tasks:\n            self.tasks.remove(name)\n    def get_tasks(self):\n        return self.tasks",
+  "solutionExpl": "Uses `.insert(0)` for priority tasks and `.append()` for standard tasks.",
+  "expectedOutput": "['urgent', 'normal']",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Add status tracking per task"
   ]
 }

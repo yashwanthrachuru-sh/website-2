@@ -1,26 +1,27 @@
 {
-  "title": "Project: Python Environment Diagnostics Tool",
-  "tagline": "Build a comprehensive system information tool.",
-  "description": "Create a CLI tool that displays detailed information about the python environment: version, installed packages, system info, and environment variables.",
-  "requirements": [
-    "Display interpreter version and path",
-    "List installed packages with versions",
-    "Show system info (OS, CPU, memory)",
-    "Display key environment variables",
+  "title": "Personal Python CLI Tool",
+  "tagline": "Build a useful command-line utility",
+  "description": "Create a script 'tools.py' that serves as a personal utility CLI. It should support multiple sub-commands and demonstrate proper Python script conventions.",
+  "learningGoals": [
+    "Use sys.argv for command routing",
+    "Apply the __name__ == '__main__' guard",
+    "Structure a script with multiple functions",
     "Handle errors gracefully"
   ],
-  "learningGoals": [
-    "Understand the runtime environment",
-    "Practice working with system modules",
-    "Build a practical diagnostic tool"
+  "requirements": [
+    "Support sub-command 'count': count words in a given string (passed as argument)",
+    "Support sub-command 'reverse': reverse a given string",
+    "Support sub-command 'upper': uppercase a given string",
+    "Show usage help if no arguments given",
+    "Exit with code 1 on errors, 0 on success"
   ],
-  "starterCode": "#!/usr/bin/env python3\nimport sys, os, platform\n\ndef main():\n    print(\"=\"*60)\n    print(\"  Environment Diagnostics\")\n    print(\"=\"*60)\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "#!/usr/bin/env python3\nimport sys, os, platform\n\ndef main():\n    print(\"=\"*60)\n    print(\"  Python Environment Diagnostics\")\n    print(\"=\"*60)\n    print(f\"\\nInterpreter: {sys.version}\")\n    print(f\"Path: {sys.executable}\")\n    print(f\"OS: {platform.system()} {platform.release()}\")\n    print(f\"CPU Cores: {os.cpu_count()}\")\n    for key in ['PATH','HOME','USER']:\n        if key in os.environ:\n            print(f\"{key}={os.environ[key][:80]}...\")\n    print(\"\\n\" + \"=\"*60)",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "starterCode": "import sys\n\ndef cmd_count(text):\n    pass\n\ndef cmd_reverse(text):\n    pass\n\ndef cmd_upper(text):\n    pass\n\nCOMMANDS = {\n    'count': cmd_count,\n    'reverse': cmd_reverse,\n    'upper': cmd_upper,\n}\n\nif __name__ == '__main__':\n    # Parse and route sub-commands\n    pass\n",
+  "solution": "import sys\n\ndef cmd_count(text):\n    words = text.split()\n    print(f'Word count: {len(words)}')\n\ndef cmd_reverse(text):\n    print(text[::-1])\n\ndef cmd_upper(text):\n    print(text.upper())\n\nCOMMANDS = {\n    'count': cmd_count,\n    'reverse': cmd_reverse,\n    'upper': cmd_upper,\n}\n\nif __name__ == '__main__':\n    if len(sys.argv) < 3:\n        print('Usage: python3 tools.py <command> <text>')\n        print(f'Commands: {\", \".join(COMMANDS)}')\n        sys.exit(1)\n    \n    cmd = sys.argv[1]\n    text = ' '.join(sys.argv[2:])\n    \n    if cmd not in COMMANDS:\n        print(f'Unknown command: {cmd}')\n        sys.exit(1)\n    \n    COMMANDS[cmd](text)\n    sys.exit(0)",
+  "solutionExpl": "The COMMANDS dictionary maps command names to functions — this is the 'dispatch table' pattern, a cleaner alternative to if/elif chains. ' '.join(sys.argv[2:]) handles multi-word input by joining all remaining arguments.",
+  "expectedOutput": "$ python3 tools.py count hello world Python\nWord count: 3\n\n$ python3 tools.py reverse Python\nnohtyP\n\n$ python3 tools.py upper hello world\nHELLO WORLD",
   "extensions": [
-    "Add JSON output format",
-    "Include network information",
-    "Generate a shareable report URL"
+    "Add a 'stats' command that counts words, characters, and lines",
+    "Read input from a file instead of command line",
+    "Add --help flag support"
   ]
 }

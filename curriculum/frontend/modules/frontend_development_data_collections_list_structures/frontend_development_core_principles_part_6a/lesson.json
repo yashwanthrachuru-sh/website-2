@@ -3,27 +3,22 @@
   "title": "Frontend Development Core Principles Part 6A",
   "technology": "Frontend Development",
   "module": "Frontend Development Data Collections & List Structures",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Frontend Development Modular Functions & Signature Scopes"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Frontend Development Core Principles Part 6A.",
-    "Write error-free implementations utilizing Frontend Development Core Principles Part 6A.",
-    "Debug and optimize performance characteristics of Frontend Development Core Principles Part 6A."
+    "Understand Frontend Development Core Principles Part 6A from zero to advanced level",
+    "Write clean, production-grade Frontend Development code for Frontend Development Core Principles Part 6A",
+    "Debug edge cases and answer interview questions about Frontend Development Core Principles Part 6A"
   ],
   "tags": [
+    "frontend_development_core_principles_part_6a",
     "frontend",
-    "development",
-    "core",
-    "principles",
-    "part",
-    "6a"
+    "frontend_development_data_collections_list_structures"
   ]
 }

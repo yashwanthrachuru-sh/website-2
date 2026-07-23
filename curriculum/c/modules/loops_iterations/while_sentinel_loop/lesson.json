@@ -3,24 +3,22 @@
   "title": "While Sentinel Loop",
   "technology": "C Programming",
   "module": "Loops Iterations",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Control Flow Conditions"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of While Sentinel Loop.",
-    "Write error-free implementations utilizing While Sentinel Loop.",
-    "Debug and optimize performance characteristics of While Sentinel Loop."
+    "Understand While Sentinel Loop from zero to advanced level",
+    "Write clean, production-grade C Programming code for While Sentinel Loop",
+    "Debug edge cases and answer interview questions about While Sentinel Loop"
   ],
   "tags": [
-    "while",
-    "sentinel",
-    "loop"
+    "while_sentinel_loop",
+    "c",
+    "loops_iterations"
   ]
 }

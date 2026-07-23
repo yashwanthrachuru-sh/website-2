@@ -1,44 +1,30 @@
 {
-  "oneLineSummary": "List Comprehensions is a fundamental programming concept every developer should understand.",
-  "summary": "This lesson covered what List Comprehensions is, why it exists, how to use it, common mistakes, and best practices.",
+  "summary": "List comprehensions construct lists concisely: `[expr for item in sequence if cond]`. Faster than append loops.",
+  "oneLineSummary": "List comprehension: concise `[expr for item in iter if cond]` syntax for building lists.",
   "keyTakeaways": [
-    "List Comprehensions solves a specific programming problem",
-    "Handle edge cases",
-    "Follow language idioms",
-    "Test thoroughly"
+    "Faster than loop append.",
+    "Ternary goes before `for`, filter goes after `for`."
   ],
   "memoryTricks": [
-    "Think of list comprehensions as a tool in your toolbox"
-  ],
-  "preInterviewChecklist": [
-    "Can you explain List Comprehensions in one sentence?",
-    "Can you write a basic implementation?",
-    "Do you know the pitfalls?"
+    {
+      "concept": "Comprehension Syntax",
+      "trick": "[WHAT_TO_KEEP for ITEM in LIST if FILTER]"
+    }
   ],
   "commonErrors": [
-    "Not understanding the problem",
-    "Overcomplicating",
-    "Ignoring edge cases",
-    "Skipping tests"
+    {
+      "error": "SyntaxError with if-else at end",
+      "cause": "Placing ternary else clause after for",
+      "fix": "Move ternary expression before `for` keyword"
+    }
   ],
-  "mindMap": {
-    "central": "List Comprehensions",
-    "branches": [
-      "Definition",
-      "Usage",
-      "Advanced",
-      "Pitfalls",
-      "Best Practices"
-    ]
-  },
+  "preInterviewChecklist": [
+    "Explain list comprehension vs generator expression"
+  ],
   "nextTopics": [
-    "Advanced list comprehensions",
-    "Testing list comprehensions",
-    "Performance optimization"
-  ],
-  "estimatedLearningTime": {
-    "review": 10,
-    "practice": 25,
-    "master": 40
-  }
+    {
+      "title": "Dictionaries & Sets",
+      "whyNext": "Learn key-value mappings and unique sets."
+    }
+  ]
 }

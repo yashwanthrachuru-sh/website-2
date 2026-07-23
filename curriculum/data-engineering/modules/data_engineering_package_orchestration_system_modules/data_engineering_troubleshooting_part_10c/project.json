@@ -1,11 +1,14 @@
 {
-  "title": "Data Engineering Troubleshooting Part 10C System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Data Engineering Troubleshooting Part 10C.",
+  "title": "Data Engineering Troubleshooting Part 10C Project",
+  "tagline": "Build a mini application using Data Engineering Troubleshooting Part 10C",
+  "description": "Create a working Data Engineering application demonstrating Data Engineering Troubleshooting Part 10C.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "# Project starting point\n",
-  "solution": "print('Project Complete!')"
+  "starterCode": "# Python implementation for Data Engineering Troubleshooting Part 10C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+  "solution": "# Python implementation for Data Engineering Troubleshooting Part 10C\ndef process_data(records):\n    \"\"\"Process input dataset cleanly.\"\"\"\n    results = [item.strip().upper() for item in records if item]\n    return results\n\nif __name__ == '__main__':\n    data = ['apple', 'banana', 'cherry']\n    print('Processed:', process_data(data))",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Data Engineering Troubleshooting Part 10C in Data Engineering."
 }

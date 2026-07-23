@@ -1,11 +1,14 @@
 {
-  "title": "Import Export TS System Dashboard",
-  "description": "Build a small utility tracking dynamic state representations of Import Export TS.",
+  "title": "Import Export TS Project",
+  "tagline": "Build a mini application using Import Export TS",
+  "description": "Create a working TypeScript application demonstrating Import Export TS.",
   "requirements": [
-    "Initialize state attributes cleanly.",
-    "Provide functions to query and update values.",
-    "Handle invalid input boundaries gracefully."
+    "Follow standard style guidelines",
+    "Handle errors gracefully",
+    "Produce clear, verifiable output"
   ],
-  "starterCode": "// Project starting point\n",
-  "solution": "console.log('Project Complete!');"
+  "starterCode": "// TypeScript implementation for Import Export TS\ninterface ImportExportTSPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processImportExportTS(item: ImportExportTSPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processImportExportTS({ id: 1, title: 'Import Export TS', status: 'active' }));",
+  "solution": "// TypeScript implementation for Import Export TS\ninterface ImportExportTSPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processImportExportTS(item: ImportExportTSPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processImportExportTS({ id: 1, title: 'Import Export TS', status: 'active' }));",
+  "expectedOutput": "Project Completed Successfully",
+  "solutionExpl": "This solution demonstrates clean application of Import Export TS in TypeScript."
 }

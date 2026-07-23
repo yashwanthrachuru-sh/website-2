@@ -1,19 +1,9 @@
 {
   "questions": [
     {
-      "question": "Explain Set Operations to a junior developer.",
-      "answer": "Start with the problem it solves, show a simple example, explain core concepts, and discuss common mistakes.",
-      "followUp": "What mistakes do developers make with this?"
-    },
-    {
-      "question": "Performance implications of set operations?",
-      "answer": "Consider time/space complexity, memory usage, and optimization strategies.",
-      "followUp": "How would you benchmark it?"
-    },
-    {
-      "question": "Real-world scenario for set operations?",
-      "answer": "Use Set Operations when you encounter the programming problem it addresses.",
-      "followUp": "What alternatives exist?"
+      "question": "What is the difference between a `set` and a `frozenset` in Python?",
+      "answer": "`set` is mutable (supports `.add()`, `.remove()`) and unhashable. `frozenset` is immutable and hashable, allowing it to be used as a dictionary key or stored inside another set.",
+      "level": "intermediate"
     }
   ]
 }

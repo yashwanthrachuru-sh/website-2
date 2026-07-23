@@ -1,24 +1,19 @@
 {
-  "title": "Project: SQLite Integration Application",
-  "tagline": "Apply sqlite integration in a practical project.",
-  "description": "Build an application demonstrating SQLite Integration.",
-  "requirements": [
-    "Implement core functionality",
-    "Handle errors",
-    "Write tests",
-    "Document the solution"
-  ],
+  "title": "Embedded SQLite User Store",
+  "tagline": "Persistent user repository",
+  "description": "Build `UserStore` class providing `register()`, `authenticate()`, and `delete()` backed by SQLite.",
   "learningGoals": [
-    "Apply the concept practically",
-    "Build a portfolio project"
+    "CRUD operations using sqlite3"
   ],
-  "starterCode": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "solution": "# Project Starter\n# Implement your solution here\n\ndef main():\n    pass\n\nif __name__ == \"__main__\":\n    main()",
-  "expectedOutput": "Your application produces the expected output.",
-  "solutionExplanation": "This project demonstrates practical application of the concept.",
+  "requirements": [
+    "Parameterized queries",
+    "Password hashing check"
+  ],
+  "starterCode": "class UserStore: pass",
+  "solution": "import sqlite3\nclass UserStore:\n    def __init__(self, db_path=':memory:'):\n        self.conn = sqlite3.connect(db_path)\n        self.conn.execute('CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY, password TEXT)')\n    def register(self, user, pwd):\n        try:\n            with self.conn:\n                self.conn.execute('INSERT INTO users VALUES (?, ?)', (user, pwd))\n            return True\n        except sqlite3.IntegrityError: return False",
+  "solutionExpl": "Implements CRUD user repository with SQLite persistence.",
+  "expectedOutput": "True",
   "extensions": [
-    "Add features",
-    "Optimize",
-    "Build a UI"
+    "Add password hashing via bcrypt/hashlib"
   ]
 }

@@ -1,18 +1,11 @@
-{
-  "recommendations": [
-    {
-      "title": "Running Python Scripts — Beginner's Tutorial",
-      "platform": "YouTube",
-      "duration": "15-20 minutes",
-      "description": "A gentle introduction to Running Python Scripts for beginners",
-      "difficulty": "beginner"
-    },
-    {
-      "title": "Advanced Running Python Scripts Patterns",
-      "platform": "YouTube",
-      "duration": "25-30 minutes",
-      "description": "Deep dive into production Running Python Scripts patterns",
-      "difficulty": "advanced"
-    }
-  ]
-}
+[
+  {
+    "title": "Python Scripts and Command Line Arguments",
+    "video_id": "kWBWrdiFr6M",
+    "url": "https://www.youtube.com/watch?v=kWBWrdiFr6M",
+    "thumbnail": "https://img.youtube.com/vi/kWBWrdiFr6M/maxresdefault.jpg",
+    "channel": "Corey Schafer",
+    "duration": "8m",
+    "description": "Running Python scripts, command-line arguments with sys.argv, and the __name__ == '__main__' pattern."
+  }
+]

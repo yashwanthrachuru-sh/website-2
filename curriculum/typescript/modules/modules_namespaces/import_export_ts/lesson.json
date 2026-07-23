@@ -3,24 +3,22 @@
   "title": "Import Export TS",
   "technology": "TypeScript",
   "module": "Modules Namespaces",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Type Assertions Casting"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Import Export TS.",
-    "Write error-free implementations utilizing Import Export TS.",
-    "Debug and optimize performance characteristics of Import Export TS."
+    "Understand Import Export TS from zero to advanced level",
+    "Write clean, production-grade TypeScript code for Import Export TS",
+    "Debug edge cases and answer interview questions about Import Export TS"
   ],
   "tags": [
-    "import",
-    "export",
-    "ts"
+    "import_export_ts",
+    "typescript",
+    "modules_namespaces"
   ]
 }

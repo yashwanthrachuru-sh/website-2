@@ -1,22 +1,17 @@
 {
-  "syntax": "## Syntax Reference\n```typescript\n// Declaring and executing Import Export TS\n```",
-  "quickExamples": "// Simple usage\n",
-  "commonErrors": [
+  "title": "Import Export TS Cheat Sheet",
+  "printNote": "Quick reference for Import Export TS in TypeScript.",
+  "sections": [
     {
-      "error": "ReferenceError",
-      "description": "Calling variables outside their declared scope."
+      "heading": "Syntax & Usage",
+      "entries": [
+        {
+          "syntax": "// TypeScript implementation for Import Export TS",
+          "example": "// TypeScript implementation for Import Export TS\ninterface ImportExportTSPayload {\n  id: number;\n  title: string;\n  status: 'active' | 'pending';\n}\n\nfunction processImportExportTS(item: ImportExportTSPayload): string {\n  return `[${item.id}] ${item.title}: ${item.status}`;\n}\n\nconsole.log(processImportExportTS({ id: 1, title: 'Import Export TS', status: 'active' }));",
+          "description": "Basic syntax for Import Export TS",
+          "commonMistake": "Syntax error or missing colon/semicolon"
+        }
+      ]
     }
-  ],
-  "tips": [
-    "Keep naming conventions consistent.",
-    "Document complex parameters."
-  ],
-  "shortcuts": [],
-  "interviewNotes": "Be ready to explain scoping rules and time/space characteristics.",
-  "bestPractices": [
-    "Avoid global namespaces.",
-    "Use const / final for read-only variables."
-  ],
-  "memoryTricks": "Think of scopes as Russian nesting dolls — inside dolls can see outside, but outside cannot see inside.",
-  "quickRevision": "Variables store data. Loops repeat blocks. Functions encapsulate tasks. Objects bundle states."
+  ]
 }

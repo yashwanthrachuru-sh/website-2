@@ -3,26 +3,22 @@
   "title": "Artificial Intelligence Troubleshooting Part 3C",
   "technology": "Artificial Intelligence",
   "module": "Artificial Intelligence Control Flow & Boolean Logic Branching",
-  "estimatedTime": 120,
+  "estimatedTime": 60,
   "difficultyLevels": [
     "beginner",
     "intermediate",
     "expert"
   ],
-  "prerequisites": [
-    "Mastery of previous module: Artificial Intelligence Variables & Core Data Layouts"
-  ],
+  "prerequisites": [],
   "nextLessons": [],
   "learningObjectives": [
-    "Explain the core operational logic of Artificial Intelligence Troubleshooting Part 3C.",
-    "Write error-free implementations utilizing Artificial Intelligence Troubleshooting Part 3C.",
-    "Debug and optimize performance characteristics of Artificial Intelligence Troubleshooting Part 3C."
+    "Understand Artificial Intelligence Troubleshooting Part 3C from zero to advanced level",
+    "Write clean, production-grade Artificial Intelligence code for Artificial Intelligence Troubleshooting Part 3C",
+    "Debug edge cases and answer interview questions about Artificial Intelligence Troubleshooting Part 3C"
   ],
   "tags": [
-    "artificial",
-    "intelligence",
-    "troubleshooting",
-    "part",
-    "3c"
+    "artificial_intelligence_troubleshooting_part_3c",
+    "ai",
+    "artificial_intelligence_control_flow_boolean_logic_branching"
   ]
 }
